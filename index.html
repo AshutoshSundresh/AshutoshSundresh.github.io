@@ -30,6 +30,10 @@
          /* Better Font Rendering =========== */
          -webkit-font-smoothing: antialiased;
          -moz-osx-font-smoothing: grayscale;
+	   -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+         -webkit-transform: translate3d(0, 0, 0);
+         -moz-transform: translate3d(0, 0, 0);
          }
          .icon-gitlab .path1:before {
          content: "\e906";
@@ -355,8 +359,8 @@
          }
          .card {
          border-radius: 25px;
-         backdrop-filter: blur(18px);
-         background-color: rgba(255, 255, 255, 0.83);        
+         backdrop-filter: blur(12px);
+         background-color: rgba(255, 255, 255, 0.82);        
          border: 1px solid #e6e6e6;
          min-height: 300px;
          padding: 10px 0;
