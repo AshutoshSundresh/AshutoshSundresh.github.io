@@ -371,6 +371,7 @@
   background-size: cover;
          color: #f5f7fa;
          }
+
          .main {
 
 
@@ -1666,6 +1667,27 @@
              .removeClass( 'icon-chevron-down' )
              .addClass( 'icon-chevron-up' );
          });
+    // Function to check if the device is iPhone, iPad, or MacBook
+    function isAppleHandHeld() {
+      return /iPhone|iPad|Mac/.test(navigator.platform);
+    }
+
+    // Function to check if the device is a MacBook
+    function isMacBook() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      return userAgent.includes('macintosh');
+    }
+
+    // Function to set background color and remove background image
+    function setDeviceBackgroundColor() {
+      if (isAppleHandHeld() || isMacBook()) {
+        document.body.style.backgroundImage = 'none';
+        document.body.style.backgroundColor = '#001933';
+      }
+    }
+
+    // Call the function when the page finishes loading
+    window.onload = setDeviceBackgroundColor;
          
          $("#remaining-profiles").on('hidden.bs.collapse', function() {
            $( '.js-profiles-collapse > i' )
