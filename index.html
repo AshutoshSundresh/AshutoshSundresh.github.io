@@ -8,6 +8,20 @@
       <script src="cdn-cgi/apps/head/QEWNwoPSl2O5LqMXvi595gsiMPg.js"></script>
       <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
       <style>
+      a:link {
+        color: #73BBFF;
+      }
+      a:visited {
+        color: #73BBFF;
+      }
+      hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 3px solid rgba(255, 255,255, .2);
+        margin: 1em 0;
+        padding: 0;
+      }
       @font-face {
          font-family: 'icomoon';
   src: url("/fonts/icomoon.eot?f218wo");
@@ -279,11 +293,11 @@
          }
          .label-keyword {
          display: inline-block;
-         background: #7eb0db;
+         background: #DD3898;
          color: white;
          font-size: 0.9em;
          padding: 5px;
-         border: 1px solid #C685D6;
+         border: 1px solid rgba(255,255,255,0.5);
          margin-right: 5px;
          }
          .label-keyword:last-child {
@@ -351,7 +365,7 @@
          body {
          font-family: 'Lato';
          background-image:url('https://i.pinimg.com/originals/8e/14/55/8e145599d4847e339828787162952035.gif'); background-repeat:repeat; background-attachment:fixed;
-         color: #333;
+         color: #f5f7fa;
          }
          .main {
 
@@ -359,9 +373,9 @@
          }
          .card {
          border-radius: 25px;
-         backdrop-filter: blur(12px);
-         background-color: rgba(255, 255, 255, 0.82);        
-         border: 1px solid #e6e6e6;
+         backdrop-filter: blur(24px);
+         background-color: rgb(0, 0, 0, 60%);        
+         border: 1px solid #181818;
          min-height: 300px;
          padding: 10px 0;
          }
@@ -413,7 +427,7 @@
          }
          .background-details .detail .title,
          .background-details .detail .icon {
-         color: #59afd4;
+         color: #DB9EE5;
          }
          .background-details .detail .mobile-title {
          display: none;
@@ -506,9 +520,9 @@
          display: block;
          border-radius: 50%;
          text-align: center;
-         background-color: white;
+         background-color: #494949 !important;
          font-size: 1.5em;
-         color: #C685D6;
+         color: #C685D6 !important;
          z-index: 100;
          position: fixed;
          bottom: 10px;
@@ -525,7 +539,7 @@
          }
          .floating-nav-trigger:hover {
          color: #8d519c;
-         background-color: #e6e6e6;
+         background-color: #494949 !important;
          }
          .floating-nav-trigger.is-open {
          -webkit-box-shadow: none;
@@ -538,7 +552,7 @@
          display: none;
          }
          .floating-nav-trigger.is-open:hover {
-         background-color: white;
+         background-color: #494949;
          }
          .floating-nav {
          -webkit-transform: scale(0);
@@ -558,7 +572,7 @@
          z-index: 50;
          right: 10px;
          bottom: 10px;
-         background-color: white;
+         background-color: #494949 !important;
          width: 90%;
          max-width: 400px;
          visibility: hidden;
@@ -569,7 +583,7 @@
          margin: 0;
          }
          .floating-nav ul li {
-         border-bottom: 1px solid #eff2f6;
+         border-bottom: 1px solid #2b2c2e;
          }
          .floating-nav ul li a {
          padding: 20px;
@@ -688,7 +702,7 @@
          text-decoration: none;
          }
          .link-github {
-         color: #454545;
+         color: #454545 !important;
          }
          .link-github:hover,
          .link-github:focus {
@@ -712,7 +726,7 @@
          color: #d8560c;
          }
          .link-linkedin {
-         color: #007bb6;
+         color: #007bb6 !important;
          }
          .link-linkedin:hover,
          .link-linkedin:focus {
@@ -728,7 +742,7 @@
          color: #0986ca;
          }
          .link-instagram {
-         color: #e4405f;
+         color: #e4405f !important;
          }
          .link-instagram:hover,
          .link-instagram:focus {
@@ -1045,7 +1059,7 @@
                      <div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100" alt="Ashutosh Sundresh" src="https://i.imgur.com/EM8Tz8U.jpg" itemprop="image"/></div>
                      <div class="name-and-profession text-center">
                         <h3 itemprop="name"><b>Ashutosh Sundresh</b></h3>
-                        <h5 class="text-muted" itemprop="jobTitle">ShapeShiftOS Founder | XDA Recognized Developer | SOF AES Winner | PLO Finalist and Camper | IIT Kanpur TOSC Top 15 | Class 10 Boards State Topper | CSIR NASTA State Rank 1</h5>
+                        <h5 class="text-light" itemprop="jobTitle">ShapeShiftOS Founder | XDA Recognized Developer | SOF AES Winner | PLO Finalist and Camper | IIT Kanpur TOSC Top 15 | Class 10 Boards State Topper | CSIR NASTA State Rank 1</h5>
                      </div>
                   </span>
                   <hr/>
@@ -1086,7 +1100,7 @@
                               <li class="">
                                  <div class="content">
                                     <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><a href="https://github.com/ShapeShiftOS" target="_blank"><strong>ShapeShiftOS</strong></a></p>
-                                    <p class="text-muted"><small><span class="space-right">Mar, 2020 - Present</span></small></p>
+                                    <p class="text-light"><small><span class="space-right">Mar, 2020 - Present</span></small></p>
                                     <div class="mop-wrapper space-bottom">
                                        <p>An open-source Android fork with a unique customizable user interface and convenient features (for example: <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/d2ff9f4b76b55bcc0fbd194a23f8f639654d6c07">Google Lens screenshot integration)</a>. Founder of organization and leading development for over 3 years.</p>
                                     </div>
@@ -1111,7 +1125,7 @@
                               <li class="">
                                  <div class="content">
                                     <p class="clear-margin relative"><a href="https://github.com/munresearch/munresearch.github.io" target="_blank"><strong>MUN Research Engine</strong></a></p>
-                                    <p class="text-muted"><small><span class="space-right">Dec, 2022 - Jan, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 12 days</span></small></p>
+                                    <p class="text-light"><small><span class="space-right">Dec, 2022 - Jan, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 12 days</span></small></p>
                                     <div class="mop-wrapper space-bottom">
                                        <p>An open-source MUN research web application that can help delegates around the world jumpstart their MUN research. Shared to school MUN club and local MUN circuit with positive feedback.</p>
                                     </div>
@@ -1122,7 +1136,7 @@
                               <li class="">
                                  <div class="content">
                                     <p class="clear-margin relative"><a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank"><strong>Shiv Nadar School Faridabad MUN 2022 Website</strong></a></p>
-                                    <p class="text-muted"><small><span class="space-right">Jul, 2022 - Aug, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 25 days</span></small></p>
+                                    <p class="text-light"><small><span class="space-right">Jul, 2022 - Aug, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 25 days</span></small></p>
                                     <div class="mop-wrapper space-bottom">
                                        <p>An open-source MUN conference website from scratch using HTML, CSS, and JavaScript that was used by everyone participating in the conference. Includes information about the MUN, registrations, agendas for each committee, important documents, and a gallery.</p>
                                     </div>
@@ -1138,7 +1152,7 @@
                               <li class="">
                                  <div class="content">
                                     <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank"><strong>Food Menu Alexa Skill</strong></a></p>
-                                    <p class="text-muted"><small><span class="space-right">Dec, 2021 - Feb, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
+                                    <p class="text-light"><small><span class="space-right">Dec, 2021 - Feb, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
                                     <div class="mop-wrapper space-bottom">
                                        <p>An open-source Node.js code for an Alexa skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes a comprehensive voice interaction model trained over 1 week.</p>
                                     </div>
@@ -1156,7 +1170,7 @@
                               <li class="">
                                  <div class="content">
                                     <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/organization-starS" target="_blank"><strong>Organization Stars SVG</strong></a></p>
-                                    <p class="text-muted"><small><span class="space-right">April, 2023 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 4 days</span></small></p>
+                                    <p class="text-light"><small><span class="space-right">April, 2023 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 4 days</span></small></p>
                                     <div class="mop-wrapper space-bottom">
                                        <p>An open-source Flask Web Application called Organization Stars SVG that generates an SVG image showing the total number of stars for a given GitHub organization. It can be used to showcase the popularity of an organization on a README file or similar.</p>
                                     </div>
@@ -1175,7 +1189,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Pursuing" data-placement="left"></i><strong>Faridabad, Grade 10 to 12,&nbsp;</strong>Shiv Nadar School</p>
-                                       <p class="text-muted"><small>Apr, 2021 - Present</small></p>
+                                       <p class="text-light"><small>Apr, 2021 - Present</small></p>
                                        <ul>
                                           <li class="mop-wrapper">
                                              <p>Class Rank 1/50</p>
@@ -1215,7 +1229,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin relative"><strong>Faridabad, Grade 11 to 12,&nbsp;</strong>CollegeBoard Examinations</p>
-                                       <p class="text-muted"><small>Apr, 2022 - Apr, 2024</small></p>
+                                       <p class="text-light"><small>Apr, 2022 - Apr, 2024</small></p>
                                        <ul>
                                           <li class="mop-wrapper">
                                              <p>SAT Score: 1530 (790 Mathematics, 740 Writing and Reading)</p>
@@ -1243,7 +1257,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin relative"><strong>Pune, Grade 8 and 9,&nbsp;</strong>Elpro International School</p>
-                                       <p class="text-muted"><small>Jun, 2019 - Apr, 2021</small></p>
+                                       <p class="text-light"><small>Jun, 2019 - Apr, 2021</small></p>
                                        <ul>
                                           <li class="mop-wrapper">
                                              <p>Top 1% of class</p>
@@ -1289,7 +1303,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Panini Linguistics Olympiad </strong>,&nbsp;International Institute of Information Technology (IIIT), Hyderabad </p>
-                                       <p class="text-muted"><small>Awarded on: Apr 10, 2023</small></p>
+                                       <p class="text-light"><small>Awarded on: Apr 10, 2023</small></p>
                                        <div class="mop-wrapper">
                                           <p>Invited to attend the National Finalists' Camp at IIIT, Hyderabad. Cleared the open round and qualified to be a part of the Indian delegation to Asia Pacific Linguistics Olympaid.</p>
                                        </div>
@@ -1300,7 +1314,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Google  Coding Competitions Farewell Round A </strong>,&nbsp;Google</p>
-                                       <p class="text-muted"><small>Awarded on: Apr 09, 2023</small></p>
+                                       <p class="text-light"><small>Awarded on: Apr 09, 2023</small></p>
                                        <div class="mop-wrapper">
                                           <p>Scored at the 70th percentile against competitors from around the world, with a vast majority being college students or professionals.</p>
                                        </div>
@@ -1311,7 +1325,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Techkriti Open School Championship Invitational Round </strong>,&nbsp;Indian Institute of Technology (IIT), Kanpur </p>
-                                       <p class="text-muted"><small>Awarded on: Jan 27, 2023</small></p>
+                                       <p class="text-light"><small>Awarded on: Jan 27, 2023</small></p>
                                        <div class="mop-wrapper">
                                           <p>Placed Rank 14 out of over 1300 total participants, and was part of the 80 people invited to IIT Kanpur for the invitational round.</p>
                                        </div>
@@ -1322,7 +1336,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Blind Coding in Python at Anubhuti </strong>,&nbsp;Manav Rachna International Institute of Research and Studies</p>
-                                       <p class="text-muted"><small>Awarded on: Dec 15, 2022</small></p>
+                                       <p class="text-light"><small>Awarded on: Dec 15, 2022</small></p>
                                        <div class="mop-wrapper">
                                           <p>Won second position in the blind coding contest (writing code with the monitor turned off) at Manav Rachna Institute's annual technological festival.</p>
                                        </div>
@@ -1333,7 +1347,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Silverzone Private Olympiad Awards </strong>,&nbsp;Silverzone Olympiads</p>
-                                       <p class="text-muted"><small>Awarded on: Feb 12, 2022</small></p>
+                                       <p class="text-light"><small>Awarded on: Feb 12, 2022</small></p>
                                        <div class="mop-wrapper">
                                           <p>International Rank 3 in English and International Rank 24 in Informatics, State Rank 4 in Social Studies, State Rank 41 in Science and State Rank 98 in Mathematics. Won 2500 INR in total cash prize.</p>
                                        </div>
@@ -1344,7 +1358,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>ASSET Outstanding Performance </strong>,&nbsp;Educational Initiatives</p>
-                                       <p class="text-muted"><small>Awarded on: Jan 28, 2022</small></p>
+                                       <p class="text-light"><small>Awarded on: Jan 28, 2022</small></p>
                                        <div class="mop-wrapper">
                                           <p>99th percentile in all offered tests, with a perfect score in Social Studies and English, and a 97% in Science and 96% in Mathematics.</p>
                                        </div>
@@ -1355,7 +1369,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>SOF Private Olympiad Awards </strong>,&nbsp;Science Olympiad Foundation </p>
-                                       <p class="text-muted"><small>Awarded on: Jan 13, 2022</small></p>
+                                       <p class="text-light"><small>Awarded on: Jan 13, 2022</small></p>
                                        <div class="mop-wrapper">
                                           <p>Grade 10: International Rank 9 in Social Studies, International Rank 26 in Cyber, Zonal Rank 29 in General Knowledge and Zonal Rank 55 in English. Won 1000 INR in total cash prize. Participated in SOF contests since Grade 2 and have consistently had top 50 zonal ranks with multiple top 5 international ranks over the years, such as International Rank 3 in Cyber in 2018.</p>
                                        </div>
@@ -1366,7 +1380,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>French Word Power and Concours Romain Rolland B1 National Level </strong>,&nbsp;Prayatna Educational Society </p>
-                                       <p class="text-muted"><small>Awarded on: December 15, 2021</small></p>
+                                       <p class="text-light"><small>Awarded on: December 15, 2021</small></p>
                                        <div class="mop-wrapper">
                                           <p>Achieved a perfect score of 100% and ranked 4th at the B1 National Level in French Word Power, and earned a commendable score of 96% and achieved a ranking of 9th at the B1 National Level in the Concours Romain Rolland. (Attended both exams after clearing a cutoff in the State Level)</p>
                                        </div>
@@ -1377,7 +1391,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>National Entrepreneurship Olympiad </strong>,&nbsp;Indian Institute of Technology Bombay E-Cell</p>
-                                       <p class="text-muted"><small>Awarded on: Nov 30, 2021</small></p>
+                                       <p class="text-light"><small>Awarded on: Nov 30, 2021</small></p>
                                        <div class="mop-wrapper">
                                           <p>Secured the 22nd position in the All India rankings.</p>
                                        </div>
@@ -1388,7 +1402,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>SOF Academic Excellence Scholarship </strong>,&nbsp;Science Olympiad Foundation</p>
-                                       <p class="text-muted"><small>Awarded on: May 31, 2021</small></p>
+                                       <p class="text-light"><small>Awarded on: May 31, 2021</small></p>
                                        <div class="mop-wrapper">
                                           <p>Achieved the remarkable distinction of being among the top 208 students across all grades out of a massive pool of 5 million participants, honored with the prestigious SOF AES award. Was the SOF AES award recipient for Grade 9 in the Maharashtra-Goa zone. Zonal top 20 awards in all contests offered, including English, Mathematics, and Science, as well as International Rank 11 in General Knowledge. Won 5000 INR in cash prize along with a trophy and citation. Website: <a href="https://web.archive.org/web/20210728230407/https://sofworld.org/aes-winners-2020-21">2020-21 SOF Academic Excellence Scholarship Awardee List</a> </p>
                                        </div>
@@ -1399,7 +1413,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>LogIQids Final Stage Topper </strong>,&nbsp;LogIQids</p>
-                                       <p class="text-muted"><small>Awarded on: Apr 27, 2021</small></p>
+                                       <p class="text-light"><small>Awarded on: Apr 27, 2021</small></p>
                                        <div class="mop-wrapper">
                                           <p>Won international rank 10 out of 21569 participants in the Final Stage.</p>
                                        </div>
@@ -1410,7 +1424,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>National Assessment for Scientific Temperament and Aptitude </strong>,&nbsp;Council of Scientific &amp; Industrial Research - National Institute of Science Communication and Policy Research</p>
-                                       <p class="text-muted"><small>Awarded on: Mar 31, 2020</small></p>
+                                       <p class="text-light"><small>Awarded on: Mar 31, 2020</small></p>
                                        <div class="mop-wrapper">
                                           <p>Won State Rank 1 in Maharashtra. Website: <a href="https://kamp.res.in/kamp-topper">https://kamp.res.in/kamp-topper</a> </p>
                                        </div>
@@ -1421,7 +1435,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Spell Bee District Level Round 3 </strong>,&nbsp;Brainstormm Spell Bee</p>
-                                       <p class="text-muted"><small>Awarded on: Dec 30, 2019</small></p>
+                                       <p class="text-light"><small>Awarded on: Dec 30, 2019</small></p>
                                        <div class="mop-wrapper">
                                           <p>Achieved the position of State Rank 2 in Maharashtra.</p>
                                        </div>
@@ -1432,7 +1446,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Australian National Chemistry Quiz </strong>,&nbsp;Royal Australian Chemical Institute</p>
-                                       <p class="text-muted"><small>Awarded on: Oct 30, 2019</small></p>
+                                       <p class="text-light"><small>Awarded on: Oct 30, 2019</small></p>
                                        <div class="mop-wrapper">
                                           <p>Awarded High Distinction for attaining a score of 27/30.</p>
                                        </div>
@@ -1443,7 +1457,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Inter-House Skating Tenacity (Rink-1) </strong>,&nbsp;Chirec International School</p>
-                                       <p class="text-muted"><small>Awarded on: December 15, 2018</small></p>
+                                       <p class="text-light"><small>Awarded on: December 15, 2018</small></p>
                                        <div class="mop-wrapper">
                                           <p>Awarded a gold medal for achieving the fastest lap times within the Green House.</p>
                                        </div>
@@ -1454,7 +1468,7 @@
                                  <li class="">
                                     <div class="content">
                                        <p class="clear-margin" itemprop="award"><strong>Telangana Math Bee Stage 3 Category 3 </strong>,&nbsp;Sakshi TV </p>
-                                       <p class="text-muted"><small>Awarded on: March 25, 2018</small></p>
+                                       <p class="text-light"><small>Awarded on: March 25, 2018</small></p>
                                        <div class="mop-wrapper">
                                           <p><a href="https://youtu.be/FC03mpWc94o?t=657">Appeared on television</a> for the 3rd Round of Category 3 Sakshi TV Telangana Math Bee.</p>
                                        </div>
@@ -1473,7 +1487,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><a href="https://forum.xda-developers.com/m/ashutosh-sundresh.7730292/" target="_blank"><strong>XDA Recognized Developer</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Title given on: September 1, 2021</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Title given on: September 1, 2021</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>1 of 300 Recognized Developers out of the 11 million users on the XDA online forum for Android Development, given to developers with "a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns." Website: <a href="https://forum.xda-developers.com/m/?key=Recognized_Developers"> https://forum.xda-developers.com/m/?key=Recognized_Developers </a></p>
                                  </div>
@@ -1484,7 +1498,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><a href="https://github.com/AshutoshSundresh/" target="_blank"><strong>Active Contributor on GitHub</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Account created on: March 3, 2020</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Account created on: March 3, 2020</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>A++ stats with over 3500 total commits and 1500 total contributions mainly focused on Android Platform Development and Qualcomm Device Android Development, including two merged pull requests to an official Google repository for fixing compilation using Make build system: <a href="https://github.com/material-components/material-components-android/commits?author=AshutoshSundresh"> https://github.com/material-components/material-components-android/commits?author=AshutoshSundresh</a></a></p>
                                  </div>
@@ -1495,7 +1509,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Manav Rachna International Institute of Research and Studies Cyber Security Internship</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">13th June, 2022 to 17th June, 2022 and 27th June, 2022 to 1st July, 2022</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">13th June, 2022 to 17th June, 2022 and 27th June, 2022 to 1st July, 2022</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Interned for Cyber Security at Manav Rachna International Institute of Research and Studies (MRIIRS) in June-July 2022 for 2 weeks under Dr. Charu Virmani, learning penetration testing, cybersecurity, and hands-on attacks taught in the first year of B.Tech (CSE). The best takeaway for me was how basic viruses are created using Metasploit Framework, how to identify and exploit weaknesses in a system and the purpose of penetration testing.</p>
                                  </div>
@@ -1506,7 +1520,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Model United Nations Leadership</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Active from July 5, 2021</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Active from July 5, 2021</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Elected as the MUN Secretary of the School Council by the Student Body twice, for the 2022-23 and 2023-24 sessions. Was also a part of the Secretariat as Head of Delegate Affairs for the Shiv Nadar School Faridabad MUN 2022, a part of 5 Secretariat members. Made significant contributions to the school's MUN conference by working as part of the Secretariat, designing the <a href="https://snsfmun.github.io">conference website</a>, and coordinating with delegates.</p>
                                  </div>
@@ -1517,7 +1531,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Anchoring Events at School</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">November, 2021 to April, 2023</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">November, 2021 to April, 2023</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Anchored a series of high-profile events at Shiv Nadar School Faridabad, including the impactful "Women in STEM" Educational ITER Bootcamp in 2023, the successful Sports Day in 2022, the prestigious Annual Award Day in 2021, and the esteemed Investiture Ceremony in 2021. These events had an average attendance of over 400 individuals, including renowned personalities such as ITER scientists and national sports champions.</p>
                                  </div>
@@ -1528,7 +1542,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Model United Nations as a Delegate</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">First MUN on: October 5, 2017</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">First MUN on: October 5, 2017</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Engaged in six Model United Nations Conferences, demonstrating exceptional research skills and diplomacy. Received recognition as the Best Researched Delegate at Enlighten MUN Pune 2019, and received a Special Commendation at Chirec Junior MUN Hyderabad 2017. Additionally, achieved four Verbal Commendations, including at Dynamic Training MUN Pune 2019, Global Indian International School Chinchwad MUN Pune 2019, Rockwell MUN Hyderabad 2018, and Chirec Junior MUN Hyderabad 2018.</p>
                                  </div>
@@ -1546,7 +1560,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>DELF B1 French Certification</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Obtained on: September 14, 2022</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Obtained on: September 14, 2022</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Obtained the DELF B1 diploma after a 3 hour examination consisting of a spoken interview, a writing task and a reading/grammar section. At level B1, the user becomes independent (equivalent to Common European Framework of Reference for Languages B1 Level) and this level is required to obtain French citizenship.</p>
                                  </div>
@@ -1557,7 +1571,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Indian Institute of Technology Delhi Sci-Tech Spins</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Started on: October 23, 2021</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Started on: October 23, 2021</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Attended the 3 hour lecture on <a href="https://news.careers360.com/iit-delhi-invites-students-for-lecture-on-learning-learn-through-modeling">"Learning to Learn through Modeling"</a>, conducted by Prof Divya Nayar and Prof N M Anoop Krishnan, at the Indian Institute of Technology Delhi Sci-Tech Spins event.</p>
                                  </div>
@@ -1568,7 +1582,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>Trinity College of London Music Diploma</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Started on: September, 2017</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Started on: September, 2017</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Completed Grade 2, holding a Certificate of Distinction in Classical Piano and Jazz, along with Music Theory. Earned a perfect score on the Grade 1 and Grade 2 Music Theory examination.</p>
                                  </div>
@@ -1578,7 +1592,7 @@
                            <li class="">
                               <div class="content">
                                  <p class="clear-margin relative"></i><strong>International Taekwondo Federation Belts</strong></a></p>
-                                 <p class="text-muted"><small><span class="space-right">Last belt attained on: November, 2016</span></small></p>
+                                 <p class="text-light"><small><span class="space-right">Last belt attained on: November, 2016</span></small></p>
                                  <div class="mop-wrapper space-bottom">
                                     <p>Currently at the 4th Kup level in Taekwondo, signifying proficiency and skill as the 4th highest color belt, equivalent to the Blue Belt.</p>
                                  </div>
