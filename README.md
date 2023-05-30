@@ -10,3 +10,4 @@ Changes include but are not limited to:
 - Extra section for extracurriculars
 - Reworked academics section
 - Additional date qualifiers in description
+- Disabling special effects on Apple devices
