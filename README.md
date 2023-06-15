@@ -4,7 +4,7 @@ Roughly based on JSONResume.org's Elegant theme, but a lot of it has been redesi
 
 Changes include but are not limited to:
 - New accent colors
-- GIF wallpaper background for body
+- Wallpaper background for body
 - Blurred cards with higher corner rounding
 - Redesigned dividers
 - Extra section for extracurriculars
