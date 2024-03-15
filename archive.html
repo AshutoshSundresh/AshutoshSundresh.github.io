@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8"/>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <title>Ashutosh Sundresh</title>
+      <script src="cdn-cgi/apps/head/QEWNwoPSl2O5LqMXvi595gsiMPg.js"></script>
+      <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+      <style>
+         a:link {
+         color: #73BBFF;
+         }
+         a:visited {
+         color: #73BBFF;
+         }
+         hr {
+         display: block;
+         height: 1px;
+         border: 0;
+         border-top: 3px solid rgba(255, 255,255, .2);
+         margin: 1em 0;
+         padding: 0;
+         }
+         .hrtransparent {
+         display: block;
+         height: 1px;
+         border: 0;
+         border-top: 3px solid rgba(255, 255,255, 0);
+         margin: 1em 0;
+         padding: 0;
+         }
+         @font-face {
+         font-family: 'icomoon';
+         src: url("/fonts/icomoon.eot?f218wo");
+         src: url("/fonts/icomoon.svg?f218wo#icomoon") format('svg'),
+         url("/fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'),
+         url("/fonts/icomoon.ttf?f218wo") format('truetype'),
+         url("/fonts/icomoon.woff?f218wo") format('woff');
+         font-weight: normal;
+         font-style: normal;
+         }
+         [class^="icon-"], [class*=" icon-"] {
+         /* use !important to prevent issues with browser extensions that change fonts */
+         font-family: 'icomoon' !important;
+         speak: none;
+         font-style: normal;
+         font-weight: normal;
+         font-variant: normal;
+         text-transform: none;
+         line-height: 1;
+         /* Better Font Rendering =========== */
+         -webkit-font-smoothing: antialiased;
+         -moz-osx-font-smoothing: grayscale;
+         -webkit-backface-visibility: hidden;
+         -moz-backface-visibility: hidden;
+         -webkit-transform: translate3d(0, 0, 0);
+         -moz-transform: translate3d(0, 0, 0);
+         }
+         .icon-gitlab .path1:before {
+         content: "\e906";
+         color: rgb(252, 109, 38);
+         }
+         .icon-gitlab .path2:before {
+         content: "\e907";
+         margin-left: -1em;
+         color: rgb(226, 67, 41);
+         }
+         .icon-gitlab .path3:before {
+         content: "\e908";
+         margin-left: -1em;
+         color: rgb(252, 109, 38);
+         }
+         .icon-gitlab .path4:before {
+         content: "\e909";
+         margin-left: -1em;
+         color: rgb(252, 163, 38);
+         }
+         .icon-gitlab .path5:before {
+         content: "\e90a";
+         margin-left: -1em;
+         color: rgb(226, 67, 41);
+         }
+         .icon-gitlab .path6:before {
+         content: "\e90b";
+         margin-left: -1em;
+         color: rgb(252, 109, 38);
+         }
+         .icon-gitlab .path7:before {
+         content: "\e90c";
+         margin-left: -1em;
+         color: rgb(252, 163, 38);
+         }
+         .icon-gitlab .path8:before {
+         content: "\e90d";
+         margin-left: -1em;
+         color: rgb(226, 67, 41);
+         }
+         .icon-meetup .path1:before {
+         content: "\e901";
+         color: rgb(255, 255, 255);
+         }
+         .icon-meetup .path2:before {
+         content: "\e902";
+         margin-left: -1.5em;
+         color: rgb(240, 1, 1);
+         }
+         .icon-meetup .path3:before {
+         content: "\e903";
+         margin-left: -1.5em;
+         color: rgb(3, 3, 3);
+         }
+         .icon-blogger:before {
+         content: "\e900";
+         }
+         .icon-exercism:before {
+         content: "\e601";
+         }
+         .icon-telegram:before {
+         content: "\e904";
+         }
+         .icon-flickr:before {
+         content: "\f16e";
+         }
+         .icon-medium:before {
+         content: "\f23a";
+         }
+         .icon-heart:before {
+         content: "\f004";
+         }
+         .icon-book:before {
+         content: "\f02d";
+         }
+         .icon-linkedin:before {
+         content: "\f08c";
+         }
+         .icon-twitter:before {
+         content: "\f099";
+         }
+         .icon-github:before {
+         content: "\f09b";
+         }
+         .icon-link:before {
+         content: "\f0c1";
+         }
+         .icon-bars:before {
+         content: "\f0c9";
+         }
+         .icon-pinterest:before {
+         content: "\f0d2";
+         }
+         .icon-googleplus:before {
+         content: "\f0d5";
+         }
+         .icon-circle:before {
+         content: "\f111";
+         }
+         .icon-code:before {
+         content: "\f121";
+         }
+         .icon-youtube:before {
+         content: "\f167";
+         }
+         .icon-stackoverflow:before {
+         content: "\f16c";
+         }
+         .icon-bitbucket:before {
+         content: "\f171";
+         }
+         .icon-tumblr:before {
+         content: "\f173";
+         }
+         .icon-dribbble:before {
+         content: "\f17d";
+         }
+         .icon-skype:before {
+         content: "\f17e";
+         }
+         .icon-foursquare:before {
+         content: "\f180";
+         }
+         .icon-gittip:before {
+         content: "\f184";
+         }
+         .icon-gratipay:before {
+         content: "\f184";
+         }
+         .icon-stackexchange:before {
+         content: "\f18d";
+         }
+         .icon-vimeo:before {
+         content: "\f194";
+         }
+         .icon-graduation-cap:before {
+         content: "\f19d";
+         }
+         .icon-language:before {
+         content: "\f1ab";
+         }
+         .icon-child:before {
+         content: "\f1ae";
+         }
+         .icon-behance:before {
+         content: "\f1b5";
+         }
+         .icon-spotify:before {
+         content: "\f1bc";
+         }
+         .icon-soundcloud:before {
+         content: "\f1be";
+         }
+         .icon-codepen:before {
+         content: "\f1cb";
+         }
+         .icon-hackernews:before {
+         content: "\f1d4";
+         }
+         .icon-lastfm:before {
+         content: "\f202";
+         }
+         .icon-angellist:before {
+         content: "\f209";
+         }
+         .icon-facebook:before {
+         content: "\f230";
+         }
+         .icon-instagram:before {
+         content: "\e905";
+         }
+         .icon-trophy:before {
+         content: "\e605";
+         }
+         .icon-office:before {
+         content: "\e606";
+         }
+         .icon-clock:before {
+         content: "\e60a";
+         }
+         .icon-reddit:before {
+         content: "\e609";
+         }
+         .icon-profile:before {
+         content: "\e600";
+         }
+         .icon-tools:before {
+         content: "\e034";
+         }
+         .icon-location:before {
+         content: "\e602";
+         }
+         .icon-mail:before {
+         content: "\e603";
+         }
+         .icon-phone:before {
+         content: "\e03f";
+         }
+         .icon-newspaper:before {
+         content: "\e607";
+         }
+         .icon-chevron-down:before {
+         content: "\e60c";
+         }
+         .icon-chevron-up:before {
+         content: "\e60d";
+         }
+         .icon-dots-three-horizontal:before {
+         content: "\e60b";
+         }
+         .icon-thumbs-up:before {
+         content: "\e604";
+         }
+         .icon-board:before {
+         content: "\e608";
+         }
+         .relative {
+         position: relative;
+         }
+         .clear-margin {
+         margin: 0;
+         }
+         .space-top {
+         margin-top: 10px;
+         }
+         .space-right {
+         margin-right: 10px;
+         }
+         .space-bottom {
+         margin-bottom: 10px;
+         }
+         .mr-5 {
+         margin-right: 5px;
+         }
+         .mr-10 {
+         margin-right: 10px;
+         }
+         .ml-5 {
+         margin-left: 5px;
+         }
+         .labels {
+         line-height: 2;
+         }
+         .label-keyword {
+         display: inline-block;
+         background: #DD3898;
+         color: white;
+         font-size: 0.9em;
+         padding: 5px;
+         border: 1px solid rgba(255,255,255,0.5);
+         margin-right: 5px;
+         }
+         .label-keyword:last-child {
+         margin-right: 0;
+         }
+         .label-keyword p {
+         margin: 0;
+         }
+         .label-keyword a {
+         color: white;
+         }
+         .label-keyword a:hover {
+         text-decoration: none;
+         }
+         .link-disguise {
+         color: inherit;
+         }
+         .link-disguise:hover {
+         color: inherit;
+         }
+         .clear-margin {
+         margin: 0;
+         }
+         @media (max-width: 992px) {
+         .clear-margin-sm {
+         margin-bottom: 0;
+         }
+         }
+         .fs-lg {
+         font-size: 1.33333333em;
+         line-height: 0.75em;
+         vertical-align: -15%;
+         }
+         .fs-2x {
+         font-size: 2em;
+         }
+         .fs-3x {
+         font-size: 3em;
+         }
+         .fs-4x {
+         font-size: 4em;
+         }
+         .btn-circle-sm {
+         width: 28px;
+         height: 28px;
+         line-height: 28px;
+         border-radius: 50%;
+         text-align: center;
+         padding: 0;
+         outline: none !important;
+         }
+         /* the version when the icon file is last updated */
+         @font-face {
+         font-family: 'jst-elegant';
+         src: url("fonts/icomoon.eot?f218wo");
+         src: url("fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'), url("fonts/icomoon.ttf?f218wo") format('truetype'), url("fonts/icomoon.woff?f218wo") format('woff'), url("fonts/icomoon.svg?f218wo#icomoon") format('svg');
+         font-weight: normal;
+         font-style: normal;
+         }
+         [class^="icon-"],
+         [class*=" icon-"] {
+         /* use !important to prevent issues with browser extensions that change fonts */
+         font-family: 'jst-elegant' !important;
+         }
+         body {
+         font-family: 'Lato';
+         background:url('https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/image.jpg') repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+         color: #f5f7fa;
+         }
+         .main {
+         padding: 5px;
+         }
+         .card {
+         border-radius: 25px;
+         backdrop-filter: blur(24px);
+         background-color: rgb(0, 0, 0, 60%);        
+         border: 1px solid #425247;
+         min-height: 300px;
+         padding: 10px 0;
+         }
+         .card-nested {
+         min-height: 0;
+         border-width: 1px 0 0 0;
+         }
+         .card-nested:before,
+         .card-nested:after {
+         content: " ";
+         display: table;
+         }
+         .card-nested:after {
+         clear: both;
+         }
+         @media (max-width: 480px) {
+         .card-nested {
+         padding: 5px 0;
+         }
+         }
+         .background-card {
+         padding: 10px 20px;
+         }
+         .card-wrapper {
+         padding: 5px;
+         }
+         @media (max-width: 992px) {
+         .card-wrapper {
+         float: none !important;
+         }
+         }
+         .background-details .detail {
+         display: table;
+         }
+         .background-details .detail .icon {
+         min-width: 45px;
+         max-width: 45px;
+         text-align: center;
+         }
+         .background-details .detail .info {
+         width: 100%;
+         }
+         .background-details .detail .title,
+         .background-details .detail .icon {
+         color: #DB9EE5;
+         }
+         .background-details .detail .mobile-title {
+         display: none;
+         }
+         @media (max-width: 480px) {
+         .background-details .detail .mobile-title {
+         display: inline-block;
+         margin-left: 5px;
+         font-weight: bold;
+         text-transform: uppercase;
+         vertical-align: middle;
+         }
+         }
+         .background-details .detail .icon,
+         .background-details .detail .info {
+         display: table-cell;
+         padding: 0 10px;
+         }
+         @media (max-width: 480px) {
+         .background-details .detail {
+         display: block;
+         }
+         .background-details .detail .icon {
+         max-width: inherit;
+         min-width: inherit;
+         text-align: left;
+         }
+         .background-details .detail .icon,
+         .background-details .detail .info {
+         display: block;
+         padding: 10px 0;
+         }
+         .background-details .detail .title {
+         display: none;
+         }
+         }
+         .info .content.has-sidebar {
+         width: 80%;
+         box-sizing: border-box;
+         float: left;
+         padding: 0 10px;
+         border-right: 1px solid #cdcdcd;
+         }
+         @media (max-width: 992px) {
+         .info .content.has-sidebar {
+         width: 100%;
+         border-right: 0;
+         }
+         }
+         @media (max-width: 480px) {
+         .info .content.has-sidebar {
+         padding: 0 2px;
+         }
+         }
+         .info .sidebar {
+         margin-left: 80%;
+         box-sizing: border-box;
+         padding: 10px;
+         }
+         @media (max-width: 480px) {
+         ul {
+         padding-left: 25px;
+         }
+         }
+         .current-event {
+         font-size: 8px;
+         color: #6ffd69;
+         position: absolute;
+         right: 100%;
+         top: 4px;
+         left: -10px;
+         }
+         .mop-wrapper > p:last-child {
+         margin: 0;
+         }
+         /*
+         Credits: http://codyhouse.co/demo/smart-fixed-navigation/index.html
+         */
+         .floating-nav-trigger {
+         width: 50px;
+         height: 50px;
+         -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+         -webkit-transition: background-color 0.5s ease;
+         -o-transition: background-color 0.5s ease;
+         transition: background-color 0.5s ease;
+         display: block;
+         border-radius: 50%;
+         text-align: center;
+         background-color: #494949 !important;
+         font-size: 1.5em;
+         color: #C685D6 !important;
+         z-index: 100;
+         position: fixed;
+         bottom: 10px;
+         right: 10px;
+         text-decoration: none !important;
+         }
+         .floating-nav-trigger > [class^="icon-"],
+         .floating-nav-trigger [class*=" icon-"],
+         .floating-nav-trigger > .close-icon {
+         line-height: 50px;
+         }
+         .floating-nav-trigger .close-icon {
+         display: none;
+         }
+         .floating-nav-trigger:hover {
+         color: #8d519c;
+         background-color: #494949 !important;
+         }
+         .floating-nav-trigger.is-open {
+         -webkit-box-shadow: none;
+         box-shadow: none;
+         }
+         .floating-nav-trigger.is-open .close-icon {
+         display: inherit;
+         }
+         .floating-nav-trigger.is-open .icon-bars {
+         display: none;
+         }
+         .floating-nav-trigger.is-open:hover {
+         background-color: #494949;
+         }
+         .floating-nav {
+         -webkit-transform: scale(0);
+         -ms-transform: scale(0);
+         -o-transform: scale(0);
+         transform: scale(0);
+         -webkit-transform-origin: 100% 100%;
+         -moz-transform-origin: 100% 100%;
+         -ms-transform-origin: 100% 100%;
+         transform-origin: 100% 100%;
+         -webkit-transition: transform 0.3s, visibility 0s 0.3s;
+         -o-transition: transform 0.3s, visibility 0s 0.3s;
+         transition: transform 0.3s, visibility 0s 0.3s;
+         -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+         position: fixed;
+         z-index: 50;
+         right: 10px;
+         bottom: 10px;
+         background-color: #494949 !important;
+         width: 90%;
+         max-width: 400px;
+         visibility: hidden;
+         overflow: hidden;
+         }
+         .floating-nav ul {
+         font-size: 1.2em;
+         margin: 0;
+         }
+         .floating-nav ul li {
+         border-bottom: 1px solid #2b2c2e;
+         }
+         .floating-nav ul li a {
+         padding: 20px;
+         text-decoration: none;
+         color: #C685D6;
+         display: block;
+         }
+         .floating-nav ul li a:hover {
+         color: #8d519c;
+         }
+         .floating-nav ul li:last-child {
+         border-bottom: 0;
+         }
+         .floating-nav.is-visible {
+         -webkit-transform: scale(1);
+         -ms-transform: scale(1);
+         -o-transform: scale(1);
+         transform: scale(1);
+         -webkit-transition: transform 0.3s, visibility 0s 0s;
+         -o-transition: transform 0.3s, visibility 0s 0s;
+         transition: transform 0.3s, visibility 0s 0s;
+         visibility: visible;
+         }
+         @media (max-width: 992px) {
+         .profile-card-wrapper {
+         position: relative;
+         }
+         }
+         .profile-card-wrapper .profile-card {
+         padding: 10px;
+         }
+         .profile-pic {
+         padding: 20px 0;
+         }
+         @media (max-width: 992px) {
+         .profile-pic {
+         padding: 10px 0;
+         }
+         }
+         .profile-pic img {
+         width: 100px;
+         height: 100px;
+         }
+         @media (max-width: 992px) {
+         .name {
+         margin-top: 10px;
+         }
+         }
+         @media (max-width: 768px) {
+         .contact-details {
+         text-align: center;
+         }
+         }
+         .contact-details .detail {
+         display: table;
+         padding: 10px 0;
+         }
+         .contact-details .detail .icon {
+         padding: 0 10px;
+         color: #707070;
+         }
+         @media (max-width: 992px) {
+         .contact-details .detail .icon {
+         padding: 0 5px 0 0;
+         }
+         }
+         .contact-details .detail .info {
+         font-size: 0.8em;
+         }
+         .contact-details .detail .icon,
+         .contact-details .detail .info {
+         display: table-cell;
+         vertical-align: middle;
+         }
+         @media (max-width: 768px) {
+         .contact-details .detail {
+         position: relative;
+         float: left;
+         width: 100%;
+         min-height: 1px;
+         padding-left: 15px;
+         padding-right: 15px;
+         }
+         }
+         @media (max-width: 992px) {
+         .contact-details .detail {
+         position: relative;
+         min-height: 1px;
+         padding-left: 15px;
+         padding-right: 15px;
+         padding: 10px;
+         }
+         .contact-details .detail .icon,
+         .contact-details .detail .info {
+         display: inline-block;
+         }
+         }
+         @media (max-width: 992px) and (min-width: 768px) {
+         .contact-details .detail {
+         float: left;
+         width: 25%;
+         }
+         }
+         .social-links {
+         line-height: 2.5;
+         }
+         .social-link {
+         margin-left: 5px;
+         min-width: 35px;
+         display: inline-block;
+         }
+         .social-link:first-child {
+         margin-left: 0;
+         }
+         .social-link:hover {
+         text-decoration: none;
+         }
+         .link-github {
+         color: #454545 !important;
+         }
+         .link-github:hover,
+         .link-github:focus {
+         text-decoration: none;
+         color: #2b2b2b;
+         }
+         .link-twitter {
+         color: #33ccff;
+         }
+         .link-twitter:hover,
+         .link-twitter:focus {
+         text-decoration: none;
+         color: #00bfff;
+         }
+         .link-blog {
+         color: #f36f24;
+         }
+         .link-blog:hover,
+         .link-blog:focus {
+         text-decoration: none;
+         color: #d8560c;
+         }
+         .link-linkedin {
+         color: #007bb6 !important;
+         }
+         .link-linkedin:hover,
+         .link-linkedin:focus {
+         text-decoration: none;
+         color: #005983;
+         }
+         .link-skype {
+         color: #12A5F4;
+         }
+         .link-skype:hover,
+         .link-skype:focus {
+         text-decoration: none;
+         color: #0986ca;
+         }
+         .link-instagram {
+         color: #e4405f !important;
+         }
+         .link-instagram:hover,
+         .link-instagram:focus {
+         text-decoration: none;
+         color: #d31e40;
+         }
+         .link-stackoverflow {
+         color: #8e8e92;
+         }
+         .link-stackoverflow:hover,
+         .link-stackoverflow:focus {
+         text-decoration: none;
+         color: #747479;
+         }
+         .link-stackexchange {
+         color: #62b0df;
+         }
+         .link-stackexchange:hover,
+         .link-stackexchange:focus {
+         text-decoration: none;
+         color: #389bd6;
+         }
+         .link-lastfm {
+         color: #d12127;
+         }
+         .link-lastfm:hover,
+         .link-lastfm:focus {
+         text-decoration: none;
+         color: #a51a1f;
+         }
+         .link-soundcloud {
+         color: #e8822d;
+         }
+         .link-soundcloud:hover,
+         .link-soundcloud:focus {
+         text-decoration: none;
+         color: #cc6916;
+         }
+         .link-googleplus {
+         color: #dd4b39;
+         }
+         .link-googleplus:hover,
+         .link-googleplus:focus {
+         text-decoration: none;
+         color: #c23321;
+         }
+         .link-youtube {
+         color: #dd4b39;
+         }
+         .link-youtube:hover,
+         .link-youtube:focus {
+         text-decoration: none;
+         color: #c23321;
+         }
+         .link-pinterest {
+         color: #bd091f;
+         }
+         .link-pinterest:hover,
+         .link-pinterest:focus {
+         text-decoration: none;
+         color: #8c0717;
+         }
+         .link-gratipay {
+         color: #630;
+         }
+         .link-gratipay:hover,
+         .link-gratipay:focus {
+         text-decoration: none;
+         color: #331a00;
+         }
+         .link-vimeo {
+         color: #17b3e8;
+         }
+         .link-vimeo:hover,
+         .link-vimeo:focus {
+         text-decoration: none;
+         color: #128fba;
+         }
+         .link-behance {
+         color: #2c98cf;
+         }
+         .link-behance:hover,
+         .link-behance:focus {
+         text-decoration: none;
+         color: #2379a5;
+         }
+         .link-codepen {
+         color: #1c1c1c;
+         }
+         .link-codepen:hover,
+         .link-codepen:focus {
+         text-decoration: none;
+         color: #020202;
+         }
+         .link-foursquare {
+         color: #fa4778;
+         }
+         .link-foursquare:hover,
+         .link-foursquare:focus {
+         text-decoration: none;
+         color: #f91554;
+         }
+         .link-reddit {
+         color: #545454;
+         }
+         .link-reddit:hover,
+         .link-reddit:focus {
+         text-decoration: none;
+         color: #3b3b3b;
+         }
+         .link-spotify {
+         color: #acd200;
+         }
+         .link-spotify:hover,
+         .link-spotify:focus {
+         text-decoration: none;
+         color: #829f00;
+         }
+         .link-tumblr {
+         color: #2d4661;
+         }
+         .link-tumblr:hover,
+         .link-tumblr:focus {
+         text-decoration: none;
+         color: #1d2d3e;
+         }
+         .link-dribbble {
+         color: #ce366f;
+         }
+         .link-dribbble:hover,
+         .link-dribbble:focus {
+         text-decoration: none;
+         color: #a82959;
+         }
+         .link-facebook {
+         color: #4b6daa;
+         }
+         .link-facebook:hover,
+         .link-facebook:focus {
+         text-decoration: none;
+         color: #3b5687;
+         }
+         .link-angellist {
+         color: black;
+         }
+         .link-angellist:hover,
+         .link-angellist:focus {
+         text-decoration: none;
+         color: #000000;
+         }
+         .link-bitbucket {
+         color: #205081;
+         }
+         .link-bitbucket:hover,
+         .link-bitbucket:focus {
+         text-decoration: none;
+         color: #163758;
+         }
+         .link-hackernews {
+         color: #ff6600;
+         }
+         .link-hackernews:hover,
+         .link-hackernews:focus {
+         text-decoration: none;
+         color: #cc5200;
+         }
+         .link-exercism {
+         color: #d81d4e;
+         }
+         .link-exercism:hover,
+         .link-exercism:focus {
+         text-decoration: none;
+         color: #ab173e;
+         }
+         .link-blogger {
+         color: #FF9234;
+         }
+         .link-blogger:hover,
+         .link-blogger:focus {
+         text-decoration: none;
+         color: #ff7701;
+         }
+         .link-medium {
+         color: #00AB6C;
+         }
+         .link-medium:hover,
+         .link-medium:focus {
+         text-decoration: none;
+         color: #00784c;
+         }
+         .link-flickr {
+         color: black;
+         }
+         .link-flickr:hover,
+         .link-flickr:focus {
+         text-decoration: none;
+         color: #000000;
+         }
+         .link-telegram {
+         color: #3BABDD;
+         }
+         .link-telegram:hover,
+         .link-telegram:focus {
+         text-decoration: none;
+         color: #2291c3;
+         }
+         .card-skills {
+         position: relative;
+         }
+         .skill-level {
+         border-radius: 3px;
+         position: absolute;
+         top: 10px;
+         bottom: 10px;
+         left: 0;
+         width: 10px;
+         box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+         }
+         .skill-level .skill-progress {
+         position: absolute;
+         border-radius: 3px;
+         bottom: 0;
+         width: 100%;
+         -webkit-transition: height 1s ease;
+         }
+         .skill-level .skill-progress.beginner {
+         height: 50%;
+         background: #e74c3c;
+         }
+         .skill-level .skill-progress.intermediate {
+         height: 70%;
+         background: #f1c40f;
+         }
+         .skill-level .skill-progress.advanced {
+         height: 80%;
+         background: #428bca;
+         }
+         .skill-level .skill-progress.master {
+         height: 95%;
+         background: #5cb85c;
+         }
+         .skill-info {
+         margin-left: 15px;
+         }
+         @media (max-width: 480px) {
+         .skill-info {
+         margin-left: 20px;
+         }
+         }
+         @media (max-width: 768px) {
+         .quote {
+         font-size: inherit;
+         }
+         }
+         .icon-meetup .path2:before {
+         margin-left: 0;
+         }
+         @media print {
+         a[href]:after {
+         content: none !important;
+         }
+         .profile-card {
+         text-align: center;
+         }
+         .profile-pic {
+         display: inline-block;
+         vertical-align: middle;
+         }
+         .profile-pic img {
+         border-radius: 0;
+         }
+         .name-and-profession {
+         display: inline-block;
+         vertical-align: middle;
+         margin-left: 15px;
+         }
+         .contact-details .detail {
+         position: relative;
+         float: left;
+         width: 25%;
+         min-height: 1px;
+         padding-left: 15px;
+         padding-right: 15px;
+         padding: 0;
+         }
+         .floating-nav,
+         .floating-nav-trigger {
+         display: none;
+         }
+         .pagebreak {
+         page-break-before: always;
+         }
+         }
+      </style>
+   </head>
+   <body itemscope="itemscope" itemtype="http://schema.org/Person">
+      <div class="container-fluid">
+         <div class="row main clearfix">
+            <a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
+            <nav class="floating-nav js-floating-nav">
+               <ul class="list-unstyled">
+                  <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
+                  <li><a href="#projects-experience"><i class="mr-10 icon-code"></i>Projects Experience</a></li>
+                  <li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li>
+                  <li><a href="#awards"><i class="mr-10 icon-trophy"></i>Awards</a></li>
+                  <li><a href="#extracurriculars"><i class="mr-10 icon-book"></i>Extracurriculars</a></li>
+                  <li><a href="#certificates"><i class="mr-10 icon-profile"></i>Certificates</a></li>
+                  <li><a href="#interests"><i class="mr-10 icon-heart"></i>Interests</a></li>
+               </ul>
+            </nav>
+            <section class="col-md-3 card-wrapper profile-card-wrapper affix">
+               <div class="card profile-card">
+                  <span class="profile-pic-container">
+                     <div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100" alt="Ashutosh Sundresh" src="https://i.imgur.com/EM8Tz8U.jpg" itemprop="image"/></div>
+                     <div class="name-and-profession text-center">
+                        <h3 itemprop="name"><b>Ashutosh Sundresh</b></h3>
+                        <h5 class="text-light" itemprop="jobTitle">ShapeShiftOS Founder | XDA Recognized Developer | SOF AES Winner | PLO Finalist and Camper | Class 10 Boards State Topper</h5>
+                     </div>
+                  </span>
+                  <hr/>
+                  <div class="contact-details clearfix">
+                     <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">Surajkund, Faridabad, India, IND, 121009</span></div>
+                     <div class="detail"><span class="icon"><i class="icon fs-lg icon-mail"></i></span><span class="info"><a class="link-disguise" href="mailto:ashutoshsundresh@gmail.com" itemprop="email">ashutoshsundresh@gmail.com</a></span></div>
+                     <div class="detail"><span class="icon" title="Languages I speak"><i class="icon fs-lg icon-language"></i></span><span class="info">English (TOEFL iBT 119/120), French (B1 Diploma), Hindi (Native), Tamil (Native)</span></div>
+                  </div>
+                  <hr class="hrtransparent"/>
+                  <div class="social-links text-center">
+                     <div><a class="fs-2x social-link link-github icon-github" href="https://www.github.com/AshutoshSundresh/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on Github"></a><a class="fs-2x social-link link-instagram icon-instagram" href="https://www.instagram.com/00fritez/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on Instagram"></a><a class="fs-2x social-link link-linkedin icon-linkedin" href="https://www.linkedin.com/in/ashutosh-sundresh-763021221/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on LinkedIn"></a></div>
+                  </div>
+               </div>
+            </section>
+            <section class="col-md-9 card-wrapper pull-right">
+               <div class="card background-card">
+                  <h4 class="text-uppercase">Background</h4>
+                  <hr class="hrtransparent"/>
+                  <div class="background-details">
+                     <div class="detail" id="about">
+                        <div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">About</h4>
+                           <div class="">
+                              <div class="content mop-wrapper" itemprop="description">
+                                 <p>I am a high school student at Shiv Nadar School Faridabad, a computer science enthusiast as well as an open-source developer. I have been involved in various open-source projects for the past several years, such as developing an Android-based operating system, creating Android device-specific frameworks, building Alexa skills and web apps, and more. My GitHub profile has more of my work and contributions to the open-source community. As the founder of ShapeShiftOS, I've earned recognition as an XDA Recognized Developer, and have mentored other developers and ensured compliance with open-source licenses. </p>
+                                 <p>My passion for open-source development is matched by my interest in natural language processing (NLP) and linguistics, which I have explored through attending the Indian Linguistics Olympiad Camp, designing interaction models for Alexa skills, and studying constructed languages on ConWorkShop and other forums on the Internet.</p>
+                                 <p>I have also excelled in various Olympiads, both national and international, in subjects such as mathematics, linguistics, and chemistry, with several notable awards such as representing India at the Asia Pacific Linguistics Olympiad (APLO) and the SOF Academic Excellence Scholarship for being among the top 0.005% of students who appeared for the SOF Olympiads in 2020-21. </p>
+                                 <p>I have been actively involved in Model United Nations (MUN) conferences, both as a delegate and as a Secretariat member. I have held leadership positions such as the MUN Secretary of the School Council twice, the Secretary General of the Shiv Nadar School Faridabad MUN 2023, the Head of Delegate Affairs for the Shiv Nadar School Faridabad MUN 2022, and have received commendations at 7 MUNs.</p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="projects-experience">
+                        <div class="icon"><i class="fs-lg icon-code"></i><span class="mobile-title">Projects Experience</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Projects Experience</h4>
+                           <ul class="list-unstyled clear-margin">
+                              <li class="">
+                                 <div class="content">
+                                    <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><a href="https://github.com/ShapeShiftOS" target="_blank"><strong>ShapeShiftOS</strong></a></p>
+                                    <p class="text-light"><small><span class="space-right">March, 2020 - Present</span></small></p>
+                                    <div class="mop-wrapper space-bottom">
+                                       <p>An open-source Android-based mobile operating system with a unique customizable user interface and convenient features (including <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/d2ff9f4b76b55bcc0fbd194a23f8f639654d6c07">Google Lens screenshot integration</a>, <a href="https://github.com/ShapeShiftOS/android_packages_apps_ShapeShifter/commit/53d74efc3ab0946353c0c47999b08263b73e6a3e">color palette-based system theming</a>, framework for in-screen fingerprint scanner icons and animations, <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/a77b75133466772c8ba4b9b3f418b4056623c281">QR code scanner tile with history</a>, <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/4bc8e2d2ecbf4fd1d5e2510804ff0844fbfc7c4a">redesigned lock screen clock with a variable font weight</a>). Founder of organization and leading development for over 3 years.</p>
+                                    </div>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Over 150,000 recorded downloads from 160+ countries on <a href="https://sourceforge.net/projects/shapeshiftos/files/stats/map?dates=2020-05-16%20to%202023-05-28">SourceForge</a> (<a href="https://sourceforge.net/about/project_awards">Open Source Excellence award </a>on SourceForge - the highest award)</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>50+ total stars on <a href="https://github.com/ShapeShiftOS/android_manifest">GitHub</a></p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>150+ USD in voluntary donations</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>3000+ member community built on Telegram</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Built <a href="https://shapeshiftos.com">open-source project website</a> with a vintage aesthetic</p>
+                                       </li>     
+                                       <li class="mop-wrapper">
+                                          <p>Reviewed positively by multiple tech YouTubers and bloggers (multiple videos with 5000+ views where all reviews were voluntary)</p>
+                                       </li>              
+                                    </ul>
+                                 </div>
+                              </li>
+                              <hr>
+                              <li class="">
+                                 <div class="content">
+                                    <p class="clear-margin relative"><a href="https://github.com/munresearch/munresearch.github.io" target="_blank"><strong>MUN Research Engine</strong></a></p>
+                                    <p class="text-light"><small><span class="space-right">December, 2022 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 20 days</span></small></p>
+                                    <div class="mop-wrapper space-bottom">
+                                       <p>An open-source MUN research web application that can help delegates around the world jumpstart their MUN research. Shared with the school MUN club and local MUN circuit with positive feedback.</p>
+                                    </div>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Uses Google Search APl to fetch information from core.ac.uk, Reuters, and the UN website</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Constructs a flag emoji for a country using code, as well as fetches information about the country from the World Bank API</p>
+                                       </li>                                       
+                                    </ul>                                    
+                                 </div>
+                              </li>
+                              <hr>
+                              <li class="">
+                                 <div class="content">
+                                    <p class="clear-margin relative"><a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank"><strong>Shiv Nadar School Faridabad MUN 2022/2023 Website</strong></a></p>
+                                    <p class="text-light"><small><span class="space-right">July, 2022 - August, 2022 and May, 2023 - June, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
+                                    <div class="mop-wrapper space-bottom">
+                                       <p>An open-source MUN conference website from scratch using HTML, CSS, and JavaScript that was used by everyone participating in the conferences in 2022 and 2023. Includes information about the MUN, registrations, agendas for each committee, important documents, and a gallery.</p>
+                                    </div>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Used by approximately 300 delegates who attended both conferences</p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </li>
+                              <hr>
+                              <li class="">
+                                 <div class="content">
+                                    <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank"><strong>Food Menu Alexa Skill</strong></a></p>
+                                    <p class="text-light"><small><span class="space-right">December, 2021 - February, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
+                                    <div class="mop-wrapper space-bottom">
+                                       <p>An open-source Node.js code for an Alexa skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes a comprehensive voice interaction model trained over 1 week.</p>
+                                    </div>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Won "Best Showcase of STEAM" at Shiv Nadar School Soulfest 2022</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Published on <a href="https://www.amazon.com/Shiv-Nadar-School-Faridabad-Food/dp/B09Q2Z1CBW/">Amazon Store</a></p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </li>
+                              <hr>
+                              <li class="">
+                                 <div class="content">
+                                    <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/organization-starS" target="_blank"><strong>Organization Stars SVG</strong></a></p>
+                                    <p class="text-light"><small><span class="space-right">April, 2023 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 4 days</span></small></p>
+                                    <div class="mop-wrapper space-bottom">
+                                       <p>An open-source Flask Web Application called Organization Stars SVG that generates an SVG image showing the total number of stars for a given GitHub organization. It can be used to showcase the popularity of an organization on a README file or similar.</p>
+                                    </div>
+                                 </div>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="education">
+                        <div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Education</h4>
+                           <div class="content">
+                              <ul class="list-unstyled clear-margin">
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin relative"><strong>Faridabad, Grade 10 to 12,&nbsp;</strong>Shiv Nadar School</p>
+                                       <p class="text-light"><small>April, 2021 - May, 2024</small></p>
+                                       <ul>
+                                          <li class="mop-wrapper">
+                                             <p>Class Rank 1/39</p>
+                                          </li>
+                                          <li class="mop-wrapper">
+                                             <p>95% tuition scholarship for Grade 11 and 12 for performance in Grade 10 boards</p>
+                                          </li>
+                                          <li class="mop-wrapper">
+                                             <p>Appeared on several local news sites for performance in Class 10 boards</p>
+                                          </li>
+                                          <li class="mop-wrapper">
+                                             <p>94% in Class 11, 99.2% in Class 10</p>
+                                          </li>
+                                       </ul>
+                                       <i></i>
+                                       <div class="space-top labels">
+                                          <span class="label label-keyword">
+                                             <p>Physics</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Chemistry</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Standard Mathematics</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Computer Science</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>English</p>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin relative"><strong>Faridabad, Grade 11 to 12,&nbsp;</strong>CollegeBoard Examinations</p>
+                                       <p class="text-light"><small>April, 2022 - May, 2024</small></p>
+                                       <ul>
+                                          <li class="mop-wrapper">
+                                             <p>SAT Score: 1580 (800 Mathematics, 780 Writing and Reading)</p>
+                                          </li>
+                                          <li class="mop-wrapper">
+                                             <p>All APs are self-studied</p>
+                                          </li>
+                                       </ul>
+                                       <i></i>
+                                       <div class="space-top labels">
+                                          <span class="label label-keyword">
+                                             <p>Computer Science A - 5</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Physics 1: Algebra Based - 4</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Statistics - 4</p>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin relative"><strong>Pune, Grade 8 and 9,&nbsp;</strong>Elpro International School</p>
+                                       <p class="text-light"><small>June, 2019 - April, 2021</small></p>
+                                       <ul>
+                                          <li class="mop-wrapper">
+                                             <p>Top 1% of class</p>
+                                          </li>
+                                          <li class="mop-wrapper">
+                                             <p>98% in Grade 9, 97% in Grade 8</p>
+                                          </li>
+                                       </ul>
+                                       <i></i>
+                                       <div class="space-top labels">
+                                          <span class="label label-keyword">
+                                             <p>Science</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Social Studies</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Mathematics</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>English</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>French</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Hindi</p>
+                                          </span>
+                                          <span class="label label-keyword">
+                                             <p>Computer Science</p>
+                                          </span>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="awards">
+                        <div class="icon"><i class="fs-lg icon-trophy"></i><span class="mobile-title">Awards</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Awards</h4>
+                           <div class="content">
+                              <ul class="list-unstyled clear-margin"> 
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>National Economics Olympiad (NEO) </strong>,&nbsp;Shri Ram College of Commerce, University of Delhi</p>
+                                       <p class="text-light"><small>Awarded on: December 3, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Completed at National Rank 226 in the final round. Qualified to attend the finals after placing in the top 500 in the 12th-grade category out of 6500+ total test-takers in the preliminary round.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>                                 
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Southeast Asian Mathematical Olympiad (SEAMO) </strong>,&nbsp;SEAMO, Singapore</p>
+                                       <p class="text-light"><small>Awarded on: November 12, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won a bronze medal and completed at All India Rank 6 in the national round. Invited to participate in the SEAMO X final round in Singapore as a part of the Champions Division.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>                                   
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Fermat Mathematical Olympiad (FMO) </strong>,&nbsp;Fermat Education, Vietnam</p>
+                                       <p class="text-light"><small>Awarded on: October 28, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won a silver medal and completed at All India Rank 7 in the national round. Invited to participate in the final round.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>                                   
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Asia Science and Maths Olympiad (ASMO) </strong>,&nbsp;Olympic Edu Sdn Bhd, Malaysia</p>
+                                       <p class="text-light"><small>Awarded on: October 27, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won 2 gold medals in Science and English, and a silver medal in Maths in the national round. Invited to participate in the final round of all three in Malaysia.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>  
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Maths Day 2023 </strong>,&nbsp;Department of Mathematics, Shiv Nadar University</p>
+                                       <p class="text-light"><small>Awarded on: October 27, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won a gold medal by securing first place in the interschool maths quiz held at the Maths Day event.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>  
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Philippine International Math and Science Olympics (PIMSO) </strong>,&nbsp;International Champions in Education</p>
+                                       <p class="text-light"><small>Awarded on: October 19, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won gold medals in both Science and Math in the national round (All India Rank 1 in both). Invited to participate in the final round of both in the Philippines.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>                                 
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Neerja Modi Mathelogics Symposium Edition 2 </strong>,&nbsp;Neerja Modi School, Jaipur </p>
+                                       <p class="text-light"><small>Awarded on: July 26, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won first place out of around 160 participants in the paper submission round of the mathematics symposium for research analyzing the application of chaos theory on the dynamics of traffic congestion.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Hong Kong International Mathematical Olympiad (HKIMO) </strong>,&nbsp;Olympiad Champion Education Centre (OCEC) </p>
+                                       <p class="text-light"><small>Awarded on: June 17, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won a bronze medal in the final round with All India Rank 7 as a part of the Indian delegation. Won a silver medal in the heats round with All India Rank 21 (national selection round).</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Panini Linguistics Olympiad Finalists' Camp </strong>,&nbsp;International Institute of Information Technology (IIIT), Hyderabad </p>
+                                       <p class="text-light"><small>Completed on: June 3, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Attended 5-day camp in IIIT Hyderabad for top 30 open round participants in the country. Covered topics such as semantics, scripts, phonology, phonetics, number systems, computational linguistics, morphology, sociolinguistics, and typology taught by IIIT linguistics professors, and guest professors &amp; researchers.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Atlas Semi-Finalist </strong>,&nbsp;Atlas Fellowship </p>
+                                       <p class="text-light"><small>Awarded on: May 23, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won the book "Probability Theory: The Logic of Science" (worth 100 GBP) by Edwin Thompson Jaynes for free from the Atlas Library for completing Stage 2 of the Atlas Fellowship application.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Panini Linguistics Olympiad Open Round </strong>,&nbsp;International Institute of Information Technology (IIIT), Hyderabad </p>
+                                       <p class="text-light"><small>Awarded on: April 10, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Invited to attend the National Finalists' Camp at IIIT, Hyderabad. Cleared the open round for being in the top 30 in India and qualified to be a part of the Indian delegation to Asia Pacific Linguistics Olympiad.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Techkriti Open School (TOSC) Championship Invitational Round </strong>,&nbsp;Indian Institute of Technology (IIT), Kanpur </p>
+                                       <p class="text-light"><small>Awarded on: January 27, 2023</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Placed Rank 14 out of over 1300 total participants, and was part of the 80 people invited to IIT Kanpur for the invitational round. TOSC is a test on puzzles, mental ability and aptitude.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Open Source Excellence </strong>,&nbsp;SourceForge</p>
+                                       <p class="text-light"><small>Awarded on: March, 2022</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Awarded with the <a href="https://sourceforge.net/about/project_awards">highest level</a> of award on SourceForge for ShapeShiftOS' popularity and user engagement, specifically for surpassing 100,000 total downloads. Possessed by approximately 2000 projects out of the 500,000+ projects (as of 2023) hosted on the website, which includes commercial and professional software.</p>
+                                       </div>
+                                    </div>
+                                 </li>                                 
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Silverzone Private Olympiad Awards </strong>,&nbsp;Silverzone Olympiads</p>
+                                       <p class="text-light"><small>Awarded on: February 12, 2022</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>International Rank 3 in English and International Rank 24 in Informatics, State Rank 4 in Social Studies, State Rank 41 in Science and State Rank 98 in Mathematics. Won 2500 INR in total cash prize.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>ASSET Outstanding Performance </strong>,&nbsp;Educational Initiatives</p>
+                                       <p class="text-light"><small>Awarded on: January 28, 2022</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>99th percentile in all offered tests countrywide, with a perfect score in Social Studies and English, and a 97% in Science and 96% in Mathematics. Performance displayed on <a href="https://shivnadarschool.edu.in/asset-2021">school blog</a></p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>SOF Private Olympiad Awards </strong>,&nbsp;Science Olympiad Foundation </p>
+                                       <p class="text-light"><small>Awarded on: January 13, 2022</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Grade 10: Achieved international ranks of 9th in Social Studies and 26th in Cyber, along with zonal ranks of 29th in General Knowledge and 55th in English, winning a total cash prize of 1000 INR; actively participated in SOF contests since Grade 2, consistently securing top 50 zonal ranks and multiple top 5 international ranks, including international 3rd in Cyber in 2018.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>French Word Power and Concours Romain Rolland B1 National Level </strong>,&nbsp;Prayatna Educational Society </p>
+                                       <p class="text-light"><small>Awarded on: December 15, 2021</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Attained 4th place with a perfect score of 100% in French Word Power, and secured 9th place with a commendable score of 96% in the Concours Romain Rolland among 1000+ participants all over India at the B1 National Level in both. (Attended both exams after clearing a cutoff in the State Level)</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>National Entrepreneurship Olympiad </strong>,&nbsp;Indian Institute of Technology Bombay E-Cell</p>
+                                       <p class="text-light"><small>Awarded on: October 31, 2021</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Attained the 22nd position in the All India rankings among 1000+ participants.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>SOF Academic Excellence Scholarship (AES) </strong>,&nbsp;Science Olympiad Foundation</p>
+                                       <p class="text-light"><small>Awarded on: May 31, 2021</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Received the prestigious SOF AES award for being among the top 208 students across all grades nationwide out of 5 million participants; was the Grade 9 SOF AES award recipient in the Maharashtra-Goa zone; achieved zonal top 20 awards in English, Mathematics, Science, and an International Rank 11 in General Knowledge; won 5000 INR cash prize, trophy, and citation for being an AES awardee. Website: <a href="https://web.archive.org/web/20210728230407/https://sofworld.org/aes-winners-2020-21">2020-21 SOF Academic Excellence Scholarship Awardees List</a> </p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>LogIQids Final Stage Topper </strong>,&nbsp;LogIQids</p>
+                                       <p class="text-light"><small>Awarded on: April 27, 2021</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won international rank 10 out of 21569 participants in the Final Stage. It is a test on analytical skills, mental aptitude, verbal reasoning, critical thinking, and problem solving.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>National Assessment for Scientific Temperament and Aptitude </strong>,&nbsp;Council of Scientific &amp; Industrial Research - National Institute of Science Communication and Policy Research</p>
+                                       <p class="text-light"><small>Awarded on: March 31, 2020</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Won State Rank 1 in Maharashtra. Website: <a href="https://kamp.res.in/kamp-topper">https://kamp.res.in/kamp-topper</a> </p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Spell Bee District Level Round 3 </strong>,&nbsp;Brainstormm Spell Bee</p>
+                                       <p class="text-light"><small>Awarded on: December 30, 2019</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Achieved the position of State Rank 2 in Maharashtra for performance in the final round after clearing two preliminary rounds.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Australian National Chemistry Quiz </strong>,&nbsp;Royal Australian Chemical Institute</p>
+                                       <p class="text-light"><small>Awarded on: October 30, 2019</small></p>
+                                       <div class="mop-wrapper">
+                                          <p>Awarded High Distinction for attaining a score of 27/30.</p>
+                                       </div>
+                                    </div>
+                                 </li>
+                                 <hr>
+                                 <li class="">
+                                    <div class="content">
+                                       <p class="clear-margin" itemprop="award"><strong>Telangana Math Bee Stage 3 Category 3 </strong>,&nbsp;Sakshi TV </p>
+                                       <p class="text-light"><small>Awarded on: March 25, 2018</small></p>
+                                       <div class="mop-wrapper">
+                                          <p><a href="https://youtu.be/FC03mpWc94o?t=657">Appeared on television</a> for the 3rd Round of Category 3 Sakshi TV Telangana Math Bee. Ranked in the top 15 in Telangana, advanced to TV appearance after successfully clearing two preliminary rounds with 1000+ participants. Website: <a href="https://www.arenaoneschoolfest.com/index.php?page=Results&pageid=13&subpageid=52&subsubpageid=55">Sakshi TV Math Bee Finalists 2017 </a></p>
+                                       </div>
+                                    </div>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="extracurriculars">
+                        <div class="icon"><i class="fs-lg icon-book"></i><span class="mobile-title">Extracurriculars</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Extracurriculars</h4>
+                           <ul class="list-unstyled clear-margin">
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><a href="https://forum.xda-developers.com/m/ashutosh-sundresh.7730292/" target="_blank"><strong>XDA Recognized Developer</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Title given on: September 1, 2021</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>1 of 300 Recognized Developers out of the 11 million users on the XDA online forum for Android Development, given to developers with "a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns." Website: <a href="https://forum.xda-developers.com/m/?key=Recognized_Developers">List of Recognized Developers on XDA Forums ranked based on number of posts </a></p>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Youngest person possessing the title of XDA Recognized Developer as of 2023</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>One of less than five teenagers to be honored with being an XDA Recognized Developer as of 2023</p>
+                                       </li>
+                                    </ul>                                    
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><a href="https://github.com/AshutoshSundresh/" target="_blank"><strong>Active Contributor on GitHub</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Account created on: March 3, 2020</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Over 3500 total commits and 1500 total contributions mainly focused on Android Platform Development, web development and Qualcomm Device Android Development, including two merged pull requests to an official Google repository for fixing compilation using Make build system: <a href="https://github.com/material-components/material-components-android/commits?author=AshutoshSundresh">Contributions by Ashutosh Sundresh to Google's material-components-android</a></a></p>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Research on <a href="https://www.ijsr.net/getabstract.php?paperid=MR23830183842" target="_blank">"Unveiling Complex Traffic Patterns: Applying Chaos Theory to Understand Non-linear Dynamics in Congestion"</a></strong></p>
+                                 <p class="text-light"><small><span class="space-right">Paper completed on: July 26, 2023</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>The paper specifically tackles the question "How can chaos theory be applied to understand and analyze the dynamics of traffic congestion, and what insights can be gained to mitigate and manage congestion in real-life scenarios?"</p>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Won first place in the paper submission round during the Neerja Modi Mathelogics Symposium Edition 2, which featured approximately 160 participants</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>The presentation, paper, code, and simulations, are open-source on <a href="https://www.github.com/fireambulance/SinusoidalGraphsAndSyntheticTrafficData">GitHub</a></p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>The paper is published in the International Journal of Science and Research in Volume 12 Issue 9, September 2023</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>It is also on <a href="https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion">academia.edu</a></p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Manav Rachna International Institute of Research and Studies Cyber Security Internship</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">13th June, 2022 to 17th June, 2022 and 27th June, 2022 to 1st July, 2022</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Interned for Cyber Security at Manav Rachna International Institute of Research and Studies (MRIIRS) in June-July 2022 for 2 weeks under Dr. Charu Virmani, learning penetration testing, cybersecurity, and hands-on attacks taught in the first year of B.Tech (CSE).</p>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Using different tools for penetration testing to evaluate security</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Intercepting Wi-Fi packets through packet sniffing</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Hands-on work on how phishing and DDoS attacks are performed</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Building basic viruses using the Metasploit framework</p>
+                                       </li>                                       
+                                    </ul>                                    
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Model United Nations Leadership</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Active from July 5, 2021</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Elected as the MUN Secretary of the School Council by the Student Body twice (part of the 30-member student council with students from across high school), for the 2022-23 and 2023-24 sessions. Was the Secretary General (chief operating officer and chief of staff) for the Shiv Nadar School Faridabad MUN 2023. Was also a part of the Secretariat as Head of Delegate Affairs for the Shiv Nadar School Faridabad MUN 2022. Was a part of 5 Secretariat members in both years. Made significant contributions to the school's MUN conference by working as part of the Secretariat.</p>
+                                    <ul>
+                                       <li class="mop-wrapper">
+                                          <p>Managed external delegations from all over the Delhi NCR region, including relations with MUN coordinators from different schools. Brought in 250 participating delegates as a part of the Secretariat in 2023</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Handled web development, including registrations, schedules, important documentation, and the online gallery as part of the Secretariat in both 2022 and 2023</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Handled large delegations from Shiv Nadar School to other MUNs in the Delhi NCR region</p>
+                                       </li>
+                                       <li class="mop-wrapper">
+                                          <p>Designed the <a href="https://snsfmun.github.io">conference website for 2022 and 2023, with full history on GitHub</a></p>
+                                       </li>                                       
+                                    </ul>   
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Anchoring Events at School</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">November, 2021 to April, 2023</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Had a fireside chat with Shikhar Malhotra (CEO of HCL Healthcare) for 1 hour about education, entrepreneurship, sports, and his personal life. Also anchored other multiple large events at school as a speaker, commentator and host. Anchored events include Annual Day, Sports Day, Investiture Ceremony, and Educational ITER Bootcamp on "Women in STEM".  Audience size was typically around 400 people with national sports personalities, CEOs, ITER scientists and other special guests.</p>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Model United Nations as a Delegate</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">First MUN on: October 5, 2017</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Engaged in seven Model United Nations Conferences, demonstrating exceptional research skills and diplomacy. Received recognition as the Best Researched Delegate (Top 3/25) at Enlighten MUN Pune 2019, and received a Special Commendation (Top 10/60) at Chirec Junior MUN Hyderabad 2017. Additionally, achieved five Verbal Commendations, at Kothari International School MUN Noida 2023 (Rank 5/35), Dynamic Training MUN Pune 2019 (Top 10/50), Global Indian International School Chinchwad MUN Pune 2019 (Top 5/15), Rockwell MUN Hyderabad 2018 (Top 12/60), and Chirec Junior MUN Hyderabad 2018 (Top 5/15).</p>
+                                 </div>
+                              </div>
+                           </li>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="certificates">
+                        <div class="icon"><i class="fs-lg icon-profile"></i><span class="mobile-title">Certificates</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Certificates</h4>
+                           <ul class="list-unstyled clear-margin">
+                            <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>TOEFL iBT</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Obtained on: June, 2023</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Scored 119/120 on the TOEFL iBT with 30/30 Reading, 30/30 Listening, 29/30 Speaking and 30/30 Writing.</p>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>DELF B1 French Certification</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Obtained on: March, 2023</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Obtained the DELF B1 diploma after a 3-hour examination consisting of a spoken interview, a writing task, and a reading/grammar section. At level B1, the user becomes independent (equivalent to the Common European Framework of Reference for Languages B1 Level) and this level is required to obtain French citizenship.</p>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>Trinity College of London Music Diploma</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Started on: September, 2017</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Completed Grade 2, holding a Certificate of Distinction in Classical Piano and Jazz, along with Music Theory. Earned a perfect score on the Grade 1 and Grade 2 Music Theory examination.</p>
+                                 </div>
+                              </div>
+                           </li>
+                           <hr>
+                           <li class="">
+                              <div class="content">
+                                 <p class="clear-margin relative"></i><strong>International Taekwondo Federation Belts</strong></a></p>
+                                 <p class="text-light"><small><span class="space-right">Last belt attained on: November, 2016</span></small></p>
+                                 <div class="mop-wrapper space-bottom">
+                                    <p>Currently at the 4th Kup level in Taekwondo, signifying proficiency and skill as the 4th highest color belt, equivalent to the Blue Belt.</p>
+                                 </div>
+                              </div>
+                           </li>
+                        </div>
+                     </div>
+                     <hr>
+                     <div class="detail" id="interests">
+                        <div class="icon"><i class="fs-lg icon-heart"></i><span class="mobile-title">Interests</span></div>
+                        <div class="info">
+                           <h4 class="title text-uppercase">Interests</h4>
+                           <div class="content">
+                              <i></i>
+                              <div class="space-top labels">
+                                 <span class="label label-keyword">
+                                    <p>Open-Source Projects</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>UI Design</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>Linguistics</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>Competitive Programming</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>Chess</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>Piano</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>MUN</p>
+                                 </span>
+                                 <span class="label label-keyword">
+                                    <p>Tennis</p>
+                                 </span>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <hr class="hrtransparent">
+               </div>
+            </section>
+         </div>
+      </div>
+      <script src="ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script><script>$(function () {
+         var toggleFloatingMenu = function() {
+           $( '.js-floating-nav' ).toggleClass( 'is-visible' );
+           $( '.js-floating-nav-trigger' ).toggleClass( 'is-open' );
+         };
+         
+         $( ".background-card" ).css( "min-height", window.screen.availHeight + "px" );
+         $( "[data-toggle=tooltip]" ).tooltip();
+         $( '.js-floating-nav-trigger' ).on( 'click', function(e) {
+           e.preventDefault();
+           toggleFloatingMenu();
+         });
+         $( '.js-floating-nav a' ).on( 'click', toggleFloatingMenu );
+         
+         $("#remaining-profiles").on('show.bs.collapse', function() {
+           $( '.js-profiles-collapse > i' )
+             .removeClass( 'icon-chevron-down' )
+             .addClass( 'icon-chevron-up' );
+         });
+         // Function to check if the device is iPhone, iPad, or MacBook
+         function isAppleHandHeld() {
+         return /iPhone|iPad|Mac/.test(navigator.platform);
+         }
+         
+         // Function to check if the device is a MacBook
+         function isMacBook() {
+         const userAgent = navigator.userAgent.toLowerCase();
+         return userAgent.includes('macintosh');
+         }
+         
+         // Function to set background color and remove background image
+         function setDeviceBackgroundColor() {
+         if (isAppleHandHeld() || isMacBook()) {
+         document.body.style.backgroundImage = 'none';
+         document.body.style.backgroundColor = '#001933';
+         }
+         }
+         
+         // Call the function when the page finishes loading
+         window.onload = setDeviceBackgroundColor;
+         
+         $("#remaining-profiles").on('hidden.bs.collapse', function() {
+           $( '.js-profiles-collapse > i' )
+             .removeClass( 'icon-chevron-up' )
+             .addClass( 'icon-chevron-down' );
+         });
+         });
+      </script><script>WebFontConfig = {
+         google: { families: [ 'Lato:300,400,700:latin' ] }
+         };
+         (function() {
+         var wf = document.createElement('script');
+         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+           '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+         wf.type = 'text/javascript';
+         wf.async = 'true';
+         var s = document.getElementsByTagName('script')[0];
+         s.parentNode.insertBefore(wf, s);
+         })();
+      </script>
+   </body>
+</html>

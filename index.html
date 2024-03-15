@@ -1,1838 +1,857 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
    <head>
-      <meta charset="utf-8"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1"/>
-      <title>Ashutosh Sundresh</title>
-      <script src="cdn-cgi/apps/head/QEWNwoPSl2O5LqMXvi595gsiMPg.js"></script>
-      <link rel="stylesheet" href="maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-      <style>
-         a:link {
-         color: #73BBFF;
-         }
-         a:visited {
-         color: #73BBFF;
-         }
-         hr {
-         display: block;
-         height: 1px;
-         border: 0;
-         border-top: 3px solid rgba(255, 255,255, .2);
-         margin: 1em 0;
-         padding: 0;
-         }
-         .hrtransparent {
-         display: block;
-         height: 1px;
-         border: 0;
-         border-top: 3px solid rgba(255, 255,255, 0);
-         margin: 1em 0;
-         padding: 0;
-         }
-         @font-face {
-         font-family: 'icomoon';
-         src: url("/fonts/icomoon.eot?f218wo");
-         src: url("/fonts/icomoon.svg?f218wo#icomoon") format('svg'),
-         url("/fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'),
-         url("/fonts/icomoon.ttf?f218wo") format('truetype'),
-         url("/fonts/icomoon.woff?f218wo") format('woff');
-         font-weight: normal;
-         font-style: normal;
-         }
-         [class^="icon-"], [class*=" icon-"] {
-         /* use !important to prevent issues with browser extensions that change fonts */
-         font-family: 'icomoon' !important;
-         speak: none;
-         font-style: normal;
-         font-weight: normal;
-         font-variant: normal;
-         text-transform: none;
-         line-height: 1;
-         /* Better Font Rendering =========== */
-         -webkit-font-smoothing: antialiased;
-         -moz-osx-font-smoothing: grayscale;
-         -webkit-backface-visibility: hidden;
-         -moz-backface-visibility: hidden;
-         -webkit-transform: translate3d(0, 0, 0);
-         -moz-transform: translate3d(0, 0, 0);
-         }
-         .icon-gitlab .path1:before {
-         content: "\e906";
-         color: rgb(252, 109, 38);
-         }
-         .icon-gitlab .path2:before {
-         content: "\e907";
-         margin-left: -1em;
-         color: rgb(226, 67, 41);
-         }
-         .icon-gitlab .path3:before {
-         content: "\e908";
-         margin-left: -1em;
-         color: rgb(252, 109, 38);
-         }
-         .icon-gitlab .path4:before {
-         content: "\e909";
-         margin-left: -1em;
-         color: rgb(252, 163, 38);
-         }
-         .icon-gitlab .path5:before {
-         content: "\e90a";
-         margin-left: -1em;
-         color: rgb(226, 67, 41);
-         }
-         .icon-gitlab .path6:before {
-         content: "\e90b";
-         margin-left: -1em;
-         color: rgb(252, 109, 38);
-         }
-         .icon-gitlab .path7:before {
-         content: "\e90c";
-         margin-left: -1em;
-         color: rgb(252, 163, 38);
-         }
-         .icon-gitlab .path8:before {
-         content: "\e90d";
-         margin-left: -1em;
-         color: rgb(226, 67, 41);
-         }
-         .icon-meetup .path1:before {
-         content: "\e901";
-         color: rgb(255, 255, 255);
-         }
-         .icon-meetup .path2:before {
-         content: "\e902";
-         margin-left: -1.5em;
-         color: rgb(240, 1, 1);
-         }
-         .icon-meetup .path3:before {
-         content: "\e903";
-         margin-left: -1.5em;
-         color: rgb(3, 3, 3);
-         }
-         .icon-blogger:before {
-         content: "\e900";
-         }
-         .icon-exercism:before {
-         content: "\e601";
-         }
-         .icon-telegram:before {
-         content: "\e904";
-         }
-         .icon-flickr:before {
-         content: "\f16e";
-         }
-         .icon-medium:before {
-         content: "\f23a";
-         }
-         .icon-heart:before {
-         content: "\f004";
-         }
-         .icon-book:before {
-         content: "\f02d";
-         }
-         .icon-linkedin:before {
-         content: "\f08c";
-         }
-         .icon-twitter:before {
-         content: "\f099";
-         }
-         .icon-github:before {
-         content: "\f09b";
-         }
-         .icon-link:before {
-         content: "\f0c1";
-         }
-         .icon-bars:before {
-         content: "\f0c9";
-         }
-         .icon-pinterest:before {
-         content: "\f0d2";
-         }
-         .icon-googleplus:before {
-         content: "\f0d5";
-         }
-         .icon-circle:before {
-         content: "\f111";
-         }
-         .icon-code:before {
-         content: "\f121";
-         }
-         .icon-youtube:before {
-         content: "\f167";
-         }
-         .icon-stackoverflow:before {
-         content: "\f16c";
-         }
-         .icon-bitbucket:before {
-         content: "\f171";
-         }
-         .icon-tumblr:before {
-         content: "\f173";
-         }
-         .icon-dribbble:before {
-         content: "\f17d";
-         }
-         .icon-skype:before {
-         content: "\f17e";
-         }
-         .icon-foursquare:before {
-         content: "\f180";
-         }
-         .icon-gittip:before {
-         content: "\f184";
-         }
-         .icon-gratipay:before {
-         content: "\f184";
-         }
-         .icon-stackexchange:before {
-         content: "\f18d";
-         }
-         .icon-vimeo:before {
-         content: "\f194";
-         }
-         .icon-graduation-cap:before {
-         content: "\f19d";
-         }
-         .icon-language:before {
-         content: "\f1ab";
-         }
-         .icon-child:before {
-         content: "\f1ae";
-         }
-         .icon-behance:before {
-         content: "\f1b5";
-         }
-         .icon-spotify:before {
-         content: "\f1bc";
-         }
-         .icon-soundcloud:before {
-         content: "\f1be";
-         }
-         .icon-codepen:before {
-         content: "\f1cb";
-         }
-         .icon-hackernews:before {
-         content: "\f1d4";
-         }
-         .icon-lastfm:before {
-         content: "\f202";
-         }
-         .icon-angellist:before {
-         content: "\f209";
-         }
-         .icon-facebook:before {
-         content: "\f230";
-         }
-         .icon-instagram:before {
-         content: "\e905";
-         }
-         .icon-trophy:before {
-         content: "\e605";
-         }
-         .icon-office:before {
-         content: "\e606";
-         }
-         .icon-clock:before {
-         content: "\e60a";
-         }
-         .icon-reddit:before {
-         content: "\e609";
-         }
-         .icon-profile:before {
-         content: "\e600";
-         }
-         .icon-tools:before {
-         content: "\e034";
-         }
-         .icon-location:before {
-         content: "\e602";
-         }
-         .icon-mail:before {
-         content: "\e603";
-         }
-         .icon-phone:before {
-         content: "\e03f";
-         }
-         .icon-newspaper:before {
-         content: "\e607";
-         }
-         .icon-chevron-down:before {
-         content: "\e60c";
-         }
-         .icon-chevron-up:before {
-         content: "\e60d";
-         }
-         .icon-dots-three-horizontal:before {
-         content: "\e60b";
-         }
-         .icon-thumbs-up:before {
-         content: "\e604";
-         }
-         .icon-board:before {
-         content: "\e608";
-         }
-         .relative {
-         position: relative;
-         }
-         .clear-margin {
-         margin: 0;
-         }
-         .space-top {
-         margin-top: 10px;
-         }
-         .space-right {
-         margin-right: 10px;
-         }
-         .space-bottom {
-         margin-bottom: 10px;
-         }
-         .mr-5 {
-         margin-right: 5px;
-         }
-         .mr-10 {
-         margin-right: 10px;
-         }
-         .ml-5 {
-         margin-left: 5px;
-         }
-         .labels {
-         line-height: 2;
-         }
-         .label-keyword {
+      <meta charSet="utf-8"/>
+      <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+      <style data-href="/styles.6712b1e64e592076c65d.css" data-identity="gatsby-global-css">@import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap);@import url(https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap);*,:after,:before{box-sizing:border-box;margin:0;padding:0}#___gatsby,#gatsby-focus-wrapper,body,html{height:100%;overflow-x:hidden}html{background:linear-gradient(157.78deg,#241444 46.47%,#e4747c 128.07%) fixed;background-repeat:no-repeat;background-size:cover;margin-left:calc(100vw - 100%);min-height:100%}body{color:#fbf7f1;font-family:Roboto,arial;font-size:large}p{line-height:1.8rem;margin:1.2rem 0}h1,h2,h3,h4,h5,h6{font-family:Roboto Slab,serif}.gatsby-image-wrapper-constrained{border-radius:7px;left:30px;top:-33px}a{border-bottom:2px solid #fbf7f1;color:#fbf7f1;text-decoration:none;transition:all .2s ease-in-out}a:hover{border-bottom:2px solid #cb517b}.header-module--bar--0VxZy{align-items:center;display:flex;flex-direction:row;font-weight:300;justify-content:space-between;padding:3rem 0;z-index:3}.header-module--bar--0VxZy .header-module--logo--y97xu a{border-bottom:2px solid #ffffff00;font-size:24px}.header-module--bar--0VxZy .header-module--hamburger--mdm6I{cursor:pointer;padding:1rem}@media only screen and (min-width:690px){.header-module--bar--0VxZy .header-module--hamburger--mdm6I{display:none}}.header-module--bar--0VxZy .header-module--menu--MFCcM{display:none}@media only screen and (min-width:690px){.header-module--bar--0VxZy .header-module--menu--MFCcM{display:initial}}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--exit--EArDu{display:none}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj{list-style:none}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu{float:left;margin-left:2rem}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a{border-bottom:2px solid #ffffff00;display:block;font-size:x-large;padding:.2rem .2rem .4rem;text-align:center}@media only screen and (min-width:690px){.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a{font-size:large}}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a:hover{border-bottom:2px solid #cb517b}.header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu .header-module--active--XpLlV{border-bottom:2px solid #fbf7f1}.header-module--bar--0VxZy .header-module--mobile--KPRa6{background-color:#241444;display:block;height:100vh;left:0;position:fixed;top:0;width:100%}.header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--exit--EArDu{display:block;font-size:1.8rem;margin-left:auto;margin-right:auto;max-width:82%;padding:4rem .5rem 0;position:relative;text-align:right}.header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj{align-content:center;align-items:center;display:flex;flex-direction:column;height:50%;justify-content:center;overflow:hidden}.header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu{float:unset;margin:.8rem}.header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu a{border-bottom:2px solid #ffffff00}.footer-module--footer--Z1xkR{color:#cb517b;padding:2rem 0}.footer-module--footer--Z1xkR .footer-module--small--cwSz2{margin-right:.5rem}.footer-module--footer--Z1xkR .footer-module--feed--07L8u{border-bottom:none;color:#cb517b}.container-module--container--1sq6u{display:flex;flex-direction:column;height:100%;margin-left:auto;margin-right:auto;max-width:82%}@media only screen and (min-width:1200px){.container-module--container--1sq6u{max-width:1000px}}.content-module--content--UHy8y{flex:1 1}@media only screen and (min-width:400px){.content-module--content--UHy8y{margin-top:10%}}@media only screen and (min-width:1000px){.content-module--content--UHy8y{margin-top:6rem}}.button-module--button--BvGZT{background-color:#cb517b;border:none;border-radius:7px;color:#fbf7f1;padding:1rem 1.8rem;text-align:center;text-decoration:none;transition:all .2s ease-in-out}.button-module--button--BvGZT a{border-bottom:2px solid #ffffff00;color:#fbf7f1;text-decoration:none}.button-module--button--BvGZT:hover{box-shadow:0 5px 15px rgba(202,85,101,.4)}.intro-module--intro--soq61{margin-bottom:5rem}.intro-module--intro--soq61 .intro-module--title--XyWVw{margin-bottom:1.4rem}.intro-module--intro--soq61 .intro-module--description--3dd62{margin-top:1.4rem}._404-module--link--Nf0k-{color:#fbf7f1;text-decoration:none}._404-module--icon--UGCoi{margin-right:1rem}.about-module--about--Um\+LS .about-module--paragraph--nl8sC{margin:2rem 0}.about-module--about--Um\+LS .about-module--resume--FRC-e{border-bottom:2px solid #fbf7f1}@media only screen and (min-width:1000px){.about-module--about--Um\+LS{display:grid;grid-template-areas:"details profile";grid-template-columns:50% auto}}.about-module--details--8l4aO{margin-top:1.5rem}@media only screen and (min-width:){.about-module--details--8l4aO{grid-area:details;margin-top:0}}.about-module--details--8l4aO h1{font-size:2.25rem}.about-module--profile--D-OzZ{display:inline-block;height:10rem;margin-bottom:14rem;margin-top:1.5rem}@media only screen and (min-width:1000px){.about-module--profile--D-OzZ{display:inherit;grid-area:profile;justify-self:end;margin-bottom:0;margin-top:0}}.about-module--profile--D-OzZ .about-module--dots--szbII{background-image:radial-gradient(currentColor 1.5px,transparent 0);background-size:15px 15px;color:#cb517b;left:-30px;max-width:350px;position:relative;top:0}@media only screen and (min-width:1000px){.index-module--index--NQpS2{display:grid;grid-template-areas:"headline avatar";grid-template-columns:50% auto}}@media only screen and (min-width:400px){.index-module--headline--ot-Q2{font-size:x-large}}@media only screen and (min-width:1000px){.index-module--headline--ot-Q2{grid-area:headline}}.index-module--avatar--gbWzt{display:none;height:10rem}@media only screen and (min-width:1000px){.index-module--avatar--gbWzt{display:inherit;grid-area:avatar;justify-self:end}}.index-module--avatar--gbWzt .index-module--dots---vM-C{background-image:radial-gradient(currentColor 1.5px,transparent 0);background-size:15px 15px;color:#cb517b;left:-30px;max-width:350px;position:relative;top:0}@media only screen and (min-width:400px){.index-module--icons--LC\+yQ{margin-left:2rem}}.index-module--icons--LC\+yQ .index-module--link--nqUXd{border-bottom:2px solid #ffffff00;color:#cb517b;font-size:2rem;margin:0 .5rem;text-decoration:none;transition:all .2s ease-in-out}.index-module--icons--LC\+yQ .index-module--link--nqUXd:hover{border-bottom:2px solid #cb517b}.index-module--cta--Yi6O8{align-items:flex-start;display:flex;flex-direction:column;margin-top:2rem}@media only screen and (min-width:400px){.index-module--cta--Yi6O8{align-items:center;flex-direction:row}}.index-module--cta--Yi6O8 Button{margin-bottom:2rem}@media only screen and (min-width:400px){.index-module--cta--Yi6O8 Button{margin-bottom:0}}.projects-module--projects--\+sXDR{list-style:none}.projects-module--projects--\+sXDR li{display:flex;flex-direction:row;flex-wrap:wrap;margin-bottom:9rem}@media only screen and (min-width:1000px){.projects-module--projects--\+sXDR li{display:grid;grid-template-areas:"area1 area2";grid-template-columns:2fr 1fr}.projects-module--projects--\+sXDR li:nth-child(odd){display:grid;grid-template-areas:"area2 area1";grid-template-columns:1fr 2fr}.projects-module--projects--\+sXDR li:nth-child(odd) .projects-module--description--scIxw{margin-right:3rem}.projects-module--projects--\+sXDR li:nth-child(2n) .projects-module--description--scIxw{margin-left:3rem}}.projects-module--projects--\+sXDR li a{border-bottom:unset;margin:0;padding:0}.projects-module--projects--\+sXDR li a:hover{border-bottom:unset}.projects-module--projects--\+sXDR li a .projects-module--dots---505i{background-image:radial-gradient(currentColor 1.5px,transparent 0);background-size:15px 15px;color:#cb517b;left:-30px;margin-left:-30vw;margin-right:-30vw;position:relative;top:0}@media only screen and (min-width:1000px){.projects-module--projects--\+sXDR li a .projects-module--dots---505i{grid-area:area1;margin:0}}.projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF{transition:all .2s ease-in-out}.projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF:hover{-webkit-filter:brightness(1.03);filter:brightness(1.03)}@media only screen and (min-width:1000px){.projects-module--projects--\+sXDR li .projects-module--description--scIxw{grid-area:area2}}.projects-module--projects--\+sXDR li .projects-module--description--scIxw h3{margin-bottom:1rem}.projects-module--projects--\+sXDR li .projects-module--description--scIxw small{font-style:italic}.projects-module--projects--\+sXDR li .projects-module--description--scIxw p{margin:1rem 0 1.5rem}.projects-module--icon--gw2lm{margin-right:1rem}</style>
+      <meta name="generator" content="Gatsby 3.14.6"/>
+      <style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style>
+      <noscript>
+         <style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style>
+      </noscript>
+      <script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script>
+      <style type="text/css">:root, :host {
+         --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
+         --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Regular";
+         --fa-font-light: normal 300 1em/1 "Font Awesome 6 Light";
+         --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Thin";
+         --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+         --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+         }
+         svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+         overflow: visible;
+         box-sizing: content-box;
+         }
+         .svg-inline--fa {
+         display: var(--fa-display, inline-block);
+         height: 1em;
+         overflow: visible;
+         vertical-align: -0.125em;
+         }
+         .svg-inline--fa.fa-2xs {
+         vertical-align: 0.1em;
+         }
+         .svg-inline--fa.fa-xs {
+         vertical-align: 0em;
+         }
+         .svg-inline--fa.fa-sm {
+         vertical-align: -0.0714285705em;
+         }
+         .svg-inline--fa.fa-lg {
+         vertical-align: -0.2em;
+         }
+         .svg-inline--fa.fa-xl {
+         vertical-align: -0.25em;
+         }
+         .svg-inline--fa.fa-2xl {
+         vertical-align: -0.3125em;
+         }
+         .svg-inline--fa.fa-pull-left {
+         margin-right: var(--fa-pull-margin, 0.3em);
+         width: auto;
+         }
+         .svg-inline--fa.fa-pull-right {
+         margin-left: var(--fa-pull-margin, 0.3em);
+         width: auto;
+         }
+         .svg-inline--fa.fa-li {
+         width: var(--fa-li-width, 2em);
+         top: 0.25em;
+         }
+         .svg-inline--fa.fa-fw {
+         width: var(--fa-fw-width, 1.25em);
+         }
+         .fa-layers svg.svg-inline--fa {
+         bottom: 0;
+         left: 0;
+         margin: auto;
+         position: absolute;
+         right: 0;
+         top: 0;
+         }
+         .fa-layers-counter, .fa-layers-text {
          display: inline-block;
-         background: #DD3898;
-         color: white;
-         font-size: 0.9em;
-         padding: 5px;
-         border: 1px solid rgba(255,255,255,0.5);
-         margin-right: 5px;
+         position: absolute;
+         text-align: center;
          }
-         .label-keyword:last-child {
-         margin-right: 0;
+         .fa-layers {
+         display: inline-block;
+         height: 1em;
+         position: relative;
+         text-align: center;
+         vertical-align: -0.125em;
+         width: 1em;
          }
-         .label-keyword p {
-         margin: 0;
+         .fa-layers svg.svg-inline--fa {
+         -webkit-transform-origin: center center;
+         transform-origin: center center;
          }
-         .label-keyword a {
-         color: white;
+         .fa-layers-text {
+         left: 50%;
+         top: 50%;
+         -webkit-transform: translate(-50%, -50%);
+         transform: translate(-50%, -50%);
+         -webkit-transform-origin: center center;
+         transform-origin: center center;
          }
-         .label-keyword a:hover {
-         text-decoration: none;
+         .fa-layers-counter {
+         background-color: var(--fa-counter-background-color, #ff253a);
+         border-radius: var(--fa-counter-border-radius, 1em);
+         box-sizing: border-box;
+         color: var(--fa-inverse, #fff);
+         line-height: var(--fa-counter-line-height, 1);
+         max-width: var(--fa-counter-max-width, 5em);
+         min-width: var(--fa-counter-min-width, 1.5em);
+         overflow: hidden;
+         padding: var(--fa-counter-padding, 0.25em 0.5em);
+         right: var(--fa-right, 0);
+         text-overflow: ellipsis;
+         top: var(--fa-top, 0);
+         -webkit-transform: scale(var(--fa-counter-scale, 0.25));
+         transform: scale(var(--fa-counter-scale, 0.25));
+         -webkit-transform-origin: top right;
+         transform-origin: top right;
          }
-         .link-disguise {
-         color: inherit;
+         .fa-layers-bottom-right {
+         bottom: var(--fa-bottom, 0);
+         right: var(--fa-right, 0);
+         top: auto;
+         -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+         transform: scale(var(--fa-layers-scale, 0.25));
+         -webkit-transform-origin: bottom right;
+         transform-origin: bottom right;
          }
-         .link-disguise:hover {
-         color: inherit;
+         .fa-layers-bottom-left {
+         bottom: var(--fa-bottom, 0);
+         left: var(--fa-left, 0);
+         right: auto;
+         top: auto;
+         -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+         transform: scale(var(--fa-layers-scale, 0.25));
+         -webkit-transform-origin: bottom left;
+         transform-origin: bottom left;
          }
-         .clear-margin {
-         margin: 0;
+         .fa-layers-top-right {
+         top: var(--fa-top, 0);
+         right: var(--fa-right, 0);
+         -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+         transform: scale(var(--fa-layers-scale, 0.25));
+         -webkit-transform-origin: top right;
+         transform-origin: top right;
          }
-         @media (max-width: 992px) {
-         .clear-margin-sm {
-         margin-bottom: 0;
+         .fa-layers-top-left {
+         left: var(--fa-left, 0);
+         right: auto;
+         top: var(--fa-top, 0);
+         -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+         transform: scale(var(--fa-layers-scale, 0.25));
+         -webkit-transform-origin: top left;
+         transform-origin: top left;
          }
+         .fa-1x {
+         font-size: 1em;
          }
-         .fs-lg {
-         font-size: 1.33333333em;
-         line-height: 0.75em;
-         vertical-align: -15%;
-         }
-         .fs-2x {
+         .fa-2x {
          font-size: 2em;
          }
-         .fs-3x {
+         .fa-3x {
          font-size: 3em;
          }
-         .fs-4x {
+         .fa-4x {
          font-size: 4em;
          }
-         .btn-circle-sm {
-         width: 28px;
-         height: 28px;
-         line-height: 28px;
-         border-radius: 50%;
-         text-align: center;
-         padding: 0;
-         outline: none !important;
+         .fa-5x {
+         font-size: 5em;
          }
-         /* the version when the icon file is last updated */
-         @font-face {
-         font-family: 'jst-elegant';
-         src: url("fonts/icomoon.eot?f218wo");
-         src: url("fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'), url("fonts/icomoon.ttf?f218wo") format('truetype'), url("fonts/icomoon.woff?f218wo") format('woff'), url("fonts/icomoon.svg?f218wo#icomoon") format('svg');
-         font-weight: normal;
-         font-style: normal;
+         .fa-6x {
+         font-size: 6em;
          }
-         [class^="icon-"],
-         [class*=" icon-"] {
-         /* use !important to prevent issues with browser extensions that change fonts */
-         font-family: 'jst-elegant' !important;
+         .fa-7x {
+         font-size: 7em;
          }
-         body {
-         font-family: 'Lato';
-         background:url('https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/image.jpg') repeat center center fixed;
-         -webkit-background-size: cover;
-         -moz-background-size: cover;
-         -o-background-size: cover;
-         background-size: cover;
-         color: #f5f7fa;
+         .fa-8x {
+         font-size: 8em;
          }
-         .main {
-         padding: 5px;
+         .fa-9x {
+         font-size: 9em;
          }
-         .card {
-         border-radius: 25px;
-         backdrop-filter: blur(24px);
-         background-color: rgb(0, 0, 0, 60%);        
-         border: 1px solid #425247;
-         min-height: 300px;
-         padding: 10px 0;
+         .fa-10x {
+         font-size: 10em;
          }
-         .card-nested {
-         min-height: 0;
-         border-width: 1px 0 0 0;
+         .fa-2xs {
+         font-size: 0.625em;
+         line-height: 0.1em;
+         vertical-align: 0.225em;
          }
-         .card-nested:before,
-         .card-nested:after {
-         content: " ";
-         display: table;
+         .fa-xs {
+         font-size: 0.75em;
+         line-height: 0.0833333337em;
+         vertical-align: 0.125em;
          }
-         .card-nested:after {
-         clear: both;
+         .fa-sm {
+         font-size: 0.875em;
+         line-height: 0.0714285718em;
+         vertical-align: 0.0535714295em;
          }
-         @media (max-width: 480px) {
-         .card-nested {
-         padding: 5px 0;
+         .fa-lg {
+         font-size: 1.25em;
+         line-height: 0.05em;
+         vertical-align: -0.075em;
          }
-         }
-         .background-card {
-         padding: 10px 20px;
-         }
-         .card-wrapper {
-         padding: 5px;
-         }
-         @media (max-width: 992px) {
-         .card-wrapper {
-         float: none !important;
-         }
-         }
-         .background-details .detail {
-         display: table;
-         }
-         .background-details .detail .icon {
-         min-width: 45px;
-         max-width: 45px;
-         text-align: center;
-         }
-         .background-details .detail .info {
-         width: 100%;
-         }
-         .background-details .detail .title,
-         .background-details .detail .icon {
-         color: #DB9EE5;
-         }
-         .background-details .detail .mobile-title {
-         display: none;
-         }
-         @media (max-width: 480px) {
-         .background-details .detail .mobile-title {
-         display: inline-block;
-         margin-left: 5px;
-         font-weight: bold;
-         text-transform: uppercase;
-         vertical-align: middle;
-         }
-         }
-         .background-details .detail .icon,
-         .background-details .detail .info {
-         display: table-cell;
-         padding: 0 10px;
-         }
-         @media (max-width: 480px) {
-         .background-details .detail {
-         display: block;
-         }
-         .background-details .detail .icon {
-         max-width: inherit;
-         min-width: inherit;
-         text-align: left;
-         }
-         .background-details .detail .icon,
-         .background-details .detail .info {
-         display: block;
-         padding: 10px 0;
-         }
-         .background-details .detail .title {
-         display: none;
-         }
-         }
-         .info .content.has-sidebar {
-         width: 80%;
-         box-sizing: border-box;
-         float: left;
-         padding: 0 10px;
-         border-right: 1px solid #cdcdcd;
-         }
-         @media (max-width: 992px) {
-         .info .content.has-sidebar {
-         width: 100%;
-         border-right: 0;
-         }
-         }
-         @media (max-width: 480px) {
-         .info .content.has-sidebar {
-         padding: 0 2px;
-         }
-         }
-         .info .sidebar {
-         margin-left: 80%;
-         box-sizing: border-box;
-         padding: 10px;
-         }
-         @media (max-width: 480px) {
-         ul {
-         padding-left: 25px;
-         }
-         }
-         .current-event {
-         font-size: 8px;
-         color: #6ffd69;
-         position: absolute;
-         right: 100%;
-         top: 4px;
-         left: -10px;
-         }
-         .mop-wrapper > p:last-child {
-         margin: 0;
-         }
-         /*
-         Credits: http://codyhouse.co/demo/smart-fixed-navigation/index.html
-         */
-         .floating-nav-trigger {
-         width: 50px;
-         height: 50px;
-         -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-         -webkit-transition: background-color 0.5s ease;
-         -o-transition: background-color 0.5s ease;
-         transition: background-color 0.5s ease;
-         display: block;
-         border-radius: 50%;
-         text-align: center;
-         background-color: #494949 !important;
+         .fa-xl {
          font-size: 1.5em;
-         color: #C685D6 !important;
-         z-index: 100;
-         position: fixed;
-         bottom: 10px;
-         right: 10px;
-         text-decoration: none !important;
+         line-height: 0.0416666682em;
+         vertical-align: -0.125em;
          }
-         .floating-nav-trigger > [class^="icon-"],
-         .floating-nav-trigger [class*=" icon-"],
-         .floating-nav-trigger > .close-icon {
-         line-height: 50px;
+         .fa-2xl {
+         font-size: 2em;
+         line-height: 0.03125em;
+         vertical-align: -0.1875em;
          }
-         .floating-nav-trigger .close-icon {
-         display: none;
+         .fa-fw {
+         text-align: center;
+         width: 1.25em;
          }
-         .floating-nav-trigger:hover {
-         color: #8d519c;
-         background-color: #494949 !important;
+         .fa-ul {
+         list-style-type: none;
+         margin-left: var(--fa-li-margin, 2.5em);
+         padding-left: 0;
          }
-         .floating-nav-trigger.is-open {
-         -webkit-box-shadow: none;
-         box-shadow: none;
+         .fa-ul > li {
+         position: relative;
          }
-         .floating-nav-trigger.is-open .close-icon {
-         display: inherit;
+         .fa-li {
+         left: calc(var(--fa-li-width, 2em) * -1);
+         position: absolute;
+         text-align: center;
+         width: var(--fa-li-width, 2em);
+         line-height: inherit;
          }
-         .floating-nav-trigger.is-open .icon-bars {
-         display: none;
+         .fa-border {
+         border-color: var(--fa-border-color, #eee);
+         border-radius: var(--fa-border-radius, 0.1em);
+         border-style: var(--fa-border-style, solid);
+         border-width: var(--fa-border-width, 0.08em);
+         padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
          }
-         .floating-nav-trigger.is-open:hover {
-         background-color: #494949;
+         .fa-pull-left {
+         float: left;
+         margin-right: var(--fa-pull-margin, 0.3em);
          }
-         .floating-nav {
-         -webkit-transform: scale(0);
-         -ms-transform: scale(0);
-         -o-transform: scale(0);
-         transform: scale(0);
-         -webkit-transform-origin: 100% 100%;
-         -moz-transform-origin: 100% 100%;
-         -ms-transform-origin: 100% 100%;
-         transform-origin: 100% 100%;
-         -webkit-transition: transform 0.3s, visibility 0s 0.3s;
-         -o-transition: transform 0.3s, visibility 0s 0.3s;
-         transition: transform 0.3s, visibility 0s 0.3s;
-         -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
-         position: fixed;
-         z-index: 50;
-         right: 10px;
-         bottom: 10px;
-         background-color: #494949 !important;
-         width: 90%;
-         max-width: 400px;
-         visibility: hidden;
-         overflow: hidden;
+         .fa-pull-right {
+         float: right;
+         margin-left: var(--fa-pull-margin, 0.3em);
          }
-         .floating-nav ul {
-         font-size: 1.2em;
-         margin: 0;
+         .fa-beat {
+         -webkit-animation-name: fa-beat;
+         animation-name: fa-beat;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+         animation-timing-function: var(--fa-animation-timing, ease-in-out);
          }
-         .floating-nav ul li {
-         border-bottom: 1px solid #2b2c2e;
+         .fa-bounce {
+         -webkit-animation-name: fa-bounce;
+         animation-name: fa-bounce;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+         animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
          }
-         .floating-nav ul li a {
-         padding: 20px;
-         text-decoration: none;
-         color: #C685D6;
-         display: block;
+         .fa-fade {
+         -webkit-animation-name: fa-fade;
+         animation-name: fa-fade;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+         animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
          }
-         .floating-nav ul li a:hover {
-         color: #8d519c;
+         .fa-beat-fade {
+         -webkit-animation-name: fa-beat-fade;
+         animation-name: fa-beat-fade;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+         animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
          }
-         .floating-nav ul li:last-child {
-         border-bottom: 0;
+         .fa-flip {
+         -webkit-animation-name: fa-flip;
+         animation-name: fa-flip;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+         animation-timing-function: var(--fa-animation-timing, ease-in-out);
          }
-         .floating-nav.is-visible {
+         .fa-shake {
+         -webkit-animation-name: fa-shake;
+         animation-name: fa-shake;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+         animation-timing-function: var(--fa-animation-timing, linear);
+         }
+         .fa-spin {
+         -webkit-animation-name: fa-spin;
+         animation-name: fa-spin;
+         -webkit-animation-delay: var(--fa-animation-delay, 0);
+         animation-delay: var(--fa-animation-delay, 0);
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 2s);
+         animation-duration: var(--fa-animation-duration, 2s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+         animation-timing-function: var(--fa-animation-timing, linear);
+         }
+         .fa-spin-reverse {
+         --fa-animation-direction: reverse;
+         }
+         .fa-pulse,
+         .fa-spin-pulse {
+         -webkit-animation-name: fa-spin;
+         animation-name: fa-spin;
+         -webkit-animation-direction: var(--fa-animation-direction, normal);
+         animation-direction: var(--fa-animation-direction, normal);
+         -webkit-animation-duration: var(--fa-animation-duration, 1s);
+         animation-duration: var(--fa-animation-duration, 1s);
+         -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+         -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
+         animation-timing-function: var(--fa-animation-timing, steps(8));
+         }
+         @media (prefers-reduced-motion: reduce) {
+         .fa-beat,
+         .fa-bounce,
+         .fa-fade,
+         .fa-beat-fade,
+         .fa-flip,
+         .fa-pulse,
+         .fa-shake,
+         .fa-spin,
+         .fa-spin-pulse {
+         -webkit-animation-delay: -1ms;
+         animation-delay: -1ms;
+         -webkit-animation-duration: 1ms;
+         animation-duration: 1ms;
+         -webkit-animation-iteration-count: 1;
+         animation-iteration-count: 1;
+         transition-delay: 0s;
+         transition-duration: 0s;
+         }
+         }
+         @-webkit-keyframes fa-beat {
+         0%, 90% {
          -webkit-transform: scale(1);
-         -ms-transform: scale(1);
-         -o-transform: scale(1);
          transform: scale(1);
-         -webkit-transition: transform 0.3s, visibility 0s 0s;
-         -o-transition: transform 0.3s, visibility 0s 0s;
-         transition: transform 0.3s, visibility 0s 0s;
-         visibility: visible;
          }
-         @media (max-width: 992px) {
-         .profile-card-wrapper {
-         position: relative;
+         45% {
+         -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+         transform: scale(var(--fa-beat-scale, 1.25));
          }
          }
-         .profile-card-wrapper .profile-card {
-         padding: 10px;
+         @keyframes fa-beat {
+         0%, 90% {
+         -webkit-transform: scale(1);
+         transform: scale(1);
          }
-         .profile-pic {
-         padding: 20px 0;
-         }
-         @media (max-width: 992px) {
-         .profile-pic {
-         padding: 10px 0;
-         }
-         }
-         .profile-pic img {
-         width: 100px;
-         height: 100px;
-         }
-         @media (max-width: 992px) {
-         .name {
-         margin-top: 10px;
+         45% {
+         -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+         transform: scale(var(--fa-beat-scale, 1.25));
          }
          }
-         @media (max-width: 768px) {
-         .contact-details {
-         text-align: center;
+         @-webkit-keyframes fa-bounce {
+         0% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
+         }
+         10% {
+         -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+         transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+         }
+         30% {
+         -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+         transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+         }
+         50% {
+         -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+         transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+         }
+         57% {
+         -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+         transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+         }
+         64% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
+         }
+         100% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
          }
          }
-         .contact-details .detail {
-         display: table;
-         padding: 10px 0;
+         @keyframes fa-bounce {
+         0% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
          }
-         .contact-details .detail .icon {
-         padding: 0 10px;
-         color: #707070;
+         10% {
+         -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+         transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
          }
-         @media (max-width: 992px) {
-         .contact-details .detail .icon {
-         padding: 0 5px 0 0;
+         30% {
+         -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+         transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+         }
+         50% {
+         -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+         transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+         }
+         57% {
+         -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+         transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+         }
+         64% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
+         }
+         100% {
+         -webkit-transform: scale(1, 1) translateY(0);
+         transform: scale(1, 1) translateY(0);
          }
          }
-         .contact-details .detail .info {
-         font-size: 0.8em;
+         @-webkit-keyframes fa-fade {
+         50% {
+         opacity: var(--fa-fade-opacity, 0.4);
          }
-         .contact-details .detail .icon,
-         .contact-details .detail .info {
-         display: table-cell;
+         }
+         @keyframes fa-fade {
+         50% {
+         opacity: var(--fa-fade-opacity, 0.4);
+         }
+         }
+         @-webkit-keyframes fa-beat-fade {
+         0%, 100% {
+         opacity: var(--fa-beat-fade-opacity, 0.4);
+         -webkit-transform: scale(1);
+         transform: scale(1);
+         }
+         50% {
+         opacity: 1;
+         -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+         transform: scale(var(--fa-beat-fade-scale, 1.125));
+         }
+         }
+         @keyframes fa-beat-fade {
+         0%, 100% {
+         opacity: var(--fa-beat-fade-opacity, 0.4);
+         -webkit-transform: scale(1);
+         transform: scale(1);
+         }
+         50% {
+         opacity: 1;
+         -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+         transform: scale(var(--fa-beat-fade-scale, 1.125));
+         }
+         }
+         @-webkit-keyframes fa-flip {
+         50% {
+         -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+         transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+         }
+         }
+         @keyframes fa-flip {
+         50% {
+         -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+         transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+         }
+         }
+         @-webkit-keyframes fa-shake {
+         0% {
+         -webkit-transform: rotate(-15deg);
+         transform: rotate(-15deg);
+         }
+         4% {
+         -webkit-transform: rotate(15deg);
+         transform: rotate(15deg);
+         }
+         8%, 24% {
+         -webkit-transform: rotate(-18deg);
+         transform: rotate(-18deg);
+         }
+         12%, 28% {
+         -webkit-transform: rotate(18deg);
+         transform: rotate(18deg);
+         }
+         16% {
+         -webkit-transform: rotate(-22deg);
+         transform: rotate(-22deg);
+         }
+         20% {
+         -webkit-transform: rotate(22deg);
+         transform: rotate(22deg);
+         }
+         32% {
+         -webkit-transform: rotate(-12deg);
+         transform: rotate(-12deg);
+         }
+         36% {
+         -webkit-transform: rotate(12deg);
+         transform: rotate(12deg);
+         }
+         40%, 100% {
+         -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         }
+         }
+         @keyframes fa-shake {
+         0% {
+         -webkit-transform: rotate(-15deg);
+         transform: rotate(-15deg);
+         }
+         4% {
+         -webkit-transform: rotate(15deg);
+         transform: rotate(15deg);
+         }
+         8%, 24% {
+         -webkit-transform: rotate(-18deg);
+         transform: rotate(-18deg);
+         }
+         12%, 28% {
+         -webkit-transform: rotate(18deg);
+         transform: rotate(18deg);
+         }
+         16% {
+         -webkit-transform: rotate(-22deg);
+         transform: rotate(-22deg);
+         }
+         20% {
+         -webkit-transform: rotate(22deg);
+         transform: rotate(22deg);
+         }
+         32% {
+         -webkit-transform: rotate(-12deg);
+         transform: rotate(-12deg);
+         }
+         36% {
+         -webkit-transform: rotate(12deg);
+         transform: rotate(12deg);
+         }
+         40%, 100% {
+         -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         }
+         }
+         @-webkit-keyframes fa-spin {
+         0% {
+         -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         }
+         100% {
+         -webkit-transform: rotate(360deg);
+         transform: rotate(360deg);
+         }
+         }
+         @keyframes fa-spin {
+         0% {
+         -webkit-transform: rotate(0deg);
+         transform: rotate(0deg);
+         }
+         100% {
+         -webkit-transform: rotate(360deg);
+         transform: rotate(360deg);
+         }
+         }
+         .fa-rotate-90 {
+         -webkit-transform: rotate(90deg);
+         transform: rotate(90deg);
+         }
+         .fa-rotate-180 {
+         -webkit-transform: rotate(180deg);
+         transform: rotate(180deg);
+         }
+         .fa-rotate-270 {
+         -webkit-transform: rotate(270deg);
+         transform: rotate(270deg);
+         }
+         .fa-flip-horizontal {
+         -webkit-transform: scale(-1, 1);
+         transform: scale(-1, 1);
+         }
+         .fa-flip-vertical {
+         -webkit-transform: scale(1, -1);
+         transform: scale(1, -1);
+         }
+         .fa-flip-both,
+         .fa-flip-horizontal.fa-flip-vertical {
+         -webkit-transform: scale(-1, -1);
+         transform: scale(-1, -1);
+         }
+         .fa-rotate-by {
+         -webkit-transform: rotate(var(--fa-rotate-angle, none));
+         transform: rotate(var(--fa-rotate-angle, none));
+         }
+         .fa-stack {
+         display: inline-block;
          vertical-align: middle;
-         }
-         @media (max-width: 768px) {
-         .contact-details .detail {
+         height: 2em;
          position: relative;
-         float: left;
-         width: 100%;
-         min-height: 1px;
-         padding-left: 15px;
-         padding-right: 15px;
+         width: 2.5em;
          }
-         }
-         @media (max-width: 992px) {
-         .contact-details .detail {
-         position: relative;
-         min-height: 1px;
-         padding-left: 15px;
-         padding-right: 15px;
-         padding: 10px;
-         }
-         .contact-details .detail .icon,
-         .contact-details .detail .info {
-         display: inline-block;
-         }
-         }
-         @media (max-width: 992px) and (min-width: 768px) {
-         .contact-details .detail {
-         float: left;
-         width: 25%;
-         }
-         }
-         .social-links {
-         line-height: 2.5;
-         }
-         .social-link {
-         margin-left: 5px;
-         min-width: 35px;
-         display: inline-block;
-         }
-         .social-link:first-child {
-         margin-left: 0;
-         }
-         .social-link:hover {
-         text-decoration: none;
-         }
-         .link-github {
-         color: #454545 !important;
-         }
-         .link-github:hover,
-         .link-github:focus {
-         text-decoration: none;
-         color: #2b2b2b;
-         }
-         .link-twitter {
-         color: #33ccff;
-         }
-         .link-twitter:hover,
-         .link-twitter:focus {
-         text-decoration: none;
-         color: #00bfff;
-         }
-         .link-blog {
-         color: #f36f24;
-         }
-         .link-blog:hover,
-         .link-blog:focus {
-         text-decoration: none;
-         color: #d8560c;
-         }
-         .link-linkedin {
-         color: #007bb6 !important;
-         }
-         .link-linkedin:hover,
-         .link-linkedin:focus {
-         text-decoration: none;
-         color: #005983;
-         }
-         .link-skype {
-         color: #12A5F4;
-         }
-         .link-skype:hover,
-         .link-skype:focus {
-         text-decoration: none;
-         color: #0986ca;
-         }
-         .link-instagram {
-         color: #e4405f !important;
-         }
-         .link-instagram:hover,
-         .link-instagram:focus {
-         text-decoration: none;
-         color: #d31e40;
-         }
-         .link-stackoverflow {
-         color: #8e8e92;
-         }
-         .link-stackoverflow:hover,
-         .link-stackoverflow:focus {
-         text-decoration: none;
-         color: #747479;
-         }
-         .link-stackexchange {
-         color: #62b0df;
-         }
-         .link-stackexchange:hover,
-         .link-stackexchange:focus {
-         text-decoration: none;
-         color: #389bd6;
-         }
-         .link-lastfm {
-         color: #d12127;
-         }
-         .link-lastfm:hover,
-         .link-lastfm:focus {
-         text-decoration: none;
-         color: #a51a1f;
-         }
-         .link-soundcloud {
-         color: #e8822d;
-         }
-         .link-soundcloud:hover,
-         .link-soundcloud:focus {
-         text-decoration: none;
-         color: #cc6916;
-         }
-         .link-googleplus {
-         color: #dd4b39;
-         }
-         .link-googleplus:hover,
-         .link-googleplus:focus {
-         text-decoration: none;
-         color: #c23321;
-         }
-         .link-youtube {
-         color: #dd4b39;
-         }
-         .link-youtube:hover,
-         .link-youtube:focus {
-         text-decoration: none;
-         color: #c23321;
-         }
-         .link-pinterest {
-         color: #bd091f;
-         }
-         .link-pinterest:hover,
-         .link-pinterest:focus {
-         text-decoration: none;
-         color: #8c0717;
-         }
-         .link-gratipay {
-         color: #630;
-         }
-         .link-gratipay:hover,
-         .link-gratipay:focus {
-         text-decoration: none;
-         color: #331a00;
-         }
-         .link-vimeo {
-         color: #17b3e8;
-         }
-         .link-vimeo:hover,
-         .link-vimeo:focus {
-         text-decoration: none;
-         color: #128fba;
-         }
-         .link-behance {
-         color: #2c98cf;
-         }
-         .link-behance:hover,
-         .link-behance:focus {
-         text-decoration: none;
-         color: #2379a5;
-         }
-         .link-codepen {
-         color: #1c1c1c;
-         }
-         .link-codepen:hover,
-         .link-codepen:focus {
-         text-decoration: none;
-         color: #020202;
-         }
-         .link-foursquare {
-         color: #fa4778;
-         }
-         .link-foursquare:hover,
-         .link-foursquare:focus {
-         text-decoration: none;
-         color: #f91554;
-         }
-         .link-reddit {
-         color: #545454;
-         }
-         .link-reddit:hover,
-         .link-reddit:focus {
-         text-decoration: none;
-         color: #3b3b3b;
-         }
-         .link-spotify {
-         color: #acd200;
-         }
-         .link-spotify:hover,
-         .link-spotify:focus {
-         text-decoration: none;
-         color: #829f00;
-         }
-         .link-tumblr {
-         color: #2d4661;
-         }
-         .link-tumblr:hover,
-         .link-tumblr:focus {
-         text-decoration: none;
-         color: #1d2d3e;
-         }
-         .link-dribbble {
-         color: #ce366f;
-         }
-         .link-dribbble:hover,
-         .link-dribbble:focus {
-         text-decoration: none;
-         color: #a82959;
-         }
-         .link-facebook {
-         color: #4b6daa;
-         }
-         .link-facebook:hover,
-         .link-facebook:focus {
-         text-decoration: none;
-         color: #3b5687;
-         }
-         .link-angellist {
-         color: black;
-         }
-         .link-angellist:hover,
-         .link-angellist:focus {
-         text-decoration: none;
-         color: #000000;
-         }
-         .link-bitbucket {
-         color: #205081;
-         }
-         .link-bitbucket:hover,
-         .link-bitbucket:focus {
-         text-decoration: none;
-         color: #163758;
-         }
-         .link-hackernews {
-         color: #ff6600;
-         }
-         .link-hackernews:hover,
-         .link-hackernews:focus {
-         text-decoration: none;
-         color: #cc5200;
-         }
-         .link-exercism {
-         color: #d81d4e;
-         }
-         .link-exercism:hover,
-         .link-exercism:focus {
-         text-decoration: none;
-         color: #ab173e;
-         }
-         .link-blogger {
-         color: #FF9234;
-         }
-         .link-blogger:hover,
-         .link-blogger:focus {
-         text-decoration: none;
-         color: #ff7701;
-         }
-         .link-medium {
-         color: #00AB6C;
-         }
-         .link-medium:hover,
-         .link-medium:focus {
-         text-decoration: none;
-         color: #00784c;
-         }
-         .link-flickr {
-         color: black;
-         }
-         .link-flickr:hover,
-         .link-flickr:focus {
-         text-decoration: none;
-         color: #000000;
-         }
-         .link-telegram {
-         color: #3BABDD;
-         }
-         .link-telegram:hover,
-         .link-telegram:focus {
-         text-decoration: none;
-         color: #2291c3;
-         }
-         .card-skills {
-         position: relative;
-         }
-         .skill-level {
-         border-radius: 3px;
-         position: absolute;
-         top: 10px;
-         bottom: 10px;
-         left: 0;
-         width: 10px;
-         box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
-         }
-         .skill-level .skill-progress {
-         position: absolute;
-         border-radius: 3px;
+         .fa-stack-1x,
+         .fa-stack-2x {
          bottom: 0;
-         width: 100%;
-         -webkit-transition: height 1s ease;
+         left: 0;
+         margin: auto;
+         position: absolute;
+         right: 0;
+         top: 0;
+         z-index: var(--fa-stack-z-index, auto);
          }
-         .skill-level .skill-progress.beginner {
-         height: 50%;
-         background: #e74c3c;
+         .svg-inline--fa.fa-stack-1x {
+         height: 1em;
+         width: 1.25em;
          }
-         .skill-level .skill-progress.intermediate {
-         height: 70%;
-         background: #f1c40f;
+         .svg-inline--fa.fa-stack-2x {
+         height: 2em;
+         width: 2.5em;
          }
-         .skill-level .skill-progress.advanced {
-         height: 80%;
-         background: #428bca;
+         .fa-inverse {
+         color: var(--fa-inverse, #fff);
          }
-         .skill-level .skill-progress.master {
-         height: 95%;
-         background: #5cb85c;
-         }
-         .skill-info {
-         margin-left: 15px;
-         }
-         @media (max-width: 480px) {
-         .skill-info {
-         margin-left: 20px;
-         }
-         }
-         @media (max-width: 768px) {
-         .quote {
-         font-size: inherit;
-         }
-         }
-         .icon-meetup .path2:before {
-         margin-left: 0;
-         }
-         @media print {
-         a[href]:after {
-         content: none !important;
-         }
-         .profile-card {
-         text-align: center;
-         }
-         .profile-pic {
-         display: inline-block;
-         vertical-align: middle;
-         }
-         .profile-pic img {
-         border-radius: 0;
-         }
-         .name-and-profession {
-         display: inline-block;
-         vertical-align: middle;
-         margin-left: 15px;
-         }
-         .contact-details .detail {
-         position: relative;
-         float: left;
-         width: 25%;
-         min-height: 1px;
-         padding-left: 15px;
-         padding-right: 15px;
+         .sr-only,
+         .fa-sr-only {
+         position: absolute;
+         width: 1px;
+         height: 1px;
          padding: 0;
+         margin: -1px;
+         overflow: hidden;
+         clip: rect(0, 0, 0, 0);
+         white-space: nowrap;
+         border-width: 0;
          }
-         .floating-nav,
-         .floating-nav-trigger {
-         display: none;
+         .sr-only-focusable:not(:focus),
+         .fa-sr-only-focusable:not(:focus) {
+         position: absolute;
+         width: 1px;
+         height: 1px;
+         padding: 0;
+         margin: -1px;
+         overflow: hidden;
+         clip: rect(0, 0, 0, 0);
+         white-space: nowrap;
+         border-width: 0;
          }
-         .pagebreak {
-         page-break-before: always;
+         .svg-inline--fa .fa-primary {
+         fill: var(--fa-primary-color, currentColor);
+         opacity: var(--fa-primary-opacity, 1);
          }
+         .svg-inline--fa .fa-secondary {
+         fill: var(--fa-secondary-color, currentColor);
+         opacity: var(--fa-secondary-opacity, 0.4);
+         }
+         .svg-inline--fa.fa-swap-opacity .fa-primary {
+         opacity: var(--fa-secondary-opacity, 0.4);
+         }
+         .svg-inline--fa.fa-swap-opacity .fa-secondary {
+         opacity: var(--fa-primary-opacity, 1);
+         }
+         .svg-inline--fa mask .fa-primary,
+         .svg-inline--fa mask .fa-secondary {
+         fill: black;
+         }
+         .fad.fa-inverse,
+         .fa-duotone.fa-inverse {
+         color: var(--fa-inverse, #fff);
          }
       </style>
    </head>
-   <body itemscope="itemscope" itemtype="http://schema.org/Person">
-      <div class="container-fluid">
-         <div class="row main clearfix">
-            <a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
-            <nav class="floating-nav js-floating-nav">
-               <ul class="list-unstyled">
-                  <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
-                  <li><a href="#projects-experience"><i class="mr-10 icon-code"></i>Projects Experience</a></li>
-                  <li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li>
-                  <li><a href="#awards"><i class="mr-10 icon-trophy"></i>Awards</a></li>
-                  <li><a href="#extracurriculars"><i class="mr-10 icon-book"></i>Extracurriculars</a></li>
-                  <li><a href="#certificates"><i class="mr-10 icon-profile"></i>Certificates</a></li>
-                  <li><a href="#interests"><i class="mr-10 icon-heart"></i>Interests</a></li>
-               </ul>
-            </nav>
-            <section class="col-md-3 card-wrapper profile-card-wrapper affix">
-               <div class="card profile-card">
-                  <span class="profile-pic-container">
-                     <div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100" alt="Ashutosh Sundresh" src="https://i.imgur.com/EM8Tz8U.jpg" itemprop="image"/></div>
-                     <div class="name-and-profession text-center">
-                        <h3 itemprop="name"><b>Ashutosh Sundresh</b></h3>
-                        <h5 class="text-light" itemprop="jobTitle">ShapeShiftOS Founder | XDA Recognized Developer | SOF AES Winner | PLO Finalist and Camper | Class 10 Boards State Topper</h5>
+   <body>
+      <div id="___gatsby">
+         <div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper">
+            <div class="container-module--container--1sq6u">
+               <header class="header-module--bar--0VxZy">
+                  <div class="header-module--logo--y97xu"><a href="index.html">Ashutosh Sundresh</a></div>
+                  <nav class="header-module--menu--MFCcM ">
+                     <div class="header-module--exit--EArDu">
+                        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" class="svg-inline--fa fa-times " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" styles="[object Object]">
+                           <path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
+                        </svg>
                      </div>
-                  </span>
-                  <hr/>
-                  <div class="contact-details clearfix">
-                     <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">Surajkund, Faridabad, India, IND, 121009</span></div>
-                     <div class="detail"><span class="icon"><i class="icon fs-lg icon-mail"></i></span><span class="info"><a class="link-disguise" href="mailto:ashutoshsundresh@gmail.com" itemprop="email">ashutoshsundresh@gmail.com</a></span></div>
-                     <div class="detail"><span class="icon" title="Languages I speak"><i class="icon fs-lg icon-language"></i></span><span class="info">English (TOEFL iBT 119/120), French (B1 Diploma), Hindi (Native), Tamil (Native)</span></div>
+
+                  </nav>
+               </header>
+               <main class="content-module--content--UHy8y">
+                  <div class="about-module--about--Um+LS">
+                     <section class="about-module--profile--D-OzZ">
+                        <div class="about-module--dots--szbII">
+                           <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained">
+                              <div style="max-width:500px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;500&#x27; width=&#x27;500&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div>
+                              <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.imgur.com/5JQOZy4.png" alt=""/>
+                              <script type="module">const t="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;if(t){const t=document.querySelectorAll("img[data-main-image]");for(let e of t){e.dataset.src&&(e.setAttribute("src",e.dataset.src),e.removeAttribute("data-src")),e.dataset.srcset&&(e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset"));const t=e.parentNode.querySelectorAll("source[data-srcset]");for(let e of t)e.setAttribute("srcset",e.dataset.srcset),e.removeAttribute("data-srcset");e.complete&&(e.style.opacity=1)}}</script>
+                           </div>
+                        </div>
+                     </section>
+                     <section class="about-module--details--8l4aO">
+                        <div class="intro-module--intro--soq61">
+                           <h3>Hi, I'm Ashutosh Sundresh</h3>
+                           <p class="intro-module--description--3dd62">I am a high schooler planning to major in Computer Science interested in open-source development, operating systems, computational linguistics, and design.</p>
+                           <p class="about-module--paragraph--nl8sC">Aside from computer science, I play the piano, study mathematics through competitive programming, participate in MUNs, learn foreign languages, and play badminton and roller hockey.</p>
+                        <div class="index-module--cta--Yi6O8">
+                           <button class="button-module--button--BvGZT"><a><a href="mailto:ashutoshsundresh@gmail.com">Contact me</a></a></button>
+                           <div class="index-module--icons--LC+yQ">
+                              <a class="index-module--link--nqUXd" href="https://github.com/ashutoshsundresh" rel="noreferrer" target="_blank">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                    <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                                 </svg>
+                              </a>
+                              <a class="index-module--link--nqUXd" href="https://www.linkedin.com/in/ashutosh-sundresh-763021221" rel="noreferrer" target="_blank">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                                 </svg>
+                              </a>
+                           </div>
+                        </div>
+                     </section>
+
                   </div>
-                  <hr class="hrtransparent"/>
-                  <div class="social-links text-center">
-                     <div><a class="fs-2x social-link link-github icon-github" href="https://www.github.com/AshutoshSundresh/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on Github"></a><a class="fs-2x social-link link-instagram icon-instagram" href="https://www.instagram.com/00fritez/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on Instagram"></a><a class="fs-2x social-link link-linkedin icon-linkedin" href="https://www.linkedin.com/in/ashutosh-sundresh-763021221/" target="_blank" data-toggle="tooltip" title="Ashutosh Sundresh on LinkedIn"></a></div>
-                  </div>
-               </div>
-            </section>
-            <section class="col-md-9 card-wrapper pull-right">
-               <div class="card background-card">
-                  <h4 class="text-uppercase">Background</h4>
-                  <hr class="hrtransparent"/>
-                  <div class="background-details">
-                     <div class="detail" id="about">
-                        <div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">About</h4>
-                           <div class="">
-                              <div class="content mop-wrapper" itemprop="description">
-                                 <p>I am a high school student at Shiv Nadar School Faridabad, a computer science enthusiast as well as an open-source developer. I have been involved in various open-source projects for the past several years, such as developing an Android-based operating system, creating Android device-specific frameworks, building Alexa skills and web apps, and more. My GitHub profile has more of my work and contributions to the open-source community. As the founder of ShapeShiftOS, I've earned recognition as an XDA Recognized Developer, and have mentored other developers and ensured compliance with open-source licenses. </p>
-                                 <p>My passion for open-source development is matched by my interest in natural language processing (NLP) and linguistics, which I have explored through attending the Indian Linguistics Olympiad Camp, designing interaction models for Alexa skills, and studying constructed languages on ConWorkShop and other forums on the Internet.</p>
-                                 <p>I have also excelled in various Olympiads, both national and international, in subjects such as mathematics, linguistics, and chemistry, with several notable awards such as representing India at the Asia Pacific Linguistics Olympiad (APLO) and the SOF Academic Excellence Scholarship for being among the top 0.005% of students who appeared for the SOF Olympiads in 2020-21. </p>
-                                 <p>I have been actively involved in Model United Nations (MUN) conferences, both as a delegate and as a Secretariat member. I have held leadership positions such as the MUN Secretary of the School Council twice, the Secretary General of the Shiv Nadar School Faridabad MUN 2023, the Head of Delegate Affairs for the Shiv Nadar School Faridabad MUN 2022, and have received commendations at 7 MUNs.</p>
+               </main>
+               <main class="content-module--content--UHy8y">
+                  <ul class="projects-module--projects--+sXDR">
+                     <li>
+                        <a href="https://shapeshiftos.com" target="_blank" rel="noreferrer">
+                           <div class="projects-module--dots---505i">
+                              <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
+                                 <div style="max-width:3840px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;2400&#x27; width=&#x27;3840&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div>
+                                 <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.imgur.com/LOVUK1E.png" alt=""/>                              </div>
+                           </div>
+                        </a>
+                        <div class="projects-module--description--scIxw">
+                           <h3>ShapeShiftOS</h3>
+                           <p>An open-source Android-based mobile operating system I created and maintain since 2020. Authored features include color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, etc. 150k+ downloads from 160+ countries, 50+ stars on GitHub.</p>
+                           <button class="button-module--button--BvGZT">
+                              <a href="https://shapeshiftos.com" target="_blank" rel="noreferrer">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                 </svg>
+                                 View Project
+                              </a>
+                           </button>
+                        </div>
+                     </li>
+                     <li>
+                        <a href="archive.html" target="_blank" rel="noreferrer">
+                           <div class="projects-module--dots---505i">
+                              <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
+                                 <div style="max-width:1920px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;1200&#x27; width=&#x27;1920&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div>
+                                 <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.imgur.com/slb5zIj.png" alt=""/>
                               </div>
                            </div>
+                        </a>
+                        <div class="projects-module--description--scIxw">
+                           <h3>High School Archive</h3>
+                           <p>A list of my projects, awards, extracurriculars, and academics during my high school journey.</p>
+                           <button class="button-module--button--BvGZT">
+                              <a href="archive.html" target="_blank" rel="noreferrer">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                 </svg>
+                                 View Site
+                              </a>
+                           </button>
                         </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="projects-experience">
-                        <div class="icon"><i class="fs-lg icon-code"></i><span class="mobile-title">Projects Experience</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Projects Experience</h4>
-                           <ul class="list-unstyled clear-margin">
-                              <li class="">
-                                 <div class="content">
-                                    <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip" title="Currently Working" data-placement="left"></i><a href="https://github.com/ShapeShiftOS" target="_blank"><strong>ShapeShiftOS</strong></a></p>
-                                    <p class="text-light"><small><span class="space-right">March, 2020 - Present</span></small></p>
-                                    <div class="mop-wrapper space-bottom">
-                                       <p>An open-source Android-based mobile operating system with a unique customizable user interface and convenient features (including <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/d2ff9f4b76b55bcc0fbd194a23f8f639654d6c07">Google Lens screenshot integration</a>, <a href="https://github.com/ShapeShiftOS/android_packages_apps_ShapeShifter/commit/53d74efc3ab0946353c0c47999b08263b73e6a3e">color palette-based system theming</a>, framework for in-screen fingerprint scanner icons and animations, <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/a77b75133466772c8ba4b9b3f418b4056623c281">QR code scanner tile with history</a>, <a href="https://github.com/ShapeShiftOS/android_frameworks_base/commit/4bc8e2d2ecbf4fd1d5e2510804ff0844fbfc7c4a">redesigned lock screen clock with a variable font weight</a>). Founder of organization and leading development for over 3 years.</p>
-                                    </div>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Over 150,000 recorded downloads from 160+ countries on <a href="https://sourceforge.net/projects/shapeshiftos/files/stats/map?dates=2020-05-16%20to%202023-05-28">SourceForge</a> (<a href="https://sourceforge.net/about/project_awards">Open Source Excellence award </a>on SourceForge - the highest award)</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>50+ total stars on <a href="https://github.com/ShapeShiftOS/android_manifest">GitHub</a></p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>150+ USD in voluntary donations</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>3000+ member community built on Telegram</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Built <a href="https://shapeshiftos.com">open-source project website</a> with a vintage aesthetic</p>
-                                       </li>     
-                                       <li class="mop-wrapper">
-                                          <p>Reviewed positively by multiple tech YouTubers and bloggers (multiple videos with 5000+ views where all reviews were voluntary)</p>
-                                       </li>              
-                                    </ul>
-                                 </div>
-                              </li>
-                              <hr>
-                              <li class="">
-                                 <div class="content">
-                                    <p class="clear-margin relative"><a href="https://github.com/munresearch/munresearch.github.io" target="_blank"><strong>MUN Research Engine</strong></a></p>
-                                    <p class="text-light"><small><span class="space-right">December, 2022 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 20 days</span></small></p>
-                                    <div class="mop-wrapper space-bottom">
-                                       <p>An open-source MUN research web application that can help delegates around the world jumpstart their MUN research. Shared with the school MUN club and local MUN circuit with positive feedback.</p>
-                                    </div>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Uses Google Search APl to fetch information from core.ac.uk, Reuters, and the UN website</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Constructs a flag emoji for a country using code, as well as fetches information about the country from the World Bank API</p>
-                                       </li>                                       
-                                    </ul>                                    
-                                 </div>
-                              </li>
-                              <hr>
-                              <li class="">
-                                 <div class="content">
-                                    <p class="clear-margin relative"><a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank"><strong>Shiv Nadar School Faridabad MUN 2022/2023 Website</strong></a></p>
-                                    <p class="text-light"><small><span class="space-right">July, 2022 - August, 2022 and May, 2023 - June, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
-                                    <div class="mop-wrapper space-bottom">
-                                       <p>An open-source MUN conference website from scratch using HTML, CSS, and JavaScript that was used by everyone participating in the conferences in 2022 and 2023. Includes information about the MUN, registrations, agendas for each committee, important documents, and a gallery.</p>
-                                    </div>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Used by approximately 300 delegates who attended both conferences</p>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <hr>
-                              <li class="">
-                                 <div class="content">
-                                    <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank"><strong>Food Menu Alexa Skill</strong></a></p>
-                                    <p class="text-light"><small><span class="space-right">December, 2021 - February, 2022</span><span><i class="icon-clock mr-5"></i>Developed over 2 months</span></small></p>
-                                    <div class="mop-wrapper space-bottom">
-                                       <p>An open-source Node.js code for an Alexa skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes a comprehensive voice interaction model trained over 1 week.</p>
-                                    </div>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Won "Best Showcase of STEAM" at Shiv Nadar School Soulfest 2022</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Published on <a href="https://www.amazon.com/Shiv-Nadar-School-Faridabad-Food/dp/B09Q2Z1CBW/">Amazon Store</a></p>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </li>
-                              <hr>
-                              <li class="">
-                                 <div class="content">
-                                    <p class="clear-margin relative"><a href="https://github.com/AshutoshSundresh/organization-starS" target="_blank"><strong>Organization Stars SVG</strong></a></p>
-                                    <p class="text-light"><small><span class="space-right">April, 2023 - May, 2023</span><span><i class="icon-clock mr-5"></i>Developed over 4 days</span></small></p>
-                                    <div class="mop-wrapper space-bottom">
-                                       <p>An open-source Flask Web Application called Organization Stars SVG that generates an SVG image showing the total number of stars for a given GitHub organization. It can be used to showcase the popularity of an organization on a README file or similar.</p>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="education">
-                        <div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Education</h4>
-                           <div class="content">
-                              <ul class="list-unstyled clear-margin">
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin relative"><strong>Faridabad, Grade 10 to 12,&nbsp;</strong>Shiv Nadar School</p>
-                                       <p class="text-light"><small>April, 2021 - May, 2024</small></p>
-                                       <ul>
-                                          <li class="mop-wrapper">
-                                             <p>Class Rank 1/39</p>
-                                          </li>
-                                          <li class="mop-wrapper">
-                                             <p>95% tuition scholarship for Grade 11 and 12 for performance in Grade 10 boards</p>
-                                          </li>
-                                          <li class="mop-wrapper">
-                                             <p>Appeared on several local news sites for performance in Class 10 boards</p>
-                                          </li>
-                                          <li class="mop-wrapper">
-                                             <p>94% in Class 11, 99.2% in Class 10</p>
-                                          </li>
-                                       </ul>
-                                       <i></i>
-                                       <div class="space-top labels">
-                                          <span class="label label-keyword">
-                                             <p>Physics</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Chemistry</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Standard Mathematics</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Computer Science</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>English</p>
-                                          </span>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin relative"><strong>Faridabad, Grade 11 to 12,&nbsp;</strong>CollegeBoard Examinations</p>
-                                       <p class="text-light"><small>April, 2022 - May, 2024</small></p>
-                                       <ul>
-                                          <li class="mop-wrapper">
-                                             <p>SAT Score: 1580 (800 Mathematics, 780 Writing and Reading)</p>
-                                          </li>
-                                          <li class="mop-wrapper">
-                                             <p>All APs are self-studied</p>
-                                          </li>
-                                       </ul>
-                                       <i></i>
-                                       <div class="space-top labels">
-                                          <span class="label label-keyword">
-                                             <p>Computer Science A - 5</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Physics 1: Algebra Based - 4</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Statistics - 4</p>
-                                          </span>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin relative"><strong>Pune, Grade 8 and 9,&nbsp;</strong>Elpro International School</p>
-                                       <p class="text-light"><small>June, 2019 - April, 2021</small></p>
-                                       <ul>
-                                          <li class="mop-wrapper">
-                                             <p>Top 1% of class</p>
-                                          </li>
-                                          <li class="mop-wrapper">
-                                             <p>98% in Grade 9, 97% in Grade 8</p>
-                                          </li>
-                                       </ul>
-                                       <i></i>
-                                       <div class="space-top labels">
-                                          <span class="label label-keyword">
-                                             <p>Science</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Social Studies</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Mathematics</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>English</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>French</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Hindi</p>
-                                          </span>
-                                          <span class="label label-keyword">
-                                             <p>Computer Science</p>
-                                          </span>
-                                       </div>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="awards">
-                        <div class="icon"><i class="fs-lg icon-trophy"></i><span class="mobile-title">Awards</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Awards</h4>
-                           <div class="content">
-                              <ul class="list-unstyled clear-margin"> 
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>National Economics Olympiad (NEO) </strong>,&nbsp;Shri Ram College of Commerce, University of Delhi</p>
-                                       <p class="text-light"><small>Awarded on: December 3, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Completed at National Rank 226 in the final round. Qualified to attend the finals after placing in the top 500 in the 12th-grade category out of 6500+ total test-takers in the preliminary round.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>                                 
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Southeast Asian Mathematical Olympiad (SEAMO) </strong>,&nbsp;SEAMO, Singapore</p>
-                                       <p class="text-light"><small>Awarded on: November 12, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won a bronze medal and completed at All India Rank 6 in the national round. Invited to participate in the SEAMO X final round in Singapore as a part of the Champions Division.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>                                   
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Fermat Mathematical Olympiad (FMO) </strong>,&nbsp;Fermat Education, Vietnam</p>
-                                       <p class="text-light"><small>Awarded on: October 28, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won a silver medal and completed at All India Rank 7 in the national round. Invited to participate in the final round.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>                                   
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Asia Science and Maths Olympiad (ASMO) </strong>,&nbsp;Olympic Edu Sdn Bhd, Malaysia</p>
-                                       <p class="text-light"><small>Awarded on: October 27, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won 2 gold medals in Science and English, and a silver medal in Maths in the national round. Invited to participate in the final round of all three in Malaysia.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>  
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Maths Day 2023 </strong>,&nbsp;Department of Mathematics, Shiv Nadar University</p>
-                                       <p class="text-light"><small>Awarded on: October 27, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won a gold medal by securing first place in the interschool maths quiz held at the Maths Day event.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>  
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Philippine International Math and Science Olympics (PIMSO) </strong>,&nbsp;International Champions in Education</p>
-                                       <p class="text-light"><small>Awarded on: October 19, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won gold medals in both Science and Math in the national round (All India Rank 1 in both). Invited to participate in the final round of both in the Philippines.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>                                 
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Neerja Modi Mathelogics Symposium Edition 2 </strong>,&nbsp;Neerja Modi School, Jaipur </p>
-                                       <p class="text-light"><small>Awarded on: July 26, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won first place out of around 160 participants in the paper submission round of the mathematics symposium for research analyzing the application of chaos theory on the dynamics of traffic congestion.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Hong Kong International Mathematical Olympiad (HKIMO) </strong>,&nbsp;Olympiad Champion Education Centre (OCEC) </p>
-                                       <p class="text-light"><small>Awarded on: June 17, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won a bronze medal in the final round with All India Rank 7 as a part of the Indian delegation. Won a silver medal in the heats round with All India Rank 21 (national selection round).</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Panini Linguistics Olympiad Finalists' Camp </strong>,&nbsp;International Institute of Information Technology (IIIT), Hyderabad </p>
-                                       <p class="text-light"><small>Completed on: June 3, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Attended 5-day camp in IIIT Hyderabad for top 30 open round participants in the country. Covered topics such as semantics, scripts, phonology, phonetics, number systems, computational linguistics, morphology, sociolinguistics, and typology taught by IIIT linguistics professors, and guest professors &amp; researchers.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Atlas Semi-Finalist </strong>,&nbsp;Atlas Fellowship </p>
-                                       <p class="text-light"><small>Awarded on: May 23, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won the book "Probability Theory: The Logic of Science" (worth 100 GBP) by Edwin Thompson Jaynes for free from the Atlas Library for completing Stage 2 of the Atlas Fellowship application.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Panini Linguistics Olympiad Open Round </strong>,&nbsp;International Institute of Information Technology (IIIT), Hyderabad </p>
-                                       <p class="text-light"><small>Awarded on: April 10, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Invited to attend the National Finalists' Camp at IIIT, Hyderabad. Cleared the open round for being in the top 30 in India and qualified to be a part of the Indian delegation to Asia Pacific Linguistics Olympiad.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Techkriti Open School (TOSC) Championship Invitational Round </strong>,&nbsp;Indian Institute of Technology (IIT), Kanpur </p>
-                                       <p class="text-light"><small>Awarded on: January 27, 2023</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Placed Rank 14 out of over 1300 total participants, and was part of the 80 people invited to IIT Kanpur for the invitational round. TOSC is a test on puzzles, mental ability and aptitude.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Open Source Excellence </strong>,&nbsp;SourceForge</p>
-                                       <p class="text-light"><small>Awarded on: March, 2022</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Awarded with the <a href="https://sourceforge.net/about/project_awards">highest level</a> of award on SourceForge for ShapeShiftOS' popularity and user engagement, specifically for surpassing 100,000 total downloads. Possessed by approximately 2000 projects out of the 500,000+ projects (as of 2023) hosted on the website, which includes commercial and professional software.</p>
-                                       </div>
-                                    </div>
-                                 </li>                                 
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Silverzone Private Olympiad Awards </strong>,&nbsp;Silverzone Olympiads</p>
-                                       <p class="text-light"><small>Awarded on: February 12, 2022</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>International Rank 3 in English and International Rank 24 in Informatics, State Rank 4 in Social Studies, State Rank 41 in Science and State Rank 98 in Mathematics. Won 2500 INR in total cash prize.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>ASSET Outstanding Performance </strong>,&nbsp;Educational Initiatives</p>
-                                       <p class="text-light"><small>Awarded on: January 28, 2022</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>99th percentile in all offered tests countrywide, with a perfect score in Social Studies and English, and a 97% in Science and 96% in Mathematics. Performance displayed on <a href="https://shivnadarschool.edu.in/asset-2021">school blog</a></p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>SOF Private Olympiad Awards </strong>,&nbsp;Science Olympiad Foundation </p>
-                                       <p class="text-light"><small>Awarded on: January 13, 2022</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Grade 10: Achieved international ranks of 9th in Social Studies and 26th in Cyber, along with zonal ranks of 29th in General Knowledge and 55th in English, winning a total cash prize of 1000 INR; actively participated in SOF contests since Grade 2, consistently securing top 50 zonal ranks and multiple top 5 international ranks, including international 3rd in Cyber in 2018.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>French Word Power and Concours Romain Rolland B1 National Level </strong>,&nbsp;Prayatna Educational Society </p>
-                                       <p class="text-light"><small>Awarded on: December 15, 2021</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Attained 4th place with a perfect score of 100% in French Word Power, and secured 9th place with a commendable score of 96% in the Concours Romain Rolland among 1000+ participants all over India at the B1 National Level in both. (Attended both exams after clearing a cutoff in the State Level)</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>National Entrepreneurship Olympiad </strong>,&nbsp;Indian Institute of Technology Bombay E-Cell</p>
-                                       <p class="text-light"><small>Awarded on: October 31, 2021</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Attained the 22nd position in the All India rankings among 1000+ participants.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>SOF Academic Excellence Scholarship (AES) </strong>,&nbsp;Science Olympiad Foundation</p>
-                                       <p class="text-light"><small>Awarded on: May 31, 2021</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Received the prestigious SOF AES award for being among the top 208 students across all grades nationwide out of 5 million participants; was the Grade 9 SOF AES award recipient in the Maharashtra-Goa zone; achieved zonal top 20 awards in English, Mathematics, Science, and an International Rank 11 in General Knowledge; won 5000 INR cash prize, trophy, and citation for being an AES awardee. Website: <a href="https://web.archive.org/web/20210728230407/https://sofworld.org/aes-winners-2020-21">2020-21 SOF Academic Excellence Scholarship Awardees List</a> </p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>LogIQids Final Stage Topper </strong>,&nbsp;LogIQids</p>
-                                       <p class="text-light"><small>Awarded on: April 27, 2021</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won international rank 10 out of 21569 participants in the Final Stage. It is a test on analytical skills, mental aptitude, verbal reasoning, critical thinking, and problem solving.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>National Assessment for Scientific Temperament and Aptitude </strong>,&nbsp;Council of Scientific &amp; Industrial Research - National Institute of Science Communication and Policy Research</p>
-                                       <p class="text-light"><small>Awarded on: March 31, 2020</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Won State Rank 1 in Maharashtra. Website: <a href="https://kamp.res.in/kamp-topper">https://kamp.res.in/kamp-topper</a> </p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Spell Bee District Level Round 3 </strong>,&nbsp;Brainstormm Spell Bee</p>
-                                       <p class="text-light"><small>Awarded on: December 30, 2019</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Achieved the position of State Rank 2 in Maharashtra for performance in the final round after clearing two preliminary rounds.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Australian National Chemistry Quiz </strong>,&nbsp;Royal Australian Chemical Institute</p>
-                                       <p class="text-light"><small>Awarded on: October 30, 2019</small></p>
-                                       <div class="mop-wrapper">
-                                          <p>Awarded High Distinction for attaining a score of 27/30.</p>
-                                       </div>
-                                    </div>
-                                 </li>
-                                 <hr>
-                                 <li class="">
-                                    <div class="content">
-                                       <p class="clear-margin" itemprop="award"><strong>Telangana Math Bee Stage 3 Category 3 </strong>,&nbsp;Sakshi TV </p>
-                                       <p class="text-light"><small>Awarded on: March 25, 2018</small></p>
-                                       <div class="mop-wrapper">
-                                          <p><a href="https://youtu.be/FC03mpWc94o?t=657">Appeared on television</a> for the 3rd Round of Category 3 Sakshi TV Telangana Math Bee. Ranked in the top 15 in Telangana, advanced to TV appearance after successfully clearing two preliminary rounds with 1000+ participants. Website: <a href="https://www.arenaoneschoolfest.com/index.php?page=Results&pageid=13&subpageid=52&subsubpageid=55">Sakshi TV Math Bee Finalists 2017 </a></p>
-                                       </div>
-                                    </div>
-                                 </li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="extracurriculars">
-                        <div class="icon"><i class="fs-lg icon-book"></i><span class="mobile-title">Extracurriculars</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Extracurriculars</h4>
-                           <ul class="list-unstyled clear-margin">
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><a href="https://forum.xda-developers.com/m/ashutosh-sundresh.7730292/" target="_blank"><strong>XDA Recognized Developer</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Title given on: September 1, 2021</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>1 of 300 Recognized Developers out of the 11 million users on the XDA online forum for Android Development, given to developers with "a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns." Website: <a href="https://forum.xda-developers.com/m/?key=Recognized_Developers">List of Recognized Developers on XDA Forums ranked based on number of posts </a></p>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Youngest person possessing the title of XDA Recognized Developer as of 2023</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>One of less than five teenagers to be honored with being an XDA Recognized Developer as of 2023</p>
-                                       </li>
-                                    </ul>                                    
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><a href="https://github.com/AshutoshSundresh/" target="_blank"><strong>Active Contributor on GitHub</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Account created on: March 3, 2020</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Over 3500 total commits and 1500 total contributions mainly focused on Android Platform Development, web development and Qualcomm Device Android Development, including two merged pull requests to an official Google repository for fixing compilation using Make build system: <a href="https://github.com/material-components/material-components-android/commits?author=AshutoshSundresh">Contributions by Ashutosh Sundresh to Google's material-components-android</a></a></p>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Research on <a href="https://www.ijsr.net/getabstract.php?paperid=MR23830183842" target="_blank">"Unveiling Complex Traffic Patterns: Applying Chaos Theory to Understand Non-linear Dynamics in Congestion"</a></strong></p>
-                                 <p class="text-light"><small><span class="space-right">Paper completed on: July 26, 2023</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>The paper specifically tackles the question "How can chaos theory be applied to understand and analyze the dynamics of traffic congestion, and what insights can be gained to mitigate and manage congestion in real-life scenarios?"</p>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Won first place in the paper submission round during the Neerja Modi Mathelogics Symposium Edition 2, which featured approximately 160 participants</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>The presentation, paper, code, and simulations, are open-source on <a href="https://www.github.com/fireambulance/SinusoidalGraphsAndSyntheticTrafficData">GitHub</a></p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>The paper is published in the International Journal of Science and Research in Volume 12 Issue 9, September 2023</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>It is also on <a href="https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion">academia.edu</a></p>
-                                       </li>
-                                    </ul>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Manav Rachna International Institute of Research and Studies Cyber Security Internship</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">13th June, 2022 to 17th June, 2022 and 27th June, 2022 to 1st July, 2022</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Interned for Cyber Security at Manav Rachna International Institute of Research and Studies (MRIIRS) in June-July 2022 for 2 weeks under Dr. Charu Virmani, learning penetration testing, cybersecurity, and hands-on attacks taught in the first year of B.Tech (CSE).</p>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Using different tools for penetration testing to evaluate security</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Intercepting Wi-Fi packets through packet sniffing</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Hands-on work on how phishing and DDoS attacks are performed</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Building basic viruses using the Metasploit framework</p>
-                                       </li>                                       
-                                    </ul>                                    
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Model United Nations Leadership</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Active from July 5, 2021</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Elected as the MUN Secretary of the School Council by the Student Body twice (part of the 30-member student council with students from across high school), for the 2022-23 and 2023-24 sessions. Was the Secretary General (chief operating officer and chief of staff) for the Shiv Nadar School Faridabad MUN 2023. Was also a part of the Secretariat as Head of Delegate Affairs for the Shiv Nadar School Faridabad MUN 2022. Was a part of 5 Secretariat members in both years. Made significant contributions to the school's MUN conference by working as part of the Secretariat.</p>
-                                    <ul>
-                                       <li class="mop-wrapper">
-                                          <p>Managed external delegations from all over the Delhi NCR region, including relations with MUN coordinators from different schools. Brought in 250 participating delegates as a part of the Secretariat in 2023</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Handled web development, including registrations, schedules, important documentation, and the online gallery as part of the Secretariat in both 2022 and 2023</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Handled large delegations from Shiv Nadar School to other MUNs in the Delhi NCR region</p>
-                                       </li>
-                                       <li class="mop-wrapper">
-                                          <p>Designed the <a href="https://snsfmun.github.io">conference website for 2022 and 2023, with full history on GitHub</a></p>
-                                       </li>                                       
-                                    </ul>   
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Anchoring Events at School</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">November, 2021 to April, 2023</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Had a fireside chat with Shikhar Malhotra (CEO of HCL Healthcare) for 1 hour about education, entrepreneurship, sports, and his personal life. Also anchored other multiple large events at school as a speaker, commentator and host. Anchored events include Annual Day, Sports Day, Investiture Ceremony, and Educational ITER Bootcamp on "Women in STEM".  Audience size was typically around 400 people with national sports personalities, CEOs, ITER scientists and other special guests.</p>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Model United Nations as a Delegate</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">First MUN on: October 5, 2017</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Engaged in seven Model United Nations Conferences, demonstrating exceptional research skills and diplomacy. Received recognition as the Best Researched Delegate (Top 3/25) at Enlighten MUN Pune 2019, and received a Special Commendation (Top 10/60) at Chirec Junior MUN Hyderabad 2017. Additionally, achieved five Verbal Commendations, at Kothari International School MUN Noida 2023 (Rank 5/35), Dynamic Training MUN Pune 2019 (Top 10/50), Global Indian International School Chinchwad MUN Pune 2019 (Top 5/15), Rockwell MUN Hyderabad 2018 (Top 12/60), and Chirec Junior MUN Hyderabad 2018 (Top 5/15).</p>
-                                 </div>
-                              </div>
-                           </li>
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="certificates">
-                        <div class="icon"><i class="fs-lg icon-profile"></i><span class="mobile-title">Certificates</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Certificates</h4>
-                           <ul class="list-unstyled clear-margin">
-                            <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>TOEFL iBT</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Obtained on: June, 2023</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Scored 119/120 on the TOEFL iBT with 30/30 Reading, 30/30 Listening, 29/30 Speaking and 30/30 Writing.</p>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>DELF B1 French Certification</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Obtained on: March, 2023</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Obtained the DELF B1 diploma after a 3-hour examination consisting of a spoken interview, a writing task, and a reading/grammar section. At level B1, the user becomes independent (equivalent to the Common European Framework of Reference for Languages B1 Level) and this level is required to obtain French citizenship.</p>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>Trinity College of London Music Diploma</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Started on: September, 2017</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Completed Grade 2, holding a Certificate of Distinction in Classical Piano and Jazz, along with Music Theory. Earned a perfect score on the Grade 1 and Grade 2 Music Theory examination.</p>
-                                 </div>
-                              </div>
-                           </li>
-                           <hr>
-                           <li class="">
-                              <div class="content">
-                                 <p class="clear-margin relative"></i><strong>International Taekwondo Federation Belts</strong></a></p>
-                                 <p class="text-light"><small><span class="space-right">Last belt attained on: November, 2016</span></small></p>
-                                 <div class="mop-wrapper space-bottom">
-                                    <p>Currently at the 4th Kup level in Taekwondo, signifying proficiency and skill as the 4th highest color belt, equivalent to the Blue Belt.</p>
-                                 </div>
-                              </div>
-                           </li>
-                        </div>
-                     </div>
-                     <hr>
-                     <div class="detail" id="interests">
-                        <div class="icon"><i class="fs-lg icon-heart"></i><span class="mobile-title">Interests</span></div>
-                        <div class="info">
-                           <h4 class="title text-uppercase">Interests</h4>
-                           <div class="content">
-                              <i></i>
-                              <div class="space-top labels">
-                                 <span class="label label-keyword">
-                                    <p>Open-Source Projects</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>UI Design</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>Linguistics</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>Competitive Programming</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>Chess</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>Piano</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>MUN</p>
-                                 </span>
-                                 <span class="label label-keyword">
-                                    <p>Tennis</p>
-                                 </span>
+                     </li>
+                     <li>
+                        <a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank" rel="noreferrer">
+                           <div class="projects-module--dots---505i">
+                              <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
+                                 <div style="max-width:1920px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;1200&#x27; width=&#x27;1920&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div>
+                                 <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.imgur.com/ewl4OMd.png" alt=""/>
                               </div>
                            </div>
+                        </a>
+                        <div class="projects-module--description--scIxw">
+                           <h3>SNSFMUN Conference Website</h3>
+                           <p>An open-source MUN conference website built from scratch using HTML, CSS, and JavaScript that was used by approximately 300 delegates participating in the conferences in 2022 and 2023. Includes information about the MUN, registrations, agendas for each committee, important documents, and a gallery.
+</p>
+                           <button class="button-module--button--BvGZT">
+                              <a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank" rel="noreferrer">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                 </svg>
+                                 View Project on GitHub
+                              </a>
+                           </button>
                         </div>
-                     </div>
-                  </div>
-                  <hr class="hrtransparent">
-               </div>
-            </section>
+                     </li>
+                     <li>
+                        <a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank" rel="noreferrer">
+                           <div class="projects-module--dots---505i">
+                              <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
+                                 <div style="max-width:3840px;display:block"><img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;2400&#x27; width=&#x27;3840&#x27; xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static"/></div>
+                                 <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.imgur.com/GhsuTUs.png" alt=""/>        
+                             </div>
+                           </div>
+                        </a>
+                        <div class="projects-module--description--scIxw">
+                           <h3>Shiv Nadar School Faridabad Food Menu Alexa Skill</h3>
+                           <p>An Amazone Store published open-source Node.js code for an Alexa skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes a comprehensive voice interaction model trained over 1 week. Won "Best Showcase of STEAM" at Shiv Nadar School Soulfest 2022.</p>
+                           <button class="button-module--button--BvGZT">
+                              <a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank" rel="noreferrer">
+                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+                                 </svg>
+                                 View Project on GitHub
+                              </a>
+                           </button>
+                        </div>
+                     </li>
+                  </ul>
+               </main>
+
+            </div>
          </div>
+         <div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div>
       </div>
-      <script src="ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script><script>$(function () {
-         var toggleFloatingMenu = function() {
-           $( '.js-floating-nav' ).toggleClass( 'is-visible' );
-           $( '.js-floating-nav-trigger' ).toggleClass( 'is-open' );
-         };
-         
-         $( ".background-card" ).css( "min-height", window.screen.availHeight + "px" );
-         $( "[data-toggle=tooltip]" ).tooltip();
-         $( '.js-floating-nav-trigger' ).on( 'click', function(e) {
-           e.preventDefault();
-           toggleFloatingMenu();
-         });
-         $( '.js-floating-nav a' ).on( 'click', toggleFloatingMenu );
-         
-         $("#remaining-profiles").on('show.bs.collapse', function() {
-           $( '.js-profiles-collapse > i' )
-             .removeClass( 'icon-chevron-down' )
-             .addClass( 'icon-chevron-up' );
-         });
-         // Function to check if the device is iPhone, iPad, or MacBook
-         function isAppleHandHeld() {
-         return /iPhone|iPad|Mac/.test(navigator.platform);
-         }
-         
-         // Function to check if the device is a MacBook
-         function isMacBook() {
-         const userAgent = navigator.userAgent.toLowerCase();
-         return userAgent.includes('macintosh');
-         }
-         
-         // Function to set background color and remove background image
-         function setDeviceBackgroundColor() {
-         if (isAppleHandHeld() || isMacBook()) {
-         document.body.style.backgroundImage = 'none';
-         document.body.style.backgroundColor = '#001933';
-         }
-         }
-         
-         // Call the function when the page finishes loading
-         window.onload = setDeviceBackgroundColor;
-         
-         $("#remaining-profiles").on('hidden.bs.collapse', function() {
-           $( '.js-profiles-collapse > i' )
-             .removeClass( 'icon-chevron-up' )
-             .addClass( 'icon-chevron-down' );
-         });
-         });
-      </script><script>WebFontConfig = {
-         google: { families: [ 'Lato:300,400,700:latin' ] }
-         };
-         (function() {
-         var wf = document.createElement('script');
-         wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-           '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-         wf.type = 'text/javascript';
-         wf.async = 'true';
-         var s = document.getElementsByTagName('script')[0];
-         s.parentNode.insertBefore(wf, s);
-         })();
-      </script>
+      <script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="index.html";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-bed2637b9c0761f4ada4.js"],"app":["/app-22f020205b91308c12ec.js"],"component---src-pages-404-js":["/component---src-pages-404-js-afd77b05b88ff00977ce.js"],"component---src-pages-about-js":["/component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js"],"component---src-pages-index-js":["/component---src-pages-index-js-ba85f52f74bd7f9fbaf2.js"],"component---src-pages-projects-js":["/component---src-pages-projects-js-954bb66b9cce49bad986.js"]};/*]]>*/</script><script src="../polyfill-bed2637b9c0761f4ada4.js" nomodule=""></script><script src="../component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js" async=""></script><script src="../commons-68b2598b005b5b06c96b.js" async=""></script><script src="../cb1608f2-c4d3d93be05d420e4e4e.js" async=""></script><script src="../app-22f020205b91308c12ec.js" async=""></script><script src="../framework-64bd70c70cac1373b18b.js" async=""></script><script src="../webpack-runtime-825d3899913683e414b1.js" async=""></script>
    </body>
 </html>
