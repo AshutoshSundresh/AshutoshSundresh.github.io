@@ -1839,7 +1839,7 @@
          
          // Call the function when the page finishes loading
          window.onload = setDeviceBackgroundColor;
-         if (document.body.clientWidth > 2500) {
+         if (screen.width > 2500) {
            viewport = document.querySelector("meta[name=viewport]");
            viewport.setAttribute('content', 'width=device-width, initial-scale=1.65');
          }         
