@@ -226,6 +226,30 @@
         right: -55.8px;
       }
 
+      .container {
+        display: inline-block;
+      }
+
+      .typed {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 0;
+        animation: typing;
+        animation-duration: 1.5s;
+        animation-timing-function: steps(30, end);
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0
+        }
+
+        to {
+          width: 100%
+        }
+      }
+
       p {
         line-height: 1.8rem;
         margin: 1.2rem 0
@@ -1648,7 +1672,7 @@
               </section>
               <section class="about-module--details--8l4aO">
                 <div class="intro-module--intro--soq61">
-                  <h3>Hi, I'm Ashutosh Sundresh</h3>
+                  <div class="container"><h3 class="typed">Hi, I'm Ashutosh Sundresh</h3></div>
                   <p class="intro-module--description--3dd62">I'm an undergraduate Computer Science student at UCLA Henry Samueli School of Engineering '28. I'm interested in operating systems design and development, open-source projects, mathematics, linguistics, natural language processing, and design.</p>
                   <p class="about-module--paragraph--nl8sC">I enjoy building projects on GitHub, creating designs on Figma, creating video games using RPGMakerXP, designing and building paper models, writing film reviews, and listening to music.</p>
                   <div class="index-module--cta--Yi6O8">
