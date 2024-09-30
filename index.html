@@ -1733,7 +1733,7 @@
         <div class="container-module--container--1sq6u">
           <main class="content-module--content--UHy8y">
             <div class="about-module--about--Um+LS">
-              <section class="about-module--profile--D-OzZ">
+              <section id="safari-delete-1" class="about-module--profile--D-OzZ">
                 <div class="about-module--dots--szbII">
                   <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained">
                     <div style="max-width:500px;display:block">
@@ -1815,7 +1815,7 @@
           <main class="content-module--content--UHy8ys">
             <ul class="projects-module--projects--+sXDR">
               <li>
-                <a href="archive.html" target="_blank" rel="noreferrer">
+                <a id="safari-delete" href="archive.html" target="_blank" rel="noreferrer">
                   <div class="projects-module--dots---505i">
                     <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
                       <div style="max-width:1920px;display:block">
@@ -1861,6 +1861,32 @@
         "component---src-pages-index-js": ["/component---src-pages-index-js-ba85f52f74bd7f9fbaf2.js"],
         "component---src-pages-projects-js": ["/component---src-pages-projects-js-954bb66b9cce49bad986.js"]
       }; /*]]>*/
+    </script>
+    <script>
+	function isSafari() {
+   	 return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+	}
+
+	function removeElementsInSafari() {
+ 	   if (isSafari()) {
+	        const selectorsToRemove = [
+ 	           '#safari-delete',
+ 	           '#safari-delete-1',
+ 	       ];
+	
+ 	       selectorsToRemove.forEach(selector => {
+ 	           const elements = document.querySelectorAll(selector);
+  	          elements.forEach(element => {
+  	              element.remove();
+  	          });
+  	      });
+	
+ 	       console.log('Removed incompatible elements for Safari');
+ 	   } 
+	}
+
+	// Call the function when the DOM is fully loaded
+	document.addEventListener('DOMContentLoaded', removeElementsInSafari);
     </script>
     <script src="../polyfill-bed2637b9c0761f4ada4.js" nomodule=""></script>
     <script src="../component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js" async=""></script>
