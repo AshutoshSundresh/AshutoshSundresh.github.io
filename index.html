@@ -675,12 +675,56 @@
 
     .profile-section {
             min-height: 100vh;
+            margin-bottom: 0.5cm; 
+            margin-top: -0.5cm;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 2rem;
             font-family: system-ui, -apple-system, sans-serif;
         }
+
+        @media only screen and (max-width:900px) {
+        .profile-section {
+            margin-bottom: 4cm; 
+            margin-top: 1cm;
+        } }
+
+        @media only screen and (max-width:600px) {
+        .profile-section {
+            margin-bottom: 4cm; 
+            margin-top: 3cm;
+        } }
+
+        @media only screen and (max-width:700px) {
+        .profile-section {
+            margin-bottom: 3cm; 
+            margin-top: 3cm;
+        } }
+
+        @media only screen and (min-width:370px) {
+        .profile-section {
+            margin-bottom: 5cm; 
+            margin-top: 3cm;
+        } }
+
+        @media only screen and (min-width:390px) {
+        .profile-section {
+            margin-bottom: 3cm; 
+            margin-top: 2cm;
+        } }
+
+        @media only screen and (min-width:410px) {
+        .profile-section {
+            margin-bottom: 2cm; 
+            margin-top: 0.5cm;
+        } }
+
+        @media only screen and (min-width:429px) {
+        .profile-section {
+            margin-bottom: 2cm; 
+            margin-top: 1cm;
+        } }
 
         .profile-container {
             max-width: 1200px;
@@ -2118,7 +2162,7 @@
         </ul>
       </header>
       <div class="container-module--container--1sq6u">
-        <div class="profile-section" style="margin-bottom: 1cm; margin-top: -1cm;">
+        <div class="profile-section">
           <div class="profile-container">
               <div class="profile-image-container">
                   <img src="https://i.ibb.co/BP4Mg9z/Screenshot-2024-06-09-134903.webp" alt="Ashutosh Sundresh" class="profile-image">
