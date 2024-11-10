@@ -675,8 +675,6 @@
 
     .profile-section {
             min-height: 100vh;
-            margin-bottom: 0.5cm; 
-            margin-top: -0.5cm;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -684,47 +682,47 @@
             font-family: system-ui, -apple-system, sans-serif;
         }
 
-        @media only screen and (max-width:900px) {
-        .profile-section {
-            margin-bottom: 4cm; 
-            margin-top: 1cm;
-        } }
+/* Large screens (default) */
+@media only screen and (min-width: 901px) {
+    .profile-section {
+        margin: 0.5rem auto;
+    }
+}
 
-        @media only screen and (max-width:600px) {
-        .profile-section {
-            margin-bottom: 4cm; 
-            margin-top: 3cm;
-        } }
+/* Medium screens */
+@media only screen and (max-width: 900px) {
+    .profile-section {
+        margin: 1cm 0 4cm 0;
+    }
+}
 
-        @media only screen and (max-width:700px) {
-        .profile-section {
-            margin-bottom: 3cm; 
-            margin-top: 3cm;
-        } }
+/* Small tablets */
+@media only screen and (max-width: 700px) {
+    .profile-section {
+        margin: 3cm 0;
+    }
+}
 
-        @media only screen and (min-width:370px) {
-        .profile-section {
-            margin-bottom: 5cm; 
-            margin-top: 3cm;
-        } }
+/* Large phones */
+@media only screen and (max-width: 600px) {
+    .profile-section {
+        margin: 3cm 0 4cm 0;
+    }
+}
 
-        @media only screen and (min-width:390px) {
-        .profile-section {
-            margin-bottom: 3cm; 
-            margin-top: 2cm;
-        } }
+/* Small phones */
+@media only screen and (max-width: 429px) {
+    .profile-section {
+        margin: 2cm 0;
+    }
+}
 
-        @media only screen and (min-width:410px) {
-        .profile-section {
-            margin-bottom: 2cm; 
-            margin-top: 0.5cm;
-        } }
-
-        @media only screen and (min-width:429px) {
-        .profile-section {
-            margin-bottom: 2cm; 
-            margin-top: 1cm;
-        } }
+/* Extra small phones */
+@media only screen and (max-width: 390px) {
+    .profile-section {
+        margin: 3cm 0 5cm 0;
+    }
+}
 
         .profile-container {
             max-width: 1200px;
