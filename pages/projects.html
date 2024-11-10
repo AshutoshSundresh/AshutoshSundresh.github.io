@@ -1,1897 +1,2192 @@
 <!DOCTYPE html>
 <html>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <head>
-    <meta charSet="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Ashutosh Sundresh - Projects</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
-    <style data-href="/styles.6712b1e64e592076c65d.css" data-identity="gatsby-global-css">
-      @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap);
-      @import url(https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap);
+<head>
+  <meta charSet="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Ashutosh Sundresh - Projects</title>
 
-      *,
-      :after,
-      :before {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0
+  <style data-href="/styles.6712b1e64e592076c65d.css" data-identity="gatsby-global-css">
+    @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&amp;display=swap);
+    @import url(https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap);
+
+    *,
+    :after,
+    :before {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    #___gatsby,
+    #gatsby-focus-wrapper,
+    body,
+    html {
+      height: 100%;
+      overflow-x: hidden
+    }
+
+    html {
+      background-size: 100% 100%;
+      background-position: 0px 0px;
+      background-image: linear-gradient(35deg, #031974FF 17%, #4D38B4FF 55%, #009298FF 94%);
+      margin-left: calc(100vw - 100%);
+      min-height: 100%
+    }
+
+    body {
+      color: #fbf7f1;
+      font-family: Roboto, arial;
+      font-size: large
+    }
+
+    .menu-bar {
+      border-radius: 25px;
+      height: fit-content;
+      display: inline-flex;
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      padding: 0 30px;
+      margin: 20px 0 0 0;
+
+      li {
+        list-style: none;
+        color: white;
+        font-family: sans-serif;
+        font-weight: bold;
+        padding: 12px 16px;
+        margin: 0 8px;
+        position: relative;
+        cursor: pointer;
+        white-space: nowrap;
+
+        &::before {
+          content: " ";
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -1;
+          transition: .2s;
+          border-radius: 25px;
+        }
+
+        &:hover {
+          &::before {
+            background: linear-gradient(to bottom, #e8edec, #d2d1d3);
+            box-shadow: 0px 3px 20px 0px black;
+            transform: scale(1.2);
+          }
+
+          color: black;
+        }
+      }
+    }
+
+    @media only screen and (min-width:1000px) {
+      .menu-bar {
+        margin: 20px 0 -19px 100px;
+      }
+    }
+
+    @media only screen and (max-width:1000px) {
+      .menu-bar {
+        margin: 20px 50px -19px 50px;
+      }
+    }
+
+    @media only screen and (min-width:1100px) {
+      .menu-bar {
+        margin: 20px 0 -19px 150px;
+      }
+    }
+
+    @media only screen and (min-width:1200px) {
+      .menu-bar {
+        margin: 20px 0 -19px 200px;
+      }
+    }
+
+    @media only screen and (min-width: 1300px) {
+      .menu-bar {
+        margin: 20px 0 -19px 250px;
+      }
+    }
+
+    @media only screen and (min-width: 1400px) {
+      .menu-bar {
+        margin: 20px 0 -19px 300px;
+      }
+    }
+
+    @media only screen and (min-width: 1500px) {
+      .menu-bar {
+        margin: 20px 0 -19px 350px;
+      }
+    }
+
+    @media only screen and (min-width: 1600px) {
+      .menu-bar {
+        margin: 20px 0 -19px 400px;
+      }
+    }
+
+    @media only screen and (min-width: 1700px) {
+      .menu-bar {
+        margin: 20px 0 -19px 450px;
+      }
+    }
+
+    @media only screen and (min-width: 1800px) {
+      .menu-bar {
+        margin: 20px 0 -19px 500px;
+      }
+    }
+
+    @media only screen and (min-width: 1900px) {
+      .menu-bar {
+        margin: 20px 0 -19px 550px;
+      }
+    }
+
+    @media only screen and (min-width: 2000px) {
+      .menu-bar {
+        margin: 20px 0 -19px 600px;
+      }
+    }
+
+    @media only screen and (min-width: 2100px) {
+      .menu-bar {
+        margin: 20px 0 -19px 650px;
+      }
+    }
+
+    @media only screen and (min-width: 2200px) {
+      .menu-bar {
+        margin: 20px 0 -19px 700px;
+      }
+    }
+
+    @media only screen and (min-width: 2300px) {
+      .menu-bar {
+        margin: 20px 0 -19px 750px;
+      }
+    }
+
+    @media only screen and (min-width: 2400px) {
+      .menu-bar {
+        margin: 20px 0 -19px 800px;
+      }
+    }
+
+    @media only screen and (min-width: 2500px) {
+      .menu-bar {
+        margin: 20px 0 -19px 850px;
+      }
+    }
+
+    @media only screen and (min-width: 2600px) {
+      .menu-bar {
+        margin: 20px 0 -19px 900px;
+      }
+    }
+
+    .project-card {
+      max-width: 1100px;
+      min-height: 400px;
+      margin: 0.5rem auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      border-radius: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+      gap: 1rem;
+    }
+
+    .project-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: white;
+      letter-spacing: -0.02em;
+    }
+
+    .project-subtitle {
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0;
+      color: #e0e0ff;
+      line-height: 1.4;
+      opacity: 0.9;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0;
+      color: #e0e0ff;
+      opacity: 0.85;
+    }
+
+    .statistics {
+      font-size: 0.9rem;
+      color: #b8b5ff;
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    .view-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+      margin-top: 0.5rem;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .view-project-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(123, 104, 238, 0.4);
+    }
+
+    .view-project-btn:active {
+      transform: translateY(0px);
+    }
+
+    .view-project-btn .material-icons {
+      font-size: 18px;
+    }
+
+    .view-project-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      height: 8px;
+      background: rgba(123, 104, 238, 0.4);
+      filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .view-project-btn:hover::after {
+      height: 12px;
+      background: rgba(123, 104, 238, 0.6);
+    }
+
+    .image-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .project-image {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .dot-pattern {
+      position: absolute;
+      right: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 3px;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      .project-card {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+        gap: 1.5rem;
       }
 
-      #___gatsby,
-      #gatsby-focus-wrapper,
-      body,
-      html {
-        height: 100%;
-        overflow-x: hidden
+      .project-title {
+        font-size: 2rem;
       }
 
-      html {
-        background-size: 100% 100%;
-        background-position: 0px 0px;
-        background-image: linear-gradient(35deg, #031974FF 17%, #4D38B4FF 55%, #009298FF 94%);
-        margin-left: calc(100vw - 100%);
-        min-height: 100%
+      .project-subtitle,
+      .project-description {
+        font-size: 0.9rem;
       }
 
-      body {
-        color: #fbf7f1;
-        font-family: Roboto, arial;
+      .dot-pattern {
+        display: none;
+      }
+    }
+
+    .timeline {
+      border-left: 3px solid #727cf5;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      margin: 0 auto;
+      letter-spacing: 0.2px;
+      position: relative;
+      line-height: 1.4em;
+      font-size: 1.03em;
+      padding: 50px;
+      list-style: none;
+      text-align: left;
+      max-width: 40%;
+    }
+
+    @media (max-width: 767px) {
+      .timeline {
+        max-width: 98%;
+        padding: 25px;
+      }
+    }
+
+    .timeline h1 {
+      font-weight: 300;
+      font-size: 1.4em;
+    }
+
+    .timeline h2,
+    .timeline h3 {
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline .event {
+      border-bottom: 1px dashed #e8ebf1;
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    @media (max-width: 767px) {
+      .timeline .event {
+        padding-top: 30px;
+      }
+    }
+
+    .timeline .event:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: none;
+    }
+
+    .timeline .event:before,
+    .timeline .event:after {
+      position: absolute;
+      display: block;
+      top: 0;
+    }
+
+    .timeline .event:before {
+      left: -207px;
+      content: attr(data-date);
+      text-align: right;
+      font-weight: 100;
+      font-size: 0.9em;
+      min-width: 120px;
+    }
+
+    @media (max-width: 767px) {
+      .timeline .event:before {
+        left: 0px;
+        text-align: left;
+      }
+    }
+
+    .timeline .event:after {
+      -webkit-box-shadow: 0 0 0 3px #727cf5;
+      box-shadow: 0 0 0 3px #727cf5;
+      left: -55.8px;
+      background: #fff;
+      border-radius: 50%;
+      height: 9px;
+      width: 9px;
+      content: "";
+      top: 5px;
+    }
+
+    @media (max-width: 767px) {
+      .timeline .event:after {
+        left: -31.8px;
+      }
+    }
+
+    .rtl .timeline {
+      border-left: 0;
+      text-align: right;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+      border-right: 3px solid #727cf5;
+    }
+
+    .rtl .timeline .event::before {
+      left: 0;
+      right: -170px;
+    }
+
+    .rtl .timeline .event::after {
+      left: 0;
+      right: -55.8px;
+    }
+
+    p {
+      line-height: 1.8rem;
+      margin: 1.2rem 0
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: Roboto Slab, serif
+    }
+
+    .gatsby-image-wrapper-constrained {
+      border-radius: 7px;
+      left: 30px;
+      top: -33px
+    }
+
+    a {
+      border-bottom: 2px solid #fbf7f1;
+      color: #fbf7f1;
+      text-decoration: none;
+      transition: all .2s ease-in-out
+    }
+
+    a:hover {
+      border-bottom: 2px solid #48CEA5
+    }
+
+    .header-module--bar--0VxZy {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      font-weight: 300;
+      justify-content: space-between;
+      padding: 3rem 0;
+      z-index: 3;
+      scrollbar-width: none;
+      overflow-x: scroll;
+      margin-bottom: 40px;
+      overflow-y: hidden
+    }
+
+    .header-module--bar--0VxZy .header-module--logo--y97xu a {
+      border-bottom: 2px solid #ffffff00;
+      font-size: 24px
+    }
+
+    .header-module--bar--0VxZy .header-module--hamburger--mdm6I {
+      cursor: pointer;
+      padding: 1rem
+    }
+
+    @media only screen and (min-width:690px) {
+      .header-module--bar--0VxZy .header-module--hamburger--mdm6I {
+        display: none
+      }
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM {
+      display: none
+    }
+
+    @media only screen and (min-width:690px) {
+      .header-module--bar--0VxZy .header-module--menu--MFCcM {
+        display: initial
+      }
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--exit--EArDu {
+      display: none
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj {
+      list-style: none
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu {
+      float: left;
+      margin-left: 2rem
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a {
+      border-bottom: 2px solid #ffffff00;
+      display: block;
+      font-size: x-large;
+      padding: .2rem .2rem .4rem;
+      text-align: center
+    }
+
+    @media only screen and (min-width:690px) {
+      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a {
         font-size: large
       }
-
-      .menu-bar {
-        border-radius: 25px;
-        height: fit-content;
-        display: inline-flex;
-        background-color: rgba(0, 0, 0, 0.3);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        align-items: center;
-        padding: 0 30px;
-        margin: 20px 0 0 0;
-
-        li {
-          list-style: none;
-          color: white;
-          font-family: sans-serif;
-          font-weight: bold;
-          padding: 12px 16px;
-          margin: 0 8px;
-          position: relative;
-          cursor: pointer;
-          white-space: nowrap;
-
-          &::before {
-            content: " ";
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: -1;
-            transition: .2s;
-            border-radius: 25px;
-          }
-
-          &:hover {
-            &::before {
-              background: linear-gradient(to bottom, #e8edec, #d2d1d3);
-              box-shadow: 0px 3px 20px 0px black;
-              transform: scale(1.2);
-            }
-
-            color: black;
-          }
-        }
-      }
-
-      @media only screen and (min-width:1000px) {
-        .menu-bar {
-          margin: 20px 0 -19px 100px;
-        }
-      }
-
-      @media only screen and (max-width:1000px) {
-        .menu-bar {
-          margin: 20px 50px -19px 50px;
-        }
-      }
-
-      @media only screen and (min-width:1100px) {
-        .menu-bar {
-          margin: 20px 0 -19px 150px;
-        }
-      }
-
-      @media only screen and (min-width:1200px) {
-        .menu-bar {
-          margin: 20px 0 -19px 200px;
-        }
-      }
-
-      @media only screen and (min-width: 1300px) {
-        .menu-bar {
-          margin: 20px 0 -19px 250px;
-        }
-      }
-
-      @media only screen and (min-width: 1400px) {
-        .menu-bar {
-          margin: 20px 0 -19px 300px;
-        }
-      }
-
-      @media only screen and (min-width: 1500px) {
-        .menu-bar {
-          margin: 20px 0 -19px 350px;
-        }
-      }
-
-      @media only screen and (min-width: 1600px) {
-        .menu-bar {
-          margin: 20px 0 -19px 400px;
-        }
-      }
-
-      @media only screen and (min-width: 1700px) {
-        .menu-bar {
-          margin: 20px 0 -19px 450px;
-        }
-      }
-
-      @media only screen and (min-width: 1800px) {
-        .menu-bar {
-          margin: 20px 0 -19px 500px;
-        }
-      }
-
-      @media only screen and (min-width: 1900px) {
-        .menu-bar {
-          margin: 20px 0 -19px 550px;
-        }
-      }
-
-      @media only screen and (min-width: 2000px) {
-        .menu-bar {
-          margin: 20px 0 -19px 600px;
-        }
-      }
-
-      @media only screen and (min-width: 2100px) {
-        .menu-bar {
-          margin: 20px 0 -19px 650px;
-        }
-      }
-
-      @media only screen and (min-width: 2200px) {
-        .menu-bar {
-          margin: 20px 0 -19px 700px;
-        }
-      }
-
-      @media only screen and (min-width: 2300px) {
-        .menu-bar {
-          margin: 20px 0 -19px 750px;
-        }
-      }
-
-      @media only screen and (min-width: 2400px) {
-        .menu-bar {
-          margin: 20px 0 -19px 800px;
-        }
-      }
-
-      @media only screen and (min-width: 2500px) {
-        .menu-bar {
-          margin: 20px 0 -19px 850px;
-        }
-      }
-
-      @media only screen and (min-width: 2600px) {
-        .menu-bar {
-          margin: 20px 0 -19px 900px;
-        }
-      }
-
-      .timeline {
-        border-left: 3px solid #727cf5;
-        border-bottom-right-radius: 4px;
-        border-top-right-radius: 4px;
-        background-color: rgba(0, 0, 0, 0.3);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        margin: 0 auto;
-        letter-spacing: 0.2px;
-        position: relative;
-        line-height: 1.4em;
-        font-size: 1.03em;
-        padding: 50px;
-        list-style: none;
-        text-align: left;
-        max-width: 40%;
-      }
-
-      @media (max-width: 767px) {
-        .timeline {
-          max-width: 98%;
-          padding: 25px;
-        }
-      }
-
-      .timeline h1 {
-        font-weight: 300;
-        font-size: 1.4em;
-      }
-
-      .timeline h2,
-      .timeline h3 {
-        font-weight: 600;
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-
-      .timeline .event {
-        border-bottom: 1px dashed #e8ebf1;
-        padding-bottom: 25px;
-        margin-bottom: 25px;
-        position: relative;
-      }
-
-      @media (max-width: 767px) {
-        .timeline .event {
-          padding-top: 30px;
-        }
-      }
-
-      .timeline .event:last-of-type {
-        padding-bottom: 0;
-        margin-bottom: 0;
-        border: none;
-      }
-
-      .timeline .event:before,
-      .timeline .event:after {
-        position: absolute;
-        display: block;
-        top: 0;
-      }
-
-      .timeline .event:before {
-        left: -207px;
-        content: attr(data-date);
-        text-align: right;
-        font-weight: 100;
-        font-size: 0.9em;
-        min-width: 120px;
-      }
-
-      @media (max-width: 767px) {
-        .timeline .event:before {
-          left: 0px;
-          text-align: left;
-        }
-      }
-
-      .timeline .event:after {
-        -webkit-box-shadow: 0 0 0 3px #727cf5;
-        box-shadow: 0 0 0 3px #727cf5;
-        left: -55.8px;
-        background: #fff;
-        border-radius: 50%;
-        height: 9px;
-        width: 9px;
-        content: "";
-        top: 5px;
-      }
-
-      @media (max-width: 767px) {
-        .timeline .event:after {
-          left: -31.8px;
-        }
-      }
-
-      .rtl .timeline {
-        border-left: 0;
-        text-align: right;
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 4px;
-        border-top-left-radius: 4px;
-        border-right: 3px solid #727cf5;
-      }
-
-      .rtl .timeline .event::before {
-        left: 0;
-        right: -170px;
-      }
-
-      .rtl .timeline .event::after {
-        left: 0;
-        right: -55.8px;
-      }
-
-      p {
-        line-height: 1.8rem;
-        margin: 1.2rem 0
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: Roboto Slab, serif
-      }
-
-      .gatsby-image-wrapper-constrained {
-        border-radius: 7px;
-        left: 30px;
-        top: -33px
-      }
-
-      a {
-        border-bottom: 2px solid #fbf7f1;
-        color: #fbf7f1;
-        text-decoration: none;
-        transition: all .2s ease-in-out
-      }
-
-      a:hover {
-        border-bottom: 2px solid #48CEA5
-      }
-
-      .header-module--bar--0VxZy {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        font-weight: 300;
-        justify-content: space-between;
-        padding: 3rem 0;
-        z-index: 3;
-        scrollbar-width: none;
-        overflow-x: scroll;
-        margin-bottom: 40px;
-        overflow-y: hidden
-      }
-
-      .header-module--bar--0VxZy .header-module--logo--y97xu a {
-        border-bottom: 2px solid #ffffff00;
-        font-size: 24px
-      }
-
-      .header-module--bar--0VxZy .header-module--hamburger--mdm6I {
-        cursor: pointer;
-        padding: 1rem
-      }
-
-      @media only screen and (min-width:690px) {
-        .header-module--bar--0VxZy .header-module--hamburger--mdm6I {
-          display: none
-        }
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM {
-        display: none
-      }
-
-      @media only screen and (min-width:690px) {
-        .header-module--bar--0VxZy .header-module--menu--MFCcM {
-          display: initial
-        }
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--exit--EArDu {
-        display: none
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj {
-        list-style: none
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu {
-        float: left;
-        margin-left: 2rem
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a {
-        border-bottom: 2px solid #ffffff00;
-        display: block;
-        font-size: x-large;
-        padding: .2rem .2rem .4rem;
-        text-align: center
-      }
-
-      @media only screen and (min-width:690px) {
-        .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a {
-          font-size: large
-        }
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a:hover {
-        border-bottom: 2px solid #48CEA5
-      }
-
-      .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu .header-module--active--XpLlV {
-        border-bottom: 2px solid #fbf7f1
-      }
-
-      .header-module--bar--0VxZy .header-module--mobile--KPRa6 {
-        background-color: #241444;
-        display: block;
-        height: 100vh;
-        left: 0;
-        position: fixed;
-        top: 0;
-        width: 100%
-      }
-
-      .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--exit--EArDu {
-        display: block;
-        font-size: 1.8rem;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 82%;
-        padding: 4rem .5rem 0;
-        position: relative;
-        text-align: right
-      }
-
-      .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj {
-        align-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        height: 50%;
-        justify-content: center;
-        overflow: hidden
-      }
-
-      .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu {
-        float: unset;
-        margin: .8rem
-      }
-
-      .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu a {
-        border-bottom: 2px solid #ffffff00
-      }
-
-      .footer-module--footer--Z1xkR {
-        color: #48CEA5;
-        padding: 2rem 0
-      }
-
-      .footer-module--footer--Z1xkR .footer-module--small--cwSz2 {
-        margin-right: .5rem
-      }
-
-      .footer-module--footer--Z1xkR .footer-module--feed--07L8u {
-        border-bottom: none;
-        color: #48CEA5
-      }
-
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu a:hover {
+      border-bottom: 2px solid #48CEA5
+    }
+
+    .header-module--bar--0VxZy .header-module--menu--MFCcM .header-module--list--MbLmj .header-module--item--JMpZu .header-module--active--XpLlV {
+      border-bottom: 2px solid #fbf7f1
+    }
+
+    .header-module--bar--0VxZy .header-module--mobile--KPRa6 {
+      background-color: #241444;
+      display: block;
+      height: 100vh;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100%
+    }
+
+    .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--exit--EArDu {
+      display: block;
+      font-size: 1.8rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 82%;
+      padding: 4rem .5rem 0;
+      position: relative;
+      text-align: right
+    }
+
+    .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj {
+      align-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      height: 50%;
+      justify-content: center;
+      overflow: hidden
+    }
+
+    .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu {
+      float: unset;
+      margin: .8rem
+    }
+
+    .header-module--bar--0VxZy .header-module--mobile--KPRa6 .header-module--list--MbLmj .header-module--item--JMpZu a {
+      border-bottom: 2px solid #ffffff00
+    }
+
+    .footer-module--footer--Z1xkR {
+      color: #48CEA5;
+      padding: 2rem 0
+    }
+
+    .footer-module--footer--Z1xkR .footer-module--small--cwSz2 {
+      margin-right: .5rem
+    }
+
+    .footer-module--footer--Z1xkR .footer-module--feed--07L8u {
+      border-bottom: none;
+      color: #48CEA5
+    }
+
+    .container-module--container--1sq6u {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 82%
+    }
+
+    @media only screen and (min-width:1200px) {
       .container-module--container--1sq6u {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 82%
+        max-width: 1000px
       }
+    }
 
-      @media only screen and (min-width:1200px) {
-        .container-module--container--1sq6u {
-          max-width: 1000px
-        }
-      }
+    .content-module--content--UHy8y {
+      flex: 1 1
+    }
 
+    .content-module--content--UHy8ys {
+      flex: 1 1;
+      margin-top: 5%
+    }
+
+    @media only screen and (min-width:400px) {
       .content-module--content--UHy8y {
-        flex: 1 1
-      }
-
-      .content-module--content--UHy8ys {
-        flex: 1 1;
         margin-top: 5%
       }
+    }
 
-      @media only screen and (min-width:400px) {
-        .content-module--content--UHy8y {
-          margin-top: 5%
-        }
+    @media only screen and (min-width:1000px) {
+      .content-module--content--UHy8y {
+        margin-top: 6rem
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .content-module--content--UHy8y {
-          margin-top: 6rem
-        }
+    .button-module--button--BvGZT {
+      background-color: rgba(0, 0, 0, 0.3);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 7px;
+      color: #fbf7f1;
+      padding: 1rem 1.8rem;
+      text-align: center;
+      text-decoration: none;
+      transition: all .2s ease-in-out
+    }
+
+    .button-module--button--BvGZT a {
+      border-bottom: 2px solid #ffffff00;
+      color: #fbf7f1;
+      text-decoration: none
+    }
+
+    .button-module--button--BvGZT:hover {
+      box-shadow: 0 5px 15px rgba(0, 85, 255, 0.4)
+    }
+
+    .intro-module--intro--soq61 {
+      margin-bottom: 5rem
+    }
+
+    .intro-module--intro--soq61 .intro-module--title--XyWVw {
+      margin-bottom: 1.4rem
+    }
+
+    .intro-module--intro--soq61 .intro-module--description--3dd62 {
+      margin-top: 1.4rem
+    }
+
+    ._404-module--link--Nf0k- {
+      color: #fbf7f1;
+      text-decoration: none
+    }
+
+    ._404-module--icon--UGCoi {
+      margin-right: 1rem
+    }
+
+    .about-module--about--Um\+LS .about-module--paragraph--nl8sC {
+      margin: 2rem 0
+    }
+
+    .about-module--about--Um\+LS .about-module--resume--FRC-e {
+      border-bottom: 2px solid #fbf7f1
+    }
+
+    @media only screen and (min-width:1000px) {
+      .about-module--about--Um\+LS {
+        display: grid;
+        grid-template-areas: "details profile";
+        grid-template-columns: 50% auto
       }
+    }
 
-      .button-module--button--BvGZT {
-        background-color: rgba(0, 0, 0, 0.3);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
-        border: none;
-        border-radius: 7px;
-        color: #fbf7f1;
-        padding: 1rem 1.8rem;
-        text-align: center;
-        text-decoration: none;
-        transition: all .2s ease-in-out
-      }
+    .about-module--details--8l4aO {
+      margin-top: -4rem
+    }
 
-      .button-module--button--BvGZT a {
-        border-bottom: 2px solid #ffffff00;
-        color: #fbf7f1;
-        text-decoration: none
-      }
-
-      .button-module--button--BvGZT:hover {
-        box-shadow: 0 5px 15px rgba(0, 85, 255, 0.4)
-      }
-
-      .intro-module--intro--soq61 {
-        margin-bottom: 5rem
-      }
-
-      .intro-module--intro--soq61 .intro-module--title--XyWVw {
-        margin-bottom: 1.4rem
-      }
-
-      .intro-module--intro--soq61 .intro-module--description--3dd62 {
-        margin-top: 1.4rem
-      }
-
-      ._404-module--link--Nf0k- {
-        color: #fbf7f1;
-        text-decoration: none
-      }
-
-      ._404-module--icon--UGCoi {
-        margin-right: 1rem
-      }
-
-      .about-module--about--Um\+LS .about-module--paragraph--nl8sC {
-        margin: 2rem 0
-      }
-
-      .about-module--about--Um\+LS .about-module--resume--FRC-e {
-        border-bottom: 2px solid #fbf7f1
-      }
-
-      @media only screen and (min-width:1000px) {
-        .about-module--about--Um\+LS {
-          display: grid;
-          grid-template-areas: "details profile";
-          grid-template-columns: 50% auto
-        }
-      }
-
+    @media only screen and (max-width: 999px) {
       .about-module--details--8l4aO {
-        margin-top: -4rem
-      }
-
-      @media only screen and (max-width: 999px) {
-        .about-module--details--8l4aO {
-          margin-top: 1.5rem
-        }
-      }
-
-      @media only screen and (min-width:) {
-        .about-module--details--8l4aO {
-          grid-area: details;
-          margin-top: 0
-        }
-      }
-
-      .about-module--details--8l4aO h1 {
-        font-size: 2.25rem
-      }
-
-      .about-module--profile--D-OzZ {
-        display: inline-block;
-        height: 10rem;
-        margin-bottom: 14rem;
         margin-top: 1.5rem
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .about-module--profile--D-OzZ {
-          display: inherit;
-          grid-area: profile;
-          justify-self: end;
-          margin-bottom: 0;
-          margin-top: 0
-        }
+    @media only screen and (min-width:) {
+      .about-module--details--8l4aO {
+        grid-area: details;
+        margin-top: 0
       }
+    }
 
-      .about-module--profile--D-OzZ .about-module--dots--szbII {
-        background-image: radial-gradient(currentColor 1.5px, transparent 0);
-        background-size: 15px 15px;
-        color: #48CEA5;
-        left: -30px;
-        max-width: 350px;
-        position: relative;
-        top: 0
+    .about-module--details--8l4aO h1 {
+      font-size: 2.25rem
+    }
+
+    .about-module--profile--D-OzZ {
+      display: inline-block;
+      height: 10rem;
+      margin-bottom: 14rem;
+      margin-top: 1.5rem
+    }
+
+    @media only screen and (min-width:1000px) {
+      .about-module--profile--D-OzZ {
+        display: inherit;
+        grid-area: profile;
+        justify-self: end;
+        margin-bottom: 0;
+        margin-top: 0
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .index-module--index--NQpS2 {
-          display: grid;
-          grid-template-areas: "headline avatar";
-          grid-template-columns: 50% auto
-        }
+    .about-module--profile--D-OzZ .about-module--dots--szbII {
+      background-image: radial-gradient(currentColor 1.5px, transparent 0);
+      background-size: 15px 15px;
+      color: #48CEA5;
+      left: -30px;
+      max-width: 350px;
+      position: relative;
+      top: 0
+    }
+
+    @media only screen and (min-width:1000px) {
+      .index-module--index--NQpS2 {
+        display: grid;
+        grid-template-areas: "headline avatar";
+        grid-template-columns: 50% auto
       }
+    }
 
-      @media only screen and (min-width:400px) {
-        .index-module--headline--ot-Q2 {
-          font-size: x-large
-        }
+    @media only screen and (min-width:400px) {
+      .index-module--headline--ot-Q2 {
+        font-size: x-large
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .index-module--headline--ot-Q2 {
-          grid-area: headline
-        }
+    @media only screen and (min-width:1000px) {
+      .index-module--headline--ot-Q2 {
+        grid-area: headline
       }
+    }
 
+    .index-module--avatar--gbWzt {
+      display: none;
+      height: 10rem
+    }
+
+    @media only screen and (min-width:1000px) {
       .index-module--avatar--gbWzt {
-        display: none;
-        height: 10rem
+        display: inherit;
+        grid-area: avatar;
+        justify-self: end
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .index-module--avatar--gbWzt {
-          display: inherit;
-          grid-area: avatar;
-          justify-self: end
-        }
+    .index-module--avatar--gbWzt .index-module--dots---vM-C {
+      background-image: radial-gradient(currentColor 1.5px, transparent 0);
+      background-size: 15px 15px;
+      color: #48CEA5;
+      left: -30px;
+      max-width: 350px;
+      position: relative;
+      top: 0
+    }
+
+    @media only screen and (min-width:400px) {
+      .index-module--icons--LC\+yQ {
+        margin-left: 2rem
       }
+    }
 
-      .index-module--avatar--gbWzt .index-module--dots---vM-C {
-        background-image: radial-gradient(currentColor 1.5px, transparent 0);
-        background-size: 15px 15px;
-        color: #48CEA5;
-        left: -30px;
-        max-width: 350px;
-        position: relative;
-        top: 0
-      }
+    .index-module--icons--LC\+yQ .index-module--link--nqUXd {
+      border-bottom: 2px solid #ffffff00;
+      color: #48CEA5;
+      font-size: 2rem;
+      margin: 0 .5rem;
+      text-decoration: none;
+      transition: all .2s ease-in-out
+    }
 
-      @media only screen and (min-width:400px) {
-        .index-module--icons--LC\+yQ {
-          margin-left: 2rem
-        }
-      }
+    .index-module--icons--LC\+yQ .index-module--link--nqUXd:hover {
+      border-bottom: 2px solid #48CEA5
+    }
 
-      .index-module--icons--LC\+yQ .index-module--link--nqUXd {
-        border-bottom: 2px solid #ffffff00;
-        color: #48CEA5;
-        font-size: 2rem;
-        margin: 0 .5rem;
-        text-decoration: none;
-        transition: all .2s ease-in-out
-      }
+    .index-module--cta--Yi6O8 {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem
+    }
 
-      .index-module--icons--LC\+yQ .index-module--link--nqUXd:hover {
-        border-bottom: 2px solid #48CEA5
-      }
-
+    @media only screen and (min-width:400px) {
       .index-module--cta--Yi6O8 {
-        align-items: flex-start;
-        display: flex;
-        flex-direction: column;
-        margin-top: 2rem
+        align-items: center;
+        flex-direction: row
       }
+    }
 
-      @media only screen and (min-width:400px) {
-        .index-module--cta--Yi6O8 {
-          align-items: center;
-          flex-direction: row
-        }
-      }
+    .index-module--cta--Yi6O8 Button {
+      margin-bottom: 2rem
+    }
 
+    @media only screen and (min-width:400px) {
       .index-module--cta--Yi6O8 Button {
-        margin-bottom: 2rem
+        margin-bottom: 0
       }
+    }
 
-      @media only screen and (min-width:400px) {
-        .index-module--cta--Yi6O8 Button {
-          margin-bottom: 0
-        }
-      }
+    .projects-module--projects--\+sXDR {
+      list-style: none
+    }
 
-      .projects-module--projects--\+sXDR {
-        list-style: none
-      }
+    .projects-module--projects--\+sXDR li {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 9rem
+    }
 
+    @media only screen and (min-width:1000px) {
       .projects-module--projects--\+sXDR li {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-bottom: 9rem
+        display: grid;
+        grid-template-areas: "area1 area2";
+        grid-template-columns: 2fr 1fr
       }
 
-      @media only screen and (min-width:1000px) {
-        .projects-module--projects--\+sXDR li {
-          display: grid;
-          grid-template-areas: "area1 area2";
-          grid-template-columns: 2fr 1fr
-        }
-
-        .projects-module--projects--\+sXDR li:nth-child(odd) {
-          display: grid;
-          grid-template-areas: "area2 area1";
-          grid-template-columns: 1fr 2fr
-        }
-
-        .projects-module--projects--\+sXDR li:nth-child(odd) .projects-module--description--scIxw {
-          margin-right: 3rem
-        }
-
-        .projects-module--projects--\+sXDR li:nth-child(2n) .projects-module--description--scIxw {
-          margin-left: 3rem
-        }
+      .projects-module--projects--\+sXDR li:nth-child(odd) {
+        display: grid;
+        grid-template-areas: "area2 area1";
+        grid-template-columns: 1fr 2fr
       }
 
-      .projects-module--projects--\+sXDR li a {
-        border-bottom: unset;
-        margin: 0;
-        padding: 0
+      .projects-module--projects--\+sXDR li:nth-child(odd) .projects-module--description--scIxw {
+        margin-right: 3rem
       }
 
-      .projects-module--projects--\+sXDR li a:hover {
-        border-bottom: unset
+      .projects-module--projects--\+sXDR li:nth-child(2n) .projects-module--description--scIxw {
+        margin-left: 3rem
       }
+    }
 
+    .projects-module--projects--\+sXDR li a {
+      border-bottom: unset;
+      margin: 0;
+      padding: 0
+    }
+
+    .projects-module--projects--\+sXDR li a:hover {
+      border-bottom: unset
+    }
+
+    .projects-module--projects--\+sXDR li a .projects-module--dots---505i {
+      background-image: radial-gradient(currentColor 1.5px, transparent 0);
+      background-size: 15px 15px;
+      color: #48CEA5;
+      left: -30px;
+      margin-left: -30vw;
+      margin-right: -30vw;
+      position: relative;
+      top: 0
+    }
+
+    @media only screen and (min-width:1000px) {
       .projects-module--projects--\+sXDR li a .projects-module--dots---505i {
-        background-image: radial-gradient(currentColor 1.5px, transparent 0);
-        background-size: 15px 15px;
-        color: #48CEA5;
-        left: -30px;
-        margin-left: -30vw;
-        margin-right: -30vw;
-        position: relative;
-        top: 0
+        grid-area: area1;
+        margin: 0
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .projects-module--projects--\+sXDR li a .projects-module--dots---505i {
-          grid-area: area1;
-          margin: 0
-        }
-      }
+    .projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF {
+      transition: all .2s ease-in-out
+    }
 
-      .projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF {
-        transition: all .2s ease-in-out
-      }
+    .projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF:hover {
+      -webkit-filter: brightness(1.03);
+      filter: brightness(1.03)
+    }
 
-      .projects-module--projects--\+sXDR li a .projects-module--dots---505i .projects-module--image--UvauF:hover {
-        -webkit-filter: brightness(1.03);
-        filter: brightness(1.03)
+    @media only screen and (min-width:1000px) {
+      .projects-module--projects--\+sXDR li .projects-module--description--scIxw {
+        grid-area: area2
       }
+    }
 
-      @media only screen and (min-width:1000px) {
-        .projects-module--projects--\+sXDR li .projects-module--description--scIxw {
-          grid-area: area2
-        }
-      }
+    .projects-module--projects--\+sXDR li .projects-module--description--scIxw h3 {
+      margin-bottom: 1rem
+    }
 
-      .projects-module--projects--\+sXDR li .projects-module--description--scIxw h3 {
-        margin-bottom: 1rem
-      }
+    .projects-module--projects--\+sXDR li .projects-module--description--scIxw small {
+      font-style: italic
+    }
 
-      .projects-module--projects--\+sXDR li .projects-module--description--scIxw small {
-        font-style: italic
-      }
+    .projects-module--projects--\+sXDR li .projects-module--description--scIxw p {
+      margin: 1rem 0 1.5rem
+    }
 
-      .projects-module--projects--\+sXDR li .projects-module--description--scIxw p {
-        margin: 1rem 0 1.5rem
-      }
+    .projects-module--icon--gw2lm {
+      margin-right: 1rem
+    }
+  </style>
+  <meta name="generator" content="Gatsby 3.14.6" />
+  <style>
+    .gatsby-image-wrapper {
+      position: relative;
+      overflow: hidden
+    }
 
-      .projects-module--icon--gw2lm {
-        margin-right: 1rem
-      }
-    </style>
-    <meta name="generator" content="Gatsby 3.14.6" />
+    .gatsby-image-wrapper picture.object-fit-polyfill {
+      position: static !important
+    }
+
+    .gatsby-image-wrapper img {
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      margin: 0;
+      max-width: none;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      object-fit: cover
+    }
+
+    .gatsby-image-wrapper [data-main-image] {
+      opacity: 0;
+      transform: translateZ(0);
+      transition: opacity .25s linear;
+      will-change: opacity
+    }
+
+    .gatsby-image-wrapper-constrained {
+      display: inline-block;
+      vertical-align: top
+    }
+  </style>
+  <noscript>
     <style>
-      .gatsby-image-wrapper {
-        position: relative;
-        overflow: hidden
+      .gatsby-image-wrapper noscript [data-main-image] {
+        opacity: 1 !important
       }
 
-      .gatsby-image-wrapper picture.object-fit-polyfill {
-        position: static !important
-      }
-
-      .gatsby-image-wrapper img {
-        bottom: 0;
-        height: 100%;
-        left: 0;
-        margin: 0;
-        max-width: none;
-        padding: 0;
-        position: absolute;
-        right: 0;
-        top: 0;
-        width: 100%;
-        object-fit: cover
-      }
-
-      .gatsby-image-wrapper [data-main-image] {
-        opacity: 0;
-        transform: translateZ(0);
-        transition: opacity .25s linear;
-        will-change: opacity
-      }
-
-      .gatsby-image-wrapper-constrained {
-        display: inline-block;
-        vertical-align: top
+      .gatsby-image-wrapper [data-placeholder-image] {
+        opacity: 0 !important
       }
     </style>
-    <noscript>
-      <style>
-        .gatsby-image-wrapper noscript [data-main-image] {
-          opacity: 1 !important
-        }
+  </noscript>
+  <script type="module">
+    const e = "undefined" != typeof HTMLImageElement && "loading" in HTMLImageElement.prototype;
+    e && document.body.addEventListener("load", (function (e) {
+      if (void 0 === e.target.dataset.mainImage) return;
+      if (void 0 === e.target.dataset.gatsbyImageSsr) return;
+      const t = e.target;
+      let a = null,
+        n = t;
+      for (; null === a && n;) void 0 !== n.parentNode.dataset.gatsbyImageWrapper && (a = n.parentNode), n = n.parentNode;
+      const o = a.querySelector("[data-placeholder-image]"),
+        r = new Image;
+      r.src = t.currentSrc, r.decode().catch((() => { })).then((() => {
+        t.style.opacity = 1, o && (o.style.opacity = 0, o.style.transition = "opacity 500ms linear")
+      }))
+    }), !0);
+  </script>
+  <style type="text/css">
+    :root,
+    :host {
+      --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
+      --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Regular";
+      --fa-font-light: normal 300 1em/1 "Font Awesome 6 Light";
+      --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Thin";
+      --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
+      --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+    }
 
-        .gatsby-image-wrapper [data-placeholder-image] {
-          opacity: 0 !important
-        }
-      </style>
-    </noscript>
-    <script type="module">
-      const e = "undefined" != typeof HTMLImageElement && "loading" in HTMLImageElement.prototype;
-      e && document.body.addEventListener("load", (function(e) {
-        if (void 0 === e.target.dataset.mainImage) return;
-        if (void 0 === e.target.dataset.gatsbyImageSsr) return;
-        const t = e.target;
-        let a = null,
-          n = t;
-        for (; null === a && n;) void 0 !== n.parentNode.dataset.gatsbyImageWrapper && (a = n.parentNode), n = n.parentNode;
-        const o = a.querySelector("[data-placeholder-image]"),
-          r = new Image;
-        r.src = t.currentSrc, r.decode().catch((() => {})).then((() => {
-          t.style.opacity = 1, o && (o.style.opacity = 0, o.style.transition = "opacity 500ms linear")
-        }))
-      }), !0);
-    </script>
-    <style type="text/css">
-      :root,
-      :host {
-        --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Solid";
-        --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Regular";
-        --fa-font-light: normal 300 1em/1 "Font Awesome 6 Light";
-        --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Thin";
-        --fa-font-duotone: normal 900 1em/1 "Font Awesome 6 Duotone";
-        --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
-      }
+    svg:not(:root).svg-inline--fa,
+    svg:not(:host).svg-inline--fa {
+      overflow: visible;
+      box-sizing: content-box;
+    }
 
-      svg:not(:root).svg-inline--fa,
-      svg:not(:host).svg-inline--fa {
-        overflow: visible;
-        box-sizing: content-box;
-      }
+    .svg-inline--fa {
+      display: var(--fa-display, inline-block);
+      height: 1em;
+      overflow: visible;
+      vertical-align: -0.125em;
+    }
 
-      .svg-inline--fa {
-        display: var(--fa-display, inline-block);
-        height: 1em;
-        overflow: visible;
-        vertical-align: -0.125em;
-      }
+    .svg-inline--fa.fa-2xs {
+      vertical-align: 0.1em;
+    }
 
-      .svg-inline--fa.fa-2xs {
-        vertical-align: 0.1em;
-      }
+    .svg-inline--fa.fa-xs {
+      vertical-align: 0em;
+    }
 
-      .svg-inline--fa.fa-xs {
-        vertical-align: 0em;
-      }
+    .svg-inline--fa.fa-sm {
+      vertical-align: -0.0714285705em;
+    }
 
-      .svg-inline--fa.fa-sm {
-        vertical-align: -0.0714285705em;
-      }
+    .svg-inline--fa.fa-lg {
+      vertical-align: -0.2em;
+    }
 
-      .svg-inline--fa.fa-lg {
-        vertical-align: -0.2em;
-      }
+    .svg-inline--fa.fa-xl {
+      vertical-align: -0.25em;
+    }
 
-      .svg-inline--fa.fa-xl {
-        vertical-align: -0.25em;
-      }
+    .svg-inline--fa.fa-2xl {
+      vertical-align: -0.3125em;
+    }
 
-      .svg-inline--fa.fa-2xl {
-        vertical-align: -0.3125em;
-      }
+    .svg-inline--fa.fa-pull-left {
+      margin-right: var(--fa-pull-margin, 0.3em);
+      width: auto;
+    }
 
-      .svg-inline--fa.fa-pull-left {
-        margin-right: var(--fa-pull-margin, 0.3em);
-        width: auto;
-      }
+    .svg-inline--fa.fa-pull-right {
+      margin-left: var(--fa-pull-margin, 0.3em);
+      width: auto;
+    }
 
-      .svg-inline--fa.fa-pull-right {
-        margin-left: var(--fa-pull-margin, 0.3em);
-        width: auto;
-      }
+    .svg-inline--fa.fa-li {
+      width: var(--fa-li-width, 2em);
+      top: 0.25em;
+    }
 
-      .svg-inline--fa.fa-li {
-        width: var(--fa-li-width, 2em);
-        top: 0.25em;
-      }
+    .svg-inline--fa.fa-fw {
+      width: var(--fa-fw-width, 1.25em);
+    }
 
-      .svg-inline--fa.fa-fw {
-        width: var(--fa-fw-width, 1.25em);
-      }
+    .fa-layers svg.svg-inline--fa {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
-      .fa-layers svg.svg-inline--fa {
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
+    .fa-layers-counter,
+    .fa-layers-text {
+      display: inline-block;
+      position: absolute;
+      text-align: center;
+    }
 
-      .fa-layers-counter,
-      .fa-layers-text {
-        display: inline-block;
-        position: absolute;
-        text-align: center;
-      }
+    .fa-layers {
+      display: inline-block;
+      height: 1em;
+      position: relative;
+      text-align: center;
+      vertical-align: -0.125em;
+      width: 1em;
+    }
 
-      .fa-layers {
-        display: inline-block;
-        height: 1em;
-        position: relative;
-        text-align: center;
-        vertical-align: -0.125em;
-        width: 1em;
-      }
+    .fa-layers svg.svg-inline--fa {
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+    }
 
-      .fa-layers svg.svg-inline--fa {
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-      }
+    .fa-layers-text {
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      -webkit-transform-origin: center center;
+      transform-origin: center center;
+    }
 
-      .fa-layers-text {
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        -webkit-transform-origin: center center;
-        transform-origin: center center;
-      }
+    .fa-layers-counter {
+      background-color: var(--fa-counter-background-color, #ff253a);
+      border-radius: var(--fa-counter-border-radius, 1em);
+      box-sizing: border-box;
+      color: var(--fa-inverse, #fff);
+      line-height: var(--fa-counter-line-height, 1);
+      max-width: var(--fa-counter-max-width, 5em);
+      min-width: var(--fa-counter-min-width, 1.5em);
+      overflow: hidden;
+      padding: var(--fa-counter-padding, 0.25em 0.5em);
+      right: var(--fa-right, 0);
+      text-overflow: ellipsis;
+      top: var(--fa-top, 0);
+      -webkit-transform: scale(var(--fa-counter-scale, 0.25));
+      transform: scale(var(--fa-counter-scale, 0.25));
+      -webkit-transform-origin: top right;
+      transform-origin: top right;
+    }
 
-      .fa-layers-counter {
-        background-color: var(--fa-counter-background-color, #ff253a);
-        border-radius: var(--fa-counter-border-radius, 1em);
-        box-sizing: border-box;
-        color: var(--fa-inverse, #fff);
-        line-height: var(--fa-counter-line-height, 1);
-        max-width: var(--fa-counter-max-width, 5em);
-        min-width: var(--fa-counter-min-width, 1.5em);
-        overflow: hidden;
-        padding: var(--fa-counter-padding, 0.25em 0.5em);
-        right: var(--fa-right, 0);
-        text-overflow: ellipsis;
-        top: var(--fa-top, 0);
-        -webkit-transform: scale(var(--fa-counter-scale, 0.25));
-        transform: scale(var(--fa-counter-scale, 0.25));
-        -webkit-transform-origin: top right;
-        transform-origin: top right;
-      }
+    .fa-layers-bottom-right {
+      bottom: var(--fa-bottom, 0);
+      right: var(--fa-right, 0);
+      top: auto;
+      -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+      transform: scale(var(--fa-layers-scale, 0.25));
+      -webkit-transform-origin: bottom right;
+      transform-origin: bottom right;
+    }
 
-      .fa-layers-bottom-right {
-        bottom: var(--fa-bottom, 0);
-        right: var(--fa-right, 0);
-        top: auto;
-        -webkit-transform: scale(var(--fa-layers-scale, 0.25));
-        transform: scale(var(--fa-layers-scale, 0.25));
-        -webkit-transform-origin: bottom right;
-        transform-origin: bottom right;
-      }
+    .fa-layers-bottom-left {
+      bottom: var(--fa-bottom, 0);
+      left: var(--fa-left, 0);
+      right: auto;
+      top: auto;
+      -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+      transform: scale(var(--fa-layers-scale, 0.25));
+      -webkit-transform-origin: bottom left;
+      transform-origin: bottom left;
+    }
 
-      .fa-layers-bottom-left {
-        bottom: var(--fa-bottom, 0);
-        left: var(--fa-left, 0);
-        right: auto;
-        top: auto;
-        -webkit-transform: scale(var(--fa-layers-scale, 0.25));
-        transform: scale(var(--fa-layers-scale, 0.25));
-        -webkit-transform-origin: bottom left;
-        transform-origin: bottom left;
-      }
+    .fa-layers-top-right {
+      top: var(--fa-top, 0);
+      right: var(--fa-right, 0);
+      -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+      transform: scale(var(--fa-layers-scale, 0.25));
+      -webkit-transform-origin: top right;
+      transform-origin: top right;
+    }
 
-      .fa-layers-top-right {
-        top: var(--fa-top, 0);
-        right: var(--fa-right, 0);
-        -webkit-transform: scale(var(--fa-layers-scale, 0.25));
-        transform: scale(var(--fa-layers-scale, 0.25));
-        -webkit-transform-origin: top right;
-        transform-origin: top right;
-      }
+    .fa-layers-top-left {
+      left: var(--fa-left, 0);
+      right: auto;
+      top: var(--fa-top, 0);
+      -webkit-transform: scale(var(--fa-layers-scale, 0.25));
+      transform: scale(var(--fa-layers-scale, 0.25));
+      -webkit-transform-origin: top left;
+      transform-origin: top left;
+    }
 
-      .fa-layers-top-left {
-        left: var(--fa-left, 0);
-        right: auto;
-        top: var(--fa-top, 0);
-        -webkit-transform: scale(var(--fa-layers-scale, 0.25));
-        transform: scale(var(--fa-layers-scale, 0.25));
-        -webkit-transform-origin: top left;
-        transform-origin: top left;
-      }
+    .fa-1x {
+      font-size: 1em;
+    }
 
-      .fa-1x {
-        font-size: 1em;
-      }
+    .fa-2x {
+      font-size: 2em;
+    }
 
-      .fa-2x {
-        font-size: 2em;
-      }
+    .fa-3x {
+      font-size: 3em;
+    }
 
-      .fa-3x {
-        font-size: 3em;
-      }
+    .fa-4x {
+      font-size: 4em;
+    }
 
-      .fa-4x {
-        font-size: 4em;
-      }
+    .fa-5x {
+      font-size: 5em;
+    }
 
-      .fa-5x {
-        font-size: 5em;
-      }
+    .fa-6x {
+      font-size: 6em;
+    }
 
-      .fa-6x {
-        font-size: 6em;
-      }
+    .fa-7x {
+      font-size: 7em;
+    }
 
-      .fa-7x {
-        font-size: 7em;
-      }
+    .fa-8x {
+      font-size: 8em;
+    }
 
-      .fa-8x {
-        font-size: 8em;
-      }
+    .fa-9x {
+      font-size: 9em;
+    }
 
-      .fa-9x {
-        font-size: 9em;
-      }
+    .fa-10x {
+      font-size: 10em;
+    }
 
-      .fa-10x {
-        font-size: 10em;
-      }
+    .fa-2xs {
+      font-size: 0.625em;
+      line-height: 0.1em;
+      vertical-align: 0.225em;
+    }
 
-      .fa-2xs {
-        font-size: 0.625em;
-        line-height: 0.1em;
-        vertical-align: 0.225em;
-      }
+    .fa-xs {
+      font-size: 0.75em;
+      line-height: 0.0833333337em;
+      vertical-align: 0.125em;
+    }
 
-      .fa-xs {
-        font-size: 0.75em;
-        line-height: 0.0833333337em;
-        vertical-align: 0.125em;
-      }
+    .fa-sm {
+      font-size: 0.875em;
+      line-height: 0.0714285718em;
+      vertical-align: 0.0535714295em;
+    }
 
-      .fa-sm {
-        font-size: 0.875em;
-        line-height: 0.0714285718em;
-        vertical-align: 0.0535714295em;
-      }
+    .fa-lg {
+      font-size: 1.25em;
+      line-height: 0.05em;
+      vertical-align: -0.075em;
+    }
 
-      .fa-lg {
-        font-size: 1.25em;
-        line-height: 0.05em;
-        vertical-align: -0.075em;
-      }
+    .fa-xl {
+      font-size: 1.5em;
+      line-height: 0.0416666682em;
+      vertical-align: -0.125em;
+    }
 
-      .fa-xl {
-        font-size: 1.5em;
-        line-height: 0.0416666682em;
-        vertical-align: -0.125em;
-      }
+    .fa-2xl {
+      font-size: 2em;
+      line-height: 0.03125em;
+      vertical-align: -0.1875em;
+    }
 
-      .fa-2xl {
-        font-size: 2em;
-        line-height: 0.03125em;
-        vertical-align: -0.1875em;
-      }
+    .fa-fw {
+      text-align: center;
+      width: 1.25em;
+    }
 
-      .fa-fw {
-        text-align: center;
-        width: 1.25em;
-      }
+    .fa-ul {
+      list-style-type: none;
+      margin-left: var(--fa-li-margin, 2.5em);
+      padding-left: 0;
+    }
 
-      .fa-ul {
-        list-style-type: none;
-        margin-left: var(--fa-li-margin, 2.5em);
-        padding-left: 0;
-      }
+    .fa-ul>li {
+      position: relative;
+    }
 
-      .fa-ul>li {
-        position: relative;
-      }
+    .fa-li {
+      left: calc(var(--fa-li-width, 2em) * -1);
+      position: absolute;
+      text-align: center;
+      width: var(--fa-li-width, 2em);
+      line-height: inherit;
+    }
 
-      .fa-li {
-        left: calc(var(--fa-li-width, 2em) * -1);
-        position: absolute;
-        text-align: center;
-        width: var(--fa-li-width, 2em);
-        line-height: inherit;
-      }
+    .fa-border {
+      border-color: var(--fa-border-color, #eee);
+      border-radius: var(--fa-border-radius, 0.1em);
+      border-style: var(--fa-border-style, solid);
+      border-width: var(--fa-border-width, 0.08em);
+      padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
+    }
 
-      .fa-border {
-        border-color: var(--fa-border-color, #eee);
-        border-radius: var(--fa-border-radius, 0.1em);
-        border-style: var(--fa-border-style, solid);
-        border-width: var(--fa-border-width, 0.08em);
-        padding: var(--fa-border-padding, 0.2em 0.25em 0.15em);
-      }
+    .fa-pull-left {
+      float: left;
+      margin-right: var(--fa-pull-margin, 0.3em);
+    }
 
-      .fa-pull-left {
-        float: left;
-        margin-right: var(--fa-pull-margin, 0.3em);
-      }
+    .fa-pull-right {
+      float: right;
+      margin-left: var(--fa-pull-margin, 0.3em);
+    }
 
-      .fa-pull-right {
-        float: right;
-        margin-left: var(--fa-pull-margin, 0.3em);
-      }
+    .fa-beat {
+      -webkit-animation-name: fa-beat;
+      animation-name: fa-beat;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      animation-timing-function: var(--fa-animation-timing, ease-in-out);
+    }
 
-      .fa-beat {
-        -webkit-animation-name: fa-beat;
-        animation-name: fa-beat;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
-        animation-timing-function: var(--fa-animation-timing, ease-in-out);
-      }
+    .fa-bounce {
+      -webkit-animation-name: fa-bounce;
+      animation-name: fa-bounce;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
+    }
 
-      .fa-bounce {
-        -webkit-animation-name: fa-bounce;
-        animation-name: fa-bounce;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
-        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.28, 0.84, 0.42, 1));
-      }
+    .fa-fade {
+      -webkit-animation-name: fa-fade;
+      animation-name: fa-fade;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+    }
 
-      .fa-fade {
-        -webkit-animation-name: fa-fade;
-        animation-name: fa-fade;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
-        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
-      }
+    .fa-beat-fade {
+      -webkit-animation-name: fa-beat-fade;
+      animation-name: fa-beat-fade;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+      animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
+    }
 
-      .fa-beat-fade {
-        -webkit-animation-name: fa-beat-fade;
-        animation-name: fa-beat-fade;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
-        animation-timing-function: var(--fa-animation-timing, cubic-bezier(0.4, 0, 0.6, 1));
-      }
+    .fa-flip {
+      -webkit-animation-name: fa-flip;
+      animation-name: fa-flip;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
+      animation-timing-function: var(--fa-animation-timing, ease-in-out);
+    }
 
-      .fa-flip {
-        -webkit-animation-name: fa-flip;
-        animation-name: fa-flip;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, ease-in-out);
-        animation-timing-function: var(--fa-animation-timing, ease-in-out);
-      }
+    .fa-shake {
+      -webkit-animation-name: fa-shake;
+      animation-name: fa-shake;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+      animation-timing-function: var(--fa-animation-timing, linear);
+    }
 
-      .fa-shake {
-        -webkit-animation-name: fa-shake;
-        animation-name: fa-shake;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, linear);
-        animation-timing-function: var(--fa-animation-timing, linear);
-      }
+    .fa-spin {
+      -webkit-animation-name: fa-spin;
+      animation-name: fa-spin;
+      -webkit-animation-delay: var(--fa-animation-delay, 0);
+      animation-delay: var(--fa-animation-delay, 0);
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 2s);
+      animation-duration: var(--fa-animation-duration, 2s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, linear);
+      animation-timing-function: var(--fa-animation-timing, linear);
+    }
 
-      .fa-spin {
-        -webkit-animation-name: fa-spin;
-        animation-name: fa-spin;
-        -webkit-animation-delay: var(--fa-animation-delay, 0);
-        animation-delay: var(--fa-animation-delay, 0);
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 2s);
-        animation-duration: var(--fa-animation-duration, 2s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, linear);
-        animation-timing-function: var(--fa-animation-timing, linear);
-      }
+    .fa-spin-reverse {
+      --fa-animation-direction: reverse;
+    }
 
-      .fa-spin-reverse {
-        --fa-animation-direction: reverse;
-      }
+    .fa-pulse,
+    .fa-spin-pulse {
+      -webkit-animation-name: fa-spin;
+      animation-name: fa-spin;
+      -webkit-animation-direction: var(--fa-animation-direction, normal);
+      animation-direction: var(--fa-animation-direction, normal);
+      -webkit-animation-duration: var(--fa-animation-duration, 1s);
+      animation-duration: var(--fa-animation-duration, 1s);
+      -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+      -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
+      animation-timing-function: var(--fa-animation-timing, steps(8));
+    }
 
+    @media (prefers-reduced-motion: reduce) {
+
+      .fa-beat,
+      .fa-bounce,
+      .fa-fade,
+      .fa-beat-fade,
+      .fa-flip,
       .fa-pulse,
+      .fa-shake,
+      .fa-spin,
       .fa-spin-pulse {
-        -webkit-animation-name: fa-spin;
-        animation-name: fa-spin;
-        -webkit-animation-direction: var(--fa-animation-direction, normal);
-        animation-direction: var(--fa-animation-direction, normal);
-        -webkit-animation-duration: var(--fa-animation-duration, 1s);
-        animation-duration: var(--fa-animation-duration, 1s);
-        -webkit-animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        animation-iteration-count: var(--fa-animation-iteration-count, infinite);
-        -webkit-animation-timing-function: var(--fa-animation-timing, steps(8));
-        animation-timing-function: var(--fa-animation-timing, steps(8));
+        -webkit-animation-delay: -1ms;
+        animation-delay: -1ms;
+        -webkit-animation-duration: 1ms;
+        animation-duration: 1ms;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        transition-delay: 0s;
+        transition-duration: 0s;
+      }
+    }
+
+    @-webkit-keyframes fa-beat {
+
+      0%,
+      90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
       }
 
-      @media (prefers-reduced-motion: reduce) {
+      45% {
+        -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+        transform: scale(var(--fa-beat-scale, 1.25));
+      }
+    }
 
-        .fa-beat,
-        .fa-bounce,
-        .fa-fade,
-        .fa-beat-fade,
-        .fa-flip,
-        .fa-pulse,
-        .fa-shake,
-        .fa-spin,
-        .fa-spin-pulse {
-          -webkit-animation-delay: -1ms;
-          animation-delay: -1ms;
-          -webkit-animation-duration: 1ms;
-          animation-duration: 1ms;
-          -webkit-animation-iteration-count: 1;
-          animation-iteration-count: 1;
-          transition-delay: 0s;
-          transition-duration: 0s;
-        }
+    @keyframes fa-beat {
+
+      0%,
+      90% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
       }
 
-      @-webkit-keyframes fa-beat {
+      45% {
+        -webkit-transform: scale(var(--fa-beat-scale, 1.25));
+        transform: scale(var(--fa-beat-scale, 1.25));
+      }
+    }
 
-        0%,
-        90% {
-          -webkit-transform: scale(1);
-          transform: scale(1);
-        }
-
-        45% {
-          -webkit-transform: scale(var(--fa-beat-scale, 1.25));
-          transform: scale(var(--fa-beat-scale, 1.25));
-        }
+    @-webkit-keyframes fa-bounce {
+      0% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
       }
 
-      @keyframes fa-beat {
-
-        0%,
-        90% {
-          -webkit-transform: scale(1);
-          transform: scale(1);
-        }
-
-        45% {
-          -webkit-transform: scale(var(--fa-beat-scale, 1.25));
-          transform: scale(var(--fa-beat-scale, 1.25));
-        }
+      10% {
+        -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+        transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
       }
 
-      @-webkit-keyframes fa-bounce {
-        0% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
-
-        10% {
-          -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
-          transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
-        }
-
-        30% {
-          -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
-          transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
-        }
-
-        50% {
-          -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
-          transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
-        }
-
-        57% {
-          -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
-          transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
-        }
-
-        64% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
-
-        100% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
+      30% {
+        -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+        transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
       }
 
-      @keyframes fa-bounce {
-        0% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
-
-        10% {
-          -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
-          transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
-        }
-
-        30% {
-          -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
-          transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
-        }
-
-        50% {
-          -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
-          transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
-        }
-
-        57% {
-          -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
-          transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
-        }
-
-        64% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
-
-        100% {
-          -webkit-transform: scale(1, 1) translateY(0);
-          transform: scale(1, 1) translateY(0);
-        }
+      50% {
+        -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+        transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
       }
 
-      @-webkit-keyframes fa-fade {
-        50% {
-          opacity: var(--fa-fade-opacity, 0.4);
-        }
+      57% {
+        -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+        transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
       }
 
-      @keyframes fa-fade {
-        50% {
-          opacity: var(--fa-fade-opacity, 0.4);
-        }
+      64% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
       }
 
-      @-webkit-keyframes fa-beat-fade {
+      100% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
+      }
+    }
 
-        0%,
-        100% {
-          opacity: var(--fa-beat-fade-opacity, 0.4);
-          -webkit-transform: scale(1);
-          transform: scale(1);
-        }
-
-        50% {
-          opacity: 1;
-          -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
-          transform: scale(var(--fa-beat-fade-scale, 1.125));
-        }
+    @keyframes fa-bounce {
+      0% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
       }
 
-      @keyframes fa-beat-fade {
-
-        0%,
-        100% {
-          opacity: var(--fa-beat-fade-opacity, 0.4);
-          -webkit-transform: scale(1);
-          transform: scale(1);
-        }
-
-        50% {
-          opacity: 1;
-          -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
-          transform: scale(var(--fa-beat-fade-scale, 1.125));
-        }
+      10% {
+        -webkit-transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
+        transform: scale(var(--fa-bounce-start-scale-x, 1.1), var(--fa-bounce-start-scale-y, 0.9)) translateY(0);
       }
 
-      @-webkit-keyframes fa-flip {
-        50% {
-          -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
-          transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
-        }
+      30% {
+        -webkit-transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
+        transform: scale(var(--fa-bounce-jump-scale-x, 0.9), var(--fa-bounce-jump-scale-y, 1.1)) translateY(var(--fa-bounce-height, -0.5em));
       }
 
-      @keyframes fa-flip {
-        50% {
-          -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
-          transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
-        }
+      50% {
+        -webkit-transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
+        transform: scale(var(--fa-bounce-land-scale-x, 1.05), var(--fa-bounce-land-scale-y, 0.95)) translateY(0);
       }
 
-      @-webkit-keyframes fa-shake {
-        0% {
-          -webkit-transform: rotate(-15deg);
-          transform: rotate(-15deg);
-        }
-
-        4% {
-          -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
-        }
-
-        8%,
-        24% {
-          -webkit-transform: rotate(-18deg);
-          transform: rotate(-18deg);
-        }
-
-        12%,
-        28% {
-          -webkit-transform: rotate(18deg);
-          transform: rotate(18deg);
-        }
-
-        16% {
-          -webkit-transform: rotate(-22deg);
-          transform: rotate(-22deg);
-        }
-
-        20% {
-          -webkit-transform: rotate(22deg);
-          transform: rotate(22deg);
-        }
-
-        32% {
-          -webkit-transform: rotate(-12deg);
-          transform: rotate(-12deg);
-        }
-
-        36% {
-          -webkit-transform: rotate(12deg);
-          transform: rotate(12deg);
-        }
-
-        40%,
-        100% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
+      57% {
+        -webkit-transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
+        transform: scale(1, 1) translateY(var(--fa-bounce-rebound, -0.125em));
       }
 
-      @keyframes fa-shake {
-        0% {
-          -webkit-transform: rotate(-15deg);
-          transform: rotate(-15deg);
-        }
-
-        4% {
-          -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
-        }
-
-        8%,
-        24% {
-          -webkit-transform: rotate(-18deg);
-          transform: rotate(-18deg);
-        }
-
-        12%,
-        28% {
-          -webkit-transform: rotate(18deg);
-          transform: rotate(18deg);
-        }
-
-        16% {
-          -webkit-transform: rotate(-22deg);
-          transform: rotate(-22deg);
-        }
-
-        20% {
-          -webkit-transform: rotate(22deg);
-          transform: rotate(22deg);
-        }
-
-        32% {
-          -webkit-transform: rotate(-12deg);
-          transform: rotate(-12deg);
-        }
-
-        36% {
-          -webkit-transform: rotate(12deg);
-          transform: rotate(12deg);
-        }
-
-        40%,
-        100% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
+      64% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
       }
 
-      @-webkit-keyframes fa-spin {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
+      100% {
+        -webkit-transform: scale(1, 1) translateY(0);
+        transform: scale(1, 1) translateY(0);
+      }
+    }
 
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
+    @-webkit-keyframes fa-fade {
+      50% {
+        opacity: var(--fa-fade-opacity, 0.4);
+      }
+    }
+
+    @keyframes fa-fade {
+      50% {
+        opacity: var(--fa-fade-opacity, 0.4);
+      }
+    }
+
+    @-webkit-keyframes fa-beat-fade {
+
+      0%,
+      100% {
+        opacity: var(--fa-beat-fade-opacity, 0.4);
+        -webkit-transform: scale(1);
+        transform: scale(1);
       }
 
-      @keyframes fa-spin {
-        0% {
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-        }
+      50% {
+        opacity: 1;
+        -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+        transform: scale(var(--fa-beat-fade-scale, 1.125));
+      }
+    }
 
-        100% {
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        }
+    @keyframes fa-beat-fade {
+
+      0%,
+      100% {
+        opacity: var(--fa-beat-fade-opacity, 0.4);
+        -webkit-transform: scale(1);
+        transform: scale(1);
       }
 
-      .fa-rotate-90 {
-        -webkit-transform: rotate(90deg);
-        transform: rotate(90deg);
+      50% {
+        opacity: 1;
+        -webkit-transform: scale(var(--fa-beat-fade-scale, 1.125));
+        transform: scale(var(--fa-beat-fade-scale, 1.125));
+      }
+    }
+
+    @-webkit-keyframes fa-flip {
+      50% {
+        -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+        transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+      }
+    }
+
+    @keyframes fa-flip {
+      50% {
+        -webkit-transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+        transform: rotate3d(var(--fa-flip-x, 0), var(--fa-flip-y, 1), var(--fa-flip-z, 0), var(--fa-flip-angle, -180deg));
+      }
+    }
+
+    @-webkit-keyframes fa-shake {
+      0% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg);
       }
 
-      .fa-rotate-180 {
-        -webkit-transform: rotate(180deg);
-        transform: rotate(180deg);
+      4% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
       }
 
-      .fa-rotate-270 {
-        -webkit-transform: rotate(270deg);
-        transform: rotate(270deg);
+      8%,
+      24% {
+        -webkit-transform: rotate(-18deg);
+        transform: rotate(-18deg);
       }
 
-      .fa-flip-horizontal {
-        -webkit-transform: scale(-1, 1);
-        transform: scale(-1, 1);
+      12%,
+      28% {
+        -webkit-transform: rotate(18deg);
+        transform: rotate(18deg);
       }
 
-      .fa-flip-vertical {
-        -webkit-transform: scale(1, -1);
-        transform: scale(1, -1);
+      16% {
+        -webkit-transform: rotate(-22deg);
+        transform: rotate(-22deg);
       }
 
-      .fa-flip-both,
-      .fa-flip-horizontal.fa-flip-vertical {
-        -webkit-transform: scale(-1, -1);
-        transform: scale(-1, -1);
+      20% {
+        -webkit-transform: rotate(22deg);
+        transform: rotate(22deg);
       }
 
-      .fa-rotate-by {
-        -webkit-transform: rotate(var(--fa-rotate-angle, none));
-        transform: rotate(var(--fa-rotate-angle, none));
+      32% {
+        -webkit-transform: rotate(-12deg);
+        transform: rotate(-12deg);
       }
 
-      .fa-stack {
-        display: inline-block;
-        vertical-align: middle;
-        height: 2em;
-        position: relative;
-        width: 2.5em;
+      36% {
+        -webkit-transform: rotate(12deg);
+        transform: rotate(12deg);
       }
 
-      .fa-stack-1x,
-      .fa-stack-2x {
-        bottom: 0;
-        left: 0;
-        margin: auto;
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: var(--fa-stack-z-index, auto);
+      40%,
+      100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes fa-shake {
+      0% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg);
       }
 
-      .svg-inline--fa.fa-stack-1x {
-        height: 1em;
-        width: 1.25em;
+      4% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg);
       }
 
-      .svg-inline--fa.fa-stack-2x {
-        height: 2em;
-        width: 2.5em;
+      8%,
+      24% {
+        -webkit-transform: rotate(-18deg);
+        transform: rotate(-18deg);
       }
 
-      .fa-inverse {
-        color: var(--fa-inverse, #fff);
+      12%,
+      28% {
+        -webkit-transform: rotate(18deg);
+        transform: rotate(18deg);
       }
 
-      .sr-only,
-      .fa-sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
+      16% {
+        -webkit-transform: rotate(-22deg);
+        transform: rotate(-22deg);
       }
 
-      .sr-only-focusable:not(:focus),
-      .fa-sr-only-focusable:not(:focus) {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border-width: 0;
+      20% {
+        -webkit-transform: rotate(22deg);
+        transform: rotate(22deg);
       }
 
-      .svg-inline--fa .fa-primary {
-        fill: var(--fa-primary-color, currentColor);
-        opacity: var(--fa-primary-opacity, 1);
+      32% {
+        -webkit-transform: rotate(-12deg);
+        transform: rotate(-12deg);
       }
 
-      .svg-inline--fa .fa-secondary {
-        fill: var(--fa-secondary-color, currentColor);
-        opacity: var(--fa-secondary-opacity, 0.4);
+      36% {
+        -webkit-transform: rotate(12deg);
+        transform: rotate(12deg);
       }
 
-      .svg-inline--fa.fa-swap-opacity .fa-primary {
-        opacity: var(--fa-secondary-opacity, 0.4);
+      40%,
+      100% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+    }
+
+    @-webkit-keyframes fa-spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
       }
 
-      .svg-inline--fa.fa-swap-opacity .fa-secondary {
-        opacity: var(--fa-primary-opacity, 1);
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes fa-spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
       }
 
-      .svg-inline--fa mask .fa-primary,
-      .svg-inline--fa mask .fa-secondary {
-        fill: black;
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
       }
+    }
 
-      .fad.fa-inverse,
-      .fa-duotone.fa-inverse {
-        color: var(--fa-inverse, #fff);
-      }
-    </style>
-  </head>
-  <body>
-    <div id="___gatsby">
-      <div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper">
-          <header class="header-module--bar--0VxZy">
-            <ul class="menu-bar">
-              <li class="card" onclick="location.href = '../index.html';">Home</li>
-              <li class="card" onclick="location.href = 'projects.html';">Projects</li>
-              <li class="card" onclick="location.href = 'experience.html';">Experience</li>
-              <li class="card" onclick="location.href = 'awards.html';">Awards</li>
-              <li class="card" onclick="location.href = 'publications.html';">Publications</li>
-              <li class="card" onclick="location.href = 'activities.html';">Activities</li>
-            </ul>
-          </header>
-        <div class="container-module--container--1sq6u">
-          <main class="content-module--content--UHy8y">
-            <div class="about-module--about--Um+LS">
+    .fa-rotate-90 {
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
 
-              <section class="about-module--details--8l4aO">
-                <div class="intro-module--intro--soq61">
-                  <h3>Projects</h3>
-                                    <div class="index-module--cta--Yi6O8">
-                    <button class="button-module--button--BvGZT">
-                      <a>
-                        <a href="mailto:ashutoshsun@g.ucla.edu">Contact me</a>
-                      </a>
-                    </button>
-                    <div class="index-module--icons--LC+yQ">
-                      <a class="index-module--link--nqUXd" href="https://github.com/ashutoshsundresh" rel="noreferrer" target="_blank">
-                        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                          <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
-                        </svg>
-                      </a>
-                      <a class="index-module--link--nqUXd" href="https://www.linkedin.com/in/ashutosh-sundresh-763021221" rel="noreferrer" target="_blank">
-                        <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" class="svg-inline--fa fa-linkedin-in " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                          <path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
-                        </svg>
-                      </a>
-                    </div>
+    .fa-rotate-180 {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+
+    .fa-rotate-270 {
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+    }
+
+    .fa-flip-horizontal {
+      -webkit-transform: scale(-1, 1);
+      transform: scale(-1, 1);
+    }
+
+    .fa-flip-vertical {
+      -webkit-transform: scale(1, -1);
+      transform: scale(1, -1);
+    }
+
+    .fa-flip-both,
+    .fa-flip-horizontal.fa-flip-vertical {
+      -webkit-transform: scale(-1, -1);
+      transform: scale(-1, -1);
+    }
+
+    .fa-rotate-by {
+      -webkit-transform: rotate(var(--fa-rotate-angle, none));
+      transform: rotate(var(--fa-rotate-angle, none));
+    }
+
+    .fa-stack {
+      display: inline-block;
+      vertical-align: middle;
+      height: 2em;
+      position: relative;
+      width: 2.5em;
+    }
+
+    .fa-stack-1x,
+    .fa-stack-2x {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: var(--fa-stack-z-index, auto);
+    }
+
+    .svg-inline--fa.fa-stack-1x {
+      height: 1em;
+      width: 1.25em;
+    }
+
+    .svg-inline--fa.fa-stack-2x {
+      height: 2em;
+      width: 2.5em;
+    }
+
+    .fa-inverse {
+      color: var(--fa-inverse, #fff);
+    }
+
+    .sr-only,
+    .fa-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .sr-only-focusable:not(:focus),
+    .fa-sr-only-focusable:not(:focus) {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    .svg-inline--fa .fa-primary {
+      fill: var(--fa-primary-color, currentColor);
+      opacity: var(--fa-primary-opacity, 1);
+    }
+
+    .svg-inline--fa .fa-secondary {
+      fill: var(--fa-secondary-color, currentColor);
+      opacity: var(--fa-secondary-opacity, 0.4);
+    }
+
+    .svg-inline--fa.fa-swap-opacity .fa-primary {
+      opacity: var(--fa-secondary-opacity, 0.4);
+    }
+
+    .svg-inline--fa.fa-swap-opacity .fa-secondary {
+      opacity: var(--fa-primary-opacity, 1);
+    }
+
+    .svg-inline--fa mask .fa-primary,
+    .svg-inline--fa mask .fa-secondary {
+      fill: black;
+    }
+
+    .fad.fa-inverse,
+    .fa-duotone.fa-inverse {
+      color: var(--fa-inverse, #fff);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="___gatsby">
+    <div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper">
+      <header class="header-module--bar--0VxZy">
+        <ul class="menu-bar">
+          <li class="card" onclick="location.href = '../index.html';">Home</li>
+          <li class="card" onclick="location.href = 'projects.html';">Projects</li>
+          <li class="card" onclick="location.href = 'experience.html';">Experience</li>
+          <li class="card" onclick="location.href = 'awards.html';">Awards</li>
+          <li class="card" onclick="location.href = 'publications.html';">Publications</li>
+          <li class="card" onclick="location.href = 'activities.html';">Activities</li>
+        </ul>
+      </header>
+      <div class="container-module--container--1sq6u">
+        <main class="content-module--content--UHy8y">
+          <div class="about-module--about--Um+LS">
+
+            <section class="about-module--details--8l4aO">
+              <div class="intro-module--intro--soq61">
+                <h3>Projects</h3>
+                <div class="index-module--cta--Yi6O8">
+                  <button class="button-module--button--BvGZT">
+                    <a>
+                      <a href="mailto:ashutoshsun@g.ucla.edu">Contact me</a>
+                    </a>
+                  </button>
+                  <div class="index-module--icons--LC+yQ">
+                    <a class="index-module--link--nqUXd" href="https://github.com/ashutoshsundresh" rel="noreferrer"
+                      target="_blank">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github"
+                        class="svg-inline--fa fa-github " role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 496 512">
+                        <path fill="currentColor"
+                          d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                        </path>
+                      </svg>
+                    </a>
+                    <a class="index-module--link--nqUXd" href="https://www.linkedin.com/in/ashutosh-sundresh-763021221"
+                      rel="noreferrer" target="_blank">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in"
+                        class="svg-inline--fa fa-linkedin-in " role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512">
+                        <path fill="currentColor"
+                          d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z">
+                        </path>
+                      </svg>
+                    </a>
                   </div>
-              </section>
+                </div>
+            </section>
+          </div>
+        </main>
+
+        <main class="content-module--content--UHy8ys" style="padding-bottom: 1.5cm; margin-top: -1cm;">
+          <div class="project-card">
+            <div class="content-section">
+              <h1 class="project-title">ShapeShiftOS</h1>
+              <p class="project-subtitle">Founder of Open-Source Android-Based Mobile Operating System</p>
+              <p class="project-description">
+                I created this project in 2020 and have maintained it since. I authored multiple features including
+                color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens
+                integration in screenshots, custom lockscreen clock with dynamic TrueType font, etc.
+              </p>
+              <p class="statistics">
+                Statistics: 150k+ downloads from 160+ countries, 50+ stars on GitHub.
+              </p>
+              <a href="https://shapeshiftos.com" target="_blank" class="view-project-btn">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                  class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                  </path>
+                </svg> View Project
+              </a>
             </div>
-          </main>
-           <main class="content-module--content--UHy8ys">
-            <ul class="projects-module--projects--+sXDR">
-              <li>
-                <a href="https://shapeshiftos.com" target="_blank" id="safari-delete-2" rel="noreferrer">
-                  <div class="projects-module--dots---505i">
-                    <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
-                      <div style="max-width:3840px;display:block">
-                        <img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;2400&#x27; width=&#x27;3840&#x27;
-															xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static" />
-                      </div>
-                      <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.ibb.co/yRp79gQ/LOVUK1E.webp" alt="" />
-                    </div>
-                  </div>
-                </a>
-                <div class="projects-module--description--scIxw">
-                  <h3>ShapeShiftOS</h3>
-                  <p><b><i>Founder of Open-Source Android-Based Mobile Operating System</b></i></p>
-                  <p>I created this project in 2020 and have maintained it since. I authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, etc. <i>Statistics: 150k+ downloads from 160+ countries, 50+ stars on GitHub.</i></p>
-                  <button class="button-module--button--BvGZT">
-                    <a href="https://shapeshiftos.com" target="_blank" rel="noreferrer">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                      </svg> View Project </a>
-                  </button>
-                </div>
-              </li>
-               <li>
-                <a href="https://github.com/snsfmun/snsfmun.github.io" id="safari-delete-3" target="_blank" rel="noreferrer">
-                  <div class="projects-module--dots---505i">
-                    <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
-                      <div style="max-width:1920px;display:block">
-                        <img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;1200&#x27; width=&#x27;1920&#x27;
-																	xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static" />
-                      </div>
-                      <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.ibb.co/Phsw9sy/Screenshot-2024-06-09-142226.webp" alt="" />
-                    </div>
-                  </div>
-                </a>
-                <div class="projects-module--description--scIxw">
-                  <h3>SNSFMUN Conference Website</h3>
-                  <p><i><b>Open-Source MUN Conference Website for Shiv Nadar School, Faridabad </b> </i></p>
-                  <p>I built this from scratch using HTML, CSS, and JavaScript. It was <i>used by approximately 300 delegates </i>participating in the conferences in 2022 and 2023. It also includes information about the MUN, registrations, agendas for each committee, important documents, and a gallery. </p>
-                  <button class="button-module--button--BvGZT">
-                    <a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank" rel="noreferrer">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                      </svg> View Project on GitHub </a>
-                  </button>
-                </div>
-              </li>
-              <li>
-                <a href="https://github.com/AshutoshSundresh/SoulfairProject" id="safari-delete-4" target="_blank" rel="noreferrer">
-                  <div class="projects-module--dots---505i">
-                    <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
-                      <div style="max-width:3840px;display:block">
-                        <img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;2400&#x27; width=&#x27;3840&#x27;
-																		xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static" />
-                      </div>
-                      <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.ibb.co/XFvgTxV/GhsuTUs.webp" alt="" />
-                    </div>
-                  </div>
-                </a>
-                <div class="projects-module--description--scIxw">
-                  <h3>Shiv Nadar School Faridabad Food Menu Alexa Skill</h3>
-                  <p><i><b>Open-Source Food Menu Retriever Alexa Skill for Schools</b></i></p>
-                  <p>An Amazon Store published open-source Node.js code that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week. Won "Best Showcase of STEAM" at Shiv Nadar School Soulfest 2022.</p>
-                  <button class="button-module--button--BvGZT">
-                    <a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank" rel="noreferrer">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                      </svg> View Project on GitHub </a>
-                  </button>
-                </div>
-              </li>
-              <li>
-                <a href="https://github.com/AshutoshSundresh/organization-stars" id="safari-delete-5" target="_blank" rel="noreferrer">
-                  <div class="projects-module--dots---505i">
-                    <div data-gatsby-image-wrapper="" class="gatsby-image-wrapper gatsby-image-wrapper-constrained projects-module--image--UvauF">
-                      <div style="max-width:3840px;display:block">
-                        <img alt="" role="presentation" aria-hidden="true" src="data:image/svg+xml;charset=utf-8,%3Csvg height=&#x27;2400&#x27; width=&#x27;3840&#x27;
-																		xmlns=&#x27;http://www.w3.org/2000/svg&#x27; version=&#x27;1.1&#x27;%3E%3C/svg%3E" style="max-width:100%;display:block;position:static" />
-                      </div>
-                      <img aria-hidden="true" data-placeholder-image="" style="opacity:1;transition:opacity 500ms linear" decoding="async" src="https://i.ibb.co/8sC8dfV/Screenshot-2024-08-27-193600.png" alt="" />
-                    </div>
-                  </div>
-                </a>
-                <div class="projects-module--description--scIxw">
-                  <h3>Organization Stars Counter</h3>
-                  <p><i><b>Open-Source PyBadge Showcasing GitHub Star Stats for Organizations</b></i></p>
-                  <p>An open-source FastAPI Python Application deployed as a serverless function on Vercel that generates a badge showing the total number of stars for a given GitHub organization. It can be used to showcase the popularity of an organization on a README file or similar.</p>
-                  <button class="button-module--button--BvGZT">
-                    <a href="https://github.com/AshutoshSundresh/organization-stars" target="_blank" rel="noreferrer">
-                      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-                      </svg> View Project on GitHub </a>
-                  </button>
-                </div>
-              </li>
-            </ul>
-          </main>
-        </div>
+            <div class="image-section">
+              <img src="https://i.ibb.co/yRp79gQ/LOVUK1E.webp" alt="ShapeShiftOS" class="project-image">
+            </div>
+            <div class="dot-pattern">
+              <!-- 15 dots (5x3 grid) -->
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="content-section">
+              <h1 class="project-title">SNSFMUN Conference Website</h1>
+              <p class="project-subtitle">Open-Source MUN Conference Website for Shiv Nadar School, Faridabad</p>
+              <p class="project-description">
+                I built this from scratch using HTML, CSS, and JavaScript. It also includes information about the MUN,
+                registrations, agendas for each committee, important documents, and a gallery.
+              </p>
+              <p class="statistics">
+                Statistics: Used by approximately 300+ delegates in 2022 and 2023 conferences.
+              </p>
+              <a href="https://github.com/snsfmun/snsfmun.github.io" target="_blank" class="view-project-btn">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                  class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                  </path>
+                </svg> View Project
+              </a>
+            </div>
+            <div class="image-section">
+              <img src="https://i.ibb.co/Phsw9sy/Screenshot-2024-06-09-142226.webp" alt="ShapeShiftOS"
+                class="project-image">
+            </div>
+            <div class="dot-pattern">
+              <!-- 15 dots (5x3 grid) -->
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="content-section">
+              <h1 class="project-title">Shiv Nadar School Faridabad Food Menu Alexa Skill</h1>
+              <p class="project-subtitle">Open-Source Food Menu Retriever Alexa Skill for Schools</p>
+              <p class="project-description">
+                An Amazon Store published open-source Node.js code that retrieves meal information for a given date and
+                time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog
+                templates created over 1 week.
+              </p>
+              <p class="statistics">
+                Won "Best Showcase of STEAM" at Shiv Nadar School Soulfest 2022.
+              </p>
+              <a href="https://github.com/AshutoshSundresh/SoulfairProject" target="_blank" class="view-project-btn">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                  class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                  </path>
+                </svg> View Project
+              </a>
+            </div>
+            <div class="image-section">
+              <img src="https://i.ibb.co/XFvgTxV/GhsuTUs.webp" alt="ShapeShiftOS" class="project-image">
+            </div>
+            <div class="dot-pattern">
+              <!-- 15 dots (5x3 grid) -->
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="content-section">
+              <h1 class="project-title">Organization Stars Counter</h1>
+              <p class="project-subtitle">Open-Source PyBadge Showcasing GitHub Star Stats for Organizations</p>
+              <p class="project-description">
+                An open-source FastAPI Python Application deployed as a serverless function on Vercel that generates a
+                badge showing the total number of stars for a given GitHub organization. It can be used to showcase the
+                popularity of an organization on a README file or similar.
+              </p>
+              <a href="https://github.com/AshutoshSundresh/organization-stars" target="_blank" class="view-project-btn">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                  class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                  </path>
+                </svg> View Project
+              </a>
+            </div>
+            <div class="image-section">
+              <img src="https://i.ibb.co/8sC8dfV/Screenshot-2024-08-27-193600.png" alt="ShapeShiftOS"
+                class="project-image">
+            </div>
+            <div class="dot-pattern">
+              <!-- 15 dots (5x3 grid) -->
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+          <div class="project-card">
+            <div class="content-section">
+              <h1 class="project-title">MUN Research Engine</h1>
+              <p class="project-subtitle">MUN Research Web Application built using TypeScript and NextJS, and deployed
+                on Vercel</p>
+              <p class="project-description">
+                Web application with Google's Programmable Search Engine for indexing UN and Reuters, World Bank API for
+                country information, a custom JSON file that identifies countries and assigns a flag emoji based on ISO
+                code, and a DOMParser on the XML response from arXiv to display research papers.
+              </p>
+              <a href="https://munresearch.vercel.app/" target="_blank" class="view-project-btn">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search"
+                  class="svg-inline--fa fa-search projects-module--icon--gw2lm" role="img"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                  <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z">
+                  </path>
+                </svg> View Project
+              </a>
+            </div>
+            <div class="image-section">
+              <img src="https://i.ibb.co/GJmKMnT/Screenshot-2024-11-10-002445.png" alt="ShapeShiftOS"
+                class="project-image">
+            </div>
+            <div class="dot-pattern">
+              <!-- 15 dots (5x3 grid) -->
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+          </div>
+        </main>
       </div>
-      <div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div>
     </div>
-    <script id="gatsby-script-loader">
-      /*
-						
-									<![CDATA[*/
-      window.pagePath = "index.html"; /*]]>*/
-    </script>
-    <script id="gatsby-chunk-mapping">
-      /*
-						
-									<![CDATA[*/
-      window.___chunkMapping = {
-        "polyfill": ["/polyfill-bed2637b9c0761f4ada4.js"],
-        "app": ["/app-22f020205b91308c12ec.js"],
-        "component---src-pages-404-js": ["/component---src-pages-404-js-afd77b05b88ff00977ce.js"],
-        "component---src-pages-about-js": ["/component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js"],
-        "component---src-pages-index-js": ["/component---src-pages-index-js-ba85f52f74bd7f9fbaf2.js"],
-        "component---src-pages-projects-js": ["/component---src-pages-projects-js-954bb66b9cce49bad986.js"]
-      }; /*]]>*/
-    </script>
-    <script>
-	function isSafari() {
-   	 return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-	}
-	function removeElementsInSafari() {
- 	   if (isSafari()) {
-	        const selectorsToRemove = [
- 	           '#safari-delete',
- 	           '#safari-delete-1',
- 	           '#safari-delete-2',
- 	           '#safari-delete-3',
- 	           '#safari-delete-4',
- 	           '#safari-delete-5',
- 	       ];
-	
- 	       selectorsToRemove.forEach(selector => {
- 	           const elements = document.querySelectorAll(selector);
-  	          elements.forEach(element => {
-  	              element.remove();
-  	          });
-  	      });
-	
- 	       console.log('Removed incompatible elements for Safari');
- 	   } 
-	}
-	// Call the function when the DOM is fully loaded
-	document.addEventListener('DOMContentLoaded', removeElementsInSafari);
-    </script>
-    <script src="../polyfill-bed2637b9c0761f4ada4.js" nomodule=""></script>
-    <script src="../component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js" async=""></script>
-    <script src="../commons-68b2598b005b5b06c96b.js" async=""></script>
-    <script src="../cb1608f2-c4d3d93be05d420e4e4e.js" async=""></script>
-    <script src="../app-22f020205b91308c12ec.js" async=""></script>
-    <script src="../framework-64bd70c70cac1373b18b.js" async=""></script>
-    <script src="../webpack-runtime-825d3899913683e414b1.js" async=""></script>
-  </body>
+    <div id="gatsby-announcer"
+      style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0"
+      aria-live="assertive" aria-atomic="true"></div>
+  </div>
+  <script id="gatsby-script-loader">
+    /*
+        	
+                <![CDATA[*/
+    window.pagePath = "index.html"; /*]]>*/
+  </script>
+  <script id="gatsby-chunk-mapping">
+    /*
+        	
+                <![CDATA[*/
+    window.___chunkMapping = {
+      "polyfill": ["/polyfill-bed2637b9c0761f4ada4.js"],
+      "app": ["/app-22f020205b91308c12ec.js"],
+      "component---src-pages-404-js": ["/component---src-pages-404-js-afd77b05b88ff00977ce.js"],
+      "component---src-pages-about-js": ["/component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js"],
+      "component---src-pages-index-js": ["/component---src-pages-index-js-ba85f52f74bd7f9fbaf2.js"],
+      "component---src-pages-projects-js": ["/component---src-pages-projects-js-954bb66b9cce49bad986.js"]
+    }; /*]]>*/
+  </script>
+  <script>
+    function isSafari() {
+      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    }
+    function removeElementsInSafari() {
+      if (isSafari()) {
+        const selectorsToRemove = [
+          '#safari-delete',
+          '#safari-delete-1',
+          '#safari-delete-2',
+          '#safari-delete-3',
+          '#safari-delete-4',
+          '#safari-delete-5',
+        ];
+
+        selectorsToRemove.forEach(selector => {
+          const elements = document.querySelectorAll(selector);
+          elements.forEach(element => {
+            element.remove();
+          });
+        });
+
+        console.log('Removed incompatible elements for Safari');
+      }
+    }
+    // Call the function when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', removeElementsInSafari);
+  </script>
+  <script src="../polyfill-bed2637b9c0761f4ada4.js" nomodule=""></script>
+  <script src="../component---src-pages-about-js-6cde2a28c9e0b5e6ddc0.js" async=""></script>
+  <script src="../commons-68b2598b005b5b06c96b.js" async=""></script>
+  <script src="../cb1608f2-c4d3d93be05d420e4e4e.js" async=""></script>
+  <script src="../app-22f020205b91308c12ec.js" async=""></script>
+  <script src="../framework-64bd70c70cac1373b18b.js" async=""></script>
+  <script src="../webpack-runtime-825d3899913683e414b1.js" async=""></script>
+</body>
+
 </html>

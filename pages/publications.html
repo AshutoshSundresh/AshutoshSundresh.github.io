@@ -375,6 +375,116 @@
       a:hover {
         border-bottom: 2px solid #48CEA5
       }
+      .publications-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            animation: fadeDown 0.6s ease-out;
+        }
+
+        .publications-grid {
+            display: grid;
+            gap: 2rem;
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .publication-card {
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 2px;
+            padding: 2rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .publication-year {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .publication-authors {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+        }
+
+        .publication-venue {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .publication-abstract {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .publication-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .link-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .publication-card {
+                padding: 1.5rem;
+            }
+        }
 
       .header-module--bar--0VxZy {
         align-items: center;
@@ -1821,28 +1931,42 @@
 
               </section>
             </div>
-          <section class='about-section' style="padding-bottom: 60px;">
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> September 2023 <br>Faridabad, IN </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Unveiling Complex Traffic Patterns: Applying Chaos Theory to Understand Non-Linear Dynamics in Congestion </div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial; font-style:italic"><a href="https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion">International Journal of Science and Research</a></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">I engineered a Python-based traffic simulation system utilizing NumPy and Matplotlib, implementing chaos theory principles through non-linear sinusoidal functions to model complex congestion patterns. I developed statistical analysis framework combining discrete uniform distributions for traffic volume and Gaussian distributions for speed variations, processing synthetic datasets of 900+ data points across multiple traffic parameters. I created interactive 3D visualization system mapping relationships between speed, traffic volume, and travel time using matplotlib's Axes3D, incorporating dynamic color mapping for enhanced pattern recognition. I also implemented time-series evolution algorithm modeling traffic congestion dynamics over 100 time steps, incorporating sensitivity analysis to demonstrate butterfly effect in traffic systems through mathematical modeling: congestion_evolution[i] = traffic_volume × (1 + sin(travel_time × i)).</div>			
-                  <br>
-		  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Won first place among 160+ submissions in the paper submission round at the high school level Neerja Modi Mathelogics Symposium 2023</li>
-                    </ul>
-                  </div>
-                </div>
+            <div class="publications-container" style="margin-bottom: 2cm;">              
+              <div class="publications-grid">
+                  <article class="publication-card">
+                      <div class="publication-year">September 5, 2023</div>
+                      <h2 class="publication-title">Unveiling Complex Traffic Patterns: Applying Chaos Theory to Understand Non-Linear Dynamics in Congestion
+                      </h2>
+                      
+                      <p class="publication-authors">
+                          <strong>Ashutosh Sundresh</strong>
+                      </p>
+                      
+                      <p class="publication-venue">
+                        International Journal of Science and Research (IJSR)
+                      </p>
+                      
+                      <p class="publication-abstract">
+                        I engineered a Python-based traffic simulation system utilizing NumPy and Matplotlib, implementing chaos theory principles through non-linear sinusoidal functions to model complex congestion patterns. I developed statistical analysis framework combining discrete uniform distributions for traffic volume and Gaussian distributions for speed variations, processing synthetic datasets of 900+ data points across multiple traffic parameters. I created interactive 3D visualization system mapping relationships between speed, traffic volume, and travel time using matplotlib's Axes3D, incorporating dynamic color mapping for enhanced pattern recognition. I also implemented time-series evolution algorithm modeling traffic congestion dynamics over 100 time steps, incorporating sensitivity analysis to demonstrate butterfly effect in traffic systems through mathematical modeling: congestion_evolution[i] = traffic_volume × (1 + sin(travel_time × i)).
+                      </p>
+                      
+                      <div class="publication-links">
+                          <a href="https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion" class="publication-link">
+                              PDF
+                          </a>
+                          
+                          <a href="https://github.com/fireambulance/SinusoidalGraphsAndSyntheticTrafficData" class="publication-link">
+                              Code
+                          </a>
+                          
+                          <a href="https://raw.githubusercontent.com/fireambulance/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx" class="publication-link">
+                              Slides
+                          </a>
+                      </div>
+                  </article>
+      
               </div>
-            </div>
-          </section>
+          </div>
           </main>
 
           <div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div>
