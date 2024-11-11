@@ -1036,10 +1036,41 @@
          .pagebreak {
          page-break-before: always;
          }
+
+         /* Archive notice banner styles */
+         .archive-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(0, 0, 0, 100%);
+            backdrop-filter: blur(24px);
+            border-bottom: 1px solid #425247;
+            padding: 10px 20px;
+            text-align: center;
+            z-index: 1000;
+            color: #000000;
+         }
+
+         .archive-notice p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #000000;
+         }
+
+         /* Adjust main content to account for banner */
+         .container-fluid {
+            margin-top: 50px;
          }
       </style>
    </head>
    <body itemscope="itemscope" itemtype="http://schema.org/Person">
+      <!-- Add archive notice banner -->
+      <div class="container-fluid">
+      <div class="archive-notice">
+         <p><strong>⚠️ Archive Notice:</strong> This page contains archived content from high school and may be outdated. Please refer to my main page for current information.</p>
+      </div>
+      </div>
       <div class="container-fluid">
          <div class="row main clearfix">
             <a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
