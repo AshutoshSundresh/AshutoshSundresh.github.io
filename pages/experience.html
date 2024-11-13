@@ -1800,6 +1800,94 @@
       .fa-duotone.fa-inverse {
         color: var(--fa-inverse, #fff);
       }
+
+    .experience-card {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-header {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .company-logo {
+      width: 48px;
+      height: 48px;
+      background: #0a66c2;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .header-content {
+      flex-grow: 1;
+    }
+
+    .role-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 4px;
+    }
+
+    .company-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 4px;
+    }
+
+    .date-location {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .description {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
+    }
+
+    .bullet-points {
+      list-style-type: disc;
+      margin-left: 18px;
+      margin-bottom: 12px;
+    }
+
+    .bullet-points li {
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .technologies {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .technologies strong {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 600;
+    }
+
     </style>
   </head>
   <body>
@@ -1843,94 +1931,121 @@
               </section>
             </div>
           <section class='about-section' style="padding-bottom: 60px;">
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> October 2024 - Present </div>
+            <div class="experience-card">
+              <div class="card-header">
+                <img src="https://media.licdn.com/dms/image/v2/D560BAQGyP7meTS-ALA/company-logo_200_200/company-logo_200_200/0/1727489810109/lahacks_logo?e=1739404800&v=beta&t=safSeArbnu0mnASyhfSwNFjaoYAaJ8GLpQjx2KtaU-Q" alt="LAHacks Logo" class="company-logo">
+                <div class="header-content">
+                  <div class="role-title">Technology Team Organizer</div>
+                  <div class="company-name"><a href="https://lahacks.com">LA Hacks</a></div>
+                  <div class="date-location">
+                    <div>Oct 2024 - Present</div>
+                    <div>Los Angeles, US</div>
+                  </div>
                 </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Technology Team & Organizer, <i><a href="https://lahacks.com/">LA Hacks</a></i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">The largest collegiate hackathon in Southern California.</div>
-                </div>
+              </div>
+          
+              <div class="description">
+                The largest collegiate hackathon in Southern California.
               </div>
             </div>
             <br>
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> May 2020 - Present </div>
+            <div class="experience-card">
+              <div class="card-header">
+                <img src="https://media.licdn.com/dms/image/v2/C560BAQHaOcogB88kDA/company-logo_100_100/company-logo_100_100/0/1632217037821?e=1739404800&v=beta&t=H33TcIQbfDluWYHaHwlirOIjqkhFjVQTJtEBcXormIU" alt="ShapeShiftOS Logo" class="company-logo">
+                <div class="header-content">
+                  <div class="role-title">Founder / Lead Developer</div>
+                  <div class="company-name"><a href="https://shapeshiftos.com">ShapeShiftOS</a></div>
+                  <div class="date-location">
+                    <div>May 2020 - Present</div>
+                    <div>IN</div>
+                  </div>
                 </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Founder & Lead Developer, <i><a href="https://shapeshiftos.com">ShapeShiftOS</a></i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">An open-source award-winning Android-based mobile operating system with a unique customizable user interface and convenient original features.</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Built multiple original features in Java with proper code review, commit quality, and testing: Google Lens integration into screenshots, color palette-based system theming, a framework for custom in-screen fingerprint scanner icons and animations, QR code scanner tile with history, and a redesigned lock screen clock with variable font-weight</li>
-                      <li>Recruited 2 core engineers and designers </li>
-                      <li>Recruited 25+ device engineers to make builds for different Qualcomm chipset-based devices</li>
-                      <li>Led user acquisition and marketing campaigns through online forum posts on XDA Mobile Developers and posters designed on Figma</li>
-                      <li>Managed our large userbase, consistently adding new features and fixing errors by reading Logcats</li>
-                    </ul>
-                    <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">Achievements:</div>
-                    <ul>
-                      <li>Won all available awards from SourceForge Open-Source File Hosting: Open-Source Excellence, Community Leader, Community Choice, and SourceForge Favorite</li>
+              </div>
+          
+              <div class="description">
+                An open-source award-winning Android-based mobile operating system with a unique customizable user interface and convenient original features.
+              </div>
+          
+              <ul class="bullet-points">
+                <li>Built multiple original features in Java with proper code review, commit quality, and testing: Google Lens integration into screenshots, color palette-based system theming, a framework for custom in-screen fingerprint scanner icons and animations, QR code scanner tile with history, and a redesigned lock screen clock with variable font-weight</li>
+                <li>Recruited 2 core engineers and designers </li>
+                <li>Recruited 25+ device engineers to make builds for different Qualcomm chipset-based devices</li>
+                <li>Led user acquisition and marketing campaigns through online forum posts on XDA Mobile Developers and posters designed on Figma</li>
+                <li>Managed our large userbase, consistently adding new features and fixing errors by reading Logcats</li>
+              </ul>
+          
+              <div class="description">
+                Achievements: 
+              </div>
+
+              <ul class="bullet-points">
+                                      <li>Won all available awards from SourceForge Open-Source File Hosting: Open-Source Excellence, Community Leader, Community Choice, and SourceForge Favorite</li>
                       <li>Over 150,000 officially recorded downloads from 160+ countries</li>
                       <li>50+ total stars on GitHub</li>
                       <li>3000+ member community built on Telegram at the peak</li>
                       <li>Funded server costs through voluntary donations from users</li>
                       <li>Reviewed positively by multiple tech YouTubers and bloggers (multiple videos with 5000+ views where all reviews were voluntary)</li>
-                    </ul>
-                  </div>
-                </div>
+              </ul>
+
+              <div class="technologies">
+                <strong>Skills:</strong> Java · Kotlin · Figma · Android Development · Linux Kernel · Qualcomm Android Chipset Development · Linux · Shell Scripting · UI/UX Design · Team Leadership
               </div>
             </div>
             <br>
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> July 2024 - September 2024 <br>Berkeley, US </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Software Engineer Intern, <i><a href="https://skylow.ai">Skylow AI</a></i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">LLM-automated virtual worlds with interactive chatbots for companionship, secretarial tasks, and role-play games.</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Developed a dynamic "virtual world" class simulating AI character interactions, movements, and events, including weather updates, time zone implementation, and global event triggers. Created a demo in Streamlit showcasing this functionality</li>
-                      <li>Developed "character template" class with attributes like personality, preferences, and goals, initially using Pinecone for "brain-like memory" but later migrating to mem0</li>
-		      <li>Implemented AWS Rekognition for NSFW image detection in React-based profile picture upload system, utilizing Uploadcare API and custom hooks for state management</li>    
-		      <li>Integrated Sentry in the Vercel-deployed app to perform error tracking and performance monitoring in real-time, and Posthog to track user behavior and lay down the framework for message analytics</li> 
-                      <li>Technologies: Python, TypeScript, React.js, Next.js, OpenAl API, Pinecone Vector Databases, mem0, Uploadcare</li>   
-                    </ul>
+            <div class="experience-card">
+              <div class="card-header">
+                <img src="https://media.licdn.com/dms/image/v2/D4D0BAQFz38zYjR46Hg/company-logo_200_200/company-logo_200_200/0/1719256881369?e=1739404800&v=beta&t=CueI8JNJEbcSSYFrekXHyHOhJLR28qonvBqKkd-EnJs" alt="Skylow AI Logo" class="company-logo">
+                <div class="header-content">
+                  <div class="role-title">Software Engineer Intern</div>
+                  <div class="company-name"><a href="https://skylow.ai">Skylow AI</a></div>
+                  <div class="date-location">
+                    <div>Jul 2024 - Sep 2024 · 3 mos</div>
+                    <div>Berkeley, US</div>
                   </div>
                 </div>
               </div>
+          
+              <div class="description">
+                LLM-automated virtual worlds with interactive chatbots for companionship, secretarial tasks, and role-play games.
+              </div>
+          
+              <ul class="bullet-points">
+                <li>Developed a dynamic "virtual world" class simulating AI character interactions, movements, and events, including weather updates, time zone implementation, and global event triggers. Created a demo in Streamlit showcasing this functionality</li>
+                <li>Developed "character template" class with attributes like personality, preferences, and goals, initially using Pinecone for "brain-like memory" but later migrating to mem0</li>
+                <li>Implemented AWS Rekognition for NSFW image detection in React-based profile picture upload system, utilizing Uploadcare API and custom hooks for state management</li>
+                <li>Integrated Sentry in the Vercel-deployed app to perform error tracking and performance monitoring in real-time, and Posthog to track user behavior and lay down the framework for message analytics</li>
+              </ul>
+          
+              <div class="technologies">
+                <strong>Skills:</strong> Python · TypeScript · React.js · Next.js · OpenAI API · Pinecone Vector Databases · mem0 · Uploadcare · Sentry
+              </div>
             </div>
             <br>
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> June 2022 - July 2022 <br>Faridabad, IN </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Cyber Security Intern, <i><a href="https://manavrachna.edu.in/mriirs">Manav Rachna International Institute of Research and Studies</a></i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">Interned under Dr. Charu Virmani for 30 hours a week, learning penetration testing, cybersecurity, and hands-on attacks taught in the first year of B.Tech (CSE).</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Used different tools for penetration testing to evaluate security of university websites and Damn Vulnerable Web App</li>
-                      <li>Intercepted Wi-Fi packets on university network through packet sniffing</li>
-                      <li>Hands-on work on how phishing and DDoS attacks are performed</li>
-                      <li>Built basic viruses using the Metasploit framework</li>
-                    </ul>
+            <div class="experience-card">
+              <div class="card-header">
+                <img src="https://th.bing.com/th?id=OSK.f873d1c027eb2f72ac5014e0378242e4&w=64&h=64&c=7&o=6&dpr=1.5&pid=SANGAM" alt="MRIIRS Logo" class="company-logo">
+                <div class="header-content">
+                  <div class="role-title">Cyber Security Intern</div>
+                  <div class="company-name"><a href="https://manavrachna.edu.in/">Manav Rachna International Institute of Research and Studies</a></div>
+                  <div class="date-location">
+                    <div>Jun 2022 - Jul 2022 · 2 mos</div>
+                    <div>Faridabad, IN</div>
                   </div>
                 </div>
+              </div>
+          
+              <div class="description">
+                Interned under Dr. Charu Virmani for 30 hours a week, learning penetration testing, cybersecurity, and hands-on attacks taught in the first year of B.Tech (CSE).
+              </div>
+          
+              <ul class="bullet-points">
+                <li>Used different tools for penetration testing to evaluate security of university websites and Damn Vulnerable Web App</li>
+                <li>Intercepted Wi-Fi packets on university network through packet sniffing</li>
+                <li>Hands-on work with VPNs and DDoS attacks are performed</li>
+              </ul>
+
+              <div class="technologies">
+                <strong>Skills:</strong> Penetration Testing · Cybersecurity · Network Security
               </div>
             </div>
           </section>
