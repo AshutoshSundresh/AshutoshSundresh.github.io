@@ -1800,6 +1800,201 @@
       .fa-duotone.fa-inverse {
         color: var(--fa-inverse, #fff);
       }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .award-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.4rem;
+            padding: 2rem;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .award-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .award-card:hover {
+            transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 
+                0 5px 15px rgba(0, 242, 254, 0.1),
+                0 10px 30px rgba(79, 172, 254, 0.1);
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.4rem;
+            background: linear-gradient(45deg, transparent, rgba(79, 172, 254, 0.1), transparent);
+            z-index: -1;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .award-card:hover::before {
+            opacity: 1;
+        }
+
+        .award-date {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-date::before {
+            font-size: 1.2rem;
+        }
+
+        .award-location {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-location::before {
+            font-size: 1.2rem;
+        }
+
+        .award-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .award-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transition: width 0.3s ease;
+        }
+
+        .award-card:hover .award-title::after {
+            width: 100%;
+        }
+
+        .award-institution {
+            font-style: italic;
+            color: #fffff;
+            margin-bottom: 1rem;
+            transform: translateZ(10px);
+        }
+
+        .award-description {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transform: translateZ(5px);
+        }
+
+        .achievement-list {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .achievement-list li {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-list li:hover {
+            opacity: 1;
+        }
+
+        .legacy-awards {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 0.4rem;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.4s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .legacy-awards:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .legacy-awards h2 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+        }
+
+        .legacy-awards p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .floating-badge {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(79, 172, 254, 0.1);
+            padding: 1rem;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-badge:hover {
+            transform: scale(1.1);
+            background: rgba(79, 172, 254, 0.2);
+        }
     </style>
   </head>
   <body>
@@ -1844,47 +2039,61 @@
               </section>
             </div>
           <section class='about-section' style="padding-bottom: 60px;">
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> August 2024 <br>Los Angeles, US </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Shirley and Walter Wang Scholarship in Computer Science, <i>UCLA Samueli Engineering Scholarships</i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">Awarded 6500 USD as an incoming freshman at the UCLA Samueli School of Engineering.</div>
-                </div>
-              </div>
+        
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-date">August 2024</div>
+                <div class="award-location">Los Angeles, US</div>
+                <h3 class="award-title">Shirley and Walter Wang Scholarship in Computer Science</h3>
+                <div class="award-institution">UCLA Samueli Engineering Scholarships</div>
+                <p class="award-description">Awarded 6500 USD as an incoming freshman at the UCLA Samueli School of Engineering.</p>
             </div>
-<br>
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> August 2024 <br>Faridabad, IN </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Writing Mentorship Programme Top-Performing Mentee, <i>Shri Ram College of Commerce, University of Delhi</i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">I completed as a <i>top 5 mentee out of a cohort of 105 students</i> for excelling in multiple tasks like policy proposal writing, article concept note writing, Excel data cleaning, and writing in different styles.</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li> Awarded an annual subscription to The Hindu e-paper and an opportunity to intern at The Quint news website's editorial team
-</a></a>
-                      </li>
-                      <li>The program's 105 participants were selected from an initial pool of 1500+ applicants
-                      </li>
-                      <li>More information about the program is on the <a href="activities.html">Activities tab</a></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-<br>
-          <p class="intro-module--description--3dd62">Look at my older awards from high school (International Linguistics Olympiad (IOL) camp, International Awards in Southeast Asian Math Olympiads, Asia Pacific Linguistics Olympiad (APLO) representation, XDA Recognized Developer, SourceForge Open-Source Excellence, Education Minister's Award for Board Exams, Science Olympiad Foundation Academic Excellence Scholarship, etc.) <a href="https://ashutoshsundresh.com/archive.html#awards" target="_blank">here</a></p>
 
+            <div class="award-card">
+                <div class="award-date">August 2024</div>
+                <div class="award-location">Faridabad, IN</div>
+                <h3 class="award-title">Writing Mentorship Programme Top-Performing Mentee</h3>
+                <div class="award-institution">Shri Ram College of Commerce, University of Delhi</div>
+                <p class="award-description">Completed as a top 5 mentee out of a cohort of 105 students for excelling in multiple tasks like policy proposal writing, article concept note writing, Excel data cleaning, and writing in different styles.</p>
+                <ul class="achievement-list">
+                    <li>Awarded an annual subscription to The Hindu e-paper and an opportunity to intern at The Quint news website's editorial team</li>
+                    <li>Selected from an initial pool of 1500+ applicants</li>
+                    <li>See more <a href="https://ashutoshsundresh.com/pages/activities">here </a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="legacy-awards">
+            <p>My notable accomplishments from high school include the International Linguistics Olympiad (IOL) camp, International Awards in Southeast Asian Math Olympiads, Asia Pacific Linguistics Olympiad (APLO) representation, XDA Recognized Developer, SourceForge Open-Source Excellence, Education Minister's Award for Board Exams, and Science Olympiad Foundation Academic Excellence Scholarship. Find more <a href="https://ashutoshsundresh.com/archive.html#awards" target="_blank">here</a></p>
+        </div>
           </section>
+
+    <script>
+        document.querySelectorAll('.award-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateZ(20px)
+                `;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+    </script>
 
           </main>
 
