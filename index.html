@@ -381,122 +381,159 @@
     }
 
     .timeline {
-      border-left: 3px solid #727cf5;
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px;
-      background-color: rgba(0, 0, 0, 0.3);
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-      margin: 0 auto;
-      letter-spacing: 0.2px;
       position: relative;
-      line-height: 1.4em;
-      font-size: 1.03em;
-      padding: 50px;
-      list-style: none;
-      text-align: left;
-      max-width: 40%;
+      padding: 40px 0 0 40px; /* Left padding for the line */
     }
 
-    @media (max-width: 767px) {
-      .timeline {
-        max-width: 98%;
-        padding: 25px;
-      }
-    }
-
-    .timeline h1 {
-      font-weight: 300;
-      font-size: 1.4em;
-    }
-
-    .timeline h2,
-    .timeline h3 {
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .timeline .event {
-      border-bottom: 1px dashed #e8ebf1;
-      padding-bottom: 25px;
-      margin-bottom: 25px;
-      position: relative;
-    }
-
-    @media (max-width: 767px) {
-      .timeline .event {
-        padding-top: 30px;
-      }
-    }
-
-    .timeline .event:last-of-type {
-      padding-bottom: 0;
-      margin-bottom: 0;
-      border: none;
-    }
-
-    .timeline .event:before,
-    .timeline .event:after {
+    .timeline::before {
+      content: '';
       position: absolute;
-      display: block;
+      left: 0;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, 
+        rgba(99,102,241,0) 0%,
+        rgba(107, 103, 213, 1) 15%,
+        rgba(107, 103, 213, 1) 85%,
+        rgba(99,102,241,0) 100%
+      );
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+      padding-left: 30px;
+    }
+
+    .timeline-date {
+      display: inline-block;
+      padding: 8px 16px;
+      background: rgba(85, 80, 215, 0.87);
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(107, 103, 213, 1);
+      border: 2px solid rgba(126, 123, 193, 1);
+    }
+
+    .timeline-content {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 6px;
+      padding: 25px;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px -15px rgba(99, 102, 241, 0.3);
+    }
+
+    .timeline-title {
+      font-size: 1.3rem;
+      color: white;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .timeline-subtitle {
+      color: #94a3b8;
+      font-size: 1.0rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .timeline-details {
+      list-style: none;
+      font-size: 0.9rem;
+
+    }
+
+    .timeline-details li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    .timeline-details li::before {
+      content: '•';
+      color: rgba(70, 201, 206, 1);
+      position: absolute;
+      left: 0;
       top: 0;
     }
 
-    .timeline .event:before {
-      left: -207px;
-      content: attr(data-date);
-      text-align: right;
-      font-weight: 100;
-      font-size: 0.9em;
-      min-width: 120px;
+    .achievement-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
     }
 
-    @media (max-width: 767px) {
-      .timeline .event:before {
-        left: 0px;
-        text-align: left;
+    .achievement-tag {
+      padding: 4px 12px;
+      background: rgba(0, 212, 219, 0.1);
+      border: 1px solid rgba(70, 201, 206, 0.32);
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: rgba(70, 201, 206, 1);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .timeline {
+        padding-left: 25px;
+      }
+
+      .timeline-item {
+        padding-left: 20px;
+      }
+
+      .timeline-content {
+        padding: 20px;
+      }
+
+      .timeline-title {
+        font-size: 1.25rem;
+      }
+
+      .timeline-subtitle {
+        font-size: 1rem;
+      }
+
+      .achievement-tags {
+        margin-top: 15px;
       }
     }
-
-    .timeline .event:after {
-      -webkit-box-shadow: 0 0 0 3px #727cf5;
-      box-shadow: 0 0 0 3px #727cf5;
-      left: -55.8px;
-      background: #fff;
-      border-radius: 50%;
-      height: 9px;
-      width: 9px;
-      content: "";
-      top: 5px;
-    }
-
-    @media (max-width: 767px) {
-      .timeline .event:after {
-        left: -31.8px;
-      }
-    }
-
-    .rtl .timeline {
-      border-left: 0;
-      text-align: right;
-      border-bottom-right-radius: 0;
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 4px;
-      border-top-left-radius: 4px;
-      border-right: 3px solid #727cf5;
-    }
-
-    .rtl .timeline .event::before {
-      left: 0;
-      right: -170px;
-    }
-
-    .rtl .timeline .event::after {
-      left: 0;
-      right: -55.8px;
-    }
-
     .container {
       display: inline-block;
     }
@@ -2238,38 +2275,47 @@
           </div>
       </div>
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <div id="content">
-                    <ul class="timeline">
-                      <li class="event" data-date="2024 - 2028">
-                        <h3>University of California, Los Angeles</h3>
-                        <p style="font-size:14px;">
-                          <i>BS in Computer Science at Henry Samueli School of Engineering</i>
-                        </p>
-                        <p style="font-size:14px;"><a href="https://www.linkedin.com/in/asund/details/courses/"
-                            target="_blank">Coursework</a></p>
-                      </li>
-                      <li class="event" data-date="2021 - 2024">
-                        <h3>Shiv Nadar School, Faridabad, India</h3>
-                        <p style="font-size:14px; ">
-                          <i>Physics, Chemistry, Mathematics, Computer Science, and English (CBSE)</i>
-                        </p>
-                        <p style="font-size:14px; ">4.0/4.0 unweighted GPA recalculated by UCLA</p>
-                        <p style="font-size:14px; ">96.8% in Grade 12, 94% in Grade 11, and 99.2% in Grade 10 (State
-                          Rank 1)</p>
-                        <p style="font-size:14px; ">Took 8 APs (5 5s and 3 4s), and scored 1580 on the SAT (800 Math and
-                          780 Reading) and 119 on the TOEFL</p>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2024 - 2028</div>
+        <div class="timeline-content">
+          <h2 class="timeline-title">University of California, Los Angeles</h2>
+          <h3 class="timeline-subtitle">BS in Computer Science at Henry Samueli School of Engineering and Applied Science</h3>
+          <ul class="timeline-details">
+            <li><a href="https://www.linkedin.com/in/asund/details/courses/">Coursework</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">2021 - 2024</div>
+        <div class="timeline-content">
+          <h2 class="timeline-title">Shiv Nadar School, Faridabad, India</h2>
+          <h3 class="timeline-subtitle">CBSE Curriculum</h3>
+          <ul class="timeline-details">
+            <li>4.0/4.0 unweighted GPA (Valedictorian)
+              <br>• Grade 12: 96.8%
+              <br>• Grade 11: 94%
+              <br>• Grade 10: 99.2% (State Rank 1)
+            </li>
+            <li>8 APs (Five 5s, Three 4s), AP Scholar with Distinction</li>
+            <li>SAT Score: 1580 (800M, 780V), TOEFL: 119</li>
+          </ul>
+          <div class="achievement-tags">
+            <span class="achievement-tag">Physics</span>
+            <span class="achievement-tag">Chemistry</span>
+            <span class="achievement-tag">Mathematics</span>
+            <span class="achievement-tag">Computer Science</span>
+            <span class="achievement-tag">English</span>
           </div>
         </div>
-        <main class="content-module--content--UHy8ys" style="margin-top: 0.8cm; padding-bottom: 0.5cm;">
+      </div>
+    </div>
+</div>
+        <main class="content-module--content--UHy8ys" style="margin-top: -0.1cm; padding-bottom: 0.5cm;">
           <div class="project-card">
             <div class="content-section">
               <h1 class="project-title">High School Archive</h1>
@@ -2288,7 +2334,7 @@
               </a>
             </div>
             <div class="image-section">
-              <img src="https://i.ibb.co/0VYggbN/slb5zIj.webp" alt="ShapeShiftOS" class="project-image">
+              <img src="https://i.ibb.co/0VYggbN/slb5zIj.webp" alt="Archive" class="project-image">
             </div>
             <div class="dot-pattern">
               <!-- 15 dots (5x3 grid) -->
