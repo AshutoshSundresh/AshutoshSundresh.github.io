@@ -1801,6 +1801,201 @@
         color: var(--fa-inverse, #fff);
       }
 
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .award-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.4rem;
+            padding: 2rem;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(10px);
+            transform-style: preserve-3d;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .award-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .award-card:hover {
+            transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 
+                0 5px 15px rgba(0, 242, 254, 0.1),
+                0 10px 30px rgba(79, 172, 254, 0.1);
+        }
+
+        .award-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 0.4rem;
+            background: linear-gradient(45deg, transparent, rgba(79, 172, 254, 0.1), transparent);
+            z-index: -1;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .award-card:hover::before {
+            opacity: 1;
+        }
+
+        .award-date {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-date::before {
+            font-size: 1.2rem;
+        }
+
+        .award-location {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .award-location::before {
+            font-size: 1.2rem;
+        }
+
+        .award-title {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .award-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            transition: width 0.3s ease;
+        }
+
+        .award-card:hover .award-title::after {
+            width: 100%;
+        }
+
+        .award-institution {
+            font-style: italic;
+            color: #fffff;
+            margin-bottom: 1rem;
+            transform: translateZ(10px);
+        }
+
+        .award-description {
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            transform: translateZ(5px);
+        }
+
+        .achievement-list {
+            margin-top: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .achievement-list li {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-list li:hover {
+            opacity: 1;
+        }
+
+        .legacy-awards {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 0.4rem;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards 0.4s;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .legacy-awards:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+        }
+
+        .legacy-awards h2 {
+            color: #4facfe;
+            margin-bottom: 1rem;
+        }
+
+        .legacy-awards p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .awards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .floating-badge {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(79, 172, 254, 0.1);
+            padding: 1rem;
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(79, 172, 254, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-badge:hover {
+            transform: scale(1.1);
+            background: rgba(79, 172, 254, 0.2);
+        }
+
         /* Hamburger menu styles */
         .hamburger-menu {
             display: none;
@@ -1993,81 +2188,67 @@
               </section>
             </div>
           <section class='about-section' style="padding-bottom: 60px;">
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> 2020 - Present</div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Open Source Developer & Contributor</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">I have over 4400 total commits and 1600 total contributions on GitHub since I created my account.</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development and was the youngest person to attain it at the time of being awarded the title (2021). <a href="https://xdaforums.com/m/ashutosh-sundresh.7730292/">XDA Account</a>
-                      </li>
-                      <li>Awarded the Open Source Excellence award by SourceForge (highest level of award on SourceForge File Hosting) for ShapeShiftOS surpassing 150,000 downloads (2022)
-                      </li>
-                      <li>Contributed to Google's Material Design Components and fixed resource errors leading to unsuccessful compilation using Make/Soong build system. <a href="https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh">Commits</a>
 
-                      <li>Most of my projects are on the <a href="projects.html">Projects</a> tab on this website</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br>
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> September 2024</div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Investment Banking M&A Simulation, <i>StepStone</i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">Completed with a score at the highest possible range (>85%).</div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Participated in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies</a>
-                      </li>
+        <div class="awards-grid">
+        <div class="award-card">
+            <div class="award-date">2020 - Present</div>
+            <h3 class="award-title">Open-Source Developer & Contributor</h3>
+            <p class="award-description">I have over 4400 total commits and 1600 total contributions on GitHub since I created my account in 2020.</p>
+            <ul class="achievement-list">
+                <li>Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development and was the youngest person to attain it at the time of being awarded the title (2021). <a href="https://xdaforums.com/m/ashutosh-sundresh.7730292/" target="_blank" rel="noopener noreferrer">XDA Account</a></li>
+                <li>Awarded the Open Source Excellence award by SourceForge (highest level of award on SourceForge File Hosting) for ShapeShiftOS surpassing 150,000 downloads (2022)</li>
+                <li>Contributed to Google's Material Design Components and fixed resource errors leading to unsuccessful compilation using Make/Soong build system. <a href="https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh" target="_blank" rel="noopener noreferrer">Commits</a></li>
+                <li>Most of my projects are on the <a href="projects.html">Projects</a> tab on this website</li>
+            </ul>
+        </div>
+
+            <div class="award-card">
+                <div class="award-date">September 2024</div>
+                <h3 class="award-title">Investment Banking M&A Simulation</h3>
+                <div class="award-institution">StepStone</div>
+                <p class="award-description">Participated and excelled in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.</p>
+                <ul class="achievement-list">
+                    <li>Completed with a score at the highest possible range (>85%)</li>
                       <li>Developed a five-year financial forecast for a U.S. apparel and footwear company by building the income statement, balance sheet, and cash flow statement
                       </li>
-                      <li>Performed a valuation analysis using comparable companies, precedent transactions, and a discounted cash flow to prepare a football field analysis highlighting the range of implied share prices</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+                      <li>Performed a valuation analysis using comparable companies, precedent transactions, and a discounted cash flow to prepare a football field analysis highlighting the range of implied share prices</li>               
+                </ul>
             </div>
-            <br>		  
-            <div class="view cvlist">
-              <div class="cvlist-group">
-                <div class="cvlist-grouptitle">
-                  <div class="cvlist-grouptitle-content"> July 2024 - August 2024 <br>Faridabad, IN </div>
-                </div>
-                <div class="cvlist-groupitems">
-                  <div class="cvlist-groupitems-item" style="font-family: Roboto Slab, serif;">Writing Mentorship Programme Mentee, <i>Shri Ram College of Commerce, University of Delhi</i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">I was selected for the 2-week Writing Mentorship Programme 2024 by The Economics Society at Shri Ram College of Commerce, University of Delhi. The program has <i>over 1500 applicants and an 8% acceptance rate.</i></div>
-                  <br>
-                  <div class="cvlist-groupitems-item" style="color: #E0E0E0; font-size: 14px; font-family: Roboto, arial;">
-                    <ul>
-                      <li>Completed as a <a href="awards.html">top-performing mentee</a></a>
-                      </li>
-                      <li>Listened to talks on mastering academic writing, article framing, policy proposal writing, contextualizing, brevity, and research paper writing by prominent guest professors, editors, writers, and SRCC students</a>
-                      </li>
-                      <li>Completed multiple tasks such as writing policy proposals, article concept notes, and exploring different writing styles (persuasive, expository, narrative, and descriptive)
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-<br>
-          <p class="intro-module--description--3dd62">Look at my older activities from high school (MUN leadership, MUN as a delegate, school event anchoring, classical piano, student council, Taekwondo, French B1 certification, etc.) <a href="https://ashutoshsundresh.com/archive.html#extracurriculars" target="_blank">here</a></p>
+        </div>
+
+        <div class="legacy-awards">
+            <p>Look at my older activities from high school (MUN leadership, MUN as a delegate, school event anchoring, classical piano, student council, Taekwondo, French B1 certification, etc.) <a href="https://ashutoshsundresh.com/archive.html#extracurriculars" target="_blank">here</a></p>
+        </div>	  
 
           </section>
+
+    <script>
+        document.querySelectorAll('.award-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateZ(20px)
+                `;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+    </script>
+
 
           </main>
 
