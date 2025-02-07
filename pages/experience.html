@@ -1803,13 +1803,21 @@
 
     .experience-card {
       width: 100%;
-      max-width: 800px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 24px;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 8px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .experience-card.fade-in {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card-header {
@@ -2167,7 +2175,7 @@
               <div class="card-header">
                 <img src="https://media.licdn.com/dms/image/v2/C560BAQE0rqdjTWLrXg/company-logo_100_100/company-logo_100_100/0/1631307949107?e=1746057600&v=beta&t=BPbyOgzhfiyuryQG1wCeiwI-NTTGRUG2RiZVKTFMRNc" alt="ELFIN CubeSat Logo" class="company-logo">
                 <div class="header-content">
-                  <div class="role-title">Software Engineer</div>
+                  <div class="role-title">Ground Software Engineer</div>
                   <div class="company-name"><a href="https://space.ucla.edu/esp">UCLA ELFIN CubeSat</a></div>
                   <div class="date-location">
                     <div>Jan 2025 - Present</div>
@@ -2299,7 +2307,7 @@
               </ul>
           
               <div class="technologies">
-                <strong>Skills:</strong> Python · TypeScript · React.js · Next.js · OpenAI API · Pinecone Vector Databases · mem0 · Uploadcare · Sentry
+                <strong>Skills:</strong> Python · TypeScript · React.js · Next.js · OpenAI API · Vector Databases · mem0 · Uploadcare · Sentry
               </div>
             </div>
             <br>
@@ -2402,6 +2410,26 @@
                 this.querySelector('span').textContent = isExpanded ? 'See more' : 'See less';
               });
             });
+
+            const cards = document.querySelectorAll('.experience-card');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target); // Stop observing once animated
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
           });
         </script>
         
