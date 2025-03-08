@@ -58,6 +58,8 @@ const MacOSWindow = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  // Add ref array for tab elements
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [tabs, setTabs] = useState([
     { id: 0, title: 'Projects', content: 'Git repositories and development projects' },
     { id: 1, title: 'Education', content: 'Academic background and achievements' },
@@ -148,14 +150,18 @@ const MacOSWindow = () => {
     // Don't process swipes if detail view is open
     if (selectedItem !== null) return;
     
+    // Get the width of a single tab
+    const tabWidth = getTabWidth();
+    
     // Navigate based on swipe direction
     if (isLeftSwipe) {
       // Only proceed if not on the last tab
       if (activeTab < tabs.length - 1) {
         // Swipe left to go to next tab
         const nextTab = activeTab + 1;
-        // Move tabs to the left by 20px and accumulate the offset
-        setTabOffset(prevOffset => prevOffset - 45);
+        // Calculate new offset and constrain it
+        const newOffset = tabOffset - tabWidth;
+        setTabOffset(getConstrainedOffset(newOffset));
         handleTabChange(nextTab);
       }
     } else if (isRightSwipe) {
@@ -163,8 +169,9 @@ const MacOSWindow = () => {
       if (activeTab > 0) {
         // Swipe right to go to previous tab
         const prevTab = activeTab - 1;
-        // Move tabs to the right by 20px and accumulate the offset
-        setTabOffset(prevOffset => prevOffset + 45);
+        // Calculate new offset and constrain it
+        const newOffset = tabOffset + tabWidth;
+        setTabOffset(getConstrainedOffset(newOffset));
         handleTabChange(prevTab);
       }
     }
@@ -172,6 +179,48 @@ const MacOSWindow = () => {
     // Reset touch coordinates
     setTouchStart(null);
     setTouchEnd(null);
+  };
+  
+  // Add function to calculate tab width
+  const getTabWidth = () => {
+    // If tabs are not yet rendered, return a default value
+    if (!tabRefs.current.length || !tabRefs.current[0]) return 45;
+    
+    // Calculate width of the active tab or the first available tab
+    const activeTabRef = tabRefs.current[activeTab] || tabRefs.current[0];
+    return activeTabRef ? activeTabRef.offsetWidth : 45;
+  };
+  
+  // Add function to calculate maximum scroll offset
+  const getMaxScrollOffset = () => {
+    if (!tabRefs.current.length) return 0;
+    
+    // Calculate total width of all tabs
+    const tabContainer = document.querySelector('.tab-container');
+    const tabsContainer = document.querySelector('.tabs-container');
+    
+    if (!tabContainer || !tabsContainer) return 0;
+    
+    // Get the width of the visible tab container and the total width of all tabs
+    const containerWidth = tabContainer.clientWidth;
+    const tabsWidth = tabsContainer.scrollWidth;
+    
+    // Calculate maximum offset (0 or negative value)
+    // When all tabs can fit, max is 0 (no scrolling needed)
+    // When tabs overflow, max is (container width - total tabs width)
+    return Math.min(0, containerWidth - tabsWidth);
+  };
+  
+  // Function to ensure offset stays within bounds
+  const getConstrainedOffset = (proposedOffset: number) => {
+    // Don't allow scrolling to the right beyond starting point (0)
+    const maxRight = 0;
+    
+    // Don't allow scrolling to the left beyond the last tab
+    const maxLeft = getMaxScrollOffset();
+    
+    // Constrain the offset within the allowed range
+    return Math.max(maxLeft, Math.min(maxRight, proposedOffset));
   };
   
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
@@ -981,7 +1030,7 @@ const MacOSWindow = () => {
       <div className="bg-gray-100 border-b border-gray-200">
         {/* Add an outer container for the scrolling behavior */}
         <div 
-          className="overflow-x-auto" 
+          className="overflow-x-auto tab-container" 
           style={{ 
             scrollbarWidth: 'none', /* Firefox */
             msOverflowStyle: 'none',  /* IE and Edge */
@@ -995,12 +1044,14 @@ const MacOSWindow = () => {
           `}</style>
           {/* Add a minimum width to ensure tabs don't get too squished */}
           <div 
-            className="flex min-w-max transition-transform duration-300 ease-in-out"
+            className="flex min-w-max transition-transform duration-300 ease-in-out tabs-container"
             style={{ transform: `translateX(${tabOffset}px)` }}
           >
-            {tabs.map((tab) => (
+            {tabs.map((tab, index) => (
               <button
                 key={tab.id}
+                // Set ref for this tab button
+                ref={el => { tabRefs.current[index] = el; }}
                 onClick={() => handleTabChange(tab.id)}
                 className={`
                   px-4 py-2 text-sm font-medium whitespace-nowrap
