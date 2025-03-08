@@ -1608,7 +1608,7 @@ const MacOSWindow = () => {
              activeTab === 2 ? '6 items' :
              activeTab === 3 ? '5 items' :
              activeTab === 4 ? '2 items' :
-             '2 items'}, {randomStorage} GB available ; &copy; {new Date().getFullYear()} Ashutosh Sundresh
+             '2 items'}, {randomStorage} GB available <br/> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
           <span>{currentDate}</span>
         </div>
