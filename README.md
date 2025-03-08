@@ -1,13 +1,23 @@
-# AshutoshSundresh Personal Portfolio Page
+# Portfolio Website
 
-Roughly based on JSONResume.org's Elegant theme, but a lot of it has been redesigned and reworked for my own personal use.
+A modern, interactive portfolio website built with Next.js and React, featuring a unique macOS Finder-inspired interface.
 
-Changes include but are not limited to:
-- New accent colors
-- Wallpaper background for body
-- Blurred cards with higher corner rounding
-- Redesigned dividers
-- Extra section for extracurriculars
-- Reworked academics section
-- Additional date qualifiers in description
-- Disabling special effects on Apple devices
+## Features
+
+- macOS Finder-style interface
+- Fully responsive design
+- Custom animations and transitions
+- Interactive navigation system
+- Project showcase with detailed views
+- Publication and education sections
+- Awards and achievements display
+- Professional experience timeline
+- Back/forward navigation between sections
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Date-fns
