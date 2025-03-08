@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import { useEffect, useRef } from 'react';
 import PersonalIntro from "./components/PersonalIntro";
 import IntroText from "./components/IntroText";
 
