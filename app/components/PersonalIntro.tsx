@@ -2,7 +2,11 @@
 
 import Image from "next/image"
 
-export default function PersonalIntro() {
+interface PersonalIntroProps {
+  // ... existing code ...
+}
+
+export default function PersonalIntro({ }: PersonalIntroProps) {
   const scrollToNext = () => {
     const currentSection = document.querySelector('#personal-intro');
     if (currentSection) {
@@ -18,7 +22,7 @@ export default function PersonalIntro() {
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2">
           {/* First line */}
-          <span className="text-5xl md:text-6xl text-gray-900 font-bold animate-gradient bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 bg-clip-text">Hey, I'm</span>
+          <span className="text-5xl md:text-6xl text-gray-900 font-bold animate-gradient bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 bg-clip-text">Hey, I&apos;m</span>
 
           <div className="relative w-16 h-16 mx-2">
             <div

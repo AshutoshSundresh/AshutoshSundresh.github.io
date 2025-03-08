@@ -72,38 +72,10 @@ const Navigation = () => {
     }
   };
 
+  useEffect(() => {
+    // ... existing code ...
+  }, [showNavigation]); // Add showNavigation to dependency array
+
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-[#2A2A2A] px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${
-        isDesktop && !isVisible && !isHomePage ? 'opacity-0 translate-y-20 pointer-events-none' : 'opacity-100'
-      }`}
-      onMouseOver={handleInteraction}
-      onClick={handleInteraction}
-    >
-      <ul className="flex items-center gap-2 md:gap-8 text-[#CCCCCC]">
-        <li className="relative">
-          <Link href="/" className={`nav-link ${isAboutActive ? 'text-white' : ''}`}>
-              Home  
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isAboutActive ? 'opacity-100' : 'opacity-0'}`}></span>
-          </Link>
-        </li>
-        <li className="nav-dot">·</li>
-        <li className="relative">
-          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'text-white' : ''}`}>
-              About  
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isExperienceActive ? 'opacity-100' : 'opacity-0'}`}></span>
-          </Link>
-        </li>
-        <li className="nav-dot">·</li>
-        <li className="relative">
-          <Link href="/contact" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
-            Contact
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isContactActive ? 'opacity-100' : 'opacity-0'}`}></span>
-          </Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
-
-export default Navigation;
+      className={`

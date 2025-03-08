@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from 'react';
+import React from 'react';
 import MacOSTimelineCard from "../components/SkeumorphicMacOSInterface";
 
 export default function Experience() {

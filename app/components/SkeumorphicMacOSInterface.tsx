@@ -43,7 +43,7 @@ const MacOSWindow = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [tabs, setTabs] = useState([
+  const [tabs] = useState([
     { id: 0, title: 'Projects', content: 'Git repositories and development projects' },
     { id: 1, title: 'Education', content: 'Academic background and achievements' },
     { id: 2, title: 'Experience', content: 'Professional experience and internships' },
@@ -398,9 +398,11 @@ const MacOSWindow = () => {
         <div className="p-4">
           {/* Project Image */}
           <div className="mb-4">
-            <img 
+            <Image 
               src={project.image} 
               alt={project.name}
+              width={200}
+              height={200}
               className="w-full h-auto rounded-lg shadow-sm"
             />
             <p className="text-xs text-gray-500 mt-2 italic font-['Raleway']">{project.caption}</p>
@@ -634,9 +636,11 @@ const MacOSWindow = () => {
           {/* Large centered icon and title */}
           <div className="flex flex-col items-center text-center">
             <div className="w-32 h-32 flex items-center justify-center mb-4">
-              <img 
+              <Image 
                 src={publication.icon} 
                 alt="" 
+                width={128}
+                height={128}
                 className="w-32 h-32 object-contain"
               />
             </div>
@@ -945,9 +949,11 @@ const MacOSWindow = () => {
                   onClick={(e) => handleItemClick(e, project.id)}
                 >
                   <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
-                    <img 
+                    <Image 
                       src={folderIconUrl} 
                       alt="Folder"
+                      width={64}
+                      height={64}
                       className="w-full h-full object-contain"
                     />
                   </div>
@@ -975,9 +981,11 @@ const MacOSWindow = () => {
                     <div className="bg-gray-50 p-4 border-b border-gray-200">
                       <div className="flex items-center">
                         <div className="w-12 h-12 mr-4 relative">
-                          <img 
+                          <Image 
                             src={edu.icon}
                             alt={edu.institution}
+                            width={48}
+                            height={48}
                             className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
@@ -1093,9 +1101,11 @@ const MacOSWindow = () => {
                     <div className="bg-gray-50 p-4 border-b border-gray-200">
                       <div className="flex items-start">
                         <div className="w-12 h-12 mr-4 relative flex-shrink-0">
-                          <img 
+                          <Image 
                             src={exp.icon}
                             alt={exp.company}
+                            width={48}
+                            height={48}
                             className="w-full h-full object-contain rounded-lg"
                     />
                   </div>
@@ -1205,9 +1215,11 @@ const MacOSWindow = () => {
                               </p>
                             </div>
                             <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
-                              <img 
+                              <Image 
                                 src={award.icon}
                                 alt={award.title}
+                                width={48}
+                                height={48}
                                 className="w-8 h-8 object-contain"
                               />
                             </div>
@@ -1275,9 +1287,11 @@ const MacOSWindow = () => {
                   >
                     <div className="flex flex-col items-center">
                       <div className="w-16 h-16 flex items-center justify-center mb-2">
-                        <img 
+                        <Image 
                           src={pub.icon} 
                           alt="" 
+                          width={64}
+                          height={64}
                           className="w-16 h-16 object-contain"
                         />
                       </div>
@@ -1315,9 +1329,11 @@ const MacOSWindow = () => {
                         <div className="flex items-start space-x-4">
                           {activity.icon && (
                             <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center">
-                              <img 
+                              <Image 
                                 src={activity.icon}
                                 alt=""
+                                width={48}
+                                height={48}
                                 className="w-8 h-8 object-contain"
                               />
                             </div>
