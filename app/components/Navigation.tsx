@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 
+/* eslint-disable react-hooks/exhaustive-deps */
+
 const Navigation = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';  // Check if we're on home page

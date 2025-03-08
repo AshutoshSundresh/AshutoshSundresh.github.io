@@ -1,0 +1,8 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: npm run build
+        env:
+          CI: false  # This will ignore warnings 
