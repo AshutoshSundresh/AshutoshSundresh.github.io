@@ -161,7 +161,7 @@ const MacOSWindow = () => {
       caption: "Full-Stack Library Management System utilizing Python and MySQL",
       description: "Grade 12 final project. It features three modules: Book, Member, and Issue/Return offering CRUD operations across 3 interconnected database tables with foreign key constraints. 12+ core functions include transaction logging, member login, and automatic date/time management for book circulation.",
       created: new Date('2024-12-15'),
-      link: "https://ashutoshsundresh.com/pages/Ashutosh_LibraryManagementSoftware.pdf",
+      link: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Ashutosh_LibraryManagementSoftware.pdf",
     },
     {
       id: 4,
@@ -175,7 +175,7 @@ const MacOSWindow = () => {
   ];
 
   // Folder icon image URL
-  const folderIconUrl = "https://i.ibb.co/qFnmNLbS/image.png";
+  const folderIconUrl = "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/folder.png";
 
   // Update the education data interface and content
   const educationData = [
@@ -186,7 +186,7 @@ const MacOSWindow = () => {
       school: "Henry Samueli School of Engineering and Applied Science",
       period: "2024 - Present",
       gpa: "4.0/4.0 GPA",
-      icon: "https://i.postimg.cc/W4ygfVL0/image.png",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
       institutionLink: "https://ucla.edu",
       courseLink: "https://www.linkedin.com/in/asund/details/courses/",
       details: {
@@ -200,7 +200,7 @@ const MacOSWindow = () => {
       curriculum: "CBSE Curriculum",
       period: "2021 - 2024",
       gpa: "4.0/4.0 unweighted GPA",
-      icon: "https://i.postimg.cc/fRBxmX82/image.png",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
       institutionLink: "https://shivnadarschool.edu.in/",
       archiveLink: "https://ashutoshsundresh.com/archive.html",
       details: {
@@ -234,7 +234,7 @@ const MacOSWindow = () => {
       position: "Founder / Lead Software Engineer",
       location: "Remote",
       period: "May 2020 - Present",
-      icon: "https://i.imgur.com/32GNWef.jpeg",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
       companyLink: "https://shapeshiftos.com/",
       description: [
         "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
@@ -263,7 +263,7 @@ const MacOSWindow = () => {
       position: "Ground Software Engineer",
       location: "Los Angeles, CA",
       period: "Jan 2025 - Present",
-      icon: "https://i.imgur.com/c0HgUkX.jpeg", // Replace with actual logo URL
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/elfincubesat.jpg",
       companyLink: "https://elfin.igpp.ucla.edu/",
       description: [
         "Worked on CubeSats at the Experimental Space Physics Lab",
@@ -277,7 +277,7 @@ const MacOSWindow = () => {
       position: "Software Engineer / Organizer",
       location: "Los Angeles, CA",
       period: "Oct 2024 - Present",
-      icon: "https://i.imgur.com/pErgIrV.jpeg", // Replace with actual logo URL
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/lahacks.jpg",
       companyLink: "https://lahacks.com/",
       description: [
         "The largest and oldest collegiate hackathon in Southern California",
@@ -303,7 +303,7 @@ const MacOSWindow = () => {
       position: "Software Engineer Intern",
       location: "Berkeley, CA",
       period: "Jul 2024 - Sep 2024",
-      icon: "https://i.postimg.cc/1X2d92qF/image.png", // Replace with actual logo URL
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/skylow.png",
       companyLink: "https://skylow.ai/",
       description: [
         "An LLM-powered social media platform in seed stage",
@@ -329,7 +329,7 @@ const MacOSWindow = () => {
       position: "Extern",
       location: "Bala-Cynwyd, PA · Remote",
       period: "Feb 2025",
-      icon: "https://media.licdn.com/dms/image/v2/D4E0BAQGRndfnf-vqyg/company-logo_200_200/company-logo_200_200/0/1725734450282/susquehanna_international_group_llp_sig_logo?e=1746057600&v=beta&t=RKQeYsTwIAXcYe7FrkWUYTd7oPi_Nl6y7KhogCiURrg", // Replace with actual logo URL
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/susquehanna_international_group_llp_sig_logo.jpg",
       companyLink: "https://sig.com/",
       description: ["SIG Discovery Day for underclassmen"],
       skills: [
@@ -345,7 +345,7 @@ const MacOSWindow = () => {
       position: "Research Intern",
       location: "Faridabad, India",
       period: "Jun 2022 - Jul 2022",
-      icon: "https://th.bing.com/th?id=OSK.f873d1c027eb2f72ac5014e0378242e4&w=64&h=64&c=7&o=6&dpr=1.5&pid=SANGAM", // Replace with actual logo URL
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/manavrachna.jpg",
       companyLink: "https://manavrachna.edu.in/",
       description: [
         "Offensive security techniques, network analysis, vulnerability assessment, cryptography",
@@ -492,7 +492,7 @@ const MacOSWindow = () => {
           title: "Shirley and Walter Wang Scholar",
           subtitle: "UCLA Samueli School of Engineering",
           year: "2024",
-          icon: "https://i.postimg.cc/W4ygfVL0/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
           description: "Computer Science Merit Scholar",
           highlight: "Merit Scholar",
           stats: "Class of 2028"
@@ -507,7 +507,7 @@ const MacOSWindow = () => {
           title: "International Recognition",
           subtitle: "Multiple Olympiad Achievements",
           year: "2021-2024",
-          icon: "https://i.postimg.cc/1z02SvBC/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/medal.png",
           description: "Notable accomplishments in various international competitions and olympiads",
           highlight: "Multiple Awards",
           stats: "IOL Camp, APLO, Math Olympiads",
@@ -517,7 +517,7 @@ const MacOSWindow = () => {
           title: "SRCC Writing Mentorship Program",
           subtitle: "Top 5 Performer",
           year: "2024",
-          icon: "https://i.postimg.cc/kXx50m8W/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ecosocsrcc.png",
           description: "Selected among 1,500 applicants (8% acceptance rate) for advanced writing techniques program",
           highlight: "Top 5",
           stats: "Out of 105 student cohort"
@@ -526,7 +526,7 @@ const MacOSWindow = () => {
           title: "Open Source Excellence",
           subtitle: "SourceForge Recognition",
           year: "2023",
-          icon: "https://i.imgur.com/32GNWef.jpeg",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
           description: "Top 0.5% of all open-source projects globally",
           highlight: "150,000+ downloads",
           link: "https://sourceforge.net/projects/shapeshiftos/"
@@ -535,7 +535,7 @@ const MacOSWindow = () => {
           title: "XDA Recognized Developer",
           subtitle: "XDA Forums for Android Development",
           year: "2021",
-          icon: "https://i.postimg.cc/R0TsyNC2/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/xda.png",
           description: "Youngest Recognized Developer on the XDA Forums (awarded when I was 15 years old) as of 2023",
           highlight: "Top 300",
           stats: "Out of 11 million users",
@@ -546,7 +546,7 @@ const MacOSWindow = () => {
           title: "Board Exam Excellence",
           subtitle: "CBSE Recognition",
           year: "2022",
-          icon: "https://i.postimg.cc/fRBxmX82/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
           description: "Education Minister's Award in Grade 12 for outstanding performance in board examinations",
           highlight: "99.2% in Grade 10",
           stats: "State Rank 1 in Grade 10"
@@ -561,7 +561,7 @@ const MacOSWindow = () => {
           title: "SAT Perfect Math Score",
           subtitle: "College Board",
           year: "2023",
-          icon: "https://i.postimg.cc/X7y5Xm5v/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/collegeboard.png",
           description: "Perfect score in SAT Mathematics section",
           highlight: "1580",
           stats: "800 Math, 780 Verbal"
@@ -570,7 +570,7 @@ const MacOSWindow = () => {
           title: "TOEFL Excellence",
           subtitle: "ETS",
           year: "2023",
-          icon: "https://i.postimg.cc/nL6r8cdY/image.png",
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/toeflibt.png",
           description: "Near-perfect score in TOEFL iBT",
           highlight: "119/120",
           stats: "Top 1% globally"
@@ -586,7 +586,7 @@ const MacOSWindow = () => {
       title: "Applying Chaos Theory to Traffic Congestion",
       subtitle: "International Journal of Science and Research (IJSR)",
       year: "2023",
-      icon: "https://i.postimg.cc/RFyDQ2Z0/txt-file-icon-1213.png",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
       description: "Research paper applying chaos theory principles through non-linear sinusoidal functions to model complex traffic congestion patterns",
       authors: ["Ashutosh Sundresh"],
       journal: "International Journal of Science and Research (IJSR)",
@@ -609,7 +609,7 @@ const MacOSWindow = () => {
       title: "Impact of Short-Term Rentals on Housing Crisis",
       subtitle: "Ceteris Paribus, SRCC",
       year: "2024",
-      icon: "https://i.postimg.cc/RFyDQ2Z0/txt-file-icon-1213.png",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
       description: "Analysis of Airbnb's impact on urban housing markets and communities",
       authors: ["Ashutosh Sundresh"],
       journal: "Ceteris Paribus, Shri Ram College of Commerce",
@@ -776,7 +776,7 @@ const MacOSWindow = () => {
         text: "XDA Account",
         url: "https://xdaforums.com/m/ashutosh-sundresh.7730292/about"
       },
-      icon: "https://i.postimg.cc/fbBcNX4n/image.png"
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/github.png"
     },
     {
       id: 2,
@@ -788,7 +788,7 @@ const MacOSWindow = () => {
         "Developed a five-year financial forecast for a U.S. apparel and footwear company",
         "Performed valuation analysis using comparable companies and precedent transactions"
       ],
-      icon: "https://i.postimg.cc/g2yygQN0/image.png"
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/stepstone.png"
     }
   ];
 
