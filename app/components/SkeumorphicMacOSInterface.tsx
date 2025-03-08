@@ -182,8 +182,20 @@ const MacOSWindow = () => {
   // Format current date for status bar
   const currentDate = format(new Date(), 'MMMM d, yyyy h:mm a');
 
-  // Generate random storage available (between 1-99 with 3 sig figs)
-  const randomStorage = (Math.floor(Math.random() * 990) / 10).toFixed(1);
+  // State for random storage size
+  const [randomStorage, setRandomStorage] = useState('');
+
+  // Effect to initialize random storage on mount
+  useEffect(() => {
+    // Generate initial random storage value
+    updateRandomStorage();
+  }, []);
+
+  // Function to update random storage
+  const updateRandomStorage = () => {
+    const newStorage = (Math.floor(Math.random() * 990) / 10).toFixed(1);
+    setRandomStorage(newStorage);
+  };
 
   // Project data
   const projects: ProjectDetails[] = [
@@ -858,6 +870,9 @@ const MacOSWindow = () => {
       setTabHistory([...newHistory, tabId]);
       setCurrentHistoryIndex(newHistory.length);
       setActiveTab(tabId);
+      
+      // Update the random storage size only when tab changes
+      updateRandomStorage();
     }
   };
 
@@ -965,7 +980,19 @@ const MacOSWindow = () => {
       {/* Tabs */}
       <div className="bg-gray-100 border-b border-gray-200">
         {/* Add an outer container for the scrolling behavior */}
-        <div className="overflow-x-auto scrollbar-hide">
+        <div 
+          className="overflow-x-auto" 
+          style={{ 
+            scrollbarWidth: 'none', /* Firefox */
+            msOverflowStyle: 'none',  /* IE and Edge */
+          }}
+        >
+          {/* Add CSS to hide scrollbar for Chrome, Safari and Opera */}
+          <style jsx>{`
+            div::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
           {/* Add a minimum width to ensure tabs don't get too squished */}
           <div 
             className="flex min-w-max transition-transform duration-300 ease-in-out"
