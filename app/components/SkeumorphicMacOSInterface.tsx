@@ -41,6 +41,19 @@ interface Publication {
   }>;
 }
 
+// Add interface for award type
+interface Award {
+  title: string;
+  subtitle: string;
+  year: string;
+  icon: string;
+  description: string;
+  highlight?: string;  // Make optional with ?
+  stats?: string;      // Make optional with ?
+  link?: string;
+  extraDetails?: string;
+}
+
 const MacOSWindow = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -479,8 +492,10 @@ const MacOSWindow = () => {
           title: "Shirley and Walter Wang Scholar",
           subtitle: "UCLA Samueli School of Engineering",
           year: "2024",
-          icon: "https://i.postimg.cc/W4ygfVL0/image.png", // UCLA logo
+          icon: "https://i.postimg.cc/W4ygfVL0/image.png",
           description: "Computer Science Merit Scholar",
+          highlight: "Merit Scholar",
+          stats: "Class of 2028"
         }
       ]
     },
@@ -1224,12 +1239,16 @@ const MacOSWindow = () => {
                             {/* Stats */}
                             <div className="flex items-center space-x-4">
                               <div className="flex-1">
-                                <div className="text-2xl font-bold text-gray-900 mb-1">
-                                  {award.highlight}
-                                </div>
-                                <div className="text-sm text-gray-500">
-                                  {award.stats}
-                                </div>
+                                {award.highlight && (
+                                  <div className="text-2xl font-bold text-gray-900 mb-1">
+                                    {award.highlight}
+                                  </div>
+                                )}
+                                {award.stats && (
+                                  <div className="text-sm text-gray-500">
+                                    {award.stats}
+                                  </div>
+                                )}
                               </div>
                               
                               {/* Year badge */}
