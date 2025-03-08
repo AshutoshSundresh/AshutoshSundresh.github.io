@@ -14,6 +14,7 @@ const Navigation = () => {
   const isContactActive = pathname === '/contact';
   const [isVisible, setIsVisible] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
+  const [isDetailViewOpen, setIsDetailViewOpen] = useState(false); // State to track if detail view is open
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   // Function to show navigation
@@ -67,6 +68,29 @@ const Navigation = () => {
     };
   }, [isDesktop, isHomePage]); // Add isHomePage to dependencies
   
+  // useEffect to check if a detail view is open
+  useEffect(() => {
+    const checkForDetailView = () => {
+      const detailViewElement = document.querySelector('[data-detail-view]');
+      setIsDetailViewOpen(!!detailViewElement);
+    };
+    
+    // Check initially
+    checkForDetailView();
+    
+    // Create a MutationObserver to watch for changes in the DOM
+    const observer = new MutationObserver(checkForDetailView);
+    
+    // Start observing the document body for DOM changes
+    observer.observe(document.body, { 
+      childList: true,
+      subtree: true 
+    });
+    
+    // Clean up observer on component unmount
+    return () => observer.disconnect();
+  }, []);
+  
   // Reset timer on any user interaction with the nav
   const handleInteraction = () => {
     if (isDesktop && !isHomePage) { // Don't handle interaction on home page
@@ -74,11 +98,24 @@ const Navigation = () => {
     }
   };
 
+  // Determine proper visibility classes
+  const visibilityClasses = () => {
+    if (isDesktop) {
+      // Desktop behavior - fade up/down based on timeout
+      return !isVisible && !isHomePage 
+        ? 'opacity-0 translate-y-20 pointer-events-none' 
+        : 'opacity-100';
+    } else {
+      // Mobile behavior - slide down out of view when detail view is open
+      return isDetailViewOpen 
+        ? 'opacity-0 translate-y-32 pointer-events-none' 
+        : 'opacity-100';
+    }
+  };
+
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-[#2A2A2A] px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${
-        isDesktop && !isVisible && !isHomePage ? 'opacity-0 translate-y-20 pointer-events-none' : 'opacity-100'
-      }`}
+      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-[#2A2A2A] px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()}`}
       onMouseOver={handleInteraction}
       onClick={handleInteraction}
     >
