@@ -78,14 +78,17 @@ const MacOSWindow = () => {
   const [currentHistoryIndex, setCurrentHistoryIndex] = useState(0);
   
   // Add state for tracking touch events
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{x: number, y: number} | null>(null);
   
   // Add state for tab position offset
   const [tabOffset, setTabOffset] = useState(0);
   
   // Minimum distance required for a swipe
   const minSwipeDistance = 50;
+  
+  // Maximum angle (in degrees) from horizontal for a valid swipe
+  const maxSwipeAngle = 30;
   
   useEffect(() => {
     const handleResize = () => {
@@ -132,23 +135,49 @@ const MacOSWindow = () => {
   // Handle touch events for swipe navigation
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     setTouchEnd(null); // Reset touch end
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStart({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    });
   };
   
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    setTouchEnd({
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    });
   };
   
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     
-    // Calculate swipe distance
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
+    // Calculate horizontal and vertical distances
+    const deltaX = touchStart.x - touchEnd.x;
+    const deltaY = touchStart.y - touchEnd.y;
     
-    // Don't process swipes if detail view is open
-    if (selectedItem !== null) return;
+    // Calculate the absolute horizontal distance
+    const horizontalDistance = Math.abs(deltaX);
+    
+    // Calculate the angle of the swipe in degrees
+    const angleInRadians = Math.atan2(Math.abs(deltaY), horizontalDistance);
+    const angleInDegrees = angleInRadians * (180 / Math.PI);
+    
+    // Check if the swipe meets both the distance and angle requirements
+    const isValidHorizontalSwipe = 
+      horizontalDistance > minSwipeDistance && 
+      angleInDegrees < maxSwipeAngle;
+    
+    // Don't process swipes if detail view is open or if not a valid horizontal swipe
+    if (selectedItem !== null || !isValidHorizontalSwipe) {
+      // Reset touch coordinates and return
+      setTouchStart(null);
+      setTouchEnd(null);
+      return;
+    }
+    
+    // Determine swipe direction (left or right)
+    const isLeftSwipe = deltaX > 0;
+    const isRightSwipe = deltaX < 0;
     
     // Get the width of a single tab
     const tabWidth = getTabWidth();
