@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, TouchEvent } from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
 
@@ -75,6 +75,16 @@ const MacOSWindow = () => {
   const [tabHistory, setTabHistory] = useState<number[]>([0]); // Start with first tab
   const [currentHistoryIndex, setCurrentHistoryIndex] = useState(0);
   
+  // Add state for tracking touch events
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  
+  // Add state for tab position offset
+  const [tabOffset, setTabOffset] = useState(0);
+  
+  // Minimum distance required for a swipe
+  const minSwipeDistance = 50;
+  
   useEffect(() => {
     const handleResize = () => {
       setWindowHeight({
@@ -116,6 +126,53 @@ const MacOSWindow = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  
+  // Handle touch events for swipe navigation
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(null); // Reset touch end
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    // Calculate swipe distance
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    // Don't process swipes if detail view is open
+    if (selectedItem !== null) return;
+    
+    // Navigate based on swipe direction
+    if (isLeftSwipe) {
+      // Only proceed if not on the last tab
+      if (activeTab < tabs.length - 1) {
+        // Swipe left to go to next tab
+        const nextTab = activeTab + 1;
+        // Move tabs to the left by 20px and accumulate the offset
+        setTabOffset(prevOffset => prevOffset - 45);
+        handleTabChange(nextTab);
+      }
+    } else if (isRightSwipe) {
+      // Only proceed if not on the first tab
+      if (activeTab > 0) {
+        // Swipe right to go to previous tab
+        const prevTab = activeTab - 1;
+        // Move tabs to the right by 20px and accumulate the offset
+        setTabOffset(prevOffset => prevOffset + 45);
+        handleTabChange(prevTab);
+      }
+    }
+    
+    // Reset touch coordinates
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
   
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
   const contentHeight = windowHeight.isMobile 
@@ -824,7 +881,6 @@ const MacOSWindow = () => {
       className={`
         min-h-screen w-full flex items-start sm:items-center justify-center 
         p-4 sm:p-8 relative
-        ${windowHeight.isMobile ? 'pt-12' : ''} // Add less top padding on mobile
       `}
       style={backgroundStyle}
     >
@@ -911,11 +967,14 @@ const MacOSWindow = () => {
         {/* Add an outer container for the scrolling behavior */}
         <div className="overflow-x-auto scrollbar-hide">
           {/* Add a minimum width to ensure tabs don't get too squished */}
-          <div className="flex min-w-max">
-        {tabs.map((tab) => (
+          <div 
+            className="flex min-w-max transition-transform duration-300 ease-in-out"
+            style={{ transform: `translateX(${tabOffset}px)` }}
+          >
+            {tabs.map((tab) => (
               <button
-            key={tab.id}
-            onClick={() => handleTabChange(tab.id)}
+                key={tab.id}
+                onClick={() => handleTabChange(tab.id)}
                 className={`
                   px-4 py-2 text-sm font-medium whitespace-nowrap
                   ${activeTab === tab.id 
@@ -923,8 +982,8 @@ const MacOSWindow = () => {
                     : 'text-gray-500 hover:text-gray-700'
                   }
                 `}
-          >
-            {tab.title}
+              >
+                {tab.title}
               </button>
             ))}
           </div>
@@ -937,11 +996,15 @@ const MacOSWindow = () => {
         {/* Main content */}
         <div 
           ref={contentRef}
-            className={`
-              flex-1 p-4 bg-white overflow-y-auto
-              ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
-            `}
+          onTouchStart={windowHeight.isMobile ? handleTouchStart : undefined}
+          onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
+          onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
+          className={`
+            flex-1 p-4 bg-white overflow-y-auto
+            ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
+          `}
           onClick={handleContainerClick}
+          style={{height: contentHeight}}
         >
           <div className="text-lg mb-2 font-medium text-gray-800 font-['Raleway']">
             {tabs[activeTab].title}
