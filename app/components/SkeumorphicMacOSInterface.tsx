@@ -378,7 +378,7 @@ const MacOSWindow = () => {
     {
       id: 1,
       company: "ShapeShiftOS",
-      position: "Founder / Lead Software Engineer",
+      position: "Lead Software Engineer / Founder",
       location: "Remote",
       period: "May 2020 - Present",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
@@ -391,18 +391,6 @@ const MacOSWindow = () => {
         "Zero marketing budget",
         "SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
       ],
-      skills: [
-        "Java",
-        "Kotlin",
-        "Figma",
-        "Android Development",
-        "Linux Kernel",
-        "Qualcomm Android Chipset Development",
-        "Linux",
-        "Shell Scripting",
-        "UI/UX Design",
-        "Team Leadership"
-      ]
     },
     {
       id: 2,
@@ -416,7 +404,6 @@ const MacOSWindow = () => {
         "Worked on CubeSats at the Experimental Space Physics Lab",
         "Implemented FastAPI endpoints and Pydantic models for satellite ADCS command handling"
       ],
-      skills: ["Python", "Docker", "FastAPI"]
     },
     {
       id: 3,
@@ -434,15 +421,6 @@ const MacOSWindow = () => {
         "Architected granular Mailchimp error handling and implemented server-side validation",
         "Developed responsive React frontend components including Spotlight and Gallery carousels from a Figma prototype"
       ],
-      skills: [
-        "React.js",
-        "Docker",
-        "Express.js",
-        "MailChimp",
-        "TypeScript",
-        "JavaScript",
-        "Python"
-      ]
     },
     {
       id: 4,
@@ -458,17 +436,6 @@ const MacOSWindow = () => {
         "Worked on frontend components with Next.js, character and world features with Python",
         "Implemented AWS Rekognition for content moderation and integrated analytics tools"
       ],
-      skills: [
-        "Python",
-        "TypeScript",
-        "React.js",
-        "Next.js",
-        "OpenAI API",
-        "Vector Databases",
-        "mem0",
-        "Uploadcare",
-        "Sentry"
-      ]
     },
     {
       id: 5,
@@ -478,13 +445,7 @@ const MacOSWindow = () => {
       period: "Feb 2025",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/susquehanna_international_group_llp_sig_logo.jpg",
       companyLink: "https://sig.com/",
-      description: ["SIG Discovery Day for underclassmen"],
-      skills: [
-        "Market Making",
-        "Probability Analysis",
-        "Game Theory",
-        "Decision Science"
-      ]
+      description: ["SIG Discovery Day"],
     },
     {
       id: 6,
@@ -498,13 +459,6 @@ const MacOSWindow = () => {
         "Offensive security techniques, network analysis, vulnerability assessment, cryptography",
         "Advisor: Dr. Charu Virmani"
       ],
-      skills: [
-        "Penetration Testing",
-        "Cybersecurity",
-        "Network Security",
-        "Vulnerability Assessment",
-        "Security Tools"
-      ]
     }
   ];
 
@@ -1336,23 +1290,6 @@ const MacOSWindow = () => {
                             </>
                           )}
                         </button>
-                      )}
-
-                      {/* Skills section */}
-                      {exp.skills && exp.skills.length > 0 && (
-                        <div className="mt-4 pt-4 border-t border-gray-200">
-                          <p className="text-sm font-medium text-gray-900 mb-2">Skills</p>
-                          <div className="flex flex-wrap gap-2">
-                            {exp.skills.map((skill, index) => (
-                              <span 
-                                key={index}
-                                className="px-2 py-1 bg-gray-100 rounded-md text-xs text-gray-600"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
                       )}
                     </div>
                 </div>
