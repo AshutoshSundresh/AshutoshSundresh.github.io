@@ -50,7 +50,7 @@ const Navigation = () => {
     }
     
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isDesktop || isHomePage) return; // Don't handle mouse move on home page
+      if (!isDesktop || isHomePage || isDetailViewOpen) return; // Don't handle mouse move on home page or when detail view is open
       
       if (e.clientY > window.innerHeight - 100) {
         showNavigation();
@@ -66,7 +66,7 @@ const Navigation = () => {
       window.removeEventListener('resize', checkIfDesktop);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isDesktop, isHomePage]); // Add isHomePage to dependencies
+  }, [isDesktop, isHomePage, isDetailViewOpen]); // Add isHomePage and isDetailViewOpen to dependencies
   
   // useEffect to check if a detail view is open
   useEffect(() => {
