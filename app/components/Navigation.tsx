@@ -115,7 +115,7 @@ const Navigation = () => {
 
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-[#2A2A2A] px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()}`}
+      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 ${isExperienceActive ? 'bg-black/50 backdrop-blur-md' : 'bg-[#2A2A2A]'} px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()}`}
       onMouseOver={handleInteraction}
       onClick={handleInteraction}
     >
@@ -133,7 +133,7 @@ const Navigation = () => {
             <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isExperienceActive ? 'opacity-100' : 'opacity-0'}`}></span>
           </Link>
         </li>
-        <li className="nav-dot">·</li>
+        <li className="nav-dot">|</li>
         <li className="relative">
           <Link href="/contact" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
             Contact

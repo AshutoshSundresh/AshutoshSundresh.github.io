@@ -616,7 +616,7 @@ const MacOSWindow = () => {
 
   // Update the backgroundStyle object
   const backgroundStyle = {
-    backgroundImage: 'url("https://512pixels.net/downloads/macos-wallpapers/10-11.jpg")',
+    backgroundImage: 'url("https://512pixels.net/downloads/macos-wallpapers/10-13.jpg")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -1242,10 +1242,7 @@ const MacOSWindow = () => {
                             rel="noopener noreferrer"
                             className="text-sm text-blue-500 hover:text-blue-600 flex items-center"
                           >
-                            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                            View Coursework
+                            View Coursework →
                           </a>
                         )}
                         {edu.archiveLink && (
@@ -1255,10 +1252,7 @@ const MacOSWindow = () => {
                             rel="noopener noreferrer"
                             className="text-sm text-blue-500 hover:text-blue-600 flex items-center"
                           >
-                            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
-                            </svg>
-                            View Archive
+                            View Archive →
                           </a>
                         )}
                       </div>
@@ -1435,10 +1429,7 @@ const MacOSWindow = () => {
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600 mt-2"
                               >
-                                <span>View Achievement</span>
-                                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
+                                <span>View Achievement →</span>
                               </a>
                             )}
                           </div>
