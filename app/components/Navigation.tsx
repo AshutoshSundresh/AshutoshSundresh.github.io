@@ -135,7 +135,7 @@ const Navigation = () => {
         </li>
         <li className="nav-dot">|</li>
         <li className="relative">
-          <Link href="/contact" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
+          <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
             Contact
             <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isContactActive ? 'opacity-100' : 'opacity-0'}`}></span>
           </Link>

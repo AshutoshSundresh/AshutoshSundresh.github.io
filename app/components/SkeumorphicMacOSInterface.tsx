@@ -280,7 +280,7 @@ const MacOSWindow = () => {
     {
       id: 1,
       name: "ShapeShiftOS",
-      image: "https://i.ibb.co/yRp79gQ/LOVUK1E.webp",
+      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/LOVUK1E.webp",
       caption: "Founder of Open-Source Android-Based Mobile Operating System",
       description: "I created this project in 2020 and have maintained it since. I've authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
       created: new Date('2020-05-16'),
@@ -295,7 +295,7 @@ const MacOSWindow = () => {
     {
       id: 2,
       name: "Contributions to Google's Material Design Components (MDC)",
-      image: "https://i.ibb.co/6zQLhx6/Screenshot-2025-02-23-172751.webp",
+      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-02-23-172751.webp",
       caption: "Code Review for widely-used Android UI elements",
       description: "I made 2 merged pull requests fixing resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, impacting more than a million Android users.",
       created: new Date('2022-08-04'),
@@ -304,7 +304,7 @@ const MacOSWindow = () => {
     {
       id: 3,
       name: "MySQL Library Management System",
-      image: "https://i.ibb.co/dQ5mHgB/Screenshot-2024-11-21-145458.png",
+      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2024-11-21-145458.png",
       caption: "Full-Stack Library Management System utilizing Python and MySQL",
       description: "Grade 12 final project. It features three modules: Book, Member, and Issue/Return offering CRUD operations across 3 interconnected database tables with foreign key constraints. 12+ core functions include transaction logging, member login, and automatic date/time management for book circulation.",
       created: new Date('2024-12-15'),
@@ -313,7 +313,7 @@ const MacOSWindow = () => {
     {
       id: 4,
       name: "Shiv Nadar School Faridabad Food Menu Alexa Skill",
-      image: "https://i.ibb.co/XFvgTxV/GhsuTUs.webp",
+      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/GhsuTUs.webp",
       caption: "Open-Source Food Menu Retriever Alexa Skill for Schools",
       description: "An Amazon Store published open-source Node.js code that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
       created: new Date('2022-01-09'),
