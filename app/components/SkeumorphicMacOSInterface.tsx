@@ -432,9 +432,9 @@ const MacOSWindow = () => {
       companyLink: "https://skylow.ai/",
       description: [
         "An LLM-powered social media platform in seed stage",
-        "Developed dynamic virtual worlds and character classes for immersive AI interactions",
-        "Worked on frontend components with Next.js, character and world features with Python",
-        "Implemented AWS Rekognition for content moderation and integrated analytics tools"
+        "Developed dynamic virtual worlds and character classes for immersive AI interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
+        "Worked on frontend components with Next.js, character and world features with Python, and implemented RAG for conversations using vector databases",
+        "Integrated AWS Rekognition for content moderation and analytics tools (Sentry and Posthog) for user tracking and error management"
       ],
     },
     {
