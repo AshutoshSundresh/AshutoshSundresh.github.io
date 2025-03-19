@@ -1023,12 +1023,27 @@ const MacOSWindow = () => {
     }
   };
 
-  // auto-scroll to the bottom of the terminal output whenever it changes
+  // Auto-scroll to the bottom of the terminal output whenever it changes
   useEffect(() => {
     if (terminalOutputRef.current) {
       terminalOutputRef.current.scrollTop = terminalOutputRef.current.scrollHeight;
     }
   }, [terminalOutput]);
+
+  // Add keyboard event listener for escape key to close terminal
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && terminalMode) {
+        setTerminalMode(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [terminalMode]);
 
   return (
     <div 
@@ -1677,6 +1692,12 @@ const MacOSWindow = () => {
               justify-content: space-between;
               align-items: center;
             }
+            .terminal-hint {
+              font-size: 0.8rem;
+              opacity: 0.7;
+              margin-left: 1rem;
+              font-weight: normal;
+            }
             .terminal-output {
               flex-grow: 1;
               overflow-y: auto;
@@ -1721,7 +1742,9 @@ const MacOSWindow = () => {
             }
           `}</style>
           <div className="terminal-header">
-            <div>Ashutosh Terminal v1.0.0</div>
+            <div>Ashutosh Terminal v1.0.0 {!windowHeight.isMobile && (
+              <span className="terminal-hint">(Press ESC to exit)</span>
+            )}</div>
           </div>
           <div className="terminal-output" ref={terminalOutputRef}>
             {terminalOutput.map((line, index) => (
