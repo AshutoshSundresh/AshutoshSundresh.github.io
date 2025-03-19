@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
+import useTerminalState from '../hooks/useTerminalState';
 
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -17,10 +18,16 @@ const Navigation = () => {
   const [isDetailViewOpen, setIsDetailViewOpen] = useState(false); // State to track if detail view is open
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
+  // Get terminal state
+  const { isTerminalActive } = useTerminalState();
+  
   // Function to show navigation
   const showNavigation = () => {
     if (isHomePage) return; // Don't auto-hide on home page
-    
+    if (isTerminalActive) {
+      setIsVisible(false);
+    }
+
     setIsVisible(true);
     
     // Clear any existing timeout
@@ -42,7 +49,11 @@ const Navigation = () => {
     checkIfDesktop();
     window.addEventListener('resize', checkIfDesktop);
     
-    // Only set initial timeout if not on home page
+    if (isTerminalActive) {
+      setIsVisible(false);
+    }
+
+    // Only set initial timeout if not on home page 
     if (isDesktop && !isHomePage) {
       timeoutRef.current = setTimeout(() => {
         setIsVisible(false);
@@ -50,7 +61,8 @@ const Navigation = () => {
     }
     
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isDesktop || isHomePage || isDetailViewOpen) return; // Don't handle mouse move on home page or when detail view is open
+      // Don't handle mouse move on home page, when detail view is open, or when terminal is active
+      if (!isDesktop || isHomePage || isDetailViewOpen || isTerminalActive) return;
       
       if (e.clientY > window.innerHeight - 100) {
         showNavigation();
@@ -66,7 +78,7 @@ const Navigation = () => {
       window.removeEventListener('resize', checkIfDesktop);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isDesktop, isHomePage, isDetailViewOpen]); // Add isHomePage and isDetailViewOpen to dependencies
+  }, [isDesktop, isHomePage, isDetailViewOpen, isTerminalActive]); // Add isTerminalActive to dependencies
   
   // useEffect to check if a detail view is open
   useEffect(() => {
@@ -74,6 +86,10 @@ const Navigation = () => {
       const detailViewElement = document.querySelector('[data-detail-view]');
       setIsDetailViewOpen(!!detailViewElement);
     };
+
+    if (isTerminalActive) {
+      setIsVisible(false);
+    }
     
     // Check initially
     checkForDetailView();
@@ -89,17 +105,30 @@ const Navigation = () => {
     
     // Clean up observer on component unmount
     return () => observer.disconnect();
-  }, []);
+  }, [isTerminalActive]); // Add isTerminalActive as a dependency
+  
+  // Add a dedicated effect for terminal state changes
+  useEffect(() => {
+    // If terminal becomes active, force hide the navigation
+    if (isTerminalActive) {
+      setIsVisible(false);
+    }
+  }, [isTerminalActive]);
   
   // Reset timer on any user interaction with the nav
   const handleInteraction = () => {
-    if (isDesktop && !isHomePage) { // Don't handle interaction on home page
+    if (isDesktop && !isHomePage && !isTerminalActive) { // Don't handle interaction on home page or when terminal is active
       showNavigation();
     }
   };
 
   // Determine proper visibility classes
   const visibilityClasses = () => {
+    // Always hide if terminal is active (regardless of desktop or mobile)
+    if (isTerminalActive) {
+      return 'opacity-0 translate-y-20 pointer-events-none';
+    }
+    
     if (isDesktop) {
       // Desktop behavior - fade up/down based on timeout
       return !isVisible && !isHomePage 

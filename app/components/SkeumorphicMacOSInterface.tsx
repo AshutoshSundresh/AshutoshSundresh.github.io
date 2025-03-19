@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef, TouchEvent } from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import Link from 'next/link';
+import useTerminalState from '../hooks/useTerminalState';
 
 interface ProjectDetails {
   id: number;
@@ -90,6 +92,19 @@ const MacOSWindow = () => {
   // Maximum angle (in degrees) from horizontal for a valid swipe
   const maxSwipeAngle = 30;
   
+  const [randomStorage, setRandomStorage] = useState('');
+  const [terminalMode, setTerminalMode] = useState(false);
+  const [terminalInput, setTerminalInput] = useState('');
+  const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
+  const terminalInputRef = useRef<HTMLInputElement>(null);
+  const terminalOutputRef = useRef<HTMLDivElement>(null);
+
+  const { setTerminalActive } = useTerminalState();
+
+  useEffect(() => {
+    setTerminalActive(terminalMode);
+  }, [terminalMode, setTerminalActive]);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowHeight({
@@ -259,9 +274,6 @@ const MacOSWindow = () => {
 
   // Format current date for status bar
   const currentDate = format(new Date(), 'MMMM d, yyyy h:mm a');
-
-  // State for random storage size
-  const [randomStorage, setRandomStorage] = useState('');
 
   // Effect to initialize random storage on mount
   useEffect(() => {
@@ -923,6 +935,101 @@ const MacOSWindow = () => {
     }
   };
 
+  const toggleTerminalMode = () => {
+    const newTerminalMode = !terminalMode;
+    setTerminalMode(newTerminalMode);
+    
+    if (newTerminalMode) {
+      setTerminalInput('');
+      setTerminalOutput([
+        'Welcome to Ashutosh Terminal v1.0.0',
+        '---------------------------------',
+        'Available commands:',
+        '  ls projects     - List all projects',
+        '  ls education    - List all education entries',
+        '  ls experience   - List all experience entries',
+        '  ls awards       - List all awards',
+        '  ls publications - List all publications',
+        '  ls activities   - List all activities',
+        '  q               - Exit terminal',
+        '---------------------------------',
+        'Type a command and press Enter:'
+      ]);
+      
+      // Focus the input field when terminal opens
+      setTimeout(() => {
+        if (terminalInputRef.current) {
+          terminalInputRef.current.focus();
+          
+          // For mobile devices - attempt to show keyboard
+          if (windowHeight.isMobile && terminalInputRef.current) {
+            terminalInputRef.current.focus();
+            // Some mobile browsers require a user interaction to show keyboard
+            // We can try to simulate a click
+            terminalInputRef.current.click();
+          }
+        }
+      }, 100);
+    }
+  };
+
+  const handleTerminalInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      const command = terminalInput.trim().toLowerCase();
+      
+      // Add the command to the terminal output
+      setTerminalOutput(prev => [...prev, `ashutosh@portfolio:~$ ${terminalInput}`]);
+      
+      // Process command
+      if (command === 'q') {
+        setTerminalMode(false);
+      } else if (command === 'ls projects') {
+        const projectLines = projects.map(project => `- ${project.name}`);
+        setTerminalOutput(prev => [...prev, ...projectLines]);
+      } else if (command === 'ls education') {
+        const educationLines = educationData.map(edu => 
+          `- ${edu.institution || ''} ${edu.degree || ''}`
+        );
+        setTerminalOutput(prev => [...prev, ...educationLines]);
+      } else if (command === 'ls experience') {
+        const experienceLines = experienceData.map(exp => 
+          `- ${exp.company}: ${exp.position}`
+        );
+        setTerminalOutput(prev => [...prev, ...experienceLines]);
+      } else if (command === 'ls awards') {
+        const awardLines = awardsData.flatMap(category => 
+          category.awards.map(award => `- ${award.title}`)
+        );
+        setTerminalOutput(prev => [...prev, ...awardLines]);
+      } else if (command === 'ls publications') {
+        const publicationLines = publications.map(pub => 
+          `- ${pub.title}`
+        );
+        setTerminalOutput(prev => [...prev, ...publicationLines]);
+      } else if (command === 'ls activities') {
+        const activityLines = activitiesData.map(activity => 
+          `- ${activity.title}`
+        );
+        setTerminalOutput(prev => [...prev, ...activityLines]);
+      } else {
+        setTerminalOutput(prev => [
+          ...prev, 
+          `Command not found: ${command}`
+        ]);
+      }
+      
+      // Clear input
+      setTerminalInput('');
+    }
+  };
+
+  // auto-scroll to the bottom of the terminal output whenever it changes
+  useEffect(() => {
+    if (terminalOutputRef.current) {
+      terminalOutputRef.current.scrollTop = terminalOutputRef.current.scrollHeight;
+    }
+  }, [terminalOutput]);
+
   return (
     <div 
       className={`
@@ -935,9 +1042,11 @@ const MacOSWindow = () => {
       {/* Window header with traffic lights */}
       <div className="bg-gray-200 px-4 py-2 flex items-center">
         <div className="flex space-x-2">
-          <div className="w-3 h-3 rounded-full bg-red-500"></div>
+          <Link href="/">
+            <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
+          </Link>
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer" onClick={toggleTerminalMode}></div>
         </div>
         
         {/* Window title - centered */}
@@ -1541,6 +1650,99 @@ const MacOSWindow = () => {
           <span>{currentDate}</span>
         </div>
       </div>
+      {terminalMode && (
+        <div className="terminal-container">
+          <style jsx>{`
+            .terminal-container {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: rgba(0, 0, 0, 0.9);
+              color: #33ff33;
+              font-family: monospace;
+              padding: 1rem;
+              z-index: 9999;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+            }
+            .terminal-header {
+              padding-bottom: 0.5rem;
+              margin-bottom: 0.5rem;
+              border-bottom: 1px solid #33ff33;
+              font-weight: bold;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            .terminal-output {
+              flex-grow: 1;
+              overflow-y: auto;
+              max-height: 80vh;
+              margin-bottom: 0.5rem;
+              scrollbar-width: none; /* Firefox */
+              -ms-overflow-style: none; /* IE and Edge */
+            }
+            .terminal-output::-webkit-scrollbar {
+              display: none; /* Chrome, Safari, Opera */
+            }
+            .terminal-output-line {
+              margin-bottom: 0.25rem;
+              line-height: 1.4;
+            }
+            .terminal-prompt {
+              display: flex;
+              align-items: center;
+            }
+            .terminal-prompt-text {
+              margin-right: 0.5rem;
+            }
+            .terminal-input {
+              background: transparent;
+              border: none;
+              color: #33ff33;
+              font-family: monospace;
+              font-size: 1rem;
+              flex-grow: 1;
+              outline: none;
+            }
+            @media (max-width: 768px) {
+              .terminal-container {
+                padding: 0.5rem;
+              }
+              .terminal-output {
+                max-height: 70vh;
+              }
+              .terminal-input {
+                font-size: 16px; /* Prevent zoom on mobile */
+              }
+            }
+          `}</style>
+          <div className="terminal-header">
+            <div>Ashutosh Terminal v1.0.0</div>
+          </div>
+          <div className="terminal-output" ref={terminalOutputRef}>
+            {terminalOutput.map((line, index) => (
+              <div key={index} className="terminal-output-line">
+                {line}
+              </div>
+            ))}
+          </div>
+          <div className="terminal-prompt">
+            <span className="terminal-prompt-text">ashutosh@portfolio:~$</span>
+            <input
+              type="text"
+              className="terminal-input"
+              value={terminalInput}
+              onChange={(e) => setTerminalInput(e.target.value)}
+              onKeyDown={handleTerminalInput}
+              ref={terminalInputRef}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
