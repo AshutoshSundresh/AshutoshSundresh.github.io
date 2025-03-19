@@ -1531,12 +1531,12 @@ const MacOSWindow = () => {
           ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
         `}>
           <span>
-            {activeTab === 0 ? '4 items' : 
-             activeTab === 1 ? '2 items' : 
-             activeTab === 2 ? '6 items' :
-             activeTab === 3 ? '5 items' :
-             activeTab === 4 ? '2 items' :
-             '2 items'}, {randomStorage} GB available <br/> &copy; {new Date().getFullYear()} Ashutosh Sundresh
+            {activeTab === 0 ? `${projects.length} items` : 
+             activeTab === 1 ? `${educationData.length} items` : 
+             activeTab === 2 ? `${experienceData.length} items` :
+             activeTab === 3 ? `${awardsData.length} items` :
+             activeTab === 4 ? `${publications.length} items` :
+             `${activitiesData.length} items`}, {randomStorage} GB available <br/> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
           <span>{currentDate}</span>
         </div>
