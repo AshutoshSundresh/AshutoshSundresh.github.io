@@ -1534,7 +1534,7 @@ const MacOSWindow = () => {
             {activeTab === 0 ? `${projects.length} items` : 
              activeTab === 1 ? `${educationData.length} items` : 
              activeTab === 2 ? `${experienceData.length} items` :
-             activeTab === 3 ? `${awardsData.length} items` :
+             activeTab === 3 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
              activeTab === 4 ? `${publications.length} items` :
              `${activitiesData.length} items`}, {randomStorage} GB available <br/> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
