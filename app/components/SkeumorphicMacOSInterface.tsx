@@ -99,7 +99,6 @@ const MacOSWindow = () => {
   const terminalInputRef = useRef<HTMLInputElement>(null);
   const terminalOutputRef = useRef<HTMLDivElement>(null);
   const [lockscreenVisible, setLockscreenVisible] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
 
   const { setTerminalActive, setLockscreenActive } = useAppOverlayState();
 
@@ -278,8 +277,20 @@ const MacOSWindow = () => {
     ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
     : '400px';
 
+  // State to hold current date and time
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+
   // Format current date for status bar
-  const currentDate = format(new Date(), 'MMMM d, yyyy h:mm a');
+  const currentDate = format(currentDateTime, 'MMMM d, yyyy h:mm a');
+
+  // Effect to update the date/time every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000); // Update every second
+    
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, []);
 
   // Effect to initialize random storage on mount
   useEffect(() => {
@@ -1051,18 +1062,6 @@ const MacOSWindow = () => {
     };
   }, [terminalMode]);
 
-  useEffect(() => {
-    if (!lockscreenVisible) return;
-    
-    setCurrentTime(new Date());
-    
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 30000); // 30 seconds in milliseconds
-    
-    return () => clearInterval(intervalId);
-  }, [lockscreenVisible]);
-
   const toggleLockscreen = () => {
     setLockscreenVisible(!lockscreenVisible);
   };
@@ -1694,11 +1693,11 @@ const MacOSWindow = () => {
           <div className="flex flex-col items-center">
             {/* Time */}
             <div className="text-6xl font-light mb-2">
-              {format(currentTime, 'h:mm')}
+              {format(currentDateTime, 'h:mm')}
             </div>
             {/* Date */}
             <div className="text-xl mb-8">
-              {format(currentTime, 'EEEE, MMMM d')}
+              {format(currentDateTime, 'EEEE, MMMM d')}
             </div>
 
             {/* User profile */}
