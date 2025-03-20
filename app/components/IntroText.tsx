@@ -73,8 +73,14 @@ export default function IntroText() {
             }
           `}</style>
 
+          <style jsx>{`
+            .overflow-x-hidden::-webkit-scrollbar {
+              display: none;
+            }
+          `}</style>
+
           {/* Sticky Note 2 */}
-          <div className={`sticky-note bg-white p-5 rounded shadow-lg transform rotate-[2deg] w-[280px] relative md:absolute md:top-[20px] md:left-[260px] z-30 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-500`}>
+          <div className={`sticky-note bg-yellow-50 p-5 rounded shadow-lg transform rotate-[2deg] w-[280px] relative md:absolute md:top-[20px] md:left-[260px] z-30 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-500`}>
             {/* Right-oriented tape */}
             <div className="absolute -top-5 right-[40px] w-[70px] h-[30px]">
               <Image
@@ -91,7 +97,7 @@ export default function IntroText() {
           </div>
 
           {/* Sticky Note 3 */}
-          <div className={`sticky-note bg-white p-5 rounded shadow-lg transform rotate-[-2deg] w-[280px] relative md:absolute md:top-[160px] md:left-[40px] z-20 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-700`}>
+          <div className={`sticky-note bg-blue-50 p-5 rounded shadow-lg transform rotate-[-2deg] w-[280px] relative md:absolute md:top-[160px] md:left-[40px] z-20 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-700`}>
             {/* Center tape */}
             <div className="absolute -top-5 left-[85px] w-[70px] h-[30px]">
               <Image
@@ -108,7 +114,7 @@ export default function IntroText() {
           </div>
 
           {/* Sticky Note 4 */}
-          <div className={`sticky-note bg-white p-5 rounded shadow-lg transform rotate-[1deg] w-[280px] relative md:absolute md:top-[230px] md:left-[370px] z-40 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
+          <div className={`sticky-note bg-green-50 p-5 rounded shadow-lg transform rotate-[1deg] w-[280px] relative md:absolute md:top-[230px] md:left-[370px] z-40 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
             {/* Left-oriented tape */}
             <div className="absolute -top-5 left-[30px] w-[70px] h-[30px]">
               <Image
@@ -120,6 +126,7 @@ export default function IntroText() {
               />
             </div>
             <p className="mb-4">
+
               I see each project as an opportunity to transform complex technical challenges into something that is fundamentally elegant and seamless.
             </p>
           </div>
