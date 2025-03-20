@@ -277,20 +277,23 @@ const MacOSWindow = () => {
     ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
     : '400px';
 
-  // State to hold current date and time
-  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  // Create a separate clock component to isolate time updates
+  const Clock = ({ formatString }: { formatString: string }) => {
+    const [time, setTime] = useState(new Date());
+  
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        setTime(new Date());
+      }, 1000);
+      
+      return () => clearInterval(intervalId);
+    }, []);
+  
+    return <>{format(time, formatString)}</>;
+  };
 
-  // Format current date for status bar
-  const currentDate = format(currentDateTime, 'MMMM d, yyyy h:mm a');
-
-  // Effect to update the date/time every second
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentDateTime(new Date());
-    }, 1000); // Update every second
-    
-    return () => clearInterval(intervalId); // Cleanup on unmount
-  }, []);
+  // Format current date for status bar - static version that doesn't cause re-renders
+  const currentDate = format(new Date(), 'MMMM d, yyyy h:mm a');
 
   // Effect to initialize random storage on mount
   useEffect(() => {
@@ -1684,7 +1687,7 @@ const MacOSWindow = () => {
                     activeTab === 4 ? `${publications.length} items` :
                       `${activitiesData.length} items`}, {randomStorage} GB available <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
-          <span>{currentDate}</span>
+          <span><Clock formatString="MMMM d, yyyy h:mm a" /></span>
         </div>
       </div>
       {lockscreenVisible && (
@@ -1693,11 +1696,11 @@ const MacOSWindow = () => {
           <div className="flex flex-col items-center">
             {/* Time */}
             <div className="text-6xl font-light mb-2">
-              {format(currentDateTime, 'h:mm')}
+              <Clock formatString="h:mm" />
             </div>
             {/* Date */}
             <div className="text-xl mb-8">
-              {format(currentDateTime, 'EEEE, MMMM d')}
+              <Clock formatString="EEEE, MMMM d" />
             </div>
 
             {/* User profile */}
@@ -1713,7 +1716,7 @@ const MacOSWindow = () => {
 
             <div className="text-xl mb-3">Ashutosh Sundresh</div>
 
-            <div className="text-sm text-gray-400 mb-4">
+            <div className="text-sm text-gray-400 mb-4 text-center">
             What is the number of ways you can arrange the letters in the word Ashutosh?
             </div>
             {/* Password field */}
