@@ -60,7 +60,7 @@ export default function IntroText() {
         backgroundRepeat: "no-repeat"
       }}
     >
-      <div className={`mt-16 md:mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
+      <div className={`mt-4 md:mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
         
         <div className="flex flex-wrap justify-center md:justify-start md:relative md:h-[500px] gap-6 md:gap-0 overflow-x-hidden" style={{ 
           msOverflowStyle: 'none', /* IE and Edge */
