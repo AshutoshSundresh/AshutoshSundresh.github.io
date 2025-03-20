@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import useAppOverlayState from '../hooks/useTerminalState';
+import IOSLockscreen from './IOSLockscreen';
 
 interface ProjectDetails {
   id: number;
@@ -1690,7 +1691,7 @@ const MacOSWindow = () => {
           <span><Clock formatString="MMMM d, yyyy h:mm a" /></span>
         </div>
       </div>
-      {lockscreenVisible && (
+      {lockscreenVisible && !windowHeight.isMobile && (
         <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white"
           style={{ backdropFilter: 'blur(10px)' }}>
           <div className="flex flex-col items-center">
@@ -1747,6 +1748,9 @@ const MacOSWindow = () => {
             </div>
           </div>
         </div>
+      )}
+      {lockscreenVisible && windowHeight.isMobile && (
+        <IOSLockscreen onUnlock={toggleLockscreen} />
       )}
       {terminalMode && (
         <div className="terminal-container">

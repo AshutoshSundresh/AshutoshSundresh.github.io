@@ -349,3 +349,99 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* iOS Lockscreen Animations */
+.ios-lockscreen-enter {
+  animation: slideInUp 0.3s ease-out forwards;
+}
+
+.ios-lockscreen-exit {
+  animation: slideOutUp 0.3s ease-out forwards;
+}
+
+.animate-shake {
+  animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
+
+/* iOS Lockscreen Swipe Animation */
+@keyframes pulseUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-up {
+  animation: pulseUp 1.5s infinite ease-in-out;
+}
+
+/* iOS Keypad Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* PIN Dot Animations */
+@keyframes dotPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-dot-pop {
+  animation: dotPop 0.2s ease-out forwards;
+}
