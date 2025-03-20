@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
-import useTerminalState from '../hooks/useTerminalState';
+import useAppOverlayState from '../hooks/useTerminalState';
 
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -18,14 +18,15 @@ const Navigation = () => {
   const [isDetailViewOpen, setIsDetailViewOpen] = useState(false); // State to track if detail view is open
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
-  // Get terminal state
-  const { isTerminalActive } = useTerminalState();
+  // Get app overlay state
+  const { isTerminalActive, isLockscreenActive } = useAppOverlayState();
   
   // Function to show navigation
   const showNavigation = () => {
     if (isHomePage) return; // Don't auto-hide on home page
-    if (isTerminalActive) {
+    if (isTerminalActive || isLockscreenActive) {
       setIsVisible(false);
+      return;
     }
 
     setIsVisible(true);
@@ -49,7 +50,7 @@ const Navigation = () => {
     checkIfDesktop();
     window.addEventListener('resize', checkIfDesktop);
     
-    if (isTerminalActive) {
+    if (isTerminalActive || isLockscreenActive) {
       setIsVisible(false);
     }
 
@@ -61,8 +62,8 @@ const Navigation = () => {
     }
     
     const handleMouseMove = (e: MouseEvent) => {
-      // Don't handle mouse move on home page, when detail view is open, or when terminal is active
-      if (!isDesktop || isHomePage || isDetailViewOpen || isTerminalActive) return;
+      // Don't handle mouse move on home page, when detail view is open, or when terminal or lockscreen is active
+      if (!isDesktop || isHomePage || isDetailViewOpen || isTerminalActive || isLockscreenActive) return;
       
       if (e.clientY > window.innerHeight - 100) {
         showNavigation();
@@ -78,7 +79,7 @@ const Navigation = () => {
       window.removeEventListener('resize', checkIfDesktop);
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isDesktop, isHomePage, isDetailViewOpen, isTerminalActive]); // Add isTerminalActive to dependencies
+  }, [isDesktop, isHomePage, isDetailViewOpen, isTerminalActive, isLockscreenActive]); // Add isTerminalActive and isLockscreenActive to dependencies
   
   // useEffect to check if a detail view is open
   useEffect(() => {
@@ -87,7 +88,7 @@ const Navigation = () => {
       setIsDetailViewOpen(!!detailViewElement);
     };
 
-    if (isTerminalActive) {
+    if (isTerminalActive || isLockscreenActive) {
       setIsVisible(false);
     }
     
@@ -105,27 +106,27 @@ const Navigation = () => {
     
     // Clean up observer on component unmount
     return () => observer.disconnect();
-  }, [isTerminalActive]); // Add isTerminalActive as a dependency
+  }, [isTerminalActive, isLockscreenActive]); // Add isTerminalActive and isLockscreenActive as dependencies
   
-  // Add a dedicated effect for terminal state changes
+  // Add a dedicated effect for app overlay state changes
   useEffect(() => {
-    // If terminal becomes active, force hide the navigation
-    if (isTerminalActive) {
+    // If terminal or lockscreen becomes active, force hide the navigation
+    if (isTerminalActive || isLockscreenActive) {
       setIsVisible(false);
     }
-  }, [isTerminalActive]);
+  }, [isTerminalActive, isLockscreenActive]);
   
   // Reset timer on any user interaction with the nav
   const handleInteraction = () => {
-    if (isDesktop && !isHomePage && !isTerminalActive) { // Don't handle interaction on home page or when terminal is active
+    if (isDesktop && !isHomePage && !isTerminalActive && !isLockscreenActive) { // Don't handle interaction on home page or when terminal or lockscreen is active
       showNavigation();
     }
   };
 
   // Determine proper visibility classes
   const visibilityClasses = () => {
-    // Always hide if terminal is active (regardless of desktop or mobile)
-    if (isTerminalActive) {
+    // Always hide if terminal or lockscreen is active (regardless of desktop or mobile)
+    if (isTerminalActive || isLockscreenActive) {
       return 'opacity-0 translate-y-20 pointer-events-none';
     }
     

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef, TouchEvent } from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import useTerminalState from '../hooks/useTerminalState';
+import useAppOverlayState from '../hooks/useTerminalState';
 
 interface ProjectDetails {
   id: number;
@@ -70,40 +70,46 @@ const MacOSWindow = () => {
     { id: 4, title: 'Publications', content: 'Research papers and publications' },
     { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' }
   ]);
-  
+
   const [windowHeight, setWindowHeight] = useState({
     vh: typeof window !== 'undefined' ? window.innerHeight : 0,
     isMobile: typeof window !== 'undefined' ? window.innerWidth < 768 : false
   });
-  
+
   const [tabHistory, setTabHistory] = useState<number[]>([0]); // Start with first tab
   const [currentHistoryIndex, setCurrentHistoryIndex] = useState(0);
-  
+
   // Add state for tracking touch events
-  const [touchStart, setTouchStart] = useState<{x: number, y: number} | null>(null);
-  const [touchEnd, setTouchEnd] = useState<{x: number, y: number} | null>(null);
-  
+  const [touchStart, setTouchStart] = useState<{ x: number, y: number } | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{ x: number, y: number } | null>(null);
+
   // Add state for tab position offset
   const [tabOffset, setTabOffset] = useState(0);
-  
+
   // Minimum distance required for a swipe
   const minSwipeDistance = 50;
-  
+
   // Maximum angle (in degrees) from horizontal for a valid swipe
   const maxSwipeAngle = 30;
-  
+
   const [randomStorage, setRandomStorage] = useState('');
   const [terminalMode, setTerminalMode] = useState(false);
   const [terminalInput, setTerminalInput] = useState('');
   const [terminalOutput, setTerminalOutput] = useState<string[]>([]);
   const terminalInputRef = useRef<HTMLInputElement>(null);
   const terminalOutputRef = useRef<HTMLDivElement>(null);
+  const [lockscreenVisible, setLockscreenVisible] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  const { setTerminalActive } = useTerminalState();
+  const { setTerminalActive, setLockscreenActive } = useAppOverlayState();
 
   useEffect(() => {
     setTerminalActive(terminalMode);
   }, [terminalMode, setTerminalActive]);
+
+  useEffect(() => {
+    setLockscreenActive(lockscreenVisible);
+  }, [lockscreenVisible, setLockscreenActive]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,13 +118,13 @@ const MacOSWindow = () => {
         isMobile: window.innerWidth < 768
       });
     };
-    
+
     // Initial call
     handleResize();
-    
+
     // Add event listener
     window.addEventListener('resize', handleResize);
-    
+
     // Clean up
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -127,7 +133,7 @@ const MacOSWindow = () => {
   useEffect(() => {
     setSelectedItem(null);
   }, [activeTab]);
-  
+
   // Update the useEffect for click outside handling
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -146,7 +152,7 @@ const MacOSWindow = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-  
+
   // Handle touch events for swipe navigation
   const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
     setTouchEnd(null); // Reset touch end
@@ -155,33 +161,33 @@ const MacOSWindow = () => {
       y: e.targetTouches[0].clientY
     });
   };
-  
+
   const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
     setTouchEnd({
       x: e.targetTouches[0].clientX,
       y: e.targetTouches[0].clientY
     });
   };
-  
+
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     // Calculate horizontal and vertical distances
     const deltaX = touchStart.x - touchEnd.x;
     const deltaY = touchStart.y - touchEnd.y;
-    
+
     // Calculate the absolute horizontal distance
     const horizontalDistance = Math.abs(deltaX);
-    
+
     // Calculate the angle of the swipe in degrees
     const angleInRadians = Math.atan2(Math.abs(deltaY), horizontalDistance);
     const angleInDegrees = angleInRadians * (180 / Math.PI);
-    
+
     // Check if the swipe meets both the distance and angle requirements
-    const isValidHorizontalSwipe = 
-      horizontalDistance > minSwipeDistance && 
+    const isValidHorizontalSwipe =
+      horizontalDistance > minSwipeDistance &&
       angleInDegrees < maxSwipeAngle;
-    
+
     // Don't process swipes if detail view is open or if not a valid horizontal swipe
     if (selectedItem !== null || !isValidHorizontalSwipe) {
       // Reset touch coordinates and return
@@ -189,14 +195,14 @@ const MacOSWindow = () => {
       setTouchEnd(null);
       return;
     }
-    
+
     // Determine swipe direction (left or right)
     const isLeftSwipe = deltaX > 0;
     const isRightSwipe = deltaX < 0;
-    
+
     // Get the width of a single tab
     const tabWidth = getTabWidth();
-    
+
     // Navigate based on swipe direction
     if (isLeftSwipe) {
       // Only proceed if not on the last tab
@@ -219,57 +225,57 @@ const MacOSWindow = () => {
         handleTabChange(prevTab);
       }
     }
-    
+
     // Reset touch coordinates
     setTouchStart(null);
     setTouchEnd(null);
   };
-  
+
   // Add function to calculate tab width
   const getTabWidth = () => {
     // If tabs are not yet rendered, return a default value
     if (!tabRefs.current.length || !tabRefs.current[0]) return 45;
-    
+
     // Calculate width of the active tab or the first available tab
     const activeTabRef = tabRefs.current[activeTab] || tabRefs.current[0];
     return activeTabRef ? activeTabRef.offsetWidth : 45;
   };
-  
+
   // Add function to calculate maximum scroll offset
   const getMaxScrollOffset = () => {
     if (!tabRefs.current.length) return 0;
-    
+
     // Calculate total width of all tabs
     const tabContainer = document.querySelector('.tab-container');
     const tabsContainer = document.querySelector('.tabs-container');
-    
+
     if (!tabContainer || !tabsContainer) return 0;
-    
+
     // Get the width of the visible tab container and the total width of all tabs
     const containerWidth = tabContainer.clientWidth;
     const tabsWidth = tabsContainer.scrollWidth;
-    
+
     // Calculate maximum offset (0 or negative value)
     // When all tabs can fit, max is 0 (no scrolling needed)
     // When tabs overflow, max is (container width - total tabs width)
     return Math.min(0, containerWidth - tabsWidth);
   };
-  
+
   // Function to ensure offset stays within bounds
   const getConstrainedOffset = (proposedOffset: number) => {
     // Don't allow scrolling to the right beyond starting point (0)
     const maxRight = 0;
-    
+
     // Don't allow scrolling to the left beyond the last tab
     const maxLeft = getMaxScrollOffset();
-    
+
     // Constrain the offset within the allowed range
     return Math.max(maxLeft, Math.min(maxRight, proposedOffset));
   };
-  
+
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
-  const contentHeight = windowHeight.isMobile 
-    ? `${Math.max(windowHeight.vh * 0.6, 350)}px` 
+  const contentHeight = windowHeight.isMobile
+    ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
     : '400px';
 
   // Format current date for status bar
@@ -479,8 +485,8 @@ const MacOSWindow = () => {
 
   // Add this function to handle expansion
   const toggleExperienceExpansion = (id: number) => {
-    setExpandedExperiences(prev => 
-      prev.includes(id) 
+    setExpandedExperiences(prev =>
+      prev.includes(id)
         ? prev.filter(expId => expId !== id)
         : [...prev, id]
     );
@@ -500,7 +506,7 @@ const MacOSWindow = () => {
 
   const DetailView = ({ project, onClose }: { project: ProjectDetails; onClose: () => void }) => {
     return (
-      <div 
+      <div
         data-detail-view
         className={`
           ${windowHeight.isMobile ? 'fixed inset-0 z-50 bg-white' : 'w-72 border-l border-gray-200 bg-gray-50'}
@@ -511,7 +517,7 @@ const MacOSWindow = () => {
         {windowHeight.isMobile && (
           <div className="sticky top-0 bg-white border-b border-gray-200 p-4 flex justify-between items-center">
             <h3 className="text-sm font-medium font-['Raleway']">Details</h3>
-            <button 
+            <button
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-full"
             >
@@ -526,8 +532,8 @@ const MacOSWindow = () => {
         <div className="p-4">
           {/* Project Image */}
           <div className="mb-4">
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.name}
               className="w-full h-auto rounded-lg shadow-sm"
             />
@@ -564,7 +570,7 @@ const MacOSWindow = () => {
             {project.link && (
               <div>
                 <p className="text-gray-500 mb-1">Project Link</p>
-                <a 
+                <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -705,15 +711,15 @@ const MacOSWindow = () => {
       journal: "International Journal of Science and Research (IJSR)",
       abstract: "I engineered a Python-based traffic simulation system utilizing NumPy and Matplotlib, implementing chaos theory principles through non-linear sinusoidal functions to model complex congestion patterns. I developed statistical analysis framework combining discrete uniform distributions for traffic volume and Gaussian distributions for speed variations, processing synthetic datasets of 900+ data points across multiple traffic parameters. I created interactive 3D visualization system mapping relationships between speed, traffic volume, and travel time using matplotlib's Axes3D, incorporating dynamic color mapping for enhanced pattern recognition. I also implemented time-series evolution algorithm modeling traffic congestion dynamics over 100 time steps, incorporating sensitivity analysis to demonstrate butterfly effect in traffic systems through mathematical modeling: congestion_evolution[i] = traffic_volume × (1 + sin(travel_time × i)).",
       status: "Won first place among 160+ submissions in the paper submission round at the high school Neerja Modi Mathelogics Symposium 2023",
-      link: "https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion", 
+      link: "https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion",
       extraDetails: [
         {
           label: "Code",
-          value: "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData" 
+          value: "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
         },
         {
           label: "Slides",
-          value: "https://raw.githubusercontent.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx" 
+          value: "https://raw.githubusercontent.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx"
         }
       ]
     },
@@ -728,20 +734,20 @@ const MacOSWindow = () => {
       journal: "Ceteris Paribus, Shri Ram College of Commerce",
       abstract: "This article examines the effects of short-term rental platforms like Airbnb on urban housing markets, communities, and economies. It highlights how Airbnb's rise reshaped the housing landscape by reducing long-term rental availability, driving up housing costs, and altering neighborhood dynamics through gentrification and displacement. The article also explores the platform's economic contributions, including tax revenue and job creation, while emphasizing the need for policies to mitigate its adverse effects. With insights into regulatory approaches, it calls for solutions that prioritize the well-being of long-term residents in changing urban environments.",
       status: "Published after finishing top 5 in the SRCC Writing Mentorship Program",
-      link: "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/" 
+      link: "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
     }
   ];
 
   // Update the PublicationDetailView component
-  const PublicationDetailView = ({ 
-    publication, 
-    onClose 
-  }: { 
-    publication: Publication; 
+  const PublicationDetailView = ({
+    publication,
+    onClose
+  }: {
+    publication: Publication;
     onClose: () => void;
   }) => {
     return (
-      <div 
+      <div
         data-detail-view
         className={`
           ${windowHeight.isMobile ? 'fixed inset-0 z-50 bg-white' : 'w-72 border-l border-gray-200 bg-gray-50'}
@@ -764,9 +770,9 @@ const MacOSWindow = () => {
           {/* Large centered icon and title */}
           <div className="flex flex-col items-center text-center">
             <div className="w-32 h-32 flex items-center justify-center mb-4">
-              <img 
-                src={publication.icon} 
-                alt="" 
+              <img
+                src={publication.icon}
+                alt=""
                 className="w-32 h-32 object-contain"
               />
             </div>
@@ -914,7 +920,7 @@ const MacOSWindow = () => {
       setTabHistory([...newHistory, tabId]);
       setCurrentHistoryIndex(newHistory.length);
       setActiveTab(tabId);
-      
+
       // Update the random storage size only when tab changes
       updateRandomStorage();
     }
@@ -938,7 +944,7 @@ const MacOSWindow = () => {
   const toggleTerminalMode = () => {
     const newTerminalMode = !terminalMode;
     setTerminalMode(newTerminalMode);
-    
+
     if (newTerminalMode) {
       setTerminalInput('');
       setTerminalOutput([
@@ -955,12 +961,12 @@ const MacOSWindow = () => {
         '---------------------------------',
         'Type a command and press Enter:'
       ]);
-      
+
       // Focus the input field when terminal opens
       setTimeout(() => {
         if (terminalInputRef.current) {
           terminalInputRef.current.focus();
-          
+
           // For mobile devices - attempt to show keyboard
           if (windowHeight.isMobile && terminalInputRef.current) {
             terminalInputRef.current.focus();
@@ -976,10 +982,10 @@ const MacOSWindow = () => {
   const handleTerminalInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       const command = terminalInput.trim().toLowerCase();
-      
+
       // Add the command to the terminal output
       setTerminalOutput(prev => [...prev, `ashutosh@portfolio:~$ ${terminalInput}`]);
-      
+
       // Process command
       if (command === 'q') {
         setTerminalMode(false);
@@ -987,37 +993,37 @@ const MacOSWindow = () => {
         const projectLines = projects.map(project => `- ${project.name}`);
         setTerminalOutput(prev => [...prev, ...projectLines]);
       } else if (command === 'ls education') {
-        const educationLines = educationData.map(edu => 
+        const educationLines = educationData.map(edu =>
           `- ${edu.institution || ''} ${edu.degree || ''}`
         );
         setTerminalOutput(prev => [...prev, ...educationLines]);
       } else if (command === 'ls experience') {
-        const experienceLines = experienceData.map(exp => 
+        const experienceLines = experienceData.map(exp =>
           `- ${exp.company}: ${exp.position}`
         );
         setTerminalOutput(prev => [...prev, ...experienceLines]);
       } else if (command === 'ls awards') {
-        const awardLines = awardsData.flatMap(category => 
+        const awardLines = awardsData.flatMap(category =>
           category.awards.map(award => `- ${award.title}`)
         );
         setTerminalOutput(prev => [...prev, ...awardLines]);
       } else if (command === 'ls publications') {
-        const publicationLines = publications.map(pub => 
+        const publicationLines = publications.map(pub =>
           `- ${pub.title}`
         );
         setTerminalOutput(prev => [...prev, ...publicationLines]);
       } else if (command === 'ls activities') {
-        const activityLines = activitiesData.map(activity => 
+        const activityLines = activitiesData.map(activity =>
           `- ${activity.title}`
         );
         setTerminalOutput(prev => [...prev, ...activityLines]);
       } else {
         setTerminalOutput(prev => [
-          ...prev, 
+          ...prev,
           `Command not found: ${command}`
         ]);
       }
-      
+
       // Clear input
       setTerminalInput('');
     }
@@ -1039,14 +1045,30 @@ const MacOSWindow = () => {
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    
+
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, [terminalMode]);
 
+  useEffect(() => {
+    if (!lockscreenVisible) return;
+    
+    setCurrentTime(new Date());
+    
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 30000); // 30 seconds in milliseconds
+    
+    return () => clearInterval(intervalId);
+  }, [lockscreenVisible]);
+
+  const toggleLockscreen = () => {
+    setLockscreenVisible(!lockscreenVisible);
+  };
+
   return (
-    <div 
+    <div
       className={`
         min-h-screen w-full flex items-start sm:items-center justify-center 
         p-4 sm:p-8 relative
@@ -1054,185 +1076,186 @@ const MacOSWindow = () => {
       style={backgroundStyle}
     >
       <div className="w-full max-w-3xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 bg-white relative z-10">
-      {/* Window header with traffic lights */}
-      <div className="bg-gray-200 px-4 py-2 flex items-center">
-        <div className="flex space-x-2">
-          <Link href="/">
-            <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
-          </Link>
-          <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-          <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer" onClick={toggleTerminalMode}></div>
+        {/* Window header with traffic lights */}
+        <div className="bg-gray-200 px-4 py-2 flex items-center">
+          <div className="flex space-x-2">
+            <Link href="/">
+              <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer"></div>
+            </Link>
+            <div
+              className="w-3 h-3 rounded-full bg-yellow-500 cursor-pointer"
+              onClick={toggleLockscreen}
+            ></div>
+            <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer" onClick={toggleTerminalMode}></div>
+          </div>
+
+          {/* Window title - centered */}
+          <div className="flex-1 text-center text-sm text-gray-700 font-medium font-['Raleway']">Finder</div>
+
+          {/* Placeholder for right side controls */}
+          <div className="w-16"></div>
         </div>
-        
-        {/* Window title - centered */}
-        <div className="flex-1 text-center text-sm text-gray-700 font-medium font-['Raleway']">Finder</div>
-        
-        {/* Placeholder for right side controls */}
-        <div className="w-16"></div>
-      </div>
-      
-      {/* Toolbar */}
-      <div className="bg-gray-100 px-2 py-1 border-b border-gray-200 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <button 
-            onClick={handleBack}
-            disabled={currentHistoryIndex === 0}
-            className={`text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] flex items-center
+
+        {/* Toolbar */}
+        <div className="bg-gray-100 px-2 py-1 border-b border-gray-200 flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={handleBack}
+              disabled={currentHistoryIndex === 0}
+              className={`text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] flex items-center
               ${currentHistoryIndex === 0 ? 'text-gray-400 hover:bg-transparent cursor-not-allowed' : 'text-gray-700'}
             `}
-          >
-            <svg 
-              className="w-3 h-3 inline mr-1" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M15 19l-7-7 7-7" 
-              />
-            </svg>
-            Back
-          </button>
-          <button 
-            onClick={handleForward}
-            disabled={currentHistoryIndex >= tabHistory.length - 1}
-            className={`text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] flex items-center
+              <svg
+                className="w-3 h-3 inline mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+              Back
+            </button>
+            <button
+              onClick={handleForward}
+              disabled={currentHistoryIndex >= tabHistory.length - 1}
+              className={`text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] flex items-center
               ${currentHistoryIndex >= tabHistory.length - 1 ? 'text-gray-400 hover:bg-transparent cursor-not-allowed' : 'text-gray-700'}
             `}
-          >
-            <svg 
-              className="w-3 h-3 inline mr-1" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M9 5l7 7-7 7" 
-              />
-            </svg>
-            Forward
-          </button>
+              <svg
+                className="w-3 h-3 inline mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+              Forward
+            </button>
+          </div>
+
+          {/* Archive link - only show on Activities tab */}
+          {activeTab === 5 && (
+            <a
+              href="https://ashutoshsundresh.com/archive.html#extracurriculars"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] text-gray-600 hover:text-gray-800"
+            >
+              View High School Archive →
+            </a>
+          )}
         </div>
-        
-        {/* Archive link - only show on Activities tab */}
-        {activeTab === 5 && (
-          <a
-            href="https://ashutoshsundresh.com/archive.html#extracurriculars"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] text-gray-600 hover:text-gray-800"
+
+        {/* Tabs */}
+        <div className="bg-gray-100 border-b border-gray-200">
+          {/* Add an outer container for the scrolling behavior */}
+          <div
+            className="overflow-x-auto tab-container"
+            style={{
+              scrollbarWidth: 'none', /* Firefox */
+              msOverflowStyle: 'none',  /* IE and Edge */
+            }}
           >
-            View High School Archive →
-          </a>
-        )}
-      </div>
-      
-      {/* Tabs */}
-      <div className="bg-gray-100 border-b border-gray-200">
-        {/* Add an outer container for the scrolling behavior */}
-        <div 
-          className="overflow-x-auto tab-container" 
-          style={{ 
-            scrollbarWidth: 'none', /* Firefox */
-            msOverflowStyle: 'none',  /* IE and Edge */
-          }}
-        >
-          {/* Add CSS to hide scrollbar for Chrome, Safari and Opera */}
-          <style jsx>{`
+            {/* Add CSS to hide scrollbar for Chrome, Safari and Opera */}
+            <style jsx>{`
             div::-webkit-scrollbar {
               display: none;
             }
           `}</style>
-          {/* Add a minimum width to ensure tabs don't get too squished */}
-          <div 
-            className="flex min-w-max transition-transform duration-300 ease-in-out tabs-container"
-            style={{ transform: `translateX(${tabOffset}px)` }}
-          >
-            {tabs.map((tab, index) => (
-              <button
-                key={tab.id}
-                // Set ref for this tab button
-                ref={el => { tabRefs.current[index] = el; }}
-                onClick={() => handleTabChange(tab.id)}
-                className={`
+            {/* Add a minimum width to ensure tabs don't get too squished */}
+            <div
+              className="flex min-w-max transition-transform duration-300 ease-in-out tabs-container"
+              style={{ transform: `translateX(${tabOffset}px)` }}
+            >
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab.id}
+                  // Set ref for this tab button
+                  ref={el => { tabRefs.current[index] = el; }}
+                  onClick={() => handleTabChange(tab.id)}
+                  className={`
                   px-4 py-2 text-sm font-medium whitespace-nowrap
-                  ${activeTab === tab.id 
-                    ? 'text-gray-900 border-b-2 border-blue-500' 
-                    : 'text-gray-500 hover:text-gray-700'
-                  }
+                  ${activeTab === tab.id
+                      ? 'text-gray-900 border-b-2 border-blue-500'
+                      : 'text-gray-500 hover:text-gray-700'
+                    }
                 `}
-              >
-                {tab.title}
-              </button>
-            ))}
+                >
+                  {tab.title}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Sidebar and content */}
-      <div className="flex" style={{ height: contentHeight }}>
-        
-        {/* Main content */}
-        <div 
-          ref={contentRef}
-          onTouchStart={windowHeight.isMobile ? handleTouchStart : undefined}
-          onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
-          onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
-          className={`
+
+        {/* Sidebar and content */}
+        <div className="flex" style={{ height: contentHeight }}>
+
+          {/* Main content */}
+          <div
+            ref={contentRef}
+            onTouchStart={windowHeight.isMobile ? handleTouchStart : undefined}
+            onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
+            onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
+            className={`
             flex-1 p-4 bg-white overflow-y-auto
             ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
           `}
-          onClick={handleContainerClick}
-          style={{height: contentHeight}}
-        >
-          <div className="text-lg mb-2 font-medium text-gray-800 font-['Raleway']">
-            {tabs[activeTab].title}
-          </div>
-          <div className="text-gray-700 mb-4 font-['Raleway'] text-sm">
-            {tabs[activeTab].content}
-          </div>
-          
-          {/* Project Folders (MacOS styled) */}
-          {activeTab === 0 && (
-            <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-              {projects.map((project) => (
-                <div 
-                  key={project.id} 
-                  className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${
-                    selectedItem === project.id ? 'bg-[#0069d9]' : 'hover:bg-gray-100'
-                  }`}
-                  onClick={(e) => handleItemClick(e, project.id)}
-                >
-                  <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
-                    <img 
-                      src={folderIconUrl} 
-                      alt="Folder"
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                  <div className="text-center max-w-[100px]">
-                    <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${
-                      selectedItem === project.id ? 'text-white' : 'text-gray-800'
-                    }`}>
-                      {project.name}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            onClick={handleContainerClick}
+            style={{ height: contentHeight }}
+          >
+            <div className="text-lg mb-2 font-medium text-gray-800 font-['Raleway']">
+              {tabs[activeTab].title}
             </div>
-          )}
-          
-          {/* Documents Tab */}
-          {activeTab === 1 && (
+            <div className="text-gray-700 mb-4 font-['Raleway'] text-sm">
+              {tabs[activeTab].content}
+            </div>
+
+            {/* Project Folders (MacOS styled) */}
+            {activeTab === 0 && (
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                {projects.map((project) => (
+                  <div
+                    key={project.id}
+                    className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === project.id ? 'bg-[#0069d9]' : 'hover:bg-gray-100'
+                      }`}
+                    onClick={(e) => handleItemClick(e, project.id)}
+                  >
+                    <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
+                      <img
+                        src={folderIconUrl}
+                        alt="Folder"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center max-w-[100px]">
+                      <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedItem === project.id ? 'text-white' : 'text-gray-800'
+                        }`}>
+                        {project.name}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Documents Tab */}
+            {activeTab === 1 && (
               <div className="mt-4 space-y-8">
                 {educationData.map((edu) => (
-                  <div 
+                  <div
                     key={edu.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
                   >
@@ -1240,15 +1263,15 @@ const MacOSWindow = () => {
                     <div className="bg-gray-50 p-4 border-b border-gray-200">
                       <div className="flex items-center">
                         <div className="w-12 h-12 mr-4 relative">
-                          <img 
+                          <img
                             src={edu.icon}
                             alt={edu.institution}
                             className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
+                          />
+                        </div>
                         <div>
                           <h3 className="text-lg font-medium text-gray-900">
-                            <a 
+                            <a
                               href={edu.institutionLink}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -1270,9 +1293,9 @@ const MacOSWindow = () => {
                           <p className="text-sm text-gray-600">{edu.school}</p>
                         </div>
                       )}
-                      
+
                       <p className="text-sm font-medium text-gray-900">{edu.gpa}</p>
-                      
+
                       {edu.details.grades && (
                         <div className="space-y-2">
                           {edu.details.grades.map((grade, index) => (
@@ -1300,7 +1323,7 @@ const MacOSWindow = () => {
                           <p className="text-sm font-medium text-gray-900">Subjects</p>
                           <div className="flex flex-wrap gap-2">
                             {edu.details.subjects.map((subject, index) => (
-                              <span 
+                              <span
                                 key={index}
                                 className="px-2 py-1 bg-gray-100 rounded-md text-xs text-gray-600"
                               >
@@ -1314,7 +1337,7 @@ const MacOSWindow = () => {
                       {/* Add links at the bottom */}
                       <div className="pt-2 flex gap-4">
                         {edu.courseLink && (
-                          <a 
+                          <a
                             href={edu.courseLink}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -1324,7 +1347,7 @@ const MacOSWindow = () => {
                           </a>
                         )}
                         {edu.archiveLink && (
-                          <a 
+                          <a
                             href={edu.archiveLink}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -1334,17 +1357,17 @@ const MacOSWindow = () => {
                           </a>
                         )}
                       </div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-          
+                ))}
+              </div>
+            )}
+
             {/* Experience Tab */}
-          {activeTab === 2 && (
+            {activeTab === 2 && (
               <div className="mt-4 space-y-6">
                 {experienceData.map((exp) => (
-                  <div 
+                  <div
                     key={exp.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
                   >
@@ -1352,15 +1375,15 @@ const MacOSWindow = () => {
                     <div className="bg-gray-50 p-4 border-b border-gray-200">
                       <div className="flex items-start">
                         <div className="w-12 h-12 mr-4 relative flex-shrink-0">
-                          <img 
+                          <img
                             src={exp.icon}
                             alt={exp.company}
                             className="w-full h-full object-contain rounded-lg"
-                    />
-                  </div>
+                          />
+                        </div>
                         <div>
                           <h3 className="text-lg font-medium text-gray-900">
-                            <a 
+                            <a
                               href={exp.companyLink}
                               target="_blank"
                               rel="noopener noreferrer"
@@ -1382,8 +1405,8 @@ const MacOSWindow = () => {
                     {/* Updated Content section */}
                     <div className="p-4">
                       <ul className="space-y-2 text-sm text-gray-600">
-                        {(exp.company === "Manav Rachna International Institute of Research and Studies" 
-                          ? exp.description 
+                        {(exp.company === "Manav Rachna International Institute of Research and Studies"
+                          ? exp.description
                           : exp.description.slice(0, expandedExperiences.includes(exp.id) ? undefined : 1)
                         ).map((item, index) => (
                           <li key={index} className="flex items-start">
@@ -1392,7 +1415,7 @@ const MacOSWindow = () => {
                           </li>
                         ))}
                       </ul>
-                      
+
                       {exp.description.length > 1 && exp.company !== "Manav Rachna International Institute of Research and Studies" && (
                         <button
                           onClick={() => toggleExperienceExpansion(exp.id)}
@@ -1416,224 +1439,224 @@ const MacOSWindow = () => {
                         </button>
                       )}
                     </div>
-                </div>
-              ))}
-            </div>
+                  </div>
+                ))}
+              </div>
             )}
 
-          {/* Awards Tab */}
-          {activeTab === 3 && (
-            <div className="mt-4 space-y-8">
-              {awardsData.map((category) => (
-                <div key={category.id} className="mb-8">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4 font-['Raleway']">
-                    {category.category}
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {category.awards.map((award, index) => (
-                      <div 
-                        key={index}
-                        className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white"
-                      >
-                        <div className="relative p-6">
-                          {/* Header */}
-                          <div className="flex items-start justify-between mb-4">
-                            <div className="flex-1">
-                              <h3 className="text-xl font-semibold text-gray-900 mb-1">
-                                {award.title}
-                              </h3>
-                              <p className="text-sm text-gray-500">
-                                {award.subtitle}
-                              </p>
-                            </div>
-                            <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
-                              <img 
-                                src={award.icon}
-                                alt={award.title}
-                                className="w-8 h-8 object-contain"
-                              />
-                            </div>
-                          </div>
-                          
-                          {/* Content */}
-                          <div className="space-y-4">
-                            <p className="text-sm text-gray-600">
-                              {award.description}
-                            </p>
-                            
-                            {/* Stats */}
-                            <div className="flex items-center space-x-4">
+            {/* Awards Tab */}
+            {activeTab === 3 && (
+              <div className="mt-4 space-y-8">
+                {awardsData.map((category) => (
+                  <div key={category.id} className="mb-8">
+                    <h3 className="text-lg font-medium text-gray-900 mb-4 font-['Raleway']">
+                      {category.category}
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {category.awards.map((award, index) => (
+                        <div
+                          key={index}
+                          className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white"
+                        >
+                          <div className="relative p-6">
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-4">
                               <div className="flex-1">
-                                {award.highlight && (
-                                  <div className="text-2xl font-bold text-gray-900 mb-1">
-                                    {award.highlight}
-                                  </div>
-                                )}
-                                {award.stats && (
-                                  <div className="text-sm text-gray-500">
-                                    {award.stats}
-                                  </div>
-                                )}
+                                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                                  {award.title}
+                                </h3>
+                                <p className="text-sm text-gray-500">
+                                  {award.subtitle}
+                                </p>
                               </div>
-                              
-                              {/* Year badge */}
-                              <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
-                                {award.year}
+                              <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
+                                <img
+                                  src={award.icon}
+                                  alt={award.title}
+                                  className="w-8 h-8 object-contain"
+                                />
                               </div>
                             </div>
-                            
-                            {/* Link if available */}
-                            {award.link && (
-                              <a 
-                                href={award.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600 mt-2"
-                              >
-                                <span>View Achievement →</span>
-                              </a>
-                            )}
+
+                            {/* Content */}
+                            <div className="space-y-4">
+                              <p className="text-sm text-gray-600">
+                                {award.description}
+                              </p>
+
+                              {/* Stats */}
+                              <div className="flex items-center space-x-4">
+                                <div className="flex-1">
+                                  {award.highlight && (
+                                    <div className="text-2xl font-bold text-gray-900 mb-1">
+                                      {award.highlight}
+                                    </div>
+                                  )}
+                                  {award.stats && (
+                                    <div className="text-sm text-gray-500">
+                                      {award.stats}
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Year badge */}
+                                <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
+                                  {award.year}
+                                </div>
+                              </div>
+
+                              {/* Link if available */}
+                              {award.link && (
+                                <a
+                                  href={award.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600 mt-2"
+                                >
+                                  <span>View Achievement →</span>
+                                </a>
+                              )}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
 
-          {/* Publications Tab */}
-          {activeTab === 4 && (
-            <div className="p-4" onClick={handleContainerClick}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                {publications.map((pub) => (
-                  <div
-                    key={pub.id}
-                    onClick={(e) => handleItemClick(e, pub.id)}
-                    className={`
+            {/* Publications Tab */}
+            {activeTab === 4 && (
+              <div className="p-4" onClick={handleContainerClick}>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                  {publications.map((pub) => (
+                    <div
+                      key={pub.id}
+                      onClick={(e) => handleItemClick(e, pub.id)}
+                      className={`
                       relative group cursor-pointer p-4 rounded-lg
                       ${selectedItem === pub.id ? 'bg-blue-600' : 'hover:bg-gray-50'}
                     `}
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="w-16 h-16 flex items-center justify-center mb-2">
-                        <img 
-                          src={pub.icon} 
-                          alt="" 
-                          className="w-16 h-16 object-contain"
-                        />
-                      </div>
-                      <span className={`
+                    >
+                      <div className="flex flex-col items-center">
+                        <div className="w-16 h-16 flex items-center justify-center mb-2">
+                          <img
+                            src={pub.icon}
+                            alt=""
+                            className="w-16 h-16 object-contain"
+                          />
+                        </div>
+                        <span className={`
                         text-sm font-['Raleway'] font-light w-full text-center break-words
                         ${selectedItem === pub.id ? 'text-white' : 'text-gray-900'}
                       `}>
-                        {pub.title}
-                      </span>
-                      <span className={`
+                          {pub.title}
+                        </span>
+                        <span className={`
                         text-xs mt-0.5
                         ${selectedItem === pub.id ? 'text-blue-100' : 'text-gray-500'}
                       `}>
-                        {pub.year}
-                      </span>
+                          {pub.year}
+                        </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Activities Tab */}
-          {activeTab === 5 && (
-            <div className="p-4">
-              <div className="space-y-6">
-                {activitiesData.map((activity) => (
-                  <div
-                    key={activity.id}
-                    className="bg-white rounded-xl border border-gray-200 overflow-hidden"
-                  >
-                    <div className="p-6">
-                      {/* Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-start space-x-4">
-                          {activity.icon && (
-                            <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center">
-                              <img 
-                                src={activity.icon}
-                                alt=""
-                                className="w-8 h-8 object-contain"
-                              />
+            {/* Activities Tab */}
+            {activeTab === 5 && (
+              <div className="p-4">
+                <div className="space-y-6">
+                  {activitiesData.map((activity) => (
+                    <div
+                      key={activity.id}
+                      className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+                    >
+                      <div className="p-6">
+                        {/* Header */}
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-start space-x-4">
+                            {activity.icon && (
+                              <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center">
+                                <img
+                                  src={activity.icon}
+                                  alt=""
+                                  className="w-8 h-8 object-contain"
+                                />
+                              </div>
+                            )}
+                            <div>
+                              <h3 className="text-lg font-semibold text-gray-900">
+                                {activity.title}
+                              </h3>
+                              <p className="text-sm text-gray-500 mt-1">
+                                {activity.period}
+                              </p>
                             </div>
-                          )}
-                          <div>
-                            <h3 className="text-lg font-semibold text-gray-900">
-                              {activity.title}
-                            </h3>
-                            <p className="text-sm text-gray-500 mt-1">
-                              {activity.period}
-                            </p>
                           </div>
                         </div>
+
+                        {/* Description */}
+                        <p className="text-sm text-gray-600 mb-4">
+                          {activity.description}
+                        </p>
+
+                        {/* Stats if available */}
+                        {activity.stats && (
+                          <div className="grid grid-cols-2 gap-4 mb-4">
+                            {activity.stats.map((stat, index) => (
+                              <div
+                                key={index}
+                                className="bg-gray-50 rounded-lg p-3 text-center"
+                              >
+                                <div className="text-xl font-bold text-gray-900">
+                                  {stat.value}
+                                </div>
+                                <div className="text-xs text-gray-500">
+                                  {stat.label}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Highlights */}
+                        {activity.highlights && (
+                          <ul className="space-y-2 mb-4">
+                            {activity.highlights.map((highlight, index) => (
+                              <li key={index} className="flex items-start text-sm text-gray-600">
+                                <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
+                                <span>{highlight}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+
+                        {/* Link if available */}
+                        {activity.link && (
+                          <a
+                            href={activity.link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600"
+                          >
+                            {activity.link.text} →
+                          </a>
+                        )}
                       </div>
-
-                      {/* Description */}
-                      <p className="text-sm text-gray-600 mb-4">
-                        {activity.description}
-                      </p>
-
-                      {/* Stats if available */}
-                      {activity.stats && (
-                        <div className="grid grid-cols-2 gap-4 mb-4">
-                          {activity.stats.map((stat, index) => (
-                            <div 
-                              key={index}
-                              className="bg-gray-50 rounded-lg p-3 text-center"
-                            >
-                              <div className="text-xl font-bold text-gray-900">
-                                {stat.value}
-                              </div>
-                              <div className="text-xs text-gray-500">
-                                {stat.label}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Highlights */}
-                      {activity.highlights && (
-                        <ul className="space-y-2 mb-4">
-                          {activity.highlights.map((highlight, index) => (
-                            <li key={index} className="flex items-start text-sm text-gray-600">
-                              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-
-                      {/* Link if available */}
-                      {activity.link && (
-                        <a
-                          href={activity.link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600"
-                        >
-                          {activity.link.text} →
-                        </a>
-                      )}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-          
+            )}
+          </div>
+
           {/* Detail View */}
           {selectedItem && activeTab === 0 && (
-            <DetailView 
+            <DetailView
               project={projects.find(p => p.id === selectedItem) as ProjectDetails}
               onClose={() => setSelectedItem(null)}
             />
@@ -1641,30 +1664,88 @@ const MacOSWindow = () => {
 
           {/* Add Publication Detail View */}
           {selectedItem && activeTab === 4 && (
-            <PublicationDetailView 
+            <PublicationDetailView
               publication={publications.find(p => p.id === selectedItem) as Publication}
               onClose={() => setSelectedItem(null)}
             />
           )}
-      </div>
-      
-      {/* Status bar */}
+        </div>
+
+        {/* Status bar */}
         <div className={`
           bg-gray-50 border-t border-gray-200 px-4 py-1 text-xs text-gray-500 
           flex justify-between font-['Raleway']
           ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
         `}>
           <span>
-            {activeTab === 0 ? `${projects.length} items` : 
-             activeTab === 1 ? `${educationData.length} items` : 
-             activeTab === 2 ? `${experienceData.length} items` :
-             activeTab === 3 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
-             activeTab === 4 ? `${publications.length} items` :
-             `${activitiesData.length} items`}, {randomStorage} GB available <br/> &copy; {new Date().getFullYear()} Ashutosh Sundresh
+            {activeTab === 0 ? `${projects.length} items` :
+              activeTab === 1 ? `${educationData.length} items` :
+                activeTab === 2 ? `${experienceData.length} items` :
+                  activeTab === 3 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
+                    activeTab === 4 ? `${publications.length} items` :
+                      `${activitiesData.length} items`}, {randomStorage} GB available <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
           <span>{currentDate}</span>
         </div>
       </div>
+      {lockscreenVisible && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white"
+          style={{ backdropFilter: 'blur(10px)' }}>
+          <div className="flex flex-col items-center">
+            {/* Time */}
+            <div className="text-6xl font-light mb-2">
+              {format(currentTime, 'h:mm')}
+            </div>
+            {/* Date */}
+            <div className="text-xl mb-8">
+              {format(currentTime, 'EEEE, MMMM d')}
+            </div>
+
+            {/* User profile */}
+            <div className="w-24 h-24 bg-gray-300 rounded-full mb-4 overflow-hidden">
+              <Image
+                src="https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ashutosh.webp"
+                alt="Profile"
+                width={96}
+                height={96}
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <div className="text-xl mb-3">Ashutosh Sundresh</div>
+
+            <div className="text-sm text-gray-400 mb-4">
+            What is the number of ways you can arrange the letters in the word Ashutosh?
+            </div>
+            {/* Password field */}
+            <div className="w-64 mb-4">
+              <input
+                type="text"
+                className="w-full bg-black/40 border border-gray-600 rounded-md py-2 px-3 text-white text-center"
+                placeholder="Enter password"
+                onClick={(e) => e.stopPropagation()}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    const input = e.target as HTMLInputElement;
+                    const answer = parseInt(input.value, 10);
+                    if (answer === 10080) { 
+                      toggleLockscreen();
+                    } else {
+                      alert("Incorrect answer. Try again!");
+                      input.value = ""; 
+                    }
+                  }
+                }}
+                autoFocus
+              />
+            </div>
+
+            <div className="text-sm text-gray-400">
+              Press Enter to unlock
+            </div>
+          </div>
+        </div>
+      )}
       {terminalMode && (
         <div className="terminal-container">
           <style jsx>{`
