@@ -156,7 +156,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-between ios-lockscreen-enter ${isExiting ? 'ios-lockscreen-exit' : ''}`}
+      className={`fixed inset-0 z-50 flex flex-col items-center justify-center ios-lockscreen-enter ${isExiting ? 'ios-lockscreen-exit' : ''}`}
       style={{
         background: 'linear-gradient(to bottom, #1a001f, #320046, #210024, black)',
         backgroundSize: 'cover',
@@ -186,7 +186,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
         <>
           {/* Clock and Date */}
           <div 
-            className="flex-1 flex flex-col items-center text-white z-10"
+            className="flex flex-col items-center text-white z-10 justify-center"
             style={contentTransform}
           >
             {/* Lock Icon */}
@@ -206,7 +206,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
 
           {/* Bottom section */}
           <div 
-            className="w-full mb-8 flex flex-col items-center z-10"
+            className="mt-auto mb-12 w-full flex flex-col items-center z-10"
             style={contentTransform}
           >
             
@@ -222,7 +222,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
       ) : (
         // iOS-style Keypad
         <div 
-          className="w-full h-full flex flex-col items-center z-20 animate-fade-in"
+          className="w-full h-full flex flex-col items-center justify-center z-20 animate-fade-in"
           style={{
             transform: swipeDistance < 0 ? `translateY(${-swipeDistance}px)` : 'translateY(0)'
           }}
@@ -236,8 +236,8 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
           ></div>
           
           {/* Question and PIN indicator */}
-          <div className="w-full pt-16 pb-8 px-6 flex flex-col items-center z-10">
-            <h2 className="text-white text-sm font-medium mb-5 text-center">
+          <div className="w-full flex flex-col items-center z-10">
+            <h2 className="text-white text-sm font-medium mb-5 text-center px-6">
               What is the number of ways you can arrange the letters in the word "Ashutosh"?
             </h2>
             
@@ -247,7 +247,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
           </div>
           
           {/* Numeric Keypad */}
-          <div className="w-full max-w-xs grid grid-cols-3 gap-6 px-6 z-10">
+          <div className="w-full max-w-xs grid grid-cols-3 gap-6 px-6 z-10 mt-4">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, '', 0, 'delete'].map((key, i) => (
               <button
                 key={i}
