@@ -1766,7 +1766,6 @@ const MacOSWindow = () => {
               font-family: monospace;
               padding: 1rem;
               z-index: 9999;
-              overflow-y: auto;
               display: flex;
               flex-direction: column;
             }
@@ -1786,8 +1785,8 @@ const MacOSWindow = () => {
               font-weight: normal;
             }
             .terminal-output {
-              flex-grow: 1;
               overflow-y: auto;
+              height: auto;
               max-height: 80vh;
               margin-bottom: 0.5rem;
               scrollbar-width: none; /* Firefox */
@@ -1821,6 +1820,7 @@ const MacOSWindow = () => {
                 padding: 0.5rem;
               }
               .terminal-output {
+                height: auto;
                 max-height: 70vh;
               }
               .terminal-input {
