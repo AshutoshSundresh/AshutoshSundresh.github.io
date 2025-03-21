@@ -601,9 +601,17 @@ const MacOSWindow = () => {
     );
   };
 
+  // State for background image loading
+  const [bgLoaded, setBgLoaded] = useState(false);
+  const [highResBgLoaded, setHighResBgLoaded] = useState(false);
+
   // Update the backgroundStyle object
   const backgroundStyle = {
-    backgroundImage: 'url("https://512pixels.net/downloads/macos-wallpapers/10-13.jpg")',
+    backgroundImage: highResBgLoaded 
+      ? 'url("https://512pixels.net/downloads/macos-wallpapers/10-13.jpg")' 
+      : bgLoaded 
+        ? 'url("https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg")' 
+        : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -613,8 +621,26 @@ const MacOSWindow = () => {
     right: 0,
     bottom: 0,
     width: '100vw',
-    height: '100vh'
+    height: '100vh',
+    transition: 'background-image 0.5s ease-in-out'
   };
+
+  // Lazy load the background image progressively
+  useEffect(() => {
+    // Load low-res image first
+    const lowResImg = new window.Image();
+    lowResImg.src = "https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg";
+    lowResImg.onload = () => {
+      setBgLoaded(true);
+      
+      // Then load high-res image
+      const highResImg = new window.Image();
+      highResImg.src = "https://512pixels.net/downloads/macos-wallpapers/10-13.jpg";
+      highResImg.onload = () => {
+        setHighResBgLoaded(true);
+      };
+    };
+  }, []);
 
   // Update the awards data
   const awardsData = [
@@ -784,7 +810,7 @@ const MacOSWindow = () => {
         <div className="p-4 space-y-6">
           {/* Large centered icon and title */}
           <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 flex items-center justify-center mb-4">
+            <div className="w-32 h-32 mb-4 relative transition-transform duration-[8s] group-hover:scale-105">
               <img
                 src={publication.icon}
                 alt=""
@@ -1078,6 +1104,9 @@ const MacOSWindow = () => {
       `}
       style={backgroundStyle}
     >
+      {!bgLoaded && (
+        <div className="fixed inset-0 bg-gray-200 z-0" />
+      )}
       <div className="w-full max-w-3xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 bg-white relative z-10">
         {/* Window header with traffic lights */}
         <div className="bg-gray-200 px-4 py-2 flex items-center">
@@ -1693,7 +1722,8 @@ const MacOSWindow = () => {
       </div>
       {lockscreenVisible && !windowHeight.isMobile && (
         <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white"
-          style={{ backdropFilter: 'blur(10px)' }}>
+          style={{ backdropFilter: 'blur(10px)' }}
+        >
           <div className="flex flex-col items-center">
             {/* Time */}
             <div className="text-6xl font-light mb-2">
