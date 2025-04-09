@@ -365,7 +365,6 @@ const MacOSWindow = () => {
       degree: "BS in Computer Science",
       school: "Henry Samueli School of Engineering and Applied Science",
       period: "2024 - Present",
-      gpa: "4.0/4.0 GPA",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
       institutionLink: "https://ucla.edu",
       courseLink: "https://www.linkedin.com/in/asund/details/courses/",
@@ -1326,8 +1325,10 @@ const MacOSWindow = () => {
                         </div>
                       )}
 
-                      <p className="text-sm font-medium text-gray-900">{edu.gpa}</p>
-
+                      {edu.gpa && (
+                       <p className="text-sm font-medium text-gray-900">{edu.gpa}</p>
+                      )}
+                      
                       {edu.details.grades && (
                         <div className="space-y-2">
                           {edu.details.grades.map((grade, index) => (
