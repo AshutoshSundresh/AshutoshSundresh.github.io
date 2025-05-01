@@ -409,6 +409,30 @@ const MacOSWindow = () => {
   const experienceData = [
     {
       id: 1,
+      company: "Harvey",
+      position: "Software Engineer Intern",
+      location: "San Francisco, CA",
+      period: "June 2025 - September 2025",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
+      companyLink: "https://harvey.ai/",
+      description: [
+        "Incoming Summer 2025"
+      ],
+    },
+    {
+      id: 2,
+      company: "Kleiner Perkins",
+      position: "Engineering Fellow",
+      location: "San Francisco, CA",
+      period: "April 2025 - Present",
+      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/kleiner_perkins_logo.jpeg",
+      companyLink: "https://kleinerperkins.com",
+      description: [
+        "https://www.kleinerperkins.com/fellows"
+      ],
+    },        
+    {
+      id: 3,
       company: "ShapeShiftOS",
       position: "Lead Software Engineer / Founder",
       location: "Remote",
@@ -425,7 +449,7 @@ const MacOSWindow = () => {
       ],
     },
     {
-      id: 2,
+      id: 4,
       company: "UCLA ELFIN CubeSat",
       position: "Ground Software Engineer",
       location: "Los Angeles, CA",
@@ -438,7 +462,7 @@ const MacOSWindow = () => {
       ],
     },
     {
-      id: 3,
+      id: 5,
       company: "LA Hacks",
       position: "Software Engineer / Organizer",
       location: "Los Angeles, CA",
@@ -455,8 +479,8 @@ const MacOSWindow = () => {
       ],
     },
     {
-      id: 4,
-      company: "Skylow AI",
+      id: 6,
+      company: "Skylow",
       position: "Software Engineer Intern",
       location: "Berkeley, CA",
       period: "Jul 2024 - Sep 2024",
@@ -470,7 +494,7 @@ const MacOSWindow = () => {
       ],
     },
     {
-      id: 5,
+      id: 7,
       company: "Susquehanna International Group (SIG)",
       position: "Extern",
       location: "Bala-Cynwyd, PA · Remote",
@@ -480,7 +504,7 @@ const MacOSWindow = () => {
       description: ["SIG Discovery Day"],
     },
     {
-      id: 6,
+      id: 8,
       company: "Manav Rachna International Institute of Research and Studies",
       position: "Research Intern",
       location: "Faridabad, India",
