@@ -412,7 +412,7 @@ const MacOSWindow = () => {
       company: "Harvey",
       position: "Software Engineer Intern",
       location: "San Francisco, CA",
-      period: "June 2025 - September 2025",
+      period: "Jun 2025 - Sep 2025",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       companyLink: "https://harvey.ai/",
       description: [
@@ -424,7 +424,7 @@ const MacOSWindow = () => {
       company: "Kleiner Perkins",
       position: "Engineering Fellow",
       location: "San Francisco, CA",
-      period: "April 2025 - Present",
+      period: "Apr 2025 - Present",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/kleiner_perkins_logo.jpeg",
       companyLink: "https://kleinerperkins.com",
       description: [
