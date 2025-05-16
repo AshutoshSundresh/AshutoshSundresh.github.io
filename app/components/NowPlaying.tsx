@@ -159,9 +159,9 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
 
   return (
     <div
-      className={`fixed top-4 left-1/2 z-50 w-full max-w-md px-2 transition-all duration-500 ease-in-out
-        ${show ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}
-        transform -translate-x-1/2`
+      className={`fixed top-4 left-1/2 z-50 w-full max-w-md px-2
+        ${show ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
+        transform -translate-x-1/2 transition-all duration-500 ease-in-out`
       }
     >
       <div
