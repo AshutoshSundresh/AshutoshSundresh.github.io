@@ -60,6 +60,8 @@ interface Award {
 const MacOSWindow = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   // Add ref array for tab elements
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -151,6 +153,18 @@ const MacOSWindow = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+  }, []);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+        setShowMobileMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   // Handle touch events for swipe navigation
@@ -1216,43 +1230,63 @@ const MacOSWindow = () => {
 
         {/* Tabs */}
         <div className="bg-gray-100 border-b border-gray-200">
-          {/* Add an outer container for the scrolling behavior */}
-          <div
-            className="overflow-x-auto tab-container"
-            style={{
-              scrollbarWidth: 'none', /* Firefox */
-              msOverflowStyle: 'none',  /* IE and Edge */
-            }}
-          >
-            {/* Add CSS to hide scrollbar for Chrome, Safari and Opera */}
-            <style jsx>{`
-            div::-webkit-scrollbar {
-              display: none;
-            }
-          `}</style>
-            {/* Add a minimum width to ensure tabs don't get too squished */}
-            <div
-              className="flex min-w-max transition-transform duration-300 ease-in-out tabs-container"
-              style={{ transform: `translateX(${tabOffset}px)` }}
-            >
-              {tabs.map((tab, index) => (
+          <div className="flex items-center">
+            {/* Visible tabs - show only 3 on mobile */}
+            <div className="flex-1 flex">
+              {tabs.slice(0, windowHeight.isMobile ? 3 : undefined).map((tab, index) => (
                 <button
                   key={tab.id}
-                  // Set ref for this tab button
-                  ref={el => { tabRefs.current[index] = el; }}
                   onClick={() => handleTabChange(tab.id)}
                   className={`
-                  px-4 py-2 text-sm font-medium whitespace-nowrap
-                  ${activeTab === tab.id
+                    px-4 py-2 text-sm font-medium whitespace-nowrap
+                    ${activeTab === tab.id
                       ? 'text-gray-900 border-b-2 border-blue-500'
                       : 'text-gray-500 hover:text-gray-700'
                     }
-                `}
+                  `}
                 >
                   {tab.title}
                 </button>
               ))}
             </div>
+
+            {/* Hamburger menu for mobile */}
+            {windowHeight.isMobile && (
+              <div className="relative" ref={mobileMenuRef}>
+                <button
+                  onClick={() => setShowMobileMenu(!showMobileMenu)}
+                  className="p-2 text-gray-500 hover:text-gray-700"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+
+                {/* Dropdown menu */}
+                {showMobileMenu && (
+                  <div className="absolute right-0 mt-1 w-48 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-gray-200 py-1 z-50">
+                    {tabs.slice(3).map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => {
+                          handleTabChange(tab.id);
+                          setShowMobileMenu(false);
+                        }}
+                        className={`
+                          w-full px-4 py-2 text-sm text-left
+                          ${activeTab === tab.id
+                            ? 'bg-blue-50 text-blue-600'
+                            : 'text-gray-700 hover:bg-gray-50'
+                          }
+                        `}
+                      >
+                        {tab.title}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
