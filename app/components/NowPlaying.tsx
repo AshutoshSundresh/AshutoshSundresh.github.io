@@ -40,6 +40,26 @@ function getLuminance([r, g, b]: number[]) {
   return 0.299 * r + 0.587 * g + 0.114 * b;
 }
 
+const styles = `
+  @keyframes gradientFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+`;
+
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
+}
+
 export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [track, setTrack] = useState<Track | null>(null);
@@ -144,7 +164,19 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
         transform -translate-x-1/2`
       }
     >
-      <div className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient}`} style={{background: dominantColor ? `linear-gradient(90deg, ${rgbToHex(dominantColor)}cc 0%, ${rgbToHex(dominantColor)}66 100%)` : undefined}}>
+      <div 
+        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} animate-gradient`} 
+        style={{
+          background: dominantColor 
+            ? `linear-gradient(90deg, 
+                ${rgbToHex(dominantColor)}cc 0%, 
+                ${rgbToHex(dominantColor)}66 50%,
+                ${rgbToHex(dominantColor)}cc 100%)`
+            : undefined,
+          backgroundSize: '320% 320%',
+          animation: 'gradientFlow 16s ease infinite'
+        }}
+      >
         <img
           ref={imgRef}
           src={albumArt}
