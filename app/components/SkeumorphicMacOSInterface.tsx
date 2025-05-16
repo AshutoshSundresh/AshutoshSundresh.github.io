@@ -47,12 +47,12 @@ interface Publication {
 // Add interface for award type
 interface Award {
   title: string;
-  subtitle: string;
+  subtitle?: string;  // Make subtitle optional
   year: string;
   icon: string;
-  description: string;
-  highlight?: string;  // Make optional with ?
-  stats?: string;      // Make optional with ?
+  description?: string;
+  highlight?: string;
+  stats?: string;
   link?: string;
   extraDetails?: string;
 }
@@ -681,39 +681,35 @@ const MacOSWindow = () => {
   }, []);
 
   // Update the awards data
-  const awardsData = [
+  const awardsData: { id: number; category: string; awards: Award[] }[] = [
     {
       id: 1,
-      category: "UCLA Recognition",
+      category: "Undergraduate",
       awards: [
         {
           title: "Shirley and Walter Wang Scholar",
           subtitle: "UCLA Samueli School of Engineering",
           year: "2024",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
           description: "Computer Science Merit Scholar",
-          highlight: "Merit Scholar",
-          stats: "Class of 2028"
+          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
         }
       ]
     },
     {
       id: 3,
-      category: "High School Achievements",
+      category: "High School",
       awards: [
         {
           title: "International Recognition",
-          subtitle: "Multiple Olympiad Achievements",
           year: "2021-2024",
           icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/medal.png",
-          description: "Notable accomplishments in various international competitions and olympiads",
+          description: "Notable accomplishments in various international Olympiads and competitions",
           highlight: "Multiple Awards",
           stats: "IOL Camp, APLO, Math Olympiads",
           link: "https://ashutoshsundresh.com/archive.html#awards"
         },
         {
           title: "SRCC Writing Mentorship Program",
-          subtitle: "Top 5 Performer",
           year: "2024",
           icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ecosocsrcc.png",
           description: "Selected among 1,500 applicants (8% acceptance rate) for advanced writing techniques program",
@@ -1554,12 +1550,14 @@ const MacOSWindow = () => {
                             {/* Header */}
                             <div className="flex items-start justify-between mb-4">
                               <div className="flex-1">
-                                <h3 className="text-xl font-semibold text-gray-900 mb-1">
+                                <h3 className={`text-xl font-semibold text-gray-900 ${award.subtitle ? 'mb-1' : ''}`}>
                                   {award.title}
                                 </h3>
-                                <p className="text-sm text-gray-500">
-                                  {award.subtitle}
-                                </p>
+                                {award.subtitle && (
+                                  <p className="text-sm text-gray-500">
+                                    {award.subtitle}
+                                  </p>
+                                )}
                               </div>
                               <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
                                 <img
@@ -1578,29 +1576,36 @@ const MacOSWindow = () => {
 
                               {/* Stats */}
                               <div className="flex items-center space-x-4">
-                                <div className="flex-1">
-                                  {award.highlight && (
-                                    <div className="text-2xl font-bold text-gray-900 mb-1">
-                                      {award.highlight}
+                                {(award as Award).highlight || (award as Award).stats ? (
+                                  <>
+                                    <div className="flex-1">
+                                      {(award as Award).highlight && (
+                                        <div className="text-2xl font-bold text-gray-900 mb-1">
+                                          {(award as Award).highlight}
+                                        </div>
+                                      )}
+                                      {(award as Award).stats && (
+                                        <div className="text-sm text-gray-500">
+                                          {(award as Award).stats}
+                                        </div>
+                                      )}
                                     </div>
-                                  )}
-                                  {award.stats && (
-                                    <div className="text-sm text-gray-500">
-                                      {award.stats}
+                                    {/* Year badge */}
+                                    <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
+                                      {award.year}
                                     </div>
-                                  )}
-                                </div>
-
-                                {/* Year badge */}
-                                <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
-                                  {award.year}
-                                </div>
+                                  </>
+                                ) : (
+                                  <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
+                                    {award.year}
+                                  </div>
+                                )}
                               </div>
 
                               {/* Link if available */}
-                              {award.link && (
+                              {(award as Award).link && (
                                 <a
-                                  href={award.link}
+                                  href={(award as Award).link}
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600 mt-2"
