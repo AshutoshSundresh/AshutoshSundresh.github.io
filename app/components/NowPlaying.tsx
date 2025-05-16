@@ -153,7 +153,7 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
   let textColor = 'text-white';
   if (dominantColor) {
     const hex = rgbToHex(dominantColor);
-    bgGradient = `bg-[linear-gradient(90deg,${hex}80,${hex}40)]`;
+    bgGradient = `bg-[linear-gradient(90deg,${hex}ff 0%,${hex}cc 50%,${hex}ff 100%)]`;
     textColor = getLuminance(dominantColor) > 180 ? 'text-gray-900' : 'text-white';
   }
 
@@ -165,23 +165,35 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
       }
     >
       <div
-        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg`}
+        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg overflow-hidden`}
         style={{
           background: dominantColor
             ? `linear-gradient(90deg, 
-                ${rgbToHex(dominantColor)}cc 0%, 
-                ${rgbToHex(dominantColor)}66 50%,
-                ${rgbToHex(dominantColor)}cc 100%)`
+                ${rgbToHex(dominantColor)}ff 0%, 
+                ${rgbToHex(dominantColor)}99 50%,
+                ${rgbToHex(dominantColor)}ff 100%)`
             : undefined,
+          backgroundSize: '200% 200%',
+          animation: 'gradientFlow 8s ease infinite'
         }}
       >
-        <img
-          ref={imgRef}
-          src={albumArt}
-          alt={track.name + ' album art'}
-          className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
+        <div className="absolute inset-y-0 left-0 w-1/4">
+          <img
+            ref={imgRef}
+            src={albumArt}
+            alt={track.name + ' album art'}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: dominantColor
+              ? `radial-gradient(ellipse at 25% 50%, transparent 0%, ${rgbToHex(dominantColor)}33 30%, transparent 70%)`
+              : 'radial-gradient(ellipse at 25% 50%, transparent 0%, rgba(0,0,0,0.2) 30%, transparent 70%)'
+          }}
         />
-        <div className={`flex-1 min-w-0 ${textColor}`}>
+        <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor}`}>
           <div className="text-xs font-semibold tracking-widest mb-1 opacity-80">
             {isNowPlaying ? 'NOW PLAYING' : 'LAST PLAYED'}
           </div>
