@@ -164,17 +164,15 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
         transform -translate-x-1/2`
       }
     >
-      <div 
-        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} animate-gradient`} 
+      <div
+        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg`}
         style={{
-          background: dominantColor 
+          background: dominantColor
             ? `linear-gradient(90deg, 
                 ${rgbToHex(dominantColor)}cc 0%, 
                 ${rgbToHex(dominantColor)}66 50%,
                 ${rgbToHex(dominantColor)}cc 100%)`
             : undefined,
-          backgroundSize: '320% 320%',
-          animation: 'gradientFlow 16s ease infinite'
         }}
       >
         <img

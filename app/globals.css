@@ -255,9 +255,15 @@ html {
 }
 
 @keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .responsive-justify {
@@ -444,4 +450,9 @@ html {
 
 .animate-dot-pop {
   animation: dotPop 0.2s ease-out forwards;
+}
+
+.lavalamp-bg {
+  background-size: 320% 320% !important;
+  animation: gradientFlow 16s ease infinite !important;
 }
