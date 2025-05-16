@@ -12,6 +12,8 @@
     "@stitches/react": "^1.2.8",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "color-thief-browser": "^2.0.2",
+    "colorthief": "^2.6.0",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.4.10",
     "lucide-react": "^0.479.0",

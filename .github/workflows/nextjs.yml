@@ -24,6 +24,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NEXT_PUBLIC_LASTFM_API_KEY: ${{ secrets.NEXT_PUBLIC_LASTFM_API_KEY }}
+  NEXT_PUBLIC_LASTFM_USER: ${{ secrets.NEXT_PUBLIC_LASTFM_USER }}
+
 jobs:
   # Build job
   build:

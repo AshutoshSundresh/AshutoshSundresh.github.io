@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image"
+import NowPlaying from "./NowPlaying"
 
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -18,6 +19,7 @@ export default function PersonalIntro() {
 
   return (
     <div id="personal-intro" className="relative h-screen flex flex-col items-center justify-center bg-white p-4 md:p-8 font-raleway">
+      <NowPlaying />
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2">
           {/* First line */}
