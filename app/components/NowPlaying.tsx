@@ -65,7 +65,8 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
   const [track, setTrack] = useState<Track | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [dominantColor, setDominantColor] = useState<number[] | null>(null);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [firstLaunch, setFirstLaunch] = useState(true);
   const imgRef = useRef<HTMLImageElement>(null);
 
   const fetchNowPlaying = async () => {
@@ -122,12 +123,17 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
     const section = document.getElementById('intro-text');
     if (!section) return;
     const observer = new window.IntersectionObserver(
-      ([entry]) => setShow(entry.isIntersecting),
+      ([entry]) => {
+        setShow(entry.isIntersecting);
+        if (firstLaunch && entry.isIntersecting) {
+          setFirstLaunch(false);
+        }
+      },
       { threshold: 0.1 }
     );
     observer.observe(section);
     return () => observer.disconnect();
-  }, []);
+  }, [firstLaunch]);
 
   // Notify parent of status
   useEffect(() => {
@@ -141,7 +147,7 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
     }
   }, [track, onStatusChange]);
 
-  if (isLoading || error || !track) return null;
+  if (isLoading || error || !track || (firstLaunch && !show)) return null;
 
   const albumArt = track.image?.find(img => img.size === 'extralarge')?.['#text'] || track.image?.slice(-1)[0]?.['#text'] || '';
   const artist = track.artist["#text"];
