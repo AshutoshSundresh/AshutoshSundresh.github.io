@@ -27,6 +27,7 @@ interface LastFmResponse {
 
 interface NowPlayingProps {
   onStatusChange?: (status: 'playing' | 'recent' | null) => void;
+  onTrackChange?: (track: { name: string; artist: string } | null) => void;
 }
 
 function rgbToHex(rgb: number[]) {
@@ -60,7 +61,7 @@ if (typeof document !== 'undefined') {
   document.head.appendChild(styleSheet);
 }
 
-export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
+export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlayingProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [track, setTrack] = useState<Track | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -135,17 +136,21 @@ export default function NowPlaying({ onStatusChange }: NowPlayingProps) {
     return () => observer.disconnect();
   }, [firstLaunch]);
 
-  // Notify parent of status
+  // Notify parent of status and track info
   useEffect(() => {
-    if (!onStatusChange) return;
+    if (!onStatusChange && !onTrackChange) return;
+    
     if (!track) {
-      onStatusChange(null);
-    } else if (track["@attr"]?.nowplaying) {
-      onStatusChange('playing');
+      onStatusChange?.(null);
+      onTrackChange?.(null);
     } else {
-      onStatusChange('recent');
+      onStatusChange?.(track["@attr"]?.nowplaying ? 'playing' : 'recent');
+      onTrackChange?.({
+        name: track.name,
+        artist: track.artist["#text"]
+      });
     }
-  }, [track, onStatusChange]);
+  }, [track, onStatusChange, onTrackChange]);
 
   if (isLoading || error || !track || (firstLaunch && !show)) return null;
 

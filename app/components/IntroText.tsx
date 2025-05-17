@@ -9,6 +9,7 @@ import NowPlaying from "./NowPlaying";
 export default function IntroText() {
   const [isVisible, setIsVisible] = useState(false);
   const [musicStatus, setMusicStatus] = useState<'playing' | 'recent' | null>(null);
+  const [currentTrack, setCurrentTrack] = useState<{ name: string; artist: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const scrollToNext = () => {
@@ -64,7 +65,10 @@ export default function IntroText() {
     >
       {/* NowPlaying placeholder for music widget at the top of notes page */}
       <div className="w-full flex justify-center mb-4">
-        <NowPlaying onStatusChange={setMusicStatus} />
+        <NowPlaying 
+          onStatusChange={setMusicStatus} 
+          onTrackChange={setCurrentTrack}
+        />
       </div>
       <div className={`flex items-center justify-center h-screen mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
       {/* Two notes side by side on desktop */}
@@ -99,7 +103,7 @@ export default function IntroText() {
               />
             </div>
             <p className="mb-4">
-              Beyond STEM, I love RPG development, collecting diecast cars, fashion, film, and music (my {musicStatus === 'playing' ? 'currently playing' : 'recently played'} song is at the top).
+              Beyond STEM, I love RPG development, collecting diecast cars, fashion, film, and music{currentTrack ? ` (I ${musicStatus === 'playing' ? 'am currently listening to' : 'was listening to'} ${currentTrack.name} by ${currentTrack.artist}).` : '.'}
             </p>
           </div>
         </div>
