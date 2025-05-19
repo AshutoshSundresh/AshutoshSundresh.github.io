@@ -55,7 +55,7 @@ export default function IntroText() {
     <div 
       id="intro-text" 
       ref={sectionRef}
-      className={`relative h-screen flex flex-col items-center responsive-justify p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative h-[100dvh] flex flex-col items-center responsive-justify p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{
         backgroundImage: "url('https://img.freepik.com/premium-photo/abstract-82-background-wallpaper-gradient_792836-180215.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
@@ -70,7 +70,7 @@ export default function IntroText() {
           onTrackChange={setCurrentTrack}
         />
       </div>
-      <div className={`flex items-center justify-center h-screen mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
+      <div className={`flex items-center justify-center h-[100dvh] mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'}`}>
       {/* Two notes side by side on desktop */}
         <div className="flex flex-col md:flex-row md:space-x-8 items-center md:items-start justify-center md:justify-between gap-6 md:gap-0">
           {/* Sticky Note 2 */}
