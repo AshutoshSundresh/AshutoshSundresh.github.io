@@ -11,7 +11,7 @@ export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cells, setCells] = useState<Set<string>>(new Set());
   const [isRunning, setIsRunning] = useState(true);
-  const cellSize = 4; // Size of each cell in pixels
+  const cellSize = 6; // Size of each cell in pixels
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);

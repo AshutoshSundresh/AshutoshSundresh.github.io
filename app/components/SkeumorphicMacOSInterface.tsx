@@ -512,7 +512,7 @@ const MacOSWindow = () => {
       id: 7,
       company: "Susquehanna International Group (SIG)",
       position: "Extern",
-      location: "Bala-Cynwyd, PA · Remote",
+      location: "Remote",
       period: "Feb 2025",
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/susquehanna_international_group_llp_sig_logo.jpg",
       companyLink: "https://sig.com/",
