@@ -1254,7 +1254,27 @@ const MacOSWindow = () => {
                   className="p-2 text-gray-500 hover:text-gray-700"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M4 6h16" 
+                      className={activeTab === 3 ? 'text-blue-500' : ''}
+                    />
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M4 12h16" 
+                      className={activeTab === 4 ? 'text-blue-500' : ''}
+                    />
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M4 18h16" 
+                      className={activeTab === 5 ? 'text-blue-500' : ''}
+                    />
                   </svg>
                 </button>
 
