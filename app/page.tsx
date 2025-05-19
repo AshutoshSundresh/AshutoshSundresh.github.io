@@ -5,11 +5,11 @@ import IntroText from "./components/IntroText";
 
 export default function Home() {
   return (
-    <main className="h-screen snap-y snap-mandatory overflow-y-auto smooth-scroll">
-      <section className="h-screen snap-start">
+    <main className="h-[100dvh] snap-y snap-mandatory overflow-y-auto smooth-scroll">
+      <section className="h-[100dvh] snap-start snap-always">
         <PersonalIntro />
       </section>
-      <section className="h-screen snap-start">
+      <section className="h-[100dvh] snap-start snap-always">
         <IntroText />
       </section>
     </main>

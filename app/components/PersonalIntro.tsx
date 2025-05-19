@@ -18,7 +18,7 @@ export default function PersonalIntro() {
   };
 
   return (
-    <div id="personal-intro" className="relative h-screen flex flex-col items-center justify-center bg-white p-4 md:p-8">
+    <div id="personal-intro" className="relative h-[100dvh] flex flex-col items-center justify-center bg-white p-4 md:p-8 snap-start snap-always">
       <NowPlaying />
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2">
