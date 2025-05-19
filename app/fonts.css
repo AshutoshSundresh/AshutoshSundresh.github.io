@@ -1,0 +1,38 @@
+/**
+* @license
+*
+* Font Family: Array
+* Designed by: Frode Helland
+* URL: https://www.fontshare.com/fonts/array
+* © 2025 Indian Type Foundry
+*/
+
+@font-face {
+  font-family: 'Array';
+  src: url('/fonts/Array-Regular.woff2') format('woff2'),
+       url('/fonts/Array-Regular.woff') format('woff'),
+       url('/fonts/Array-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Array';
+  src: url('/fonts/Array-Semibold.woff2') format('woff2'),
+       url('/fonts/Array-Semibold.woff') format('woff'),
+       url('/fonts/Array-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Array';
+  src: url('/fonts/Array-Bold.woff2') format('woff2'),
+       url('/fonts/Array-Bold.woff') format('woff'),
+       url('/fonts/Array-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+} 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
+import "./fonts.css";
 import Navigation from "./components/Navigation";
 
 const raleway = Raleway({

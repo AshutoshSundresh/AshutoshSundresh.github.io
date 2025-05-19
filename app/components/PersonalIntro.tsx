@@ -18,7 +18,7 @@ export default function PersonalIntro() {
   };
 
   return (
-    <div id="personal-intro" className="relative h-screen flex flex-col items-center justify-center bg-white p-4 md:p-8 font-raleway">
+    <div id="personal-intro" className="relative h-screen flex flex-col items-center justify-center bg-white p-4 md:p-8">
       <NowPlaying />
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2">
@@ -51,7 +51,7 @@ export default function PersonalIntro() {
         <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2 mt-2">
           <span className="text-5xl md:text-6xl">
           <span className="text-5xl md:text-6xl text-gray-500 font-light animate-gradient bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 text-transparent bg-clip-text">a </span>
-            <span className="animate-gradient bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+            <span className="font-array text-[50px] md:text-[60px] animate-gradient bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
               Computer Science major
             </span>
           </span>
