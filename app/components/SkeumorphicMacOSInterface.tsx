@@ -472,8 +472,8 @@ const MacOSWindow = () => {
       companyLink: "https://elfin.igpp.ucla.edu/",
       description: [
         "Worked on CubeSats at the Experimental Space Physics Lab",
-        "Developed a dynamic sliding data panel for the TVAC dashboard with real-time sensor data visualization and optimized performance through React memoization",
-        "Implemented FastAPI endpoints and Pydantic models for satellite ADCS command handling"
+        "Developed a dynamic sliding data panel for TVAC dashboard with real-time sensor data visualization and optimized performance through React memoization",
+        "Implemented configurable PID control system for TVAC backend with FastAPI endpoints, replacing hardcoded I/O values with thread-safe configuration management"
       ],
     },
     {
