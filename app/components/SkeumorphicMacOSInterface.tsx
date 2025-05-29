@@ -486,7 +486,6 @@ const MacOSWindow = () => {
       companyLink: "https://lahacks.com/",
       description: [
         "The largest and oldest collegiate hackathon in Southern California",
-        "Maintained technical infrastructure (mailing site, application site, live site)",
         "Built a responsive event schedule interface in React.js with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
         "Engineered a FastAPI endpoint that analyzes GitHub repositories for potential plagiarism by statistically examining commit patterns, time distributions, and code changes",
         "Architected granular Mailchimp error handling and implemented server-side validation with HTTP status code management for mailing server",
