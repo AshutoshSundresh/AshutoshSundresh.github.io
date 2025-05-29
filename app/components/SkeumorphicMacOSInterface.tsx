@@ -344,7 +344,7 @@ const MacOSWindow = () => {
       name: "Contributions to Google's Material Design Components (MDC)",
       image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-02-23-172751.webp",
       caption: "Code Review for widely-used Android UI elements",
-      description: "I made 2 merged pull requests fixing resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, impacting more than a million Android users.",
+      description: "I made 2 merged pull requests fixing resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.",
       created: new Date('2022-08-04'),
       link: "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh",
     },
