@@ -486,7 +486,7 @@ const MacOSWindow = () => {
       companyLink: "https://lahacks.com/",
       description: [
         "The largest and oldest collegiate hackathon in Southern California",
-        "Built a responsive event schedule interface in React.js with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
+        "Built a responsive event schedule interface with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
         "Engineered a FastAPI endpoint that analyzes GitHub repositories for potential plagiarism by statistically examining commit patterns, time distributions, and code changes",
         "Architected granular Mailchimp error handling and implemented server-side validation with HTTP status code management for mailing server",
         "Developed responsive React frontend components including Spotlight and Gallery carousels from a Figma prototype"
@@ -955,15 +955,15 @@ const MacOSWindow = () => {
       id: 1,
       title: "Open-Source Developer & Contributor",
       period: "2020 - Present",
-      description: "I have over 4400 total commits and 1600 total contributions on GitHub since I created my account in 2020.",
+      description: "I have over 4700 total commits and 2000 total contributions on GitHub since I created my account in 2020.",
       highlights: [
         "Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
         "Youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
         "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
       ],
       stats: [
-        { value: "4,400+", label: "Total Commits" },
-        { value: "1,600+", label: "Contributions" }
+        { value: "4,700+", label: "Total Commits" },
+        { value: "2,000+", label: "Contributions" }
       ],
       link: {
         text: "XDA Account",
