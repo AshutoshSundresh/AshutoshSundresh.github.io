@@ -350,12 +350,12 @@ const MacOSWindow = () => {
     },
     {
       id: 3,
-      name: "MySQL Library Management System",
-      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2024-11-21-145458.png",
-      caption: "Full-Stack Library Management System utilizing Python and MySQL",
-      description: "Grade 12 final project. It features three modules: Book, Member, and Issue/Return offering CRUD operations across 3 interconnected database tables with foreign key constraints. 12+ core functions include transaction logging, member login, and automatic date/time management for book circulation.",
-      created: new Date('2024-12-15'),
-      link: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Ashutosh_LibraryManagementSoftware.pdf",
+      name: "Bibliotheque - Library Management System",
+      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-06-02-181132.png",
+      caption: "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
+      description: "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-1.5ms ISBN/title/author search for 1,000+ concurrent queries.",
+      created: new Date('2023-12-15'),
+      link: "https://github.com/Ashutosh-s-Test-Dumpster/library-management",
     },
     {
       id: 4,
