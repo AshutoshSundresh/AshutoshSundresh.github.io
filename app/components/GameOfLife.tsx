@@ -41,6 +41,47 @@ export default function GameOfLife() {
     const width = Math.floor(dimensions.width / cellSize);
     const height = Math.floor(dimensions.height / cellSize);
 
+    // Add Pinwheel mirroring the Pulsar position
+    const pinwheelX = Math.floor(width * 0.45);  // 45% from the left (slightly more than Pulsar's 40%)
+    const pinwheelY = height - 25;  // Mirror of Pulsar's Y position (which was at 10)
+    const pinwheel = [
+      // Center cross
+      [3, 3], [4, 3], [5, 3],
+      [3, 4], [4, 4], [5, 4],
+      [3, 5], [4, 5], [5, 5],
+      // Corner pieces
+      [1, 1], [2, 1], [1, 2],
+      [7, 1], [6, 1], [7, 2],
+      [1, 7], [2, 7], [1, 6],
+      [7, 7], [6, 7], [7, 6]
+    ];
+
+    pinwheel.forEach(([x, y]) => {
+      initialCells.add(`${x + pinwheelX},${y + pinwheelY}`);
+    });
+
+    // Add Pulsar at the top
+    const pulsarX = Math.floor(width * 0.4);  // 40% from the left
+    const pulsarY = 10;  // Fixed distance from top
+    const pulsar = [
+      // Top section
+      [2, 0], [3, 0], [4, 0], [8, 0], [9, 0], [10, 0],
+      [0, 2], [5, 2], [7, 2], [12, 2],
+      [0, 3], [5, 3], [7, 3], [12, 3],
+      [0, 4], [5, 4], [7, 4], [12, 4],
+      [2, 5], [3, 5], [4, 5], [8, 5], [9, 5], [10, 5],
+      // Bottom section
+      [2, 7], [3, 7], [4, 7], [8, 7], [9, 7], [10, 7],
+      [0, 8], [5, 8], [7, 8], [12, 8],
+      [0, 9], [5, 9], [7, 9], [12, 9],
+      [0, 10], [5, 10], [7, 10], [12, 10],
+      [2, 12], [3, 12], [4, 12], [8, 12], [9, 12], [10, 12]
+    ];
+
+    pulsar.forEach(([x, y]) => {
+      initialCells.add(`${x + pulsarX},${y + pulsarY}`);
+    });
+
     // Gosper's Glider Gun pattern
     const gosperGliderGun = [
       [0, 4], [1, 4], [0, 5], [1, 5],  // Block
