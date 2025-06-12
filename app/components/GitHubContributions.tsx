@@ -61,6 +61,11 @@ const query = `
 export default function GitHubContributions() {
   const [contributionsData, setContributionsData] = useState<ContributionsData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   useEffect(() => {
     const fetchContributions = async () => {
@@ -124,14 +129,14 @@ export default function GitHubContributions() {
 
   if (isLoading) {
     return (
-      <div className="bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] h-[200px] relative cursor-move touch-none shadow-lg hover:shadow-xl flex items-center justify-center">
+      <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] h-[200px] relative shadow-lg hover:shadow-xl flex items-center justify-center opacity-0 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative cursor-move touch-none shadow-lg hover:shadow-xl">
+    <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg hover:shadow-xl transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {contributionsData && (
         <div className="overflow-hidden rounded-2xl">
           <ContributionsGraph 
