@@ -156,28 +156,32 @@ export default function IntroText() {
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 [@media(max-width:767px)_and_(max-height:800px)]:gap-1 gap-4 md:gap-4 lg:gap-8 place-items-center w-full px-4">
             <div className="lg:row-span-2">
               <DraggableCard id="card1" position={positions.card1} isDraggingDisabled={isMobile}>
-                <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
-                  <p className="text-gray-300 leading-relaxed text-md">
-                    I currently study Computer Science at UCLA. 
-                  </p>
-                  <p className="text-gray-300 leading-relaxed text-md">
-                    I'm particularly interested in product engineering, generative AI, operating systems/computer systems (built <a href="https://shapeshiftos.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">ShapeShiftOS</a>), startups (<a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Kleiner Perkins Fellows</a>), and linguistics (went to <a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">International Linguistics Olympiad Camp</a>).
-                  </p>
+                <div className={`backdrop-blur-xl bg-gradient-to-b from-white/20 to-white/10 text-black p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl border-2 border-black`}>
+                  <div className="relative z-10">
+                    <p className="text-gray-900 leading-relaxed text-md">
+                      I currently study Computer Science at UCLA. 
+                    </p>
+                    <p className="text-gray-900 leading-relaxed text-md">
+                      I'm particularly interested in product engineering, generative AI, operating systems/computer systems (built <a href="https://shapeshiftos.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 transition-colors">ShapeShiftOS</a>), startups (<a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 transition-colors">Kleiner Perkins Engineering Fellow</a>), and linguistics (went to <a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-500 transition-colors">International Linguistics Olympiad Camp</a>).
+                    </p>
+                  </div>
                 </div>
               </DraggableCard>
             </div>
 
             <DraggableCard id="card2" position={positions.card2} isDraggingDisabled={isMobile}>
-              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block`}>
-                <div className="mb-2">
-                  <div className="text-lg font-medium text-gray-400">Interests</div>
-                </div>
-                <div className="text-gray-300 text-sm leading-relaxed flex flex-wrap gap-1.5">
-                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">RPG Development</span>
-                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Diecast Cars</span>
-                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Fashion</span>
-                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Film</span>
-                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Music</span>
+              <div className={`backdrop-blur-xl bg-gradient-to-b from-white/20 to-white/10 text-black p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block border-2 border-black`}>
+                <div className="relative z-10">
+                  <div className="mb-2">
+                    <div className="text-lg font-medium text-gray-900">Interests</div>
+                  </div>
+                  <div className="text-gray-900 text-sm leading-relaxed flex flex-wrap gap-1.5">
+                    <span className="bg-purple-500/20 backdrop-blur-sm px-3 py-1 rounded-full">RPG Development</span>
+                    <span className="bg-purple-500/20 backdrop-blur-sm px-3 py-1 rounded-full">Diecast Cars</span>
+                    <span className="bg-purple-500/20 backdrop-blur-sm px-3 py-1 rounded-full">Fashion</span>
+                    <span className="bg-purple-500/20 backdrop-blur-sm px-3 py-1 rounded-full">Film</span>
+                    <span className="bg-purple-500/20 backdrop-blur-sm px-3 py-1 rounded-full">Music</span>
+                  </div>
                 </div>
               </div>
             </DraggableCard>

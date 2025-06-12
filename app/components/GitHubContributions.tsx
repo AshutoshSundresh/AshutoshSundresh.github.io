@@ -136,9 +136,9 @@ export default function GitHubContributions() {
   }
 
   return (
-    <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg hover:shadow-xl transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <div className={`bg-black text-white p-0.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
       {contributionsData && (
-        <div className="overflow-hidden rounded-2xl">
+        <div className="overflow-hidden rounded-3xl">
           <ContributionsGraph 
             data={contributionsData}
             username="AshutoshSundresh"

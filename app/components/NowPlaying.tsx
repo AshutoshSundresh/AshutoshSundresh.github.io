@@ -196,14 +196,6 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
             className="w-full h-full object-cover"
           />
         </div>
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: dominantColor
-              ? `radial-gradient(ellipse at 25% 50%, transparent 0%, ${rgbToHex(dominantColor)}33 30%, transparent 70%)`
-              : 'radial-gradient(ellipse at 25% 50%, transparent 0%, rgba(0,0,0,0.2) 30%, transparent 70%)'
-          }}
-        />
         <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor}`}>
           <div className="text-xs font-semibold tracking-widest mb-1 opacity-80">
             {isNowPlaying ? 'NOW PLAYING' : 'LAST PLAYED'}

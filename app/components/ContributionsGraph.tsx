@@ -41,7 +41,7 @@ const ContributionsGraph: React.FC<ContributionsGraphProps> = ({ data, username 
       drawContributions(canvasRef.current, {
         data,
         username,
-        themeName: "dracula",
+        themeName: "pink",
         footerText: ""
       });
     }
@@ -50,11 +50,11 @@ const ContributionsGraph: React.FC<ContributionsGraphProps> = ({ data, username 
   return (
     <canvas 
       ref={canvasRef}
-      className="w-full h-auto bg-[#282a36] scale-[1.02]"
+      className="w-full h-auto bg-[#282a36]"
       style={{ 
         maxWidth: '100%',
         display: 'block',
-        transform: 'translateY(-1px)'  // Slight adjustment to remove any gap
+        margin: '-1px'  // This will help remove any tiny gaps
       }}
     />
   );
