@@ -121,26 +121,22 @@ export default function IntroText() {
       </div>
       <div className={`flex items-center justify-center w-full max-w-4xl mx-auto overflow-visible transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'} relative z-10`}>
         <DndContext onDragEnd={handleDragEnd}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center w-full px-4">
-            <DraggableCard id="card1" position={positions.card1}>
-              <div className={`bg-black text-white p-6 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-2xl font-medium">Technical</div>
-                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 [@media(max-width:767px)_and_(max-height:800px)]:gap-1 gap-4 md:gap-4 lg:gap-8 place-items-center w-full px-4">
+            <div className="lg:row-span-2">
+              <DraggableCard id="card1" position={positions.card1}>
+                <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
+                  <p className="text-gray-300 leading-relaxed text-md">
+                    I currently study Computer Science at UCLA. 
+                  </p>
+                  <p className="text-gray-300 leading-relaxed text-md">
+                    I'm particularly interested in product engineering, generative AI, operating systems/computer systems (built <a href="https://shapeshiftos.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">ShapeShiftOS</a>), startups (<a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">Kleiner Perkins Fellows</a>), and linguistics (went to <a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 transition-colors">International Linguistics Olympiad Camp</a>).
+                  </p>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  My interests span operating systems, competitive programming, competitive mathematics, generative AI, linguistics, open source, and open science.
-                  I'm also extremely interested in startups and I'm a Kleiner Perkins Engineering Fellow.
-                </p>
-              </div>
-            </DraggableCard>
+              </DraggableCard>
+            </div>
 
             <DraggableCard id="card2" position={positions.card2}>
-              <div className={`bg-black text-white p-4 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl`}>
+              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:800px)_and_(max-width:767px)]:block`}>
                 <div className="mb-2">
                   <div className="text-lg font-medium text-gray-400">Interests</div>
                 </div>
@@ -155,7 +151,14 @@ export default function IntroText() {
             </DraggableCard>
 
             <DraggableCard id="card3" position={positions.card3}>
-              <GitHubContributions />
+              <a 
+                href="https://github.com/AshutoshSundresh" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <GitHubContributions />
+              </a>
             </DraggableCard>
           </div>
         </DndContext>
