@@ -19,20 +19,30 @@ interface DraggableCardProps {
   id: string;
   children: React.ReactNode;
   position: Position;
+  isDraggingDisabled?: boolean;
 }
 
-function DraggableCard({ id, children, position }: DraggableCardProps) {
+function DraggableCard({ id, children, position, isDraggingDisabled }: DraggableCardProps) {
   const {attributes, listeners, setNodeRef, transform} = useDraggable({
     id: id,
+    disabled: isDraggingDisabled
   });
   
-  const style = {
+  const style = isDraggingDisabled ? {
+    transform: 'none',
+    touchAction: 'auto'
+  } : {
     transform: `translate3d(${position.x + (transform?.x ?? 0)}px, ${position.y + (transform?.y ?? 0)}px, 0)`,
     touchAction: 'none'
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+    <div 
+      ref={setNodeRef} 
+      style={style} 
+      {...(isDraggingDisabled ? {} : { ...listeners, ...attributes })}
+      className={isDraggingDisabled ? '' : 'cursor-move touch-none'}
+    >
       {children}
     </div>
   );
@@ -42,6 +52,25 @@ interface Positions {
   card1: Position;
   card2: Position;
   card3: Position;
+}
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkIsMobile);
+    };
+  }, []);
+
+  return isMobile;
 }
 
 export default function IntroText() {
@@ -54,6 +83,7 @@ export default function IntroText() {
     card2: { x: 0, y: 0 },
     card3: { x: 0, y: 0 }
   });
+  const isMobile = useIsMobile();
 
   const scrollToNext = () => {
     const currentSection = document.querySelector('#intro-text');
@@ -91,6 +121,8 @@ export default function IntroText() {
   }, []);
 
   const handleDragEnd = (event: DragEndEvent) => {
+    if (isMobile) return;
+    
     const { active, delta } = event;
     const id = active.id as keyof Positions;
     
@@ -123,8 +155,8 @@ export default function IntroText() {
         <DndContext onDragEnd={handleDragEnd}>
           <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 [@media(max-width:767px)_and_(max-height:800px)]:gap-1 gap-4 md:gap-4 lg:gap-8 place-items-center w-full px-4">
             <div className="lg:row-span-2">
-              <DraggableCard id="card1" position={positions.card1}>
-                <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
+              <DraggableCard id="card1" position={positions.card1} isDraggingDisabled={isMobile}>
+                <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
                   <p className="text-gray-300 leading-relaxed text-md">
                     I currently study Computer Science at UCLA. 
                   </p>
@@ -135,8 +167,8 @@ export default function IntroText() {
               </DraggableCard>
             </div>
 
-            <DraggableCard id="card2" position={positions.card2}>
-              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:800px)_and_(max-width:767px)]:block`}>
+            <DraggableCard id="card2" position={positions.card2} isDraggingDisabled={isMobile}>
+              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:800px)_and_(max-width:767px)]:block`}>
                 <div className="mb-2">
                   <div className="text-lg font-medium text-gray-400">Interests</div>
                 </div>
@@ -150,7 +182,7 @@ export default function IntroText() {
               </div>
             </DraggableCard>
 
-            <DraggableCard id="card3" position={positions.card3}>
+            <DraggableCard id="card3" position={positions.card3} isDraggingDisabled={isMobile}>
               <a 
                 href="https://github.com/AshutoshSundresh" 
                 target="_blank" 
