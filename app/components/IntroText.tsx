@@ -8,6 +8,7 @@ import NowPlaying from "./NowPlaying";
 import GameOfLife from "./GameOfLife";
 import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
+import GitHubContributions from "./GitHubContributions";
 
 interface Position {
   x: number;
@@ -40,6 +41,7 @@ function DraggableCard({ id, children, position }: DraggableCardProps) {
 interface Positions {
   card1: Position;
   card2: Position;
+  card3: Position;
 }
 
 export default function IntroText() {
@@ -49,7 +51,8 @@ export default function IntroText() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [positions, setPositions] = useState<Positions>({
     card1: { x: 0, y: 0 },
-    card2: { x: 0, y: 0 }
+    card2: { x: 0, y: 0 },
+    card3: { x: 0, y: 0 }
   });
 
   const scrollToNext = () => {
@@ -118,7 +121,7 @@ export default function IntroText() {
       </div>
       <div className={`flex items-center justify-center w-full max-w-4xl mx-auto overflow-visible transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'} relative z-10`}>
         <DndContext onDragEnd={handleDragEnd}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center w-full px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 place-items-center w-full px-4">
             <DraggableCard id="card1" position={positions.card1}>
               <div className={`bg-black text-white p-6 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
                 <div className="flex items-center justify-between mb-4">
@@ -137,19 +140,22 @@ export default function IntroText() {
             </DraggableCard>
 
             <DraggableCard id="card2" position={positions.card2}>
-              <div className={`bg-black text-white p-6 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl`}>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-2xl font-medium">Creative</div>
-                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                    </svg>
-                  </div>
+              <div className={`bg-black text-white p-4 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl`}>
+                <div className="mb-2">
+                  <div className="text-lg font-medium text-gray-400">Interests</div>
                 </div>
-                <p className="text-gray-300 leading-relaxed">
-                  Beyond STEM, I love RPG development, collecting diecast cars, fashion, film, and music{currentTrack ? ` (I ${musicStatus === 'playing' ? 'am currently listening to' : 'was listening to'} ${currentTrack.name} by ${currentTrack.artist}).` : '.'}
-                </p>
+                <div className="text-gray-300 text-sm leading-relaxed flex flex-wrap gap-1.5">
+                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">RPG Development</span>
+                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Diecast Cars</span>
+                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Fashion</span>
+                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Film</span>
+                  <span className="bg-purple-500/20 px-3 py-1 rounded-full">Music</span>
+                </div>
               </div>
+            </DraggableCard>
+
+            <DraggableCard id="card3" position={positions.card3}>
+              <GitHubContributions />
             </DraggableCard>
           </div>
         </DndContext>
