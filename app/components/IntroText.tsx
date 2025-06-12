@@ -168,7 +168,7 @@ export default function IntroText() {
             </div>
 
             <DraggableCard id="card2" position={positions.card2} isDraggingDisabled={isMobile}>
-              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:800px)_and_(max-width:767px)]:block`}>
+              <div className={`bg-black text-white p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block`}>
                 <div className="mb-2">
                   <div className="text-lg font-medium text-gray-400">Interests</div>
                 </div>
