@@ -41,6 +41,39 @@ export default function GameOfLife() {
     const width = Math.floor(dimensions.width / cellSize);
     const height = Math.floor(dimensions.height / cellSize);
 
+    // Gosper's Glider Gun pattern
+    const gosperGliderGun = [
+      [0, 4], [1, 4], [0, 5], [1, 5],  // Block
+      [10, 4], [10, 5], [10, 6],       // Left blinker
+      [11, 3], [11, 7],
+      [12, 2], [12, 8],
+      [13, 2], [13, 8],
+      [14, 5],
+      [15, 3], [15, 7],
+      [16, 4], [16, 5], [16, 6],
+      [17, 5],
+      [20, 2], [20, 3], [20, 4],       // Right blinker
+      [21, 2], [21, 3], [21, 4],
+      [22, 1], [22, 5],
+      [24, 0], [24, 1], [24, 5], [24, 6],
+      [34, 2], [34, 3],                 // Block
+      [35, 2], [35, 3]
+    ];
+
+    // Add first Gosper's Glider Gun in top-right quadrant
+    const gun1X = Math.floor(width * 0.7);
+    const gun1Y = Math.floor(height * 0.2);
+    gosperGliderGun.forEach(([x, y]) => {
+      initialCells.add(`${x + gun1X},${y + gun1Y}`);
+    });
+
+    // Add second Gosper's Glider Gun in bottom-left quadrant, rotated 180 degrees
+    const gun2X = Math.floor(width * 0.2);
+    const gun2Y = Math.floor(height * 0.7);
+    gosperGliderGun.forEach(([x, y]) => {
+      initialCells.add(`${gun2X - x},${gun2Y - y}`); // Subtract coordinates for 180-degree rotation
+    });
+
     // Small glider gun pattern in top-left
     const gliderGun = [
       [0, 4], [0, 5], [1, 4], [1, 5],
