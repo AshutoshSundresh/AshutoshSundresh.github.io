@@ -6,12 +6,51 @@ import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 import NowPlaying from "./NowPlaying";
 import GameOfLife from "./GameOfLife";
+import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
+import { CSS } from '@dnd-kit/utilities';
+
+interface Position {
+  x: number;
+  y: number;
+}
+
+interface DraggableCardProps {
+  id: string;
+  children: React.ReactNode;
+  position: Position;
+}
+
+function DraggableCard({ id, children, position }: DraggableCardProps) {
+  const {attributes, listeners, setNodeRef, transform} = useDraggable({
+    id: id,
+  });
+  
+  const style = {
+    transform: `translate3d(${position.x + (transform?.x ?? 0)}px, ${position.y + (transform?.y ?? 0)}px, 0)`,
+    touchAction: 'none'
+  };
+
+  return (
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
+      {children}
+    </div>
+  );
+}
+
+interface Positions {
+  card1: Position;
+  card2: Position;
+}
 
 export default function IntroText() {
   const [isVisible, setIsVisible] = useState(false);
   const [musicStatus, setMusicStatus] = useState<'playing' | 'recent' | null>(null);
   const [currentTrack, setCurrentTrack] = useState<{ name: string; artist: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [positions, setPositions] = useState<Positions>({
+    card1: { x: 0, y: 0 },
+    card2: { x: 0, y: 0 }
+  });
 
   const scrollToNext = () => {
     const currentSection = document.querySelector('#intro-text');
@@ -26,12 +65,8 @@ export default function IntroText() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Update state when the section comes into view
         if (entry.isIntersecting) {
           setIsVisible(true);
-        } else {
-          // Optionally reset visibility when scrolling away
-          // setIsVisible(false);  // Uncomment if you want it to fade out when scrolled away
         }
       },
       {
@@ -52,60 +87,72 @@ export default function IntroText() {
     };
   }, []);
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, delta } = event;
+    const id = active.id as keyof Positions;
+    
+    setPositions(prev => ({
+      ...prev,
+      [id]: {
+        x: prev[id].x + delta.x,
+        y: prev[id].y + delta.y
+      }
+    }));
+  };
+
   return (
     <div 
       id="intro-text" 
       ref={sectionRef}
-      className={`relative h-[100dvh] flex flex-col items-center responsive-justify p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative min-h-[100dvh] flex flex-col items-center justify-center p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{
         background: '#ffffff'
       }}
     >
       <GameOfLife />
-      {/* NowPlaying placeholder for music widget at the top of notes page */}
-      <div className="w-full flex justify-center mb-4 relative z-10">
+      <div className="absolute top-4 w-full flex justify-center z-10">
         <NowPlaying 
           onStatusChange={setMusicStatus} 
           onTrackChange={setCurrentTrack}
         />
       </div>
-      <div className={`flex items-center justify-center h-[100dvh] mt-0 max-w-3xl mx-auto w-full overflow-hidden transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'} relative z-10`}>
-      {/* Two notes side by side on desktop */}
-        <div className="flex flex-col md:flex-row md:space-x-8 items-center md:items-start justify-center md:justify-between gap-6 md:gap-0">
-          {/* Sticky Note 2 */}
-          <div className={`sticky-note bg-yellow-50 p-5 rounded shadow-lg transform rotate-[2deg] w-[280px] relative z-30 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-500`}>
-            {/* Right-oriented tape */}
-            <div className="absolute -top-5 right-[40px] w-[70px] h-[30px]">
-              <Image
-                src="https://www.freeiconspng.com/uploads/scotch-tape-png-25.png"
-                alt="Tape"
-                width={70}
-                height={30}
-                className="object-contain transform rotate-[15deg] scale-x-[-1]"
-              />
-            </div>
-            <p className="mb-4">
-              My interests span operating systems, competitive programming, competitive mathematics, generative AI, linguistics, open source, and open science.
-              I'm also extremely interested in startups and I'm a Kleiner Perkins Engineering Fellow.            </p>
-          </div>
+      <div className={`flex items-center justify-center w-full max-w-4xl mx-auto overflow-visible transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0' : 'translate-y-10'} relative z-10`}>
+        <DndContext onDragEnd={handleDragEnd}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 place-items-center w-full px-4">
+            <DraggableCard id="card1" position={positions.card1}>
+              <div className={`bg-black text-white p-6 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-500 hover:shadow-xl`}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-2xl font-medium">Technical</div>
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-gray-300 leading-relaxed">
+                  My interests span operating systems, competitive programming, competitive mathematics, generative AI, linguistics, open source, and open science.
+                  I'm also extremely interested in startups and I'm a Kleiner Perkins Engineering Fellow.
+                </p>
+              </div>
+            </DraggableCard>
 
-          {/* Sticky Note 3 */}
-          <div className={`sticky-note bg-blue-50 p-5 rounded shadow-lg transform rotate-[-2deg] w-[280px] relative z-20 hover:z-50 transition-all duration-300 hover:shadow-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-700`}>
-            {/* Center tape */}
-            <div className="absolute -top-5 left-[85px] w-[70px] h-[30px]">
-              <Image
-                src="https://www.freeiconspng.com/uploads/scotch-tape-png-25.png"
-                alt="Tape"
-                width={70}
-                height={30}
-                className="object-contain transform rotate-[-8deg]"
-              />
-            </div>
-            <p className="mb-4">
-              Beyond STEM, I love RPG development, collecting diecast cars, fashion, film, and music{currentTrack ? ` (I ${musicStatus === 'playing' ? 'am currently listening to' : 'was listening to'} ${currentTrack.name} by ${currentTrack.artist}).` : '.'}
-            </p>
+            <DraggableCard id="card2" position={positions.card2}>
+              <div className={`bg-black text-white p-6 rounded-3xl w-[300px] relative cursor-move touch-none shadow-lg ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-700 delay-700 hover:shadow-xl`}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-2xl font-medium">Creative</div>
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                    </svg>
+                  </div>
+                </div>
+                <p className="text-gray-300 leading-relaxed">
+                  Beyond STEM, I love RPG development, collecting diecast cars, fashion, film, and music{currentTrack ? ` (I ${musicStatus === 'playing' ? 'am currently listening to' : 'was listening to'} ${currentTrack.name} by ${currentTrack.artist}).` : '.'}
+                </p>
+              </div>
+            </DraggableCard>
           </div>
-        </div>
+        </DndContext>
       </div>
     </div>
   );
