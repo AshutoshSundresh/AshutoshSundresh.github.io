@@ -430,7 +430,7 @@ const MacOSWindow = () => {
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       companyLink: "https://harvey.ai/",
       description: [
-        "Generative AI for legal automation, backed by OpenAI, Kleiner Perkins, Sequoia Ventures, Google Ventures, and more. Hired in first class of interns (1/5)"
+        "Professional class AI, backed by OpenAI, Kleiner Perkins, Sequoia Ventures, Google Ventures, and more"
       ],
     },
     {
