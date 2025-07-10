@@ -375,7 +375,7 @@ const MacOSWindow = () => {
   const educationData = [
     {
       id: 1,
-      institution: "University of California, Los Angeles",
+      institution: "UCLA",
       degree: "BS in Computer Science",
       school: "Henry Samueli School of Engineering and Applied Science",
       period: "2024 - Present",
@@ -430,7 +430,7 @@ const MacOSWindow = () => {
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       companyLink: "https://harvey.ai/",
       description: [
-        "Professional class AI, backed by OpenAI, Kleiner Perkins, Sequoia Ventures, Google Ventures, and more"
+        "New Verticals Team, Workflows for Microsoft Word Add-In"
       ],
     },
     {
