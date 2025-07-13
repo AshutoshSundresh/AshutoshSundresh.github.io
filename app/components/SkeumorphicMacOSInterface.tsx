@@ -344,7 +344,7 @@ const MacOSWindow = () => {
       name: "Contributions to Google's Material Design Components (MDC)",
       image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-02-23-172751.webp",
       caption: "Code Review for widely-used Android UI elements",
-      description: "I made 2 merged pull requests fixing resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.",
+      description: "Fixed resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
       created: new Date('2022-08-04'),
       link: "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh",
     },
@@ -601,7 +601,14 @@ const MacOSWindow = () => {
           <div className="space-y-4 text-sm">
             <div>
               <p className="text-gray-500 mb-1">Description</p>
-              <p className="font-['Raleway'] leading-relaxed">{project.description}</p>
+              <p className="font-['Raleway'] leading-relaxed">
+                {project.description.split('\n').map((line, idx) => (
+                  <span key={idx}>
+                    {line}
+                    <br />
+                  </span>
+                ))}
+              </p>
             </div>
 
             <div>
