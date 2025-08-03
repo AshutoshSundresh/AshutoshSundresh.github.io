@@ -430,7 +430,7 @@ const MacOSWindow = () => {
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       companyLink: "https://harvey.ai/",
       description: [
-        "New Verticals Team, Workflows for Microsoft Word Add-In"
+        "New Verticals Team, founding team member on Harvey for Word"
       ],
     },
     {

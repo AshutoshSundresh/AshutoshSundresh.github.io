@@ -11,9 +11,13 @@ export default function PersonalIntro() {
   const scrollToNext = () => {
     const currentSection = document.querySelector('#personal-intro');
     if (currentSection) {
-      const nextSection = currentSection.nextElementSibling;
-      if (nextSection) {
-        nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Find the parent section and then get its next sibling
+      const parentSection = currentSection.closest('section');
+      if (parentSection) {
+        const nextSection = parentSection.nextElementSibling;
+        if (nextSection) {
+          nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }
   };
@@ -95,7 +99,7 @@ export default function PersonalIntro() {
               href="https://twitter.com/asundresh"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
+              className="px-4 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
             >
               X
             </a>
@@ -103,7 +107,7 @@ export default function PersonalIntro() {
               href="https://github.com/ashutoshsundresh"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
+              className="px-4 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
             >
               GitHub
             </a>
@@ -111,10 +115,21 @@ export default function PersonalIntro() {
               href="https://linkedin.com/in/asund"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
+              className="px-4 py-2 text-gray-600 rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide"
             >
               LinkedIn
             </a>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={scrollToNext}
+              className="bg-[#2A2A2A]/90 hover:bg-[#2A2A2A] text-[#CCCCCC] hover:text-white px-4 py-2 rounded-full text-sm transition-all duration-300 backdrop-blur-sm"
+              aria-label="Scroll to next section"
+            >
+              ↓ More
+            </button>
           </div>
         </div>
       </div>

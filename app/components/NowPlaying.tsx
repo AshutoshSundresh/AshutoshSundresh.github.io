@@ -16,6 +16,10 @@ interface Track {
   "@attr"?: {
     nowplaying: string;
   };
+  date?: {
+    uts: string;
+    "#text": string;
+  };
   url: string;
 }
 
@@ -39,6 +43,32 @@ function rgbToHex(rgb: number[]) {
 function getLuminance([r, g, b]: number[]) {
   // Standard luminance formula
   return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+function getTimeAgo(unixTimestamp: string): string {
+  const now = new Date();
+  const played = new Date(parseInt(unixTimestamp) * 1000);
+  const diffInSeconds = Math.floor((now.getTime() - played.getTime()) / 1000);
+  
+  if (diffInSeconds < 60) {
+    return 'just now';
+  } else if (diffInSeconds < 3600) {
+    const minutes = Math.floor(diffInSeconds / 60);
+    return `${minutes}m ago`;
+  } else if (diffInSeconds < 86400) {
+    const hours = Math.floor(diffInSeconds / 3600);
+    return `${hours}h ago`;
+  } else if (diffInSeconds < 2592000) { // 30 days
+    const days = Math.floor(diffInSeconds / 86400);
+    return `${days}d ago`;
+    // if I die 
+  } else if (diffInSeconds < 31536000) { // 365 days
+    const months = Math.floor(diffInSeconds / 2592000);
+    return `${months}mo ago`;
+  } else {
+    const years = Math.floor(diffInSeconds / 31536000);
+    return `${years}y ago`;
+  }
 }
 
 const styles = `
@@ -158,6 +188,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   const artist = track.artist["#text"];
   const album = track.album?.["#text"] || '';
   const isNowPlaying = !!track["@attr"]?.nowplaying;
+  const timeAgo = track.date?.uts ? getTimeAgo(track.date.uts) : null;
 
   // gradient background based on dominant color
   let bgGradient = 'from-gray-800 to-gray-900';
@@ -198,7 +229,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
         </div>
         <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor}`}>
           <div className="text-xs font-semibold tracking-widest mb-1 opacity-80">
-            {isNowPlaying ? 'NOW PLAYING' : 'LAST PLAYED'}
+            {isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}
           </div>
           <a
             href={track.url}
