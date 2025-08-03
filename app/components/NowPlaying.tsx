@@ -98,6 +98,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   const [dominantColor, setDominantColor] = useState<number[] | null>(null);
   const [show, setShow] = useState(false);
   const [firstLaunch, setFirstLaunch] = useState(true);
+  const [showTooltip, setShowTooltip] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   const fetchNowPlaying = async () => {
@@ -189,6 +190,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   const album = track.album?.["#text"] || '';
   const isNowPlaying = !!track["@attr"]?.nowplaying;
   const timeAgo = track.date?.uts ? getTimeAgo(track.date.uts) : null;
+  const showInfoButton = timeAgo && (timeAgo.includes('d ago') || timeAgo.includes('mo ago') || timeAgo.includes('y ago'));
 
   // gradient background based on dominant color
   let bgGradient = 'from-gray-800 to-gray-900';
@@ -200,26 +202,27 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   }
 
   return (
-    <div
-      className={`fixed top-4 left-1/2 z-50 w-full max-w-md px-2
-        ${show ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
-        transform -translate-x-1/2 transition-all duration-500 ease-in-out`
-      }
-    >
+    <>
       <div
-        className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg overflow-hidden`}
-        style={{
-          background: dominantColor
-            ? `linear-gradient(90deg, 
-                ${rgbToHex(dominantColor)}dd 0%, 
-                ${rgbToHex(dominantColor)}bb 50%,
-                ${rgbToHex(dominantColor)}dd 100%)`
-            : undefined,
-          backgroundSize: '200% 200%',
-          animation: 'gradientFlow 8s ease infinite'
-        }}
+        className={`fixed top-4 left-1/2 z-50 w-full max-w-md px-2
+          ${show ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
+          transform -translate-x-1/2 transition-all duration-500 ease-in-out`
+        }
       >
-        <div className="absolute inset-y-0 left-0 w-1/4">
+        <div
+          className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg overflow-visible`}
+          style={{
+            background: dominantColor
+              ? `linear-gradient(90deg, 
+                  ${rgbToHex(dominantColor)}dd 0%, 
+                  ${rgbToHex(dominantColor)}bb 50%,
+                  ${rgbToHex(dominantColor)}dd 100%)`
+              : undefined,
+            backgroundSize: '200% 200%',
+            animation: 'gradientFlow 8s ease infinite'
+          }}
+        >
+        <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl">
           <img
             ref={imgRef}
             src={albumArt}
@@ -227,9 +230,22 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
             className="w-full h-full object-cover"
           />
         </div>
-        <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor}`}>
-          <div className="text-xs font-semibold tracking-widest mb-1 opacity-80">
-            {isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}
+        <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor} overflow-visible`}>
+          <div className="text-xs font-semibold tracking-widest mb-1 opacity-80 flex items-center gap-1">
+            <span>{isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}</span>
+            {showInfoButton && (
+              <div className="relative inline-block -mb-1">
+                <button
+                  onMouseEnter={() => setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                  className={`opacity-50 hover:opacity-80 transition-opacity duration-200 ${textColor}`}
+                >
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
           <a
             href={track.url}
@@ -245,7 +261,31 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
             <div className={`text-xs opacity-70 truncate ${textColor}`} title={album}>{album}</div>
           )}
         </div>
+        </div>
       </div>
-    </div>
+      
+      {/* Tooltip rendered outside the blurred container */}
+      {showInfoButton && showTooltip && (
+        <div 
+          className="fixed z-[10000] pointer-events-none"
+          style={{
+            top: '80px',
+            left: '50%',
+            transform: 'translateX(-50%)'
+          }}
+        >
+          <div 
+            className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10" 
+            style={{ 
+              background: 'rgba(0, 0, 0, 0.6)',
+              backdropFilter: 'blur(16px) saturate(180%) brightness(1.1)',
+              WebkitBackdropFilter: 'blur(16px) saturate(180%) brightness(1.1)'
+            }}
+          >
+            I only have last.fm connected to my personal laptop's music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+          </div>
+        </div>
+      )}
+    </>
   );
 }
