@@ -282,7 +282,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
               WebkitBackdropFilter: 'blur(16px) saturate(180%) brightness(1.1)'
             }}
           >
-            I only have last.fm connected to my personal laptop's music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+            I have last.fm only connected to my personal laptop's music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
           </div>
         </div>
       )}
