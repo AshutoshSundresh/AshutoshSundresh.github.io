@@ -501,7 +501,7 @@ const MacOSWindow = () => {
       icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/skylow.png",
       companyLink: "https://skylow.ai/",
       description: [
-        "An LLM-powered social media platform in seed stage",
+        "An LLM-powered social media platform in seed stage, based out of Berkeley I&E and ACE@Berkeley",
         "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
         "Worked on frontend components with React/TypeScript, character and world features with Python, and implemented RAG pipelines using vector databases to enhance conversations",
         "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and Posthog) for user tracking and error management"
