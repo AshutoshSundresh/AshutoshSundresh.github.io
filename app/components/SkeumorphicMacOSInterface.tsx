@@ -6,6 +6,7 @@ import { format } from 'date-fns';
 import Link from 'next/link';
 import useAppOverlayState from '../hooks/useTerminalState';
 import IOSLockscreen from './IOSLockscreen';
+import data from '../data/skeumorphicData.json';
 
 interface ProjectDetails {
   id: number;
@@ -290,7 +291,7 @@ const MacOSWindow = () => {
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
   const contentHeight = windowHeight.isMobile
     ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
-    : '400px';
+    : '520px';
 
   // Create a separate clock component to isolate time updates
   const Clock = ({ formatString }: { formatString: string }) => {
@@ -323,204 +324,19 @@ const MacOSWindow = () => {
   };
 
   // Project data
-  const projects: ProjectDetails[] = [
-    {
-      id: 1,
-      name: "ShapeShiftOS",
-      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/LOVUK1E.webp",
-      caption: "Founder of Open-Source Android-Based Mobile Operating System",
-      description: "I created this project in 2020 and have maintained it since. I've authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
-      created: new Date('2020-05-16'),
-      link: "https://github.com/shapeshiftos",
-      stats: [
-        { label: "Downloads", value: "150,000+" },
-        { label: "Countries", value: "160+" },
-        { label: "Stars", value: "50+" },
-        { label: "Open-Source Projects", value: "Top 0.5%" }
-      ]
-    },
-    {
-      id: 2,
-      name: "Contributions to Google's Material Design Components (MDC)",
-      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-02-23-172751.webp",
-      caption: "Code Review for widely-used Android UI elements",
-      description: "Fixed resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
-      created: new Date('2022-08-04'),
-      link: "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh",
-    },
-    {
-      id: 3,
-      name: "Bibliotheque - Library Management System",
-      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-06-02-181132.png",
-      caption: "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
-      description: "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-1.5ms ISBN/title/author search for 1,000+ concurrent queries.",
-      created: new Date('2023-12-15'),
-      link: "https://github.com/Ashutosh-s-Test-Dumpster/library-management",
-    },
-    {
-      id: 4,
-      name: "Shiv Nadar School Faridabad Food Menu Alexa Skill",
-      image: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/GhsuTUs.webp",
-      caption: "Open-Source Food Menu Retriever Alexa Skill for Schools",
-      description: "An Amazon Store published open-source Node.js code that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
-      created: new Date('2022-01-09'),
-      link: "https://github.com/AshutoshSundresh/AlexaFoodMenuSkill",
-    }
-  ];
+  const projects: ProjectDetails[] = (data as any).projects.map((p: any) => ({
+    ...p,
+    created: new Date(p.created as string)
+  }));
 
   // Folder icon image URL
-  const folderIconUrl = "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/folder.png";
+  const folderIconUrl = (data as any).folderIconUrl;
 
   // Update the education data interface and content
-  const educationData = [
-    {
-      id: 1,
-      institution: "UCLA",
-      degree: "BS in Computer Science",
-      school: "Henry Samueli School of Engineering and Applied Science",
-      period: "2024 - Present",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
-      institutionLink: "https://ucla.edu",
-      courseLink: "https://www.linkedin.com/in/asund/details/courses/",
-      details: {
-        coursework: ["Computer Science", "Mathematics", "Physics"]
-      }
-    },
-    {
-      id: 2,
-      institution: "Shiv Nadar School",
-      location: "Faridabad, India",
-      curriculum: "CBSE Curriculum",
-      period: "2021 - 2024",
-      gpa: "4.0/4.0 unweighted GPA",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
-      institutionLink: "https://shivnadarschool.edu.in/",
-      archiveLink: "https://ashutoshsundresh.com/archive.html",
-      details: {
-        grades: [
-          { grade: "Grade 12", score: "96.8%" },
-          { grade: "Grade 11", score: "94%" },
-          { grade: "Grade 10", score: "99.2% (State Rank 1)" }
-        ],
-        achievements: [
-          "Valedictorian",
-          "8 APs (Five 5s, Three 4s) / AP Scholar with Distinction",
-          "SAT Score: 1580 (800M, 780V)",
-          "TOEFL: 119"
-        ],
-        subjects: [
-          "Physics",
-          "Chemistry",
-          "Mathematics",
-          "Computer Science",
-          "English"
-        ]
-      }
-    }
-  ];
+  const educationData = (data as any).educationData;
 
   // Update the experience data
-  const experienceData = [
-    {
-      id: 1,
-      company: "Harvey",
-      position: "Software Engineer Intern",
-      location: "San Francisco, CA",
-      period: "Jun 2025 - Sep 2025",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
-      companyLink: "https://harvey.ai/",
-      description: [
-        "New Verticals Team, founding team member on Harvey for Word"
-      ],
-    },
-    {
-      id: 2,
-      company: "Kleiner Perkins",
-      position: "Engineering Fellow",
-      location: "San Francisco, CA",
-      period: "Apr 2025 - Present",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/kleiner_perkins_logo.jpeg",
-      companyLink: "https://kleinerperkins.com",
-      description: [
-        "https://www.kleinerperkins.com/fellows"
-      ],
-    },        
-    {
-      id: 3,
-      company: "ShapeShiftOS",
-      position: "Lead Software Engineer / Founder",
-      location: "Remote",
-      period: "May 2020 - Present",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
-      companyLink: "https://shapeshiftos.com/",
-      description: [
-        "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
-        "In-screen fingerprint animations and icons, Google Lens screenshot integration, variable font-weight lock screen clock, custom kernel scheduler, etc.",
-        "150,000+ downloads across 160+ countries",
-        "Recruited talented engineering team (25+ Qualcomm device engineers and 3 core developers)",
-        "Zero marketing budget",
-        "SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
-      ],
-    },
-    {
-      id: 4,
-      company: "UCLA ELFIN CubeSat",
-      position: "Ground Software Engineer",
-      location: "Los Angeles, CA",
-      period: "Jan 2025 - Present",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/elfincubesat.jpg",
-      companyLink: "https://elfin.igpp.ucla.edu/",
-      description: [
-        "Worked on CubeSats at the Experimental Space Physics Lab",
-        "Developed a dynamic sliding data panel for TVAC dashboard with real-time sensor data visualization and optimized performance through React memoization",
-        "Implemented configurable PID control system for TVAC backend with FastAPI endpoints, replacing hardcoded I/O values with thread-safe configuration management"
-      ],
-    },
-    {
-      id: 5,
-      company: "LA Hacks",
-      position: "Software Engineer / Organizer",
-      location: "Los Angeles, CA",
-      period: "Oct 2024 - Present",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/lahacks.jpg",
-      companyLink: "https://lahacks.com/",
-      description: [
-        "The largest and oldest collegiate hackathon in Southern California",
-        "Built a responsive event schedule interface with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
-        "Engineered a FastAPI endpoint that analyzes GitHub repositories for potential plagiarism by statistically examining commit patterns, time distributions, and code changes",
-        "Architected granular Mailchimp error handling and implemented server-side validation with HTTP status code management for mailing server",
-        "Developed responsive React frontend components including Spotlight and Gallery carousels from a Figma prototype"
-      ],
-    },
-    {
-      id: 6,
-      company: "Skylow",
-      position: "Software Engineer Intern",
-      location: "Berkeley, CA",
-      period: "Jul 2024 - Sep 2024",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/skylow.png",
-      companyLink: "https://skylow.ai/",
-      description: [
-        "An LLM-powered social media platform in seed stage, based out of Berkeley I&E and ACE@Berkeley",
-        "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
-        "Worked on frontend components with React/TypeScript, character and world features with Python, and implemented RAG pipelines using vector databases to enhance conversations",
-        "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and Posthog) for user tracking and error management"
-      ],
-    },
-    {
-      id: 8,
-      company: "Manav Rachna International Institute of Research and Studies",
-      position: "Research Intern",
-      location: "Faridabad, India",
-      period: "Jun 2022 - Jul 2022",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/manavrachna.jpg",
-      companyLink: "https://manavrachna.edu.in/",
-      description: [
-        "Offensive security techniques, network analysis, vulnerability assessment, cryptography",
-        "Advisor: Dr. Charu Virmani"
-      ],
-    }
-  ];
+  const experienceData = (data as any).experienceData;
 
   // Add this state for tracking expanded items
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
@@ -677,137 +493,10 @@ const MacOSWindow = () => {
   }, []);
 
   // Update the awards data
-  const awardsData: { id: number; category: string; awards: Award[] }[] = [
-    {
-      id: 1,
-      category: "Undergraduate",
-      awards: [
-        {
-          title: "Shirley and Walter Wang Scholar",
-          subtitle: "UCLA Samueli School of Engineering",
-          year: "2024",
-          description: "Computer Science Merit Scholar",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
-        }
-      ]
-    },
-    {
-      id: 3,
-      category: "High School",
-      awards: [
-        {
-          title: "International Recognition",
-          year: "2021-2024",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/medal.png",
-          description: "Notable accomplishments in various international Olympiads and competitions",
-          highlight: "Multiple Awards",
-          stats: "IOL Camp, APLO, Math Olympiads",
-          link: "https://ashutoshsundresh.com/archive.html#awards"
-        },
-        {
-          title: "SRCC Writing Mentorship Program",
-          year: "2024",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ecosocsrcc.png",
-          description: "Selected among 1,500 applicants (8% acceptance rate) for advanced writing techniques program",
-          highlight: "Top 5",
-          stats: "Out of 105 student cohort"
-        },
-        {
-          title: "Open Source Excellence",
-          subtitle: "SourceForge Recognition",
-          year: "2023",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
-          description: "Top 0.5% of all open-source projects globally",
-          highlight: "150,000+ downloads",
-          link: "https://sourceforge.net/projects/shapeshiftos/"
-        },
-        {
-          title: "XDA Recognized Developer",
-          subtitle: "XDA Forums for Android Development",
-          year: "2021",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/xda.png",
-          description: "Youngest Recognized Developer on the XDA Forums (awarded when I was 15 years old) as of 2023",
-          highlight: "Top 300",
-          stats: "Out of 11 million users",
-          link: "https://xdaforums.com/m/ashutosh-sundresh.7730292/about",
-          extraDetails: "Given to developers with a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns."
-        },
-        {
-          title: "Board Exam Excellence",
-          subtitle: "CBSE Recognition",
-          year: "2022",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
-          description: "Education Minister's Award in Grade 12 for outstanding performance in board examinations",
-          highlight: "99.2% in Grade 10",
-          stats: "State Rank 1 in Grade 10"
-        }
-      ]
-    },
-    {
-      id: 4,
-      category: "Standardized Tests",
-      awards: [
-        {
-          title: "SAT Perfect Math Score",
-          subtitle: "College Board",
-          year: "2023",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/collegeboard.png",
-          description: "Perfect score in SAT Mathematics section",
-          highlight: "1580",
-          stats: "800 Math, 780 Verbal"
-        },
-        {
-          title: "TOEFL Excellence",
-          subtitle: "ETS",
-          year: "2023",
-          icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/toeflibt.png",
-          description: "Near-perfect score in TOEFL iBT",
-          highlight: "119/120",
-          stats: "Top 1% globally"
-        }
-      ]
-    }
-  ];
+  const awardsData: { id: number; category: string; awards: Award[] }[] = (data as any).awardsData;
 
   // Update the publications data
-  const publications: Publication[] = [
-    {
-      id: 1,
-      title: "Applying Chaos Theory to Traffic Congestion",
-      subtitle: "International Journal of Science and Research (IJSR)",
-      year: "2023",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
-      description: "Research paper applying chaos theory principles through non-linear sinusoidal functions to model complex traffic congestion patterns",
-      authors: ["Ashutosh Sundresh"],
-      journal: "International Journal of Science and Research (IJSR)",
-      abstract: "Authored a peer-reviewed paper published in the International Journal of Science and Research (Vol. 12, Issue 9), applying chaos theory to model non-linear traffic congestion dynamics. Designed synthetic datasets simulating traffic volume, speed, and congestion using NumPy and Gaussian/Poisson distributions. Developed a sinusoidal-based non-linear model capturing sensitivity to initial conditions and emergent chaotic behavior in traffic systems. Conducted statistical and visual analysis in Python to reveal deterministic yet unpredictable patterns in urban congestion, offering implications for scalable, adaptive city traffic management. Open-sourced all code and models used in the simulation on GitHub.",
-      status: "Won first place among 160+ submissions in the paper submission round at the high school Neerja Modi Mathelogics Symposium 2023",
-      link: "https://www.academia.edu/107099716/Unveiling_Complex_Traffic_Patterns_Applying_Chaos_Theory_to_Understand_Non_Linear_Dynamics_in_Congestion",
-      extraDetails: [
-        {
-          label: "Code",
-          value: "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
-        },
-        {
-          label: "Slides",
-          value: "https://raw.githubusercontent.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx"
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: "Impact of Short-Term Rentals on Housing Crisis",
-      subtitle: "Ceteris Paribus, SRCC",
-      year: "2024",
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
-      description: "Analysis of Airbnb's impact on urban housing markets and communities",
-      authors: ["Ashutosh Sundresh"],
-      journal: "Ceteris Paribus, Shri Ram College of Commerce",
-      abstract: "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability. ",
-      status: "Published by the Economics Society of SRCC, University of Delhi after finishing top 5 in the SRCC Writing Mentorship Program",
-      link: "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
-    }
-  ];
+  const publications: Publication[] = (data as any).publications;
 
   // Update the PublicationDetailView component
   const PublicationDetailView = ({
@@ -940,6 +629,10 @@ const MacOSWindow = () => {
       text: string;
       url: string;
     };
+    links?: {
+      text: string;
+      url: string;
+    }[];
     stats?: {
       value: string;
       label: string;
@@ -947,40 +640,7 @@ const MacOSWindow = () => {
     icon?: string;
   }
 
-  const activitiesData: Activity[] = [
-    {
-      id: 1,
-      title: "Open-Source Developer & Contributor",
-      period: "2020 - Present",
-      description: "I have over 4700 total commits and 2000 total contributions on GitHub since I created my account in 2020.",
-      highlights: [
-        "Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
-        "Youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
-        "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
-      ],
-      stats: [
-        { value: "4,700+", label: "Total Commits" },
-        { value: "2,000+", label: "Contributions" }
-      ],
-      link: {
-        text: "XDA Account",
-        url: "https://xdaforums.com/m/ashutosh-sundresh.7730292/about"
-      },
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/github.png"
-    },
-    {
-      id: 2,
-      title: "Investment Banking M&A Simulation",
-      period: "September 2024",
-      description: "Participated and excelled in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
-      highlights: [
-        "Completed with a score at the highest possible range (>85%)",
-        "Developed a five-year financial forecast for a U.S. apparel and footwear company",
-        "Performed valuation analysis using comparable companies and precedent transactions"
-      ],
-      icon: "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/stepstone.png"
-    }
-  ];
+  const activitiesData: Activity[] = (data as any).activitiesData;
 
   // Add function to handle tab changes
   const handleTabChange = (tabId: number) => {
@@ -1064,12 +724,12 @@ const MacOSWindow = () => {
         const projectLines = projects.map(project => `- ${project.name}`);
         setTerminalOutput(prev => [...prev, ...projectLines]);
       } else if (command === 'ls education') {
-        const educationLines = educationData.map(edu =>
+        const educationLines = educationData.map((edu: any) =>
           `- ${edu.institution || ''} ${edu.degree || ''}`
         );
         setTerminalOutput(prev => [...prev, ...educationLines]);
       } else if (command === 'ls experience') {
-        const experienceLines = experienceData.map(exp =>
+        const experienceLines = experienceData.map((exp: any) =>
           `- ${exp.company}: ${exp.position}`
         );
         setTerminalOutput(prev => [...prev, ...experienceLines]);
@@ -1137,7 +797,7 @@ const MacOSWindow = () => {
       {!bgLoaded && (
         <div className="fixed inset-0 bg-gray-200 z-0" />
       )}
-      <div className="w-full max-w-3xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 bg-white relative z-10">
+      <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 bg-white relative z-10">
         {/* Window header with traffic lights */}
         <div className="bg-gray-200 px-4 py-2 flex items-center">
           <div className="flex space-x-2">
@@ -1356,7 +1016,7 @@ const MacOSWindow = () => {
             {/* Documents Tab */}
             {activeTab === 1 && (
               <div className="mt-4 space-y-8">
-                {educationData.map((edu) => (
+                {educationData.map((edu: any) => (
                   <div
                     key={edu.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
@@ -1402,7 +1062,7 @@ const MacOSWindow = () => {
                       
                       {edu.details.grades && (
                         <div className="space-y-2">
-                          {edu.details.grades.map((grade, index) => (
+                          {edu.details.grades.map((grade: any, index: number) => (
                             <div key={index} className="flex justify-between text-sm">
                               <span className="text-gray-600">{grade.grade}</span>
                               <span className="font-medium">{grade.score}</span>
@@ -1415,7 +1075,7 @@ const MacOSWindow = () => {
                         <div className="space-y-2">
                           <p className="text-sm font-medium text-gray-900">Achievements</p>
                           <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                            {edu.details.achievements.map((achievement, index) => (
+                             {edu.details.achievements.map((achievement: string, index: number) => (
                               <li key={index}>{achievement}</li>
                             ))}
                           </ul>
@@ -1426,7 +1086,7 @@ const MacOSWindow = () => {
                         <div className="space-y-2">
                           <p className="text-sm font-medium text-gray-900">Subjects</p>
                           <div className="flex flex-wrap gap-2">
-                            {edu.details.subjects.map((subject, index) => (
+                             {edu.details.subjects.map((subject: string, index: number) => (
                               <span
                                 key={index}
                                 className="px-2 py-1 bg-gray-100 rounded-md text-xs text-gray-600"
@@ -1470,7 +1130,7 @@ const MacOSWindow = () => {
             {/* Experience Tab */}
             {activeTab === 2 && (
               <div className="mt-4 space-y-6">
-                {experienceData.map((exp) => (
+                {experienceData.map((exp: any) => (
                   <div
                     key={exp.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
@@ -1512,7 +1172,7 @@ const MacOSWindow = () => {
                         {(exp.company === "Manav Rachna International Institute of Research and Studies"
                           ? exp.description
                           : exp.description.slice(0, expandedExperiences.includes(exp.id) ? undefined : 1)
-                        ).map((item, index) => (
+                        ).map((item: string, index: number) => (
                           <li key={index} className="flex items-start">
                             <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
                             <span>{item}</span>
@@ -1552,87 +1212,71 @@ const MacOSWindow = () => {
             {activeTab === 3 && (
               <div className="mt-4 space-y-8">
                 {awardsData.map((category) => (
-                  <div key={category.id} className="mb-8">
+                  <div key={category.id} className="mb-4">
                     <h3 className="text-lg font-medium text-gray-900 mb-4 font-['Raleway']">
                       {category.category}
                     </h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {category.awards.map((award, index) => (
-                        <div
-                          key={index}
-                          className="relative overflow-hidden rounded-2xl border border-gray-200 bg-white"
-                        >
-                          <div className="relative p-6">
-                            {/* Header */}
-                            <div className="flex items-start justify-between mb-4">
-                              <div className="flex-1">
-                                <h3 className={`text-xl font-semibold text-gray-900 ${award.subtitle ? 'mb-1' : ''}`}>
-                                  {award.title}
-                                </h3>
+                    <div className="columns-1 md:columns-2 gap-3 [column-fill:_balance]">
+                      {category.awards.map((award, index) => {
+                        const CardInner = (
+                          <div className="p-4">
+                            <div className="flex items-center gap-3">
+                              {/* Logo */}
+                               <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
+                                 <img src={award.icon} alt={award.title} className="w-full h-full object-contain rounded-lg" />
+                              </div>
+                              {/* Text */}
+                              <div className="min-w-0 flex-1">
+                                <div className="flex items-center gap-2">
+                                  <h3 className="text-base font-medium text-gray-900">{award.title}</h3>
+                                </div>
                                 {award.subtitle && (
-                                  <p className="text-sm text-gray-500">
-                                    {award.subtitle}
-                                  </p>
+                                  <div className="text-xs text-gray-500">{award.subtitle}</div>
                                 )}
                               </div>
-                              <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
-                                <img
-                                  src={award.icon}
-                                  alt={award.title}
-                                  className="w-8 h-8 object-contain"
-                                />
-                              </div>
+                              {/* Metrics */}
+                              {((award as Award).highlight || (award as Award).stats) && (
+                                <div className="text-right ml-2">
+                                  {(award as Award).highlight && (
+                                    <div className="text-base font-medium text-gray-900">{(award as Award).highlight}</div>
+                                  )}
+                                  {(award as Award).stats && (
+                                    <div className="text-xs text-gray-500">{(award as Award).stats}</div>
+                                  )}
+                                </div>
+                              )}
                             </div>
-
-                            {/* Content */}
-                            <div className="space-y-4">
-                              <p className="text-sm text-gray-600">
-                                {award.description}
-                              </p>
-
-                              {/* Stats */}
-                              <div className="flex items-center space-x-4">
-                                {(award as Award).highlight || (award as Award).stats ? (
-                                  <>
-                                    <div className="flex-1">
-                                      {(award as Award).highlight && (
-                                        <div className="text-2xl font-bold text-gray-900 mb-1">
-                                          {(award as Award).highlight}
-                                        </div>
-                                      )}
-                                      {(award as Award).stats && (
-                                        <div className="text-sm text-gray-500">
-                                          {(award as Award).stats}
-                                        </div>
-                                      )}
-                                    </div>
-                                    {/* Year badge */}
-                                    <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
-                                      {award.year}
-                                    </div>
-                                  </>
-                                ) : (
-                                  <div className="px-3 py-1 rounded-full bg-gray-100 text-sm font-medium text-gray-600">
-                                    {award.year}
-                                  </div>
-                                )}
-                              </div>
-
-                              {/* Link if available */}
+                            {award.description && (
+                              <p className="mt-2 text-sm text-gray-600">{award.description}</p>
+                            )}
+                            <div className="mt-2 flex items-center justify-between">
+                              <span className="text-xs text-gray-500">{award.year}</span>
                               {(award as Award).link && (
                                 <a
                                   href={(award as Award).link}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600 mt-2"
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-medium text-blue-600 bg-blue-50/0 hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                                 >
-                                  <span>View Achievement →</span>
+                                  <span>View</span>
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                  </svg>
                                 </a>
                               )}
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+
+                        return (
+                          <div
+                            key={index}
+                            className="relative overflow-hidden rounded-xl border border-gray-200 bg-white hover:bg-gray-50 transition-colors break-inside-avoid mb-2 last:mb-0"
+                          >
+                            {CardInner}
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 ))}
@@ -1661,13 +1305,13 @@ const MacOSWindow = () => {
                           />
                         </div>
                         <span className={`
-                        text-sm font-['Raleway'] font-light w-full text-center break-words
+                        text-base font-['Raleway'] font-light w-full text-center break-words
                         ${selectedItem === pub.id ? 'text-white' : 'text-gray-900'}
                       `}>
                           {pub.title}
                         </span>
                         <span className={`
-                        text-xs mt-0.5
+                        text-sm mt-0.5
                         ${selectedItem === pub.id ? 'text-blue-100' : 'text-gray-500'}
                       `}>
                           {pub.year}
@@ -1682,83 +1326,71 @@ const MacOSWindow = () => {
             {/* Activities Tab */}
             {activeTab === 5 && (
               <div className="p-4">
-                <div className="space-y-6">
+                <div className="columns-1 md:columns-2 gap-3 [column-fill:_balance]">
                   {activitiesData.map((activity) => (
-                    <div
-                      key={activity.id}
-                      className="bg-white rounded-xl border border-gray-200 overflow-hidden"
-                    >
-                      <div className="p-6">
-                        {/* Header */}
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex items-start space-x-4">
-                            {activity.icon && (
-                              <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center">
-                                <img
-                                  src={activity.icon}
-                                  alt=""
-                                  className="w-8 h-8 object-contain"
-                                />
+                    <div key={activity.id} className="break-inside-avoid mb-3">
+                      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:bg-gray-50 transition-colors">
+                        <div className="p-4">
+                          {/* Header */}
+                          <div className="flex items-center gap-3">
+                              {activity.icon && (
+                              <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center">
+                                <img src={activity.icon} alt="" className="w-full h-full object-contain rounded-lg" />
                               </div>
                             )}
-                            <div>
-                              <h3 className="text-lg font-semibold text-gray-900">
-                                {activity.title}
-                              </h3>
-                              <p className="text-sm text-gray-500 mt-1">
-                                {activity.period}
-                              </p>
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-base font-medium text-gray-900">{activity.title}</h3>
+                              <div className="text-sm text-gray-500">{activity.period}</div>
                             </div>
                           </div>
+
+                          {/* Description */}
+                          <p className="mt-2 text-sm text-gray-600">{activity.description}</p>
+
+                          {/* Stats */}
+                          {activity.stats && (
+                            <div className="mt-3 grid grid-cols-2 gap-2">
+                              {activity.stats.map((stat, index) => (
+                                <div key={index} className="bg-gray-50 rounded-lg p-2 text-center">
+                                  <div className="text-base font-medium text-gray-900">{stat.value}</div>
+                                  <div className="text-xs text-gray-500">{stat.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Highlights */}
+                          {activity.highlights && (
+                            <ul className="mt-3 space-y-1.5">
+                              {activity.highlights.map((highlight, index) => (
+                                <li key={index} className="flex items-start text-sm text-gray-600">
+                                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2"></span>
+                                  <span>{highlight}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+
+                          {/* Links */}
+                          {(activity as Activity).links && (
+                            <div className="mt-3 flex gap-2 justify-end flex-wrap">
+                              {(activity as Activity).links!.map((l, idx) => (
+                                <a
+                                  key={idx}
+                                  href={l.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-blue-600 bg-blue-50/0 hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                                >
+                                  <span>{l.text}</span>
+                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                  </svg>
+                                </a>
+                              ))}
+                            </div>
+                          )}
                         </div>
-
-                        {/* Description */}
-                        <p className="text-sm text-gray-600 mb-4">
-                          {activity.description}
-                        </p>
-
-                        {/* Stats if available */}
-                        {activity.stats && (
-                          <div className="grid grid-cols-2 gap-4 mb-4">
-                            {activity.stats.map((stat, index) => (
-                              <div
-                                key={index}
-                                className="bg-gray-50 rounded-lg p-3 text-center"
-                              >
-                                <div className="text-xl font-bold text-gray-900">
-                                  {stat.value}
-                                </div>
-                                <div className="text-xs text-gray-500">
-                                  {stat.label}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Highlights */}
-                        {activity.highlights && (
-                          <ul className="space-y-2 mb-4">
-                            {activity.highlights.map((highlight, index) => (
-                              <li key={index} className="flex items-start text-sm text-gray-600">
-                                <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
-                                <span>{highlight}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-
-                        {/* Link if available */}
-                        {activity.link && (
-                          <a
-                            href={activity.link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center text-sm text-blue-500 hover:text-blue-600"
-                          >
-                            {activity.link.text} →
-                          </a>
-                        )}
                       </div>
                     </div>
                   ))}

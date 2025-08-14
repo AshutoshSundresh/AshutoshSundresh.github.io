@@ -1,0 +1,357 @@
+{
+  "folderIconUrl": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/folder.png",
+  "projects": [
+    {
+      "id": 1,
+      "name": "ShapeShiftOS",
+      "image": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/LOVUK1E.webp",
+      "caption": "Founder of Open-Source Android-Based Mobile Operating System",
+      "description": "I created this project in 2020 and have maintained it since. I've authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
+      "created": "2020-05-16",
+      "link": "https://github.com/shapeshiftos",
+      "stats": [
+        { "label": "Downloads", "value": "150,000+" },
+        { "label": "Countries", "value": "160+" },
+        { "label": "Stars", "value": "50+" },
+        { "label": "Open-Source Projects", "value": "Top 0.5%" }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Contributions to Google's Material Design Components (MDC)",
+      "image": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-02-23-172751.webp",
+      "caption": "Code Review for widely-used Android UI elements",
+      "description": "Fixed resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
+      "created": "2022-08-04",
+      "link": "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh"
+    },
+    {
+      "id": 3,
+      "name": "Bibliotheque - Library Management System",
+      "image": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/Screenshot-2025-06-02-181132.png",
+      "caption": "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
+      "description": "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-1.5ms ISBN/title/author search for 1,000+ concurrent queries.",
+      "created": "2023-12-15",
+      "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
+    },
+    {
+      "id": 4,
+      "name": "Shiv Nadar School Faridabad Food Menu Alexa Skill",
+      "image": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/GhsuTUs.webp",
+      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools",
+      "description": "An Amazon Store published open-source Node.js code that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
+      "created": "2022-01-09",
+      "link": "https://github.com/AshutoshSundresh/AlexaFoodMenuSkill"
+    }
+  ],
+  "educationData": [
+    {
+      "id": 1,
+      "institution": "UCLA",
+      "degree": "BS in Computer Science",
+      "school": "Henry Samueli School of Engineering and Applied Science",
+      "period": "2024 - Present",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png",
+      "institutionLink": "https://ucla.edu",
+      "courseLink": "https://www.linkedin.com/in/asund/details/courses/",
+      "details": {
+        "coursework": ["Computer Science", "Mathematics", "Physics"]
+      }
+    },
+    {
+      "id": 2,
+      "institution": "Shiv Nadar School",
+      "location": "Faridabad, India",
+      "curriculum": "CBSE Curriculum",
+      "period": "2021 - 2024",
+      "gpa": "4.0/4.0 unweighted GPA",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
+      "institutionLink": "https://shivnadarschool.edu.in/",
+      "archiveLink": "https://ashutoshsundresh.com/archive.html",
+      "details": {
+        "grades": [
+          { "grade": "Grade 12", "score": "96.8%" },
+          { "grade": "Grade 11", "score": "94%" },
+          { "grade": "Grade 10", "score": "99.2% (State Rank 1)" }
+        ],
+        "achievements": [
+          "Valedictorian",
+          "8 APs (Five 5s, Three 4s) / AP Scholar with Distinction",
+          "SAT Score: 1580 (800M, 780V)",
+          "TOEFL: 119"
+        ],
+        "subjects": ["Physics", "Chemistry", "Mathematics", "Computer Science", "English"]
+      }
+    }
+  ],
+  "experienceData": [
+    {
+      "id": 1,
+      "company": "Harvey",
+      "position": "Software Engineer Intern",
+      "location": "San Francisco, CA",
+      "period": "Jun 2025 - Sep 2025",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
+      "companyLink": "https://harvey.ai/",
+      "description": [
+        "New Verticals Team, founding team member on Harvey for Word"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Kleiner Perkins",
+      "position": "Engineering Fellow",
+      "location": "San Francisco, CA",
+      "period": "Apr 2025 - Present",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/kleiner_perkins_logo.jpeg",
+      "companyLink": "https://fellows.kleinerperkins.com",
+      "description": [
+        "1 of 30 fellows out of 3,000+ applicants"
+      ]
+    },
+    {
+      "id": 3,
+      "company": "ShapeShiftOS",
+      "position": "Lead Software Engineer / Founder",
+      "location": "Remote",
+      "period": "May 2020 - Present",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
+      "companyLink": "https://shapeshiftos.com/",
+      "description": [
+        "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
+        "In-screen fingerprint animations and icons, Google Lens screenshot tool integration, variable font-weight lock screen clock, custom kernel scheduler, etc.",
+        "150,000+ downloads across 160+ countries",
+        "Recruited talented engineering team (25+ Qualcomm device engineers and 3 core developers)",
+        "Zero marketing budget",
+        "SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
+      ]
+    },
+    {
+      "id": 4,
+      "company": "UCLA ELFIN CubeSat",
+      "position": "Ground Software Engineer",
+      "location": "Los Angeles, CA",
+      "period": "Jan 2025 - Present",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/elfincubesat.jpg",
+      "companyLink": "https://elfin.igpp.ucla.edu/",
+      "description": [
+        "Worked on CubeSats at the Experimental Space Physics Lab",
+        "Developed a dynamic sliding data panel for TVAC dashboard with real-time sensor data visualization and optimized performance through React memoization",
+        "Implemented configurable PID control system for TVAC backend with FastAPI endpoints, replacing hardcoded I/O values with thread-safe configuration management"
+      ]
+    },
+    {
+      "id": 5,
+      "company": "LA Hacks",
+      "position": "Software Engineer / Organizer",
+      "location": "Los Angeles, CA",
+      "period": "Oct 2024 - Present",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/lahacks.jpg",
+      "companyLink": "https://lahacks.com/",
+      "description": [
+        "The largest and oldest collegiate hackathon in Southern California",
+        "Built a responsive event schedule interface with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
+        "Engineered a FastAPI endpoint that analyzes GitHub repositories for potential plagiarism by statistically examining commit patterns, time distributions, and code changes",
+        "Architected granular Mailchimp error handling and implemented server-side validation with HTTP status code management for mailing server",
+        "Developed responsive React frontend components including Spotlight and Gallery carousels from a Figma prototype"
+      ]
+    },
+    {
+        "id": 6,
+        "company": "Skylow",
+        "position": "Software Engineer Intern",
+        "location": "Berkeley, CA",
+        "period": "Jul 2024 - Sep 2024",
+        "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/skylow.png",
+        "companyLink": "https://skylow.ai/",
+        "description": [
+          "An LLM-powered social media platform in seed stage, based out of Berkeley I&E and ACE@Berkeley",
+          "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
+          "Worked on frontend components with React/TypeScript, character and world features with Python, and implemented RAG pipelines using vector databases to enhance conversations",
+          "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and Posthog) for user tracking and error management"
+        ]
+      },
+    {
+      "id": 8,
+      "company": "Manav Rachna International Institute of Research and Studies",
+      "position": "Research Intern",
+      "location": "Faridabad, India",
+      "period": "Jun 2022 - Jul 2022",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/manavrachna.jpg",
+      "companyLink": "https://manavrachna.edu.in/",
+      "description": [
+        "Offensive security techniques, network analysis, vulnerability assessment, cryptography",
+        "Advisor: Dr. Charu Virmani"
+      ]
+    }
+  ],
+  "awardsData": [
+    {
+      "id": 1,
+      "category": "Undergraduate",
+      "awards": [
+        {
+          "title": "William F. Sharpe Technology Fellow",
+          "subtitle": "UCLA Alumni",
+          "year": "2025",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/UCLA-square-logo.jpg",
+          "link": "https://alumni.ucla.edu/alumni-career-engagement-students/career-engagement-students-programs/sharpe-fellows-program/"
+        },
+        {
+          "title": "Shirley and Walter Wang Computer Science Merit Scholar",
+          "subtitle": "UCLA Samueli School of Engineering",
+          "year": "2024",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "High School",
+      "awards": [
+        {
+          "title": "International Recognition in Linguistics and Math",
+          "year": "2021-2024",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/medal.png",
+          "description": "Notable accomplishments in various international Olympiads and competitions",
+          "highlight": "Multiple Awards",
+          "stats": "IOL Camp, APLO, Math Olympiads",
+          "link": "https://ashutoshsundresh.com/archive.html#awards"
+        },
+        {
+          "title": "SRCC Writing Mentorship Program",
+          "year": "2024",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ecosocsrcc.png",
+          "description": "Selected among 1,500 applicants (8% acceptance rate) for advanced writing techniques program",
+          "highlight": "Top 5",
+          "stats": "Out of 105 student cohort"
+        },
+        {
+          "title": "Open Source Excellence",
+          "subtitle": "SourceForge Recognition",
+          "year": "2023",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shapeshiftos.jpg",
+          "description": "Top 0.5% of all open-source projects globally",
+          "highlight": "150,000+ downloads",
+          "link": "https://sourceforge.net/projects/shapeshiftos/"
+        },
+        {
+          "title": "XDA Recognized Developer",
+          "year": "2021",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/xda.png",
+          "description": "Youngest Recognized Developer on the XDA Forums for Android Development (awarded when I was 15 years old) as of 2023",
+          "highlight": "Top 300",
+          "stats": "Out of 11 million users",
+          "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292",
+          "extraDetails": "Given to developers with a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns."
+        },
+        {
+          "title": "Board Exam Excellence",
+          "subtitle": "CBSE Recognition",
+          "year": "2022",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/shivnadarschool.png",
+          "description": "Education Minister's Award in Grade 12 for outstanding performance in board examinations",
+          "highlight": "99.2% in Grade 10",
+          "stats": "State Rank 1 in Grade 10"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Standardized Tests",
+      "awards": [
+        {
+          "title": "SAT Perfect Math Score",
+          "subtitle": "College Board",
+          "year": "2023",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/collegeboard.png",
+          "description": "Perfect score in SAT Mathematics section",
+          "highlight": "1580",
+          "stats": "800 Math, 780 Verbal"
+        },
+        {
+          "title": "TOEFL Excellence",
+          "subtitle": "ETS",
+          "year": "2023",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/toeflibt.png",
+          "description": "Near-perfect score in TOEFL iBT",
+          "highlight": "119/120",
+          "stats": "Top 1% globally"
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "id": 1,
+      "title": "Applying Chaos Theory to Traffic Congestion",
+      "subtitle": "International Journal of Science and Research (IJSR)",
+      "year": "2023",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
+      "description": "Research paper applying chaos theory principles through non-linear sinusoidal functions to model complex traffic congestion patterns",
+      "authors": ["Ashutosh Sundresh"],
+      "journal": "International Journal of Science and Research (IJSR)",
+      "abstract": "Authored a peer-reviewed paper published in the International Journal of Science and Research (Vol. 12, Issue 9), applying chaos theory to model non-linear traffic congestion dynamics. Designed synthetic datasets simulating traffic volume, speed, and congestion using NumPy and Gaussian/Poisson distributions. Developed a sinusoidal-based non-linear model capturing sensitivity to initial conditions and emergent chaotic behavior in traffic systems. Conducted statistical and visual analysis in Python to reveal deterministic yet unpredictable patterns in urban congestion, offering implications for scalable, adaptive city traffic management. Open-sourced all code and models used in the simulation on GitHub.",
+      "status": "Won first place among 160+ submissions in the paper submission round at the high school Neerja Modi Mathelogics Symposium 2023",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FxDNxe4AAAAJ&citation_for_view=FxDNxe4AAAAJ:u5HHmVD_uO8C",
+      "extraDetails": [
+        {
+          "label": "Code",
+          "value": "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
+        },
+        {
+          "label": "Slides",
+          "value": "https://raw.githubusercontent.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Impact of Short-Term Rentals on Housing Crisis",
+      "subtitle": "Ceteris Paribus, SRCC",
+      "year": "2024",
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/txt-file-icon-1213.png",
+      "description": "Analysis of Airbnb's impact on urban housing markets and communities",
+      "authors": ["Ashutosh Sundresh"],
+      "journal": "Ceteris Paribus, Shri Ram College of Commerce",
+      "abstract": "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability. ",
+      "status": "Published by the Economics Society of SRCC, University of Delhi after finishing top 5 in the SRCC Writing Mentorship Program",
+      "link": "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
+    }
+  ],
+  "activitiesData": [
+    {
+      "id": 1,
+      "title": "Open-Source Developer & Contributor",
+      "period": "2020 - Present",
+      "description": "I have over 4700 total commits and 2000 total contributions on GitHub since I created my account in 2020.",
+      "highlights": [
+        "Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
+        "Youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
+        "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
+      ],
+      "stats": [
+        { "value": "4,700+", "label": "Total Commits" },
+        { "value": "2,000+", "label": "Contributions" }
+      ],
+      "links": [
+        { "text": "GitHub", "url": "https://github.com/ashutoshsundresh" },
+        { "text": "XDA", "url": "https://xdaforums.com/m/ashutosh-sundresh.7730292/" }
+      ],
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/github.png"
+    },
+    {
+      "id": 2,
+      "title": "Investment Banking M&A Simulation",
+      "period": "September 2024",
+      "description": "Participated and excelled in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
+      "highlights": [
+        "Completed with a score at the highest possible range (>85%)",
+        "Developed a five-year financial forecast for a U.S. apparel and footwear company",
+        "Performed valuation analysis using comparable companies and precedent transactions"
+      ],
+      "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/stepstone.png"
+    }
+  ]
+}
+
