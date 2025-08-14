@@ -94,7 +94,7 @@ export default function PersonalIntro() {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center gap-4 mt-8">
+          <div className="flex justify-center gap-1 mt-8">
             <a
               href="https://twitter.com/asundresh"
               target="_blank"
