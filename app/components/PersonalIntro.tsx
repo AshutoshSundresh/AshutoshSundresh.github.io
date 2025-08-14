@@ -50,7 +50,7 @@ export default function PersonalIntro() {
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 z-10 pointer-events-none"></div>
                 <Image
-                  src="https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ashutosh.jpeg"
+                  src="https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/1755148353808.png"
                   alt="Profile photo"
                   width={64}
                   height={64}
