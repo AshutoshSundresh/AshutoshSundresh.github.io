@@ -367,7 +367,9 @@ const MacOSWindow = () => {
       <div
         data-detail-view
         className={`
-          ${windowHeight.isMobile ? 'fixed inset-0 z-50 bg-white' : 'w-72 border-l border-gray-200 bg-gray-50'}
+          ${windowHeight.isMobile 
+            ? 'fixed inset-0 z-50 bg-white' 
+            : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-gray-200 bg-gray-50'}
           overflow-y-auto
         `}
       >
@@ -386,8 +388,21 @@ const MacOSWindow = () => {
           </div>
         )}
 
+        {/* Desktop close button */}
+        {!windowHeight.isMobile && (
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-2 p-2 hover:bg-gray-100 rounded-full"
+            aria-label="Close details"
+          >
+            <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+
         {/* Content */}
-        <div className="p-4">
+        <div className={`p-4 ${!windowHeight.isMobile ? 'pt-12' : ''}`}>
           {/* Project Image */}
           <div className="mb-4">
             <img
@@ -510,7 +525,9 @@ const MacOSWindow = () => {
       <div
         data-detail-view
         className={`
-          ${windowHeight.isMobile ? 'fixed inset-0 z-50 bg-white' : 'w-72 border-l border-gray-200 bg-gray-50'}
+          ${windowHeight.isMobile 
+            ? 'fixed inset-0 z-50 bg-white' 
+            : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-gray-200 bg-gray-50'}
           overflow-y-auto font-['Raleway']
         `}
       >
@@ -526,7 +543,20 @@ const MacOSWindow = () => {
           </button>
         )}
 
-        <div className="p-4 space-y-6">
+        {/* Desktop close button */}
+        {!windowHeight.isMobile && (
+          <button
+            onClick={onClose}
+            className="absolute top-2 right-2 p-2 hover:bg-gray-100 rounded-full"
+            aria-label="Close details"
+          >
+            <svg className="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+
+        <div className={`p-4 space-y-6 ${!windowHeight.isMobile ? 'pt-12' : ''}`}>
           {/* Large centered icon and title */}
           <div className="flex flex-col items-center text-center">
             <div className="w-32 h-32 mb-4 relative transition-transform duration-[8s] group-hover:scale-105">
@@ -963,7 +993,7 @@ const MacOSWindow = () => {
         </div>
 
         {/* Sidebar and content */}
-        <div className="flex" style={{ height: contentHeight }}>
+        <div className="flex relative" style={{ height: contentHeight }}>
 
           {/* Main content */}
           <div
@@ -1285,41 +1315,32 @@ const MacOSWindow = () => {
 
             {/* Publications Tab */}
             {activeTab === 4 && (
-              <div className="p-4" onClick={handleContainerClick}>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                  {publications.map((pub) => (
-                    <div
-                      key={pub.id}
-                      onClick={(e) => handleItemClick(e, pub.id)}
-                      className={`
-                      relative group cursor-pointer p-4 rounded-lg
-                      ${selectedItem === pub.id ? 'bg-blue-600' : 'hover:bg-gray-50'}
-                    `}
-                    >
-                      <div className="flex flex-col items-center">
-                        <div className="w-16 h-16 flex items-center justify-center mb-2">
-                          <img
-                            src={pub.icon}
-                            alt=""
-                            className="w-16 h-16 object-contain"
-                          />
-                        </div>
-                        <span className={`
-                        text-base font-['Raleway'] font-light w-full text-center break-words
-                        ${selectedItem === pub.id ? 'text-white' : 'text-gray-900'}
-                      `}>
-                          {pub.title}
-                        </span>
-                        <span className={`
-                        text-sm mt-0.5
-                        ${selectedItem === pub.id ? 'text-blue-100' : 'text-gray-500'}
-                      `}>
-                          {pub.year}
-                        </span>
-                      </div>
+              <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                {publications.map((pub) => (
+                  <div
+                    key={pub.id}
+                    className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === pub.id ? 'bg-[#0069d9]' : 'hover:bg-gray-100'}`}
+                    onClick={(e) => handleItemClick(e, pub.id)}
+                  >
+                    <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
+                      <img
+                        src={pub.icon}
+                        alt="Publication"
+                        className="w-full h-full object-contain"
+                      />
                     </div>
-                  ))}
-                </div>
+                    <div className="mt-3 text-center max-w-[100px]">
+                      <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedItem === pub.id ? 'text-white' : 'text-gray-800'}`}>
+                        {pub.title}
+                      </p>
+                      {pub.year && (
+                        <p className={`${selectedItem === pub.id ? 'text-blue-100' : 'text-gray-500'} text-[10px]`}>
+                          {pub.year}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
 
