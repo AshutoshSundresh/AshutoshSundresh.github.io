@@ -197,7 +197,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   let textColor = 'text-white';
   if (dominantColor) {
     const hex = rgbToHex(dominantColor);
-    bgGradient = `bg-[linear-gradient(90deg,${hex}dd 0%,${hex}bb 50%,${hex}dd 100%)]`;
+    bgGradient = `bg-[linear-gradient(90deg,${hex} 0%,${hex} 50%,${hex} 100%)]`;
     textColor = getLuminance(dominantColor) > 180 ? 'text-gray-900' : 'text-white';
   }
 
@@ -210,13 +210,13 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
         }
       >
         <div
-          className={`flex items-center rounded-2xl p-3 gap-4 relative backdrop-blur-md ${bgGradient} lavalamp-bg overflow-visible`}
+          className={`flex items-center rounded-2xl p-3 gap-4 relative ${bgGradient} lavalamp-bg overflow-visible`}
           style={{
             background: dominantColor
               ? `linear-gradient(90deg, 
-                  ${rgbToHex(dominantColor)}dd 0%, 
-                  ${rgbToHex(dominantColor)}bb 50%,
-                  ${rgbToHex(dominantColor)}dd 100%)`
+                  ${rgbToHex(dominantColor)} 0%, 
+                  ${rgbToHex(dominantColor)} 50%,
+                  ${rgbToHex(dominantColor)} 100%)`
               : undefined,
             backgroundSize: '200% 200%',
             animation: 'gradientFlow 8s ease infinite'

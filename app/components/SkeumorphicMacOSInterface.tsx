@@ -1015,7 +1015,7 @@ const MacOSWindow = () => {
 
             {/* Documents Tab */}
             {activeTab === 1 && (
-              <div className="mt-4 space-y-8">
+              <div className="mt-4 space-y-6">
                 {educationData.map((edu: any) => (
                   <div
                     key={edu.id}
@@ -1220,7 +1220,7 @@ const MacOSWindow = () => {
                       {category.awards.map((award, index) => {
                         const CardInner = (
                           <div className="p-4">
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-start gap-3">
                               {/* Logo */}
                                <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
                                  <img src={award.icon} alt={award.title} className="w-full h-full object-contain rounded-lg" />
@@ -1236,7 +1236,7 @@ const MacOSWindow = () => {
                               </div>
                               {/* Metrics */}
                               {((award as Award).highlight || (award as Award).stats) && (
-                                <div className="text-right ml-2">
+                                <div className="text-right ml-2 shrink-0 w-32 sm:w-40 whitespace-normal break-words leading-tight">
                                   {(award as Award).highlight && (
                                     <div className="text-base font-medium text-gray-900">{(award as Award).highlight}</div>
                                   )}
@@ -1325,76 +1325,82 @@ const MacOSWindow = () => {
 
             {/* Activities Tab */}
             {activeTab === 5 && (
-              <div className="p-4">
-                <div className="columns-1 md:columns-2 gap-3 [column-fill:_balance]">
-                  {activitiesData.map((activity) => (
-                    <div key={activity.id} className="break-inside-avoid mb-3">
-                      <div className="bg-white rounded-xl border border-gray-200 overflow-hidden hover:bg-gray-50 transition-colors">
-                        <div className="p-4">
-                          {/* Header */}
-                          <div className="flex items-center gap-3">
-                              {activity.icon && (
-                              <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center">
-                                <img src={activity.icon} alt="" className="w-full h-full object-contain rounded-lg" />
-                              </div>
-                            )}
-                            <div className="min-w-0 flex-1">
-                              <h3 className="text-base font-medium text-gray-900">{activity.title}</h3>
-                              <div className="text-sm text-gray-500">{activity.period}</div>
-                            </div>
+              <div className="mt-4 space-y-6">
+                {activitiesData.map((activity) => (
+                  <div
+                    key={activity.id}
+                    className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+                  >
+                    {/* Header */}
+                    <div className="bg-gray-50 p-4 border-b border-gray-200">
+                      <div className="flex items-start">
+                        {activity.icon && (
+                          <div className="w-12 h-12 mr-4 relative flex-shrink-0">
+                            <img
+                              src={activity.icon}
+                              alt={activity.title}
+                              className="w-full h-full object-contain rounded-lg"
+                            />
                           </div>
-
-                          {/* Description */}
-                          <p className="mt-2 text-sm text-gray-600">{activity.description}</p>
-
-                          {/* Stats */}
-                          {activity.stats && (
-                            <div className="mt-3 grid grid-cols-2 gap-2">
-                              {activity.stats.map((stat, index) => (
-                                <div key={index} className="bg-gray-50 rounded-lg p-2 text-center">
-                                  <div className="text-base font-medium text-gray-900">{stat.value}</div>
-                                  <div className="text-xs text-gray-500">{stat.label}</div>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-
-                          {/* Highlights */}
-                          {activity.highlights && (
-                            <ul className="mt-3 space-y-1.5">
-                              {activity.highlights.map((highlight, index) => (
-                                <li key={index} className="flex items-start text-sm text-gray-600">
-                                  <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2"></span>
-                                  <span>{highlight}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          )}
-
-                          {/* Links */}
-                          {(activity as Activity).links && (
-                            <div className="mt-3 flex gap-2 justify-end flex-wrap">
-                              {(activity as Activity).links!.map((l, idx) => (
-                                <a
-                                  key={idx}
-                                  href={l.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-blue-600 bg-blue-50/0 hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
-                                >
-                                  <span>{l.text}</span>
-                                  <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                  </svg>
-                                </a>
-                              ))}
-                            </div>
-                          )}
+                        )}
+                        <div>
+                          <h3 className="text-lg font-medium text-gray-900">{activity.title}</h3>
+                          <div className="text-sm text-gray-500">{activity.period}</div>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
+
+                    {/* Content */}
+                    <div className="p-4">
+                      {/* Description */}
+                      <p className="text-sm text-gray-600">{activity.description}</p>
+
+                      {/* Stats */}
+                      {activity.stats && (
+                        <div className="mt-3 grid grid-cols-2 gap-2">
+                          {activity.stats.map((stat, index) => (
+                            <div key={index} className="bg-gray-50 rounded-lg p-2 text-center">
+                              <div className="text-base font-medium text-gray-900">{stat.value}</div>
+                              <div className="text-xs text-gray-500">{stat.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Highlights */}
+                      {activity.highlights && (
+                        <ul className="mt-3 space-y-2">
+                          {activity.highlights.map((highlight, index) => (
+                            <li key={index} className="flex items-start text-sm text-gray-600">
+                              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
+                              <span className="flex-1 min-w-0">{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+
+                      {/* Links */}
+                      {(activity as Activity).links && (
+                        <div className="mt-3 flex gap-2 justify-end flex-wrap">
+                          {(activity as Activity).links!.map((l, idx) => (
+                            <a
+                              key={idx}
+                              href={l.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-blue-600 bg-blue-50/0 hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                            >
+                              <span>{l.text}</span>
+                              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                              </svg>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </div>
