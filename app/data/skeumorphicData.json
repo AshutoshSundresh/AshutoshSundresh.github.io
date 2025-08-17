@@ -94,7 +94,11 @@
       "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early team member on Harvey for Word"
+        "New Verticals Team, early team member on Harvey for Word",
+        "Built Workflows for Word, a block-based agentic system enabling in-document actions in Microsoft Word, including porting the \"Draft from Template\" workflow from the main web application",
+        "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
+        "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
+        
       ]
     },
     {
@@ -135,8 +139,8 @@
       "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/elfincubesat.jpg",
       "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
-        "Worked on CubeSats at the Experimental Space Physics Lab",
-        "Developed a dynamic sliding data panel for TVAC dashboard with real-time sensor data visualization and optimized performance through React memoization",
+        "Worked on thermal vacuum chamber (TVAC) software at the Experimental Space Physics Lab",
+        "Developed a dynamic sliding data panel for TVAC dashboard with performance-optimized real-time sensor data visualization",
         "Implemented configurable PID control system for TVAC backend with FastAPI endpoints, replacing hardcoded I/O values with thread-safe configuration management"
       ]
     },
