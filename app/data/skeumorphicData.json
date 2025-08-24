@@ -95,7 +95,7 @@
       "companyLink": "https://harvey.ai/",
       "description": [
         "New Verticals Team, early team member on Harvey for Word",
-        "Built Workflows for Word, a block-based agentic system enabling in-document actions in Microsoft Word, including porting the \"Draft from Template\" workflow from the main web application",
+        "Built Workflows for Word, a block-based agentic system enabling in-document actions in Microsoft Word, including bringing in the \"Draft from Template\" workflow for Word",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
         "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
         
