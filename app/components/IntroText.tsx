@@ -7,20 +7,11 @@ import { useEffect, useState, useRef } from "react";
 import NowPlaying from "./NowPlaying";
 import GameOfLife from "./GameOfLife";
 import { DndContext, useDraggable, DragEndEvent } from '@dnd-kit/core';
+import type { DragPosition, DraggableCardProps } from '../types';
 import { CSS } from '@dnd-kit/utilities';
 import GitHubContributions from "./GitHubContributions";
 
-interface Position {
-  x: number;
-  y: number;
-}
-
-interface DraggableCardProps {
-  id: string;
-  children: React.ReactNode;
-  position: Position;
-  isDraggingDisabled?: boolean;
-}
+type Position = DragPosition;
 
 function DraggableCard({ id, children, position, isDraggingDisabled }: DraggableCardProps) {
   const {attributes, listeners, setNodeRef, transform} = useDraggable({
@@ -48,11 +39,7 @@ function DraggableCard({ id, children, position, isDraggingDisabled }: Draggable
   );
 }
 
-interface Positions {
-  card1: Position;
-  card2: Position;
-  card3: Position;
-}
+interface Positions { card1: Position; card2: Position; card3: Position }
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);

@@ -1,15 +1,7 @@
 "use client";
 
 import React from 'react';
-
-interface TerminalOverlayProps {
-  isMobile: boolean;
-  inputValue: string;
-  onInputChange: (value: string) => void;
-  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  outputLines: string[];
-  inputRef: React.RefObject<HTMLInputElement | null>;
-}
+import type { TerminalOverlayProps } from '../types';
 
 export default function TerminalOverlay({
   isMobile,

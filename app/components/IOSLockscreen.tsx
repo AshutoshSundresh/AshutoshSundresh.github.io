@@ -1,129 +1,38 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, TouchEvent } from 'react';
+import React, { useState, TouchEvent } from 'react';
+import type { IOSLockscreenProps } from '../types';
 import Image from 'next/image';
-import { format } from 'date-fns';
-
-interface IOSLockscreenProps {
-  onUnlock: () => void;
-}
+import useClock from '../hooks/useClock';
+import usePinEntry from '../hooks/usePinEntry';
+import useVerticalSwipe from '../hooks/useVerticalSwipe';
 
 const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
-  // Clock component to update time every second
-  const Clock = ({ formatString }: { formatString: string }) => {
-    const [time, setTime] = useState(new Date());
-  
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        setTime(new Date());
-      }, 1000);
-      
-      return () => clearInterval(intervalId);
-    }, []);
-  
-    return <>{format(time, formatString)}</>;
-  };
+  const timeHhMm = useClock('h:mm');
+  const timeDate = useClock('EEEE, MMMM d');
 
-  // State for password input and UI state
-  const [password, setPassword] = useState('');
-  const [isShaking, setIsShaking] = useState(false);
-  const [isExiting, setIsExiting] = useState(false);
-  const [swipeStartY, setSwipeStartY] = useState<number | null>(null);
-  const [swipeDistance, setSwipeDistance] = useState(0);
   const [showKeypad, setShowKeypad] = useState(false);
+  const { password, isShaking, isExiting, submit, press } = usePinEntry(() => onUnlock());
+  const { swipeStartY, swipeDistance, onTouchStart, onTouchMove, onTouchEnd } = useVerticalSwipe();
 
   // Handle PIN submission
-  const handleSubmit = () => {
-    if (parseInt(password, 10) === 10080) { 
-      setIsExiting(true);
-      setTimeout(() => {
-        onUnlock();
-      }, 300); // Match animation duration
-    } else {
-      setIsShaking(true);
-      setTimeout(() => setIsShaking(false), 500);
-      setPassword('');
-    }
-  };
+  const handleSubmit = () => submit();
 
   // Handle keypad input
   const handleKeyPress = (key: string) => {
-    if (key === 'delete') {
-      setPassword(prev => prev.slice(0, -1));
-    } else if (key === 'cancel') {
-      setPassword('');
-      setShowKeypad(false);
-    } else if (password.length < 5) { // Limit input length to 5 digits
-      const newPassword = password + key;
-      setPassword(newPassword);
-      
-      // Auto-submit when 5 digits are entered
-      if (newPassword.length === 5) {
-        setTimeout(() => {
-          if (parseInt(newPassword, 10) === 10080) {
-            setIsExiting(true);
-            setTimeout(() => {
-              onUnlock();
-            }, 300);
-          } else {
-            setIsShaking(true);
-            setTimeout(() => {
-              setIsShaking(false);
-              setPassword('');
-            }, 500);
-          }
-        }, 300); // Small delay to show the last digit
-      }
-    }
+    if (key === 'cancel') setShowKeypad(false);
+    press(key);
   };
 
   // Handle touch events for swipe gesture
-  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-    if (!showKeypad) {
-      setSwipeStartY(e.touches[0].clientY);
-    } else {
-      // Also track touch start for swipe down on keypad
-      setSwipeStartY(e.touches[0].clientY);
-    }
-  };
-
-  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-    if (swipeStartY !== null) {
-      const currentY = e.touches[0].clientY;
-      const distance = swipeStartY - currentY;
-      
-      if (!showKeypad) {
-        // Only allow upward swipe (positive distance) on lockscreen
-        if (distance > 0) {
-          setSwipeDistance(Math.min(distance, 150)); // Limit max distance
-        }
-      } else {
-        // Only allow downward swipe (negative distance) on keypad
-        if (distance < 0) {
-          setSwipeDistance(Math.max(distance, -150)); // Limit max distance (negative)
-        }
-      }
-    }
-  };
-
+  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => onTouchStart(e.touches[0].clientY);
+  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => onTouchMove(e.touches[0].clientY, !showKeypad, showKeypad);
   const handleTouchEnd = () => {
+    const final = onTouchEnd();
     if (!showKeypad) {
-      // If swiped up more than threshold on lockscreen, show keypad
-      if (swipeDistance > 100) {
-        setShowKeypad(true);
-        setSwipeDistance(0);
-      } else {
-        // Reset swipe distance with animation
-        setSwipeDistance(0);
-      }
+      if (final > 100) setShowKeypad(true);
     } else {
-      // If swiped down more than threshold on keypad, hide keypad
-      if (swipeDistance < -100) {
-        setShowKeypad(false);
-        setPassword('');
-      }
-      setSwipeDistance(0);
+      if (final < -100) setShowKeypad(false);
     }
-    setSwipeStartY(null);
   };
 
   // Calculate transition styles based on swipe distance
@@ -187,12 +96,8 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
               </svg>
             </div>
             
-            <div className="text-7xl mb-2 font-light drop-shadow-lg">
-              <Clock formatString="h:mm" />
-            </div>
-            <div className="text-lg drop-shadow">
-              <Clock formatString="EEEE, MMMM d" />
-            </div>
+            <div className="text-7xl mb-2 font-light drop-shadow-lg">{timeHhMm}</div>
+            <div className="text-lg drop-shadow">{timeDate}</div>
           </div>
 
           {/* Bottom section */}

@@ -131,3 +131,58 @@ export interface SkeumorphicDataRoot {
 }
 
 
+// General purpose types consolidated from components
+export interface NowPlayingTrack {
+  name: string;
+  artist: { "#text": string };
+  album: { "#text": string };
+  image: { size: string; "#text": string }[];
+  "@attr"?: { nowplaying: string };
+  date?: { uts: string; "#text": string };
+  url: string;
+}
+
+export interface ContributionsCanvasData {
+  years: Array<{
+    year: string;
+    total: number;
+    range: { start: string; end: string };
+    contributions: Array<{ date: string; count: number; color: string }>;
+  }>;
+  contributions: Array<{ date: string; count: number; color: string; intensity: number }>;
+  total: number;
+}
+
+export interface IOSLockscreenProps {
+  onUnlock: () => void;
+}
+
+export interface DragPosition { x: number; y: number }
+
+export interface DraggableCardProps {
+  id: string;
+  children: React.ReactNode;
+  position: DragPosition;
+  isDraggingDisabled?: boolean;
+}
+
+export interface TerminalOverlayProps {
+  isMobile: boolean;
+  inputValue: string;
+  onInputChange: (value: string) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  outputLines: string[];
+  inputRef: React.RefObject<HTMLInputElement | null>;
+}
+
+export interface WindowInfo {
+  vh: number;
+  isMobile: boolean;
+}
+
+export interface Dimensions {
+  width: number;
+  height: number;
+}
+
+

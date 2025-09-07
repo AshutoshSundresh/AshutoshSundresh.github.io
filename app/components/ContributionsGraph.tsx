@@ -2,30 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import { drawContributions } from 'github-contributions-canvas';
+import type { ContributionsCanvasData } from '../types';
 
 interface ContributionsGraphProps {
-  data: {
-    years: Array<{
-      year: string;
-      total: number;
-      range: {
-        start: string;
-        end: string;
-      };
-      contributions: Array<{
-        date: string;
-        count: number;
-        color: string;
-      }>;
-    }>;
-    contributions: Array<{
-      date: string;
-      count: number;
-      color: string;
-      intensity: number;
-    }>;
-    total: number;
-  };
+  data: ContributionsCanvasData;
   username: string;
 }
 

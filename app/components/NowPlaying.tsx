@@ -1,33 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-// @ts-ignore
-import ColorThief from 'colorthief';
+import { useMemo, useRef, useState, useEffect } from 'react';
+import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
+import useDominantColor from '../hooks/useDominantColor';
+import useIntroVisibility from '../hooks/useIntroVisibility';
 
-interface Track {
-  name: string;
-  artist: {
-    "#text": string;
-  };
-  album: {
-    "#text": string;
-  };
-  image: { size: string; "#text": string }[];
-  "@attr"?: {
-    nowplaying: string;
-  };
-  date?: {
-    uts: string;
-    "#text": string;
-  };
-  url: string;
-}
-
-interface LastFmResponse {
-  recenttracks: {
-    track: Track[];
-  };
-}
+import type { NowPlayingTrack } from '../types';
 
 interface NowPlayingProps {
   onStatusChange?: (status: 'playing' | 'recent' | null) => void;
@@ -74,80 +52,15 @@ function getTimeAgo(unixTimestamp: string): string {
 // keyframes for gradient flow are defined in globals.css
 
 export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlayingProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [track, setTrack] = useState<Track | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [dominantColor, setDominantColor] = useState<number[] | null>(null);
-  const [show, setShow] = useState(false);
-  const [firstLaunch, setFirstLaunch] = useState(true);
+  const { isLoading, track, error } = useLastFmNowPlaying();
+  const { show, firstLaunch } = useIntroVisibility();
   const [showTooltip, setShowTooltip] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
-  const fetchNowPlaying = async () => {
-    try {
-      const apiKey = process.env.NEXT_PUBLIC_LASTFM_API_KEY;
-      const user = process.env.NEXT_PUBLIC_LASTFM_USER;
-      const response = await fetch(
-        `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${user}&api_key=${apiKey}&format=json&limit=1`
-      );
-      const data: LastFmResponse = await response.json();
-      if (data.recenttracks?.track?.[0]) {
-        setTrack(data.recenttracks.track[0]);
-        setError(null);
-      } else {
-        setTrack(null);
-        setError('No track');
-      }
-    } catch (err) {
-      setError('Failed to fetch track data');
-      setTrack(null);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchNowPlaying();
-    // fetch every 30 seconds
-    const interval = setInterval(fetchNowPlaying, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // extract dominant color from album art
-  useEffect(() => {
-    if (!track) return;
-    const albumArt = track.image?.find(img => img.size === 'extralarge')?.['#text'] || track.image?.slice(-1)[0]?.['#text'] || '';
-    if (!albumArt) return;
-    const img = new window.Image();
-    img.crossOrigin = 'Anonymous';
-    img.src = albumArt;
-    img.onload = () => {
-      try {
-        const colorThief = new ColorThief();
-        const color = colorThief.getColor(img);
-        setDominantColor(color);
-      } catch (e) {
-        setDominantColor(null);
-      }
-    };
-  }, [track]);
-
-  // Hide widget when #intro-text is not in view
-  useEffect(() => {
-    const section = document.getElementById('intro-text');
-    if (!section) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        setShow(entry.isIntersecting);
-        if (firstLaunch && entry.isIntersecting) {
-          setFirstLaunch(false);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, [firstLaunch]);
+  const albumArtUrl = useMemo(() => (
+    (track as NowPlayingTrack | null)?.image?.find(img => img.size === 'extralarge')?.['#text'] || (track as NowPlayingTrack | null)?.image?.slice(-1)[0]?.['#text'] || ''
+  ), [track]);
+  const dominantColor = useDominantColor(albumArtUrl || null);
 
   // Notify parent of status and track info
   useEffect(() => {

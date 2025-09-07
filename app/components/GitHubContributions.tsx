@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import ContributionsGraph from './ContributionsGraph';
+import type { ContributionsCanvasData } from '../types';
 
 const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 const USERNAME = 'AshutoshSundresh';
@@ -33,11 +34,7 @@ interface YearData {
   contributions: Contribution[];
 }
 
-interface ContributionsData {
-  years: YearData[];
-  contributions: Contribution[];
-  total: number;
-}
+type ContributionsData = ContributionsCanvasData;
 
 const query = `
   query($username: String!) {
