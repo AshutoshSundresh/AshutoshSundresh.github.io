@@ -4,7 +4,6 @@ import { useMemo, useRef, useState, useEffect } from 'react';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
-import Image from 'next/image';
 
 import type { NowPlayingTrack } from '../types';
 
@@ -119,7 +118,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
           }}
         >
         <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl">
-          <Image
+          <img
             ref={imgRef}
             src={albumArt}
             alt={track.name + ' album art'}

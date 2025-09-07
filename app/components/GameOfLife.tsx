@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useGameOfLifeInitializer from '../hooks/useGameOfLifeInitializer';
 
 interface Cell {
@@ -11,7 +11,6 @@ interface Cell {
 export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cells, setCells] = useState<Set<string>>(new Set());
-  const [isRunning] = useState(true);
   const cellSize = 6; // Size of each cell in pixels
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -40,10 +39,11 @@ export default function GameOfLife() {
       window.removeEventListener('resize', updateDimensions);
       clearTimeout(initTimer);
       // Clear the canvas on unmount
-      if (canvasRef.current) {
-        const ctx = canvasRef.current.getContext('2d');
+      const canvas = canvasRef.current;
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
         }
       }
     };
@@ -63,7 +63,7 @@ export default function GameOfLife() {
     return neighbors;
   };
 
-  const getNextGeneration = (currentCells: Set<string>): Set<string> => {
+  const getNextGeneration = useCallback((currentCells: Set<string>): Set<string> => {
     const newCells = new Set<string>();
     const neighborCounts = new Map<string, number>();
 
@@ -84,18 +84,16 @@ export default function GameOfLife() {
     });
 
     return newCells;
-  };
+  }, []);
 
   // Animation loop
+  // Animation loop: always run; cell additions are merged between ticks
   useEffect(() => {
-    if (!isRunning) return;
-
     const interval = setInterval(() => {
       setCells(prevCells => getNextGeneration(prevCells));
     }, 100);
-
     return () => clearInterval(interval);
-  }, [isRunning, getNextGeneration]);
+  }, [getNextGeneration]);
 
   // Draw cells
   useEffect(() => {
