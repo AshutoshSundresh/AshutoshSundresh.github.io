@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import useAppOverlayState from '../hooks/useAppOverlayState';
 import type { SkeumorphicDataRoot, SearchRecord } from '../types';
 import { Search, X } from 'lucide-react';
 import skeuData from '../data/skeumorphicData.json';
@@ -33,6 +34,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
   const [results, setResults] = useState<SearchRecord[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const debouncedQuery = useDebouncedValue(query, 120);
+  const { setSearchActive } = useAppOverlayState();
 
   // Derive recommended tabs from JSON presence, in canonical order
   const recommendedTabs = useMemo(() => {
@@ -56,6 +58,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
   // Keep focus behavior consistent across pages
   useEffect(() => {
     if (open && !loading) setTimeout(() => inputRef.current?.focus(), 0);
+    if (setSearchActive) setSearchActive(open);
   }, [open, loading]);
 
   // Focus when opening

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
-import useAppOverlayState from '../hooks/useTerminalState';
+import useAppOverlayState from '../hooks/useAppOverlayState';
 import IOSLockscreen from './IOSLockscreen';
 import DesktopLockscreen from './DesktopLockscreen';
 import WindowHeader from './WindowHeader';

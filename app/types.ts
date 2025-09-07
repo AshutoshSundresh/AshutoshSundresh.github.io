@@ -209,8 +209,10 @@ export interface Dimensions {
 export interface AppOverlayState {
   isTerminalActive: boolean;
   isLockscreenActive: boolean;
+  isSearchActive?: boolean;
   setTerminalActive: (active: boolean) => void;
   setLockscreenActive: (active: boolean) => void;
+  setSearchActive?: (active: boolean) => void;
 }
 
 // ============================================================================
