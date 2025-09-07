@@ -372,59 +372,77 @@ export default function GameOfLife() {
     });
   };
 
-  // Handle mouse interaction
-  const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+  // Global pointer handling to work even under overlays
+  useEffect(() => {
+    const lastCellKeyRef = { current: null as string | null };
+    let rafId: number | null = null;
+    let pending: { x: number; y: number; inside: boolean; ev: PointerEvent } | null = null;
 
-    const rect = canvas.getBoundingClientRect();
-    const x = Math.floor((e.clientX - rect.left) / cellSize);
-    const y = Math.floor((e.clientY - rect.top) / cellSize);
-    
-    setHoverPosition({ x, y });
-    setIsHovering(true);
-    addCell(x, y);
-  };
+    const process = () => {
+      rafId = null;
+      if (!pending) return;
+      const { x, y, inside, ev } = pending;
+      pending = null;
 
-  // Handle touch interaction
-  const handleTouchMove = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    e.preventDefault(); // Prevent scrolling
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+      if (!inside) {
+        setIsHovering(false);
+        setHoverPosition(null);
+        lastCellKeyRef.current = null;
+        return;
+      }
 
-    const rect = canvas.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = Math.floor((touch.clientX - rect.left) / cellSize);
-    const y = Math.floor((touch.clientY - rect.top) / cellSize);
-    
-    addCell(x, y);
-  };
+      setHoverPosition({ x, y });
+      setIsHovering(true);
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLCanvasElement>) => {
-    e.preventDefault(); // Prevent scrolling
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+      const key = `${x},${y}`;
+      if (lastCellKeyRef.current !== key) {
+        // Prevent page scroll when drawing via touch inside canvas bounds
+        if (ev.pointerType === 'touch') {
+          ev.preventDefault();
+        }
+        addCell(x, y);
+        lastCellKeyRef.current = key;
+      }
+    };
 
-    const rect = canvas.getBoundingClientRect();
-    const touch = e.touches[0];
-    const x = Math.floor((touch.clientX - rect.left) / cellSize);
-    const y = Math.floor((touch.clientY - rect.top) / cellSize);
-    
-    addCell(x, y);
-  };
+    const schedule = (next: { x: number; y: number; inside: boolean; ev: PointerEvent }) => {
+      pending = next;
+      if (rafId == null) {
+        rafId = window.requestAnimationFrame(process);
+      }
+    };
 
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-    setHoverPosition(null);
-  };
+    const compute = (ev: PointerEvent) => {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const inside = ev.clientX >= rect.left && ev.clientX < rect.right && ev.clientY >= rect.top && ev.clientY < rect.bottom;
+      const x = Math.floor((ev.clientX - rect.left) / cellSize);
+      const y = Math.floor((ev.clientY - rect.top) / cellSize);
+      schedule({ x, y, inside, ev });
+    };
+
+    const onPointerMove = (ev: PointerEvent) => {
+      compute(ev);
+    };
+    const onPointerDown = (ev: PointerEvent) => {
+      compute(ev);
+    };
+
+    const listenerOptions: AddEventListenerOptions = { capture: true, passive: false };
+    window.addEventListener('pointermove', onPointerMove, listenerOptions);
+    window.addEventListener('pointerdown', onPointerDown, listenerOptions);
+
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove, listenerOptions);
+      window.removeEventListener('pointerdown', onPointerDown, listenerOptions);
+      if (rafId != null) cancelAnimationFrame(rafId);
+    };
+  }, [cellSize]);
 
   return (
     <canvas
       ref={canvasRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      onTouchMove={handleTouchMove}
-      onTouchStart={handleTouchStart}
       className="absolute inset-0 w-full h-full pointer-events-auto touch-none"
       style={{ zIndex: 0 }}
     />
