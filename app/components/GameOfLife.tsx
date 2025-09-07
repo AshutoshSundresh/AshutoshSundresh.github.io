@@ -102,22 +102,26 @@ export default function GameOfLife() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw cells
+    // Draw cells as circles
     ctx.fillStyle = 'rgba(200, 200, 200, 0.3)';
+    const radius = (cellSize - 1) / 2;
     cells.forEach(cellKey => {
       const [x, y] = cellKey.split(',').map(Number);
-      ctx.fillRect(x * cellSize, y * cellSize, cellSize, cellSize);
+      const cx = x * cellSize + cellSize / 2;
+      const cy = y * cellSize + cellSize / 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fill();
     });
 
     // Draw hover cell
     if (isHovering && hoverPosition) {
       ctx.fillStyle = 'rgba(200, 200, 200, 0.5)';
-      ctx.fillRect(
-        hoverPosition.x * cellSize,
-        hoverPosition.y * cellSize,
-        cellSize,
-        cellSize
-      );
+      const cx = hoverPosition.x * cellSize + cellSize / 2;
+      const cy = hoverPosition.y * cellSize + cellSize / 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.fill();
     }
   }, [cells, dimensions, isHovering, hoverPosition]);
 
