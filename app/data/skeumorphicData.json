@@ -94,8 +94,8 @@
       "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early team member on Harvey for Word",
-        "Built Workflows for Word, a block-based agentic system enabling in-document actions in Microsoft Word, including bringing in the \"Draft from Template\" workflow for Word",
+        "New Verticals Team, early team member on Harvey Word Add-In",
+        "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including building the \"Draft from Template\" and \"Translate\" workflows for Word",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
         "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
         
@@ -194,6 +194,12 @@
       "id": 1,
       "category": "Undergraduate",
       "awards": [
+        {
+          "title": "General Engineering Scholar",
+          "subtitle": "UCLA Samueli School of Engineering",
+          "year": "2025",
+          "icon": "https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/uclaengg.png"
+        },
         {
           "title": "William F. Sharpe Technology Fellow",
           "subtitle": "UCLA Alumni",
