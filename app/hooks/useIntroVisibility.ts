@@ -7,7 +7,10 @@ export default function useIntroVisibility() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const section = document.getElementById('intro-text');
+    const section =
+      document.getElementById('intro-section') ||
+      document.getElementById('hero-section') ||
+      document.getElementById('intro-text');
     if (!section) return;
     const observer = new window.IntersectionObserver(
       ([entry]) => {

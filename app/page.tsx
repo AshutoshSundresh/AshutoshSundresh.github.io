@@ -1,16 +1,16 @@
 "use client";
 import { useEffect, useRef } from 'react';
-import PersonalIntro from "./components/PersonalIntro";
-import IntroText from "./components/IntroText";
+import HeroSection from "./components/HeroSection";
+import IntroSection from "./components/IntroSection";
 
 export default function Home() {
   return (
     <main className="h-[100dvh] snap-y snap-mandatory overflow-y-auto smooth-scroll">
       <section className="h-[100dvh] snap-start snap-always">
-        <PersonalIntro />
+        <HeroSection />
       </section>
       <section className="h-[100dvh] snap-start snap-always">
-        <IntroText />
+        <IntroSection />
       </section>
     </main>
   );
