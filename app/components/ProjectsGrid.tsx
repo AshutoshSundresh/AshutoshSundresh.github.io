@@ -1,9 +1,10 @@
 "use client";
 
+import React, { memo } from 'react';
 import type { ProjectsGridProps } from '../types';
 import Image from 'next/image';
 
-export default function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: ProjectsGridProps) {
+function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: ProjectsGridProps) {
   return (
     <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
       {projects.map((project) => (
@@ -25,5 +26,5 @@ export default function ProjectsGrid({ projects, selectedItem, onItemClick, fold
     </div>
   );
 }
-
-
+export default memo(ProjectsGrid);
+ 

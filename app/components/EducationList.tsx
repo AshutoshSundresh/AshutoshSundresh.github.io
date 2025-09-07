@@ -1,9 +1,10 @@
 "use client";
 
+import React, { memo } from 'react';
 import type { EducationListProps } from '../types';
 import Image from 'next/image';
 
-export default function EducationList({ educationData }: EducationListProps) {
+function EducationList({ educationData }: EducationListProps) {
   return (
     <div className="mt-4 space-y-6">
       {educationData.map((edu) => (
@@ -87,5 +88,4 @@ export default function EducationList({ educationData }: EducationListProps) {
     </div>
   );
 }
-
-
+export default memo(EducationList);

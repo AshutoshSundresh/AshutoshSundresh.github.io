@@ -1,9 +1,10 @@
 "use client";
 
+import React, { memo } from 'react';
 import type { AwardsMasonryProps } from '../types';
 import Image from 'next/image';
 
-export default function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
+function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
   return (
     <div className="mt-4 space-y-8">
       {awardsData.map((category) => (
@@ -57,5 +58,4 @@ export default function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
     </div>
   );
 }
-
-
+export default memo(AwardsMasonry);

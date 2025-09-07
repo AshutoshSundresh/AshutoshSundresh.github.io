@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import Image from 'next/image';
 import type { ExperienceListProps } from '../types';
 
-export default function ExperienceList({ experienceData }: ExperienceListProps) {
+function ExperienceList({ experienceData }: ExperienceListProps) {
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
 
-  const toggleExperienceExpansion = (id: number) => {
+  const toggleExperienceExpansion = useCallback((id: number) => {
     setExpandedExperiences(prev => (prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]));
-  };
+  }, []);
 
   return (
     <div className="mt-4 space-y-6">
@@ -69,5 +69,4 @@ export default function ExperienceList({ experienceData }: ExperienceListProps) 
     </div>
   );
 }
-
-
+export default memo(ExperienceList);

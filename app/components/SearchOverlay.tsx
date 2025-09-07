@@ -80,13 +80,30 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
       setResults([]);
       return;
     }
+    const lower = debouncedQuery.toLowerCase();
+    const wordBoundary = new RegExp(`(^|\\b)${lower}(\\b|$)`);
+    const groups = { exactWord: [] as SearchRecord[], exactPrefix: [] as SearchRecord[], other: [] as SearchRecord[] };
     const scored = records
-      .map((r) => ({ r, s: scoreRecord(r, debouncedQuery) }))
-      .filter((x) => x.s !== -Infinity)
-      .sort((a, b) => b.s - a.s)
-      .slice(0, 20)
-      .map((x) => x.r);
-    setResults(scored);
+      .map((r) => ({ r, s: scoreRecord(r, lower) }))
+      .filter((x) => x.s !== -Infinity);
+
+    for (const { r } of scored) {
+      const inTitleWord = wordBoundary.test(r.titleLower);
+      const inTextWord = wordBoundary.test(r.textLower);
+      const titleStarts = r.titleLower.startsWith(lower);
+      const textStarts = r.textLower.startsWith(lower);
+      if (inTitleWord || inTextWord) groups.exactWord.push(r);
+      else if (titleStarts || textStarts) groups.exactPrefix.push(r);
+      else groups.other.push(r);
+    }
+
+    const byScoreDesc = (a: SearchRecord, b: SearchRecord) => scoreRecord(b, lower) - scoreRecord(a, lower);
+    const merged = [
+      ...groups.exactWord.sort(byScoreDesc),
+      ...groups.exactPrefix.sort(byScoreDesc),
+      ...groups.other.sort(byScoreDesc),
+    ].slice(0, 20);
+    setResults(merged);
   }, [debouncedQuery, records]);
 
   const onKeyDown = useCallback(

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import useAppOverlayState from '../hooks/useAppOverlayState';
 import IOSLockscreen from './IOSLockscreen';
@@ -39,14 +39,14 @@ const MacOSWindow = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   // Add ref array for tab elements
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [tabs] = useState([
+  const tabs = useMemo(() => ([
     { id: 0, title: 'Projects', content: 'Git repositories and development projects' },
     { id: 1, title: 'Education', content: 'Academic background and achievements' },
     { id: 2, title: 'Experience', content: 'Professional experience and internships' },
     { id: 3, title: 'Awards', content: 'Honors and recognition' },
     { id: 4, title: 'Publications', content: 'Research papers and publications' },
     { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' }
-  ]);
+  ]), []);
 
   const windowHeight = useWindowInfo();
 
@@ -106,10 +106,10 @@ const MacOSWindow = () => {
   });
   useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, () => setShowMobileMenu(false));
 
-  const onTabChange = (index: number) => {
+  const onTabChange = useCallback((index: number) => {
     setSelectedItem(null);
     handleTabChange(index);
-  };
+  }, [handleTabChange]);
 
   const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipeNavigation(
     windowHeight.isMobile && selectedItem === null,
@@ -163,17 +163,17 @@ const MacOSWindow = () => {
   }, [activeTab, router, pathname]);
 
   // Add function to calculate tab width
-  const getTabWidth = () => {
+  const getTabWidth = useCallback(() => {
     // If tabs are not yet rendered, return a default value
     if (!tabRefs.current.length || !tabRefs.current[0]) return 45;
 
     // Calculate width of the active tab or the first available tab
     const activeTabRef = tabRefs.current[activeTab] || tabRefs.current[0];
     return activeTabRef ? activeTabRef.offsetWidth : 45;
-  };
+  }, [activeTab]);
 
   // Calculate max scroll and constrained offset
-  const getMaxScrollOffset = () => {
+  const getMaxScrollOffset = useCallback(() => {
     if (!tabRefs.current.length) return 0;
     const tabContainer = document.querySelector('.tab-container') as HTMLElement | null;
     const tabsContainer = document.querySelector('.tabs-container') as HTMLElement | null;
@@ -181,13 +181,13 @@ const MacOSWindow = () => {
     const containerWidth = tabContainer.clientWidth;
     const tabsWidth = tabsContainer.scrollWidth;
     return Math.min(0, containerWidth - tabsWidth);
-  };
+  }, []);
 
-  const getConstrainedOffset = (proposedOffset: number) => {
+  const getConstrainedOffset = useCallback((proposedOffset: number) => {
     const maxRight = 0;
     const maxLeft = getMaxScrollOffset();
     return Math.max(maxLeft, Math.min(maxRight, proposedOffset));
-  };
+  }, [getMaxScrollOffset]);
 
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
   const contentHeight = windowHeight.isMobile
@@ -198,19 +198,19 @@ const MacOSWindow = () => {
   const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
 
   // Project data
-  const projects: ProjectDetails[] = data.projects.map((p) => ({
+  const projects: ProjectDetails[] = useMemo(() => data.projects.map((p) => ({
     ...p,
     created: new Date(p.created)
-  }));
+  })), [data.projects]);
 
   // Folder icon image URL
-  const folderIconUrl = data.folderIconUrl;
+  const folderIconUrl = useMemo(() => data.folderIconUrl, [data.folderIconUrl]);
 
   // Update the education data interface and content
-  const educationData: EducationEntry[] = data.educationData;
+  const educationData: EducationEntry[] = useMemo(() => data.educationData, [data.educationData]);
 
   // Update the experience data
-  const experienceData: ExperienceEntry[] = data.experienceData;
+  const experienceData: ExperienceEntry[] = useMemo(() => data.experienceData, [data.experienceData]);
 
   // Handle folder click
   const handleItemClick = (event: React.MouseEvent, id: number) => {
@@ -232,17 +232,17 @@ const MacOSWindow = () => {
   );
 
   // Update the awards data
-  const awardsData: AwardCategory[] = data.awardsData;
+  const awardsData: AwardCategory[] = useMemo(() => data.awardsData, [data.awardsData]);
 
   // Update the publications data
-  const publications: Publication[] = data.publications;
+  const publications: Publication[] = useMemo(() => data.publications, [data.publications]);
 
   // Activities data
-  const activitiesData: Activity[] = data.activitiesData;
+  const activitiesData: Activity[] = useMemo(() => data.activitiesData, [data.activitiesData]);
 
-  const toggleLockscreen = () => {
-    setLockscreenVisible(!lockscreenVisible);
-  };
+  const toggleLockscreen = useCallback(() => {
+    setLockscreenVisible(v => !v);
+  }, []);
 
   return (
     <div

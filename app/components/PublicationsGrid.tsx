@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import type { PublicationsGridProps } from '../types';
 import Image from 'next/image';
 
-export default function PublicationsGrid({ publications, selectedId, onItemClick }: PublicationsGridProps) {
+function PublicationsGrid({ publications, selectedId, onItemClick }: PublicationsGridProps) {
   return (
     <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
       {publications.map((pub) => (
@@ -27,5 +27,4 @@ export default function PublicationsGrid({ publications, selectedId, onItemClick
     </div>
   );
 }
-
-
+export default memo(PublicationsGrid);
