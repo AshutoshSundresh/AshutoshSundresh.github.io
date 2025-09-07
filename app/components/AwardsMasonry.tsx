@@ -1,6 +1,7 @@
 "use client";
 
 import type { AwardCategory } from '../types';
+import Image from 'next/image';
 
 interface Props {
   awardsData: AwardCategory[];
@@ -17,8 +18,8 @@ export default function AwardsMasonry({ awardsData }: Props) {
               const CardInner = (
                 <div className="p-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
-                      <img src={award.icon} alt={award.title} className="w-full h-full object-contain rounded-lg" />
+                    <div className="w-10 h-10 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                      <Image src={award.icon} alt={award.title} fill sizes="40px" className="object-contain rounded-lg" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">

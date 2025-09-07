@@ -1,6 +1,7 @@
 "use client";
 
 import type { EducationEntry } from '../types';
+import Image from 'next/image';
 
 interface Props {
   educationData: EducationEntry[];
@@ -14,7 +15,7 @@ export default function EducationList({ educationData }: Props) {
           <div className="bg-gray-50 p-4 border-b border-gray-200">
             <div className="flex items-center">
               <div className="w-12 h-12 mr-4 relative">
-                <img src={edu.icon} alt={edu.institution} className="w-full h-full object-contain rounded-lg" />
+                <Image src={edu.icon} alt={edu.institution} fill sizes="48px" className="object-contain rounded-lg" />
               </div>
               <div>
                 <h3 className="text-lg font-medium text-gray-900">

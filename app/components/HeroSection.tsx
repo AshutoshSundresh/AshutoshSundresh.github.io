@@ -31,7 +31,7 @@ export default function HeroSection() {
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center">
           <div className="flex flex-wrap items-center justify-center text-center md:text-left md:justify-start gap-2">
-            <span className="text-5xl md:text-6xl text-gray-900 font-bold animate-gradient bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 bg-clip-text">Hey, I'm</span>
+            <span className="text-5xl md:text-6xl text-gray-900 font-bold animate-gradient bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 bg-clip-text">Hey, I&apos;m</span>
             <div className="relative w-16 h-16 mx-2">
               <div className="w-16 h-16 rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 z-10 pointer-events-none"></div>

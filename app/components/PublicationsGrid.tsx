@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Publication } from '../types';
+import Image from 'next/image';
 
 interface PublicationsGridProps {
   publications: Publication[];
@@ -17,7 +18,7 @@ export default function PublicationsGrid({ publications, selectedId, onItemClick
           onClick={(e) => onItemClick(e, pub.id)}
         >
           <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
-            <img src={pub.icon} alt="Publication" className="w-full h-full object-contain" />
+            <Image src={pub.icon} alt="Publication" fill sizes="64px" className="object-contain" />
           </div>
           <div className="mt-3 text-center max-w-[100px]">
             <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedId === pub.id ? 'text-white' : 'text-gray-800'}`}>

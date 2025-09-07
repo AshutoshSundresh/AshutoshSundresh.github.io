@@ -1,9 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import { format } from 'date-fns';
-import Link from 'next/link';
 import useAppOverlayState from '../hooks/useTerminalState';
 import IOSLockscreen from './IOSLockscreen';
 import DesktopLockscreen from './DesktopLockscreen';
@@ -21,7 +16,7 @@ import ExperienceList from './ExperienceList';
 import useTerminal from '../hooks/useTerminal';
 import TerminalOverlay from './TerminalOverlay';
 import rawData from '../data/skeumorphicData.json';
-import type { SkeumorphicDataRoot, Project, Publication, Award, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
+import type { SkeumorphicDataRoot, Project, Publication, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
 import useWindowInfo from '../hooks/useWindowInfo';
 import useProgressiveBackground from '../hooks/useProgressiveBackground';
 import useTabHistory from '../hooks/useTabHistory';
@@ -31,8 +26,6 @@ import useRandomStorage from '../hooks/useRandomStorage';
 
 type ProjectDetails = Project;
 
-
-
 const MacOSWindow = () => {
   const { activeTab, handleTabChange, handleBack, handleForward, tabHistory, currentHistoryIndex } = useTabHistory(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -41,7 +34,7 @@ const MacOSWindow = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   // Add ref array for tab elements
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const [tabs, setTabs] = useState([
+  const [tabs] = useState([
     { id: 0, title: 'Projects', content: 'Git repositories and development projects' },
     { id: 1, title: 'Education', content: 'Academic background and achievements' },
     { id: 2, title: 'Experience', content: 'Professional experience and internships' },
@@ -67,7 +60,6 @@ const MacOSWindow = () => {
     setTerminalInput,
     terminalOutput,
     terminalInputRef,
-    terminalOutputRef,
     onKeyDown,
   } = useTerminal({
     isMobile: windowHeight.isMobile,
@@ -162,24 +154,6 @@ const MacOSWindow = () => {
     ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
     : '520px';
 
-  // Create a separate clock component to isolate time updates
-  const Clock = ({ formatString }: { formatString: string }) => {
-    const [time, setTime] = useState(new Date());
-  
-    useEffect(() => {
-      const intervalId = setInterval(() => {
-        setTime(new Date());
-      }, 1000);
-      
-      return () => clearInterval(intervalId);
-    }, []);
-  
-    return <>{format(time, formatString)}</>;
-  };
-
-  // Format current date for status bar - static version that doesn't cause re-renders
-  const currentDate = format(new Date(), 'MMMM d, yyyy h:mm a');
-
   // Parse data with types
   const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
 
@@ -198,18 +172,6 @@ const MacOSWindow = () => {
   // Update the experience data
   const experienceData: ExperienceEntry[] = data.experienceData;
 
-  // Add this state for tracking expanded items
-  const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
-
-  // Add this function to handle expansion
-  const toggleExperienceExpansion = (id: number) => {
-    setExpandedExperiences(prev =>
-      prev.includes(id)
-        ? prev.filter(expId => expId !== id)
-        : [...prev, id]
-    );
-  };
-
   // Handle folder click
   const handleItemClick = (event: React.MouseEvent, id: number) => {
     // Stop propagation to prevent parent div's click handler from firing
@@ -224,7 +186,7 @@ const MacOSWindow = () => {
 
  
 
-  const { bgLoaded, highResBgLoaded, backgroundStyle } = useProgressiveBackground(
+  const { bgLoaded, backgroundStyle } = useProgressiveBackground(
     'https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg',
     'https://512pixels.net/downloads/macos-wallpapers/10-13.jpg'
   );
@@ -235,18 +197,8 @@ const MacOSWindow = () => {
   // Update the publications data
   const publications: Publication[] = data.publications;
 
- 
-
   // Activities data
   const activitiesData: Activity[] = data.activitiesData;
-
-  // Navigation via hook
-
-  const toggleTerminalMode = () => setTerminalMode(!terminalMode);
-
-  // Terminal input handling is moved to the hook; this component only passes onKeyDown.
-
-  // Terminal scrolling, focus, and escape handling are managed in the hook.
 
   const toggleLockscreen = () => {
     setLockscreenVisible(!lockscreenVisible);
@@ -273,7 +225,7 @@ const MacOSWindow = () => {
         />
 
         <TabsBar
-          tabs={tabs as any}
+          tabs={tabs}
           activeTab={activeTab}
           isMobile={windowHeight.isMobile}
           showMobileMenu={showMobileMenu}
@@ -308,7 +260,7 @@ const MacOSWindow = () => {
             {/* Project Folders (MacOS styled) */}
             {activeTab === 0 && (
               <ProjectsGrid
-                projects={projects as any}
+                projects={projects}
                 selectedItem={selectedItem}
                 onItemClick={handleItemClick}
                 folderIconUrl={folderIconUrl}

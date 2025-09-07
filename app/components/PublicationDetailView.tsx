@@ -1,6 +1,7 @@
 "use client";
 
 import type { Publication } from '../types';
+import Image from 'next/image';
 
 interface Props {
   publication: Publication;
@@ -36,7 +37,7 @@ export default function PublicationDetailView({ publication, onClose, isMobile }
       <div className={`p-4 space-y-6 ${!isMobile ? 'pt-12' : ''}`}>
         <div className="flex flex-col items-center text-center">
           <div className="w-32 h-32 mb-4 relative transition-transform duration-[8s] group-hover:scale-105">
-            <img src={publication.icon} alt="" className="w-32 h-32 object-contain" />
+            <Image src={publication.icon} alt="" fill sizes="128px" className="object-contain" />
           </div>
           <h2 className="text-lg font-semibold text-gray-900 break-words">{publication.title}</h2>
           <p className="text-sm text-gray-500 mt-1">{publication.year}</p>

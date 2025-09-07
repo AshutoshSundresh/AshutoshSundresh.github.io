@@ -1,6 +1,7 @@
 "use client";
 
 import type { Project } from '../types';
+import Image from 'next/image';
 
 interface Props {
   projects: Project[];
@@ -19,7 +20,7 @@ export default function ProjectsGrid({ projects, selectedItem, onItemClick, fold
           onClick={(e) => onItemClick(e, project.id)}
         >
           <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
-            <img src={folderIconUrl} alt="Folder" className="w-full h-full object-contain" />
+            <Image src={folderIconUrl} alt="Folder" fill sizes="64px" className="object-contain" />
           </div>
           <div className="text-center max-w-[100px]">
             <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedItem === project.id ? 'text-white' : 'text-gray-800'}`}>

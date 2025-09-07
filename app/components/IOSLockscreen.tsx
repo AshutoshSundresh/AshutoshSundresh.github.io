@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import React, { useState, TouchEvent } from 'react';
 import type { IOSLockscreenProps } from '../types';
-import Image from 'next/image';
 import useClock from '../hooks/useClock';
 import usePinEntry from '../hooks/usePinEntry';
 import useVerticalSwipe from '../hooks/useVerticalSwipe';
@@ -11,11 +9,9 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
   const timeDate = useClock('EEEE, MMMM d');
 
   const [showKeypad, setShowKeypad] = useState(false);
-  const { password, isShaking, isExiting, submit, press } = usePinEntry(() => onUnlock());
-  const { swipeStartY, swipeDistance, onTouchStart, onTouchMove, onTouchEnd } = useVerticalSwipe();
+  const { password, isShaking, isExiting, press } = usePinEntry(() => onUnlock());
+  const { swipeDistance, onTouchStart, onTouchMove, onTouchEnd } = useVerticalSwipe();
 
-  // Handle PIN submission
-  const handleSubmit = () => submit();
 
   // Handle keypad input
   const handleKeyPress = (key: string) => {
@@ -134,7 +130,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
           {/* Question and PIN indicator */}
           <div className="w-full flex flex-col items-center z-10">
             <h2 className="text-white text-sm font-medium mb-5 text-center px-6">
-              What is the number of ways you can arrange the letters in the word "Ashutosh"?
+              What is the number of ways you can arrange the letters in the word &quot;Ashutosh&quot;?
             </h2>
             
             <div className={`flex justify-center mb-8 ${isShaking ? 'animate-shake' : ''}`}>

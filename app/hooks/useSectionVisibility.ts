@@ -5,6 +5,7 @@ export default function useSectionVisibility(threshold: number = 0.1) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const target = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -14,9 +15,9 @@ export default function useSectionVisibility(threshold: number = 0.1) {
       { root: null, rootMargin: '0px', threshold }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (target) observer.observe(target);
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (target) observer.unobserve(target);
     };
   }, [threshold]);
 

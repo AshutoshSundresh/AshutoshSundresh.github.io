@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import type { Activity } from '../types';
 
 interface ActivitiesListProps {
@@ -14,7 +15,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
             <div className="flex items-start">
               {activity.icon && (
                 <div className="w-12 h-12 mr-4 relative flex-shrink-0">
-                  <img src={activity.icon} alt={activity.title} className="w-full h-full object-contain rounded-lg" />
+                  <Image src={activity.icon} alt={activity.title} fill sizes="48px" className="object-contain rounded-lg" />
                 </div>
               )}
               <div>

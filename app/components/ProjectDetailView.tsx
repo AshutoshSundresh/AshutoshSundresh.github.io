@@ -2,6 +2,7 @@
 
 import { format } from 'date-fns';
 import type { Project } from '../types';
+import Image from 'next/image';
 
 interface Props {
   project: Project;
@@ -40,8 +41,8 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Props)
       )}
 
       <div className={`p-4 ${!isMobile ? 'pt-12' : ''}`}>
-        <div className="mb-4">
-          <img src={project.image} alt={project.name} className="w-full h-auto rounded-lg shadow-sm" />
+        <div className="mb-4 relative w-full h-40">
+          <Image src={project.image} alt={project.name} fill className="object-cover rounded-lg shadow-sm" />
           <p className="text-xs text-gray-500 mt-2 italic font-['Raleway']">{project.caption}</p>
         </div>
 

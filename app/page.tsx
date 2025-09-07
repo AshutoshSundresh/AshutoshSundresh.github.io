@@ -1,5 +1,4 @@
 "use client";
-import { useEffect, useRef } from 'react';
 import HeroSection from "./components/HeroSection";
 import IntroSection from "./components/IntroSection";
 
@@ -15,5 +14,3 @@ export default function Home() {
     </main>
   );
 }
-
-/* eslint-disable @typescript-eslint/no-unused-vars */

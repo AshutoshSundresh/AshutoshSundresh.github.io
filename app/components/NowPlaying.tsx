@@ -4,6 +4,7 @@ import { useMemo, useRef, useState, useEffect } from 'react';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
+import Image from 'next/image';
 
 import type { NowPlayingTrack } from '../types';
 
@@ -118,7 +119,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
           }}
         >
         <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl">
-          <img
+          <Image
             ref={imgRef}
             src={albumArt}
             alt={track.name + ' album art'}
@@ -167,7 +168,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
           <div 
             className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 glass-16" 
           >
-            I have last.fm only connected to my personal laptop's music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+            I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
           </div>
         </div>
       )}

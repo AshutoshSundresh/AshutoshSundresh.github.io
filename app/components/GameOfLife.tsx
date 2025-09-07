@@ -11,7 +11,7 @@ interface Cell {
 export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cells, setCells] = useState<Set<string>>(new Set());
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning] = useState(true);
   const cellSize = 6; // Size of each cell in pixels
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -78,7 +78,6 @@ export default function GameOfLife() {
 
     // Apply rules
     neighborCounts.forEach((count, key) => {
-      const [x, y] = key.split(',').map(Number);
       if (count === 3 || (count === 2 && currentCells.has(key))) {
         newCells.add(key);
       }
@@ -96,7 +95,7 @@ export default function GameOfLife() {
     }, 100);
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, getNextGeneration]);
 
   // Draw cells
   useEffect(() => {

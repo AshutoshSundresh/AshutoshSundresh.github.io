@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-// @ts-ignore
+// @ts-expect-error colorthief has no types
 import ColorThief from 'colorthief';
 
 export default function useDominantColor(albumArtUrl: string | null) {
