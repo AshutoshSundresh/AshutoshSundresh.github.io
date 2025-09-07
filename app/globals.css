@@ -239,6 +239,31 @@ html {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
+/* Common utility classes extracted from components */
+.backdrop-blur-10 { backdrop-filter: blur(10px); }
+.backdrop-blur-4 { backdrop-filter: blur(4px); }
+
+.card-elevated {
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.glass-16 {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
+}
+
+.img-no-gap { margin: -1px; }
+
+.ios-lockscreen-bg {
+  background: linear-gradient(to bottom, #1a001f, #320046, #210024, black);
+  background-size: cover;
+  background-position: center;
+}
+
 .animate-fade-out {
   animation: fadeOut 0.3s ease-out forwards;
 }
@@ -481,6 +506,80 @@ html {
 
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Terminal overlay styles */
+.terminal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: #33ff33;
+  font-family: monospace;
+  padding: 1rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+}
+.terminal-header {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #33ff33;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.terminal-hint {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-left: 1rem;
+  font-weight: normal;
+}
+.terminal-output {
+  overflow-y: auto;
+  height: auto;
+  max-height: 80vh;
+  margin-bottom: 0.5rem;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.terminal-output::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.terminal-output-line {
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+.terminal-prompt {
+  display: flex;
+  align-items: center;
+}
+.terminal-prompt-text {
+  margin-right: 0.5rem;
+}
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: #33ff33;
+  font-family: monospace;
+  font-size: 1rem;
+  flex-grow: 1;
+  outline: none;
+}
+@media (max-width: 768px) {
+  .terminal-container {
+    padding: 0.5rem;
+  }
+  .terminal-output {
+    height: auto;
+    max-height: 70vh;
+  }
+  .terminal-input {
+    font-size: 16px; /* Prevent zoom on mobile */
+  }
 }
 
 /* PIN Dot Animations */

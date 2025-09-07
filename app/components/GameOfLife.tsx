@@ -212,8 +212,7 @@ export default function GameOfLife() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-auto touch-none"
-      style={{ zIndex: 0 }}
+      className="absolute inset-0 w-full h-full pointer-events-auto touch-none z-0"
     />
   );
 } 

@@ -50,12 +50,7 @@ const ContributionsGraph: React.FC<ContributionsGraphProps> = ({ data, username 
   return (
     <canvas 
       ref={canvasRef}
-      className="w-full h-auto bg-[#282a36]"
-      style={{ 
-        maxWidth: '100%',
-        display: 'block',
-        margin: '-1px'  // This will help remove any tiny gaps
-      }}
+      className="w-full h-auto bg-[#282a36] block max-w-full img-no-gap"
     />
   );
 };

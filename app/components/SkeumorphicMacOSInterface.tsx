@@ -1,65 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState, useEffect, useRef, TouchEvent } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import Link from 'next/link';
 import useAppOverlayState from '../hooks/useTerminalState';
 import IOSLockscreen from './IOSLockscreen';
-import data from '../data/skeumorphicData.json';
+import TerminalOverlay from './TerminalOverlay';
+import rawData from '../data/skeumorphicData.json';
+import type { SkeumorphicDataRoot, Project, Publication, Award, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
+import useWindowInfo from '../hooks/useWindowInfo';
+import useProgressiveBackground from '../hooks/useProgressiveBackground';
+import useTabHistory from '../hooks/useTabHistory';
+import useSwipeNavigation from '../hooks/useSwipeNavigation';
 
-interface ProjectDetails {
-  id: number;
-  name: string;
-  image: string;  // URL to project image/screenshot
-  caption: string; // Short caption for the image
-  description: string; // Full description
-  created: Date;
-  kind?: string;
-  size?: string;
-  link?: string; // Optional project URL
-  stats?: Array<{
-    label: string;
-    value: string | number;
-  }>;
-}
+type ProjectDetails = Project;
 
-// Add new interface for publications
-interface Publication {
-  id: number;
-  title: string;
-  subtitle: string;
-  year: string;
-  icon: string;
-  description: string;
-  authors?: string[];
-  journal?: string;
-  doi?: string;
-  abstract?: string;
-  link?: string;
-  citations?: number;
-  status?: string;
-  extraDetails?: Array<{
-    label: string;
-    value: string;
-  }>;
-}
 
-// Add interface for award type
-interface Award {
-  title: string;
-  subtitle?: string;  // Make subtitle optional
-  year: string;
-  icon: string;
-  description?: string;
-  highlight?: string;
-  stats?: string;
-  link?: string;
-  extraDetails?: string;
-}
 
 const MacOSWindow = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const { activeTab, handleTabChange, handleBack, handleForward, tabHistory, currentHistoryIndex } = useTabHistory(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -75,26 +35,14 @@ const MacOSWindow = () => {
     { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' }
   ]);
 
-  const [windowHeight, setWindowHeight] = useState({
-    vh: typeof window !== 'undefined' ? window.innerHeight : 0,
-    isMobile: typeof window !== 'undefined' ? window.innerWidth < 768 : false
-  });
+  const windowHeight = useWindowInfo();
 
-  const [tabHistory, setTabHistory] = useState<number[]>([0]); // Start with first tab
-  const [currentHistoryIndex, setCurrentHistoryIndex] = useState(0);
-
-  // Add state for tracking touch events
-  const [touchStart, setTouchStart] = useState<{ x: number, y: number } | null>(null);
-  const [touchEnd, setTouchEnd] = useState<{ x: number, y: number } | null>(null);
+  // Swipe handled by useSwipeNavigation hook
 
   // Add state for tab position offset
   const [tabOffset, setTabOffset] = useState(0);
 
-  // Minimum distance required for a swipe
-  const minSwipeDistance = 50;
-
-  // Maximum angle (in degrees) from horizontal for a valid swipe
-  const maxSwipeAngle = 30;
+  // Swipe thresholds handled in hook
 
   const [randomStorage, setRandomStorage] = useState('');
   const [terminalMode, setTerminalMode] = useState(false);
@@ -114,23 +62,7 @@ const MacOSWindow = () => {
     setLockscreenActive(lockscreenVisible);
   }, [lockscreenVisible, setLockscreenActive]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowHeight({
-        vh: window.innerHeight,
-        isMobile: window.innerWidth < 768
-      });
-    };
-
-    // Initial call
-    handleResize();
-
-    // Add event listener
-    window.addEventListener('resize', handleResize);
-
-    // Clean up
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // handled by hook
 
   // Reset selected item when tab changes
   useEffect(() => {
@@ -168,83 +100,27 @@ const MacOSWindow = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Handle touch events for swipe navigation
-  const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
-    setTouchEnd(null); // Reset touch end
-    setTouchStart({
-      x: e.targetTouches[0].clientX,
-      y: e.targetTouches[0].clientY
-    });
-  };
-
-  const handleTouchMove = (e: TouchEvent<HTMLDivElement>) => {
-    setTouchEnd({
-      x: e.targetTouches[0].clientX,
-      y: e.targetTouches[0].clientY
-    });
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-
-    // Calculate horizontal and vertical distances
-    const deltaX = touchStart.x - touchEnd.x;
-    const deltaY = touchStart.y - touchEnd.y;
-
-    // Calculate the absolute horizontal distance
-    const horizontalDistance = Math.abs(deltaX);
-
-    // Calculate the angle of the swipe in degrees
-    const angleInRadians = Math.atan2(Math.abs(deltaY), horizontalDistance);
-    const angleInDegrees = angleInRadians * (180 / Math.PI);
-
-    // Check if the swipe meets both the distance and angle requirements
-    const isValidHorizontalSwipe =
-      horizontalDistance > minSwipeDistance &&
-      angleInDegrees < maxSwipeAngle;
-
-    // Don't process swipes if detail view is open or if not a valid horizontal swipe
-    if (selectedItem !== null || !isValidHorizontalSwipe) {
-      // Reset touch coordinates and return
-      setTouchStart(null);
-      setTouchEnd(null);
-      return;
-    }
-
-    // Determine swipe direction (left or right)
-    const isLeftSwipe = deltaX > 0;
-    const isRightSwipe = deltaX < 0;
-
-    // Get the width of a single tab
-    const tabWidth = getTabWidth();
-
-    // Navigate based on swipe direction
-    if (isLeftSwipe) {
-      // Only proceed if not on the last tab
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipeNavigation(
+    windowHeight.isMobile && selectedItem === null,
+    () => {
       if (activeTab < tabs.length - 1) {
-        // Swipe left to go to next tab
+        const tabWidth = getTabWidth();
         const nextTab = activeTab + 1;
-        // Calculate new offset and constrain it
         const newOffset = tabOffset - tabWidth;
         setTabOffset(getConstrainedOffset(newOffset));
         handleTabChange(nextTab);
       }
-    } else if (isRightSwipe) {
-      // Only proceed if not on the first tab
+    },
+    () => {
       if (activeTab > 0) {
-        // Swipe right to go to previous tab
+        const tabWidth = getTabWidth();
         const prevTab = activeTab - 1;
-        // Calculate new offset and constrain it
         const newOffset = tabOffset + tabWidth;
         setTabOffset(getConstrainedOffset(newOffset));
         handleTabChange(prevTab);
       }
     }
-
-    // Reset touch coordinates
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
+  );
 
   // Add function to calculate tab width
   const getTabWidth = () => {
@@ -256,35 +132,20 @@ const MacOSWindow = () => {
     return activeTabRef ? activeTabRef.offsetWidth : 45;
   };
 
-  // Add function to calculate maximum scroll offset
+  // Calculate max scroll and constrained offset
   const getMaxScrollOffset = () => {
     if (!tabRefs.current.length) return 0;
-
-    // Calculate total width of all tabs
-    const tabContainer = document.querySelector('.tab-container');
-    const tabsContainer = document.querySelector('.tabs-container');
-
+    const tabContainer = document.querySelector('.tab-container') as HTMLElement | null;
+    const tabsContainer = document.querySelector('.tabs-container') as HTMLElement | null;
     if (!tabContainer || !tabsContainer) return 0;
-
-    // Get the width of the visible tab container and the total width of all tabs
     const containerWidth = tabContainer.clientWidth;
     const tabsWidth = tabsContainer.scrollWidth;
-
-    // Calculate maximum offset (0 or negative value)
-    // When all tabs can fit, max is 0 (no scrolling needed)
-    // When tabs overflow, max is (container width - total tabs width)
     return Math.min(0, containerWidth - tabsWidth);
   };
 
-  // Function to ensure offset stays within bounds
   const getConstrainedOffset = (proposedOffset: number) => {
-    // Don't allow scrolling to the right beyond starting point (0)
     const maxRight = 0;
-
-    // Don't allow scrolling to the left beyond the last tab
     const maxLeft = getMaxScrollOffset();
-
-    // Constrain the offset within the allowed range
     return Math.max(maxLeft, Math.min(maxRight, proposedOffset));
   };
 
@@ -323,20 +184,23 @@ const MacOSWindow = () => {
     setRandomStorage(newStorage);
   };
 
+  // Parse data with types
+  const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
+
   // Project data
-  const projects: ProjectDetails[] = (data as any).projects.map((p: any) => ({
+  const projects: ProjectDetails[] = data.projects.map((p) => ({
     ...p,
-    created: new Date(p.created as string)
+    created: new Date(p.created)
   }));
 
   // Folder icon image URL
-  const folderIconUrl = (data as any).folderIconUrl;
+  const folderIconUrl = data.folderIconUrl;
 
   // Update the education data interface and content
-  const educationData = (data as any).educationData;
+  const educationData: EducationEntry[] = data.educationData;
 
   // Update the experience data
-  const experienceData = (data as any).experienceData;
+  const experienceData: ExperienceEntry[] = data.experienceData;
 
   // Add this state for tracking expanded items
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
@@ -466,52 +330,16 @@ const MacOSWindow = () => {
     );
   };
 
-  // State for background image loading
-  const [bgLoaded, setBgLoaded] = useState(false);
-  const [highResBgLoaded, setHighResBgLoaded] = useState(false);
-
-  // Update the backgroundStyle object
-  const backgroundStyle = {
-    backgroundImage: highResBgLoaded 
-      ? 'url("https://512pixels.net/downloads/macos-wallpapers/10-13.jpg")' 
-      : bgLoaded 
-        ? 'url("https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg")' 
-        : 'none',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    position: 'fixed' as const,  // Type assertion needed for position property
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    width: '100vw',
-    height: '100vh',
-    transition: 'background-image 0.5s ease-in-out'
-  };
-
-  // Lazy load the background image progressively
-  useEffect(() => {
-    // Load low-res image first
-    const lowResImg = new window.Image();
-    lowResImg.src = "https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg";
-    lowResImg.onload = () => {
-      setBgLoaded(true);
-      
-      // Then load high-res image
-      const highResImg = new window.Image();
-      highResImg.src = "https://512pixels.net/downloads/macos-wallpapers/10-13.jpg";
-      highResImg.onload = () => {
-        setHighResBgLoaded(true);
-      };
-    };
-  }, []);
+  const { bgLoaded, highResBgLoaded, backgroundStyle } = useProgressiveBackground(
+    'https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg',
+    'https://512pixels.net/downloads/macos-wallpapers/10-13.jpg'
+  );
 
   // Update the awards data
-  const awardsData: { id: number; category: string; awards: Award[] }[] = (data as any).awardsData;
+  const awardsData: AwardCategory[] = data.awardsData;
 
   // Update the publications data
-  const publications: Publication[] = (data as any).publications;
+  const publications: Publication[] = data.publications;
 
   // Update the PublicationDetailView component
   const PublicationDetailView = ({
@@ -648,59 +476,15 @@ const MacOSWindow = () => {
     );
   };
 
-  // Add activities data
-  interface Activity {
-    id: number;
-    title: string;
-    period: string;
-    description: string;
-    highlights?: string[];
-    link?: {
-      text: string;
-      url: string;
-    };
-    links?: {
-      text: string;
-      url: string;
-    }[];
-    stats?: {
-      value: string;
-      label: string;
-    }[];
-    icon?: string;
-  }
+  // Activities data
+  const activitiesData: Activity[] = data.activitiesData;
 
-  const activitiesData: Activity[] = (data as any).activitiesData;
+  // Update the random storage size only when tab changes
+  useEffect(() => {
+    updateRandomStorage();
+  }, [activeTab]);
 
-  // Add function to handle tab changes
-  const handleTabChange = (tabId: number) => {
-    // Only add to history if we're changing to a different tab
-    if (tabId !== activeTab) {
-      // If we're not at the end of the history, remove all forward history
-      const newHistory = tabHistory.slice(0, currentHistoryIndex + 1);
-      setTabHistory([...newHistory, tabId]);
-      setCurrentHistoryIndex(newHistory.length);
-      setActiveTab(tabId);
-
-      // Update the random storage size only when tab changes
-      updateRandomStorage();
-    }
-  };
-
-  // Add navigation functions
-  const handleBack = () => {
-    if (currentHistoryIndex > 0) {
-      setCurrentHistoryIndex(currentHistoryIndex - 1);
-      setActiveTab(tabHistory[currentHistoryIndex - 1]);
-    }
-  };
-
-  const handleForward = () => {
-    if (currentHistoryIndex < tabHistory.length - 1) {
-      setCurrentHistoryIndex(currentHistoryIndex + 1);
-      setActiveTab(tabHistory[currentHistoryIndex + 1]);
-    }
-  };
+  // Navigation via hook
 
   const toggleTerminalMode = () => {
     const newTerminalMode = !terminalMode;
@@ -754,12 +538,12 @@ const MacOSWindow = () => {
         const projectLines = projects.map(project => `- ${project.name}`);
         setTerminalOutput(prev => [...prev, ...projectLines]);
       } else if (command === 'ls education') {
-        const educationLines = educationData.map((edu: any) =>
+        const educationLines = educationData.map((edu) =>
           `- ${edu.institution || ''} ${edu.degree || ''}`
         );
         setTerminalOutput(prev => [...prev, ...educationLines]);
       } else if (command === 'ls experience') {
-        const experienceLines = experienceData.map((exp: any) =>
+        const experienceLines = experienceData.map((exp) =>
           `- ${exp.company}: ${exp.position}`
         );
         setTerminalOutput(prev => [...prev, ...experienceLines]);
@@ -1046,7 +830,7 @@ const MacOSWindow = () => {
             {/* Documents Tab */}
             {activeTab === 1 && (
               <div className="mt-4 space-y-6">
-                {educationData.map((edu: any) => (
+                {educationData.map((edu) => (
                   <div
                     key={edu.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
@@ -1092,7 +876,7 @@ const MacOSWindow = () => {
                       
                       {edu.details.grades && (
                         <div className="space-y-2">
-                          {edu.details.grades.map((grade: any, index: number) => (
+                          {edu.details.grades?.map((grade, index) => (
                             <div key={index} className="flex justify-between text-sm">
                               <span className="text-gray-600">{grade.grade}</span>
                               <span className="font-medium">{grade.score}</span>
@@ -1160,7 +944,7 @@ const MacOSWindow = () => {
             {/* Experience Tab */}
             {activeTab === 2 && (
               <div className="mt-4 space-y-6">
-                {experienceData.map((exp: any) => (
+                {experienceData.map((exp) => (
                   <div
                     key={exp.id}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
@@ -1461,8 +1245,7 @@ const MacOSWindow = () => {
         </div>
       </div>
       {lockscreenVisible && !windowHeight.isMobile && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white"
-          style={{ backdropFilter: 'blur(10px)' }}
+        <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white backdrop-blur-10"
         >
           <div className="flex flex-col items-center">
             {/* Time */}
@@ -1523,105 +1306,14 @@ const MacOSWindow = () => {
         <IOSLockscreen onUnlock={toggleLockscreen} />
       )}
       {terminalMode && (
-        <div className="terminal-container">
-          <style jsx>{`
-            .terminal-container {
-              position: fixed;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: rgba(0, 0, 0, 0.9);
-              color: #33ff33;
-              font-family: monospace;
-              padding: 1rem;
-              z-index: 9999;
-              display: flex;
-              flex-direction: column;
-            }
-            .terminal-header {
-              padding-bottom: 0.5rem;
-              margin-bottom: 0.5rem;
-              border-bottom: 1px solid #33ff33;
-              font-weight: bold;
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-            }
-            .terminal-hint {
-              font-size: 0.8rem;
-              opacity: 0.7;
-              margin-left: 1rem;
-              font-weight: normal;
-            }
-            .terminal-output {
-              overflow-y: auto;
-              height: auto;
-              max-height: 80vh;
-              margin-bottom: 0.5rem;
-              scrollbar-width: none; /* Firefox */
-              -ms-overflow-style: none; /* IE and Edge */
-            }
-            .terminal-output::-webkit-scrollbar {
-              display: none; /* Chrome, Safari, Opera */
-            }
-            .terminal-output-line {
-              margin-bottom: 0.25rem;
-              line-height: 1.4;
-            }
-            .terminal-prompt {
-              display: flex;
-              align-items: center;
-            }
-            .terminal-prompt-text {
-              margin-right: 0.5rem;
-            }
-            .terminal-input {
-              background: transparent;
-              border: none;
-              color: #33ff33;
-              font-family: monospace;
-              font-size: 1rem;
-              flex-grow: 1;
-              outline: none;
-            }
-            @media (max-width: 768px) {
-              .terminal-container {
-                padding: 0.5rem;
-              }
-              .terminal-output {
-                height: auto;
-                max-height: 70vh;
-              }
-              .terminal-input {
-                font-size: 16px; /* Prevent zoom on mobile */
-              }
-            }
-          `}</style>
-          <div className="terminal-header">
-            <div>Ashutosh Terminal v1.0.0 {!windowHeight.isMobile && (
-              <span className="terminal-hint">(Press ESC to exit)</span>
-            )}</div>
-          </div>
-          <div className="terminal-output" ref={terminalOutputRef}>
-            {terminalOutput.map((line, index) => (
-              <div key={index} className="terminal-output-line">
-                {line}
-              </div>
-            ))}
-          </div>
-          <div className="terminal-prompt">
-            <span className="terminal-prompt-text">ashutosh@portfolio:~$</span>
-            <input
-              type="text"
-              className="terminal-input"
-              value={terminalInput}
-              onChange={(e) => setTerminalInput(e.target.value)}
-              onKeyDown={handleTerminalInput}
-              ref={terminalInputRef}
-            />
-          </div>
-        </div>
+        <TerminalOverlay
+          isMobile={windowHeight.isMobile}
+          inputValue={terminalInput}
+          onInputChange={setTerminalInput}
+          onKeyDown={handleTerminalInput}
+          outputLines={terminalOutput}
+          inputRef={terminalInputRef}
+        />
       )}
     </div>
   );

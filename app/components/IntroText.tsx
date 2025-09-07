@@ -139,10 +139,7 @@ export default function IntroText() {
     <div 
       id="intro-text" 
       ref={sectionRef}
-      className={`relative min-h-[100dvh] flex flex-col items-center justify-center p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-      style={{
-        background: '#ffffff'
-      }}
+      className={`relative min-h-[100dvh] flex flex-col items-center justify-center p-4 md:p-8 font-raleway transition-opacity duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'} bg-white`}
     >
       <GameOfLife />
       <div className="absolute top-4 w-full flex justify-center z-10">

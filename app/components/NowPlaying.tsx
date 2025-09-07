@@ -71,25 +71,7 @@ function getTimeAgo(unixTimestamp: string): string {
   }
 }
 
-const styles = `
-  @keyframes gradientFlow {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-`;
-
-if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = styles;
-  document.head.appendChild(styleSheet);
-}
+// keyframes for gradient flow are defined in globals.css
 
 export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlayingProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -267,20 +249,10 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
       {/* Tooltip rendered outside the blurred container */}
       {showInfoButton && showTooltip && (
         <div 
-          className="fixed z-[10000] pointer-events-none"
-          style={{
-            top: '80px',
-            left: '50%',
-            transform: 'translateX(-50%)'
-          }}
+          className="fixed z-[10000] pointer-events-none top-20 left-1/2 -translate-x-1/2"
         >
           <div 
-            className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10" 
-            style={{ 
-              background: 'rgba(0, 0, 0, 0.6)',
-              backdropFilter: 'blur(16px) saturate(180%) brightness(1.1)',
-              WebkitBackdropFilter: 'blur(16px) saturate(180%) brightness(1.1)'
-            }}
+            className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 glass-16" 
           >
             I have last.fm only connected to my personal laptop's music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
           </div>

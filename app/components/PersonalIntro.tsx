@@ -42,11 +42,7 @@ export default function PersonalIntro() {
 
             <div className="relative w-16 h-16 mx-2">
               <div
-                className="w-16 h-16 rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300"
-                style={{
-                  boxShadow:
-                    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.15)",
-                }}
+                className="w-16 h-16 rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 z-10 pointer-events-none"></div>
                 <Image
@@ -75,11 +71,7 @@ export default function PersonalIntro() {
 
             <div className="relative w-16 h-16 mx-2">
               <div
-                className="w-16 h-16 rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300"
-                style={{
-                  boxShadow:
-                    "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255, 255, 255, 0.15)",
-                }}
+                className="w-16 h-16 rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent h-1/2 z-10 pointer-events-none"></div>
                 <Image
