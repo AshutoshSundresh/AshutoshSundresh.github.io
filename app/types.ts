@@ -254,6 +254,7 @@ export interface ToolbarProps {
   canBack: boolean;
   canForward: boolean;
   showArchive: boolean;
+  onOpenSearch?: () => void;
 }
 
 export interface Tab { id: number; title: string }
@@ -310,4 +311,16 @@ export interface ContributionsGraphProps {
 // Internal / Misc Models (Local-only helpers)
 // ============================================================================
 export interface Cell { x: number; y: number }
+
+// ============================================================================
+// Search Types (client-side search overlay)
+// ============================================================================
+export interface SearchRecord {
+  id: string;
+  path: string;
+  title: string;
+  text: string;
+  textLower: string;
+  titleLower: string;
+}
 

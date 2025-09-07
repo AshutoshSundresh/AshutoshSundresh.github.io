@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import useAppOverlayState from '../hooks/useTerminalState';
 import IOSLockscreen from './IOSLockscreen';
 import DesktopLockscreen from './DesktopLockscreen';
@@ -15,6 +16,7 @@ import EducationList from './EducationList';
 import ExperienceList from './ExperienceList';
 import useTerminal from '../hooks/useTerminal';
 import TerminalOverlay from './TerminalOverlay';
+import SearchOverlay from './SearchOverlay';
 import rawData from '../data/skeumorphicData.json';
 import type { SkeumorphicDataRoot, Project, Publication, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
 import useWindowInfo from '../hooks/useWindowInfo';
@@ -27,9 +29,12 @@ import useRandomStorage from '../hooks/useRandomStorage';
 type ProjectDetails = Project;
 
 const MacOSWindow = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const { activeTab, handleTabChange, handleBack, handleForward, tabHistory, currentHistoryIndex } = useTabHistory(0);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   // Add ref array for tab elements
@@ -53,6 +58,7 @@ const MacOSWindow = () => {
   // Swipe thresholds handled in hook
 
   const { randomStorage } = useRandomStorage([activeTab]);
+  const searchParams = useSearchParams();
   const {
     terminalMode,
     setTerminalMode,
@@ -100,6 +106,11 @@ const MacOSWindow = () => {
   });
   useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, () => setShowMobileMenu(false));
 
+  const onTabChange = (index: number) => {
+    setSelectedItem(null);
+    handleTabChange(index);
+  };
+
   const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipeNavigation(
     windowHeight.isMobile && selectedItem === null,
     () => {
@@ -108,7 +119,7 @@ const MacOSWindow = () => {
         const nextTab = activeTab + 1;
         const newOffset = tabOffset - tabWidth;
         setTabOffset(getConstrainedOffset(newOffset));
-        handleTabChange(nextTab);
+        onTabChange(nextTab);
       }
     },
     () => {
@@ -117,10 +128,39 @@ const MacOSWindow = () => {
         const prevTab = activeTab - 1;
         const newOffset = tabOffset + tabWidth;
         setTabOffset(getConstrainedOffset(newOffset));
-        handleTabChange(prevTab);
+        onTabChange(prevTab);
       }
     }
   );
+
+  // Sync tab from URL query param `tab` (when landing from search)
+  const tabNameToIndex: Record<string, number> = {
+    projects: 0,
+    education: 1,
+    experience: 2,
+    awards: 3,
+    publications: 4,
+    activities: 5,
+  };
+  const tabIndexToName = ['projects','education','experience','awards','publications','activities'];
+
+  const didInitFromUrl = useRef(false);
+  useEffect(() => {
+    if (didInitFromUrl.current) return;
+    const tabParam = searchParams?.get('tab');
+    if (!tabParam) { didInitFromUrl.current = true; return; }
+    const wanted = tabNameToIndex[String(tabParam).toLowerCase()];
+    if (typeof wanted === 'number') {
+      handleTabChange(wanted);
+    }
+    didInitFromUrl.current = true;
+  }, [searchParams, handleTabChange]);
+
+  // Keep URL query in sync with active tab (without adding history entries)
+  useEffect(() => {
+    const name = tabIndexToName[activeTab] || 'projects';
+    router.replace(`${pathname}?tab=${name}`, { scroll: false });
+  }, [activeTab, router, pathname]);
 
   // Add function to calculate tab width
   const getTabWidth = () => {
@@ -222,6 +262,7 @@ const MacOSWindow = () => {
           canBack={currentHistoryIndex !== 0}
           canForward={currentHistoryIndex < tabHistory.length - 1}
           showArchive={activeTab === 5}
+          onOpenSearch={() => setIsSearchOpen(true)}
         />
 
         <TabsBar
@@ -230,7 +271,7 @@ const MacOSWindow = () => {
           isMobile={windowHeight.isMobile}
           showMobileMenu={showMobileMenu}
           onToggleMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
-          onSelect={handleTabChange}
+          onSelect={onTabChange}
           mobileMenuRef={mobileMenuRef}
         />
 
@@ -337,6 +378,23 @@ const MacOSWindow = () => {
           inputRef={terminalInputRef}
         />
       )}
+      {/* Reuse search overlay from hero; enable in-component tab navigation when targeting experience */}
+      <SearchOverlay
+        open={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        navigateInSkeumorphic={(tabName: string) => {
+          const map: Record<string, number> = {
+            projects: 0,
+            education: 1,
+            experience: 2,
+            awards: 3,
+            publications: 4,
+            activities: 5,
+          };
+          const idx = map[String(tabName).toLowerCase()];
+          if (typeof idx === 'number') onTabChange(idx);
+        }}
+      />
     </div>
   );
 };

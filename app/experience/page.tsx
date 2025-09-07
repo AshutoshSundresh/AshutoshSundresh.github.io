@@ -1,6 +1,11 @@
 "use client";
+import { Suspense } from "react";
 import ExperiencePage from "../components/ExperiencePage";
 
 export default function Experience() {
-  return <ExperiencePage />;
+  return (
+    <Suspense fallback={null}>
+      <ExperiencePage />
+    </Suspense>
+  );
 }
