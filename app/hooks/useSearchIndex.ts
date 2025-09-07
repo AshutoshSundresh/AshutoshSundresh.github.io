@@ -10,6 +10,35 @@ function normalizeWhitespace(str: string): string {
   return str.replace(/\s+/g, ' ').trim();
 }
 
+// Builds readable text by traversing nodes and inserting a single space
+// between adjacent text segments that would otherwise be concatenated.
+function extractReadableText(root: Node): string {
+  const segments: string[] = [];
+
+  function walk(node: Node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      segments.push(node.nodeValue || '');
+      return;
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE) return;
+    const el = node as Element;
+    const tag = el.tagName;
+    if (tag === 'SCRIPT' || tag === 'STYLE') return;
+    // Traverse children
+    el.childNodes.forEach(walk);
+  }
+
+  walk(root);
+
+  return segments.reduce((acc, part) => {
+    if (!part) return acc;
+    if (acc.length === 0) return part;
+    // If boundaries are non-whitespace on both sides, insert one space
+    const needsSpace = !/\s$/.test(acc) && !/^\s/.test(part);
+    return acc + (needsSpace ? ' ' : '') + part;
+  }, '');
+}
+
 function getClosestAnchorId(element: Element | null): string | null {
   let el: Element | null = element;
   while (el) {
@@ -39,8 +68,9 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
   const allTitled = Array.from(doc.querySelectorAll('[data-search-title]')) as HTMLElement[];
   const titledBlocks = allTitled.filter(el => !el.querySelector('[data-search-title]'));
   for (const block of titledBlocks) {
+    if (block.closest('[data-search-ignore], ignore-search')) continue;
     const title = (block.dataset.searchTitle || '').trim() || 'Section';
-    const text = normalizeWhitespace(block.textContent || '');
+    const text = normalizeWhitespace(extractReadableText(block));
     if (text.length < 3) continue;
     const anchor = getClosestAnchorId(block);
     const path = anchor ? `${basePath}#${anchor}` : basePath;
@@ -56,6 +86,7 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
   const nodes = Array.from(doc.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, figcaption, summary, blockquote, a'));
   for (const node of nodes) {
     if (!(node instanceof HTMLElement)) continue;
+    if (node.closest('[data-search-ignore], ignore-search')) continue;
     if (node.closest('nav, footer, header, script, style')) continue;
     if (node.closest('[data-search-title]')) continue;
     if (node.tagName === 'A') {
@@ -66,7 +97,7 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
         if (parentText.length > childText.length + 10) continue;
       }
     }
-    const raw = node.textContent || '';
+    const raw = extractReadableText(node);
     const text = normalizeWhitespace(raw);
     if (text.length < 3) continue;
     const title = extractTitleFor(node, doc);
