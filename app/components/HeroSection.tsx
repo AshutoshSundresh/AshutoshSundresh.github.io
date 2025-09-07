@@ -25,7 +25,7 @@ export default function HeroSection() {
       >
         Game of Life
       </a>
-      <div className="absolute top-4 w-full flex justify-center z-10">
+      <div className="absolute top-4 w-full flex justify-center z-1000">
         <NowPlaying />
       </div>
       <div className="max-w-4xl mx-auto relative z-10">

@@ -39,9 +39,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "eslintConfig": {
-    "ignorePatterns": [
-      "**/*"
-    ]
-  }
+  "eslintConfig": {}
 }
