@@ -94,9 +94,9 @@ const MacOSWindow = () => {
 
   // Outside click handling
   useClickOutside(contentRef as React.RefObject<HTMLElement | null>, (event) => {
-    const detailView = document.querySelector('[data-detail-view]');
+        const detailView = document.querySelector('[data-detail-view]');
     if (detailView && detailView.contains(event.target as Node)) return;
-    setSelectedItem(null);
+        setSelectedItem(null);
   });
   useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, () => setShowMobileMenu(false));
 

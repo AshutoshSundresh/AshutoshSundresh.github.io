@@ -1,16 +1,9 @@
 "use client";
 
-import type { Project } from '../types';
+import type { ProjectsGridProps } from '../types';
 import Image from 'next/image';
 
-interface Props {
-  projects: Project[];
-  selectedItem: number | null;
-  onItemClick: (e: React.MouseEvent, id: number) => void;
-  folderIconUrl: string;
-}
-
-export default function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: Props) {
+export default function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: ProjectsGridProps) {
   return (
     <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
       {projects.map((project) => (

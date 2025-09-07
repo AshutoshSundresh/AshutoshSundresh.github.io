@@ -1,11 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-export interface WindowInfo {
-  vh: number;
-  isMobile: boolean;
-}
+import type { WindowInfo } from '../types';
 
 export default function useWindowInfo(): WindowInfo {
   const [windowInfo, setWindowInfo] = useState<WindowInfo>({

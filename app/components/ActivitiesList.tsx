@@ -1,10 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import type { Activity } from '../types';
-
-interface ActivitiesListProps {
-  activities: Activity[];
-}
+import type { ActivitiesListProps } from '../types';
 
 export default function ActivitiesList({ activities }: ActivitiesListProps) {
   return (
@@ -46,9 +42,9 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
                 ))}
               </ul>
             )}
-            {(activity as Activity).links && (
+            {activity.links && (
               <div className="mt-3 flex gap-2 justify-end flex-wrap">
-                {(activity as Activity).links!.map((l, idx) => (
+                {activity.links!.map((l, idx) => (
                   <a key={idx} href={l.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-blue-600 bg-blue-50/0 hover:bg-blue-50 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300">
                     <span>{l.text}</span>
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">

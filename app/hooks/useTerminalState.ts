@@ -1,13 +1,7 @@
 'use client';
 
 import { create } from 'zustand';
-
-interface AppOverlayState {
-  isTerminalActive: boolean;
-  isLockscreenActive: boolean;
-  setTerminalActive: (active: boolean) => void;
-  setLockscreenActive: (active: boolean) => void;
-}
+import type { AppOverlayState } from '../types';
 
 // Create a store for terminal and lockscreen state
 const useAppOverlayState = create<AppOverlayState>((set) => ({

@@ -2,37 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import ContributionsGraph from './ContributionsGraph';
-import type { ContributionsCanvasData } from '../types';
+import type { ContributionsCanvasData, ContributionDay, ContributionWeek, Contribution, YearData } from '../types';
 
 const GITHUB_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN;
 const USERNAME = 'AshutoshSundresh';
-
-interface ContributionDay {
-  contributionCount: number;
-  date: string;
-  color: string;
-}
-
-interface ContributionWeek {
-  contributionDays: ContributionDay[];
-}
-
-interface Contribution {
-  date: string;
-  count: number;
-  color: string;
-  intensity: number;
-}
-
-interface YearData {
-  year: string;
-  total: number;
-  range: {
-    start: string;
-    end: string;
-  };
-  contributions: Contribution[];
-}
 
 type ContributionsData = ContributionsCanvasData;
 

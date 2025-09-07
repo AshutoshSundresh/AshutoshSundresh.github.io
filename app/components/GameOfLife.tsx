@@ -1,12 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import type { Cell } from '../types';
 import useGameOfLifeInitializer from '../hooks/useGameOfLifeInitializer';
-
-interface Cell {
-  x: number;
-  y: number;
-}
 
 export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

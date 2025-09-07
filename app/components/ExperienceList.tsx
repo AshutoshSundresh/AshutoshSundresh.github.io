@@ -2,13 +2,9 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { ExperienceEntry } from '../types';
+import type { ExperienceListProps } from '../types';
 
-interface Props {
-  experienceData: ExperienceEntry[];
-}
-
-export default function ExperienceList({ experienceData }: Props) {
+export default function ExperienceList({ experienceData }: ExperienceListProps) {
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
 
   const toggleExperienceExpansion = (id: number) => {

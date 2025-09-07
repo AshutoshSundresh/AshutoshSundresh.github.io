@@ -1,11 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import type { NowPlayingTrack } from '../types';
-
-interface LastFmResponse {
-  recenttracks: { track: NowPlayingTrack[] };
-}
+import type { NowPlayingTrack, LastFmResponse } from '../types';
 
 export default function useLastFmNowPlaying() {
   const [isLoading, setIsLoading] = useState(true);

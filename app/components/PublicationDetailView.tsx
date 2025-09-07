@@ -1,15 +1,9 @@
 "use client";
 
-import type { Publication } from '../types';
+import type { PublicationDetailViewProps } from '../types';
 import Image from 'next/image';
 
-interface Props {
-  publication: Publication;
-  onClose: () => void;
-  isMobile: boolean;
-}
-
-export default function PublicationDetailView({ publication, onClose, isMobile }: Props) {
+export default function PublicationDetailView({ publication, onClose, isMobile }: PublicationDetailViewProps) {
   return (
     <div
       data-detail-view

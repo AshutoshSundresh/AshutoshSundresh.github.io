@@ -1,12 +1,5 @@
 import React from 'react';
-
-interface ToolbarProps {
-  onBack: () => void;
-  onForward: () => void;
-  canBack: boolean;
-  canForward: boolean;
-  showArchive: boolean;
-}
+import type { ToolbarProps } from '../types';
 
 export default function Toolbar({ onBack, onForward, canBack, canForward, showArchive }: ToolbarProps) {
   return (

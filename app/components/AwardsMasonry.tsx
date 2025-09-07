@@ -1,13 +1,9 @@
 "use client";
 
-import type { AwardCategory } from '../types';
+import type { AwardsMasonryProps } from '../types';
 import Image from 'next/image';
 
-interface Props {
-  awardsData: AwardCategory[];
-}
-
-export default function AwardsMasonry({ awardsData }: Props) {
+export default function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
   return (
     <div className="mt-4 space-y-8">
       {awardsData.map((category) => (

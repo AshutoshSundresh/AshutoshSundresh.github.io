@@ -1,19 +1,5 @@
-import React, { RefObject } from 'react';
-
-interface Tab {
-  id: number;
-  title: string;
-}
-
-interface TabsBarProps {
-  tabs: Tab[];
-  activeTab: number;
-  isMobile: boolean;
-  showMobileMenu: boolean;
-  onToggleMobileMenu: () => void;
-  onSelect: (id: number) => void;
-  mobileMenuRef: RefObject<HTMLDivElement | null>;
-}
+import React from 'react';
+import type { TabsBarProps } from '../types';
 
 export default function TabsBar({ tabs, activeTab, isMobile, showMobileMenu, onToggleMobileMenu, onSelect, mobileMenuRef }: TabsBarProps) {
   return (

@@ -1,10 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-
-interface WindowHeaderProps {
-  onToggleLockscreen: () => void;
-  onOpenTerminal: () => void;
-}
+import type { WindowHeaderProps } from '../types';
 
 export default function WindowHeader({ onToggleLockscreen, onOpenTerminal }: WindowHeaderProps) {
   return (

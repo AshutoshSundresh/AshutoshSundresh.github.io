@@ -1,16 +1,10 @@
 "use client";
 
 import { format } from 'date-fns';
-import type { Project } from '../types';
+import type { ProjectDetailViewProps } from '../types';
 import Image from 'next/image';
 
-interface Props {
-  project: Project;
-  onClose: () => void;
-  isMobile: boolean;
-}
-
-export default function ProjectDetailView({ project, onClose, isMobile }: Props) {
+export default function ProjectDetailView({ project, onClose, isMobile }: ProjectDetailViewProps) {
   return (
     <div
       data-detail-view

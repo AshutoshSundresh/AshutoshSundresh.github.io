@@ -2,11 +2,7 @@
 
 import { useEffect } from 'react';
 import type { Dispatch, SetStateAction } from 'react';
-
-export interface Dimensions {
-  width: number;
-  height: number;
-}
+import type { Dimensions } from '../types';
 
 export default function useGameOfLifeInitializer(
   dimensions: Dimensions,

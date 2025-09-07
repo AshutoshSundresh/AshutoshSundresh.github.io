@@ -1,13 +1,9 @@
 "use client";
 
-import type { EducationEntry } from '../types';
+import type { EducationListProps } from '../types';
 import Image from 'next/image';
 
-interface Props {
-  educationData: EducationEntry[];
-}
-
-export default function EducationList({ educationData }: Props) {
+export default function EducationList({ educationData }: EducationListProps) {
   return (
     <div className="mt-4 space-y-6">
       {educationData.map((edu) => (

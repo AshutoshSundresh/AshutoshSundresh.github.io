@@ -5,12 +5,7 @@ import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
 
-import type { NowPlayingTrack } from '../types';
-
-interface NowPlayingProps {
-  onStatusChange?: (status: 'playing' | 'recent' | null) => void;
-  onTrackChange?: (track: { name: string; artist: string } | null) => void;
-}
+import type { NowPlayingTrack, NowPlayingProps } from '../types';
 
 function rgbToHex(rgb: number[]) {
   return (

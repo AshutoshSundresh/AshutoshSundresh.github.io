@@ -1,12 +1,6 @@
 import React from 'react';
-import type { Publication } from '../types';
+import type { PublicationsGridProps } from '../types';
 import Image from 'next/image';
-
-interface PublicationsGridProps {
-  publications: Publication[];
-  selectedId: number | null;
-  onItemClick: (e: React.MouseEvent, id: number) => void;
-}
 
 export default function PublicationsGrid({ publications, selectedId, onItemClick }: PublicationsGridProps) {
   return (

@@ -2,12 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import { drawContributions } from 'github-contributions-canvas';
-import type { ContributionsCanvasData } from '../types';
-
-interface ContributionsGraphProps {
-  data: ContributionsCanvasData;
-  username: string;
-}
+import type { ContributionsGraphProps } from '../types';
 
 const ContributionsGraph: React.FC<ContributionsGraphProps> = ({ data, username }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
