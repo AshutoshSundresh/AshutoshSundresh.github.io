@@ -1260,7 +1260,7 @@ const MacOSWindow = () => {
             {/* User profile */}
             <div className="w-24 h-24 bg-gray-300 rounded-full mb-4 overflow-hidden">
               <Image
-                src="https://raw.githubusercontent.com/AshutoshSundresh/AshutoshSundresh.github.io/main/pages/ashutosh.jpeg"
+                src="/images/ashutosh.jpeg"
                 alt="Profile"
                 width={96}
                 height={96}
