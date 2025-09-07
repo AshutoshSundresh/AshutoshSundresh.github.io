@@ -298,10 +298,10 @@ html {
   }
 }
 
-.nav-link:hover {
-  background: rgba(120, 120, 120, 0.781);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-  border-radius: 360px;
+/* Default nav links: remove hover styles (pressed effect is for active only) */
+.nav-link:not(.nav-active-pressed):not(.nav-active-pressed-glass):not(.contact-btn):hover {
+  background: transparent;
+  box-shadow: none;
 }
 
 .nav-dot {
@@ -327,6 +327,38 @@ html {
 .contact-btn:hover, .contact-btn.active {
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Pressed-in active style for nav links */
+.nav-active-pressed {
+  background: linear-gradient(180deg, rgba(34, 34, 34), rgba(27, 27, 27));
+  /* Slightly darker than navbar (#2A2A2A) */
+  border-radius: 999px;
+  /* Outward light halo, inward dark shading */
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 2px 6px rgba(255, 255, 255, 0.06),
+    inset 0 1px 2px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Glass variant: no background fill, only pressed outline and subtle blur */
+.nav-active-pressed-glass {
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 2px 6px rgba(255, 255, 255, 0.06),
+    inset 0 1px 2px rgba(71, 68, 68, 0.6),
+    inset 0 -2px 6px rgba(104, 92, 92, 0.55);
+}
+
+/* Ensure hover does not remove pressed style */
+.nav-active-pressed:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 2px 6px rgba(255, 255, 255, 0.06),
+    inset 0 1px 2px rgba(0, 0, 0, 0.6),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.55);
 }
 
 @keyframes gradientFlow {

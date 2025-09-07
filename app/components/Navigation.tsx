@@ -151,23 +151,20 @@ const Navigation = () => {
     >
       <ul className="flex items-center gap-2 md:gap-8 text-[#CCCCCC]">
         <li className="relative">
-          <Link href="/" className={`nav-link ${isAboutActive ? 'text-white' : ''}`}>
-              Home  
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isAboutActive ? 'opacity-100' : 'opacity-0'}`}></span>
+          <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''}`}>
+              <span className="p-2 md:px-1">Home</span>  
           </Link>
         </li>
         <li className="nav-dot">·</li>
         <li className="relative">
-          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'text-white' : ''}`}>
-              About  
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isExperienceActive ? 'opacity-100' : 'opacity-0'}`}></span>
+          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed-glass text-white' : ''}`}>
+              <span className="p-2 md:px-1">Explore</span>  
           </Link>
         </li>
         <li className="nav-dot">|</li>
         <li className="relative">
           <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
-            Contact
-            <span className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 transition-opacity duration-[1s] ${isContactActive ? 'opacity-100' : 'opacity-0'}`}></span>
+            <span className="p-0.5 md:px-1">Contact</span>
           </Link>
         </li>
       </ul>
