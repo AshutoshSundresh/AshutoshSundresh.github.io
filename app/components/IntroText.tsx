@@ -65,6 +65,7 @@ export default function IntroText() {
   const [musicStatus, setMusicStatus] = useState<'playing' | 'recent' | null>(null);
   const [currentTrack, setCurrentTrack] = useState<{ name: string; artist: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+  
   const [positions, setPositions] = useState<Positions>({
     card1: { x: 0, y: 0 },
     card2: { x: 0, y: 0 },
@@ -170,7 +171,7 @@ export default function IntroText() {
               </div>
             </DraggableCard>
 
-            <DraggableCard id="card3" position={positions.card3} isDraggingDisabled={isMobile}>
+            <DraggableCard id="card3" position={positions.card3} isDraggingDisabled={true}>
               <a 
                 href="https://github.com/AshutoshSundresh" 
                 target="_blank" 
