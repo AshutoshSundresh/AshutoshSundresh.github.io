@@ -240,8 +240,8 @@ html {
 }
 
 /* Common utility classes extracted from components */
-.backdrop-blur-10 { backdrop-filter: blur(10px); }
-.backdrop-blur-4 { backdrop-filter: blur(4px); }
+.backdrop-blur-10 { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.backdrop-blur-4 { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 
 .card-elevated {
   box-shadow:
@@ -254,6 +254,13 @@ html {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-16 {
+    /* Fallback for browsers/devices without backdrop-filter support */
+    background: rgba(0, 0, 0, 0.8);
+  }
 }
 
 .img-no-gap { margin: -1px; }

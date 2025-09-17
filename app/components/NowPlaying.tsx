@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
@@ -154,17 +155,20 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
         </div>
       </div>
       
-      {/* Tooltip rendered outside the blurred container */}
-      {showInfoButton && showTooltip && (
-        <div 
-          className="fixed z-[10000] pointer-events-none top-20 left-1/2 -translate-x-1/2"
-        >
+      {/* Tooltip rendered in a portal to avoid stacking/transform contexts breaking blur */}
+      {show && showInfoButton && showTooltip && typeof document !== 'undefined' && createPortal(
+        (
           <div 
-            className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 glass-16" 
+            className="fixed z-[10000] pointer-events-none top-20 left-1/2 -translate-x-1/2"
           >
-            I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+            <div 
+              className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 glass-16" 
+            >
+              I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+            </div>
           </div>
-        </div>
+        ),
+        document.body
       )}
     </>
   );
