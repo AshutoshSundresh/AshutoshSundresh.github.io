@@ -38,11 +38,6 @@ export default function useTerminal({ isMobile, getLinesForCommand }: { isMobile
     }
   }, [terminalMode, isMobile]);
 
-  useEffect(() => {
-    if (terminalOutputRef.current) {
-      terminalOutputRef.current.scrollTop = terminalOutputRef.current.scrollHeight;
-    }
-  }, [terminalOutput]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

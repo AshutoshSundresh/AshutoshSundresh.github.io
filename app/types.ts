@@ -243,6 +243,7 @@ export interface TerminalOverlayProps {
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   outputLines: string[];
   inputRef: React.RefObject<HTMLInputElement | null>;
+  outputRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface WindowHeaderProps {

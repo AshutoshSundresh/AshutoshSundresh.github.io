@@ -66,6 +66,7 @@ const MacOSWindow = () => {
     setTerminalInput,
     terminalOutput,
     terminalInputRef,
+    terminalOutputRef,
     onKeyDown,
   } = useTerminal({
     isMobile: windowHeight.isMobile,
@@ -376,6 +377,7 @@ const MacOSWindow = () => {
           onKeyDown={onKeyDown}
           outputLines={terminalOutput}
           inputRef={terminalInputRef}
+          outputRef={terminalOutputRef}
         />
       )}
       {/* Reuse search overlay from hero; enable in-component tab navigation when targeting experience */}

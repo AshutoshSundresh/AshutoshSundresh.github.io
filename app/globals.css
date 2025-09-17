@@ -580,8 +580,8 @@ html {
 .terminal-output {
   overflow-y: auto;
   height: auto;
-  max-height: 80vh;
-  margin-bottom: 0.5rem;
+  max-height: calc(100vh - 120px);
+  flex: 1;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
@@ -591,6 +591,11 @@ html {
 .terminal-output-line {
   margin-bottom: 0.25rem;
   line-height: 1.4;
+}
+.terminal-current-prompt {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
 }
 .terminal-prompt {
   display: flex;
@@ -613,8 +618,7 @@ html {
     padding: 0.5rem;
   }
   .terminal-output {
-    height: auto;
-    max-height: 70vh;
+    max-height: calc(100vh - 100px);
   }
   .terminal-input {
     font-size: 16px; /* Prevent zoom on mobile */
