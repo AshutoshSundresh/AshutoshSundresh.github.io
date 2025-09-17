@@ -140,7 +140,7 @@
       "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
         "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
-        "Implemented a real-time TVAC data dashboard with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI",
+        "Implemented a real-time TVAC data dashboard with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     },
     {
@@ -154,7 +154,7 @@
       "description": [
         "Tech Team, organizing the largest collegiate hackathon in Southern California",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
-        "Engineered plagiarism-detection tool which statistically analyzes Git commit patterns, time distributions, and code changes",
+        "Engineered plagiarism-detection tool which statistically analyzes Git commit patterns, time distributions, and code changes"
       ]
     },
     {
