@@ -94,7 +94,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early team member on Harvey Word Add-In",
+        "New Verticals Team, early engineer on Harvey Word Add-In",
         "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including building the \"Draft from Template\" and \"Translate\" workflows for Word",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
         "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
@@ -139,9 +139,8 @@
       "icon": "/images/elfincubesat.jpg",
       "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
-        "Worked on thermal vacuum chamber (TVAC) software at the Experimental Space Physics Lab",
-        "Developed a dynamic sliding data panel for TVAC dashboard with performance-optimized real-time sensor data visualization",
-        "Implemented configurable PID control system for TVAC backend with FastAPI endpoints, replacing hardcoded I/O values with thread-safe configuration management"
+        "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
+        "Implemented a real-time TVAC data dashboard with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI",
       ]
     },
     {
@@ -153,11 +152,9 @@
       "icon": "/images/lahacks.jpg",
       "companyLink": "https://lahacks.com/",
       "description": [
-        "The largest and oldest collegiate hackathon in Southern California",
-        "Built a responsive event schedule interface with search functionality, multi-filtering via React hooks, and multiple views (timeline/card)",
-        "Engineered a FastAPI endpoint that analyzes GitHub repositories for potential plagiarism by statistically examining commit patterns, time distributions, and code changes",
-        "Architected granular Mailchimp error handling and implemented server-side validation with HTTP status code management for mailing server",
-        "Developed responsive React frontend components including Spotlight and Gallery carousels from a Figma prototype"
+        "Tech Team, organizing the largest collegiate hackathon in Southern California",
+        "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
+        "Engineered plagiarism-detection tool which statistically analyzes Git commit patterns, time distributions, and code changes",
       ]
     },
     {
@@ -169,7 +166,7 @@
         "icon": "/images/skylow.png",
         "companyLink": "https://skylow.ai/",
         "description": [
-          "An LLM-powered social media platform in seed stage, based out of Berkeley I&E and ACE@Berkeley",
+          "Founding Team, seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
           "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
           "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
           "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
@@ -195,7 +192,7 @@
       "category": "Undergraduate",
       "awards": [
         {
-          "title": "General Engineering Scholar",
+          "title": "Stein Engineering Scholar",
           "subtitle": "UCLA Samueli School of Engineering",
           "year": "2025",
           "icon": "/images/uclaengg.png"
