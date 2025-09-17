@@ -162,7 +162,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
             className="fixed z-[10000] pointer-events-none top-20 left-1/2 -translate-x-1/2"
           >
             <div 
-              className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 glass-16" 
+              className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 bg-black/50 backdrop-blur-lg" 
             >
               I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
             </div>
