@@ -11,7 +11,7 @@ const Clock = ({ formatString }: { formatString: string }) => {
 
 const DesktopLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
   return (
-    <div className="fixed inset-0 bg-black/90 z-50 flex flex-col items-center justify-center text-white backdrop-blur-10">
+    <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex flex-col items-center justify-center text-white">
       <div className="flex flex-col items-center">
         <div className="text-6xl font-light mb-2">
           <Clock formatString="h:mm" />

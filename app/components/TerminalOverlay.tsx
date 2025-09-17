@@ -12,7 +12,7 @@ export default function TerminalOverlay({
   inputRef,
 }: TerminalOverlayProps) {
   return (
-    <div className="terminal-container">
+    <div className="terminal-container bg-black/90 backdrop-blur-lg">
       <div className="terminal-header">
         <div>
           Ashutosh Terminal v1.0.0 {!isMobile && (
