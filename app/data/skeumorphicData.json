@@ -18,10 +18,10 @@
     },
     {
       "id": 2,
-      "name": "Contributions to Google's Material Design Components (MDC)",
+      "name": "Google Material Components Contributions",
       "image": "/images/Screenshot-2025-02-23-172751.webp",
       "caption": "Code Review for widely-used Android UI elements",
-      "description": "Fixed resource errors in Button and Switch classes in Google's Android MDC library that prevented the library from being compiled on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
+      "description": "Fixed resource errors in Button and Switch classes in Material Components for Android library that prevented compilation on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
       "created": "2022-08-04",
       "link": "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh"
     },
@@ -30,7 +30,7 @@
       "name": "Bibliotheque - Library Management System",
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
-      "description": "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-1.5ms ISBN/title/author search for 1,000+ concurrent queries.",
+      "description": "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-50ms ISBN/title/author search for 1,000+ concurrent queries.",
       "created": "2023-12-15",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
