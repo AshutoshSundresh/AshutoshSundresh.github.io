@@ -94,7 +94,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early engineer on Harvey Word Add-In",
+        "New Verticals Team, primarily focused on Applied AI as an early engineer on Harvey Word Add-In",
         "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including building the \"Draft from Template\" and \"Translate\" workflows for Word",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
         "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
@@ -166,7 +166,7 @@
         "icon": "/images/skylow.png",
         "companyLink": "https://skylow.ai/",
         "description": [
-          "Founding Team, seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
+          "Founding Team, primarily focused on Applied AI at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
           "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
           "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
           "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
