@@ -10,7 +10,7 @@ import useDebouncedValue from '../hooks/useDebouncedValue';
 
 function highlight(text: string, query: string): string {
   if (!query) return text;
-  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const escaped = query.replace(/[.*+?^${}()|[\\\]]/g, '\\$&');
   const re = new RegExp(`(${escaped})`, 'ig');
   return text.replace(re, '<mark>$1</mark>');
 }
@@ -81,7 +81,8 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
       return;
     }
     const lower = debouncedQuery.toLowerCase();
-    const wordBoundary = new RegExp(`(^|\\b)${lower}(\\b|$)`);
+    const escapedLower = lower.replace(/[.*+?^${}()|[\\\]]/g, '\\$&');
+    const wordBoundary = new RegExp(`(^|\\b)${escapedLower}(\\b|$)`);
     const groups = { exactWord: [] as SearchRecord[], exactPrefix: [] as SearchRecord[], other: [] as SearchRecord[] };
     const scored = records
       .map((r) => ({ r, s: scoreRecord(r, lower) }))
