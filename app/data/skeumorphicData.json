@@ -88,8 +88,8 @@
     {
       "id": 1,
       "company": "Harvey",
-      "position": "Software Engineer Intern",
-      "location": "San Francisco, CA",
+      "position": "Software Engineering Intern",
+      "location": "San Francisco, California, United States",
       "period": "Jun 2025 - Sep 2025",
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
@@ -105,12 +105,12 @@
       "id": 2,
       "company": "Kleiner Perkins",
       "position": "Engineering Fellow",
-      "location": "San Francisco, CA",
+      "location": "San Francisco, California, United States",
       "period": "Apr 2025 - Present",
       "icon": "/images/kleiner_perkins_logo.jpeg",
       "companyLink": "https://fellows.kleinerperkins.com",
       "description": [
-        "1 of 30 fellows out of 3,000+ applicants"
+        "1 of 30 Fellows out of 3,000+ applicants in '25. Selection Committee '26"
       ]
     },
     {
@@ -134,7 +134,7 @@
       "id": 4,
       "company": "UCLA ELFIN CubeSat",
       "position": "Ground Software Engineer",
-      "location": "Los Angeles, CA",
+      "location": "Los Angeles, California, United States",
       "period": "Jan 2025 - Present",
       "icon": "/images/elfincubesat.jpg",
       "companyLink": "https://elfin.igpp.ucla.edu/",
@@ -147,7 +147,7 @@
       "id": 5,
       "company": "LA Hacks",
       "position": "Software Engineer / Organizer",
-      "location": "Los Angeles, CA",
+      "location": "Los Angeles, California, United States",
       "period": "Oct 2024 - Present",
       "icon": "/images/lahacks.jpg",
       "companyLink": "https://lahacks.com/",
@@ -160,8 +160,8 @@
     {
         "id": 6,
         "company": "Skylow",
-        "position": "Software Engineer Intern",
-        "location": "Berkeley, CA",
+        "position": "Software Engineering Intern",
+        "location": "Berkeley, California, United States",
         "period": "Jul 2024 - Sep 2024",
         "icon": "/images/skylow.png",
         "companyLink": "https://skylow.ai/",
@@ -176,7 +176,7 @@
       "id": 8,
       "company": "Manav Rachna International Institute of Research and Studies",
       "position": "Research Intern",
-      "location": "Faridabad, India",
+      "location": "Faridabad, Haryana, India",
       "period": "Jun 2022 - Jul 2022",
       "icon": "/images/manavrachna.jpg",
       "companyLink": "https://manavrachna.edu.in/",
