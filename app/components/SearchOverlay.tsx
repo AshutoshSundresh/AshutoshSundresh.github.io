@@ -8,23 +8,49 @@ import skeuData from '../data/skeumorphicData.json';
 import useSearchIndex from '../hooks/useSearchIndex';
 import useDebouncedValue from '../hooks/useDebouncedValue';
 
-function highlight(text: string, query: string): string {
+function highlight(text: string, query: string, acronymMappings?: Map<string, string[]>): string {
   if (!query) return text;
+  
+  let result = text;
+  const lower = query.toLowerCase();
+  
+  // First, highlight acronym matches if they exist
+  if (acronymMappings && acronymMappings.has(lower)) {
+    const phrases = acronymMappings.get(lower) || [];
+    for (const phrase of phrases) {
+      const escaped = phrase.replace(/[.*+?^${}()|[\\\]]/g, '\\$&');
+      const re = new RegExp(`(${escaped})`, 'ig');
+      result = result.replace(re, '<mark>$1</mark>');
+    }
+  }
+  
+  // Then highlight direct matches
   const escaped = query.replace(/[.*+?^${}()|[\\\]]/g, '\\$&');
   const re = new RegExp(`(${escaped})`, 'ig');
-  return text.replace(re, '<mark>$1</mark>');
+  result = result.replace(re, '<mark>$1</mark>');
+  
+  return result;
 }
 
 function scoreRecord(rec: SearchRecord, q: string): number {
   const lower = q.toLowerCase();
   const inTitlePos = rec.titleLower.indexOf(lower);
   const inTextPos = rec.textLower.indexOf(lower);
-  if (inTitlePos === -1 && inTextPos === -1) return -Infinity;
+  
+  // Check for acronym matches
+  const acronymMatch = rec.acronymMappings.has(lower);
+  
+  if (inTitlePos === -1 && inTextPos === -1 && !acronymMatch) return -Infinity;
+  
   let score = 0;
   if (inTitlePos !== -1) score += 800 - inTitlePos;
   if (inTextPos !== -1) score += 600 - inTextPos;
   if (rec.textLower.startsWith(lower)) score += 150;
   if (rec.titleLower.startsWith(lower)) score += 200;
+  
+  // Boost score significantly for acronym matches
+  if (acronymMatch) score += 750;
+  
   return score;
 }
 
@@ -93,7 +119,9 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
       const inTextWord = wordBoundary.test(r.textLower);
       const titleStarts = r.titleLower.startsWith(lower);
       const textStarts = r.textLower.startsWith(lower);
-      if (inTitleWord || inTextWord) groups.exactWord.push(r);
+      const acronymMatch = r.acronymMappings.has(lower);
+      
+      if (inTitleWord || inTextWord || acronymMatch) groups.exactWord.push(r);
       else if (titleStarts || textStarts) groups.exactPrefix.push(r);
       else groups.other.push(r);
     }
@@ -201,7 +229,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
                     <div className="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">{r.title}</div>
                     <div
                       className="text-gray-900 dark:text-white text-base"
-                      dangerouslySetInnerHTML={{ __html: highlight(r.text, query) }}
+                      dangerouslySetInnerHTML={{ __html: highlight(r.text, query, r.acronymMappings) }}
                     />
                     <div className="text-xs text-gray-500 mt-1">{r.path}</div>
                   </button>

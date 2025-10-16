@@ -325,5 +325,6 @@ export interface SearchRecord {
   text: string;
   textLower: string;
   titleLower: string;
+  acronymMappings: Map<string, string[]>;
 }
 

@@ -10,6 +10,33 @@ function normalizeWhitespace(str: string): string {
   return str.replace(/\s+/g, ' ').trim();
 }
 
+function extractAcronymMappings(text: string): Map<string, string[]> {
+  const mappings = new Map<string, string[]>();
+  
+  // Find sequences of 2+ consecutive capitalized words
+  const capitalizedSequences = text.match(/\b[A-Z][a-z]*(?:\s+[A-Z][a-z]*)+/g) || [];
+  
+  for (const sequence of capitalizedSequences) {
+    const words = sequence.split(/\s+/);
+    
+    // Generate acronyms only from consecutive words starting from the beginning
+    // For "Shiv Nadar School": generate "SN" (Shiv Nadar) and "SNS" (Shiv Nadar School)
+    // But NOT "SS" (Shiv School) or "NS" (Nadar School)
+    for (let length = 2; length <= words.length; length++) {
+      const wordSlice = words.slice(0, length); // Always start from beginning
+      const acronym = wordSlice.map(word => word[0]).join('').toLowerCase();
+      const phrase = wordSlice.join(' ');
+      
+      if (!mappings.has(acronym)) {
+        mappings.set(acronym, []);
+      }
+      mappings.get(acronym)!.push(phrase);
+    }
+  }
+  
+  return mappings;
+}
+
 // Builds readable text by traversing nodes and inserting a single space
 // between adjacent text segments that would otherwise be concatenated.
 function extractReadableText(root: Node): string {
@@ -74,6 +101,8 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
     if (text.length < 3) continue;
     const anchor = getClosestAnchorId(block);
     const path = anchor ? `${basePath}#${anchor}` : basePath;
+    const fullText = `${title} ${text}`;
+    const acronymMappings = extractAcronymMappings(fullText);
     records.push({
       id: `${basePath}-ttl-${counter++}`,
       path,
@@ -81,6 +110,7 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
       text: text.slice(0, 260),
       textLower: text.toLowerCase(),
       titleLower: title.toLowerCase(),
+      acronymMappings,
     });
   }
   const nodes = Array.from(doc.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, figcaption, summary, blockquote, a'));
@@ -103,6 +133,8 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
     const title = extractTitleFor(node, doc);
     const anchor = getClosestAnchorId(node);
     const path = anchor ? `${basePath}#${anchor}` : basePath;
+    const fullText = `${title} ${text}`;
+    const acronymMappings = extractAcronymMappings(fullText);
     records.push({
       id: `${basePath}-${counter++}`,
       path,
@@ -110,6 +142,7 @@ function buildIndexFromDocument(doc: Document, basePath: string): SearchRecord[]
       text: text.slice(0, 220),
       textLower: text.toLowerCase(),
       titleLower: title.toLowerCase(),
+      acronymMappings,
     });
   }
   return records;
@@ -143,7 +176,9 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
       for (const p of dataRoot.projects) {
         const title = `Project — ${p.name}`;
         const text = normalizeWhitespace([p.caption, p.description].filter(Boolean).join(' '));
-        records.push({ id: `skeu-p-${counter++}`, path: tabs.projects, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+        const fullText = `${title} ${text}`;
+        const acronymMappings = extractAcronymMappings(fullText);
+        records.push({ id: `skeu-p-${counter++}`, path: tabs.projects, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
       }
     }
     if (Array.isArray(dataRoot.educationData)) {
@@ -156,14 +191,18 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
         if (e.details?.grades) details.push(...e.details.grades.map((g: EducationGrade) => `${g.grade}: ${g.score}`));
         const core = [e.period, e.school, e.location, ...details].filter(Boolean).join(' ');
         const text = normalizeWhitespace(core);
-        records.push({ id: `skeu-e-${counter++}`, path: tabs.education, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+        const fullText = `${title} ${text}`;
+        const acronymMappings = extractAcronymMappings(fullText);
+        records.push({ id: `skeu-e-${counter++}`, path: tabs.education, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
       }
     }
     if (Array.isArray(dataRoot.experienceData)) {
       for (const x of dataRoot.experienceData) {
         const title = `Experience — ${x.company} • ${x.position}`;
         const text = normalizeWhitespace([x.location, x.period, ...(x.description || [])].filter(Boolean).join(' '));
-        records.push({ id: `skeu-x-${counter++}`, path: tabs.experience, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+        const fullText = `${title} ${text}`;
+        const acronymMappings = extractAcronymMappings(fullText);
+        records.push({ id: `skeu-x-${counter++}`, path: tabs.experience, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
       }
     }
     if (Array.isArray(dataRoot.awardsData)) {
@@ -171,7 +210,9 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
         for (const a of cat.awards || []) {
           const title = `Award — ${a.title}`;
           const text = normalizeWhitespace([cat.category, a.subtitle, a.year, a.description, a.highlight, a.stats].filter(Boolean).join(' '));
-          records.push({ id: `skeu-a-${counter++}`, path: tabs.awards, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+          const fullText = `${title} ${text}`;
+          const acronymMappings = extractAcronymMappings(fullText);
+          records.push({ id: `skeu-a-${counter++}`, path: tabs.awards, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
         }
       }
     }
@@ -179,14 +220,18 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
       for (const p of dataRoot.publications) {
         const title = `Publication — ${p.title}`;
         const text = normalizeWhitespace([p.subtitle, p.journal, p.abstract, (p.authors || []).join(', ')].filter(Boolean).join(' '));
-        records.push({ id: `skeu-pub-${counter++}`, path: tabs.publications, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+        const fullText = `${title} ${text}`;
+        const acronymMappings = extractAcronymMappings(fullText);
+        records.push({ id: `skeu-pub-${counter++}`, path: tabs.publications, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
       }
     }
     if (Array.isArray(dataRoot.activitiesData)) {
       for (const act of dataRoot.activitiesData) {
         const title = `Activity — ${act.title}`;
         const text = normalizeWhitespace([act.period, act.description, ...(act.highlights || []).map(String)].filter(Boolean).join(' '));
-        records.push({ id: `skeu-act-${counter++}`, path: tabs.activities, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase() });
+        const fullText = `${title} ${text}`;
+        const acronymMappings = extractAcronymMappings(fullText);
+        records.push({ id: `skeu-act-${counter++}`, path: tabs.activities, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
       }
     }
   } catch {}

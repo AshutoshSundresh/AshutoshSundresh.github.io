@@ -55,6 +55,11 @@
       "institutionLink": "https://ucla.edu",
       "courseLink": "https://www.linkedin.com/in/asund/details/courses/",
       "details": {
+        "achievements": [
+          "Upsilon Pi Epsilon Computer Science Honors Society",
+          "William F. Sharpe Technology Fellow",
+          "Stein Engineering Scholar, Shirley and Walter Wang Computer Science Scholar"
+        ],
         "coursework": ["Computer Science", "Mathematics", "Physics"]
       }
     },
@@ -212,7 +217,7 @@
           "link": "https://alumni.ucla.edu/alumni-career-engagement-students/career-engagement-students-programs/sharpe-fellows-program/"
         },
         {
-          "title": "Shirley and Walter Wang Computer Science Merit Scholar",
+          "title": "Shirley and Walter Wang Computer Science Scholar",
           "subtitle": "UCLA Samueli School of Engineering",
           "year": "2024",
           "icon": "/images/uclaengg.png"
