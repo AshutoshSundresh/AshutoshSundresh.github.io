@@ -31,7 +31,7 @@ function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
                       </div>
                     )}
                   </div>
-                  {award.description && <p className="mt-2 text-sm text-gray-600">{award.description}</p>}
+                  {award.description && <p className="mt-2 text-sm text-gray-600" dangerouslySetInnerHTML={{ __html: award.description }}></p>}
                   <div className="mt-2 flex items-center justify-between">
                     <span className="text-xs text-gray-500">{award.year}</span>
                     {award.link && (

@@ -247,7 +247,7 @@
         },
         {
           "title": "Open Source Excellence",
-          "subtitle": "SourceForge Recognition",
+          "subtitle": "SourceForge File Hosting",
           "year": "2023",
           "icon": "/images/shapeshiftos.jpg",
           "description": "Top 0.5% of all open-source projects globally",
@@ -266,12 +266,11 @@
         },
         {
           "title": "Board Exam Excellence",
-          "subtitle": "CBSE Recognition",
+          "subtitle": "CBSE",
           "year": "2022",
           "icon": "/images/shivnadarschool.png",
-          "description": "Education Minister's Award in Grade 12 for outstanding performance in board examinations",
-          "highlight": "99.2% in Grade 10",
-          "stats": "State Rank 1 in Grade 10"
+          "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
+          "highlight": "99.2% in Grade 10, 96.8% in Grade 12"
         }
       ]
     },
@@ -281,10 +280,9 @@
       "awards": [
         {
           "title": "SAT Perfect Math Score",
-          "subtitle": "College Board",
+          "subtitle": "The College Board",
           "year": "2023",
           "icon": "/images/collegeboard.png",
-          "description": "Perfect score in SAT Mathematics section",
           "highlight": "1580",
           "stats": "800 Math, 780 Verbal"
         },
@@ -293,7 +291,6 @@
           "subtitle": "ETS",
           "year": "2023",
           "icon": "/images/toeflibt.png",
-          "description": "Near-perfect score in TOEFL iBT",
           "highlight": "119/120",
           "stats": "Top 1% globally"
         }
