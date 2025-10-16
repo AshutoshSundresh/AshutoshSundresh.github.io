@@ -24,7 +24,6 @@ import useProgressiveBackground from '../hooks/useProgressiveBackground';
 import useTabHistory from '../hooks/useTabHistory';
 import useSwipeNavigation from '../hooks/useSwipeNavigation';
 import useClickOutside from '../hooks/useClickOutside';
-import useRandomStorage from '../hooks/useRandomStorage';
 
 type ProjectDetails = Project;
 
@@ -57,7 +56,6 @@ const MacOSWindow = () => {
 
   // Swipe thresholds handled in hook
 
-  const { randomStorage } = useRandomStorage([activeTab]);
   const searchParams = useSearchParams();
   const {
     terminalMode,
@@ -358,7 +356,7 @@ const MacOSWindow = () => {
                 activeTab === 2 ? `${experienceData.length} items` :
                   activeTab === 3 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
                     activeTab === 4 ? `${publications.length} items` :
-                      `${activitiesData.length} items`}, {randomStorage} GB available <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
+                      `${activitiesData.length} items`} <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
           <span>{new Date().toLocaleString(undefined, { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
         </div>
