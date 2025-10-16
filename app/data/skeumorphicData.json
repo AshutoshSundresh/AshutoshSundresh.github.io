@@ -6,7 +6,7 @@
       "name": "ShapeShiftOS",
       "image": "/images/LOVUK1E.webp",
       "caption": "Founder of Open-Source Android-Based Mobile Operating System",
-      "description": "I created this project in 2020 and have maintained it since. I've authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
+      "description": "Created this project in 2020 and have maintained it since. Authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
       "created": "2020-05-16",
       "link": "https://github.com/shapeshiftos",
       "stats": [
@@ -30,7 +30,7 @@
       "name": "Bibliotheque - Library Management System",
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
-      "description": "I developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. It delivers sub-50ms ISBN/title/author search for 1,000+ concurrent queries.",
+      "description": "Developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. Delivered sub-50ms ISBN/title/author search for 1,000+ concurrent queries.",
       "created": "2023-12-15",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
@@ -149,7 +149,7 @@
       "position": "Software Engineer / Organizer",
       "location": "Los Angeles, California, United States",
       "period": "Oct 2024 - Present",
-      "icon": "/images/lahacks.jpg",
+      "icon": "/images/lahacks_logo.jpeg",
       "companyLink": "https://lahacks.com/",
       "description": [
         "Tech Team, organizing the largest collegiate hackathon in Southern California",
@@ -163,7 +163,7 @@
         "position": "Software Engineering Intern",
         "location": "Berkeley, California, United States",
         "period": "Jul 2024 - Sep 2024",
-        "icon": "/images/skylow.png",
+        "icon": "/images/skylowai_logo.jpeg",
         "companyLink": "https://skylow.ai/",
         "description": [
           "Founding Team, primarily focused on Applied AI at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
@@ -191,6 +191,13 @@
       "id": 1,
       "category": "Undergraduate",
       "awards": [
+        {
+          "title": "Upsilon Pi Epsilon Inductee",
+          "subtitle": "UCLA Computer Science",
+          "year": "2025",
+          "icon": "/images/ucla_upe_logo.jpeg",
+          "link": "https://upe.seas.ucla.edu/"
+        },
         {
           "title": "Stein Engineering Scholar",
           "subtitle": "UCLA Samueli School of Engineering",
@@ -329,9 +336,19 @@
   "activitiesData": [
     {
       "id": 1,
+      "title": "Undergraduate Tutor",
+      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes.",
+      "links": [
+        { "text": "Upsilon Pi Epsilon at UCLA", "url": "https://upe.seas.ucla.edu/" }
+      ],
+      "period": "Sep 2025 - Dec 2025",
+      "icon": "/images/ucla_upe_logo.jpeg"
+    },
+    {
+      "id": 2,
       "title": "Open-Source Developer & Contributor",
       "period": "2020 - Present",
-      "description": "I have over 4700 total commits and 2000 total contributions on GitHub since I created my account in 2020.",
+      "description": "Over 4700 total commits and 2000 total contributions on GitHub since account creation in 2020.",
       "highlights": [
         "Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
         "Youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
@@ -348,9 +365,9 @@
       "icon": "/images/github.png"
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "Investment Banking M&A Simulation",
-      "period": "September 2024",
+      "period": "Sep 2024",
       "description": "Participated and excelled in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
       "highlights": [
         "Completed with a score at the highest possible range (>85%)",
