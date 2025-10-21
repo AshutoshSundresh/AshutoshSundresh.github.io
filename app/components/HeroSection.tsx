@@ -3,7 +3,7 @@ import Image from 'next/image';
 import GameOfLife from './GameOfLife';
 import NowPlaying from './NowPlaying';
 import { useState } from 'react';
-import { Search } from 'lucide-react';
+import { Search, ChevronDown } from 'lucide-react';
 import SearchOverlay from './SearchOverlay';
 
 export default function HeroSection() {
@@ -69,15 +69,16 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex justify-center gap-1 md:gap-2 mt-8" data-search-title="Social links">
+          <div className="flex flex-wrap justify-center gap-1 md:gap-2 mt-8" data-search-title="Social links">
             <a href="https://twitter.com/asundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 md:text-[14px] rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide">X</a>
+            <a href="mailto:ashutoshsun@g.ucla.edu" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 md:text-[14px] rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide">Mail</a>
             <a href="https://github.com/ashutoshsundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 md:text-[14px] rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide">GitHub</a>
             <a href="https://linkedin.com/in/asund" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 md:text-[14px] rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide">LinkedIn</a>
             <a href="https://scholar.google.com/citations?hl=en&user=FxDNxe4AAAAJ-lMfexRv3MFAahl78-mtZmAQ&user=FxDNxe4AAAAJ" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 md:text-[14px] rounded-md transition-all duration-300 bg-transparent hover:animate-button-gradient hover:bg-gradient-to-r hover:from-gray-50/60 hover:via-white/40 hover:to-gray-50/60 hover:text-gray-900 active:from-gray-100/80 active:via-gray-50/60 active:to-gray-100/80 active:transform active:translate-y-px hover:shadow-[0_2px_8px_-2px_rgba(0,0,0,0.05)] font-light tracking-wide">Scholar</a>
           </div>
 
-          <div className="flex justify-center mt-1 sm:mt-6" data-search-ignore="true">
-            <button onClick={scrollToNext} className="bg-[#2A2A2A]/90 hover:bg-[#2A2A2A] text-[#CCCCCC] hover:text-white px-4 md:px-5 py-2 md:py-2.5 rounded-full text-sm md:text-[14px] transition-all duration-300 backdrop-blur-sm" aria-label="Scroll to next section">↓ <span className="px-2">More</span></button>
+          <div className="flex justify-center mt-6 sm:mt-10 max-[390px]:hidden" data-search-ignore="true">
+            <button onClick={scrollToNext} className="bg-black/40 hover:bg-black/50 text-white backdrop-blur-10 shadow-md ring-1 ring-white/10 px-4 md:px-5 py-2 md:py-2.5 rounded-full text-sm md:text-[14px] transition-all duration-300" aria-label="Scroll to next section"><ChevronDown className="h-5 w-5" /></button>
           </div>
         </div>
       </div>
