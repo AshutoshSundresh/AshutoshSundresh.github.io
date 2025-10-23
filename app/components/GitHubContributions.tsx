@@ -99,14 +99,14 @@ export default function GitHubContributions() {
 
   if (isLoading) {
     return (
-      <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] h-[200px] relative flex items-center justify-center opacity-0 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] h-[200px] relative flex items-center justify-center opacity-0 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500"></div>
       </div>
     );
   }
 
   return (
-    <div className={`bg-gray-300/40 text-white p-0.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
+    <div className={`bg-gray-300/40 text-white p-0.5  rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
       {contributionsData && (
         <div className="overflow-hidden rounded-3xl">
           <ContributionsGraph 

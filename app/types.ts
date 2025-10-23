@@ -310,6 +310,11 @@ export interface ContributionsGraphProps {
   username: string;
 }
 
+export interface MapProps {
+  latitude: number;
+  longitude: number;
+}
+
 // ============================================================================
 // Internal / Misc Models (Local-only helpers)
 // ============================================================================
