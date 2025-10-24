@@ -27,7 +27,7 @@
     },
     {
       "id": 3,
-      "name": "Bibliotheque - Library Management System",
+      "name": "Bibliotheque (Library Management System)",
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
       "description": "Developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. Delivered sub-50ms ISBN/title/author search for 1,000+ concurrent queries.",

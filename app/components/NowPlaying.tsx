@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useRef, useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { useMemo, useRef, useEffect } from 'react';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
+import { useTooltip } from '../hooks/useTooltip';
+import Tooltip from './ui/Tooltip';
+import InfoButton from './ui/InfoButton';
 
 import type { NowPlayingTrack, NowPlayingProps } from '../types';
 
@@ -50,7 +52,7 @@ function getTimeAgo(unixTimestamp: string): string {
 export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlayingProps) {
   const { isLoading, track, error } = useLastFmNowPlaying();
   const { show, firstLaunch } = useIntroVisibility();
-  const [showTooltip, setShowTooltip] = useState(false);
+  const { showTooltip, tooltipPosition, buttonRef, handleMouseEnter, handleMouseLeave } = useTooltip();
   const imgRef = useRef<HTMLImageElement>(null);
 
   const albumArtUrl = useMemo(() => (
@@ -126,15 +128,12 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
             <span>{isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}</span>
             {showInfoButton && (
               <div className="relative inline-block -mb-1">
-                <button
-                  onMouseEnter={() => setShowTooltip(true)}
-                  onMouseLeave={() => setShowTooltip(false)}
-                  className={`opacity-50 hover:opacity-80 transition-opacity duration-200 ${textColor}`}
-                >
-                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                  </svg>
-                </button>
+                <InfoButton
+                  buttonRef={buttonRef}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  className={textColor}
+                />
               </div>
             )}
           </div>
@@ -155,20 +154,10 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
         </div>
       </div>
       
-      {/* Tooltip rendered in a portal to avoid stacking/transform contexts breaking blur */}
-      {show && showInfoButton && showTooltip && typeof document !== 'undefined' && createPortal(
-        (
-          <div 
-            className="fixed z-[10000] pointer-events-none top-20 left-1/2 -translate-x-1/2"
-          >
-            <div 
-              className="text-white text-xs px-4 py-3 rounded-lg shadow-2xl w-80 whitespace-normal border border-white/10 bg-black/50 backdrop-blur-lg" 
-            >
-              I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
-            </div>
-          </div>
-        ),
-        document.body
+      {show && showInfoButton && (
+        <Tooltip show={showTooltip} position={tooltipPosition}>
+          I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
+        </Tooltip>
       )}
     </>
   );

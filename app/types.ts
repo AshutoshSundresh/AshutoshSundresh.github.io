@@ -315,6 +315,26 @@ export interface MapProps {
   longitude: number;
 }
 
+export interface TooltipPosition {
+  x: number;
+  y: number;
+}
+
+export interface TooltipProps {
+  show: boolean;
+  position: TooltipPosition;
+  children: React.ReactNode;
+  className?: string;
+}
+
+export interface InfoButtonProps {
+  buttonRef?: React.RefObject<HTMLButtonElement | null>;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+  className?: string;
+  iconClassName?: string;
+}
+
 // ============================================================================
 // Internal / Misc Models (Local-only helpers)
 // ============================================================================
