@@ -158,6 +158,7 @@
       "companyLink": "https://lahacks.com/",
       "description": [
         "Tech Team, organizing the largest collegiate hackathon in Southern California",
+        "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards (typing, Git hooks, modular hooks/consts/types)",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
         "Engineered plagiarism-detection tool which statistically analyzes Git commit patterns, time distributions, and code changes"
       ]
