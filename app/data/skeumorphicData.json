@@ -145,7 +145,7 @@
       "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
         "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
-        "Implemented a real-time TVAC data dashboard with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
+        "Implemented a real-time TVAC data dashboard in React with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     },
     {
