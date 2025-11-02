@@ -6,7 +6,7 @@
       "name": "ShapeShiftOS",
       "image": "/images/LOVUK1E.webp",
       "caption": "Founder of Open-Source Android-Based Mobile Operating System",
-      "description": "Created this project in 2020 and have maintained it since. Authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, etc.",
+      "description": "Created this project in 2020 and have maintained it since. Authored multiple features including color-palette-based system theming, in-screen fingerprint scanner animations and icons, Google Lens integration in screenshots, custom lockscreen clock with dynamic TrueType font, custom kernel scheduler, upstream contributions to Google Material Components, etc.",
       "created": "2020-05-16",
       "link": "https://github.com/shapeshiftos",
       "stats": [
@@ -18,28 +18,19 @@
     },
     {
       "id": 2,
-      "name": "Google Material Components Contributions",
-      "image": "/images/Screenshot-2025-02-23-172751.webp",
-      "caption": "Code Review for widely-used Android UI elements",
-      "description": "Fixed resource errors in Button and Switch classes in Material Components for Android library that prevented compilation on the Make/Soong build system, successfully unblocking continuous integration in over 200 downstream forks.\n• [MaterialSwitch] Move public.xml to the correct directory #2759\n• [Resources] Remove unused public.xml resources #2761",
-      "created": "2022-08-04",
-      "link": "https://github.com/material-components/material-components-android/commits?author=ashutoshsundresh"
-    },
-    {
-      "id": 3,
       "name": "Bibliotheque (Library Management System)",
       "image": "/images/Screenshot-2025-06-02-181132.png",
-      "caption": "Open-Source Full-Stack Library Management System built using Next.js, PostgreSQL, and Supabase",
-      "description": "Developed a responsive admin dashboard with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL/Supabase backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. Delivered sub-50ms ISBN/title/author search for 1,000+ concurrent queries.",
+      "caption": "Open-Source Full-Stack Library Management System built (Next.js, PostgreSQL, TypeScript)",
+      "description": "Developed a responsive admin dashboard for librarians with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. Built a sub-50ms ISBN/title/author search functionality for 1,000+ concurrent queries.",
       "created": "2023-12-15",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
     {
-      "id": 4,
+      "id": 3,
       "name": "Shiv Nadar School Faridabad Food Menu Alexa Skill",
       "image": "/images/GhsuTUs.webp",
-      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools",
-      "description": "An Amazon Store published open-source Node.js code that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
+      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools (Node.js, AWS Lambda, Alexa Skills Kit SDK)",
+      "description": "Built an Alexa Skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
       "created": "2022-01-09",
       "link": "https://github.com/AshutoshSundresh/AlexaFoodMenuSkill"
     }
@@ -100,10 +91,9 @@
       "companyLink": "https://harvey.ai/",
       "description": [
         "New Verticals Team, primarily focused on Applied AI as an early engineer on Harvey Word Add-In",
-        "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including building the \"Draft from Template\" and \"Translate\" workflows for Word",
+        "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including the \"Draft from Template\" and \"Translate\" workflows",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
-        "Delivered product refinements like dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
-        
+        "Delivered product refinements including dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
       ]
     },
     {
@@ -128,11 +118,10 @@
       "companyLink": "https://shapeshiftos.com/",
       "description": [
         "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
-        "In-screen fingerprint animations and icons, Google Lens screenshot tool integration, variable font-weight lock screen clock, custom kernel scheduler, etc.",
-        "150,000+ downloads across 160+ countries",
-        "Recruited talented engineering team (25+ Qualcomm device engineers and 3 core developers)",
-        "Zero marketing budget",
-        "SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
+        "Developed features including in-screen fingerprint animations and icons, Google Lens screenshot tool integration, variable font-weight lock screen clock, custom kernel scheduler, upstream contributions to Google Material Components, etc.",
+        "Grew to 150,000+ downloads across 160+ countries organically with no marketing budget",
+        "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
+        "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
       ]
     },
     {
@@ -145,7 +134,7 @@
       "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
         "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
-        "Implemented a real-time TVAC data dashboard with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
+        "Implemented a real-time TVAC data dashboard in React with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     },
     {
@@ -158,8 +147,9 @@
       "companyLink": "https://lahacks.com/",
       "description": [
         "Tech Team, organizing the largest collegiate hackathon in Southern California",
+        "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards (typing, Git hooks, modular hooks/consts/types)",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
-        "Engineered plagiarism-detection tool which statistically analyzes Git commit patterns, time distributions, and code changes"
+        "Engineered plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
       ]
     },
     {
@@ -186,7 +176,7 @@
       "icon": "/images/manavrachna.jpg",
       "companyLink": "https://manavrachna.edu.in/",
       "description": [
-        "Offensive security techniques, network analysis, vulnerability assessment, cryptography",
+        "Researched offensive security techniques, network analysis, vulnerability assessment, and cryptography",
         "Advisor: Dr. Charu Virmani"
       ]
     }
@@ -232,7 +222,7 @@
           "title": "International Recognition in Linguistics and Math",
           "year": "2021-2024",
           "icon": "/images/medal.png",
-          "description": "Notable accomplishments in various international Olympiads and competitions",
+          "description": "Achieved notable accomplishments in various international Olympiads and competitions",
           "highlight": "Multiple Awards",
           "stats": "IOL Camp, APLO, Math Olympiads",
           "link": "https://ashutoshsundresh.com/archive.html#awards"
@@ -241,7 +231,7 @@
           "title": "SRCC Writing Mentorship Program",
           "year": "2024",
           "icon": "/images/ecosocsrcc.png",
-          "description": "Selected among 1,500 applicants (8% acceptance rate) for advanced writing techniques program",
+          "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program",
           "highlight": "Top 5",
           "stats": "Out of 105 student cohort"
         },
@@ -250,7 +240,7 @@
           "subtitle": "SourceForge File Hosting",
           "year": "2023",
           "icon": "/images/shapeshiftos.jpg",
-          "description": "Top 0.5% of all open-source projects globally",
+          "description": "Recognized as top 0.5% of all open-source projects globally",
           "highlight": "150,000+ downloads",
           "link": "https://sourceforge.net/projects/shapeshiftos/"
         },
@@ -258,7 +248,7 @@
           "title": "XDA Recognized Developer",
           "year": "2021",
           "icon": "/images/xda.png",
-          "description": "Youngest Recognized Developer on the XDA Forums for Android Development (awarded when I was 15 years old) as of 2023",
+          "description": "Recognized as the youngest Recognized Developer on the XDA Forums for Android Development (awarded at age 15) as of 2023",
           "highlight": "Top 300",
           "stats": "Out of 11 million users",
           "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292",
@@ -330,7 +320,7 @@
       "description": "Analysis of Airbnb's impact on urban housing markets and communities",
       "authors": ["Ashutosh Sundresh"],
       "journal": "Ceteris Paribus, Shri Ram College of Commerce",
-      "abstract": "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability. ",
+      "abstract": "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability.",
       "status": "Published by the Economics Society of SRCC, University of Delhi after finishing top 5 in the SRCC Writing Mentorship Program",
       "link": "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
     }
@@ -350,10 +340,10 @@
       "id": 2,
       "title": "Open-Source Developer & Contributor",
       "period": "2020 - Present",
-      "description": "Over 4700 total commits and 2000 total contributions on GitHub since account creation in 2020.",
+      "description": "Created over 4,700 total commits and 2,000 total contributions on GitHub since account creation in 2020.",
       "highlights": [
-        "Recognized as one of around 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
-        "Youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
+        "Recognized as one of approximately 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
+        "Became the youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
         "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
       ],
       "stats": [
@@ -370,10 +360,10 @@
       "id": 3,
       "title": "Investment Banking M&A Simulation",
       "period": "Sep 2024",
-      "description": "Participated and excelled in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
+      "description": "Participated in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
       "highlights": [
         "Completed with a score at the highest possible range (>85%)",
-        "Developed a five-year financial forecast for a U.S. apparel and footwear company",
+        "Created a five-year financial forecast for a U.S. apparel and footwear company",
         "Performed valuation analysis using comparable companies and precedent transactions"
       ],
       "icon": "/images/stepstone.png"
