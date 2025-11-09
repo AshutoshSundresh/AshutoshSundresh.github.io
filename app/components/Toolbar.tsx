@@ -44,7 +44,7 @@ export default function Toolbar({ onBack, onForward, canBack, canForward, showAr
             href="https://ashutoshsundresh.com/archive.html#extracurriculars"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs pr-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] text-gray-600 hover:text-gray-800"
+            className="text-xs px-2 py-1 rounded hover:bg-gray-200 font-['Raleway'] flex items-center text-gray-600 hover:text-gray-800 leading-none"
           >
             High School Archive →
           </a>
