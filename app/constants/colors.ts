@@ -51,6 +51,15 @@ export const BASE_COLORS = {
     },
   },
   
+  // MacOS Finder/Window specific dark colors
+  macOS: {
+    contentBg: '#1e1e1e',      // Main content area background
+    sidebarBg: '#181818',      // Sidebar/detail view background
+    sectionBg: '#202020',      // Section headers background
+    cardBg: '#2b2b2b',         // Card/elevated elements background
+    hoverBg: '#333333',        // Hover state background
+  },
+  
   // Blue scale
   blue: {
     50: '#eff6ff',
@@ -360,6 +369,15 @@ export const DARK_MODE_COLORS = {
     background: BASE_COLORS.dark.bg.secondary,
     border: BASE_COLORS.dark.border.secondary,
     hover: BASE_COLORS.dark.bg.elevated,
+  },
+  
+  // MacOS Finder/Window components
+  macOS: {
+    content: BASE_COLORS.macOS.contentBg,
+    sidebar: BASE_COLORS.macOS.sidebarBg,
+    section: BASE_COLORS.macOS.sectionBg,
+    card: BASE_COLORS.macOS.cardBg,
+    hover: BASE_COLORS.macOS.hoverBg,
   },
   
   // Navigation

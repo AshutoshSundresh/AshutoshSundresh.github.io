@@ -11,7 +11,7 @@ function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: Pr
       {projects.map((project) => (
         <div
           key={project.id}
-          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === project.id ? 'text-white' : 'hover:bg-gray-100'}`}
+          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === project.id ? 'text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
           onClick={(e) => onItemClick(e, project.id)}
           style={selectedItem === project.id ? { backgroundColor: SEMANTIC_COLORS.selection } : undefined}
         >
@@ -19,7 +19,7 @@ function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: Pr
             <Image src={folderIconUrl} alt="Folder" fill sizes="64px" className="object-contain" />
           </div>
           <div className="text-center max-w-[100px]">
-            <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedItem === project.id ? 'text-white' : 'text-gray-800'}`}>
+            <p className={`text-xs font-['Raleway'] text-center break-words leading-tight mb-1 ${selectedItem === project.id ? 'text-white' : 'text-gray-800 dark:text-gray-300'}`}>
               {project.name}
             </p>
           </div>

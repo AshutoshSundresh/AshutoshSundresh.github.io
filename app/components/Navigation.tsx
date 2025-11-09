@@ -146,10 +146,10 @@ const Navigation = () => {
 
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()} ${isExperienceActive ? 'bg-black/50 backdrop-blur-md' : ''}`}
+      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-opacity transition-transform duration-500 ${visibilityClasses()}`}
       onMouseOver={handleInteraction}
       onClick={handleInteraction}
-      style={!isExperienceActive ? { backgroundColor: SEMANTIC_COLORS.navBackground } : undefined}
+      style={{ backgroundColor: SEMANTIC_COLORS.navBackground, color: SEMANTIC_COLORS.navText }}
     >
       <ul className="flex items-center gap-2 md:gap-8" style={{ color: SEMANTIC_COLORS.navText }}>
         <li className="relative">
@@ -159,7 +159,7 @@ const Navigation = () => {
         </li>
         <li className="nav-dot">·</li>
         <li className="relative">
-          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed-glass text-white' : ''}`}>
+          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed text-white' : ''}`}>
               <span className="p-2 md:px-1">Explore</span>  
           </Link>
         </li>

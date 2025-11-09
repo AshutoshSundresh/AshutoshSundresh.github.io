@@ -64,6 +64,13 @@ module.exports = {
         'dark-text-tertiary': '#9aa5ce',
         'dark-border-primary': '#292e42',
         'dark-border-secondary': '#1f2335',
+        
+        // MacOS Finder/Window specific colors (from app/constants/colors.ts)
+        'macos-content': '#1e1e1e',
+        'macos-sidebar': '#181818',
+        'macos-section': '#202020',
+        'macos-card': '#2b2b2b',
+        'macos-hover': '#333333',
       },
       borderRadius: {
         lg: "var(--radius)",

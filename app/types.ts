@@ -26,6 +26,13 @@ export interface ThemeColors {
     border: string;
     hover: string;
   };
+  macOS?: {
+    content: string;
+    sidebar: string;
+    section: string;
+    card: string;
+    hover: string;
+  };
   nav: {
     background: string;
     text: string;

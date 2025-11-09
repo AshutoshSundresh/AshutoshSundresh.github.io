@@ -1,12 +1,27 @@
 'use client';
 
 import { useEffect, useState, useMemo } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
-export default function useProgressiveBackground(lowResUrl: string, highResUrl: string) {
+export default function useProgressiveBackground(
+  lightLowResUrl: string, 
+  lightHighResUrl: string,
+  darkLowResUrl?: string,
+  darkHighResUrl?: string
+) {
   const [bgLoaded, setBgLoaded] = useState(false);
   const [highResBgLoaded, setHighResBgLoaded] = useState(false);
+  const { isDark } = useTheme();
+
+  // Select URLs based on theme
+  const lowResUrl = isDark && darkLowResUrl ? darkLowResUrl : lightLowResUrl;
+  const highResUrl = isDark && darkHighResUrl ? darkHighResUrl : lightHighResUrl;
 
   useEffect(() => {
+    // Reset loading states when theme changes
+    setBgLoaded(false);
+    setHighResBgLoaded(false);
+    
     const lowResImg = new window.Image();
     lowResImg.src = lowResUrl;
     lowResImg.onload = () => {
@@ -15,7 +30,7 @@ export default function useProgressiveBackground(lowResUrl: string, highResUrl: 
       highResImg.src = highResUrl;
       highResImg.onload = () => setHighResBgLoaded(true);
     };
-  }, [lowResUrl, highResUrl]);
+  }, [lowResUrl, highResUrl, isDark]);
 
   const backgroundStyle = useMemo(() => ({
     backgroundImage: highResBgLoaded

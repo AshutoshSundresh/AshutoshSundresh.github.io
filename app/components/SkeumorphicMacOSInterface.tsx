@@ -226,8 +226,10 @@ const MacOSWindow = () => {
  
 
   const { bgLoaded, backgroundStyle } = useProgressiveBackground(
-    'https://c4.wallpaperflare.com/wallpaper/951/295/751/macos-high-sierra-4k-new-hd-wallpaper-preview.jpg',
-    'https://512pixels.net/downloads/macos-wallpapers/10-13.jpg'
+    'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg',
+    'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1920x1080.jpg',
+    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg',
+    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1920x1080.jpg'
   );
 
   // Update the awards data
@@ -251,8 +253,8 @@ const MacOSWindow = () => {
       `}
       style={backgroundStyle}
     >
-      {!bgLoaded && <div className="fixed inset-0 bg-gray-200 z-0" />}
-      <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 bg-white relative z-10">
+      {!bgLoaded && <div className="fixed inset-0 bg-gray-200 dark:bg-[#1a1b26] z-0" />}
+      <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] relative z-10 transition-colors">
         <WindowHeader onToggleLockscreen={toggleLockscreen} onOpenTerminal={() => setTerminalMode(true)} />
 
         <Toolbar
@@ -284,16 +286,16 @@ const MacOSWindow = () => {
             onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
             onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
             className={`
-            flex-1 p-4 bg-white overflow-y-auto
+            flex-1 p-4 bg-white dark:bg-[#1e1e1e] overflow-y-auto transition-colors
             ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
           `}
             onClick={handleContainerClick}
             style={{ height: contentHeight }}
           >
-            <div className="text-lg mb-2 font-medium text-gray-800 font-['Raleway']">
+            <div className="text-lg mb-2 font-medium text-gray-800 dark:text-gray-200 font-['Raleway']">
               {tabs[activeTab].title}
             </div>
-            <div className="text-gray-700 mb-4 font-['Raleway'] text-sm">
+            <div className="text-gray-700 dark:text-gray-400 mb-4 font-['Raleway'] text-sm">
               {tabs[activeTab].content}
             </div>
 
@@ -346,8 +348,8 @@ const MacOSWindow = () => {
 
         {/* Status bar */}
         <div className={`
-          bg-gray-50 border-t border-gray-200 px-4 py-1 text-xs text-gray-500 
-          flex justify-between font-['Raleway']
+          bg-gray-50 dark:bg-[#181818] border-t border-gray-200 dark:border-gray-700 px-4 py-1 text-xs text-gray-500 dark:text-gray-400 
+          flex justify-between font-['Raleway'] transition-colors
           ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
         `}>
           <span>
