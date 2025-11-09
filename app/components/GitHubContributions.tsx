@@ -106,7 +106,7 @@ export default function GitHubContributions() {
   }
 
   return (
-    <div className={`backdrop-blur-xl bg-gradient-to-b from-white/20 to-white/10 dark:from-white/10 dark:to-white/5 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900 border-2 border-gray-300/40 dark:border-dark-primary overflow-hidden`}>
+    <div className={`backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900 border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden`}>
       {contributionsData && (
         <ContributionsGraph 
           data={contributionsData}

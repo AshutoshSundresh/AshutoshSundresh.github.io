@@ -191,7 +191,7 @@ const MacOSWindow = () => {
   // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
   const contentHeight = windowHeight.isMobile
     ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
-    : '520px';
+    : `${Math.max(windowHeight.vh * 0.6, 400)}px`;
 
   // Parse data with types
   const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
@@ -360,7 +360,10 @@ const MacOSWindow = () => {
                     activeTab === 4 ? `${publications.length} items` :
                       `${activitiesData.length} items`} <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
-          <span>{new Date().toLocaleString(undefined, { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+          <span className="flex flex-col items-end">
+            <span>{new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>
+            <span>{new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          </span>
         </div>
       </div>
       {lockscreenVisible && !windowHeight.isMobile && (

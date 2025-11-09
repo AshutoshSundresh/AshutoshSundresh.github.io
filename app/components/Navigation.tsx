@@ -135,18 +135,18 @@ const Navigation = () => {
       // Desktop behavior - fade up/down based on timeout
       return !isVisible && !isHomePage 
         ? 'opacity-0 translate-y-20 pointer-events-none' 
-        : 'opacity-100';
+        : 'opacity-100 translate-y-0';
     } else {
       // Mobile behavior - slide down out of view when detail view is open
       return isDetailViewOpen 
         ? 'opacity-0 translate-y-32 pointer-events-none' 
-        : 'opacity-100';
+        : 'opacity-100 translate-y-0';
     }
   };
 
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-opacity transition-transform duration-500 ${visibilityClasses()}`}
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ease-in-out ${visibilityClasses()}`}
       onMouseOver={handleInteraction}
       onClick={handleInteraction}
       style={{ backgroundColor: SEMANTIC_COLORS.navBackground, color: SEMANTIC_COLORS.navText }}

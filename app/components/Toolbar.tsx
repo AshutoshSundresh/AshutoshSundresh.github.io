@@ -56,7 +56,7 @@ export default function Toolbar({ onBack, onForward, canBack, canForward, showAr
             rel="noopener noreferrer"
             className="text-xs px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600 font-['Raleway'] flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 leading-none"
           >
-            High School Archive →
+            Archive →
           </a>
         )}
       </div>
