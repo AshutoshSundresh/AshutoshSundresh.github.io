@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import "./fonts.css";
 import Navigation from "./components/Navigation";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -22,8 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${raleway.className} antialiased`}>
-        {children}
-        <Navigation />
+        <ThemeProvider>
+          {children}
+          <Navigation />
+        </ThemeProvider>
       </body>
     </html>
   );

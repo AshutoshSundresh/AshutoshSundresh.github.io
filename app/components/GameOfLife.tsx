@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Cell } from '../types';
 import useGameOfLifeInitializer from '../hooks/useGameOfLifeInitializer';
+import { SEMANTIC_COLORS } from '../constants/colors';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -11,6 +13,7 @@ export default function GameOfLife() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
+  const { isDark } = useTheme();
 
   // Initialize canvas and handle resize
   useEffect(() => {
@@ -102,8 +105,15 @@ export default function GameOfLife() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw cells as circles
-    ctx.fillStyle = 'rgba(200, 200, 200, 0.3)';
+    // Draw cells as circles - more subtle in dark mode
+    const cellColor = isDark 
+      ? SEMANTIC_COLORS.gameOfLife.cellDark
+      : SEMANTIC_COLORS.gameOfLife.cell;
+    const hoverColor = isDark
+      ? SEMANTIC_COLORS.gameOfLife.cellHoverDark
+      : SEMANTIC_COLORS.gameOfLife.cellHover;
+    
+    ctx.fillStyle = cellColor;
     const radius = (cellSize - 1) / 2;
     cells.forEach(cellKey => {
       const [x, y] = cellKey.split(',').map(Number);
@@ -116,14 +126,14 @@ export default function GameOfLife() {
 
     // Draw hover cell
     if (isHovering && hoverPosition) {
-      ctx.fillStyle = 'rgba(200, 200, 200, 0.5)';
+      ctx.fillStyle = hoverColor;
       const cx = hoverPosition.x * cellSize + cellSize / 2;
       const cy = hoverPosition.y * cellSize + cellSize / 2;
       ctx.beginPath();
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
       ctx.fill();
     }
-  }, [cells, dimensions, isHovering, hoverPosition]);
+  }, [cells, dimensions, isHovering, hoverPosition, isDark]);
 
   // Add a cell at the specified position
   const addCell = (x: number, y: number) => {

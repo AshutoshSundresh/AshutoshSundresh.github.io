@@ -5,16 +5,12 @@ import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
 import { useTooltip } from '../hooks/useTooltip';
+import { useTheme } from '../contexts/ThemeContext';
+import { darkenColor, rgbToHex } from '../constants/colors';
 import Tooltip from './ui/Tooltip';
 import InfoButton from './ui/InfoButton';
 
 import type { NowPlayingTrack, NowPlayingProps } from '../types';
-
-function rgbToHex(rgb: number[]) {
-  return (
-    '#' + rgb.map(x => x.toString(16).padStart(2, '0')).join('')
-  );
-}
 
 function getLuminance([r, g, b]: number[]) {
   // Standard luminance formula
@@ -53,6 +49,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   const { isLoading, track, error } = useLastFmNowPlaying();
   const { show, firstLaunch } = useIntroVisibility();
   const { showTooltip, tooltipPosition, buttonRef, handleMouseEnter, handleMouseLeave } = useTooltip();
+  const { isDark } = useTheme();
   const imgRef = useRef<HTMLImageElement>(null);
 
   const albumArtUrl = useMemo(() => (
@@ -89,9 +86,11 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   let bgGradient = 'from-gray-800 to-gray-900';
   let textColor = 'text-white';
   if (dominantColor) {
-    const hex = rgbToHex(dominantColor);
+    // Darken color in dark mode for better contrast
+    const adjustedColor = isDark ? darkenColor(dominantColor, 0.4) : dominantColor;
+    const hex = rgbToHex(adjustedColor);
     bgGradient = `bg-[linear-gradient(90deg,${hex} 0%,${hex} 50%,${hex} 100%)]`;
-    textColor = getLuminance(dominantColor) > 180 ? 'text-gray-900' : 'text-white';
+    textColor = getLuminance(adjustedColor) > 180 ? 'text-gray-900' : 'text-white';
   }
 
   return (
@@ -107,9 +106,9 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
           style={{
             background: dominantColor
               ? `linear-gradient(90deg, 
-                  ${rgbToHex(dominantColor)} 0%, 
-                  ${rgbToHex(dominantColor)} 50%,
-                  ${rgbToHex(dominantColor)} 100%)`
+                  ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 0%, 
+                  ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 50%,
+                  ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 100%)`
               : undefined,
             backgroundSize: '200% 200%',
             animation: 'gradientFlow 8s ease infinite'

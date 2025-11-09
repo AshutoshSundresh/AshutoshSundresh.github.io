@@ -78,6 +78,13 @@
 body {
   font-family: 'Raleway', sans-serif;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles */
+.dark body {
+  background-color: #1a1b26;
+  color: #c0caf5;
 }
 
 .font-array {
@@ -244,6 +251,7 @@ html {
 .backdrop-blur-4 { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
 
 .card-elevated {
+  /* COLOR_COMBINATIONS shadows and white[15] */
   box-shadow:
     0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05),
@@ -251,6 +259,7 @@ html {
 }
 
 .glass-16 {
+  /* COLOR_COMBINATIONS.black[60] or glass.dark */
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
   -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
@@ -259,6 +268,7 @@ html {
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-16 {
     /* Fallback for browsers/devices without backdrop-filter support */
+    /* COLOR_COMBINATIONS.black[80] */
     background: rgba(0, 0, 0, 0.8);
   }
 }
@@ -266,6 +276,7 @@ html {
 .img-no-gap { margin: -1px; }
 
 .ios-lockscreen-bg {
+  /* Color values defined in app/constants/colors.ts - GRADIENTS.iosLockscreen */
   background: linear-gradient(to bottom, #1a001f, #320046, #210024, black);
   background-size: cover;
   background-position: center;
@@ -325,6 +336,7 @@ html {
 }
 
 .contact-btn {
+  /* COLOR_COMBINATIONS.white[10] */
   background: rgba(255, 255, 255, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -332,16 +344,19 @@ html {
 }
 
 .contact-btn:hover, .contact-btn.active {
+  /* COLOR_COMBINATIONS.white[20] and white[10] */
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 /* Pressed-in active style for nav links */
 .nav-active-pressed {
+  /* Color values defined in app/constants/colors.ts - COLOR_COMBINATIONS.navPressed */
   background: linear-gradient(180deg, rgba(34, 34, 34), rgba(27, 27, 27));
-  /* Slightly darker than navbar (#2A2A2A) */
+  /* Slightly darker than navbar (#2A2A2A - SEMANTIC_COLORS.navBackground) */
   border-radius: 999px;
   /* Outward light halo, inward dark shading */
+  /* COLOR_COMBINATIONS.white[12], white[5+], navPressed.inset1, navPressed.inset2 */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 2px 6px rgba(255, 255, 255, 0.06),
@@ -352,6 +367,7 @@ html {
 /* Glass variant: no background fill, only pressed outline and subtle blur */
 .nav-active-pressed-glass {
   border-radius: 999px;
+  /* COLOR_COMBINATIONS.white[12], white[5+], navPressed.glassInset1, navPressed.glassInset2 */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 2px 6px rgba(255, 255, 255, 0.06),
@@ -361,6 +377,7 @@ html {
 
 /* Ensure hover does not remove pressed style */
 .nav-active-pressed:hover {
+  /* Same as .nav-active-pressed - see COLOR_COMBINATIONS.navPressed */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 2px 6px rgba(255, 255, 255, 0.06),
@@ -554,8 +571,9 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  color: #33ff33;
+  /* Color values defined in app/constants/colors.ts */
+  background: rgba(0, 0, 0, 0.9); /* COLOR_COMBINATIONS.black[90] */
+  color: #33ff33; /* SEMANTIC_COLORS.terminalGreen */
   font-family: monospace;
   padding: 1rem;
   z-index: 9999;
@@ -565,7 +583,7 @@ html {
 .terminal-header {
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid #33ff33;
+  border-bottom: 1px solid #33ff33; /* SEMANTIC_COLORS.terminalGreen */
   font-weight: bold;
   display: flex;
   justify-content: space-between;
@@ -607,7 +625,7 @@ html {
 .terminal-input {
   background: transparent;
   border: none;
-  color: #33ff33;
+  color: #33ff33; /* SEMANTIC_COLORS.terminalGreen */
   font-family: monospace;
   font-size: 1rem;
   flex-grow: 1;
@@ -647,4 +665,78 @@ html {
 .lavalamp-bg {
   background-size: 320% 320% !important;
   animation: gradientFlow 16s ease infinite !important;
+}
+
+/* ============================================================================
+   DARK MODE UTILITIES
+   ============================================================================ */
+
+/* Dark mode background variants */
+.dark .dark\:bg-dark-primary {
+  background-color: #1a1b26;
+}
+
+.dark .dark\:bg-dark-secondary {
+  background-color: #16161e;
+}
+
+.dark .dark\:bg-dark-tertiary {
+  background-color: #0f0f14;
+}
+
+.dark .dark\:bg-dark-elevated {
+  background-color: #24283b;
+}
+
+/* Dark mode text variants */
+.dark .dark\:text-dark-primary {
+  color: #c0caf5;
+}
+
+.dark .dark\:text-dark-secondary {
+  color: #a9b1d6;
+}
+
+.dark .dark\:text-dark-tertiary {
+  color: #9aa5ce;
+}
+
+/* Dark mode borders */
+.dark .dark\:border-dark-primary {
+  border-color: #292e42;
+}
+
+.dark .dark\:border-dark-secondary {
+  border-color: #1f2335;
+}
+
+/* Dark mode card styles */
+.dark .dark\:card-dark {
+  background-color: #16161e;
+  border-color: #1f2335;
+}
+
+.dark .dark\:card-dark:hover {
+  background-color: #24283b;
+}
+
+/* Dark mode glass effects */
+.dark .dark\:glass-dark {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(180%) brightness(1.1);
+}
+
+/* Dark mode map inversion */
+.dark .leaflet-layer,
+.dark .leaflet-control-zoom-in,
+.dark .leaflet-control-zoom-out,
+.dark .leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
+
+/* Dark mode GitHub contributions canvas inversion */
+.dark canvas[style*="background-color"],
+.dark .dark-mode-canvas-filter {
+  filter: invert(100%) hue-rotate(180deg) brightness(130%) contrast(70%);
 }

@@ -106,14 +106,12 @@ export default function GitHubContributions() {
   }
 
   return (
-    <div className={`bg-gray-300/40 text-white p-0.5  rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900`}>
+    <div className={`backdrop-blur-xl bg-gradient-to-b from-white/20 to-white/10 dark:from-white/10 dark:to-white/5 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900 border-2 border-gray-300/40 dark:border-dark-primary overflow-hidden`}>
       {contributionsData && (
-        <div className="overflow-hidden rounded-3xl">
-          <ContributionsGraph 
-            data={contributionsData}
-            username="AshutoshSundresh"
-          />
-        </div>
+        <ContributionsGraph 
+          data={contributionsData}
+          username="AshutoshSundresh"
+        />
       )}
     </div>
   );

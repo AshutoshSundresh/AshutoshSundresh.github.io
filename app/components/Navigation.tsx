@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import useAppOverlayState from '../hooks/useAppOverlayState';
+import { SEMANTIC_COLORS } from '../constants/colors';
 
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -145,11 +146,12 @@ const Navigation = () => {
 
   return (
     <nav 
-      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 ${isExperienceActive ? 'bg-black/50 backdrop-blur-md' : 'bg-[#2A2A2A]'} px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()}`}
+      className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ${visibilityClasses()} ${isExperienceActive ? 'bg-black/50 backdrop-blur-md' : ''}`}
       onMouseOver={handleInteraction}
       onClick={handleInteraction}
+      style={!isExperienceActive ? { backgroundColor: SEMANTIC_COLORS.navBackground } : undefined}
     >
-      <ul className="flex items-center gap-2 md:gap-8 text-[#CCCCCC]">
+      <ul className="flex items-center gap-2 md:gap-8" style={{ color: SEMANTIC_COLORS.navText }}>
         <li className="relative">
           <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''}`}>
               <span className="p-2 md:px-1">Home</span>  

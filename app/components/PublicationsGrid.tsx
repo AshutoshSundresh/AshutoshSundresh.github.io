@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import type { PublicationsGridProps } from '../types';
 import Image from 'next/image';
+import { SEMANTIC_COLORS } from '../constants/colors';
 
 function PublicationsGrid({ publications, selectedId, onItemClick }: PublicationsGridProps) {
   return (
@@ -8,8 +9,9 @@ function PublicationsGrid({ publications, selectedId, onItemClick }: Publication
       {publications.map((pub) => (
         <div
           key={pub.id}
-          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedId === pub.id ? 'bg-[#0069d9]' : 'hover:bg-gray-100'}`}
+          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedId === pub.id ? 'text-white' : 'hover:bg-gray-100'}`}
           onClick={(e) => onItemClick(e, pub.id)}
+          style={selectedId === pub.id ? { backgroundColor: SEMANTIC_COLORS.selection } : undefined}
         >
           <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
             <Image src={pub.icon} alt="Publication" fill sizes="64px" className="object-contain" />

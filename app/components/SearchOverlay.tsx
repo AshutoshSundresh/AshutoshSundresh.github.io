@@ -179,16 +179,16 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-start justify-center pt-8 md:pt-24 bg-black/30 backdrop-blur-lg" onClick={onClose}>
+    <div className="fixed inset-0 z-[2000] flex items-start justify-center pt-8 md:pt-24 bg-black/30 dark:bg-black/70 backdrop-blur-lg" onClick={onClose}>
       <div
         className="w-full max-w-2xl px-4"
         onClick={(e) => {
           e.stopPropagation();
         }}
       >
-        <div className={`rounded-2xl bg-white/70 dark:bg-zinc-900/70 shadow-2xl ring-1 ring-black/5 backdrop-blur-lg ${loading ? 'opacity-60' : ''}`}>
+        <div className={`rounded-2xl bg-white/80 dark:bg-dark-secondary backdrop-blur-xl shadow-2xl ring-1 ring-black/5 dark:ring-dark-border-primary ${loading ? 'opacity-60' : ''}`}>
           <div className="flex items-center gap-2 px-4 py-3">
-            <Search className="h-5 w-5 text-gray-500" />
+            <Search className="h-5 w-5 text-gray-500 dark:text-dark-tertiary" />
             <input
               ref={inputRef}
               type="text"
@@ -198,7 +198,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
               placeholder="Search..."
               disabled={loading}
               aria-disabled={loading}
-              className={`w-full bg-transparent outline-none placeholder:text-gray-400 text-gray-900 dark:text-white text-base ${loading ? 'cursor-not-allowed' : ''}`}
+              className={`w-full bg-transparent outline-none placeholder:text-gray-400 dark:placeholder:text-dark-tertiary text-gray-900 dark:text-dark-primary text-base ${loading ? 'cursor-not-allowed' : ''}`}
             />
             <button
               aria-label={query ? 'Clear search' : 'Close search'}
@@ -210,7 +210,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
                   onClose();
                 }
               }}
-              className="p-1 rounded-md hover:bg-black/5 dark:hover:bg-white/10"
+              className="p-1 rounded-md hover:bg-black/5 dark:hover:bg-white/10 text-gray-600 dark:text-dark-secondary"
             >
               <X className="h-5 w-5" />
             </button>
@@ -218,20 +218,20 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
         </div>
 
         {query && results.length > 0 && (
-          <div className="mt-3 rounded-2xl bg-white/80 dark:bg-zinc-900/80 shadow-xl ring-1 ring-black/5 backdrop-blur-lg overflow-hidden">
+          <div className="mt-3 rounded-2xl bg-white/80 dark:bg-dark-secondary backdrop-blur-xl shadow-xl ring-1 ring-black/5 dark:ring-dark-border-primary overflow-hidden">
             <ul className="max-h-[60vh] overflow-auto">
               {results.map((r) => (
-                <li key={r.id} className="border-b border-black/5 dark:border-white/10 last:border-0">
+                <li key={r.id} className="border-b border-black/5 dark:border-dark-border-secondary last:border-0">
                   <button
                     onClick={() => handleSelect(r.path)}
-                    className="w-full text-left px-4 py-3 hover:bg-black/5 dark:hover:bg-white/10"
+                    className="w-full text-left px-4 py-3 hover:bg-black/5 dark:hover:bg-white/5"
                   >
-                    <div className="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">{r.title}</div>
+                    <div className="text-sm text-gray-600 dark:text-dark-tertiary line-clamp-1">{r.title}</div>
                     <div
-                      className="text-gray-900 dark:text-white text-base"
+                      className="text-gray-900 dark:text-dark-primary text-base"
                       dangerouslySetInnerHTML={{ __html: highlight(r.text, query, r.acronymMappings) }}
                     />
-                    <div className="text-xs text-gray-500 mt-1">{r.path}</div>
+                    <div className="text-xs text-gray-500 dark:text-dark-tertiary mt-1">{r.path}</div>
                   </button>
                 </li>
               ))}
@@ -240,20 +240,20 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
         )}
 
         {query && !loading && results.length === 0 && (
-          <div className="mt-3 rounded-2xl bg-white/80 dark:bg-zinc-900/80 shadow-xl ring-1 ring-black/5 backdrop-blur-lg px-4 py-6 text-gray-600">
+          <div className="mt-3 rounded-2xl bg-white/80 dark:bg-dark-secondary backdrop-blur-xl shadow-xl ring-1 ring-black/5 dark:ring-dark-border-primary px-4 py-6 text-gray-600 dark:text-dark-secondary">
             No results.
           </div>
         )}
 
         {!query && !loading && (
-          <div className="mt-2 rounded-2xl bg-white/70 dark:bg-white/20 shadow-xl backdrop-blur-lg overflow-hidden">
-            <div className="px-4 py-3 text-xs text-muted-foreground">Recommended</div>
+          <div className="mt-2 rounded-2xl bg-white/70 dark:bg-dark-secondary dark:opacity-70 backdrop-blur-xl shadow-xl ring-1 ring-black/5 dark:ring-dark-border-primary overflow-hidden">
+            <div className="px-4 py-3 text-xs text-gray-500 dark:text-dark-tertiary">Recommended</div>
             <div className="grid grid-cols-1 gap-0.5 p-1">
               {recommendedTabs.map((t) => (
                 <button
                   key={t.key}
                   onClick={() => handleSelect(`/experience?tab=${t.key}`)}
-                  className="text-left px-3 py-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-white/10 text-sm"
+                  className="text-left px-3 py-1 rounded-lg text-gray-600 dark:text-dark-secondary hover:text-gray-900 dark:hover:text-dark-primary hover:bg-black/5 dark:hover:bg-white/5 text-sm"
                 >
                   {t.title}
                 </button>

@@ -1,4 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+
+// Import color constants for reference
+// Note: Tailwind config doesn't support ES6 imports, so we keep the colors inline
+// but reference app/constants/colors.ts for the source of truth
+
 module.exports = {
   darkMode: ["class"],
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./*.{js,ts,jsx,tsx,mdx}"],
@@ -8,6 +13,7 @@ module.exports = {
         array: ['Array', 'sans-serif'],
       },
       colors: {
+        // Shadcn/UI theme colors (using CSS variables)
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -41,6 +47,23 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Custom semantic colors (defined in app/constants/colors.ts)
+        'selection-blue': '#0069d9',
+        'nav-bg': '#2A2A2A',
+        'nav-text': '#CCCCCC',
+        'terminal-green': '#33ff33',
+        'contributions-bg': '#282a36',
+        
+        // Dark mode colors (darker aesthetic for better contrast)
+        'dark-primary': '#1a1b26',
+        'dark-secondary': '#16161e',
+        'dark-tertiary': '#0f0f14',
+        'dark-elevated': '#24283b',
+        'dark-text-primary': '#c0caf5',
+        'dark-text-secondary': '#a9b1d6',
+        'dark-text-tertiary': '#9aa5ce',
+        'dark-border-primary': '#292e42',
+        'dark-border-secondary': '#1f2335',
       },
       borderRadius: {
         lg: "var(--radius)",

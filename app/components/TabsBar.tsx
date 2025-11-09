@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TabsBarProps } from '../types';
+import { COLOR_COMBINATIONS } from '../constants/colors';
 
 export default function TabsBar({ tabs, activeTab, isMobile, showMobileMenu, onToggleMobileMenu, onSelect, mobileMenuRef }: TabsBarProps) {
   return (
@@ -46,7 +47,10 @@ export default function TabsBar({ tabs, activeTab, isMobile, showMobileMenu, onT
             </button>
 
             {showMobileMenu && (
-              <div className="absolute right-0 mt-1 w-48 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.1)] border border-gray-200 py-1 z-50">
+              <div 
+                className="absolute right-0 mt-1 w-48 bg-white border border-gray-200 py-1 z-50"
+                style={{ boxShadow: `0 1px 3px ${COLOR_COMBINATIONS.shadows.light}` }}
+              >
                 {tabs.slice(3).map((tab) => (
                   <button
                     key={tab.id}

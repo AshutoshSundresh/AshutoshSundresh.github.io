@@ -4,6 +4,44 @@
 // ============================================================================
 
 // ============================================================================
+// Theme Types
+// ============================================================================
+export type Theme = 'light' | 'dark';
+
+export interface ThemeColors {
+  background: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    elevated: string;
+  };
+  text: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    disabled: string;
+  };
+  card: {
+    background: string;
+    border: string;
+    hover: string;
+  };
+  nav: {
+    background: string;
+    text: string;
+  };
+  interactive: {
+    hover: string;
+    active: string;
+    border: string;
+  };
+  overlay: string;
+  glassLight: string;
+  glassMedium: string;
+  glassDark: string;
+}
+
+// ============================================================================
 // Domain Models (Core app data used across features)
 // ============================================================================
 export interface ProjectInput {

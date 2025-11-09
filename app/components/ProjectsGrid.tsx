@@ -3,6 +3,7 @@
 import React, { memo } from 'react';
 import type { ProjectsGridProps } from '../types';
 import Image from 'next/image';
+import { SEMANTIC_COLORS } from '../constants/colors';
 
 function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: ProjectsGridProps) {
   return (
@@ -10,8 +11,9 @@ function ProjectsGrid({ projects, selectedItem, onItemClick, folderIconUrl }: Pr
       {projects.map((project) => (
         <div
           key={project.id}
-          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === project.id ? 'bg-[#0069d9]' : 'hover:bg-gray-100'}`}
+          className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedItem === project.id ? 'text-white' : 'hover:bg-gray-100'}`}
           onClick={(e) => onItemClick(e, project.id)}
+          style={selectedItem === project.id ? { backgroundColor: SEMANTIC_COLORS.selection } : undefined}
         >
           <div className="w-16 h-16 mb-1 relative transition-transform duration-[8s] group-hover:scale-105">
             <Image src={folderIconUrl} alt="Folder" fill sizes="64px" className="object-contain" />
