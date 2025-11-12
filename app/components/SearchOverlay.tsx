@@ -66,14 +66,14 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
   const recommendedTabs = useMemo(() => {
     const dataRoot = skeuData as unknown as SkeumorphicDataRoot;
     const items: Array<{ key: string; title: string }> = [];
-    if (Array.isArray(dataRoot.projects) && dataRoot.projects.length)
-      items.push({ key: 'projects', title: 'Projects' });
-    if (Array.isArray(dataRoot.educationData) && dataRoot.educationData.length)
-      items.push({ key: 'education', title: 'Education' });
     if (Array.isArray(dataRoot.experienceData) && dataRoot.experienceData.length)
       items.push({ key: 'experience', title: 'Experience' });
     if (Array.isArray(dataRoot.awardsData) && dataRoot.awardsData.length)
       items.push({ key: 'awards', title: 'Awards' });
+    if (Array.isArray(dataRoot.educationData) && dataRoot.educationData.length)
+      items.push({ key: 'education', title: 'Education' });
+    if (Array.isArray(dataRoot.projects) && dataRoot.projects.length)
+      items.push({ key: 'projects', title: 'Projects' });
     if (Array.isArray(dataRoot.publications) && dataRoot.publications.length)
       items.push({ key: 'publications', title: 'Publications' });
     if (Array.isArray(dataRoot.activitiesData) && dataRoot.activitiesData.length)

@@ -38,7 +38,7 @@
   "educationData": [
     {
       "id": 1,
-      "institution": "UCLA",
+      "institution": "University of California, Los Angeles",
       "degree": "BS in Computer Science",
       "school": "Henry Samueli School of Engineering and Applied Science",
       "period": "2024 - Present",
@@ -97,18 +97,6 @@
       ]
     },
     {
-      "id": 2,
-      "company": "Kleiner Perkins",
-      "position": "Engineering Fellow",
-      "location": "San Francisco, California, United States",
-      "period": "Apr 2025 - Present",
-      "icon": "/images/kleiner_perkins_logo.jpeg",
-      "companyLink": "https://fellows.kleinerperkins.com",
-      "description": [
-        "1 of 30 Fellows out of 3,000+ applicants in '25. Selection Committee '26"
-      ]
-    },
-    {
       "id": 3,
       "company": "ShapeShiftOS",
       "position": "Lead Software Engineer / Founder",
@@ -147,7 +135,7 @@
       "companyLink": "https://lahacks.com/",
       "description": [
         "Tech Team, organizing the largest collegiate hackathon in Southern California",
-        "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards (typing, Git hooks, modular hooks/consts/types)",
+        "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
         "Engineered plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
       ]
@@ -187,6 +175,16 @@
       "category": "Undergraduate",
       "awards": [
         {
+          "title": "Kleiner Perkins Engineering Fellow",
+          "subtitle": "Kleiner Perkins",
+          "year": "2025",
+          "icon": "/images/kleiner_perkins_logo.jpeg",
+          "link": "https://fellows.kleinerperkins.com",
+          "description": "• Summer '25<br>• Selection Committee '26",
+          "highlight": "1 of 30",
+          "stats": "Out of 3,000+ applicants"
+        },
+        {
           "title": "Upsilon Pi Epsilon Inductee",
           "subtitle": "UCLA Computer Science",
           "year": "2025",
@@ -219,28 +217,28 @@
       "category": "High School",
       "awards": [
         {
-          "title": "International Recognition in Linguistics and Math",
-          "year": "2021-2024",
+          "title": "Linguistics Olympiads",
+          "subtitle": "IIIT Hyderabad",
+          "year": "2023",
+          "highlight": "Top 25 in India",
+          "icon": "/images/iol_logo.jpeg",
+          "description": "• International Linguistics Olympiad (IOL) Finalists' Camp<br>• Asia Pacific Linguistics Olympiad (APLO) Indian Delegation",
+          "link": "https://ltrc.iiit.ac.in/plo/"
+        },
+        {
+          "title": "Regional Asian Math Olympiads",
+          "year": "2023-2024",
           "icon": "/images/medal.png",
-          "description": "Achieved notable accomplishments in various international Olympiads and competitions",
-          "highlight": "Multiple Awards",
-          "stats": "IOL Camp, APLO, Math Olympiads",
+          "description": "• Gold Medal in Philippine International Math Olympics (World Rank 3)<br>• Silver Medal in Fermat Vietnam Mathematical Olympiad (World Rank 7)<br>• Bronze Medal in Southeast Asian Mathematical Olympiad and Hong Kong International Mathematical Olympiad",
+          "highlight": "Multiple Medals",
           "link": "https://ashutoshsundresh.com/archive.html#awards"
         },
         {
-          "title": "SRCC Writing Mentorship Program",
-          "year": "2024",
-          "icon": "/images/ecosocsrcc.png",
-          "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program",
-          "highlight": "Top 5",
-          "stats": "Out of 105 student cohort"
-        },
-        {
-          "title": "Open Source Excellence",
+          "title": "Open Source Excellence and Community Leader",
           "subtitle": "SourceForge File Hosting",
           "year": "2023",
-          "icon": "/images/shapeshiftos.jpg",
-          "description": "Recognized as top 0.5% of all open-source projects globally",
+          "icon": "/images/sourceforge-logo-png_seeklogo-333733.png",
+          "description": "Recognized for ShapeShiftOS being in the top 0.5% of all open-source projects globally by downloads",
           "highlight": "150,000+ downloads",
           "link": "https://sourceforge.net/projects/shapeshiftos/"
         },
@@ -248,7 +246,7 @@
           "title": "XDA Recognized Developer",
           "year": "2021",
           "icon": "/images/xda.png",
-          "description": "Recognized as the youngest Recognized Developer on the XDA Forums for Android Development (awarded at age 15) as of 2023",
+          "description": "Recognized as the youngest Recognized Developer on the XDA Forums for Android Development (awarded at age 15) as of 2024",
           "highlight": "Top 300",
           "stats": "Out of 11 million users",
           "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292",
@@ -256,7 +254,7 @@
         },
         {
           "title": "Board Exam Excellence",
-          "subtitle": "CBSE",
+          "subtitle": "Central Board of Secondary Education",
           "year": "2022",
           "icon": "/images/shivnadarschool.png",
           "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
@@ -340,15 +338,13 @@
       "id": 2,
       "title": "Open-Source Developer & Contributor",
       "period": "2020 - Present",
-      "description": "Created over 4,700 total commits and 2,000 total contributions on GitHub since account creation in 2020.",
       "highlights": [
-        "Recognized as one of approximately 300 Recognized Developers out of 11 million+ users on the XDA Forum for Mobile Development",
-        "Became the youngest person to attain XDA Recognized Developer title at the time of being awarded (2021)",
+        "Recognized as one of approximately 300 Recognized Developers out of 11 million+ users on the XDA Forum for Android Mobile Development, and the youngest as of 2024",
         "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
       ],
       "stats": [
-        { "value": "4,700+", "label": "Total Commits" },
-        { "value": "2,000+", "label": "Contributions" }
+        { "value": "4,800+", "label": "Total Commits" },
+        { "value": "2,500+", "label": "Contributions" }
       ],
       "links": [
         { "text": "GitHub", "url": "https://github.com/ashutoshsundresh" },
@@ -360,13 +356,24 @@
       "id": 3,
       "title": "Investment Banking M&A Simulation",
       "period": "Sep 2024",
-      "description": "Participated in a comprehensive educational session on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
+      "description": "Participated in a comprehensive educational session with StepStone on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
       "highlights": [
-        "Completed with a score at the highest possible range (>85%)",
-        "Created a five-year financial forecast for a U.S. apparel and footwear company",
-        "Performed valuation analysis using comparable companies and precedent transactions"
+        "Completed with a score at the highest possible range (>85%)"
       ],
       "icon": "/images/stepstone.png"
+    },
+    {
+      "id": 4,
+      "title": "SRCC Writing Mentorship Program",
+      "period": "Aug 2024 - Sep 2024",
+      "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program with the Economics Society at Shri Ram College of Commerce, University of Delhi.",
+      "highlights": [
+        "Completed with highest distinction, finishing top 5 out of 105 participants"
+      ],
+      "links": [
+        { "text": "Economics Society SRCC", "url": "https://ecosocsrcc.com/" }
+      ],
+      "icon": "/images/ecosocsrcc.png"
     }
   ]
 }

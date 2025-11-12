@@ -39,10 +39,10 @@ const MacOSWindow = () => {
   // Add ref array for tab elements
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const tabs = useMemo(() => ([
-    { id: 0, title: 'Projects', content: 'Git repositories and development projects' },
-    { id: 1, title: 'Education', content: 'Academic background and achievements' },
-    { id: 2, title: 'Experience', content: 'Professional experience and internships' },
-    { id: 3, title: 'Awards', content: 'Honors and recognition' },
+    { id: 0, title: 'Experience', content: 'Professional experience and internships' },
+    { id: 1, title: 'Awards', content: 'Honors and recognition' },
+    { id: 2, title: 'Education', content: 'Academic background and achievements' },
+    { id: 3, title: 'Projects', content: 'Git repositories and development projects' },
     { id: 4, title: 'Publications', content: 'Research papers and publications' },
     { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' }
   ]), []);
@@ -134,14 +134,14 @@ const MacOSWindow = () => {
 
   // Sync tab from URL query param `tab` (when landing from search)
   const tabNameToIndex: Record<string, number> = {
-    projects: 0,
-    education: 1,
-    experience: 2,
-    awards: 3,
+    experience: 0,
+    awards: 1,
+    education: 2,
+    projects: 3,
     publications: 4,
     activities: 5,
   };
-  const tabIndexToName = ['projects','education','experience','awards','publications','activities'];
+  const tabIndexToName = ['experience','awards','education','projects','publications','activities'];
 
   const didInitFromUrl = useRef(false);
   useEffect(() => {
@@ -157,7 +157,7 @@ const MacOSWindow = () => {
 
   // Keep URL query in sync with active tab (without adding history entries)
   useEffect(() => {
-    const name = tabIndexToName[activeTab] || 'projects';
+    const name = tabIndexToName[activeTab] || 'experience';
     router.replace(`${pathname}?tab=${name}`, { scroll: false });
   }, [activeTab, router, pathname]);
 
@@ -287,7 +287,7 @@ const MacOSWindow = () => {
             onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
             className={`
             flex-1 p-4 bg-white dark:bg-[#1e1e1e] overflow-y-auto transition-colors
-            ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
+            ${windowHeight.isMobile && selectedItem && activeTab === 3 ? 'hidden' : ''}
           `}
             onClick={handleContainerClick}
             style={{ height: contentHeight }}
@@ -299,8 +299,17 @@ const MacOSWindow = () => {
               {tabs[activeTab].content}
             </div>
 
+            {/* Experience Tab */}
+            {activeTab === 0 && <ExperienceList experienceData={experienceData} />}
+
+            {/* Awards Tab */}
+            {activeTab === 1 && <AwardsMasonry awardsData={awardsData} />}
+
+            {/* Education Tab */}
+            {activeTab === 2 && <EducationList educationData={educationData} />}
+
             {/* Project Folders (MacOS styled) */}
-            {activeTab === 0 && (
+            {activeTab === 3 && (
               <ProjectsGrid
                 projects={projects}
                 selectedItem={selectedItem}
@@ -308,15 +317,6 @@ const MacOSWindow = () => {
                 folderIconUrl={folderIconUrl}
               />
             )}
-
-            {/* Documents Tab */}
-            {activeTab === 1 && <EducationList educationData={educationData} />}
-
-            {/* Experience Tab */}
-            {activeTab === 2 && <ExperienceList experienceData={experienceData} />}
-
-            {/* Awards Tab */}
-            {activeTab === 3 && <AwardsMasonry awardsData={awardsData} />}
 
             {/* Publications Tab */}
             {activeTab === 4 && (
@@ -328,7 +328,7 @@ const MacOSWindow = () => {
           </div>
 
           {/* Detail View */}
-          {selectedItem && activeTab === 0 && (
+          {selectedItem && activeTab === 3 && (
             <ProjectDetailView
               project={projects.find(p => p.id === selectedItem) as ProjectDetails}
               onClose={() => setSelectedItem(null)}
@@ -350,13 +350,13 @@ const MacOSWindow = () => {
         <div className={`
           bg-gray-50 dark:bg-[#181818] border-t border-gray-200 dark:border-gray-700 px-4 py-1 text-xs text-gray-500 dark:text-gray-400 
           flex justify-between font-['Raleway'] transition-colors
-          ${windowHeight.isMobile && selectedItem && activeTab === 0 ? 'hidden' : ''}
+          ${windowHeight.isMobile && selectedItem && activeTab === 3 ? 'hidden' : ''}
         `}>
           <span>
-            {activeTab === 0 ? `${projects.length} items` :
-              activeTab === 1 ? `${educationData.length} items` :
-                activeTab === 2 ? `${experienceData.length} items` :
-                  activeTab === 3 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
+            {activeTab === 0 ? `${experienceData.length} items` :
+              activeTab === 1 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
+                activeTab === 2 ? `${educationData.length} items` :
+                  activeTab === 3 ? `${projects.length} items` :
                     activeTab === 4 ? `${publications.length} items` :
                       `${activitiesData.length} items`} <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
@@ -389,10 +389,10 @@ const MacOSWindow = () => {
         onClose={() => setIsSearchOpen(false)}
         navigateInSkeumorphic={(tabName: string) => {
           const map: Record<string, number> = {
-            projects: 0,
-            education: 1,
-            experience: 2,
-            awards: 3,
+            experience: 0,
+            awards: 1,
+            education: 2,
+            projects: 3,
             publications: 4,
             activities: 5,
           };

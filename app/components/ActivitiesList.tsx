@@ -21,9 +21,11 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
             </div>
           </div>
           <div className="p-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400">{activity.description}</p>
+            {activity.description && (
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{activity.description}</p>
+            )}
             {activity.stats && (
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2">
                 {activity.stats.map((stat, index) => (
                   <div key={index} className="bg-gray-50 dark:bg-[#202020] rounded-lg p-2 text-center">
                     <div className="text-base font-medium text-gray-900 dark:text-gray-200">{stat.value}</div>
@@ -33,7 +35,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
               </div>
             )}
             {activity.highlights && (
-              <ul className="mt-3 space-y-2">
+              <ul className={`space-y-2 ${activity.stats || activity.description ? 'mt-3' : ''}`}>
                 {activity.highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start text-sm text-gray-600 dark:text-gray-400">
                     <span className="w-1.5 h-1.5 bg-gray-400 dark:bg-gray-500 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
@@ -43,7 +45,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
               </ul>
             )}
             {activity.links && (
-              <div className="mt-3 flex gap-2 justify-end flex-wrap">
+              <div className={`flex gap-2 justify-end flex-wrap ${activity.highlights || activity.stats || activity.description ? 'mt-3' : ''}`}>
                 {activity.links!.map((l, idx) => (
                   <a key={idx} href={l.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-50/0 dark:bg-blue-900/0 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300">
                     <span>{l.text}</span>

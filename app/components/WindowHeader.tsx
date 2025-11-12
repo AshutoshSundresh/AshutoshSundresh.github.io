@@ -16,7 +16,7 @@ export default function WindowHeader({ onToggleLockscreen, onOpenTerminal }: Win
         <div className="w-3 h-3 rounded-full bg-green-500 cursor-pointer" onClick={onOpenTerminal}></div>
       </div>
 
-      <div className="flex-1 text-center text-sm text-gray-700 dark:text-gray-300 font-medium font-['Raleway']">Finder</div>
+      <div className="flex-1 text-center text-sm text-gray-700 dark:text-gray-300 font-medium font-['Raleway']">Explore</div>
 
       <div className="w-16"></div>
     </div>
