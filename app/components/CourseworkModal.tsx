@@ -10,7 +10,7 @@ import CourseworkSidebar from './coursework/CourseworkSidebar';
 import CalendarGrid from './coursework/CalendarGrid';
 import EmptyState from './coursework/EmptyState';
 
-export default function CourseworkModal({ open, onClose, courses, institution: _institution }: CourseworkModalProps) {
+export default function CourseworkModal({ open, onClose, courses }: CourseworkModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
 
   const {
