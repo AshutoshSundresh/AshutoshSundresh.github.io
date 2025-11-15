@@ -23,7 +23,7 @@
           "value": "50+"
         },
         {
-          "label": "Open-Source Projects",
+          "label": "Open-Source Projects (SourceForge)",
           "value": "Top 0.5%"
         }
       ]
@@ -32,17 +32,17 @@
       "id": 2,
       "name": "Bibliotheque (Library Management System)",
       "image": "/images/Screenshot-2025-06-02-181132.png",
-      "caption": "Open-Source Full-Stack Library Management System built (Next.js, PostgreSQL, TypeScript)",
-      "description": "Developed a responsive admin dashboard for librarians with real-time CRUD, rich data visualizations, and overdue-book tracking, powered by a PostgreSQL backend (4 tables, 16 RLS policies) and Google OAuth–secured auth. Built a sub-50ms ISBN/title/author search functionality for 1,000+ concurrent queries.",
-      "created": "2023-12-15",
+      "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
+      "description": "Built a real-time multi-library management platform with <50ms search latency and full admin dashboard. Implemented secure authentication, row-level access control, and concurrent CRUD operations.",
+      "created": "2025-04-14",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
     {
       "id": 3,
-      "name": "Shiv Nadar School Faridabad Food Menu Alexa Skill",
+      "name": "Alexa High School Food Menu Skill",
       "image": "/images/GhsuTUs.webp",
-      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools (Node.js, AWS Lambda, Alexa Skills Kit SDK)",
-      "description": "Built an Alexa Skill that retrieves meal information for a given date and time from the Shiv Nadar School Faridabad Menu. Includes 50+ comprehensive voice interaction dialog templates created over 1 week.",
+      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools (Node.js, AWS Lambda, Alexa SDK)",
+      "description": "Developed and deployed an Alexa skill to retrieve school meal data via voice commands; published to Amazon Store.",
       "created": "2022-01-09",
       "link": "https://github.com/AshutoshSundresh/AlexaFoodMenuSkill"
     }
@@ -68,7 +68,7 @@
             "name": "Freshman Computer Science Seminar",
             "quarter": "Fall 2024",
             "year": 2024,
-            "description": "Freshman Computer Science Seminar",
+            "description": "Introduction to department resources and principal topics and key ideas in computer science and computer engineering.",
             "color": "#007AFF",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI1",
             "schedule": [
@@ -85,7 +85,7 @@
             "name": "Calculus of Several Variables",
             "quarter": "Fall 2024",
             "year": 2024,
-            "description": "Calculus of Several Variables",
+            "description": "Introduction to differential calculus of several variables, vector field theory.",
             "color": "#5AC8FA",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/MATH32A",
             "schedule": [
@@ -120,7 +120,7 @@
             "name": "Introduction to Computer Science I",
             "quarter": "Fall 2024",
             "year": 2024,
-            "description": "Introduction to computer science via theory, applications, and programming",
+            "description": "Introduction to computer science via theory, applications, and programming. Basic data types, operators and control structures.",
             "color": "#34C759",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI31",
             "schedule": [
@@ -149,7 +149,7 @@
             "name": "Introduction to Study of Language",
             "quarter": "Fall 2024",
             "year": 2024,
-            "description": "Introduction to Study of Language",
+            "description": "Summary for general undergraduates of what is known about human language; biological basis of language, scientific study of language and human communication.",
             "color": "#FF9500",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/LING1",
             "schedule": [
@@ -166,7 +166,7 @@
             "name": "Introduction to Engineering Design: Machine Learning",
             "quarter": "Winter 2025",
             "year": 2025,
-            "description": "Introduction to Engineering Design: Machine Learning",
+            "description": "Introduction to machine learning using Python. Covers Python programming, machine learning fundamentals, and LaTeX. Students develop and train neural network image classifiers using PyTorch.",
             "color": "#FFCC00",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1ML",
             "schedule": [
@@ -183,7 +183,7 @@
             "name": "Introduction to Computer Science II",
             "quarter": "Winter 2025",
             "year": 2025,
-            "description": "Object-oriented software development, data structures, algorithms, and software engineering principles",
+            "description": "Object-oriented software development. Abstract data type definition and use. Overloading, inheritance, polymorphism.",
             "color": "#FF3B30",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI32",
             "schedule": [
@@ -212,7 +212,7 @@
             "name": "Physics for Scientists and Engineers: Mechanics",
             "quarter": "Winter 2025",
             "year": 2025,
-            "description": "Physics for Scientists and Engineers: Mechanics",
+            "description": "Motion, Newton laws, work, energy, linear and angular momentum, rotation, equilibrium, gravitation.",
             "color": "#AF52DE",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1A",
             "schedule": [
@@ -241,7 +241,7 @@
             "name": "Software Construction",
             "quarter": "Spring 2025",
             "year": 2025,
-            "description": "Software development tools and environments, scripting languages, version control, and debugging",
+            "description": "Fundamentals of tools and environments for software construction projects, particularly open-source development.",
             "color": "#FF9500",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI35L",
             "schedule": [
@@ -270,7 +270,7 @@
             "name": "Introduction to Computer Organization",
             "quarter": "Spring 2025",
             "year": 2025,
-            "description": "Computer architecture, assembly language programming, memory hierarchy, and I/O systems",
+            "description": "Introductory course on computer architecture, assembly language, and operating systems fundamentals.",
             "color": "#34C759",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI33",
             "schedule": [
@@ -299,7 +299,7 @@
             "name": "Introduction to Educational Issues and Scholarship",
             "quarter": "Spring 2025",
             "year": 2025,
-            "description": "Introduction to Educational Issues and Scholarship",
+            "description": "Introduction to broad landscape of public education in U.S. Intended for those interested in educational research, policy, or teaching in both formal and informal settings.",
             "color": "#5AC8FA",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/EDUC10",
             "schedule": [
@@ -322,7 +322,7 @@
             "name": "Introduction to Engineering Design: Rockets",
             "quarter": "Spring 2025",
             "year": 2025,
-            "description": "Introduction to Engineering Design: Rockets",
+            "description": "Introduction to rocket engineering, covering launch vehicle structure, trajectory, stability, and propulsion. Topics include computer-aided design, structural analysis, manufacturing, aerodynamics, and flight dynamics. Students design, build, test, and launch solid-propellant rockets.",
             "color": "#FFCC00",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1RK",
             "schedule": [
@@ -339,7 +339,7 @@
             "name": "Linear Algebra and Applications",
             "quarter": "Fall 2025",
             "year": 2025,
-            "description": "Linear equations, matrices, vector spaces, linear transformations, and eigenvalues",
+            "description": "Introduction to linear algebra: systems of linear equations, matrix algebra.",
             "color": "#FF3B30",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33A",
             "schedule": [
@@ -374,7 +374,7 @@
             "name": "Logic Design of Digital Systems",
             "quarter": "Fall 2025",
             "year": 2025,
-            "description": "Logic Design of Digital Systems",
+            "description": "Introduction to digital systems. Specification and implementation of combinational and sequential logic.",
             "color": "#AF52DE",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM51A",
             "schedule": [
@@ -403,7 +403,7 @@
             "name": "Calculus of Several Variables",
             "quarter": "Fall 2025",
             "year": 2025,
-            "description": "Calculus of Several Variables",
+            "description": "Introduction to integral calculus of several variables, line and surface integrals.",
             "color": "#007AFF",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH32B",
             "schedule": [
@@ -438,7 +438,7 @@
             "name": "Physics for Scientists and Engineers: Oscillations, Waves, Electric and Magnetic Fields",
             "quarter": "Fall 2025",
             "year": 2025,
-            "description": "Physics for Scientists and Engineers: Oscillations, Waves, Electric and Magnetic Fields",
+            "description": "Fluid mechanics, oscillation, mechanical waves, and sound. Electric charge, field and potential, capacitors, and dielectrics. Currents and resistance, direct-current circuits.",
             "color": "#5AC8FA",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1B",
             "schedule": [
@@ -467,7 +467,7 @@
             "name": "Introduction to Discrete Structures",
             "quarter": "Winter 2025",
             "year": 2025,
-            "description": "Logic, sets, relations, combinatorics, graph theory, and discrete probability",
+            "description": "Discrete structures commonly used in computer science.",
             "color": "#34C759",
             "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH61",
             "schedule": [
@@ -527,8 +527,8 @@
         ],
         "achievements": [
           "Valedictorian",
-          "8 APs (Five 5s, Three 4s) / AP Scholar with Distinction",
           "SAT Score: 1580 (800M, 780V)",
+          "AP Scholar with Distinction",          
           "TOEFL: 119"
         ],
         "subjects": [
@@ -710,8 +710,7 @@
           "description": "Recognized as the youngest Recognized Developer on the XDA Forums for Android Development (awarded at age 15) as of 2024",
           "highlight": "Top 300",
           "stats": "Out of 11 million users",
-          "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292",
-          "extraDetails": "Given to developers with a history of producing cutting edge work, co-operating with others, and generally setting a good example with regard to adherence to open source licenses and other legal concerns."
+          "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292"
         },
         {
           "title": "Board Exam Excellence",
@@ -749,7 +748,7 @@
   "publications": [
     {
       "id": 1,
-      "title": "Applying Chaos Theory to Traffic Congestion",
+      "title": "Chaos-Theoretic Modeling of Traffic Congestion Dynamics",
       "subtitle": "International Journal of Science and Research (IJSR)",
       "year": "2023",
       "icon": "/images/txt-file-icon-1213.png",
@@ -757,10 +756,8 @@
       "authors": [
         "Ashutosh Sundresh"
       ],
-      "journal": "International Journal of Science and Research (IJSR)",
-      "abstract": "Authored a peer-reviewed paper published in the International Journal of Science and Research (Vol. 12, Issue 9), applying chaos theory to model non-linear traffic congestion dynamics. Designed synthetic datasets simulating traffic volume, speed, and congestion using NumPy and Gaussian/Poisson distributions. Developed a sinusoidal-based non-linear model capturing sensitivity to initial conditions and emergent chaotic behavior in traffic systems. Conducted statistical and visual analysis in Python to reveal deterministic yet unpredictable patterns in urban congestion, offering implications for scalable, adaptive city traffic management. Open-sourced all code and models used in the simulation on GitHub.",
-      "status": "Won first place among 160+ submissions in the paper submission round at the high school Neerja Modi Mathelogics Symposium 2023",
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FxDNxe4AAAAJ&citation_for_view=FxDNxe4AAAAJ:u5HHmVD_uO8C",
+      "journal": "International Journal of Science and Research",
+      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FxDNxe4AAAAJ&sortby=title&citation_for_view=FxDNxe4AAAAJ:u-x6o8ySG0sC",
       "extraDetails": [
         {
           "label": "Code",
@@ -774,7 +771,7 @@
     },
     {
       "id": 2,
-      "title": "Impact of Short-Term Rentals on Housing Crisis",
+      "title": "Impact of Short-Term Rentals on the Global Housing Crisis",
       "subtitle": "Ceteris Paribus, SRCC",
       "year": "2024",
       "icon": "/images/txt-file-icon-1213.png",
@@ -783,8 +780,6 @@
         "Ashutosh Sundresh"
       ],
       "journal": "Ceteris Paribus, Shri Ram College of Commerce",
-      "abstract": "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability.",
-      "status": "Published by the Economics Society of SRCC, University of Delhi after finishing top 5 in the SRCC Writing Mentorship Program",
       "link": "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
     }
   ],
