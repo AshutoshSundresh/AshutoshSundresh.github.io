@@ -772,6 +772,11 @@ html {
   scrollbar-color: #c1c1c1 #f1f1f1;
 }
 
+/* Hide scrollbar for mobile quarter selector */
+.mobile-quarter-selector::-webkit-scrollbar {
+  display: none;
+}
+
 /* Dark mode scrollbar */
 .dark ::-webkit-scrollbar {
   width: 12px;

@@ -42,6 +42,10 @@ function scoreRecord(rec: SearchRecord, q: string): number {
   
   if (inTitlePos === -1 && inTextPos === -1 && !acronymMatch) return -Infinity;
   
+  // Heavily deprioritize courses
+  const isCourse = rec.titleLower.startsWith('course —');
+  const coursePenalty = isCourse ? 2000 : 0;
+  
   let score = 0;
   if (inTitlePos !== -1) score += 800 - inTitlePos;
   if (inTextPos !== -1) score += 600 - inTextPos;
@@ -51,7 +55,7 @@ function scoreRecord(rec: SearchRecord, q: string): number {
   // Boost score significantly for acronym matches
   if (acronymMatch) score += 750;
   
-  return score;
+  return score - coursePenalty;
 }
 
 export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: { open: boolean; onClose: () => void; navigateInSkeumorphic?: (tabName: string) => void }) {
@@ -85,7 +89,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
   useEffect(() => {
     if (open && !loading) setTimeout(() => inputRef.current?.focus(), 0);
     if (setSearchActive) setSearchActive(open);
-  }, [open, loading]);
+  }, [open, loading, setSearchActive]);
 
   // Focus when opening
   useEffect(() => {

@@ -194,6 +194,34 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
         const fullText = `${title} ${text}`;
         const acronymMappings = extractAcronymMappings(fullText);
         records.push({ id: `skeu-e-${counter++}`, path: tabs.education, title, text: text.slice(0, 260), textLower: text.toLowerCase(), titleLower: title.toLowerCase(), acronymMappings });
+        
+        // Index individual courses
+        if (Array.isArray(e.details?.courses)) {
+          for (const course of e.details.courses) {
+            if (!course.code || !course.name) continue;
+            const courseYear = course.year || (course.quarter?.includes('2024') ? 2024 : course.quarter?.includes('2025') ? 2025 : null);
+            const courseQuarter = course.quarter?.replace(/\d{4}/g, '').trim() || '';
+            
+            if (courseYear && courseQuarter) {
+              const courseTitle = `Course — ${course.code}`;
+              // Include both code and name in searchable text
+              const courseText = normalizeWhitespace(`${course.code} ${course.name}`);
+              const courseFullText = `${courseTitle} ${courseText}`;
+              const courseAcronymMappings = extractAcronymMappings(courseFullText);
+              const coursePath = `/experience/coursework?year=${courseYear}&quarter=${encodeURIComponent(courseQuarter)}`;
+              
+              records.push({
+                id: `skeu-course-${counter++}`,
+                path: coursePath,
+                title: courseTitle,
+                text: courseText.slice(0, 260),
+                textLower: courseText.toLowerCase(),
+                titleLower: courseTitle.toLowerCase(),
+                acronymMappings: courseAcronymMappings,
+              });
+            }
+          }
+        }
       }
     }
     if (Array.isArray(dataRoot.experienceData)) {

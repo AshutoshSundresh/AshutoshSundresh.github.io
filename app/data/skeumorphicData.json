@@ -10,10 +10,22 @@
       "created": "2020-05-16",
       "link": "https://github.com/shapeshiftos",
       "stats": [
-        { "label": "Downloads", "value": "150,000+" },
-        { "label": "Countries", "value": "160+" },
-        { "label": "Stars", "value": "50+" },
-        { "label": "Open-Source Projects", "value": "Top 0.5%" }
+        {
+          "label": "Downloads",
+          "value": "150,000+"
+        },
+        {
+          "label": "Countries",
+          "value": "160+"
+        },
+        {
+          "label": "Stars",
+          "value": "50+"
+        },
+        {
+          "label": "Open-Source Projects",
+          "value": "Top 0.5%"
+        }
       ]
     },
     {
@@ -44,14 +56,448 @@
       "period": "2024 - Present",
       "icon": "/images/uclaengg.png",
       "institutionLink": "https://ucla.edu",
-      "courseLink": "https://www.linkedin.com/in/asund/details/courses/",
       "details": {
         "achievements": [
           "Upsilon Pi Epsilon Computer Science Honors Society",
           "William F. Sharpe Technology Fellow",
           "Stein Engineering Scholar, Shirley and Walter Wang Computer Science Scholar"
         ],
-        "coursework": ["Computer Science", "Mathematics", "Physics"]
+        "courses": [
+          {
+            "code": "CS 1",
+            "name": "Freshman Computer Science Seminar",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Freshman Computer Science Seminar",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI1",
+            "schedule": [
+              {
+                "type": "seminar",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 32A",
+            "name": "Calculus of Several Variables",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Calculus of Several Variables",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/MATH32A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Tuesday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 31",
+            "name": "Introduction to Computer Science I",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Introduction to computer science via theory, applications, and programming",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI31",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "LING 1",
+            "name": "Introduction to Study of Language",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Introduction to Study of Language",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/LING1",
+            "schedule": [
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "15:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "ENG 1ML",
+            "name": "Introduction to Engineering Design: Machine Learning",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Introduction to Engineering Design: Machine Learning",
+            "color": "#FFCC00",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1ML",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 32",
+            "name": "Introduction to Computer Science II",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Object-oriented software development, data structures, algorithms, and software engineering principles",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI32",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1A",
+            "name": "Physics for Scientists and Engineers: Mechanics",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Physics for Scientists and Engineers: Mechanics",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "12:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 35L",
+            "name": "Software Construction",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Software development tools and environments, scripting languages, version control, and debugging",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI35L",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 33",
+            "name": "Introduction to Computer Organization",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Computer architecture, assembly language programming, memory hierarchy, and I/O systems",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI33",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "EDUC 10",
+            "name": "Introduction to Educational Issues and Scholarship",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Introduction to Educational Issues and Scholarship",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/EDUC10",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "10:50"
+              }
+            ]
+          },
+          {
+            "code": "ENG 1RK",
+            "name": "Introduction to Engineering Design: Rockets",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Introduction to Engineering Design: Rockets",
+            "color": "#FFCC00",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1RK",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 33A",
+            "name": "Linear Algebra and Applications",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Linear equations, matrices, vector spaces, linear transformations, and eigenvalues",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "CS M51A",
+            "name": "Logic Design of Digital Systems",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Logic Design of Digital Systems",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM51A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "08:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 32B",
+            "name": "Calculus of Several Variables",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Calculus of Several Variables",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH32B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1B",
+            "name": "Physics for Scientists and Engineers: Oscillations, Waves, Electric and Magnetic Fields",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Physics for Scientists and Engineers: Oscillations, Waves, Electric and Magnetic Fields",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "08:00",
+                "endTime": "08:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 61",
+            "name": "Introduction to Discrete Structures",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Logic, sets, relations, combinatorics, graph theory, and discrete probability",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH61",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              }
+            ]
+          }
+        ]
       }
     },
     {
@@ -66,9 +512,18 @@
       "archiveLink": "https://ashutoshsundresh.com/archive.html",
       "details": {
         "grades": [
-          { "grade": "Grade 12", "score": "96.8%" },
-          { "grade": "Grade 11", "score": "94%" },
-          { "grade": "Grade 10", "score": "99.2% (State Rank 1)" }
+          {
+            "grade": "Grade 12",
+            "score": "96.8%"
+          },
+          {
+            "grade": "Grade 11",
+            "score": "94%"
+          },
+          {
+            "grade": "Grade 10",
+            "score": "99.2% (State Rank 1)"
+          }
         ],
         "achievements": [
           "Valedictorian",
@@ -76,7 +531,13 @@
           "SAT Score: 1580 (800M, 780V)",
           "TOEFL: 119"
         ],
-        "subjects": ["Physics", "Chemistry", "Mathematics", "Computer Science", "English"]
+        "subjects": [
+          "Physics",
+          "Chemistry",
+          "Mathematics",
+          "Computer Science",
+          "English"
+        ]
       }
     }
   ],
@@ -141,20 +602,20 @@
       ]
     },
     {
-        "id": 6,
-        "company": "Skylow",
-        "position": "Software Engineering Intern",
-        "location": "Berkeley, California, United States",
-        "period": "Jul 2024 - Sep 2024",
-        "icon": "/images/skylowai_logo.jpeg",
-        "companyLink": "https://skylow.ai/",
-        "description": [
-          "Founding Team, primarily focused on Applied AI at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
-          "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
-          "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
-          "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
-        ]
-      },
+      "id": 6,
+      "company": "Skylow",
+      "position": "Software Engineering Intern",
+      "location": "Berkeley, California, United States",
+      "period": "Jul 2024 - Sep 2024",
+      "icon": "/images/skylowai_logo.jpeg",
+      "companyLink": "https://skylow.ai/",
+      "description": [
+        "Founding Team, primarily focused on Applied AI at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
+        "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
+        "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
+        "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
+      ]
+    },
     {
       "id": 8,
       "company": "Manav Rachna International Institute of Research and Studies",
@@ -293,7 +754,9 @@
       "year": "2023",
       "icon": "/images/txt-file-icon-1213.png",
       "description": "Research paper applying chaos theory principles through non-linear sinusoidal functions to model complex traffic congestion patterns",
-      "authors": ["Ashutosh Sundresh"],
+      "authors": [
+        "Ashutosh Sundresh"
+      ],
       "journal": "International Journal of Science and Research (IJSR)",
       "abstract": "Authored a peer-reviewed paper published in the International Journal of Science and Research (Vol. 12, Issue 9), applying chaos theory to model non-linear traffic congestion dynamics. Designed synthetic datasets simulating traffic volume, speed, and congestion using NumPy and Gaussian/Poisson distributions. Developed a sinusoidal-based non-linear model capturing sensitivity to initial conditions and emergent chaotic behavior in traffic systems. Conducted statistical and visual analysis in Python to reveal deterministic yet unpredictable patterns in urban congestion, offering implications for scalable, adaptive city traffic management. Open-sourced all code and models used in the simulation on GitHub.",
       "status": "Won first place among 160+ submissions in the paper submission round at the high school Neerja Modi Mathelogics Symposium 2023",
@@ -316,7 +779,9 @@
       "year": "2024",
       "icon": "/images/txt-file-icon-1213.png",
       "description": "Analysis of Airbnb's impact on urban housing markets and communities",
-      "authors": ["Ashutosh Sundresh"],
+      "authors": [
+        "Ashutosh Sundresh"
+      ],
       "journal": "Ceteris Paribus, Shri Ram College of Commerce",
       "abstract": "Authored an expository research article analyzing how short-term rental platforms like Airbnb contribute to housing crises in major global cities. Explored urban policy responses, regulatory loopholes, and socio-economic consequences of rental market disruption, drawing from case studies and cross-city comparisons. Highlighted the tension between housing affordability and the growth of platform-driven tourism, emphasizing the need for balanced regulation to protect long-term residential availability.",
       "status": "Published by the Economics Society of SRCC, University of Delhi after finishing top 5 in the SRCC Writing Mentorship Program",
@@ -329,7 +794,10 @@
       "title": "Undergraduate Tutor",
       "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes.",
       "links": [
-        { "text": "Upsilon Pi Epsilon at UCLA", "url": "https://upe.seas.ucla.edu/" }
+        {
+          "text": "Upsilon Pi Epsilon at UCLA",
+          "url": "https://upe.seas.ucla.edu/"
+        }
       ],
       "period": "Sep 2025 - Dec 2025",
       "icon": "/images/ucla_upe_logo.jpeg"
@@ -343,12 +811,24 @@
         "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
       ],
       "stats": [
-        { "value": "4,800+", "label": "Total Commits" },
-        { "value": "2,500+", "label": "Contributions" }
+        {
+          "value": "4,800+",
+          "label": "Total Commits"
+        },
+        {
+          "value": "2,500+",
+          "label": "Contributions"
+        }
       ],
       "links": [
-        { "text": "GitHub", "url": "https://github.com/ashutoshsundresh" },
-        { "text": "XDA", "url": "https://xdaforums.com/m/ashutosh-sundresh.7730292/" }
+        {
+          "text": "GitHub",
+          "url": "https://github.com/ashutoshsundresh"
+        },
+        {
+          "text": "XDA",
+          "url": "https://xdaforums.com/m/ashutosh-sundresh.7730292/"
+        }
       ],
       "icon": "/images/github.png"
     },
@@ -371,10 +851,12 @@
         "Completed with highest distinction, finishing top 5 out of 105 participants"
       ],
       "links": [
-        { "text": "Economics Society SRCC", "url": "https://ecosocsrcc.com/" }
+        {
+          "text": "Economics Society SRCC",
+          "url": "https://ecosocsrcc.com/"
+        }
       ],
       "icon": "/images/ecosocsrcc.png"
     }
   ]
 }
-

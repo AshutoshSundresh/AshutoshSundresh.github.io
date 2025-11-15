@@ -487,7 +487,7 @@ export function rgbToHex([r, g, b]: number[]): string {
 // EXPORTS
 // ============================================================================
 
-export default {
+const colors = {
   BASE_COLORS,
   SEMANTIC_COLORS,
   OPACITY,
@@ -504,4 +504,6 @@ export default {
   darkenColor,
   rgbToHex,
 };
+
+export default colors;
 

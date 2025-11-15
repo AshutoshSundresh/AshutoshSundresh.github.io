@@ -133,15 +133,15 @@ const MacOSWindow = () => {
   );
 
   // Sync tab from URL query param `tab` (when landing from search)
-  const tabNameToIndex: Record<string, number> = {
+  const tabNameToIndex: Record<string, number> = useMemo(() => ({
     experience: 0,
     awards: 1,
     education: 2,
     projects: 3,
     publications: 4,
     activities: 5,
-  };
-  const tabIndexToName = ['experience','awards','education','projects','publications','activities'];
+  }), []);
+  const tabIndexToName = useMemo(() => ['experience','awards','education','projects','publications','activities'], []);
 
   const didInitFromUrl = useRef(false);
   useEffect(() => {
@@ -153,13 +153,13 @@ const MacOSWindow = () => {
       handleTabChange(wanted);
     }
     didInitFromUrl.current = true;
-  }, [searchParams, handleTabChange]);
+  }, [searchParams, handleTabChange, tabNameToIndex]);
 
   // Keep URL query in sync with active tab (without adding history entries)
   useEffect(() => {
     const name = tabIndexToName[activeTab] || 'experience';
     router.replace(`${pathname}?tab=${name}`, { scroll: false });
-  }, [activeTab, router, pathname]);
+  }, [activeTab, router, pathname, tabIndexToName]);
 
   // Add function to calculate tab width
   const getTabWidth = useCallback(() => {

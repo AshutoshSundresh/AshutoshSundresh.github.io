@@ -27,7 +27,7 @@ export default function LocationCard() {
   
   return (
     <>
-      <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-gray-900 dark:text-gray-100 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] lg:translate-y-[calc(2vw)] relative transition-all duration-700 delay-900 border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden" data-search-title="Location — Map">
+      <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-gray-900 dark:text-gray-100 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] lg:translate-y-[calc(2vw)] relative transition-all duration-700 delay-900 border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden" data-search-ignore>
         <div className="relative z-10 overflow-hidden h-full flex flex-col">
           {mapReady && (
             <div className="h-[140px] w-full rounded-t-2xl overflow-hidden">

@@ -11,6 +11,7 @@ import { SEMANTIC_COLORS } from '../constants/colors';
 const Navigation = () => {
   const pathname = usePathname();
   const isHomePage = pathname === '/';  // Check if we're on home page
+  const isCourseworkPage = pathname === '/experience/coursework';  // Check if we're on coursework page
   const isAboutActive = pathname === '/' || pathname === '/about';
   const isExperienceActive = pathname === '/experience';
   const isContactActive = pathname === '/contact';
@@ -126,6 +127,11 @@ const Navigation = () => {
 
   // Determine proper visibility classes
   const visibilityClasses = () => {
+    // Always hide on coursework page
+    if (isCourseworkPage) {
+      return 'opacity-0 translate-y-20 pointer-events-none';
+    }
+    
     // Always hide if terminal or lockscreen is active (regardless of desktop or mobile)
     if (isTerminalActive || isLockscreenActive || isSearchActive) {
       return 'opacity-0 translate-y-20 pointer-events-none';

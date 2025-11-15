@@ -112,6 +112,26 @@ export interface AwardCategory {
   awards: Award[];
 }
 
+export interface CourseSchedule {
+  type: 'lecture' | 'discussion' | 'lab' | 'section' | 'seminar';
+  day: 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday';
+  startTime: string; // Format: "HH:MM" (24-hour)
+  endTime: string; // Format: "HH:MM" (24-hour)
+  location?: string;
+}
+
+export interface Course {
+  code: string;
+  name: string;
+  quarter?: string;
+  year?: number;
+  grade?: string;
+  description?: string;
+  schedule?: CourseSchedule[];
+  color?: string; // For calendar display
+  catalogLink?: string; // Link to UCLA catalog
+}
+
 export interface EducationGrade {
   grade: string;
   score: string;
@@ -119,6 +139,7 @@ export interface EducationGrade {
 
 export interface EducationDetails {
   coursework?: string[];
+  courses?: Course[];
   grades?: EducationGrade[];
   achievements?: string[];
   subjects?: string[];
@@ -306,6 +327,35 @@ export interface ToolbarProps {
 }
 
 export interface Tab { id: number; title: string }
+
+// ============================================================================
+// Coursework Modal Types
+// ============================================================================
+export interface CourseworkModalProps {
+  open: boolean;
+  onClose: () => void;
+  courses: Course[];
+  institution: string;
+}
+
+export interface YearQuarterData {
+  years: number[];
+  quartersByYear: Record<number, string[]>;
+}
+
+export interface DayScheduleItem {
+  course: Course;
+  schedule: CourseSchedule;
+  idx: number;
+  startMinutes: number;
+  endMinutes: number;
+}
+
+export interface ColumnInfo {
+  column: number;
+  maxColumns: number;
+  hasOverlap: boolean;
+}
 
 export interface TabsBarProps {
   tabs: Tab[];

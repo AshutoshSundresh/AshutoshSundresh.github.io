@@ -3,15 +3,16 @@
 import React, { memo } from 'react';
 import type { EducationListProps } from '../types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function EducationList({ educationData }: EducationListProps) {
   return (
     <div className="mt-4 space-y-6">
-      {educationData.map((edu) => (
+        {educationData.map((edu) => (
         <div key={edu.id} className="bg-white dark:bg-[#2b2b2b] rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors">
           <div className="bg-gray-50 dark:bg-[#202020] p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-center">
-              <div className="w-12 h-12 mr-4 relative">
+              <div className="w-12 h-12 mr-4 relative flex-shrink-0">
                 <Image src={edu.icon} alt={edu.institution} fill sizes="48px" className="object-contain rounded-lg" />
               </div>
               <div>
@@ -71,10 +72,13 @@ function EducationList({ educationData }: EducationListProps) {
             )}
 
             <div className="pt-2 flex gap-4">
-              {edu.courseLink && (
-                <a href={edu.courseLink} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center">
+              {edu.details.courses && edu.details.courses.length > 0 && (
+                <Link
+                  href="/experience/coursework"
+                  className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center transition-colors"
+                >
                   View Coursework →
-                </a>
+                </Link>
               )}
               {edu.archiveLink && (
                 <a href={edu.archiveLink} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center">
