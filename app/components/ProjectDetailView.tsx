@@ -54,6 +54,13 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
         )}
 
         <div className="space-y-4 text-sm">
+          {project.techstack && (
+            <div>
+              <p className="text-gray-500 dark:text-gray-400 mb-1">Tech Stack</p>
+              <p className="font-['Raleway'] dark:text-gray-300">{project.techstack}</p>
+            </div>
+          )}
+
           <div>
             <p className="text-gray-500 dark:text-gray-400 mb-1">Description</p>
             <p className="font-['Raleway'] leading-relaxed dark:text-gray-300">

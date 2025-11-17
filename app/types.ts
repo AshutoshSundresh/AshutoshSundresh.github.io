@@ -61,6 +61,7 @@ export interface ProjectInput {
   kind?: string;
   size?: string;
   link?: string;
+  techstack?: string;
   stats?: Array<{ label: string; value: string | number }>;
 }
 
@@ -74,6 +75,7 @@ export interface Project {
   kind?: string;
   size?: string;
   link?: string;
+  techstack?: string;
   stats?: Array<{ label: string; value: string | number }>;
 }
 
