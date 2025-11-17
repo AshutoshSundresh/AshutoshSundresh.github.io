@@ -12,7 +12,7 @@
       "stats": [
         {
           "label": "Downloads",
-          "value": "150,000+"
+          "value": "160,000+"
         },
         {
           "label": "Countries",
@@ -568,7 +568,7 @@
       "description": [
         "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
         "Developed features including in-screen fingerprint animations and icons, Google Lens screenshot tool integration, variable font-weight lock screen clock, custom kernel scheduler, upstream contributions to Google Material Components, etc.",
-        "Grew to 150,000+ downloads across 160+ countries organically with no marketing budget",
+        "Grew to 160,000+ downloads across 160+ countries organically with no marketing budget",
         "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
         "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
       ]
@@ -625,8 +625,7 @@
       "icon": "/images/manavrachna.jpg",
       "companyLink": "https://manavrachna.edu.in/",
       "description": [
-        "Researched offensive security techniques, network analysis, vulnerability assessment, and cryptography",
-        "Advisor: Dr. Charu Virmani"
+        "Researched offensive security techniques, network analysis, vulnerability assessment, and cryptography"
       ]
     }
   ],
@@ -674,6 +673,28 @@
       ]
     },
     {
+      "id": 2,
+      "category": "Standardized Tests",
+      "awards": [
+        {
+          "title": "SAT Perfect Math Score",
+          "subtitle": "The College Board",
+          "year": "2023",
+          "icon": "/images/collegeboard.png",
+          "highlight": "1580",
+          "stats": "800 Math, 780 Verbal"
+        },
+        {
+          "title": "TOEFL Excellence",
+          "subtitle": "ETS",
+          "year": "2023",
+          "icon": "/images/toeflibt.png",
+          "highlight": "119/120",
+          "stats": "Top 1% globally"
+        }
+      ]
+    },
+    {
       "id": 3,
       "category": "High School",
       "awards": [
@@ -700,7 +721,7 @@
           "year": "2023",
           "icon": "/images/sourceforge-logo-png_seeklogo-333733.png",
           "description": "Recognized for ShapeShiftOS being in the top 0.5% of all open-source projects globally by downloads",
-          "highlight": "150,000+ downloads",
+          "highlight": "160,000+ downloads",
           "link": "https://sourceforge.net/projects/shapeshiftos/"
         },
         {
@@ -721,28 +742,6 @@
           "highlight": "99.2% in Grade 10, 96.8% in Grade 12"
         }
       ]
-    },
-    {
-      "id": 4,
-      "category": "Standardized Tests",
-      "awards": [
-        {
-          "title": "SAT Perfect Math Score",
-          "subtitle": "The College Board",
-          "year": "2023",
-          "icon": "/images/collegeboard.png",
-          "highlight": "1580",
-          "stats": "800 Math, 780 Verbal"
-        },
-        {
-          "title": "TOEFL Excellence",
-          "subtitle": "ETS",
-          "year": "2023",
-          "icon": "/images/toeflibt.png",
-          "highlight": "119/120",
-          "stats": "Top 1% globally"
-        }
-      ]
     }
   ],
   "publications": [
@@ -752,7 +751,7 @@
       "subtitle": "International Journal of Science and Research (IJSR)",
       "year": "2023",
       "icon": "/images/txt-file-icon-1213.png",
-      "description": "Research paper applying chaos theory principles through non-linear sinusoidal functions to model complex traffic congestion patterns",
+      "description": "Research paper applying chaos theory principles through non-linear sinusoidal functions to model traffic congestion patterns",
       "authors": [
         "Ashutosh Sundresh"
       ],
@@ -775,7 +774,7 @@
       "subtitle": "Ceteris Paribus, SRCC",
       "year": "2024",
       "icon": "/images/txt-file-icon-1213.png",
-      "description": "Analysis of Airbnb's impact on urban housing markets and communities",
+      "description": "Analysis of Airbnb's impact on urban housing markets and local communities",
       "authors": [
         "Ashutosh Sundresh"
       ],
@@ -803,7 +802,7 @@
       "period": "2020 - Present",
       "highlights": [
         "Recognized as one of approximately 300 Recognized Developers out of 11 million+ users on the XDA Forum for Android Mobile Development, and the youngest as of 2024",
-        "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 150,000 downloads (2022)"
+        "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 160,000 downloads (2022)"
       ],
       "stats": [
         {
@@ -835,7 +834,8 @@
       "highlights": [
         "Completed with a score at the highest possible range (>85%)"
       ],
-      "icon": "/images/stepstone.png"
+      "icon": "/images/stepstone.png",
+      "collapsible": true
     },
     {
       "id": 4,
@@ -851,7 +851,8 @@
           "url": "https://ecosocsrcc.com/"
         }
       ],
-      "icon": "/images/ecosocsrcc.png"
+      "icon": "/images/ecosocsrcc.png",
+      "collapsible": true
     }
   ]
 }

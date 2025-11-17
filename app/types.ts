@@ -192,6 +192,7 @@ export interface Activity {
   links?: ActivityLink[];
   stats?: ActivityStat[];
   icon?: string;
+  collapsible?: boolean;
 }
 
 export interface SkeumorphicDataRoot {
