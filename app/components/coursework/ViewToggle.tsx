@@ -10,29 +10,28 @@ interface ViewToggleProps {
 
 export default function ViewToggle({ view, onViewChange }: ViewToggleProps) {
   return (
-    <div className="flex bg-white dark:bg-[#252525] border border-gray-200 dark:border-gray-700 rounded-md overflow-hidden">
-        <button
-          onClick={() => onViewChange('calendar')}
-          className={`px-5 py-2 text-sm font-medium transition-colors ${
-            view === 'calendar'
-              ? 'bg-blue-500 text-white'
-              : 'bg-white dark:bg-[#252525] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
-          }`}
-        >
-          Calendar
-        </button>
-        <div className="w-px bg-gray-200 dark:bg-gray-700" />
-        <button
-          onClick={() => onViewChange('list')}
-          className={`px-5 py-2 text-sm font-medium transition-colors ${
-            view === 'list'
-              ? 'bg-blue-500 text-white'
-              : 'bg-white dark:bg-[#252525] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
-          }`}
-        >
-          List
-        </button>
-      </div>
+    <div className="inline-flex bg-gray-100 dark:bg-[#1a1a1a] border border-gray-300 dark:border-gray-600 rounded-lg p-1 shadow-inner">
+      <button
+        onClick={() => onViewChange('calendar')}
+        className={`px-4 py-1.5 text-xs font-medium rounded-md transition-all duration-150 ${
+          view === 'calendar'
+            ? 'bg-white dark:bg-[#2b2b2b] text-gray-900 dark:text-gray-100 shadow-sm'
+            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+        }`}
+      >
+        Calendar
+      </button>
+      <button
+        onClick={() => onViewChange('list')}
+        className={`px-4 py-1.5 text-xs font-medium rounded-md transition-all duration-150 ${
+          view === 'list'
+            ? 'bg-white dark:bg-[#2b2b2b] text-gray-900 dark:text-gray-100 shadow-sm'
+            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
+        }`}
+      >
+        List
+      </button>
+    </div>
   );
 }
 
