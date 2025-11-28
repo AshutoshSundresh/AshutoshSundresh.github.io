@@ -1,5 +1,4 @@
 import React from 'react';
-import GameOfLife from './GameOfLife';
 import NowPlaying from './NowPlaying';
 import IntroCards from './IntroCards';
 import useSectionVisibility from '../hooks/useSectionVisibility';
@@ -12,9 +11,8 @@ export default function IntroSection() {
       id="intro-section"
       ref={sectionRef}
       data-search-title="Intro"
-      className={`relative min-h-[100dvh] flex flex-col items-center justify-center p-4 md:p-8 font-raleway transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'} bg-white dark:bg-[#1e1e1e]`}
+      className={`relative min-h-[100dvh] flex flex-col items-center justify-center p-4 md:p-8 font-raleway transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'} bg-transparent`}
     >
-      <GameOfLife />
       <div className="absolute top-4 w-full flex justify-center z-1000">
         <NowPlaying />
       </div>

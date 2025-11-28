@@ -1,6 +1,5 @@
 "use client";
 import Image from 'next/image';
-import GameOfLife from './GameOfLife';
 import NowPlaying from './NowPlaying';
 import { useState } from 'react';
 import { Search, ChevronDown, Moon, Sun } from 'lucide-react';
@@ -22,8 +21,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div id="hero-section" className="relative h-[100dvh] flex flex-col items-center justify-center bg-white dark:bg-[#1e1e1e] pt-10 px-4 pb-4 md:p-8 snap-start snap-always transition-colors duration-300">
-      <GameOfLife />
+    <div id="hero-section" className="relative h-[100dvh] flex flex-col items-center justify-center bg-transparent pt-10 px-4 pb-4 md:p-8 snap-start snap-always transition-colors duration-300">
       {/* Two-button pill top-right */}
       <div className="absolute top-4 right-4 z-10 flex rounded-full backdrop-blur-md shadow-lg overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
         <button

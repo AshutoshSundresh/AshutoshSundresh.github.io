@@ -129,13 +129,16 @@ export const SEMANTIC_COLORS = {
   // GitHub contributions
   contributionsBackground: '#282a36',
   
-  // Game of Life (light mode)
+  // Game of Life
   gameOfLife: {
-    cell: 'rgba(200, 200, 200, 0.3)',
-    cellHover: 'rgba(200, 200, 200, 0.5)',
-    // Dark mode variants (used in GameOfLife component)
+    // Light mode
+    cell: 'rgba(200, 200, 200, 0.25)',
+    cellHover: 'rgba(200, 200, 200, 0.45)',
+    trail: 'rgba(120, 120, 120, 0.35)',
+    // Dark mode variants
     cellDark: 'rgba(169, 177, 214, 0.12)',
-    cellHoverDark: 'rgba(169, 177, 214, 0.18)',
+    cellHoverDark: 'rgba(169, 177, 214, 0.16)',
+    trailDark: 'rgba(169, 177, 214, 0.10)',
   },
 } as const;
 

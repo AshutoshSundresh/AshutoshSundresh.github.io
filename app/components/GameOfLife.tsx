@@ -4,16 +4,20 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Cell } from '../types';
 import useGameOfLifeInitializer from '../hooks/useGameOfLifeInitializer';
 import { SEMANTIC_COLORS } from '../constants/colors';
+import { GAME_OF_LIFE_CONFIG } from '../constants/gameOfLife';
+import { calculateTrailOpacity, calculateTrailSize } from '../utils/gameOfLifeUtils';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function GameOfLife() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cells, setCells] = useState<Set<string>>(new Set());
-  const cellSize = 6; // Size of each cell in pixels
+  const cellSize = GAME_OF_LIFE_CONFIG.cellSize;
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
+  const [deadCells, setDeadCells] = useState<Map<string, number>>(new Map()); // Map of cell key to age
   const { isDark } = useTheme();
+  const maxTrailAge = GAME_OF_LIFE_CONFIG.maxTrailAge;
 
   // Initialize canvas and handle resize
   useEffect(() => {
@@ -28,7 +32,7 @@ export default function GameOfLife() {
     };
 
     // Initial call with a small delay to ensure proper mounting
-    const initTimer = setTimeout(updateDimensions, 50);
+    const initTimer = setTimeout(updateDimensions, GAME_OF_LIFE_CONFIG.initDelay);
 
     // Add event listener
     window.addEventListener('resize', updateDimensions);
@@ -82,15 +86,40 @@ export default function GameOfLife() {
       }
     });
 
+    // Track dead cells (cells that were alive but are now dead)
+    setDeadCells(prevDead => {
+      const updatedDead = new Map<string, number>();
+      
+      // Age existing dead cells, but skip ones that are now alive
+      prevDead.forEach((age, key) => {
+        if (newCells.has(key)) {
+          // Cell is now alive, don't include in dead cells
+          return;
+        }
+        if (age < maxTrailAge - 1) {
+          updatedDead.set(key, age + 1);
+        }
+      });
+      
+      // Add newly dead cells (were alive, now dead, and not already in dead cells)
+      currentCells.forEach(key => {
+        if (!newCells.has(key) && !prevDead.has(key)) {
+          updatedDead.set(key, 0);
+        }
+      });
+      
+      return updatedDead;
+    });
+
     return newCells;
-  }, []);
+  }, [maxTrailAge]);
 
   // Animation loop
   // Animation loop: always run; cell additions are merged between ticks
   useEffect(() => {
     const interval = setInterval(() => {
       setCells(prevCells => getNextGeneration(prevCells));
-    }, 100);
+    }, GAME_OF_LIFE_CONFIG.animationInterval);
     return () => clearInterval(interval);
   }, [getNextGeneration]);
 
@@ -105,7 +134,31 @@ export default function GameOfLife() {
     // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw cells as circles - more subtle in dark mode
+    // Draw dead cells (trail) with fading opacity
+    const trailColor = isDark 
+      ? SEMANTIC_COLORS.gameOfLife.trailDark
+      : SEMANTIC_COLORS.gameOfLife.trail;
+    const radius = (cellSize - 1) / 2;
+    
+    deadCells.forEach((age, cellKey) => {
+      // Calculate fade opacity and size using utility functions
+      const alpha = calculateTrailOpacity(age, maxTrailAge);
+      const sizeMultiplier = calculateTrailSize(age, maxTrailAge);
+      
+      const [x, y] = cellKey.split(',').map(Number);
+      const cx = x * cellSize + cellSize / 2;
+      const cy = y * cellSize + cellSize / 2;
+      
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = trailColor;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius * sizeMultiplier, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    // Draw live cells as circles
     const cellColor = isDark 
       ? SEMANTIC_COLORS.gameOfLife.cellDark
       : SEMANTIC_COLORS.gameOfLife.cell;
@@ -114,7 +167,6 @@ export default function GameOfLife() {
       : SEMANTIC_COLORS.gameOfLife.cellHover;
     
     ctx.fillStyle = cellColor;
-    const radius = (cellSize - 1) / 2;
     cells.forEach(cellKey => {
       const [x, y] = cellKey.split(',').map(Number);
       const cx = x * cellSize + cellSize / 2;
@@ -133,7 +185,7 @@ export default function GameOfLife() {
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
       ctx.fill();
     }
-  }, [cells, dimensions, isHovering, hoverPosition, isDark]);
+  }, [cells, dimensions, isHovering, hoverPosition, isDark, deadCells, maxTrailAge]);
 
   // Add a cell at the specified position
   const addCell = (x: number, y: number) => {
@@ -142,6 +194,12 @@ export default function GameOfLife() {
       if (!prevCells.has(key)) {
         const newCells = new Set(prevCells);
         newCells.add(key);
+        // Remove from dead cells if it exists there
+        setDeadCells(prevDead => {
+          const updated = new Map(prevDead);
+          updated.delete(key);
+          return updated;
+        });
         return newCells;
       }
       return prevCells;
