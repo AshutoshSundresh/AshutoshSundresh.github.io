@@ -1,7 +1,10 @@
 "use client";
+import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown, Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 interface HeroSectionProps {
   onSearchOpen: () => void;
@@ -9,6 +12,9 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
   const { toggleTheme, isDark } = useTheme();
+  const [profileLoaded, setProfileLoaded] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+
   const scrollToNext = () => {
     const currentSection = document.querySelector('#hero-section');
     if (currentSection) {
@@ -56,7 +62,15 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                <Image src="/images/1755148353808.png" alt="Profile photo" width={64} height={64} className="w-full h-full object-cover" />
+                {!profileLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
+                <Image 
+                  src="/images/1755148353808.png" 
+                  alt="Profile photo" 
+                  width={64} 
+                  height={64} 
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${profileLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  onLoad={() => setProfileLoaded(true)}
+                />
               </div>
             </div>
             <span className="text-5xl md:text-[62px] font-normal text-gray-900 dark:text-gray-100">Ashutosh Sundresh</span>
@@ -71,7 +85,15 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                <Image src="/images/UCLA-square-logo.jpg" alt="UCLA" width={64} height={64} className="w-full h-full object-cover" />
+                {!logoLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
+                <Image 
+                  src="/images/UCLA-square-logo.jpg" 
+                  alt="UCLA" 
+                  width={64} 
+                  height={64} 
+                  className={`w-full h-full object-cover transition-opacity duration-300 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  onLoad={() => setLogoLoaded(true)}
+                />
               </div>
             </div>
           </div>
@@ -82,7 +104,6 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
               <a href="mailto:ashutoshsun@g.ucla.edu" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide">Mail</a>
               <a href="https://github.com/ashutoshsundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide">GitHub</a>
               <a href="https://linkedin.com/in/asund" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide">LinkedIn</a>
-              <a href="https://scholar.google.com/citations?hl=en&user=FxDNxe4AAAAJ-lMfexRv3MFAahl78-mtZmAQ&user=FxDNxe4AAAAJ" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide">Scholar</a>
             </div>
             <button onClick={scrollToNext} className="bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 text-gray-700 dark:text-gray-200 backdrop-blur-md shadow-lg border border-gray-200/50 dark:border-gray-700/50 px-4 md:px-5 py-3 md:py-2.5 rounded-full text-sm md:text-[14px] transition-all duration-300 max-[390px]:hidden" aria-label="Scroll to next section" data-search-ignore="true"><ChevronDown className="h-5 w-5" /></button>
           </div>

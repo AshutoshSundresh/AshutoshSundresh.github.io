@@ -29,3 +29,4 @@ export const getDayIndex = (day: string): number => {
   return days.indexOf(day);
 };
 
+

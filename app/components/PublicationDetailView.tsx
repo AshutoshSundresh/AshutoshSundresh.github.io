@@ -1,9 +1,14 @@
 "use client";
 
+import { useState } from 'react';
 import type { PublicationDetailViewProps } from '../types';
 import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function PublicationDetailView({ publication, onClose, isMobile }: PublicationDetailViewProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div
       data-detail-view
@@ -31,7 +36,15 @@ export default function PublicationDetailView({ publication, onClose, isMobile }
       <div className={`p-4 space-y-6 ${!isMobile ? 'pt-12' : ''}`}>
         <div className="flex flex-col items-center text-center">
           <div className="w-32 h-32 mb-4 relative transition-transform duration-[8s] group-hover:scale-105">
-            <Image src={publication.icon} alt="" fill sizes="128px" className="object-contain" />
+            {!imageLoaded && <Skeleton height="100%" circle containerClassName="h-full w-full block absolute top-0 left-0" />}
+            <Image 
+              src={publication.icon} 
+              alt="" 
+              fill 
+              sizes="128px" 
+              className={`object-contain transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setImageLoaded(true)}
+            />
           </div>
           <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-200 break-words">{publication.title}</h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{publication.year}</p>

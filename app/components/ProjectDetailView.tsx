@@ -1,10 +1,15 @@
 "use client";
 
+import { useState } from 'react';
 import { format } from 'date-fns';
 import type { ProjectDetailViewProps } from '../types';
 import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 export default function ProjectDetailView({ project, onClose, isMobile }: ProjectDetailViewProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <div
       data-detail-view
@@ -36,7 +41,14 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
 
       <div className={`p-4 ${!isMobile ? 'pt-12' : ''}`}>
         <div className="mb-4 relative w-full h-40">
-          <Image src={project.image} alt={project.name} fill className="object-cover rounded-lg shadow-sm" />
+          {!imageLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
+          <Image 
+            src={project.image} 
+            alt={project.name} 
+            fill 
+            className={`object-cover rounded-lg shadow-sm transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setImageLoaded(true)}
+          />
           <p className="text-xs text-gray-500 dark:text-gray-400 mt-2 italic font-['Raleway']">{project.caption}</p>
         </div>
 

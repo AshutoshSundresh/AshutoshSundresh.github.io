@@ -40,6 +40,16 @@
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
     {
+      "id": 4,
+      "name": "Traffic Flow Simulation and Stochastic Modeling",
+      "image": "/images/traffic_data.png",
+      "caption": "Traffic Flow Simulation and Stochastic Modeling",
+      "techstack": "Python, NumPy, Matplotlib",
+      "description": "Built a lightweight simulation (Python, NumPy, Matplotlib) to model non-linear traffic congestion across a 6.2-mile road segment using sinusoidal flow dynamics. Generated synthetic datasets with Gaussian and uniform distributions and visualized congestion patterns under different parameters.",
+      "created": "2023-07-16",
+      "link": "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
+    },
+    {
       "id": 3,
       "name": "Alexa High School Food Menu Skill",
       "image": "/images/GhsuTUs.webp",
@@ -749,31 +759,8 @@
   ],
   "publications": [
     {
-      "id": 1,
-      "title": "Chaos-Theoretic Modeling of Traffic Congestion Dynamics",
-      "subtitle": "International Journal of Science and Research (IJSR)",
-      "year": "2023",
-      "icon": "/images/txt-file-icon-1213.png",
-      "description": "Research paper applying chaos theory principles through non-linear sinusoidal functions to model traffic congestion patterns",
-      "authors": [
-        "Ashutosh Sundresh"
-      ],
-      "journal": "International Journal of Science and Research",
-      "link": "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=FxDNxe4AAAAJ&sortby=title&citation_for_view=FxDNxe4AAAAJ:u-x6o8ySG0sC",
-      "extraDetails": [
-        {
-          "label": "Code",
-          "value": "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
-        },
-        {
-          "label": "Slides",
-          "value": "https://raw.githubusercontent.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData/main/Documents/AshutoshChaosDynamicsTraffic.pptx"
-        }
-      ]
-    },
-    {
       "id": 2,
-      "title": "Impact of Short-Term Rentals on the Global Housing Crisis",
+      "title": "Effects of Short-Term Rental Services on the Global Housing Crisis",
       "subtitle": "Ceteris Paribus, SRCC",
       "year": "2024",
       "icon": "/images/txt-file-icon-1213.png",

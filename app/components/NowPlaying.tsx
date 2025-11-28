@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useEffect } from 'react';
+import { useMemo, useRef, useEffect, useState } from 'react';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
@@ -9,6 +9,8 @@ import { useTheme } from '../contexts/ThemeContext';
 import { darkenColor, rgbToHex } from '../constants/colors';
 import Tooltip from './ui/Tooltip';
 import InfoButton from './ui/InfoButton';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 import type { NowPlayingTrack, NowPlayingProps } from '../types';
 
@@ -51,6 +53,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
   const { showTooltip, tooltipPosition, buttonRef, handleMouseEnter, handleMouseLeave } = useTooltip();
   const { isDark } = useTheme();
   const imgRef = useRef<HTMLImageElement>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
   
   // Use visibility hook only if fade is enabled, otherwise always show
   const show = disableFade ? true : visibilityHook.show;
@@ -123,11 +126,13 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
           }}
         >
         <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl">
+          {!imageLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
           <img
             ref={imgRef}
             src={albumArt}
             alt={track.name + ' album art'}
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setImageLoaded(true)}
           />
         </div>
         <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor} overflow-visible`}>

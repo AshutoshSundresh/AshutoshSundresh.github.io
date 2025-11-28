@@ -12,3 +12,4 @@ export function useTimeSlots(courses: Course[]) {
   }, [courses]);
 }
 
+

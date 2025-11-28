@@ -64,3 +64,4 @@ export const generateTimeSlots = (courses: Course[]): { slots: string[]; startMi
   return { slots, startMinutes: startHour * 60 };
 };
 
+

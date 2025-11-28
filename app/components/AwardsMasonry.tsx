@@ -1,10 +1,18 @@
 "use client";
 
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import type { AwardsMasonryProps } from '../types';
 import Image from 'next/image';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
+  const [loadedImages, setLoadedImages] = useState<Record<string, boolean>>({});
+
+  const handleImageLoad = (id: string) => {
+    setLoadedImages(prev => ({ ...prev, [id]: true }));
+  };
+
   return (
     <div className="mt-4 space-y-8">
       {awardsData.map((category) => (
@@ -12,11 +20,20 @@ function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
           <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200 mb-4 font-['Raleway']">{category.category}</h3>
           <div className="columns-1 md:columns-2 gap-3 [column-fill:_balance]">
             {category.awards.map((award, index) => {
+              const imageKey = `${category.id}-${index}`;
               const CardInner = (
                 <div className="p-4">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-[#202020] flex items-center justify-center flex-shrink-0 relative overflow-hidden">
-                      <Image src={award.icon} alt={award.title} fill sizes="40px" className="object-contain rounded-lg" />
+                      {!loadedImages[imageKey] && <Skeleton height="100%" width="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
+                      <Image 
+                        src={award.icon} 
+                        alt={award.title} 
+                        fill 
+                        sizes="40px" 
+                        className={`object-contain rounded-lg transition-opacity duration-300 ${loadedImages[imageKey] ? 'opacity-100' : 'opacity-0'}`}
+                        onLoad={() => handleImageLoad(imageKey)}
+                      />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
