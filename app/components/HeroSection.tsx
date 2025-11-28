@@ -1,13 +1,13 @@
 "use client";
 import Image from 'next/image';
-import NowPlaying from './NowPlaying';
-import { useState } from 'react';
-import { Search, ChevronDown, Moon, Sun } from 'lucide-react';
-import SearchOverlay from './SearchOverlay';
+import { ChevronDown, Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 
-export default function HeroSection() {
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+interface HeroSectionProps {
+  onSearchOpen: () => void;
+}
+
+export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
   const { toggleTheme, isDark } = useTheme();
   const scrollToNext = () => {
     const currentSection = document.querySelector('#hero-section');
@@ -22,8 +22,17 @@ export default function HeroSection() {
 
   return (
     <div id="hero-section" className="relative h-[100dvh] flex flex-col items-center justify-center bg-transparent pt-10 px-4 pb-4 md:p-8 snap-start snap-always transition-colors duration-300">
-      {/* Two-button pill top-right */}
-      <div className="absolute top-4 right-4 z-10 flex rounded-full backdrop-blur-md shadow-lg overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
+      {/* Mobile-only controls - only visible on first page */}
+      <a
+        href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+        target="_blank"
+        rel="noopener noreferrer"
+        data-search-title="Link — Game of Life overview"
+        className="md:hidden absolute top-4 left-4 z-10 h-10 text-sm text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 px-4 rounded-full transition-all duration-300 backdrop-blur-md flex items-center border border-gray-200/50 dark:border-gray-700/50 shadow-lg"
+      >
+        Game of Life
+      </a>
+      <div className="md:hidden absolute top-4 right-4 z-10 flex rounded-full backdrop-blur-md shadow-lg overflow-hidden border border-gray-200/50 dark:border-gray-700/50">
         <button
           onClick={toggleTheme}
           aria-label="Toggle dark mode"
@@ -33,24 +42,12 @@ export default function HeroSection() {
         </button>
         <div className="w-px bg-gray-300 dark:bg-gray-600"></div>
         <button
-          onClick={() => setIsSearchOpen(true)}
+          onClick={onSearchOpen}
           aria-label="Search"
           className="h-10 w-10 bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 text-gray-700 dark:text-gray-200 flex items-center justify-center transition-all duration-300"
         >
           <Search className="h-5 w-5" />
         </button>
-      </div>
-      <a
-        href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
-        target="_blank"
-        rel="noopener noreferrer"
-        data-search-title="Link — Game of Life overview"
-        className="absolute top-4 left-4 h-10 text-sm text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 px-4 rounded-full z-10 transition-all duration-300 backdrop-blur-md flex items-center border border-gray-200/50 dark:border-gray-700/50 shadow-lg"
-      >
-        Game of Life
-      </a>
-      <div className="absolute top-4 w-full flex justify-center z-1000">
-        <NowPlaying />
       </div>
       <div className="max-w-4xl mx-auto relative z-10 -mt-16 md:mt-0" data-search-title="Hero — Header">
         <div className="text-center">
@@ -91,8 +88,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-      {/* Floating search overlay */}
-      <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
     </div>
   );
 }

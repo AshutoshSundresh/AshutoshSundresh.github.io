@@ -294,6 +294,7 @@ export interface IOSLockscreenProps {
 export interface NowPlayingProps {
   onStatusChange?: (status: 'playing' | 'recent' | null) => void;
   onTrackChange?: (track: { name: string; artist: string } | null) => void;
+  disableFade?: boolean; // If true, always show without fade animations
 }
 
 export interface DragPosition { x: number; y: number }

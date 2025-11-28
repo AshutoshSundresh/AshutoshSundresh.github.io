@@ -45,12 +45,16 @@ function getTimeAgo(unixTimestamp: string): string {
 
 // keyframes for gradient flow are defined in globals.css
 
-export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlayingProps) {
+export default function NowPlaying({ onStatusChange, onTrackChange, disableFade = false }: NowPlayingProps) {
   const { isLoading, track, error } = useLastFmNowPlaying();
-  const { show, firstLaunch } = useIntroVisibility();
+  const visibilityHook = useIntroVisibility();
   const { showTooltip, tooltipPosition, buttonRef, handleMouseEnter, handleMouseLeave } = useTooltip();
   const { isDark } = useTheme();
   const imgRef = useRef<HTMLImageElement>(null);
+  
+  // Use visibility hook only if fade is enabled, otherwise always show
+  const show = disableFade ? true : visibilityHook.show;
+  const firstLaunch = disableFade ? false : visibilityHook.firstLaunch;
 
   const albumArtUrl = useMemo(() => (
     (track as NowPlayingTrack | null)?.image?.find(img => img.size === 'extralarge')?.['#text'] || (track as NowPlayingTrack | null)?.image?.slice(-1)[0]?.['#text'] || ''
@@ -96,9 +100,13 @@ export default function NowPlaying({ onStatusChange, onTrackChange }: NowPlaying
   return (
     <>
       <div
-        className={`fixed top-4 left-1/2 z-50 w-full max-w-md px-2
-          ${show ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
-          transform -translate-x-1/2 transition-all duration-500 ease-in-out`
+        className={`${disableFade ? 'absolute' : 'fixed'} top-4 left-1/2 z-50 w-[calc(100vw-16px)] md:w-full md:max-w-md px-2
+          ${disableFade 
+            ? 'opacity-100 translate-y-0 pointer-events-auto' 
+            : show 
+              ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' 
+              : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
+          transform -translate-x-1/2 ${disableFade ? '' : 'transition-all duration-500 ease-in-out'}`
         }
       >
         <div
