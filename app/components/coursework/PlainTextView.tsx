@@ -3,17 +3,25 @@
  * Card-based grid layout
  */
 
+import { useMemo } from 'react';
 import type { Course } from '../../types';
+import { filterCoursesByMajor } from '../../utils/courseUtils';
 
 interface PlainTextViewProps {
   courses: Course[];
+  selectedMajor: string;
 }
 
-export default function PlainTextView({ courses }: PlainTextViewProps) {
+export default function PlainTextView({ courses, selectedMajor }: PlainTextViewProps) {
+  // Filter courses based on selected major
+  const filteredCourses = useMemo(() => {
+    return filterCoursesByMajor(courses, selectedMajor);
+  }, [courses, selectedMajor]);
+
   // Group courses by year and quarter
   const groupedCourses: Record<number, Record<string, Course[]>> = {};
 
-  courses.forEach(course => {
+  filteredCourses.forEach(course => {
     const year = course.year || (course.quarter?.includes('2024') ? 2024 : course.quarter?.includes('2025') ? 2025 : null);
     if (!year) return;
 
@@ -45,8 +53,8 @@ export default function PlainTextView({ courses }: PlainTextViewProps) {
 
           return (
             <div key={year} className={yearIndex > 0 ? 'mt-12' : ''}>
-              {/* Year Header */}
-              <div className="mb-6">
+              {/* Year Header - Sticky */}
+              <div className="sticky top-0 z-20 bg-gray-50/95 dark:bg-[#1a1a1a]/95 backdrop-blur-sm py-4 mb-2">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                   {year}
                 </h2>
@@ -57,10 +65,10 @@ export default function PlainTextView({ courses }: PlainTextViewProps) {
                 {quarters.map((quarter) => {
                   const quarterCourses = groupedCourses[year][quarter];
                   return (
-                    <div key={quarter}>
-                      {/* Quarter Header */}
-                      <div className="mb-4">
-                        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
+                    <div key={quarter} className="relative">
+                      {/* Quarter Header - Sticky below Year */}
+                      <div className="sticky top-[65px] z-10 bg-gray-50/95 dark:bg-[#1a1a1a]/95 backdrop-blur-sm py-3 mb-3">
+                        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
                           {quarter}
                         </h3>
                       </div>

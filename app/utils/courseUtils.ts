@@ -5,6 +5,31 @@
 import type { Course } from '../types';
 import { timeToMinutes } from './timeUtils';
 
+// Major filter constants
+export const DEFAULT_MAJOR_FILTER = 'All';
+export const ALL_MAJORS_LABEL = 'All Majors';
+
+/**
+ * Extracts the major code from a course code (e.g., "CS 31" -> "CS")
+ */
+export function extractMajorFromCode(courseCode: string): string | null {
+  const major = courseCode.split(' ')[0];
+  return major || null;
+}
+
+/**
+ * Filters courses by major code prefix
+ * @param courses - Array of courses to filter
+ * @param major - Major code to filter by, or DEFAULT_MAJOR_FILTER for all courses
+ * @returns Filtered array of courses
+ */
+export function filterCoursesByMajor(courses: Course[], major: string): Course[] {
+  if (major === DEFAULT_MAJOR_FILTER) {
+    return courses;
+  }
+  return courses.filter(course => course.code.startsWith(major));
+}
+
 // Default colors for courses
 export const courseColors = [
   '#007AFF', // Blue
@@ -63,5 +88,6 @@ export const generateTimeSlots = (courses: Course[]): { slots: string[]; startMi
 
   return { slots, startMinutes: startHour * 60 };
 };
+
 
 

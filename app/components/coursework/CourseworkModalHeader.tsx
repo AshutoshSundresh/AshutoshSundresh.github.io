@@ -11,7 +11,7 @@ interface CourseworkModalHeaderProps {
 
 export default function CourseworkModalHeader({ onClose, children }: CourseworkModalHeaderProps) {
   return (
-    <div className="bg-gray-50 dark:bg-[#252525] px-6 py-3 flex items-center justify-between border-b border-gray-200 dark:border-gray-700/50 transition-colors relative">
+    <div className="bg-gray-200 dark:bg-[#2b2b2b] px-4 py-2 flex items-center justify-between transition-colors relative">
       <div className="flex items-center gap-2">
         <button
           onClick={onClose}
@@ -21,10 +21,10 @@ export default function CourseworkModalHeader({ onClose, children }: CourseworkM
         >
           <span className="sr-only">Close</span>
         </button>
-        <div className="w-3 h-3 rounded-full bg-gray-200 dark:bg-gray-400 cursor-not-allowed" aria-hidden="true"></div>
-        <div className="w-3 h-3 rounded-full bg-gray-200 dark:bg-gray-400 cursor-not-allowed" aria-hidden="true"></div>
+        <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 cursor-not-allowed" aria-hidden="true"></div>
+        <div className="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600 cursor-not-allowed" aria-hidden="true"></div>
       </div>
-      <div className="absolute left-1/2 -translate-x-1/2 text-sm text-gray-800 dark:text-gray-200 font-semibold tracking-tight hidden md:block">
+      <div className="absolute left-1/2 -translate-x-1/2 text-sm text-gray-700 dark:text-gray-300 font-medium font-['Raleway'] tracking-tight hidden md:block">
         Coursework
       </div>
       <div className="flex items-center gap-4">
