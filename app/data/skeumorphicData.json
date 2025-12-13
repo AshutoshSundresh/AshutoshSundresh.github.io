@@ -31,11 +31,21 @@
     },
     {
       "id": 2,
+      "name": "ResumeIDE (LaTeX Desktop Editor)",
+      "image": "/images/resumeide.png",
+      "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, React, TypeScript, Rust)",
+      "techstack": "Rust, Tokio, Tauri, TypeScript, React",
+      "description": "Built a desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
+      "created": "2025-12-12",
+      "link": "https://github.com/AshutoshSundresh/latex-resume-editor"
+    },
+    {
+      "id": 3,
       "name": "Bibliotheque (Library Management System)",
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
       "techstack": "Next.js, PostgreSQL, TypeScript, Supabase",
-      "description": "Built a real-time multi-library management platform with <50ms search latency and full admin dashboard. Implemented secure authentication, row-level access control, and concurrent CRUD operations.",
+      "description": "Built a real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
       "created": "2025-04-14",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
@@ -48,16 +58,6 @@
       "description": "Built a lightweight simulation (Python, NumPy, Matplotlib) to model non-linear traffic congestion across a 6.2-mile road segment using sinusoidal flow dynamics. Generated synthetic datasets with Gaussian and uniform distributions and visualized congestion patterns under different parameters.",
       "created": "2023-07-16",
       "link": "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
-    },
-    {
-      "id": 3,
-      "name": "Alexa High School Food Menu Skill",
-      "image": "/images/GhsuTUs.webp",
-      "techstack": "Node.js, AWS Lambda, Alexa SDK",
-      "caption": "Open-Source Food Menu Retriever Alexa Skill for Schools (Node.js, AWS Lambda, Alexa SDK)",
-      "description": "Developed and deployed an Alexa skill to retrieve school meal data via voice commands; published to Amazon Store.",
-      "created": "2022-01-09",
-      "link": "https://github.com/AshutoshSundresh/AlexaFoodMenuSkill"
     }
   ],
   "educationData": [
@@ -564,7 +564,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, primarily focused on applied AI as an early engineer on Harvey Word Add-In",
+        "New Verticals Team, early engineer on Harvey Word Add-In",
         "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including the \"Draft from Template\" and \"Translate\" workflows",
         "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
         "Delivered product refinements including dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
@@ -608,7 +608,7 @@
       "icon": "/images/lahacks_logo.jpeg",
       "companyLink": "https://lahacks.com/",
       "description": [
-        "Tech Team, organizing the largest collegiate hackathon in Southern California",
+        "Tech Team for the largest collegiate hackathon in Southern California",
         "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
         "Engineered plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
@@ -623,7 +623,7 @@
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [
-        "Founding Team, primarily focused on applied AI at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
+        "Founding Team at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
         "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
         "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
         "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
@@ -687,28 +687,6 @@
     },
     {
       "id": 2,
-      "category": "Standardized Tests",
-      "awards": [
-        {
-          "title": "SAT Perfect Math Score",
-          "subtitle": "The College Board",
-          "year": "2023",
-          "icon": "/images/collegeboard.png",
-          "highlight": "1580",
-          "stats": "800 Math, 780 Verbal"
-        },
-        {
-          "title": "TOEFL Excellence",
-          "subtitle": "ETS",
-          "year": "2023",
-          "icon": "/images/toeflibt.png",
-          "highlight": "119/120",
-          "stats": "Top 1% globally"
-        }
-      ]
-    },
-    {
-      "id": 3,
       "category": "High School",
       "awards": [
         {
@@ -753,6 +731,28 @@
           "icon": "/images/shivnadarschool.png",
           "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
           "highlight": "99.2% in Grade 10, 96.8% in Grade 12"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Standardized Tests",
+      "awards": [
+        {
+          "title": "SAT Perfect Math Score",
+          "subtitle": "The College Board",
+          "year": "2023",
+          "icon": "/images/collegeboard.png",
+          "highlight": "1580",
+          "stats": "800 Math, 780 Verbal"
+        },
+        {
+          "title": "TOEFL Excellence",
+          "subtitle": "ETS",
+          "year": "2023",
+          "icon": "/images/toeflibt.png",
+          "highlight": "119/120",
+          "stats": "Top 1% globally"
         }
       ]
     }
