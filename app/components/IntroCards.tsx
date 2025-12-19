@@ -34,12 +34,11 @@ export default function IntroCards() {
         <DraggableCard id="card1" position={positions.card1} isDraggingDisabled={isMobile}>
           <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] relative transition-all duration-700 delay-500 border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Overview">
             <div className="relative z-10">
-              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">I currently study Computer Science at UCLA.</p>
-              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">I&apos;m particularly interested in product engineering, generative AI, operating systems/computer systems (built <a href="https://shapeshiftos.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">ShapeShiftOS</a>), startups (<a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">Kleiner Perkins Engineering Fellow</a>), and linguistics (went to <a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">International Linguistics Olympiad Camp</a>).</p>
+              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Computer Science at UCLA.</p>
+              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Focused on generative AI and systems-level engineering. Built <a href="https://github.com/shapeshiftos" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">ShapeShiftOS</a>, work with startups as a <a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">Kleiner Perkins Engineering Fellow</a>, and have a background in linguistics (<a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">International Linguistics Olympiad Camp</a>).</p>
             </div>
           </div>
         </DraggableCard>
-
         <div className="hidden [@media(min-width:768px)]:block">
           <DraggableCard id="card4" position={positions.card4} isDraggingDisabled={isMobile}>
             <LocationCard />
@@ -62,11 +61,11 @@ export default function IntroCards() {
                 <div className="text-lg font-medium text-gray-800 dark:text-gray-200">Fun</div>
               </div>
               <div className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex flex-wrap gap-1.5">
+                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Fashion</span>
+                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Music</span>
                 <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">RPG Development</span>
                 <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Diecast Cars</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Fashion</span>
                 <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Film</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Music</span>
               </div>
             </div>
           </div>

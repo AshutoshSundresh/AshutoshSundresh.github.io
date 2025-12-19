@@ -33,8 +33,8 @@
       "id": 2,
       "name": "ResumeIDE (LaTeX Desktop Editor)",
       "image": "/images/resumeide.png",
-      "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, React, TypeScript, Rust)",
-      "techstack": "Rust, Tokio, Tauri, TypeScript, React",
+      "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, TypeScript, Rust)",
+      "techstack": "Rust, Tokio, Tauri, TypeScript",
       "description": "Built a desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
       "created": "2025-12-12",
       "link": "https://github.com/AshutoshSundresh/latex-resume-editor"
@@ -44,7 +44,7 @@
       "name": "Bibliotheque (Library Management System)",
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
-      "techstack": "Next.js, PostgreSQL, TypeScript, Supabase",
+      "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
       "description": "Built a real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
       "created": "2025-04-14",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
@@ -527,7 +527,7 @@
         "grades": [
           {
             "grade": "Grade 12",
-            "score": "96.8%"
+            "score": "97%"
           },
           {
             "grade": "Grade 11",
@@ -564,10 +564,12 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early engineer on Harvey Word Add-In",
-        "Built Workflows for Word, a block-based agentic system allowing in-document actions in Microsoft Word, including the \"Draft from Template\" and \"Translate\" workflows",
-        "Implemented editing features such as bulk apply/undo of suggestions and justification comments for applied changes",
-        "Delivered product refinements including dark mode, guidance screen, and broad UI/UX enhancements to improve full-document edits and the Assistant for Word experience"
+        "New Verticals Team, early engineer on Harvey's Microsoft Word add-in",
+        "Architected an agentic workflow platform embedded in Microsoft Word to orchestrate multi-step LLM tasks using Office.js",
+        "Shipped document editing with apply/undo semantics and backpressure-aware SSE streaming for reliable, low-latency UX",
+        "Built backend infrastructure for workflow execution and streaming with abortability, tenancy/auth, and observability (Sentry, Datadog)",
+        "Designed rubric-based side-by-side LLM evaluations with Legal Researchers and built a Streamlit benchmarking app",
+        "Implemented product enhancements including dark mode, LLM-generated justifications, and conflict-safe bulk operations"
       ]
     },
     {
@@ -608,10 +610,10 @@
       "icon": "/images/lahacks_logo.jpeg",
       "companyLink": "https://lahacks.com/",
       "description": [
-        "Tech Team for the largest collegiate hackathon in Southern California",
-        "Contributed to system architecture for new application portal, including DB schema/index design, and introduced strict, scalable TypeScript standards",
+        "Tech Team contributor for the largest collegiate hackathon in Southern California",
+        "Contributed to system architecture for a new application portal, including database schema and index design, and introduced strict, scalable TypeScript standards",
         "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
-        "Engineered plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
+        "Engineered a plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
       ]
     },
     {
@@ -624,9 +626,10 @@
       "companyLink": "https://skylow.ai/",
       "description": [
         "Founding Team at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
-        "Developed dynamic virtual worlds and character classes for AI-driven social interactions, with features like jetlag, coordinate-based world travel system, weather, global news, and friendship levels",
-        "Implemented high-performance RAG pipeline with Pinecone vector search to enhance conversations, frontend UI components with React/TypeScript, and character and world features with Python",
-        "Integrated AWS Rekognition for content moderation and set up analytics tools (Sentry and PostHog) for user tracking and error management"
+        "Engineered a social simulation engine in Python with constant-time state updates for characters inhabiting virtual worlds",
+        "Built a high-performance RAG pipeline with Pinecone vector search to enhance AI-driven conversation relevance",
+        "Reduced NSFW content in the social media feed and user data via batch-processed AWS Rekognition",
+        "Integrated Sentry and PostHog in the frontend to conduct behavioral analytics and error correlation"
       ]
     },
     {
@@ -730,7 +733,7 @@
           "year": "2022",
           "icon": "/images/shivnadarschool.png",
           "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
-          "highlight": "99.2% in Grade 10, 96.8% in Grade 12"
+          "highlight": "99.2% in Grade 10, 97% in Grade 12"
         }
       ]
     },
