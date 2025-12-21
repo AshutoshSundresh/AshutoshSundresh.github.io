@@ -66,6 +66,7 @@
       "institution": "University of California, Los Angeles",
       "degree": "BS in Computer Science",
       "school": "Henry Samueli School of Engineering and Applied Science",
+      "gpa": "3.87/4.00 GPA",
       "period": "2024 - Present",
       "icon": "/images/uclaengg.png",
       "institutionLink": "https://ucla.edu",
@@ -507,6 +508,128 @@
                 "day": "Thursday",
                 "startTime": "14:00",
                 "endTime": "14:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 111",
+            "name": "Operating Systems Principles",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Operating systems principles including process management, memory management, file systems, and I/O.",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI111",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lab",
+                "day": "Friday",
+                "startTime": "10:00",
+                "endTime": "10:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 174A",
+            "name": "Introduction to Computer Graphics",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to computer graphics including rendering, modeling, and animation.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI174A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 188",
+            "name": "Special Courses in Computer Science: Introduction to Robotics",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to robotics covering robot kinematics, dynamics, control, and perception.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI188",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 170E",
+            "name": "Introduction to Probability and Statistics 1: Probability",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to probability theory including random variables, distributions, and expectation.",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH170E",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "09:50"
               }
             ]
           }
