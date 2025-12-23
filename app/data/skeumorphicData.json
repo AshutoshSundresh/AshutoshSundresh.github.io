@@ -688,11 +688,11 @@
       "companyLink": "https://harvey.ai/",
       "description": [
         "New Verticals Team, early engineer on Harvey's Microsoft Word add-in",
-        "Architected an agentic workflow platform embedded in Microsoft Word to orchestrate multi-step LLM tasks using Office.js",
-        "Shipped document editing with apply/undo semantics and backpressure-aware SSE streaming for reliable, low-latency UX",
-        "Built backend infrastructure for workflow execution and streaming with abortability, tenancy/auth, and observability (Sentry, Datadog)",
-        "Designed rubric-based side-by-side LLM evaluations with Legal Researchers and built a Streamlit benchmarking app",
-        "Implemented product enhancements including dark mode, LLM-generated justifications, and conflict-safe bulk operations"
+        "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
+        "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
+        "Built block-based execution engine with workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation, enabling type-safe streaming of heterogeneous outputs (suggestions, text, files)",
+        "Implemented frontend bulk suggestions application system with conflict-safe sequential diff application and overlap detection",
+        "Designed rubric-based SxS LLM evaluations with Legal Researchers and a Streamlit app to benchmark drafting quality"
       ]
     },
     {
@@ -705,7 +705,7 @@
       "companyLink": "https://shapeshiftos.com/",
       "description": [
         "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
-        "Developed features including in-screen fingerprint animations and icons, Google Lens screenshot tool integration, variable font-weight lock screen clock, custom kernel scheduler, upstream contributions to Google Material Components, etc.",
+        "Developed features including custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, upstream contributions to Google Material Components, etc.",
         "Grew to 160,000+ downloads across 160+ countries organically with no marketing budget",
         "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
         "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
@@ -734,9 +734,9 @@
       "companyLink": "https://lahacks.com/",
       "description": [
         "Tech Team contributor for the largest collegiate hackathon in Southern California",
-        "Contributed to system architecture for a new application portal, including database schema and index design, and introduced strict, scalable TypeScript standards",
-        "Built responsive React frontend components including multi-filter search, event schedule timeline, and gallery carousels",
-        "Engineered a plagiarism-detection tool that statistically analyzes Git commit patterns, time distributions, and code changes"
+        "Engineered FastAPI-based Git analysis system detecting suspicious commit patterns and possible plagiarism through commit frequency analysis, contribution pattern heuristics, and anomaly detection algorithms across 1,000+ submissions",
+        "Built multi-day calendar grid with Firebase real-time sync, conflict-aware time-slot positioning, and category filtering",
+        "Designed PostgreSQL schema for application review system with indexes enabling real-time applicant search and filtering"
       ]
     },
     {
@@ -749,10 +749,10 @@
       "companyLink": "https://skylow.ai/",
       "description": [
         "Founding Team at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
-        "Engineered a social simulation engine in Python with constant-time state updates for characters inhabiting virtual worlds",
-        "Built a high-performance RAG pipeline with Pinecone vector search to enhance AI-driven conversation relevance",
-        "Reduced NSFW content in the social media feed and user data via batch-processed AWS Rekognition",
-        "Integrated Sentry and PostHog in the frontend to conduct behavioral analytics and error correlation"
+        "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
+        "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
+        "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",
+        "Set up Sentry exception monitoring and PostHog event tracking to analyze user session flows and frontend error patterns"
       ]
     },
     {
