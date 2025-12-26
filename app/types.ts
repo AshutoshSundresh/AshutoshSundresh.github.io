@@ -167,7 +167,7 @@ export interface ExperienceEntry {
   id: number;
   company: string;
   position: string;
-  location: string;
+  location?: string;
   period: string;
   icon: string;
   companyLink: string;

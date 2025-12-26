@@ -28,8 +28,12 @@ function ExperienceList({ experienceData }: ExperienceListProps) {
                 </h3>
                 <p className="text-sm font-medium text-gray-800 dark:text-gray-300">{exp.position}</p>
                 <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mt-1">
-                  <span>{exp.location}</span>
-                  <span className="mx-2">•</span>
+                  {exp.location && (
+                    <>
+                      <span>{exp.location}</span>
+                      <span className="mx-2">•</span>
+                    </>
+                  )}
                   <span>{exp.period}</span>
                 </div>
               </div>
