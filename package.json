@@ -22,6 +22,7 @@
     "leaflet": "^1.9.4",
     "lucide-react": "^0.479.0",
     "next": "15.2.1",
+    "pixelarticons": "^1.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-draggable": "^4.4.6",

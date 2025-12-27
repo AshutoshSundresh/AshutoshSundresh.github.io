@@ -205,6 +205,7 @@ export interface SkeumorphicDataRoot {
   awardsData: AwardCategory[];
   publications: Publication[];
   activitiesData: Activity[];
+  interests?: Record<string, string>;
 }
 
 // ============================================================================

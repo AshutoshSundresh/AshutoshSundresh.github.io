@@ -3,8 +3,11 @@ import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import DraggableCard from './DraggableCard';
 import GitHubContributions from './GitHubContributions';
 import LocationCard from './LocationCard';
-import type { DragPosition } from '../types';
+import InterestPopup from './InterestPopup';
+import type { DragPosition, SkeumorphicDataRoot } from '../types';
+import type { InterestName } from '../types/interestIcons';
 import useIsMobile from '../hooks/useIsMobile';
+import skeuData from '../data/skeumorphicData.json';
 
 type Position = DragPosition;
 
@@ -15,6 +18,7 @@ export default function IntroCards() {
     card3: { x: 0, y: 0 },
     card4: { x: 0, y: 0 }
   });
+  const [openInterest, setOpenInterest] = useState<InterestName | null>(null);
   const isMobile = useIsMobile();
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -58,19 +62,92 @@ export default function IntroCards() {
           <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] relative transition-all duration-700 delay-700 hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Interests">
             <div className="relative z-10 w-full">
               <div className="mb-2">
-                <div className="text-lg font-medium text-gray-800 dark:text-gray-200">Fun</div>
+                <div className="text-lg font-medium text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                  <span>Fun</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500 font-normal">(click to read more)</span>
+                </div>
               </div>
-              <div className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex flex-wrap gap-1.5">
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Fashion</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Music</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">RPG Development</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Diecast Cars</span>
-                <span className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30">Film</span>
+              <div 
+                className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex flex-wrap gap-1.5"
+                onPointerDown={(e) => e.stopPropagation()}
+                onMouseDown={(e) => e.stopPropagation()}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Fashion button clicked');
+                    setOpenInterest('Fashion' as InterestName);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                >
+                  Fashion
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpenInterest('Music' as InterestName);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                >
+                  Music
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpenInterest('Game Modding' as InterestName);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                >
+                  Game Modding
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpenInterest('Diecast Cars' as InterestName);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                >
+                  Diecast Cars
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    setOpenInterest('Film' as InterestName);
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                >
+                  Film
+                </button>
               </div>
             </div>
           </div>
         </DraggableCard>
       </div>
+      <InterestPopup
+        open={openInterest !== null}
+        onClose={() => {
+          console.log('Closing popup');
+          setOpenInterest(null);
+        }}
+        interestName={openInterest!}
+        content={openInterest ? ((skeuData as SkeumorphicDataRoot).interests?.[openInterest] || `Content for ${openInterest} will be added here.`) : ''}
+      />
     </DndContext>
   );
 }
