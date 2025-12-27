@@ -969,5 +969,12 @@
       "icon": "/images/ecosocsrcc.png",
       "collapsible": true
     }
-  ]
+  ],
+  "interests": {
+    "Fashion": "I gravitate toward modern, design-forward streetwear across Japanese, American, and British labels, alongside select contemporary Indian brands such as Almost Gods and Bluorng. My style is anchored by strong silhouettes, particularly Diesel denim and structured bottoms like A-Cold-Wall*, and layered with outerwear from Carhartt WIP, Stussy, Bluorng, Yitai, and similar labels. I’m especially drawn to rugby polos and thoughtfully designed upperwear, favoring brands like Derschutze, Marni, Human Made, and Bape that emphasize unconventional cuts, proportion, and construction.",
+    "Music": "I enjoy indie rock, indie pop, psychedelic-adjacent sounds (like witch house and electronic), and hip-hop. Lately, I’ve been listening to artists like Luna Li, Mitski, Japanese Breakfast, 2hollis, Che, Salem, and The Marías. I also like listening to Drake and Playboi Carti.",
+    "Game Modding": "I’ve worked intermittently on RPG Maker XP to build Pokémon fangames using Ruby, completing one full mini-game end-to-end, including design, storyboarding, and a lot of custom scripting required for gameplay logic. In addition to several larger, unfinished Pokémon projects, I’ve spent some time in the Game Boy Advance Pokémon modding scene. Outside of Pokémon, I mostly play classic Need for Speed titles such as Need for Speed II SE, Need for Speed III: Hot Pursuit, and Need for Speed: Hot Pursuit 2, and currently hold 10+ world records on speedrun.com for these Need for Speed games.",
+    "Diecast Cars": "I primarily collect 1:64 scale diecast cars, mostly from Hot Wheels, Tomica, Kyosho, Tarmac Works, and similar manufacturers. My preference leans strongly toward 1990s supercars and hypercars, as well as concept cars from the same era, with the McLaren F1 standing out as my all-time favorite. Beyond collecting, I design and build paper dioramas, including garages, storefronts, and urban scenes, to display my 1:64 models.",
+    "Film": "I usually watch a wide range of films, but I’ve noticed that I tend to rate psychological thrillers more highly, particularly films like Se7en and Shutter Island. I log every film I watch on Letterboxd, so it's more of a personal archive for me."
+  }
 }
