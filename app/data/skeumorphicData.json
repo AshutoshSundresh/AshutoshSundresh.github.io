@@ -51,6 +51,16 @@
     },
     {
       "id": 4,
+      "name": "3D First-Person Pac-Man",
+      "image": "/images/3d-pacman-neon.png",
+      "caption": "3D First-Person Pac-Man Game with Advanced Rendering Pipeline",
+      "techstack": "Three.js, TypeScript, Vite",
+      "description": "Built a 3D first-person Pac-Man game with dual-camera rendering (main view + minimap) in a single render pass. Implemented post-processing pipeline with dynamic bloom effects, procedural environment maps for real-time reflections, and ghost AI with pathfinding across multiple behavioral states.",
+      "created": "2026-01-01",
+      "link": "https://github.com/AshutoshSundresh/three-js-first-person-pacman"
+    },
+    {
+      "id": 5,
       "name": "Traffic Flow Simulation and Stochastic Modeling",
       "image": "/images/traffic_data.png",
       "caption": "Traffic Flow Simulation and Stochastic Modeling",
