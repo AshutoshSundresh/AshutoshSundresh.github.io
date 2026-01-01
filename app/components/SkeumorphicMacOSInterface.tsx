@@ -286,8 +286,9 @@ const MacOSWindow = () => {
             onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
             onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
             className={`
-            flex-1 p-4 bg-white dark:bg-[#1e1e1e] overflow-y-auto transition-colors
+            flex-1 p-4 bg-white dark:bg-[#1e1e1e] overflow-y-auto transition-all duration-300
             ${windowHeight.isMobile && selectedItem && activeTab === 3 ? 'hidden' : ''}
+            ${!windowHeight.isMobile && selectedItem && activeTab === 3 ? 'pr-72' : ''}
           `}
             onClick={handleContainerClick}
             style={{ height: contentHeight }}
