@@ -83,7 +83,8 @@
         "achievements": [
           "Upsilon Pi Epsilon Computer Science Honors Society",
           "William F. Sharpe Technology Fellow",
-          "Stein Engineering Scholar, Shirley and Walter Wang Computer Science Scholar"
+          "Stein Engineering Scholar, Shirley and Walter Wang Computer Science Scholar",
+          "Dean's Honors List"
         ],
         "courses": [
           {
@@ -696,7 +697,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "New Verticals Team, early engineer on Harvey's Microsoft Word add-in",
+        "Embedded Experiences Team, joined as part of the first ~60 engineers, agentic workflows for Harvey's Microsoft Word add-in",
         "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
         "Built block-based execution engine with workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation, enabling type-safe streaming of heterogeneous outputs (suggestions, text, files)",
@@ -717,19 +718,6 @@
         "Grew to 160,000+ downloads across 160+ countries organically with no marketing budget",
         "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
         "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
-      ]
-    },
-    {
-      "id": 4,
-      "company": "UCLA ELFIN CubeSat",
-      "position": "Ground Software Engineer",
-      "location": "Los Angeles, California, United States",
-      "period": "Jan 2025 - Present",
-      "icon": "/images/elfincubesat.jpg",
-      "companyLink": "https://elfin.igpp.ucla.edu/",
-      "description": [
-        "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
-        "Implemented a real-time TVAC data dashboard in React with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     },
     {
@@ -764,15 +752,16 @@
       ]
     },
     {
-      "id": 8,
-      "company": "Manav Rachna International Institute of Research and Studies",
-      "position": "Research Intern",
-      "location": "Faridabad, Haryana, India",
-      "period": "Jun 2022 - Jul 2022",
-      "icon": "/images/manavrachna.jpg",
-      "companyLink": "https://manavrachna.edu.in/",
+      "id": 4,
+      "company": "UCLA ELFIN CubeSat",
+      "position": "Ground Software Engineer",
+      "location": "Los Angeles, California, United States",
+      "period": "Jan 2025 - May 2025",
+      "icon": "/images/elfincubesat.jpg",
+      "companyLink": "https://elfin.igpp.ucla.edu/",
       "description": [
-        "Researched offensive security techniques, network analysis, vulnerability assessment, and cryptography"
+        "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
+        "Implemented a real-time TVAC data dashboard in React with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     }
   ],
@@ -836,7 +825,7 @@
           "title": "Regional Asian Math Olympiads",
           "year": "2023-2024",
           "icon": "/images/medal.png",
-          "description": "• Gold Medal in Philippine International Math Olympics (World Rank 3)<br>• Silver Medal in Fermat Vietnam Mathematical Olympiad (World Rank 7)<br>• Bronze Medals in Southeast Asian Mathematical Olympiad and Hong Kong International Mathematical Olympiad",
+          "description": "• Gold Medal in Philippines International Mathematical Olympics (World Rank 3)<br>• Silver Medal in Fermat Vietnam Mathematical Olympiad (World Rank 7)<br>• Bronze Medals in Southeast Asian Mathematical Olympiad and Hong Kong International Mathematical Olympiad",
           "highlight": "Multiple Medals",
           "link": "https://ashutoshsundresh.com/archive.html#awards"
         },
