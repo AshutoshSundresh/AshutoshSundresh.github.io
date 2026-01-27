@@ -697,7 +697,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "Embedded Experiences Team, early engineer on Harvey's Microsoft Word add-in",
+        "Embedded Experiences Team, joined as part of the first ~80 engineers, agentic workflows for Harvey's Microsoft Word add-in",
         "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
         "Built block-based execution engine with workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation, enabling type-safe streaming of heterogeneous outputs (suggestions, text, files)",
