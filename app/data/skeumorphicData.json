@@ -709,7 +709,7 @@
       "id": 3,
       "company": "ShapeShiftOS",
       "position": "Lead Software Engineer / Founder",
-      "period": "May 2020 - Present",
+      "period": "May 2020 - Apr 2024",
       "icon": "/images/shapeshiftos.jpg",
       "companyLink": "https://shapeshiftos.com/",
       "description": [
@@ -744,7 +744,7 @@
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [
-        "Founding Team at seed-stage LLM-powered social media platform out of Berkeley I&E / ACE@Berkeley",
+        "Founding Team (joined as part of the first ~5 engineers) at seed-stage LLM social platform out of Berkeley I&E / ACE@Berkeley",
         "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
         "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
         "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",
@@ -770,6 +770,13 @@
       "id": 1,
       "category": "Undergraduate",
       "awards": [
+        {
+          "title": "8VC Engineering Fellow Finalist",
+          "subtitle": "8VC",
+          "year": "2026",
+          "icon": "/images/8vc_logo.jpg",
+          "link": "https://8vc.com/fellowships"
+        },
         {
           "title": "Kleiner Perkins Engineering Fellow",
           "subtitle": "Kleiner Perkins",
