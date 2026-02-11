@@ -674,7 +674,7 @@
         "achievements": [
           "Valedictorian",
           "SAT Score: 1580 (800M, 780V)",
-          "AP Scholar with Distinction",          
+          "AP Scholar with Distinction",
           "TOEFL: 119"
         ],
         "subjects": [
@@ -721,21 +721,6 @@
       ]
     },
     {
-      "id": 5,
-      "company": "LA Hacks",
-      "position": "Member of Technical Staff",
-      "location": "Los Angeles, California, United States",
-      "period": "Oct 2024 - Present",
-      "icon": "/images/lahacks_logo.jpeg",
-      "companyLink": "https://lahacks.com/",
-      "description": [
-        "Tech Team contributor for the largest collegiate hackathon in Southern California",
-        "Engineered FastAPI-based Git analysis system detecting suspicious commit patterns and possible plagiarism through commit frequency analysis, contribution pattern heuristics, and anomaly detection algorithms across 1,000+ submissions",
-        "Built multi-day calendar grid with Firebase real-time sync, conflict-aware time-slot positioning, and category filtering",
-        "Designed PostgreSQL schema for application review system with indexes enabling real-time applicant search and filtering"
-      ]
-    },
-    {
       "id": 6,
       "company": "Skylow",
       "position": "Software Engineering Intern",
@@ -749,19 +734,6 @@
         "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
         "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",
         "Set up Sentry exception monitoring and PostHog event tracking to analyze user session flows and frontend error patterns"
-      ]
-    },
-    {
-      "id": 4,
-      "company": "UCLA ELFIN CubeSat",
-      "position": "Ground Software Engineer",
-      "location": "Los Angeles, California, United States",
-      "period": "Jan 2025 - May 2025",
-      "icon": "/images/elfincubesat.jpg",
-      "companyLink": "https://elfin.igpp.ucla.edu/",
-      "description": [
-        "UCLA Experimental Space Physics Group, working on thermal vacuum chamber (TVAC) software",
-        "Implemented a real-time TVAC data dashboard in React with performance-optimized sensor visualization and a configurable, thread-safe PID control system via FastAPI"
       ]
     }
   ],
@@ -904,9 +876,22 @@
   ],
   "activitiesData": [
     {
+      "id": 5,
+      "title": "LA Hacks Tech Team Organizer",
+      "description": "Tech Team for Southern California's largest collegiate hackathon, built web dashboards, hacker application site, and statistical plagiarism detection tool.",
+      "period": "Oct 2024 - Present",
+      "icon": "/images/lahacks_logo.jpeg",
+      "links": [
+        {
+          "text": "LA Hacks",
+          "url": "https://lahacks.com/"
+        }
+      ]
+    },
+    {
       "id": 1,
       "title": "Undergraduate Tutor",
-      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes.",
+      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes at Upsilon Pi Epsilon.",
       "links": [
         {
           "text": "Upsilon Pi Epsilon at UCLA",
@@ -947,15 +932,17 @@
       "icon": "/images/github.png"
     },
     {
-      "id": 3,
-      "title": "Investment Banking M&A Simulation",
-      "period": "Sep 2024",
-      "description": "Participated in a comprehensive educational session with StepStone on investment banking fundamentals, covering the three financial statements, equity and enterprise value, and valuation methodologies.",
-      "highlights": [
-        "Completed with a score at the highest possible range (>85%)"
-      ],
-      "icon": "/images/stepstone.png",
-      "collapsible": true
+      "id": 6,
+      "title": "UCLA ELFIN CubeSat Ground Software Engineer",
+      "description": "Built ground control and thermal vacuum chamber (TVAC) software for UCLA ELFIN CubeSat (Experimental Space Physics Group).",
+      "period": "Jan 2025 - May 2025",
+      "icon": "/images/elfincubesat.jpg",
+      "links": [
+        {
+          "text": "ELFIN",
+          "url": "https://elfin.igpp.ucla.edu/"
+        }
+      ]
     },
     {
       "id": 4,
