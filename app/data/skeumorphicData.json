@@ -31,23 +31,23 @@
     },
     {
       "id": 2,
+      "name": "MiniR (Embedded R-Like Programming Language)",
+      "image": "/images/mini_r.png",
+      "caption": "Embedded R-like interpreter and REPL for Casio fx-CP400 calculators (C++20).",
+      "techstack": "C++20",
+      "description": "Implemented a from-scratch R-like interpreter and REPL intended for Casio fx-CP400 family of calculators, including a custom lexer, expression parser, and evaluator that support R-style vectors, matrices, data.frames, subsetting, recycling rules, NA/NaN/Inf semantics, and many core builtins. Designed a compact runtime with attribute-aware values and lightweight containers tuned for constrained embedded environments, plus a simple desktop CLI/REPL interface that can also be embedded as a library.",
+      "created": "2026-01-13",
+      "link": "https://github.com/AshutoshSundresh/MiniR-Holly-Hock2"
+    },
+    {
+      "id": 3,
       "name": "ResumeIDE (LaTeX Desktop Editor)",
       "image": "/images/resumeide.png",
       "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, TypeScript, Rust)",
       "techstack": "Rust, Tokio, Tauri, TypeScript",
       "description": "Built a desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
-      "created": "2025-12-12",
+      "created": "2025-11-15",
       "link": "https://github.com/AshutoshSundresh/latex-resume-editor"
-    },
-    {
-      "id": 3,
-      "name": "Bibliotheque (Library Management System)",
-      "image": "/images/Screenshot-2025-06-02-181132.png",
-      "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
-      "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
-      "description": "Built a real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
-      "created": "2025-04-14",
-      "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     },
     {
       "id": 4,
@@ -56,18 +56,18 @@
       "caption": "3D First-Person Pac-Man Game with Advanced Rendering Pipeline",
       "techstack": "Three.js, TypeScript, Vite",
       "description": "Built a 3D first-person Pac-Man game with dual-camera rendering (main view + minimap) in a single render pass. Implemented post-processing pipeline with dynamic bloom effects, procedural environment maps for real-time reflections, spatial audio, and ghost AI with pathfinding across multiple behavioral states.",
-      "created": "2026-01-01",
+      "created": "2025-12-26",
       "link": "https://github.com/AshutoshSundresh/three-js-first-person-pacman"
     },
     {
       "id": 5,
-      "name": "Traffic Flow Simulation and Stochastic Modeling",
-      "image": "/images/traffic_data.png",
-      "caption": "Traffic Flow Simulation and Stochastic Modeling",
-      "techstack": "Python, NumPy, Matplotlib",
-      "description": "Built a lightweight simulation (Python, NumPy, Matplotlib) to model non-linear traffic congestion across a 6.2-mile road segment using sinusoidal flow dynamics. Generated synthetic datasets with Gaussian and uniform distributions and visualized congestion patterns under different parameters.",
-      "created": "2023-07-16",
-      "link": "https://github.com/ashutosh-s-test-dumpster/SinusoidalGraphsAndSyntheticTrafficData"
+      "name": "Bibliotheque (Library Management System)",
+      "image": "/images/Screenshot-2025-06-02-181132.png",
+      "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
+      "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
+      "description": "Built a real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
+      "created": "2025-04-14",
+      "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     }
   ],
   "educationData": [
