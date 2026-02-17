@@ -743,13 +743,6 @@
       "category": "Undergraduate",
       "awards": [
         {
-          "title": "8VC Engineering Fellow Finalist",
-          "subtitle": "8VC",
-          "year": "2026",
-          "icon": "/images/8vc_logo.jpg",
-          "link": "https://8vc.com/fellowships"
-        },
-        {
           "title": "Kleiner Perkins Engineering Fellow",
           "subtitle": "Kleiner Perkins",
           "year": "2025",
