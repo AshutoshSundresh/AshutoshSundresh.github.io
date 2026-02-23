@@ -27,10 +27,26 @@ import useClickOutside from '../hooks/useClickOutside';
 
 type ProjectDetails = Project;
 
+const TAB_NAME_TO_INDEX: Record<string, number> = {
+  experience: 0,
+  awards: 1,
+  education: 2,
+  projects: 3,
+  publications: 4,
+  activities: 5,
+};
+
 const MacOSWindow = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { activeTab, handleTabChange, handleBack, handleForward, tabHistory, currentHistoryIndex } = useTabHistory(0);
+  const searchParams = useSearchParams();
+  const initialTab = useMemo(() => {
+    const tabParam = searchParams?.get('tab');
+    if (!tabParam) return 0;
+    const idx = TAB_NAME_TO_INDEX[String(tabParam).toLowerCase()];
+    return typeof idx === 'number' ? idx : 0;
+  }, [searchParams]);
+  const { activeTab, handleTabChange, handleBack, handleForward, tabHistory, currentHistoryIndex } = useTabHistory(initialTab);
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -55,8 +71,6 @@ const MacOSWindow = () => {
   const [tabOffset, setTabOffset] = useState(0);
 
   // Swipe thresholds handled in hook
-
-  const searchParams = useSearchParams();
   const {
     terminalMode,
     setTerminalMode,
@@ -132,28 +146,7 @@ const MacOSWindow = () => {
     }
   );
 
-  // Sync tab from URL query param `tab` (when landing from search)
-  const tabNameToIndex: Record<string, number> = useMemo(() => ({
-    experience: 0,
-    awards: 1,
-    education: 2,
-    projects: 3,
-    publications: 4,
-    activities: 5,
-  }), []);
   const tabIndexToName = useMemo(() => ['experience','awards','education','projects','publications','activities'], []);
-
-  const didInitFromUrl = useRef(false);
-  useEffect(() => {
-    if (didInitFromUrl.current) return;
-    const tabParam = searchParams?.get('tab');
-    if (!tabParam) { didInitFromUrl.current = true; return; }
-    const wanted = tabNameToIndex[String(tabParam).toLowerCase()];
-    if (typeof wanted === 'number') {
-      handleTabChange(wanted);
-    }
-    didInitFromUrl.current = true;
-  }, [searchParams, handleTabChange, tabNameToIndex]);
 
   // Keep URL query in sync with active tab (without adding history entries)
   useEffect(() => {

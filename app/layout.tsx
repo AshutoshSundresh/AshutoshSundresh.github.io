@@ -7,7 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
-  display: 'swap',
+  display: 'optional',
 });
 
 export const metadata: Metadata = {
@@ -20,9 +20,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const themeScript = `
+(function() {
+  var s = typeof document !== 'undefined' && document.documentElement;
+  if (!s) return;
+  var t = localStorage.getItem('theme');
+  if (t === 'dark') { s.classList.add('dark'); }
+  else if (t === 'light') { s.classList.remove('dark'); }
+  else if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) { s.classList.add('dark'); }
+  else { s.classList.remove('dark'); }
+})();
+  `.trim();
+
   return (
-    <html lang="en">
-      <body className={`${raleway.className} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className={`${raleway.className} antialiased`} suppressHydrationWarning>
         <ThemeProvider>
           {children}
           <Navigation />

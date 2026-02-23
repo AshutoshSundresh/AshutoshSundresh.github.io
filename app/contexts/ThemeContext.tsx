@@ -12,16 +12,23 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+function getInitialTheme(): Theme {
+  if (typeof document === 'undefined') return 'light';
+  // Sync with the blocking script in layout: use the class it already set
+  if (document.documentElement.classList.contains('dark')) return 'dark';
+  return 'light';
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>('light');
+  const [theme, setThemeState] = useState<Theme>(getInitialTheme);
   const [mounted, setMounted] = useState(false);
 
-  // Load theme from localStorage on mount
+  // Re-sync from localStorage on mount (in case script and storage differ)
   useEffect(() => {
     setMounted(true);
     const savedTheme = localStorage.getItem('theme') as Theme | null;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme) {
       setThemeState(savedTheme);
     } else if (prefersDark) {
