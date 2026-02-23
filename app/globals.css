@@ -7,8 +7,8 @@
 @font-face {
   font-family: 'Array';
   src: url('/fonts/Array-Regular.woff2') format('woff2'),
-       url('/fonts/Array-Regular.woff') format('woff'),
-       url('/fonts/Array-Regular.ttf') format('truetype');
+    url('/fonts/Array-Regular.woff') format('woff'),
+    url('/fonts/Array-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: block;
@@ -17,8 +17,8 @@
 @font-face {
   font-family: 'Array';
   src: url('/fonts/Array-Semibold.woff2') format('woff2'),
-       url('/fonts/Array-Semibold.woff') format('woff'),
-       url('/fonts/Array-Semibold.ttf') format('truetype');
+    url('/fonts/Array-Semibold.woff') format('woff'),
+    url('/fonts/Array-Semibold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
   font-display: block;
@@ -27,8 +27,8 @@
 @font-face {
   font-family: 'Array';
   src: url('/fonts/Array-Bold.woff2') format('woff2'),
-       url('/fonts/Array-Bold.woff') format('woff'),
-       url('/fonts/Array-Bold.ttf') format('truetype');
+    url('/fonts/Array-Bold.woff') format('woff'),
+    url('/fonts/Array-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: block;
@@ -138,16 +138,16 @@ body::before {
 
 body::after {
   bottom: 0;
-  mask-image: linear-gradient(to top, 
-    rgba(0, 0, 0, 1) 0%, 
-    rgba(0, 0, 0, 0.8) 40%, 
-    rgba(0, 0, 0, 0.4) 70%, 
-    rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to top, 
-    rgba(0, 0, 0, 1) 0%, 
-    rgba(0, 0, 0, 0.8) 40%, 
-    rgba(0, 0, 0, 0.4) 70%, 
-    rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to top,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 40%,
+      rgba(0, 0, 0, 0.4) 70%,
+      rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(to top,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 40%,
+      rgba(0, 0, 0, 0.4) 70%,
+      rgba(0, 0, 0, 0) 100%);
 }
 
 html {
@@ -168,6 +168,7 @@ html {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -177,6 +178,7 @@ html {
   from {
     opacity: 1;
   }
+
   to {
     opacity: 0;
   }
@@ -186,9 +188,11 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -198,18 +202,23 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-15px);
   }
@@ -242,13 +251,89 @@ html {
   animation: bounce 2s ease-in-out infinite;
 }
 
+@keyframes visualizerHeight1 {
+
+  0%,
+  5% {
+    opacity: 0;
+  }
+
+  6%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes visualizerHeight2 {
+
+  0%,
+  20% {
+    opacity: 0;
+  }
+
+  21%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes visualizerHeight3 {
+
+  0%,
+  40% {
+    opacity: 0;
+  }
+
+  41%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes visualizerHeight4 {
+
+  0%,
+  65% {
+    opacity: 0;
+  }
+
+  66%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes visualizerHeight5 {
+
+  0%,
+  88% {
+    opacity: 0;
+  }
+
+  89%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+.animate-visualizer {
+  animation: visualizerHeight1 1s steps(1) infinite;
+}
+
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
 /* Common utility classes extracted from components */
-.backdrop-blur-10 { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-.backdrop-blur-4 { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.backdrop-blur-10 {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.backdrop-blur-4 {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
 
 .card-elevated {
   /* COLOR_COMBINATIONS shadows and white[15] */
@@ -273,7 +358,9 @@ html {
   }
 }
 
-.img-no-gap { margin: -1px; }
+.img-no-gap {
+  margin: -1px;
+}
 
 .ios-lockscreen-bg {
   /* Color values defined in app/constants/colors.ts - GRADIENTS.iosLockscreen */
@@ -343,7 +430,8 @@ html {
   transition: all 0.3s ease;
 }
 
-.contact-btn:hover, .contact-btn.active {
+.contact-btn:hover,
+.contact-btn.active {
   /* COLOR_COMBINATIONS.white[20] and white[10] */
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
@@ -389,9 +477,11 @@ html {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -482,6 +572,7 @@ html {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -497,7 +588,7 @@ html {
 }
 
 .animate-shake {
-  animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both;
+  animation: shake 0.3s cubic-bezier(.36, .07, .19, .97) both;
 }
 
 @keyframes slideInUp {
@@ -505,6 +596,7 @@ html {
     transform: translateY(100%);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
@@ -516,6 +608,7 @@ html {
     transform: translateY(0);
     opacity: 1;
   }
+
   to {
     transform: translateY(-100%);
     opacity: 0;
@@ -523,11 +616,25 @@ html {
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  50% { transform: translateX(6px); }
-  75% { transform: translateX(-3px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+
+  75% {
+    transform: translateX(-3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* iOS Lockscreen Swipe Animation */
@@ -536,10 +643,12 @@ html {
     transform: translateY(0);
     opacity: 0.7;
   }
+
   50% {
     transform: translateY(-10px);
     opacity: 1;
   }
+
   100% {
     transform: translateY(0);
     opacity: 0.7;
@@ -555,6 +664,7 @@ html {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -572,74 +682,94 @@ html {
   width: 100%;
   height: 100%;
   /* Color values defined in app/constants/colors.ts */
-  background: rgba(0, 0, 0, 0.9); /* COLOR_COMBINATIONS.black[90] */
-  color: #33ff33; /* SEMANTIC_COLORS.terminalGreen */
+  background: rgba(0, 0, 0, 0.9);
+  /* COLOR_COMBINATIONS.black[90] */
+  color: #33ff33;
+  /* SEMANTIC_COLORS.terminalGreen */
   font-family: monospace;
   padding: 1rem;
   z-index: 9999;
   display: flex;
   flex-direction: column;
 }
+
 .terminal-header {
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid #33ff33; /* SEMANTIC_COLORS.terminalGreen */
+  border-bottom: 1px solid #33ff33;
+  /* SEMANTIC_COLORS.terminalGreen */
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .terminal-hint {
   font-size: 0.8rem;
   opacity: 0.7;
   margin-left: 1rem;
   font-weight: normal;
 }
+
 .terminal-output {
   overflow-y: auto;
   height: auto;
   max-height: calc(100vh - 120px);
   flex: 1;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
 }
+
 .terminal-output::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
+  /* Chrome, Safari, Opera */
 }
+
 .terminal-output-line {
   margin-bottom: 0.25rem;
   line-height: 1.4;
 }
+
 .terminal-current-prompt {
   display: flex;
   align-items: center;
   margin-top: 0.25rem;
 }
+
 .terminal-prompt {
   display: flex;
   align-items: center;
 }
+
 .terminal-prompt-text {
   margin-right: 0.5rem;
 }
+
 .terminal-input {
   background: transparent;
   border: none;
-  color: #33ff33; /* SEMANTIC_COLORS.terminalGreen */
+  color: #33ff33;
+  /* SEMANTIC_COLORS.terminalGreen */
   font-family: monospace;
   font-size: 1rem;
   flex-grow: 1;
   outline: none;
 }
+
 @media (max-width: 768px) {
   .terminal-container {
     padding: 0.5rem;
   }
+
   .terminal-output {
     max-height: calc(100vh - 100px);
   }
+
   .terminal-input {
-    font-size: 16px; /* Prevent zoom on mobile */
+    font-size: 16px;
+    /* Prevent zoom on mobile */
   }
 }
 
@@ -649,9 +779,11 @@ html {
     transform: scale(0.8);
     opacity: 0.7;
   }
+
   50% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
     opacity: 1;

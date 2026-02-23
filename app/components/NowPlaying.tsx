@@ -20,7 +20,7 @@ function getTimeAgo(unixTimestamp: string): string {
   const now = new Date();
   const played = new Date(parseInt(unixTimestamp) * 1000);
   const diffInSeconds = Math.floor((now.getTime() - played.getTime()) / 1000);
-  
+
   if (diffInSeconds < 60) {
     return 'just now';
   } else if (diffInSeconds < 3600) {
@@ -51,7 +51,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
   const { isDark } = useTheme();
   const imgRef = useRef<HTMLImageElement>(null);
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+
   // Use visibility hook only if fade is enabled, otherwise always show
   const show = disableFade ? true : visibilityHook.show;
   const firstLaunch = disableFade ? false : visibilityHook.firstLaunch;
@@ -64,7 +64,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
   // Notify parent of status and track info
   useEffect(() => {
     if (!onStatusChange && !onTrackChange) return;
-    
+
     if (!track) {
       onStatusChange?.(null);
       onTrackChange?.(null);
@@ -101,10 +101,10 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
     <>
       <div
         className={`${disableFade ? 'absolute' : 'fixed'} top-4 left-1/2 z-50 w-[calc(100vw-16px)] md:w-full md:max-w-md px-2
-          ${disableFade 
-            ? 'opacity-100 translate-y-0 pointer-events-auto' 
-            : show 
-              ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in' 
+          ${disableFade
+            ? 'opacity-100 translate-y-0 pointer-events-auto'
+            : show
+              ? 'opacity-100 translate-y-0 pointer-events-auto animate-fade-in'
               : 'opacity-0 -translate-y-4 pointer-events-none animate-fade-out'}
           transform -translate-x-1/2 ${disableFade ? '' : 'transition-all duration-500 ease-in-out'}`
         }
@@ -122,46 +122,68 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
             animation: 'gradientFlow 8s ease infinite'
           }}
         >
-        <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl bg-gray-600/40">
-          <img
-            ref={imgRef}
-            src={albumArt}
-            alt={track.name + ' album art'}
-            className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
-        <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor} overflow-visible`}>
-          <div className="text-xs font-semibold tracking-widest mb-1 opacity-80 flex items-center gap-1">
-            <span>{isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}</span>
-            {showInfoButton && (
-              <div className="relative inline-block -mb-1">
-                <InfoButton
-                  buttonRef={buttonRef}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  className={textColor}
-                />
-              </div>
+          <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl bg-gray-600/40">
+            <img
+              ref={imgRef}
+              src={albumArt}
+              alt={track.name + ' album art'}
+              className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+              onLoad={() => setImageLoaded(true)}
+            />
+          </div>
+          <div className={`relative flex-1 min-w-0 pl-[calc(25%+0.5rem)] ${textColor} overflow-visible`}>
+            <div className="text-xs font-semibold tracking-widest mb-1 opacity-80 flex items-center gap-1">
+              <span>{isNowPlaying ? 'NOW PLAYING' : `LAST PLAYED${timeAgo ? ` • ${timeAgo}` : ''}`}</span>
+              {showInfoButton && (
+                <div className="relative inline-block -mb-1">
+                  <InfoButton
+                    buttonRef={buttonRef}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className={textColor}
+                  />
+                </div>
+              )}
+            </div>
+            <a
+              href={track.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block text-lg font-bold truncate hover:underline ${textColor}`}
+              title={track.name}
+            >
+              {track.name}
+            </a>
+            <div className={`text-sm opacity-90 truncate ${textColor}`} title={artist}>{artist}</div>
+            {album && (
+              <div className={`text-xs opacity-70 truncate ${textColor}`} title={album}>{album}</div>
             )}
           </div>
-          <a
-            href={track.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`block text-lg font-bold truncate hover:underline ${textColor}`}
-            title={track.name}
-          >
-            {track.name}
-          </a>
-          <div className={`text-sm opacity-90 truncate ${textColor}`} title={artist}>{artist}</div>
-          {album && (
-            <div className={`text-xs opacity-70 truncate ${textColor}`} title={album}>{album}</div>
+          {isNowPlaying && (
+            <div className={`absolute bottom-0 left-[calc(25%+0.5rem)] right-3 flex items-end justify-between gap-[2px] h-6 pointer-events-none overflow-hidden ${textColor}`}>
+              {[...Array(32)].map((_, i) => {
+                const randomDelay = -Math.random() * 4;
+                const randomDuration = 0.8 + Math.random() * 1.2;
+                return (
+                  <div key={i} className="flex flex-col gap-[2px] justify-end pb-1">
+                    {[...Array(4)].map((_, j) => (
+                      <div
+                        key={`${i}-${j}`}
+                        className="w-[4px] h-[4px] rounded-full bg-current opacity-0"
+                        style={{
+                          animation: `visualizerHeight${4 - j} ${randomDuration}s steps(1) infinite`,
+                          animationDelay: `${randomDelay}s`,
+                        }}
+                      />
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           )}
         </div>
-        </div>
       </div>
-      
+
       {show && showInfoButton && (
         <Tooltip show={showTooltip} position={tooltipPosition}>
           I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
