@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import type { ActivitiesListProps } from '../types';
+import { getBlurDataURL } from '../constants/blurPlaceholder';
 
 export default function ActivitiesList({ activities }: ActivitiesListProps) {
   // Start with collapsible items (id 3 and 4) collapsed by default
@@ -35,7 +36,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
               <div className="flex items-start">
                 {activity.icon && (
                   <div className="w-12 h-12 mr-4 relative flex-shrink-0">
-                    <Image src={activity.icon} alt={activity.title} fill sizes="48px" className="object-contain rounded-lg" />
+                    <Image src={activity.icon} alt={activity.title} fill sizes="48px" placeholder="blur" blurDataURL={getBlurDataURL(activity.icon)} className="object-contain rounded-lg" />
                   </div>
                 )}
                 <div className="flex-1">

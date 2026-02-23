@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "node scripts/generate-blur-placeholders.js && next build",
+    "generate-blur": "node scripts/generate-blur-placeholders.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -41,6 +42,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "sharp": "^0.33.5",
     "tailwindcss": "^4",
     "typescript": "^5"
   },

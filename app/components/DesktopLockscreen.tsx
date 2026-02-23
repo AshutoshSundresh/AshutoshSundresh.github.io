@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from 'react';
+import React from 'react';
 import type { IOSLockscreenProps } from '../types';
 import Image from 'next/image';
 import useClock from '../hooks/useClock';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { getBlurDataURL } from '../constants/blurPlaceholder';
 
 const Clock = ({ formatString }: { formatString: string }) => {
   const value = useClock(formatString);
@@ -12,8 +11,6 @@ const Clock = ({ formatString }: { formatString: string }) => {
 };
 
 const DesktopLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <div className="fixed inset-0 bg-black/90 backdrop-blur-lg z-50 flex flex-col items-center justify-center text-white">
       <div className="flex flex-col items-center">
@@ -24,15 +21,15 @@ const DesktopLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
           <Clock formatString="EEEE, MMMM d" />
         </div>
 
-        <div className="w-24 h-24 bg-gray-300 rounded-full mb-4 overflow-hidden relative">
-          {!imageLoaded && <Skeleton height="100%" circle containerClassName="h-full w-full block absolute top-0 left-0" />}
+        <div className="w-24 h-24 rounded-full mb-4 overflow-hidden relative">
           <Image
             src="/images/ashutosh.jpeg"
             alt="Profile"
             width={96}
             height={96}
-            className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-            onLoad={() => setImageLoaded(true)}
+            placeholder="blur"
+            blurDataURL={getBlurDataURL('/images/ashutosh.jpeg')}
+            className="w-full h-full object-cover"
           />
         </div>
 

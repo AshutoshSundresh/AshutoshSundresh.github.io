@@ -3,6 +3,7 @@
 import React, { useState, memo, useCallback } from 'react';
 import Image from 'next/image';
 import type { ExperienceListProps } from '../types';
+import { getBlurDataURL } from '../constants/blurPlaceholder';
 
 function ExperienceList({ experienceData }: ExperienceListProps) {
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
@@ -18,7 +19,7 @@ function ExperienceList({ experienceData }: ExperienceListProps) {
           <div className="bg-gray-50 dark:bg-[#202020] p-4 border-b border-gray-200 dark:border-gray-700">
             <div className="flex items-start">
               <div className="w-12 h-12 mr-4 relative flex-shrink-0">
-                <Image src={exp.icon} alt={exp.company} fill sizes="48px" className="object-contain rounded-lg" />
+                <Image src={exp.icon} alt={exp.company} fill sizes="48px" placeholder="blur" blurDataURL={getBlurDataURL(exp.icon)} className="object-contain rounded-lg" />
               </div>
               <div>
                 <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200">

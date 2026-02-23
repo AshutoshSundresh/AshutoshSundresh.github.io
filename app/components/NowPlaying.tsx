@@ -9,9 +9,6 @@ import { useTheme } from '../contexts/ThemeContext';
 import { darkenColor, rgbToHex } from '../constants/colors';
 import Tooltip from './ui/Tooltip';
 import InfoButton from './ui/InfoButton';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-
 import type { NowPlayingTrack, NowPlayingProps } from '../types';
 
 function getLuminance([r, g, b]: number[]) {
@@ -125,8 +122,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
             animation: 'gradientFlow 8s ease infinite'
           }}
         >
-        <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl">
-          {!imageLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
+        <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl bg-gray-600/40">
           <img
             ref={imgRef}
             src={albumArt}

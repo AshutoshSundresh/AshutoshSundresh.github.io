@@ -1,10 +1,8 @@
 "use client";
-import { useState } from 'react';
 import Image from 'next/image';
 import { ChevronDown, Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
+import { getBlurDataURL } from '../constants/blurPlaceholder';
 
 interface HeroSectionProps {
   onSearchOpen: () => void;
@@ -12,8 +10,6 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
   const { toggleTheme, isDark } = useTheme();
-  const [profileLoaded, setProfileLoaded] = useState(false);
-  const [logoLoaded, setLogoLoaded] = useState(false);
 
   const scrollToNext = () => {
     const currentSection = document.querySelector('#hero-section');
@@ -62,14 +58,14 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                {!profileLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
                 <Image 
                   src="/images/1755148353808.png" 
                   alt="Profile photo" 
                   width={64} 
                   height={64} 
-                  className={`w-full h-full object-cover transition-opacity duration-300 ${profileLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => setProfileLoaded(true)}
+                  placeholder="blur"
+                  blurDataURL={getBlurDataURL('/images/1755148353808.png')}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
@@ -85,14 +81,14 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                {!logoLoaded && <Skeleton height="100%" containerClassName="h-full w-full block absolute top-0 left-0" />}
                 <Image 
                   src="/images/UCLA-square-logo.jpg" 
                   alt="UCLA" 
                   width={64} 
                   height={64} 
-                  className={`w-full h-full object-cover transition-opacity duration-300 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  onLoad={() => setLogoLoaded(true)}
+                  placeholder="blur"
+                  blurDataURL={getBlurDataURL('/images/UCLA-square-logo.jpg')}
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
