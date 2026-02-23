@@ -743,6 +743,13 @@
       "category": "Undergraduate",
       "awards": [
         {
+          "title": "USACO Gold",
+          "subtitle": "USA Computing Olympiad",
+          "year": "2026",
+          "icon": "/images/usaco.png",
+          "link": "https://usaco.org"
+        },
+        {
           "title": "Kleiner Perkins Engineering Fellow",
           "subtitle": "Kleiner Perkins",
           "year": "2025",
