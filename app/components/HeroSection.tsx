@@ -58,11 +58,11 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                <Image 
-                  src="/images/1755148353808.png" 
-                  alt="Profile photo" 
-                  width={64} 
-                  height={64} 
+                <Image
+                  src="/images/1755148353808.png"
+                  alt="Profile photo"
+                  width={64}
+                  height={64}
                   placeholder="blur"
                   blurDataURL={getBlurDataURL('/images/1755148353808.png')}
                   className="w-full h-full object-cover"
@@ -81,11 +81,11 @@ export default function HeroSection({ onSearchOpen }: HeroSectionProps) {
             <div className="relative w-16 h-16 md:w-[72px] md:h-[72px] mx-2">
               <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg transform transition-transform hover:scale-105 duration-300 card-elevated border border-gray-200 dark:border-gray-700">
                 <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
-                <Image 
-                  src="/images/UCLA-square-logo.jpg" 
-                  alt="UCLA" 
-                  width={64} 
-                  height={64} 
+                <Image
+                  src="/images/UCLA-square-logo.jpg"
+                  alt="UCLA"
+                  width={64}
+                  height={64}
                   placeholder="blur"
                   blurDataURL={getBlurDataURL('/images/UCLA-square-logo.jpg')}
                   className="w-full h-full object-cover"

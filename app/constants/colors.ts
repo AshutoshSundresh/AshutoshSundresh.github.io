@@ -13,7 +13,7 @@ export const BASE_COLORS = {
   // Pure colors
   black: '#000000',
   white: '#FFFFFF',
-  
+
   // Gray scale (light mode)
   gray: {
     50: '#f9fafb',
@@ -27,7 +27,7 @@ export const BASE_COLORS = {
     800: '#1f2937',
     900: '#111827',
   },
-  
+
   // Dark mode palette (material gray aesthetic)
   dark: {
     // Background shades
@@ -50,7 +50,7 @@ export const BASE_COLORS = {
       secondary: '#1f2335',
     },
   },
-  
+
   // MacOS Finder/Window specific dark colors
   macOS: {
     contentBg: '#1e1e1e',      // Main content area background
@@ -59,7 +59,7 @@ export const BASE_COLORS = {
     cardBg: '#2b2b2b',         // Card/elevated elements background
     hoverBg: '#333333',        // Hover state background
   },
-  
+
   // Blue scale
   blue: {
     50: '#eff6ff',
@@ -71,18 +71,18 @@ export const BASE_COLORS = {
     700: '#1d4ed8',
     900: '#1e3a8a',
   },
-  
+
   // Purple scale
   purple: {
     400: '#c084fc',
     500: '#a855f7',
   },
-  
+
   // Pink scale
   pink: {
     400: '#f472b6',
   },
-  
+
   // macOS window controls
   red: {
     500: '#ef4444',
@@ -102,33 +102,33 @@ export const BASE_COLORS = {
 export const SEMANTIC_COLORS = {
   // Selection & Interactive
   selection: '#0069d9',
-  
+
   // Navigation
   navBackground: '#2A2A2A',
   navBackgroundLight: 'rgba(34, 34, 34, 1)', // Slightly darker shade for pressed state
   navBackgroundDark: 'rgba(27, 27, 27, 1)',
   navText: '#CCCCCC',
-  
+
   // Terminal
   terminalGreen: '#33ff33',
   terminalBackground: 'rgba(0, 0, 0, 0.9)',
-  
+
   // iOS Lockscreen gradient
   iosLockscreen: {
     top: '#1a001f',
     middle: '#320046',
     bottom: '#210024',
   },
-  
+
   // Experience page gradient
   experienceGradient: {
     from: '#111111',
     to: '#0a0a0a',
   },
-  
+
   // GitHub contributions
   contributionsBackground: '#282a36',
-  
+
   // Game of Life
   gameOfLife: {
     // Light mode
@@ -177,12 +177,12 @@ export const OPACITY = {
 export function withOpacity(hex: string, opacity: number | string): string {
   // Remove # if present
   const cleanHex = hex.replace('#', '');
-  
+
   // Convert hex to RGB
   const r = parseInt(cleanHex.substring(0, 2), 16);
   const g = parseInt(cleanHex.substring(2, 4), 16);
   const b = parseInt(cleanHex.substring(4, 6), 16);
-  
+
   return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
@@ -217,7 +217,7 @@ export const COLOR_COMBINATIONS = {
     80: blackWithOpacity(OPACITY[80]),
     90: blackWithOpacity(OPACITY[90]),
   },
-  
+
   // White with various opacities
   white: {
     5: whiteWithOpacity(OPACITY[5]),
@@ -229,14 +229,14 @@ export const COLOR_COMBINATIONS = {
     40: whiteWithOpacity(OPACITY[40]),
     60: whiteWithOpacity(OPACITY[60]),
   },
-  
+
   // Glass morphism backgrounds
   glass: {
     light: 'rgba(255, 255, 255, 0.1)',
     medium: 'rgba(255, 255, 255, 0.2)',
     dark: 'rgba(0, 0, 0, 0.6)',
   },
-  
+
   // Navigation pressed states
   navPressed: {
     background: 'linear-gradient(180deg, rgba(34, 34, 34, 1), rgba(27, 27, 27, 1))',
@@ -245,7 +245,7 @@ export const COLOR_COMBINATIONS = {
     glassInset1: 'rgba(71, 68, 68, 0.6)',
     glassInset2: 'rgba(104, 92, 92, 0.55)',
   },
-  
+
   // Shadow colors
   shadows: {
     subtle: 'rgba(0, 0, 0, 0.05)',
@@ -270,7 +270,7 @@ export const GRADIENTS = {
     via: 'rgba(249, 250, 251, 0.6)',  // gray-50/60
     to: 'rgba(243, 244, 246, 0.8)',   // gray-100/80
   },
-  
+
   // Text gradients
   textPrimary: {
     from: BASE_COLORS.blue[400],
@@ -287,7 +287,7 @@ export const GRADIENTS = {
     via: BASE_COLORS.gray[700],
     to: BASE_COLORS.gray[900],
   },
-  
+
   // Background gradients
   iosLockscreen: `linear-gradient(to bottom, ${SEMANTIC_COLORS.iosLockscreen.top}, ${SEMANTIC_COLORS.iosLockscreen.middle}, ${SEMANTIC_COLORS.iosLockscreen.bottom}, black)`,
   experiencePage: `linear-gradient(to bottom, ${SEMANTIC_COLORS.experienceGradient.from}, ${SEMANTIC_COLORS.experienceGradient.to})`,
@@ -308,7 +308,7 @@ export const TAILWIND_PATTERNS = {
     active: 'bg-[#0069d9] text-white',
     hover: 'hover:bg-gray-100',
   },
-  
+
   // Text colors
   text: {
     primary: 'text-gray-900',
@@ -318,7 +318,7 @@ export const TAILWIND_PATTERNS = {
     white: 'text-white',
     link: 'text-blue-500 hover:text-blue-600',
   },
-  
+
   // Background colors
   background: {
     white: 'bg-white',
@@ -326,19 +326,19 @@ export const TAILWIND_PATTERNS = {
     gray100: 'bg-gray-100',
     gray200: 'bg-gray-200',
   },
-  
+
   // Border colors
   border: {
     gray: 'border-gray-200',
     blue: 'border-blue-500',
   },
-  
+
   // Interactive elements
   button: {
     hover: 'hover:bg-gray-200',
     hoverBlue: 'hover:bg-blue-50',
   },
-  
+
   // Tags/badges
   tag: {
     purple: 'bg-purple-500/20',
@@ -358,7 +358,7 @@ export const DARK_MODE_COLORS = {
     tertiary: BASE_COLORS.dark.bg.tertiary,
     elevated: BASE_COLORS.dark.bg.elevated,
   },
-  
+
   // Text colors
   text: {
     primary: BASE_COLORS.dark.text.primary,
@@ -366,14 +366,14 @@ export const DARK_MODE_COLORS = {
     tertiary: BASE_COLORS.dark.text.tertiary,
     disabled: BASE_COLORS.dark.text.disabled,
   },
-  
+
   // Component specific
   card: {
     background: BASE_COLORS.dark.bg.secondary,
     border: BASE_COLORS.dark.border.secondary,
     hover: BASE_COLORS.dark.bg.elevated,
   },
-  
+
   // MacOS Finder/Window components
   macOS: {
     content: BASE_COLORS.macOS.contentBg,
@@ -382,20 +382,20 @@ export const DARK_MODE_COLORS = {
     card: BASE_COLORS.macOS.cardBg,
     hover: BASE_COLORS.macOS.hoverBg,
   },
-  
+
   // Navigation
   nav: {
     background: BASE_COLORS.dark.bg.tertiary,
     text: BASE_COLORS.dark.text.secondary,
   },
-  
+
   // Interactive elements
   interactive: {
     hover: BASE_COLORS.dark.bg.elevated,
     active: '#4A5C7D',
     border: BASE_COLORS.dark.border.primary,
   },
-  
+
   // Overlays
   overlay: withOpacity(BASE_COLORS.black, 0.7),
   glassLight: withOpacity(BASE_COLORS.white, 0.05),
@@ -414,31 +414,31 @@ export const LIGHT_MODE_COLORS = {
     tertiary: BASE_COLORS.gray[100],
     elevated: BASE_COLORS.white,
   },
-  
+
   text: {
     primary: BASE_COLORS.gray[900],
     secondary: BASE_COLORS.gray[600],
     tertiary: BASE_COLORS.gray[500],
     disabled: BASE_COLORS.gray[400],
   },
-  
+
   card: {
     background: BASE_COLORS.white,
     border: BASE_COLORS.gray[200],
     hover: BASE_COLORS.gray[50],
   },
-  
+
   nav: {
     background: SEMANTIC_COLORS.navBackground,
     text: SEMANTIC_COLORS.navText,
   },
-  
+
   interactive: {
     hover: BASE_COLORS.gray[100],
     active: BASE_COLORS.gray[200],
     border: BASE_COLORS.gray[300],
   },
-  
+
   overlay: withOpacity(BASE_COLORS.black, 0.3),
   glassLight: withOpacity(BASE_COLORS.white, 0.1),
   glassMedium: withOpacity(BASE_COLORS.white, 0.2),

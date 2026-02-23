@@ -16,6 +16,8 @@ export default function GameOfLife() {
   const [isHovering, setIsHovering] = useState(false);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
   const [deadCells, setDeadCells] = useState<Map<string, number>>(new Map()); // Map of cell key to age
+  const [trailCells, setTrailCells] = useState<Map<string, { age: number; hasColor: boolean }>>(new Map()); // Map of cell key to trail state
+  const [coloredLiveCells, setColoredLiveCells] = useState<Map<string, number>>(new Map()); // Map of cell key to color age (0-30)
   const { isDark } = useTheme();
   const maxTrailAge = GAME_OF_LIFE_CONFIG.maxTrailAge;
 
@@ -89,25 +91,14 @@ export default function GameOfLife() {
     // Track dead cells (cells that were alive but are now dead)
     setDeadCells(prevDead => {
       const updatedDead = new Map<string, number>();
-      
-      // Age existing dead cells, but skip ones that are now alive
+      currentCells.forEach(key => {
+        if (!newCells.has(key)) updatedDead.set(key, 0);
+      });
       prevDead.forEach((age, key) => {
-        if (newCells.has(key)) {
-          // Cell is now alive, don't include in dead cells
-          return;
-        }
-        if (age < maxTrailAge - 1) {
+        if (!newCells.has(key) && age < maxTrailAge - 1) {
           updatedDead.set(key, age + 1);
         }
       });
-      
-      // Add newly dead cells (were alive, now dead, and not already in dead cells)
-      currentCells.forEach(key => {
-        if (!newCells.has(key) && !prevDead.has(key)) {
-          updatedDead.set(key, 0);
-        }
-      });
-      
       return updatedDead;
     });
 
@@ -115,13 +106,74 @@ export default function GameOfLife() {
   }, [maxTrailAge]);
 
   // Animation loop
-  // Animation loop: always run; cell additions are merged between ticks
+  // Animation loop: handles GOL generations, trail aging, and infection spreading
   useEffect(() => {
     const interval = setInterval(() => {
-      setCells(prevCells => getNextGeneration(prevCells));
+      setCells(prevCells => {
+        const nextCells = getNextGeneration(prevCells);
+        const newlyDead = Array.from(prevCells).filter(key => !nextCells.has(key));
+
+        setColoredLiveCells(prevColored => {
+          const nextColored = new Map<string, number>();
+
+          nextCells.forEach(key => {
+            if (prevColored.has(key)) {
+              // Survivor ages up
+              const currentAge = prevColored.get(key)!;
+              if (currentAge < maxTrailAge - 1) {
+                nextColored.set(key, currentAge + 1);
+              }
+              // If age reaches maxTrailAge, it stays alive but uninfected
+            } else {
+              const [x, y] = key.split(',').map(Number);
+              const neighbors = getNeighbors(x, y);
+              if (neighbors.some(n => prevColored.has(`${n.x},${n.y}`)) && Math.random() < 0.65) {
+                nextColored.set(key, 0); // Becomes infected at age 0
+              }
+            }
+          });
+
+          setTrailCells(prevTrail => {
+            const nextTrail = new Map(prevTrail);
+
+            // Age existing trails
+            prevTrail.forEach((data, key) => {
+              if (data.age < maxTrailAge - 1) {
+                nextTrail.set(key, { ...data, age: data.age + 1 });
+              } else {
+                nextTrail.delete(key);
+              }
+            });
+
+            // Add newly dead colored cells - inherit their color age
+            newlyDead.forEach(key => {
+              if (prevColored.has(key)) {
+                nextTrail.set(key, { age: prevColored.get(key)!, hasColor: true });
+              }
+            });
+
+            return nextTrail;
+          });
+
+          return nextColored;
+        });
+
+        setDeadCells(prevDead => {
+          const nextDead = new Map<string, number>();
+          // Age existing gray cells
+          prevDead.forEach((age, key) => {
+            if (age < maxTrailAge - 1) nextDead.set(key, age + 1);
+          });
+          // Add newly dead gray cells
+          newlyDead.forEach(key => nextDead.set(key, 0));
+          return nextDead;
+        });
+
+        return nextCells;
+      });
     }, GAME_OF_LIFE_CONFIG.animationInterval);
     return () => clearInterval(interval);
-  }, [getNextGeneration]);
+  }, [getNextGeneration, maxTrailAge]);
 
   // Draw cells
   useEffect(() => {
@@ -135,23 +187,69 @@ export default function GameOfLife() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Draw dead cells (trail) with fading opacity
-    const trailColor = isDark 
-      ? SEMANTIC_COLORS.gameOfLife.trailDark
-      : SEMANTIC_COLORS.gameOfLife.trail;
+    const trailBaseColor = isDark
+      ? [169, 177, 214] // trailDark
+      : [120, 120, 120]; // trail
     const radius = (cellSize - 1) / 2;
-    
-    deadCells.forEach((age, cellKey) => {
-      // Calculate fade opacity and size using utility functions
+
+    // Helper to lerp between two colors
+    const lerp = (start: number[], end: number[], t: number) => {
+      return start.map((s, i) => Math.round(s + (end[i] - s) * t));
+    };
+
+    const purple = [192, 132, 252];
+    const pink = [244, 114, 182];
+    const blue = [96, 165, 250];
+
+    // Draw simulation death trail (gray)
+    deadCells.forEach((age, key) => {
+      if (trailCells.has(key)) return; // Don't overlap with colorful cursor trail
       const alpha = calculateTrailOpacity(age, maxTrailAge);
       const sizeMultiplier = calculateTrailSize(age, maxTrailAge);
-      
+      const [x, y] = key.split(',').map(Number);
+      const cx = x * cellSize + cellSize / 2;
+      const cy = y * cellSize + cellSize / 2;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = `rgb(${trailBaseColor[0]}, ${trailBaseColor[1]}, ${trailBaseColor[2]})`;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius * sizeMultiplier, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    });
+
+    // Draw cursor and infectious trail (colorful)
+    trailCells.forEach((data, cellKey) => {
+      const { age, hasColor } = data;
+      // Calculate fade opacity and size using utility functions
+      let alpha = calculateTrailOpacity(age, maxTrailAge);
+      if (hasColor) alpha *= 1.4; // Slightly increased from 0.4, but still subtle
+      const sizeMultiplier = calculateTrailSize(age, maxTrailAge);
+
       const [x, y] = cellKey.split(',').map(Number);
       const cx = x * cellSize + cellSize / 2;
       const cy = y * cellSize + cellSize / 2;
-      
+
+      let color: number[];
+      if (hasColor) {
+        // Fast color cycle: goes through entire palette in 0.9 seconds (9 generations)
+        // then stays gray for the remainder of the 3 seconds
+        if (age < 3) {
+          color = lerp(purple, pink, age / 3);
+        } else if (age < 6) {
+          color = lerp(pink, blue, (age - 3) / 3);
+        } else if (age < 9) {
+          color = lerp(blue, trailBaseColor, (age - 6) / 3);
+        } else {
+          color = trailBaseColor;
+        }
+      } else {
+        color = trailBaseColor;
+      }
+
       ctx.save();
       ctx.globalAlpha = alpha;
-      ctx.fillStyle = trailColor;
+      ctx.fillStyle = `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
       ctx.beginPath();
       ctx.arc(cx, cy, radius * sizeMultiplier, 0, Math.PI * 2);
       ctx.fill();
@@ -159,21 +257,45 @@ export default function GameOfLife() {
     });
 
     // Draw live cells as circles
-    const cellColor = isDark 
+    const cellColor = isDark
       ? SEMANTIC_COLORS.gameOfLife.cellDark
       : SEMANTIC_COLORS.gameOfLife.cell;
     const hoverColor = isDark
       ? SEMANTIC_COLORS.gameOfLife.cellHoverDark
       : SEMANTIC_COLORS.gameOfLife.cellHover;
-    
-    ctx.fillStyle = cellColor;
+
     cells.forEach(cellKey => {
       const [x, y] = cellKey.split(',').map(Number);
       const cx = x * cellSize + cellSize / 2;
       const cy = y * cellSize + cellSize / 2;
+
+      // If cell is colored while alive, use the gradient based on its color age
+      if (coloredLiveCells.has(cellKey)) {
+        const age = coloredLiveCells.get(cellKey)!;
+        let color: number[];
+        // Fast color cycle: 0.9s total
+        if (age < 3) {
+          color = lerp(purple, pink, age / 3);
+        } else if (age < 6) {
+          color = lerp(pink, blue, (age - 3) / 3);
+        } else if (age < 9) {
+          color = lerp(blue, trailBaseColor, (age - 6) / 3);
+        } else {
+          color = trailBaseColor;
+        }
+
+        ctx.fillStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.15)`;
+        ctx.save();
+        ctx.shadowBlur = 4;
+        ctx.shadowColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.35)`;
+      } else {
+        ctx.fillStyle = cellColor;
+      }
+
       ctx.beginPath();
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
       ctx.fill();
+      if (coloredLiveCells.has(cellKey)) ctx.restore();
     });
 
     // Draw hover cell
@@ -185,7 +307,7 @@ export default function GameOfLife() {
       ctx.arc(cx, cy, radius, 0, Math.PI * 2);
       ctx.fill();
     }
-  }, [cells, dimensions, isHovering, hoverPosition, isDark, deadCells, maxTrailAge]);
+  }, [cells, dimensions, isHovering, hoverPosition, isDark, trailCells, deadCells, maxTrailAge, coloredLiveCells]);
 
   // Add a cell at the specified position
   const addCell = (x: number, y: number) => {
@@ -194,12 +316,6 @@ export default function GameOfLife() {
       if (!prevCells.has(key)) {
         const newCells = new Set(prevCells);
         newCells.add(key);
-        // Remove from dead cells if it exists there
-        setDeadCells(prevDead => {
-          const updated = new Map(prevDead);
-          updated.delete(key);
-          return updated;
-        });
         return newCells;
       }
       return prevCells;
@@ -229,6 +345,29 @@ export default function GameOfLife() {
       setIsHovering(true);
 
       const key = `${x},${y}`;
+
+      // Update trail age to 0 and set color chance whenever cursor touches a pixel
+      setTrailCells(prev => {
+        const next = new Map(prev);
+        const existing = prev.get(key);
+        const willBeColored = existing ? existing.hasColor : Math.random() < 0.8;
+        next.set(key, {
+          age: 0,
+          hasColor: willBeColored
+        });
+
+        // Cursors draw infectious live cells too
+        if (willBeColored) {
+          setColoredLiveCells(prevColored => {
+            const nextColored = new Map(prevColored);
+            nextColored.set(key, 0); // Patient zero starts at age 0
+            return nextColored;
+          });
+        }
+
+        return next;
+      });
+
       if (lastCellKeyRef.current !== key) {
         // Prevent page scroll when drawing via touch inside canvas bounds
         if (ev.pointerType === 'touch') {
