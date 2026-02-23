@@ -36,18 +36,18 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
-  // Apply theme to document
+  // Apply theme to document (sync with layout script: .dark class + data-theme for fallback CSS)
   useEffect(() => {
     if (!mounted) return;
 
     const root = document.documentElement;
-    
     if (theme === 'dark') {
       root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
       root.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
     }
-    
     localStorage.setItem('theme', theme);
   }, [theme, mounted]);
 

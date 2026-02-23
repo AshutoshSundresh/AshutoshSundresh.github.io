@@ -12,7 +12,7 @@ export default function Home() {
   const { toggleTheme, isDark } = useTheme();
 
   return (
-    <main className="h-[100dvh] snap-y snap-mandatory overflow-y-auto smooth-scroll bg-white dark:bg-[#1e1e1e]">
+    <main data-page="home" className="h-[100dvh] snap-y snap-mandatory overflow-y-auto smooth-scroll bg-white dark:bg-[#1e1e1e]">
       {/* Shared static background across both snap-scrolled pages */}
       <div className="fixed inset-0 w-full h-full z-0">
         <GameOfLife />
