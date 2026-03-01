@@ -21,6 +21,7 @@ import rawData from '../data/skeumorphicData.json';
 import type { SkeumorphicDataRoot, Project, Publication, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
 import useWindowInfo from '../hooks/useWindowInfo';
 import useProgressiveBackground from '../hooks/useProgressiveBackground';
+import { getBlurDataURL } from '../constants/blurPlaceholder';
 import useTabHistory from '../hooks/useTabHistory';
 import useSwipeNavigation from '../hooks/useSwipeNavigation';
 import useClickOutside from '../hooks/useClickOutside';
@@ -218,11 +219,16 @@ const MacOSWindow = () => {
 
  
 
+  const LIGHT_WALLPAPER_LOW = 'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg';
+  const DARK_WALLPAPER_LOW = 'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg';
+
   const { bgLoaded, backgroundStyle } = useProgressiveBackground(
-    'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg',
+    LIGHT_WALLPAPER_LOW,
     'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1920x1080.jpg',
-    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg',
-    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1920x1080.jpg'
+    DARK_WALLPAPER_LOW,
+    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1920x1080.jpg',
+    getBlurDataURL(LIGHT_WALLPAPER_LOW),
+    getBlurDataURL(DARK_WALLPAPER_LOW),
   );
 
   // Update the awards data

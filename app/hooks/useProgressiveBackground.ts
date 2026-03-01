@@ -4,10 +4,12 @@ import { useEffect, useState, useMemo } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 
 export default function useProgressiveBackground(
-  lightLowResUrl: string, 
+  lightLowResUrl: string,
   lightHighResUrl: string,
   darkLowResUrl?: string,
-  darkHighResUrl?: string
+  darkHighResUrl?: string,
+  lightBlurDataUrl?: string,
+  darkBlurDataUrl?: string,
 ) {
   const [bgLoaded, setBgLoaded] = useState(false);
   const [highResBgLoaded, setHighResBgLoaded] = useState(false);
@@ -16,6 +18,7 @@ export default function useProgressiveBackground(
   // Select URLs based on theme
   const lowResUrl = isDark && darkLowResUrl ? darkLowResUrl : lightLowResUrl;
   const highResUrl = isDark && darkHighResUrl ? darkHighResUrl : lightHighResUrl;
+  const blurDataUrl = isDark && darkBlurDataUrl ? darkBlurDataUrl : lightBlurDataUrl;
 
   useEffect(() => {
     // Reset loading states when theme changes
@@ -37,7 +40,9 @@ export default function useProgressiveBackground(
       ? `url("${highResUrl}")`
       : bgLoaded
         ? `url("${lowResUrl}")`
-        : 'none',
+        : blurDataUrl
+          ? `url("${blurDataUrl}")`
+          : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -49,7 +54,7 @@ export default function useProgressiveBackground(
     width: '100vw',
     height: '100vh',
     transition: 'background-image 0.5s ease-in-out'
-  }), [bgLoaded, highResBgLoaded, lowResUrl, highResUrl]);
+  }), [bgLoaded, highResBgLoaded, lowResUrl, highResUrl, blurDataUrl]);
 
   return { bgLoaded, highResBgLoaded, backgroundStyle };
 }

@@ -15,6 +15,12 @@ const OUT_JSON = path.join(DATA_DIR, 'blurPlaceholders.json');
 const PLACEHOLDER_WIDTH = 20;
 const BLUR_SIGMA = 8;
 
+// Remote wallpaper URLs to generate blur pre-images for (low-res only, high-res not needed)
+const REMOTE_URLS = [
+  'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg',
+  'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg',
+];
+
 function collectImagePaths(obj, out = new Set()) {
   if (!obj || typeof obj !== 'object') return out;
   if (Array.isArray(obj)) {
@@ -56,6 +62,23 @@ async function main() {
       console.log('OK:', src);
     } catch (err) {
       console.warn('Error:', src, err.message);
+    }
+  }
+
+  for (const url of REMOTE_URLS) {
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const arrayBuffer = await resp.arrayBuffer();
+      const buf = await sharp(Buffer.from(arrayBuffer))
+        .resize(PLACEHOLDER_WIDTH)
+        .blur(BLUR_SIGMA)
+        .jpeg({ quality: 60, mozjpeg: true })
+        .toBuffer();
+      map[url] = `data:image/jpeg;base64,${buf.toString('base64')}`;
+      console.log('OK (remote):', url);
+    } catch (err) {
+      console.warn('Error (remote):', url, err.message);
     }
   }
 
