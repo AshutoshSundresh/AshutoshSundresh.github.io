@@ -689,6 +689,18 @@
   ],
   "experienceData": [
     {
+      "id": 0,
+      "company": "UCLA Programmable Software Systems Lab",
+      "position": "Undergraduate Researcher",
+      "location": "Los Angeles, California, United States",
+      "period": "Feb 2026 - Present",
+      "icon": "/images/ucla_cs.jpg",
+      "companyLink": "https://angelhof.github.io/programmable-software-systems-lab.html",
+      "description": [
+        "Advised by Prof. Konstantinos Kallas, JVM runtime systems and serverless infrastructure research"
+      ]
+    },
+    {
       "id": 1,
       "company": "Harvey",
       "position": "Software Engineering Intern",
@@ -700,8 +712,7 @@
         "Embedded Experiences Team, joined as part of the first ~60 engineers, agentic workflows for Harvey's Microsoft Word add-in",
         "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
-        "Built block-based execution engine with workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation, enabling type-safe streaming of heterogeneous outputs (suggestions, text, files)",
-        "Implemented frontend bulk suggestions application system with conflict-safe sequential diff application and overlap detection",
+        "Built block-based execution engine with type-safe streaming of heterogeneous outputs (suggestions, text, files), workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation",
         "Designed rubric-based SxS LLM evaluations with Legal Researchers and a Streamlit app to benchmark drafting quality"
       ]
     },
@@ -911,11 +922,11 @@
       ],
       "stats": [
         {
-          "value": "4,800+",
+          "value": "5,000+",
           "label": "Total Commits"
         },
         {
-          "value": "2,500+",
+          "value": "2,900+",
           "label": "Contributions"
         }
       ],
