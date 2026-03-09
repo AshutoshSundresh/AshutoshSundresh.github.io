@@ -126,6 +126,15 @@ async function main() {
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(result, null, 2), 'utf8');
   console.log('Wrote', OUT_PATH, '—', result.length, 'films');
+
+  const { spawnSync } = require('child_process');
+  const blurResult = spawnSync('node', ['scripts/generate-blur-placeholders.js'], {
+    cwd: path.join(__dirname, '..'),
+    stdio: 'inherit',
+  });
+  if (blurResult.status !== 0) {
+    console.warn('Blur placeholder generation exited with', blurResult.status);
+  }
 }
 
 main().catch((err) => {

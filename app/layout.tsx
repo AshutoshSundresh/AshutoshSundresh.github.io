@@ -32,6 +32,7 @@ export default function RootLayout({
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeFallback }} />
+        <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossOrigin="" />
       </head>
       <body className={`${raleway.className} antialiased`} suppressHydrationWarning>
         <ThemeProvider>

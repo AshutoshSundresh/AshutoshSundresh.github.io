@@ -225,6 +225,25 @@ export interface LastFmResponse {
   recenttracks: { track: NowPlayingTrack[] };
 }
 
+export interface LastFmTopAlbum {
+  name: string;
+  playcount: string;
+  url: string;
+  artist: { name: string; url: string; mbid: string };
+  image: { size: string; '#text': string }[];
+  '@attr'?: { rank: string };
+  mbid?: string;
+}
+
+export interface LastFmTopAlbumsResponse {
+  topalbums?: {
+    album: LastFmTopAlbum[];
+    '@attr'?: { page: string; total: string; user: string; perPage: string; totalPages: string };
+  };
+  error?: number;
+  message?: string;
+}
+
 export interface ContributionsCanvasData {
   years: Array<{
     year: string;

@@ -10,6 +10,7 @@ const ROOT = path.resolve(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
 const DATA_DIR = path.join(ROOT, 'app', 'data');
 const SKELETON_JSON = path.join(DATA_DIR, 'skeumorphicData.json');
+const TOP_FILMS_JSON = path.join(DATA_DIR, 'topFilms.json');
 const OUT_JSON = path.join(DATA_DIR, 'blurPlaceholders.json');
 
 const PLACEHOLDER_WIDTH = 20;
@@ -20,6 +21,15 @@ const REMOTE_URLS = [
   'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg',
   'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg',
 ];
+
+/** TMDB poster URLs from topFilms.json (for film card LQIP). */
+function getTmdbPosterUrls() {
+  if (!fs.existsSync(TOP_FILMS_JSON)) return [];
+  const topFilms = JSON.parse(fs.readFileSync(TOP_FILMS_JSON, 'utf8'));
+  return (topFilms || [])
+    .map((f) => f.posterUrl)
+    .filter((url) => typeof url === 'string' && url.startsWith('https://image.tmdb.org/'));
+}
 
 function collectImagePaths(obj, out = new Set()) {
   if (!obj || typeof obj !== 'object') return out;
@@ -79,6 +89,24 @@ async function main() {
       console.log('OK (remote):', url);
     } catch (err) {
       console.warn('Error (remote):', url, err.message);
+    }
+  }
+
+  const tmdbUrls = getTmdbPosterUrls();
+  for (const url of tmdbUrls) {
+    try {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const arrayBuffer = await resp.arrayBuffer();
+      const buf = await sharp(Buffer.from(arrayBuffer))
+        .resize(PLACEHOLDER_WIDTH)
+        .blur(BLUR_SIGMA)
+        .jpeg({ quality: 60, mozjpeg: true })
+        .toBuffer();
+      map[url] = `data:image/jpeg;base64,${buf.toString('base64')}`;
+      console.log('OK (TMDB):', url);
+    } catch (err) {
+      console.warn('Error (TMDB):', url, err.message);
     }
   }
 
