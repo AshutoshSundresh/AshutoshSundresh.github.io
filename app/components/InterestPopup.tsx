@@ -12,9 +12,10 @@ interface InterestPopupProps {
   onClose: () => void;
   interestName: InterestName;
   content: string;
+  customBody?: React.ReactNode;
 }
 
-export default function InterestPopup({ open, onClose, interestName, content }: InterestPopupProps) {
+export default function InterestPopup({ open, onClose, interestName, content, customBody }: InterestPopupProps) {
   const popupRef = useRef<HTMLDivElement>(null);
   useModalKeyboard(open, onClose);
 
@@ -68,9 +69,11 @@ export default function InterestPopup({ open, onClose, interestName, content }: 
 
         {/* Content */}
         <div className="px-6 py-5 bg-white/95 dark:bg-dark-secondary" data-search-ignore>
-          <div className="text-gray-700 dark:text-dark-secondary font-['Raleway'] text-sm leading-relaxed whitespace-pre-line">
-            {content}
-          </div>
+          {customBody ?? (
+            <div className="text-gray-700 dark:text-dark-secondary font-['Raleway'] text-sm leading-relaxed whitespace-pre-line">
+              {content}
+            </div>
+          )}
         </div>
       </div>
     </div>,

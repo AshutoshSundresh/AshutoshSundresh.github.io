@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "node scripts/generate-blur-placeholders.js && next build",
     "generate-blur": "node scripts/generate-blur-placeholders.js",
+    "scrape-letterboxd": "node scripts/scrape-letterboxd-top-films.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -42,6 +43,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.1",
+    "puppeteer": "^24.38.0",
     "sharp": "^0.33.5",
     "tailwindcss": "^4",
     "typescript": "^5"

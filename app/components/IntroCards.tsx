@@ -4,6 +4,7 @@ import DraggableCard from './DraggableCard';
 import GitHubContributions from './GitHubContributions';
 import LocationCard from './LocationCard';
 import InterestPopup from './InterestPopup';
+import FilmPopupContent from './FilmPopupContent';
 import type { DragPosition, SkeumorphicDataRoot } from '../types';
 import type { InterestName } from '../types/interestIcons';
 import useIsMobile from '../hooks/useIsMobile';
@@ -147,6 +148,7 @@ export default function IntroCards() {
         }}
         interestName={openInterest!}
         content={openInterest ? ((skeuData as SkeumorphicDataRoot).interests?.[openInterest] || `Content for ${openInterest} will be added here.`) : ''}
+        customBody={openInterest === 'Film' ? <FilmPopupContent /> : undefined}
       />
     </DndContext>
   );
