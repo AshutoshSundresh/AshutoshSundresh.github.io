@@ -16,11 +16,7 @@ const OUT_JSON = path.join(DATA_DIR, 'blurPlaceholders.json');
 const PLACEHOLDER_WIDTH = 20;
 const BLUR_SIGMA = 8;
 
-// Remote wallpaper URLs to generate blur pre-images for (low-res only, high-res not needed)
-const REMOTE_URLS = [
-  'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg',
-  'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg',
-];
+// macOS wallpapers are self-hosted at /images/macos-mojave-day.jpg and macos-mojave-night.jpg (added below with other /images/)
 
 /** TMDB poster URLs from topFilms.json (for film card LQIP). */
 function getTmdbPosterUrls() {
@@ -53,6 +49,8 @@ async function main() {
   paths.add('/images/1755148353808.png');
   paths.add('/images/UCLA-square-logo.jpg');
   paths.add('/images/ashutosh.jpeg');
+  paths.add('/images/macos-mojave-day.jpg');
+  paths.add('/images/macos-mojave-night.jpg');
 
   const map = {};
   for (const src of paths) {
@@ -72,23 +70,6 @@ async function main() {
       console.log('OK:', src);
     } catch (err) {
       console.warn('Error:', src, err.message);
-    }
-  }
-
-  for (const url of REMOTE_URLS) {
-    try {
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const arrayBuffer = await resp.arrayBuffer();
-      const buf = await sharp(Buffer.from(arrayBuffer))
-        .resize(PLACEHOLDER_WIDTH)
-        .blur(BLUR_SIGMA)
-        .jpeg({ quality: 60, mozjpeg: true })
-        .toBuffer();
-      map[url] = `data:image/jpeg;base64,${buf.toString('base64')}`;
-      console.log('OK (remote):', url);
-    } catch (err) {
-      console.warn('Error (remote):', url, err.message);
     }
   }
 

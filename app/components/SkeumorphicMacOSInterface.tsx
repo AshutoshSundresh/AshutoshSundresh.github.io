@@ -219,14 +219,17 @@ const MacOSWindow = () => {
 
  
 
-  const LIGHT_WALLPAPER_LOW = 'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1280x720.jpg';
-  const DARK_WALLPAPER_LOW = 'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1280x720.jpg';
+  // Self-hosted wallpapers (hdqwalls blocks hotlinking). Add macos-mojave-day.jpg and macos-mojave-night.jpg to public/images/.
+  const LIGHT_WALLPAPER_LOW = '/images/macos-mojave-day.jpg';
+  const LIGHT_WALLPAPER_HIGH = '/images/macos-mojave-day.jpg';
+  const DARK_WALLPAPER_LOW = '/images/macos-mojave-night.jpg';
+  const DARK_WALLPAPER_HIGH = '/images/macos-mojave-night.jpg';
 
   const { bgLoaded, backgroundStyle } = useProgressiveBackground(
     LIGHT_WALLPAPER_LOW,
-    'https://images.hdqwalls.com/download/macos-mojave-day-mode-stock-pb-1920x1080.jpg',
+    LIGHT_WALLPAPER_HIGH,
     DARK_WALLPAPER_LOW,
-    'https://images.hdqwalls.com/download/macos-mojave-night-mode-stock-0y-1920x1080.jpg',
+    DARK_WALLPAPER_HIGH,
     getBlurDataURL(LIGHT_WALLPAPER_LOW),
     getBlurDataURL(DARK_WALLPAPER_LOW),
   );

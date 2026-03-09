@@ -13,8 +13,6 @@ permissions:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_TMDB_API_KEY: ${{ secrets.NEXT_PUBLIC_TMDB_API_KEY }}
 
     steps:
       - name: Checkout
@@ -32,9 +30,14 @@ jobs:
         run: npm ci
 
       - name: Run Letterboxd scraper
-        run: node scripts/scrape-letterboxd-top-films.js
         env:
           NEXT_PUBLIC_TMDB_API_KEY: ${{ secrets.NEXT_PUBLIC_TMDB_API_KEY }}
+        run: |
+          if [ -z "$NEXT_PUBLIC_TMDB_API_KEY" ]; then
+            echo "::error::Repository secret NEXT_PUBLIC_TMDB_API_KEY is not set. Add it in Settings → Secrets and variables → Actions (exact name: NEXT_PUBLIC_TMDB_API_KEY)."
+            exit 1
+          fi
+          node scripts/scrape-letterboxd-top-films.js
 
       - name: Commit and push if changed
         run: |

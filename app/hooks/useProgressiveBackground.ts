@@ -13,6 +13,7 @@ export default function useProgressiveBackground(
 ) {
   const [bgLoaded, setBgLoaded] = useState(false);
   const [highResBgLoaded, setHighResBgLoaded] = useState(false);
+  const [loadError, setLoadError] = useState(false);
   const { isDark } = useTheme();
 
   // Select URLs based on theme
@@ -24,25 +25,33 @@ export default function useProgressiveBackground(
     // Reset loading states when theme changes
     setBgLoaded(false);
     setHighResBgLoaded(false);
-    
+    setLoadError(false);
+
     const lowResImg = new window.Image();
-    lowResImg.src = lowResUrl;
     lowResImg.onload = () => {
       setBgLoaded(true);
       const highResImg = new window.Image();
-      highResImg.src = highResUrl;
       highResImg.onload = () => setHighResBgLoaded(true);
+      highResImg.onerror = () => setHighResBgLoaded(false);
+      highResImg.src = highResUrl;
     };
+    lowResImg.onerror = () => {
+      setLoadError(true);
+      setBgLoaded(true); // hide overlay and show blur
+    };
+    lowResImg.src = lowResUrl;
   }, [lowResUrl, highResUrl, isDark]);
 
   const backgroundStyle = useMemo(() => ({
-    backgroundImage: highResBgLoaded
-      ? `url("${highResUrl}")`
-      : bgLoaded
-        ? `url("${lowResUrl}")`
-        : blurDataUrl
-          ? `url("${blurDataUrl}")`
-          : 'none',
+    backgroundImage: loadError && blurDataUrl
+      ? `url("${blurDataUrl}")`
+      : highResBgLoaded
+        ? `url("${highResUrl}")`
+        : bgLoaded
+          ? `url("${lowResUrl}")`
+          : blurDataUrl
+            ? `url("${blurDataUrl}")`
+            : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -54,7 +63,7 @@ export default function useProgressiveBackground(
     width: '100vw',
     height: '100vh',
     transition: 'background-image 0.5s ease-in-out'
-  }), [bgLoaded, highResBgLoaded, lowResUrl, highResUrl, blurDataUrl]);
+  }), [bgLoaded, highResBgLoaded, loadError, lowResUrl, highResUrl, blurDataUrl]);
 
   return { bgLoaded, highResBgLoaded, backgroundStyle };
 }
