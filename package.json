@@ -23,7 +23,7 @@
     "github-contributions-canvas": "^0.8.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.479.0",
-    "next": "15.2.1",
+    "next": "^15.5.12",
     "pixelarticons": "^1.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
