@@ -32,9 +32,10 @@ Next.js portfolio showcasing projects, research, and experience with a performan
 2. Start dev server: `npm run dev`
 3. Visit: `http://localhost:3000`
 
-**Optional env** (for Now Playing):
+**Optional env** (for Now Playing and Film/Music in Fun):
 
 ```
 NEXT_PUBLIC_LASTFM_API_KEY=...
 NEXT_PUBLIC_LASTFM_USER=...
+NEXT_PUBLIC_TMDB_API_KEY=...   
 ```
