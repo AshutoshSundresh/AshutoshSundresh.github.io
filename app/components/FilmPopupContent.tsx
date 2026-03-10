@@ -46,7 +46,7 @@ export default function FilmPopupContent() {
         >
           Letterboxd
         </a>
-        {' '}to log all the films I watch. These are the 8 films I&apos;ve rated the highest.
+        {' '}to log all the films I watch. These are the 8 films I&apos;ve rated the highest (scraped weekly).
       </p>
     </div>
   );
