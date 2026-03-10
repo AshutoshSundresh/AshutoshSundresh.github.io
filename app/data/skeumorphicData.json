@@ -7,7 +7,7 @@
       "image": "/images/LOVUK1E.webp",
       "caption": "Founder of Open-Source Android-Based Mobile Operating System",
       "techstack": "Java, C, Go, Smali, Make",
-      "description": "Created an open-source Android-based mobile operating system for Qualcomm devices in 2020 and have maintained it since. Shipped custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, and upstreamed code to Google Material Components.",
+      "description": "An open-source Android-based mobile operating system for Qualcomm devices in 2020 and have maintained it since. Shipped custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, and upstreamed code to Google Material Components.",
       "created": "2020-05-16",
       "link": "https://github.com/shapeshiftos",
       "stats": [
@@ -35,7 +35,7 @@
       "image": "/images/mini_r.png",
       "caption": "Embedded R-like interpreter and REPL for Casio fx-CP400 calculators (C++20).",
       "techstack": "C++20",
-      "description": "Implemented a from-scratch R-like interpreter and REPL intended for Casio fx-CP400 family of calculators, including a custom lexer, expression parser, and evaluator that support R-style vectors, matrices, data.frames, subsetting, recycling rules, NA/NaN/Inf semantics, and many core builtins. Designed a compact runtime with attribute-aware values and lightweight containers tuned for constrained embedded environments, plus a simple desktop CLI/REPL interface that can also be embedded as a library.",
+      "description": "A from-scratch R-like interpreter and REPL intended for Casio fx-CP400 family of calculators, including a custom lexer, expression parser, and evaluator that support R-style vectors, matrices, data.frames, subsetting, recycling rules, NA/NaN/Inf semantics, and many core builtins. Designed a compact runtime with attribute-aware values and lightweight containers tuned for constrained embedded environments, plus a simple desktop CLI/REPL interface that can also be embedded as a library.",
       "created": "2026-01-13",
       "link": "https://github.com/AshutoshSundresh/MiniR-Holly-Hock2"
     },
@@ -45,7 +45,7 @@
       "image": "/images/resumeide.png",
       "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, TypeScript, Rust)",
       "techstack": "Rust, Tokio, Tauri, TypeScript",
-      "description": "Built a desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
+      "description": "A desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
       "created": "2025-11-15",
       "link": "https://github.com/AshutoshSundresh/latex-resume-editor"
     },
@@ -55,7 +55,7 @@
       "image": "/images/3d-pacman-neon.png",
       "caption": "3D First-Person Pac-Man Game with Advanced Rendering Pipeline",
       "techstack": "Three.js, TypeScript, Vite",
-      "description": "Built a 3D first-person Pac-Man game with dual-camera rendering (main view + minimap) in a single render pass. Implemented post-processing pipeline with dynamic bloom effects, procedural environment maps for real-time reflections, spatial audio, and ghost AI with pathfinding across multiple behavioral states.",
+      "description": "A 3D first-person Pac-Man game with dual-camera rendering (main view + minimap) in a single render pass. Implemented post-processing pipeline with dynamic bloom effects, procedural environment maps for real-time reflections, spatial audio, and ghost AI with pathfinding across multiple behavioral states.",
       "created": "2025-12-26",
       "link": "https://github.com/AshutoshSundresh/three-js-first-person-pacman"
     },
@@ -65,7 +65,7 @@
       "image": "/images/Screenshot-2025-06-02-181132.png",
       "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
       "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
-      "description": "Built a real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
+      "description": "A real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
       "created": "2025-04-14",
       "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
     }
@@ -81,9 +81,6 @@
       "institutionLink": "https://ucla.edu",
       "details": {
         "achievements": [
-          "Upsilon Pi Epsilon Computer Science Honors Society",
-          "William F. Sharpe Technology Fellow",
-          "Stein Engineering Scholar, Shirley and Walter Wang Computer Science Scholar",
           "Dean's Honors List"
         ],
         "courses": [
@@ -660,7 +657,7 @@
         "grades": [
           {
             "grade": "Grade 12",
-            "score": "97%"
+            "score": "97% (Education Minister's Award)"
           },
           {
             "grade": "Grade 11",
@@ -673,9 +670,7 @@
         ],
         "achievements": [
           "Valedictorian",
-          "SAT Score: 1580 (800M, 780V)",
-          "AP Scholar with Distinction",
-          "TOEFL: 119"
+          "AP Scholar with Distinction"
         ],
         "subjects": [
           "Physics",
@@ -697,7 +692,7 @@
       "icon": "/images/ucla_cs.jpg",
       "companyLink": "https://angelhof.github.io/programmable-software-systems-lab.html",
       "description": [
-        "Advised by Prof. Konstantinos Kallas, JVM runtime systems and serverless infrastructure research"
+        "Advised by Prof. Konstantinos Kallas, JVM runtime systems and serverless infrastructure"
       ]
     },
     {
@@ -709,7 +704,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "Embedded Experiences Team, joined as part of the first ~60 engineers, agentic workflows for Harvey's Microsoft Word add-in",
+        "Embedded Experience Team, joined as part of the first ~60 engineers, agentic workflows architecture for Harvey's Microsoft Word add-in",
         "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
         "Built block-based execution engine with type-safe streaming of heterogeneous outputs (suggestions, text, files), workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation",
@@ -778,10 +773,11 @@
           "link": "https://upe.seas.ucla.edu/"
         },
         {
-          "title": "Stein Engineering Scholar",
-          "subtitle": "UCLA Samueli School of Engineering",
-          "year": "2025",
-          "icon": "/images/uclaengg.png"
+          "title": "UCLA Merit Scholarships",
+          "subtitle": "UCLA",
+          "year": "2024-2028",
+          "description": "Stein Engineering Scholarship (2025), Shirley and Walter Wang Computer Science Scholarship (2024)",
+          "icon": "/images/UCLA-square-logo.jpg"
         },
         {
           "title": "William F. Sharpe Technology Fellow",
@@ -789,12 +785,6 @@
           "year": "2025",
           "icon": "/images/UCLA-square-logo.jpg",
           "link": "https://alumni.ucla.edu/alumni-career-engagement-students/career-engagement-students-programs/sharpe-fellows-program/"
-        },
-        {
-          "title": "Shirley and Walter Wang Computer Science Scholar",
-          "subtitle": "UCLA Samueli School of Engineering",
-          "year": "2024",
-          "icon": "/images/uclaengg.png"
         }
       ]
     },
@@ -840,7 +830,7 @@
         {
           "title": "Board Exam Excellence",
           "subtitle": "Central Board of Secondary Education",
-          "year": "2022",
+          "year": "2022-2024",
           "icon": "/images/shivnadarschool.png",
           "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
           "highlight": "99.2% in Grade 10, 97% in Grade 12"
@@ -888,8 +878,8 @@
   "activitiesData": [
     {
       "id": 5,
-      "title": "LA Hacks Tech Team Organizer",
-      "description": "Tech Team for Southern California's largest collegiate hackathon, built web dashboards, hacker application site, and statistical plagiarism detection tool.",
+      "title": "LA Hacks Technology Team Organizer",
+      "description": "Built web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon.",
       "period": "Oct 2024 - Present",
       "icon": "/images/lahacks_logo.jpeg",
       "links": [
@@ -916,10 +906,6 @@
       "id": 2,
       "title": "Open-Source Developer & Contributor",
       "period": "2020 - Present",
-      "highlights": [
-        "Recognized as one of approximately 300 Recognized Developers out of 11 million+ users on the XDA Forum for Android Mobile Development, and the youngest as of 2024",
-        "Awarded the Open Source Excellence award by SourceForge for ShapeShiftOS surpassing 160,000 downloads (2022)"
-      ],
       "stats": [
         {
           "value": "5,000+",
@@ -975,8 +961,6 @@
   ],
   "interests": {
     "Fashion": "I gravitate toward modern, design-forward streetwear across Japanese, American, and British labels, alongside select contemporary Indian brands such as Almost Gods and Bluorng. My style is anchored by strong silhouettes, particularly Diesel denim and structured bottoms like A-Cold-Wall*, and layered with outerwear from Carhartt WIP, Stussy, Bluorng, Yitai, and similar labels. I’m especially drawn to rugby polos and thoughtfully designed upperwear, favoring brands like Derschutze, Marni, Human Made, and Bape that emphasize unconventional cuts, proportion, and construction.",
-    "Music": "I enjoy indie rock, indie pop, psychedelic-adjacent sounds (like witch house and electronic), and hip-hop. Lately, I’ve been listening to artists like Luna Li, Mitski, Japanese Breakfast, 2hollis, Che, Salem, and The Marías. I also like listening to Drake and Playboi Carti.",
-    "Game Modding": "I’ve worked intermittently on RPG Maker XP to build Pokémon fangames using Ruby, completing one full mini-game end-to-end, including design, storyboarding, and a lot of custom scripting required for gameplay logic. In addition to several larger, unfinished Pokémon projects, I’ve spent some time in the Game Boy Advance Pokémon modding scene. Outside of Pokémon, I mostly play classic Need for Speed titles such as Need for Speed II SE, Need for Speed III: Hot Pursuit, and Need for Speed: Hot Pursuit 2, and currently hold 10+ world records on speedrun.com for these Need for Speed games.",
-    "Diecast Cars": "I primarily collect 1:64 scale diecast cars, mostly from Hot Wheels, Tomica, Kyosho, Tarmac Works, and similar manufacturers. My preference leans strongly toward 1990s supercars and hypercars, as well as concept cars from the same era, with the McLaren F1 standing out as my all-time favorite. Beyond collecting, I design and build paper dioramas, including garages, storefronts, and urban scenes, to display my 1:64 models."
+    "Game Modding": "I’ve worked intermittently on RPG Maker XP to build Pokémon fangames using Ruby, completing one full mini-game end-to-end, including design, storyboarding, and a lot of custom scripting required for gameplay logic. In addition to several larger, unfinished Pokémon projects, I’ve spent some time in the Game Boy Advance Pokémon modding scene. Outside of Pokémon, I mostly play classic Need for Speed titles such as Need for Speed II SE, Need for Speed III: Hot Pursuit, and Need for Speed: Hot Pursuit 2, and currently hold 10+ world records on speedrun.com for these Need for Speed games."
   }
 }

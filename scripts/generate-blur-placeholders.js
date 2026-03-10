@@ -51,6 +51,12 @@ async function main() {
   paths.add('/images/ashutosh.jpeg');
   paths.add('/images/macos-mojave-day.jpg');
   paths.add('/images/macos-mojave-night.jpg');
+  paths.add('/images/diorama.jpg');
+  paths.add('/images/pagani.png');
+  paths.add('/images/f1_diorama.webp');
+  paths.add('/images/gtr-diorama.jpg');
+  paths.add('/images/offroad.jpg');
+  paths.add('/images/porsche-diorama.jpg');
 
   const map = {};
   for (const src of paths) {
