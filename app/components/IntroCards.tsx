@@ -41,8 +41,36 @@ export default function IntroCards() {
         <DraggableCard id="card1" position={positions.card1} isDraggingDisabled={isMobile}>
           <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] relative border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Overview">
             <div className="relative z-10">
-              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Computer Science at UCLA.</p>
-              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Focused on generative AI and systems-level engineering. Built <a href="https://github.com/shapeshiftos" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">ShapeShiftOS</a>, work with startups as a <a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">Kleiner Perkins Engineering Fellow</a>, and have a background in linguistics (<a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">International Linguistics Olympiad Camp</a>).</p>
+              <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">
+                I build systems and infra. Computer Science at UCLA,{' '}
+                <a
+                  href="https://fellows.kleinerperkins.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                >
+                  Kleiner Perkins Fellow
+                </a>
+                , currently researching JVM optimization for serverless systems, previously at{' '}
+                <a
+                  href="https://harvey.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                >
+                  Harvey
+                </a>
+                . Founded{' '}
+                <a
+                  href="https://github.com/shapeshiftos"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                >
+                  ShapeShiftOS
+                </a>
+                , a mobile operating system with 160K+ downloads across 160 countries.
+              </p>
             </div>
           </div>
         </DraggableCard>
