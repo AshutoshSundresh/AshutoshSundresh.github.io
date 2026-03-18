@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import 'leaflet/dist/leaflet.css';
 import { useDistance } from '../hooks/useDistance';
 import { useTooltip } from '../hooks/useTooltip';
@@ -11,7 +12,7 @@ import type { MapProps } from '../types';
 // Dynamically import the entire map to avoid SSR issues
 const Map = dynamic<MapProps>(() => import('./Map'), {
   ssr: false,
-  loading: () => <div className="w-full h-full bg-gray-200/50 animate-pulse" />
+  loading: () => <div className="w-full h-full bg-gray-200/50 dark:bg-gray-800/50 flex items-center justify-center" />
 });
 
 export default function LocationCard() {
@@ -27,32 +28,37 @@ export default function LocationCard() {
   
   return (
     <>
-      <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-gray-900 dark:text-gray-100 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] lg:translate-y-[calc(2vw)] relative transition-all duration-700 delay-900 border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden" data-search-ignore>
-        <div className="relative z-10 overflow-hidden h-full flex flex-col">
-          {mapReady && (
+      <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-gray-900 dark:text-gray-100 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] lg:translate-y-[calc(2vw)] relative border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden" data-search-ignore suppressHydrationWarning>
+        {loading || !mapReady ? (
+          <div className="relative h-full w-full">
+            <Image
+              src="/images/image-loading-loading.gif"
+              alt="Loading..."
+              fill
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div className="relative z-10 overflow-hidden h-full flex flex-col">
             <div className="h-[140px] w-full rounded-t-2xl overflow-hidden">
               <Map latitude={latitude} longitude={longitude} />
             </div>
-          )}
-          <div className="px-4 py-2 text-center flex-1 flex items-center justify-center">
-            {loading ? (
-              <p className="text-sm italic text-gray-600 dark:text-gray-400">
-                Calculating distance...
-              </p>
-            ) : distance !== null ? (
-              <p className="text-sm flex items-center justify-center gap-1 text-gray-800 dark:text-gray-200">
-                You are <span className="font-semibold">{distance.toLocaleString()}</span> {distance === 1 ? 'mile' : 'miles'} away from me
-                <span className="relative inline-block">
-                  <InfoButton
-                    buttonRef={buttonRef}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  />
-                </span>
-              </p>
-            ) : null}
+            <div className="px-4 py-2 text-center flex-1 flex items-center justify-center">
+              {distance !== null ? (
+                <p className="text-sm flex items-center justify-center gap-1 text-gray-800 dark:text-gray-200">
+                  You are <span className="font-semibold">{distance.toLocaleString()}</span> {distance === 1 ? 'mile' : 'miles'} away from me
+                  <span className="relative inline-block">
+                    <InfoButton
+                      buttonRef={buttonRef}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                    />
+                  </span>
+                </p>
+              ) : null}
+            </div>
           </div>
-        </div>
+        )}
       </div>
       
       <Tooltip show={showTooltip} position={tooltipPosition}>

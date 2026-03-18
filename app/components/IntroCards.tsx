@@ -39,7 +39,7 @@ export default function IntroCards() {
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 [@media(max-width:767px)_and_(max-height:800px)]:gap-1 gap-5 md:gap-4 lg:gap-6 place-items-center w-full px-4 lg:max-w-[900px] mx-auto">
         {/* Top Row */}
         <DraggableCard id="card1" position={positions.card1} isDraggingDisabled={isMobile}>
-          <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] relative transition-all duration-700 delay-500 border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Overview">
+          <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] relative border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Overview">
             <div className="relative z-10">
               <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Computer Science at UCLA.</p>
               <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">Focused on generative AI and systems-level engineering. Built <a href="https://github.com/shapeshiftos" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">ShapeShiftOS</a>, work with startups as a <a href="https://fellows.kleinerperkins.com" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">Kleiner Perkins Engineering Fellow</a>, and have a background in linguistics (<a href="https://en.wikipedia.org/wiki/International_Linguistics_Olympiad" target="_blank" rel="noopener noreferrer" className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline">International Linguistics Olympiad Camp</a>).</p>
@@ -62,7 +62,7 @@ export default function IntroCards() {
         </DraggableCard>
 
         <DraggableCard id="card2" position={positions.card2} isDraggingDisabled={isMobile}>
-          <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] relative transition-all duration-700 delay-700 hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Interests">
+          <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] relative hidden [@media(min-width:768px)]:block [@media(min-height:770px)_and_(max-width:767px)]:block border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Interests">
             <div className="relative z-10 w-full">
               <div className="mb-2">
                 <div className="text-lg font-medium text-gray-800 dark:text-gray-200 flex items-center gap-2">

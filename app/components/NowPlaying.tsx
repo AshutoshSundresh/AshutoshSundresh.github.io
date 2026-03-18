@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
 import useLastFmNowPlaying from '../hooks/useLastFmNowPlaying';
 import useDominantColor from '../hooks/useDominantColor';
 import useIntroVisibility from '../hooks/useIntroVisibility';
@@ -123,6 +124,16 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
           }}
         >
           <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl bg-gray-600/40">
+            {!imageLoaded && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Image
+                  src="/images/image-loading-loading.gif"
+                  alt="Loading..."
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            )}
             <img
               ref={imgRef}
               src={albumArt}

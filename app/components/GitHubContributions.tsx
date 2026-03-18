@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import ContributionsGraph from './ContributionsGraph';
 import type { ContributionsCanvasData, ContributionDay, ContributionWeek, Contribution, YearData } from '../types';
 
@@ -31,11 +32,6 @@ const query = `
 export default function GitHubContributions() {
   const [contributionsData, setContributionsData] = useState<ContributionsData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
 
   useEffect(() => {
     const fetchContributions = async () => {
@@ -99,14 +95,19 @@ export default function GitHubContributions() {
 
   if (isLoading) {
     return (
-      <div className={`bg-black text-white p-1.5 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] h-[200px] relative flex items-center justify-center opacity-0 transition-all duration-700 delay-900 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500"></div>
+      <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] h-[200px] relative overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg" suppressHydrationWarning>
+        <Image
+          src="/images/image-loading-loading.gif"
+          alt="Loading..."
+          fill
+          className="object-cover"
+        />
       </div>
     );
   }
 
   return (
-    <div className={`backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700 delay-900 border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden`}>
+    <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-white rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[360px] xl:w-[420px] relative border border-gray-200 dark:border-gray-700 shadow-lg overflow-hidden" suppressHydrationWarning>
       {contributionsData && (
         <ContributionsGraph 
           data={contributionsData}
