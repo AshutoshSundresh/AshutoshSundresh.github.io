@@ -13,6 +13,25 @@ const raleway = Raleway({
 export const metadata: Metadata = {
   title: "Ashutosh Sundresh",
   description: "Ashutosh Sundresh Portfolio Page",
+  openGraph: {
+    title: "Ashutosh Sundresh",
+    description: "Ashutosh Sundresh Portfolio Page",
+    images: [
+      {
+        url: "/thumb.png",
+        width: 1200,
+        height: 630,
+        alt: "Ashutosh Sundresh",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ashutosh Sundresh",
+    description: "Ashutosh Sundresh Portfolio Page",
+    images: ["/thumb.png"],
+  },
 };
 
 export default function RootLayout({
