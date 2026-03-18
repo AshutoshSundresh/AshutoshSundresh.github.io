@@ -78,7 +78,24 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
     }
   }, [track, onStatusChange, onTrackChange]);
 
-  if (isLoading || error || !track || (firstLaunch && !show)) return null;
+  if (isLoading) {
+    return (
+      <div
+        className={`${disableFade ? 'absolute' : 'fixed'} top-4 left-1/2 z-50 w-[calc(100vw-16px)] md:w-full md:max-w-md px-2 transform -translate-x-1/2 opacity-100 translate-y-0 transition-all duration-500 ease-in-out`}
+      >
+        <div className="relative rounded-2xl overflow-hidden h-28 bg-white/50 dark:bg-[#2A2A2A]/50 border border-gray-200 dark:border-gray-700">
+          <Image
+            src="/images/image-loading-loading.gif"
+            alt="Loading..."
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !track || (firstLaunch && !show)) return null;
 
   const albumArt = track.image?.find(img => img.size === 'extralarge')?.['#text'] || track.image?.slice(-1)[0]?.['#text'] || '';
   const artist = track.artist["#text"];
@@ -96,6 +113,9 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
     const hex = rgbToHex(adjustedColor);
     bgGradient = `bg-[linear-gradient(90deg,${hex} 0%,${hex} 50%,${hex} 100%)]`;
     textColor = getLuminance(adjustedColor) > 180 ? 'text-gray-900' : 'text-white';
+  } else {
+    // Use black text on light theme when color hasn't loaded
+    textColor = 'text-black dark:text-white';
   }
 
   return (
@@ -111,11 +131,11 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
         }
       >
         <div
-          className={`flex items-center rounded-2xl p-3 gap-4 relative ${bgGradient} lavalamp-bg overflow-visible`}
+          className={`flex items-center rounded-2xl p-3 gap-4 relative ${bgGradient} lavalamp-bg overflow-visible ${!dominantColor ? 'bg-white/80 dark:bg-[#2A2A2A]/80 border border-gray-200 dark:border-gray-700' : ''}`}
           style={{
             background: dominantColor
-              ? `linear-gradient(90deg, 
-                  ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 0%, 
+              ? `linear-gradient(90deg,
+                  ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 0%,
                   ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 50%,
                   ${rgbToHex(isDark ? darkenColor(dominantColor, 0.4) : dominantColor)} 100%)`
               : undefined,
@@ -125,7 +145,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
         >
           <div className="absolute inset-y-0 left-0 w-1/4 overflow-hidden rounded-l-2xl bg-gray-600/40">
             {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-700">
                 <Image
                   src="/images/image-loading-loading.gif"
                   alt="Loading..."

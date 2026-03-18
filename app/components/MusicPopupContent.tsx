@@ -5,6 +5,8 @@ import Image from 'next/image';
 import useLastFmTopAlbums from '../hooks/useLastFmTopAlbums';
 import type { LastFmTopAlbum } from '../types';
 
+const LOADING_GIF = '/images/image-loading-loading.gif';
+
 const LASTFM_PROFILE = 'https://www.last.fm/user/ashutoshsun';
 
 function getImageUrl(album: LastFmTopAlbum, size: 'small' | 'medium' | 'large' | 'extralarge'): string {
@@ -67,20 +69,24 @@ function AlbumTile({ album }: { album: LastFmTopAlbum }) {
 export default function MusicPopupContent() {
   const { isLoading, albums, error } = useLastFmTopAlbums();
 
+  if (isLoading) {
+    return (
+      <div className="relative w-[calc(100%+3rem)] h-72 -mx-6 -my-5 flex items-center justify-center">
+        <Image
+          src={LOADING_GIF}
+          alt="Loading..."
+          fill
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="font-['Raleway']">
       {/* Top 8 albums grid: 4×2, rounded cards with spacing (match film posters) */}
       <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4">
-        {isLoading &&
-          Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="aspect-square rounded-lg bg-gray-200 dark:bg-gray-700 animate-pulse"
-              aria-hidden
-            />
-          ))}
-        {!isLoading &&
-          error &&
+        {error &&
           Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
@@ -89,8 +95,7 @@ export default function MusicPopupContent() {
               —
             </div>
           ))}
-        {!isLoading &&
-          !error &&
+        {!error &&
           albums.map((album) => (
             <a
               key={`${album.artist.name}-${album.name}`}
