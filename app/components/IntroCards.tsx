@@ -7,6 +7,7 @@ import InterestPopup from './InterestPopup';
 import FilmPopupContent from './FilmPopupContent';
 import MusicPopupContent from './MusicPopupContent';
 import DiecastCarsPopupContent from './DiecastCarsPopupContent';
+import FashionPopupContent from './FashionPopupContent';
 import type { DragPosition, SkeumorphicDataRoot } from '../types';
 import type { InterestName } from '../types/interestIcons';
 import useIsMobile from '../hooks/useIsMobile';
@@ -178,7 +179,7 @@ export default function IntroCards() {
         }}
         interestName={openInterest!}
         content={openInterest ? ((skeuData as SkeumorphicDataRoot).interests?.[openInterest] || `Content for ${openInterest} will be added here.`) : ''}
-        customBody={openInterest === 'Film' ? <FilmPopupContent /> : openInterest === 'Music' ? <MusicPopupContent /> : openInterest === 'Diecast Cars' ? <DiecastCarsPopupContent /> : undefined}
+        customBody={openInterest === 'Film' ? <FilmPopupContent /> : openInterest === 'Music' ? <MusicPopupContent /> : openInterest === 'Diecast Cars' ? <DiecastCarsPopupContent /> : openInterest === 'Fashion' ? <FashionPopupContent /> : undefined}
       />
     </DndContext>
   );

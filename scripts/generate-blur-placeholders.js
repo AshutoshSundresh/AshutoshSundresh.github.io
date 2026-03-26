@@ -57,6 +57,9 @@ async function main() {
   paths.add('/images/gtr-diorama.jpg');
   paths.add('/images/offroad.jpg');
   paths.add('/images/porsche-diorama.jpg');
+  paths.add('/images/Screenshot 2026-03-26 174402.png');
+  paths.add('/images/Screenshot 2026-03-26 174418.png');
+  paths.add('/images/Screenshot 2026-03-26 174746.png');
 
   const map = {};
   for (const src of paths) {
