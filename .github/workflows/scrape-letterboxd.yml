@@ -1,4 +1,5 @@
-# Scheduled Letterboxd scraper: updates top 8 films and blur placeholders, then pushes to trigger deploy.
+# Scheduled Letterboxd scraper: updates top 8 films and blur placeholders, commits if changed,
+# then dispatches the Pages deploy workflow (GITHUB_TOKEN pushes do not trigger push workflows).
 name: Scrape Letterboxd top films
 
 on:
@@ -7,12 +8,13 @@ on:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      pushed: ${{ steps.commit.outputs.pushed }}
 
     steps:
       - name: Checkout
@@ -40,8 +42,29 @@ jobs:
           node scripts/scrape-letterboxd-top-films.js
 
       - name: Commit and push if changed
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add app/data/topFilms.json app/data/blurPlaceholders.json
-          git diff --staged --quiet || (git commit -m "chore: update Letterboxd top films and blur placeholders" && git push)
+          if git diff --staged --quiet; then
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: update Letterboxd top films and blur placeholders"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: scrape
+    if: needs.scrape.outputs.pushed == 'true' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+
+    steps:
+      - name: Dispatch Deploy Next.js site to Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run nextjs.yml --ref "${{ github.ref_name }}"
