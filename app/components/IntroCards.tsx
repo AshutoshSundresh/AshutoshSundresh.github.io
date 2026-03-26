@@ -133,13 +133,13 @@ export default function IntroCards() {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    setOpenInterest('Game Modding' as InterestName);
+                    setOpenInterest('Games' as InterestName);
                   }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
                   className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
                 >
-                  Game Modding
+                  Games
                 </button>
                 <button
                   onClick={(e) => {

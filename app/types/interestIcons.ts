@@ -2,7 +2,7 @@
  * Types for interest icon animations
  */
 
-export type InterestName = 'Fashion' | 'Music' | 'Game Modding' | 'Film' | 'Diecast Cars';
+export type InterestName = 'Fashion' | 'Music' | 'Games' | 'Film' | 'Diecast Cars';
 
 export interface IconInstance {
   image: HTMLImageElement;
