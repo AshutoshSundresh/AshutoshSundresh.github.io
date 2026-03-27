@@ -13,7 +13,8 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
         ${isMobile
           ? 'fixed inset-0 z-20 bg-[#f5f6fa] dark:bg-[#0f1115] font-[Raleway]'
           : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#181818]'}
-        overflow-y-auto transition-colors
+        ${isMobile ? 'overflow-hidden' : 'overflow-y-auto'}
+        transition-colors
       `}
     >
       {isMobile && (
@@ -42,12 +43,12 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
         </button>
       )}
 
-      <div className={`${isMobile ? 'px-5 pb-10 pt-24' : `p-4 ${!isMobile ? 'pt-12' : ''}`}`}>
+      <div className={isMobile ? 'h-full overflow-y-auto px-5 pb-10 pt-24' : `p-4 ${!isMobile ? 'pt-12' : ''}`}>
         <div className={`mb-4 relative w-full overflow-hidden ${isMobile ? 'h-52 rounded-[24px]' : 'h-40 rounded-lg'}`}>
-          <Image 
-            src={project.image} 
-            alt={project.name} 
-            fill 
+          <Image
+            src={project.image}
+            alt={project.name}
+            fill
             placeholder="blur"
             blurDataURL={getBlurDataURL(project.image)}
             className="object-cover rounded-lg shadow-sm"

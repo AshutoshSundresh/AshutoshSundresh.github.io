@@ -174,7 +174,7 @@ export default function SkeumorphicMobileShell({
               className="flex flex-col items-center gap-2 text-center"
             >
               <span className={`relative flex h-18 w-18 items-center justify-center rounded-[22px] bg-gradient-to-br ${app.gradient}`}>
-                {renderIosIcon(app.iconName, 'relative z-10 h-8 w-8 text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]')}
+                {renderIosIcon(app.iconName, 'relative z-10 h-10 w-10 text-white')}
               </span>
               <span className="text-[0.72rem] font-medium leading-tight text-white/92">{app.title}</span>
             </button>
@@ -213,7 +213,7 @@ export default function SkeumorphicMobileShell({
             <div className="pointer-events-none absolute bottom-0 left-6 right-6 h-6 rounded-full bg-black/8 blur-xl dark:bg-black/16" />
             <Link href="/" className="relative z-10 flex flex-1 items-center justify-center text-white/95">
               <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-sky-300/95 via-blue-500/95 to-indigo-600/95">
-                {renderIosIcon('home', 'h-8 w-8 text-white')}
+                {renderIosIcon('home', 'h-10 w-10 text-white')}
               </span>
             </Link>
             <button
@@ -223,7 +223,7 @@ export default function SkeumorphicMobileShell({
               aria-label="Open terminal"
             >
               <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-zinc-200/95 via-zinc-500/95 to-zinc-800/95">
-                {renderIosIcon('terminal', 'h-8 w-8 text-white')}
+                {renderIosIcon('terminal', 'h-10 w-10 text-white')}
               </span>
             </button>
             <button
@@ -233,12 +233,12 @@ export default function SkeumorphicMobileShell({
               aria-label="Lock screen"
             >
               <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-amber-200/95 via-orange-400/95 to-rose-500/95">
-                {renderIosIcon('lock', 'h-8 w-8 text-white')}
+                {renderIosIcon('lock', 'h-10 w-10 text-white')}
               </span>
             </button>
             <a href="mailto:ashutoshsun@g.ucla.edu" className="relative z-10 flex flex-1 items-center justify-center text-white/95">
               <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-emerald-300/95 via-teal-400/95 to-cyan-500/95">
-                {renderIosIcon('contact', 'h-8 w-8 text-white')}
+                {renderIosIcon('contact', 'h-10 w-10 text-white')}
               </span>
             </a>
           </div>

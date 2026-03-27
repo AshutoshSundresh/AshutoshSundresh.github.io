@@ -12,7 +12,7 @@ export default function PublicationDetailView({ publication, onClose, isMobile }
         ${isMobile
           ? 'fixed inset-0 z-20 bg-[#f5f6fa] dark:bg-[#0f1115]'
           : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#181818]'}
-        overflow-y-auto font-['Raleway'] transition-colors
+        ${isMobile ? 'overflow-hidden' : 'overflow-y-auto'} font-['Raleway'] transition-colors
       `}
     >
       {isMobile ? (
@@ -39,7 +39,7 @@ export default function PublicationDetailView({ publication, onClose, isMobile }
         </button>
       )}
 
-      <div className={`${isMobile ? 'px-5 pb-10 pt-24 space-y-5' : `p-4 space-y-6 ${!isMobile ? 'pt-12' : ''}`}`}>
+      <div className={`${isMobile ? 'h-full overflow-y-auto px-5 pb-10 pt-24 space-y-5' : `p-4 space-y-6 ${!isMobile ? 'pt-12' : ''}`}`}>
         <div className={`flex flex-col items-center text-center ${isMobile ? 'rounded-[22px] border border-black/5 bg-white px-5 py-6 dark:border-white/8 dark:bg-[#151922]' : ''}`}>
           <div className={`${isMobile ? 'w-24 h-24 mb-4' : 'w-32 h-32 mb-4'} relative transition-transform duration-[8s] group-hover:scale-105 rounded-[20px] overflow-hidden`}>
             <Image 
