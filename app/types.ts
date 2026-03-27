@@ -426,7 +426,10 @@ export interface EducationListProps {
   courseworkHref?: string;
 }
 
-export interface ExperienceListProps { experienceData: ExperienceEntry[] }
+export interface ExperienceListProps {
+  experienceData: ExperienceEntry[];
+  isMobile?: boolean;
+}
 
 export interface ContributionsGraphProps {
   data: ContributionsCanvasData;

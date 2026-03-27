@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, useLayoutEffect } from 'react';
 import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import useAppOverlayState from '../hooks/useAppOverlayState';
 import IOSLockscreen from './IOSLockscreen';
@@ -68,6 +68,7 @@ const MacOSWindow = () => {
   const [now, setNow] = useState(() => new Date());
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const isInternalMobileNavigationRef = useRef(false);
   const tabs = TABS;
 
   const windowHeight = useWindowInfo();
@@ -174,8 +175,98 @@ const MacOSWindow = () => {
   }, [searchParams, initialTab]);
 
   const resolvedActiveTab = windowHeight.isMobile ? routeMobileActiveApp ?? activeTab : activeTab;
-  const effectiveSelectedItem = windowHeight.isMobile ? routeSelectedItem ?? selectedItem : selectedItem;
-  const effectiveMobileActiveApp = windowHeight.isMobile ? routeMobileActiveApp ?? mobileActiveApp : null;
+  const hasRouteTab = Boolean(searchParams?.get('tab'));
+  const hasRouteDetail = Boolean(searchParams?.get('detail'));
+  const effectiveSelectedItem = windowHeight.isMobile
+    ? hasRouteDetail
+      ? routeSelectedItem ?? selectedItem
+      : null
+    : selectedItem;
+  const effectiveMobileActiveApp = windowHeight.isMobile
+    ? hasRouteTab
+      ? routeMobileActiveApp ?? mobileActiveApp
+      : null
+    : null;
+
+  const markCurrentMobileHistoryEntry = useCallback(
+    (screen: 'home' | 'app' | 'detail', tab?: string | null, detail?: string | null) => {
+      if (typeof window === 'undefined') return;
+
+      const currentState = window.history.state ?? {};
+      window.history.replaceState(
+        {
+          ...currentState,
+          __skeuManaged: true,
+          __skeuScreen: screen,
+          __skeuTab: tab ?? null,
+          __skeuDetail: detail ?? null,
+        },
+        '',
+        window.location.href
+      );
+    },
+    []
+  );
+
+  useLayoutEffect(() => {
+    if (!windowHeight.isReady || !windowHeight.isMobile || typeof window === 'undefined') return;
+
+    const tab = searchParams?.get('tab');
+    const detail = searchParams?.get('detail');
+    const currentState = window.history.state ?? {};
+
+    if (!tab) {
+      markCurrentMobileHistoryEntry('home');
+      return;
+    }
+
+    if (isInternalMobileNavigationRef.current) {
+      markCurrentMobileHistoryEntry(detail ? 'detail' : 'app', tab, detail);
+      isInternalMobileNavigationRef.current = false;
+      return;
+    }
+
+    if (currentState.__skeuManaged) return;
+
+    const baseState = { ...currentState, __skeuManaged: true };
+    const appUrl = `${pathname}?tab=${tab}`;
+    const detailUrl = detail ? `${appUrl}&detail=${detail}` : appUrl;
+
+    window.history.replaceState(
+      {
+        ...baseState,
+        __skeuScreen: 'home',
+        __skeuTab: null,
+        __skeuDetail: null,
+      },
+      '',
+      pathname
+    );
+
+    window.history.pushState(
+      {
+        ...baseState,
+        __skeuScreen: 'app',
+        __skeuTab: tab,
+        __skeuDetail: null,
+      },
+      '',
+      appUrl
+    );
+
+    if (detail) {
+      window.history.pushState(
+        {
+          ...baseState,
+          __skeuScreen: 'detail',
+          __skeuTab: tab,
+          __skeuDetail: detail,
+        },
+        '',
+        detailUrl
+      );
+    }
+  }, [windowHeight.isReady, windowHeight.isMobile, searchParams, pathname, markCurrentMobileHistoryEntry]);
 
   useEffect(() => {
     if (!windowHeight.isReady) return;
@@ -205,6 +296,7 @@ const MacOSWindow = () => {
 
       const tabName = TAB_INDEX_TO_NAME[resolvedActiveTab] || 'experience';
       const detailType = resolvedActiveTab === 3 ? 'project' : 'publication';
+      isInternalMobileNavigationRef.current = true;
       router.push(`${pathname}?tab=${tabName}&detail=${detailType}-${id}`, { scroll: false });
     }
 
@@ -236,6 +328,7 @@ const MacOSWindow = () => {
   const openMobileApp = useCallback(
     (tabId: number) => {
       onTabChange(tabId);
+      isInternalMobileNavigationRef.current = true;
       router.push(`${pathname}?tab=${TAB_INDEX_TO_NAME[tabId] || 'experience'}`, { scroll: false });
       setMobileActiveApp(tabId);
     },
@@ -258,7 +351,7 @@ const MacOSWindow = () => {
 
   const renderActiveTabContent = () => (
     <>
-      {resolvedActiveTab === 0 && <ExperienceList experienceData={experienceData} />}
+      {resolvedActiveTab === 0 && <ExperienceList experienceData={experienceData} isMobile={windowHeight.isMobile} />}
       {resolvedActiveTab === 1 && <AwardsMasonry awardsData={awardsData} />}
       {resolvedActiveTab === 2 && (
         <EducationList
