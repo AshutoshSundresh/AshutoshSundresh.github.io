@@ -3,7 +3,6 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import "./fonts.css";
 import Navigation from "./components/Navigation";
-import { ThemeProvider } from "./contexts/ThemeContext";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -54,10 +53,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossOrigin="" />
       </head>
       <body className={`${raleway.className} antialiased`} suppressHydrationWarning>
-        <ThemeProvider>
-          {children}
-          <Navigation />
-        </ThemeProvider>
+        {children}
+        <Navigation />
       </body>
     </html>
   );
