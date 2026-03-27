@@ -17,17 +17,19 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
       `}
     >
       {isMobile && (
-        <div className="sticky top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-12 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
-          <div className="flex min-h-6 items-center">
+        <div className="absolute inset-x-0 top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center">
             <button
               onClick={onClose}
-              className="flex items-center gap-1 text-[0.95rem] font-medium text-[#007aff] dark:text-[#4da3ff]"
+              className="flex items-center justify-start gap-1 text-[0.95rem] font-medium text-[#007aff] dark:text-[#4da3ff]"
             >
               <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 18l-6-6 6-6" />
               </svg>
               <span>Projects</span>
             </button>
+            <div />
+            <div />
           </div>
         </div>
       )}
@@ -40,7 +42,7 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
         </button>
       )}
 
-      <div className={`${isMobile ? 'px-5 pb-10 pt-5' : `p-4 ${!isMobile ? 'pt-12' : ''}`}`}>
+      <div className={`${isMobile ? 'px-5 pb-10 pt-24' : `p-4 ${!isMobile ? 'pt-12' : ''}`}`}>
         <div className={`mb-4 relative w-full overflow-hidden ${isMobile ? 'h-52 rounded-[24px]' : 'h-40 rounded-lg'}`}>
           <Image 
             src={project.image} 

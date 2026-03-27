@@ -13,7 +13,7 @@ function ExperienceList({ experienceData, isMobile = false }: ExperienceListProp
   }, []);
 
   return (
-    <div className={`${isMobile ? 'space-y-4' : 'mt-4 space-y-6'}`}>
+    <div className={`${isMobile ? 'pt-2 space-y-4' : 'mt-4 space-y-6'}`}>
       {experienceData.map((exp) => (
         <div
           key={exp.id}

@@ -297,7 +297,7 @@ export default function SkeumorphicMobileShell({
       <div className="absolute inset-0 bg-white dark:bg-[#0f1115]" />
       <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#f4f5f8] to-transparent dark:from-[#171b22] dark:to-transparent" />
       <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-        <div className="sticky top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
+        <div className="absolute inset-x-0 top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center">
             <button
               type="button"
@@ -318,7 +318,7 @@ export default function SkeumorphicMobileShell({
           <div
             ref={contentRef}
             className={`h-full bg-white transition-colors dark:bg-[#0f1115] ${
-              isCourseworkDetail ? 'overflow-hidden px-5 pb-8 pt-4' : 'overflow-y-auto px-5 pb-8 pt-4'
+              isCourseworkDetail ? 'overflow-hidden px-5 pb-8 pt-24' : 'overflow-y-auto px-5 pb-8 pt-24'
             } ${selectedProject ? 'hidden' : ''}`}
             onClick={onContainerClick}
           >
