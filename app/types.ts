@@ -288,6 +288,7 @@ export type ContributionsData = ContributionsCanvasData;
 export interface WindowInfo {
   vh: number;
   isMobile: boolean;
+  isReady: boolean;
 }
 
 export interface Dimensions {
@@ -420,7 +421,10 @@ export interface ProjectDetailViewProps {
 
 export interface AwardsMasonryProps { awardsData: AwardCategory[] }
 
-export interface EducationListProps { educationData: EducationEntry[] }
+export interface EducationListProps {
+  educationData: EducationEntry[];
+  courseworkHref?: string;
+}
 
 export interface ExperienceListProps { experienceData: ExperienceEntry[] }
 

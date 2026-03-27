@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useCourseworkData } from '../../hooks/useCourseworkData';
 import { useMajorFilter } from '../../hooks/useMajorFilter';
 import { useTimeSlots } from '../../hooks/useTimeSlots';
+import useWindowInfo from '../../hooks/useWindowInfo';
 import CourseworkModalHeader from './CourseworkModalHeader';
 import CourseworkSidebar from './CourseworkSidebar';
 import MobileQuarterSelector from './MobileQuarterSelector';
@@ -22,6 +23,7 @@ interface CourseworkPageProps {
 export default function CourseworkPage({ courses }: CourseworkPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const windowInfo = useWindowInfo();
   const [view, setView] = useState<'calendar' | 'list'>('calendar');
 
   const {
@@ -77,8 +79,12 @@ export default function CourseworkPage({ courses }: CourseworkPageProps) {
 
 
   const handleExit = useCallback(() => {
+    if (searchParams?.get('detail') === 'coursework') {
+      router.back();
+      return;
+    }
     router.push('/experience?tab=education');
-  }, [router]);
+  }, [router, searchParams]);
 
   // Handle Escape key to navigate back
   useEffect(() => {
@@ -92,6 +98,56 @@ export default function CourseworkPage({ courses }: CourseworkPageProps) {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [handleExit]);
+
+  const isEmbeddedMobile = windowInfo.isMobile && searchParams?.get('detail') === 'coursework';
+
+  if (isEmbeddedMobile) {
+    return (
+      <div className="flex h-full min-h-0 flex-col bg-[#f5f6fa] dark:bg-[#0f1115]">
+        <div className="flex-shrink-0 bg-[#f5f6fa] px-0 pb-3 pt-1 dark:bg-[#0f1115]">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+            <ViewToggle view={view} onViewChange={setView} />
+            <MajorFilter
+              majors={majors}
+              selectedMajor={selectedMajor}
+              onMajorChange={setSelectedMajor}
+            />
+          </div>
+        </div>
+
+        {view === 'calendar' && (
+          <div className="mb-3 -mx-1">
+            <MobileQuarterSelector
+              years={years}
+              quartersByYear={quartersByYear}
+              selectedYear={selectedYear}
+              selectedQuarter={selectedQuarter}
+              onYearQuarterChange={(year, quarter) => {
+                setSelectedYear(year);
+                setSelectedQuarter(quarter);
+              }}
+            />
+          </div>
+        )}
+
+        <div className="min-h-0 flex-1 overflow-hidden rounded-[20px] border border-black/5 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:border-white/8 dark:bg-[#151922] dark:shadow-none">
+          {view === 'calendar' ? (
+            selectedYear && selectedQuarter ? (
+              <CalendarGrid
+                coursesWithColors={displayedCoursesWithColors}
+                timeSlots={timeSlots}
+                calendarStartMinutes={calendarStartMinutes}
+              />
+            ) : (
+              <EmptyState />
+            )
+          ) : (
+            <PlainTextView courses={courses} selectedMajor={selectedMajor} />
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed inset-0 z-[2000] bg-white dark:bg-[#1e1e1e] flex flex-col">

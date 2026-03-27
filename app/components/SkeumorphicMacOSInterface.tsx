@@ -3,13 +3,8 @@ import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import useAppOverlayState from '../hooks/useAppOverlayState';
 import IOSLockscreen from './IOSLockscreen';
 import DesktopLockscreen from './DesktopLockscreen';
-import WindowHeader from './WindowHeader';
-import Toolbar from './Toolbar';
-import TabsBar from './TabsBar';
 import PublicationsGrid from './PublicationsGrid';
 import ActivitiesList from './ActivitiesList';
-import ProjectDetailView from './ProjectDetailView';
-import PublicationDetailView from './PublicationDetailView';
 import ProjectsGrid from './ProjectsGrid';
 import AwardsMasonry from './AwardsMasonry';
 import EducationList from './EducationList';
@@ -17,30 +12,48 @@ import ExperienceList from './ExperienceList';
 import useTerminal from '../hooks/useTerminal';
 import TerminalOverlay from './TerminalOverlay';
 import SearchOverlay from './SearchOverlay';
+import SkeumorphicDesktopShell from './SkeumorphicDesktopShell';
+import SkeumorphicMobileShell from './SkeumorphicMobileShell';
 import rawData from '../data/skeumorphicData.json';
-import type { SkeumorphicDataRoot, Project, Publication, Activity, EducationEntry, ExperienceEntry, AwardCategory } from '../types';
+import type {
+  SkeumorphicDataRoot,
+  Project,
+  Publication,
+  Activity,
+  EducationEntry,
+  ExperienceEntry,
+  AwardCategory,
+} from '../types';
 import useWindowInfo from '../hooks/useWindowInfo';
 import useProgressiveBackground from '../hooks/useProgressiveBackground';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
 import useTabHistory from '../hooks/useTabHistory';
-import useSwipeNavigation from '../hooks/useSwipeNavigation';
 import useClickOutside from '../hooks/useClickOutside';
+import { useTheme } from '../contexts/ThemeContext';
+import {
+  MOBILE_APP_GRADIENTS,
+  TAB_INDEX_TO_NAME,
+  TAB_NAME_TO_INDEX,
+  type MobileAppDefinition,
+  type SkeumorphicTab,
+} from './skeumorphic/shared';
 
 type ProjectDetails = Project;
 
-const TAB_NAME_TO_INDEX: Record<string, number> = {
-  experience: 0,
-  awards: 1,
-  education: 2,
-  projects: 3,
-  publications: 4,
-  activities: 5,
-};
+const TABS: SkeumorphicTab[] = [
+  { id: 0, title: 'Experience', content: 'Professional experience and internships' },
+  { id: 1, title: 'Awards', content: 'Honors and recognition' },
+  { id: 2, title: 'Education', content: 'Academic background and achievements' },
+  { id: 3, title: 'Projects', content: 'Git repositories and development projects' },
+  { id: 4, title: 'Publications', content: 'Research papers and publications' },
+  { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' },
+];
 
 const MacOSWindow = () => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const { toggleTheme, isDark } = useTheme();
   const initialTab = useMemo(() => {
     const tabParam = searchParams?.get('tab');
     if (!tabParam) return 0;
@@ -51,27 +64,14 @@ const MacOSWindow = () => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [mobileActiveApp, setMobileActiveApp] = useState<number | null>(null);
+  const [now, setNow] = useState(() => new Date());
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  // Add ref array for tab elements
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const tabs = useMemo(() => ([
-    { id: 0, title: 'Experience', content: 'Professional experience and internships' },
-    { id: 1, title: 'Awards', content: 'Honors and recognition' },
-    { id: 2, title: 'Education', content: 'Academic background and achievements' },
-    { id: 3, title: 'Projects', content: 'Git repositories and development projects' },
-    { id: 4, title: 'Publications', content: 'Research papers and publications' },
-    { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' }
-  ]), []);
+  const tabs = TABS;
 
   const windowHeight = useWindowInfo();
 
-  // Swipe handled by useSwipeNavigation hook
-
-  // Add state for tab position offset
-  const [tabOffset, setTabOffset] = useState(0);
-
-  // Swipe thresholds handled in hook
   const {
     terminalMode,
     setTerminalMode,
@@ -91,7 +91,7 @@ const MacOSWindow = () => {
       if (command === 'ls publications') return publications.map(pub => `- ${pub.title}`);
       if (command === 'ls activities') return activitiesData.map(activity => `- ${activity.title}`);
       return null;
-    }
+    },
   });
   const [lockscreenVisible, setLockscreenVisible] = useState(false);
 
@@ -105,121 +105,116 @@ const MacOSWindow = () => {
     setLockscreenActive(lockscreenVisible);
   }, [lockscreenVisible, setLockscreenActive]);
 
-  // handled by hook
-
-  // Reset selected item when tab changes
   useEffect(() => {
     setSelectedItem(null);
   }, [activeTab]);
 
-  // Outside click handling
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
   useClickOutside(contentRef as React.RefObject<HTMLElement | null>, (event) => {
-        const detailView = document.querySelector('[data-detail-view]');
+    const detailView = document.querySelector('[data-detail-view]');
     if (detailView && detailView.contains(event.target as Node)) return;
-        setSelectedItem(null);
+    setSelectedItem(null);
   });
   useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, () => setShowMobileMenu(false));
 
-  const onTabChange = useCallback((index: number) => {
-    setSelectedItem(null);
-    handleTabChange(index);
-  }, [handleTabChange]);
-
-  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useSwipeNavigation(
-    windowHeight.isMobile && selectedItem === null,
-    () => {
-      if (activeTab < tabs.length - 1) {
-        const tabWidth = getTabWidth();
-        const nextTab = activeTab + 1;
-        const newOffset = tabOffset - tabWidth;
-        setTabOffset(getConstrainedOffset(newOffset));
-        onTabChange(nextTab);
-      }
+  const onTabChange = useCallback(
+    (index: number) => {
+      setSelectedItem(null);
+      handleTabChange(index);
     },
-    () => {
-      if (activeTab > 0) {
-        const tabWidth = getTabWidth();
-        const prevTab = activeTab - 1;
-        const newOffset = tabOffset + tabWidth;
-        setTabOffset(getConstrainedOffset(newOffset));
-        onTabChange(prevTab);
-      }
-    }
+    [handleTabChange]
   );
 
-  const tabIndexToName = useMemo(() => ['experience','awards','education','projects','publications','activities'], []);
-
-  // Keep URL query in sync with active tab (without adding history entries)
-  useEffect(() => {
-    const name = tabIndexToName[activeTab] || 'experience';
-    router.replace(`${pathname}?tab=${name}`, { scroll: false });
-  }, [activeTab, router, pathname, tabIndexToName]);
-
-  // Add function to calculate tab width
-  const getTabWidth = useCallback(() => {
-    // If tabs are not yet rendered, return a default value
-    if (!tabRefs.current.length || !tabRefs.current[0]) return 45;
-
-    // Calculate width of the active tab or the first available tab
-    const activeTabRef = tabRefs.current[activeTab] || tabRefs.current[0];
-    return activeTabRef ? activeTabRef.offsetWidth : 45;
-  }, [activeTab]);
-
-  // Calculate max scroll and constrained offset
-  const getMaxScrollOffset = useCallback(() => {
-    if (!tabRefs.current.length) return 0;
-    const tabContainer = document.querySelector('.tab-container') as HTMLElement | null;
-    const tabsContainer = document.querySelector('.tabs-container') as HTMLElement | null;
-    if (!tabContainer || !tabsContainer) return 0;
-    const containerWidth = tabContainer.clientWidth;
-    const tabsWidth = tabsContainer.scrollWidth;
-    return Math.min(0, containerWidth - tabsWidth);
-  }, []);
-
-  const getConstrainedOffset = useCallback((proposedOffset: number) => {
-    const maxRight = 0;
-    const maxLeft = getMaxScrollOffset();
-    return Math.max(maxLeft, Math.min(maxRight, proposedOffset));
-  }, [getMaxScrollOffset]);
-
-  // Calculate content height - on mobile take up most of the screen, on desktop use fixed height
   const contentHeight = windowHeight.isMobile
-    ? `${Math.max(windowHeight.vh * 0.6, 350)}px`
+    ? 'calc(100dvh - 2.5rem)'
     : `${Math.max(windowHeight.vh * 0.6, 400)}px`;
 
-  // Parse data with types
   const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
-
-  // Project data
-  const projects: ProjectDetails[] = useMemo(() => data.projects.map((p) => ({
-    ...p,
-    created: new Date(p.created)
-  })), [data.projects]);
-
-  // Folder icon image URL
+  const projects: ProjectDetails[] = useMemo(
+    () =>
+      data.projects.map((p) => ({
+        ...p,
+        created: new Date(p.created),
+      })),
+    [data.projects]
+  );
   const folderIconUrl = useMemo(() => data.folderIconUrl, [data.folderIconUrl]);
-
-  // Update the education data interface and content
   const educationData: EducationEntry[] = useMemo(() => data.educationData, [data.educationData]);
-
-  // Update the experience data
   const experienceData: ExperienceEntry[] = useMemo(() => data.experienceData, [data.experienceData]);
+  const awardsData: AwardCategory[] = useMemo(() => data.awardsData, [data.awardsData]);
+  const publications: Publication[] = useMemo(() => data.publications, [data.publications]);
+  const activitiesData: Activity[] = useMemo(() => data.activitiesData, [data.activitiesData]);
+  const courseworkCourses = useMemo(
+    () => educationData.find((edu) => edu.institution === 'University of California, Los Angeles')?.details.courses || [],
+    [educationData]
+  );
 
-  // Handle folder click
+  const routeSelectedItem = useMemo(() => {
+    const detailParam = searchParams?.get('detail');
+
+    if (detailParam?.startsWith('project-')) {
+      const id = Number(detailParam.replace('project-', ''));
+      return Number.isNaN(id) ? null : id;
+    }
+
+    if (detailParam?.startsWith('publication-')) {
+      const id = Number(detailParam.replace('publication-', ''));
+      return Number.isNaN(id) ? null : id;
+    }
+
+    return null;
+  }, [searchParams]);
+
+  const routeMobileActiveApp = useMemo(() => {
+    return searchParams?.get('tab') ? initialTab : null;
+  }, [searchParams, initialTab]);
+
+  const resolvedActiveTab = windowHeight.isMobile ? routeMobileActiveApp ?? activeTab : activeTab;
+  const effectiveSelectedItem = windowHeight.isMobile ? routeSelectedItem ?? selectedItem : selectedItem;
+  const effectiveMobileActiveApp = windowHeight.isMobile ? routeMobileActiveApp ?? mobileActiveApp : null;
+
+  useEffect(() => {
+    if (!windowHeight.isReady) return;
+
+    const name = TAB_INDEX_TO_NAME[activeTab] || 'experience';
+    const currentTab = searchParams?.get('tab');
+
+    if (windowHeight.isMobile) {
+      if (effectiveMobileActiveApp === null && currentTab) {
+        router.replace(pathname, { scroll: false });
+      }
+      return;
+    }
+
+    router.replace(`${pathname}?tab=${name}`, { scroll: false });
+  }, [activeTab, router, pathname, windowHeight.isMobile, windowHeight.isReady, effectiveMobileActiveApp, searchParams]);
+
   const handleItemClick = (event: React.MouseEvent, id: number) => {
-    // Stop propagation to prevent parent div's click handler from firing
     event.stopPropagation();
-    setSelectedItem(id === selectedItem ? null : id);
+    const nextSelected = id === effectiveSelectedItem ? null : id;
+
+    if (windowHeight.isMobile && effectiveMobileActiveApp !== null && (resolvedActiveTab === 3 || resolvedActiveTab === 4)) {
+      if (nextSelected === null) {
+        router.back();
+        return;
+      }
+
+      const tabName = TAB_INDEX_TO_NAME[resolvedActiveTab] || 'experience';
+      const detailType = resolvedActiveTab === 3 ? 'project' : 'publication';
+      router.push(`${pathname}?tab=${tabName}&detail=${detailType}-${id}`, { scroll: false });
+    }
+
+    setSelectedItem(nextSelected);
   };
 
-  // Handle container click to deselect
   const handleContainerClick = () => {
     setSelectedItem(null);
   };
 
- 
-
-  // Self-hosted wallpapers (hdqwalls blocks hotlinking). Add macos-mojave-day.jpg and macos-mojave-night.jpg to public/images/.
   const LIGHT_WALLPAPER_LOW = '/images/macos-mojave-day.jpg';
   const LIGHT_WALLPAPER_HIGH = '/images/macos-mojave-day.jpg';
   const DARK_WALLPAPER_LOW = '/images/macos-mojave-night.jpg';
@@ -231,179 +226,195 @@ const MacOSWindow = () => {
     DARK_WALLPAPER_LOW,
     DARK_WALLPAPER_HIGH,
     getBlurDataURL(LIGHT_WALLPAPER_LOW),
-    getBlurDataURL(DARK_WALLPAPER_LOW),
+    getBlurDataURL(DARK_WALLPAPER_LOW)
   );
-
-  // Update the awards data
-  const awardsData: AwardCategory[] = useMemo(() => data.awardsData, [data.awardsData]);
-
-  // Update the publications data
-  const publications: Publication[] = useMemo(() => data.publications, [data.publications]);
-
-  // Activities data
-  const activitiesData: Activity[] = useMemo(() => data.activitiesData, [data.activitiesData]);
 
   const toggleLockscreen = useCallback(() => {
     setLockscreenVisible(v => !v);
   }, []);
 
-  return (
-    <div
-      className={`
-        min-h-screen w-full flex items-start sm:items-center justify-center 
-        p-4 sm:p-8 relative
-      `}
-      style={backgroundStyle}
-    >
-      {!bgLoaded && <div className="fixed inset-0 bg-gray-200 dark:bg-[#1a1b26] z-0" />}
-      <div className="w-full max-w-3xl md:max-w-4xl lg:max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] relative z-10 transition-colors">
-        <WindowHeader onToggleLockscreen={toggleLockscreen} onOpenTerminal={() => setTerminalMode(true)} />
+  const openMobileApp = useCallback(
+    (tabId: number) => {
+      onTabChange(tabId);
+      router.push(`${pathname}?tab=${TAB_INDEX_TO_NAME[tabId] || 'experience'}`, { scroll: false });
+      setMobileActiveApp(tabId);
+    },
+    [onTabChange, router, pathname]
+  );
 
-        <Toolbar
-          onBack={handleBack}
-          onForward={handleForward}
-          canBack={currentHistoryIndex !== 0}
-          canForward={currentHistoryIndex < tabHistory.length - 1}
-          showArchive={activeTab === 5}
-          onOpenSearch={() => setIsSearchOpen(true)}
+  const closeMobileApp = useCallback(() => {
+    setSelectedItem(null);
+    setMobileActiveApp(null);
+    router.replace(pathname, { scroll: false });
+  }, [router, pathname]);
+
+  const closeDetailView = useCallback(() => {
+    if (windowHeight.isMobile && searchParams?.get('detail')) {
+      router.back();
+      return;
+    }
+    setSelectedItem(null);
+  }, [windowHeight.isMobile, searchParams, router]);
+
+  const renderActiveTabContent = () => (
+    <>
+      {resolvedActiveTab === 0 && <ExperienceList experienceData={experienceData} />}
+      {resolvedActiveTab === 1 && <AwardsMasonry awardsData={awardsData} />}
+      {resolvedActiveTab === 2 && (
+        <EducationList
+          educationData={educationData}
+          courseworkHref={windowHeight.isMobile ? '/experience?tab=education&detail=coursework' : '/experience/coursework'}
         />
-
-        <TabsBar
-          tabs={tabs}
-          activeTab={activeTab}
-          isMobile={windowHeight.isMobile}
-          showMobileMenu={showMobileMenu}
-          onToggleMobileMenu={() => setShowMobileMenu(!showMobileMenu)}
-          onSelect={onTabChange}
-          mobileMenuRef={mobileMenuRef}
+      )}
+      {resolvedActiveTab === 3 && (
+        <ProjectsGrid
+          projects={projects}
+          selectedItem={effectiveSelectedItem}
+          onItemClick={handleItemClick}
+          folderIconUrl={folderIconUrl}
         />
+      )}
+      {resolvedActiveTab === 4 && (
+        <PublicationsGrid publications={publications} selectedId={effectiveSelectedItem} onItemClick={handleItemClick} />
+      )}
+      {resolvedActiveTab === 5 && <ActivitiesList activities={activitiesData} />}
+    </>
+  );
 
-        {/* Sidebar and content */}
-        <div className="flex relative" style={{ height: contentHeight }}>
+  const selectedProject = useMemo(
+    () => (effectiveSelectedItem && resolvedActiveTab === 3 ? projects.find((project) => project.id === effectiveSelectedItem) ?? null : null),
+    [resolvedActiveTab, projects, effectiveSelectedItem]
+  );
 
-          {/* Main content */}
-          <div
-            ref={contentRef}
-            onTouchStart={windowHeight.isMobile ? handleTouchStart : undefined}
-            onTouchMove={windowHeight.isMobile ? handleTouchMove : undefined}
-            onTouchEnd={windowHeight.isMobile ? handleTouchEnd : undefined}
-            className={`
-            flex-1 p-4 bg-white dark:bg-[#1e1e1e] overflow-y-auto transition-all duration-300
-            ${windowHeight.isMobile && selectedItem && activeTab === 3 ? 'hidden' : ''}
-            ${!windowHeight.isMobile && selectedItem && activeTab === 3 ? 'pr-72' : ''}
-          `}
-            onClick={handleContainerClick}
-            style={{ height: contentHeight }}
-          >
-            <div className="text-lg mb-2 font-medium text-gray-800 dark:text-gray-200 font-['Raleway']">
-              {tabs[activeTab].title}
-            </div>
-            <div className="text-gray-700 dark:text-gray-400 mb-4 font-['Raleway'] text-sm">
-              {tabs[activeTab].content}
-            </div>
+  const selectedPublication = useMemo(
+    () => (effectiveSelectedItem && resolvedActiveTab === 4 ? publications.find((publication) => publication.id === effectiveSelectedItem) ?? null : null),
+    [resolvedActiveTab, publications, effectiveSelectedItem]
+  );
 
-            {/* Experience Tab */}
-            {activeTab === 0 && <ExperienceList experienceData={experienceData} />}
+  const mobileApps = useMemo<MobileAppDefinition[]>(
+    () => [
+      { title: 'Awards', iconName: 'awards', gradient: MOBILE_APP_GRADIENTS[0], action: () => openMobileApp(1) },
+      { title: 'Experience', iconName: 'experience', gradient: MOBILE_APP_GRADIENTS[1], action: () => openMobileApp(0) },
+      { title: 'Projects', iconName: 'projects', gradient: MOBILE_APP_GRADIENTS[2], action: () => openMobileApp(3) },
+      { title: 'Education', iconName: 'education', gradient: MOBILE_APP_GRADIENTS[3], action: () => openMobileApp(2) },
+      { title: 'Publications', iconName: 'publications', gradient: MOBILE_APP_GRADIENTS[4], action: () => openMobileApp(4) },
+      { title: 'Activities', iconName: 'activities', gradient: MOBILE_APP_GRADIENTS[5], action: () => openMobileApp(5) },
+      {
+        title: isDark ? 'Light Mode' : 'Dark Mode',
+        iconName: 'dark-mode',
+        gradient: MOBILE_APP_GRADIENTS[6],
+        action: toggleTheme,
+      },
+    ],
+    [openMobileApp, toggleTheme, isDark]
+  );
+  const isCourseworkDetail = resolvedActiveTab === 2 && searchParams?.get('detail') === 'coursework';
 
-            {/* Awards Tab */}
-            {activeTab === 1 && <AwardsMasonry awardsData={awardsData} />}
+  const terminalOverlay = terminalMode ? (
+    <TerminalOverlay
+      isMobile={windowHeight.isMobile}
+      inputValue={terminalInput}
+      onInputChange={setTerminalInput}
+      onKeyDown={onKeyDown}
+      outputLines={terminalOutput}
+      inputRef={terminalInputRef}
+      outputRef={terminalOutputRef}
+    />
+  ) : null;
 
-            {/* Education Tab */}
-            {activeTab === 2 && <EducationList educationData={educationData} />}
-
-            {/* Project Folders (MacOS styled) */}
-            {activeTab === 3 && (
-              <ProjectsGrid
-                projects={projects}
-                selectedItem={selectedItem}
-                onItemClick={handleItemClick}
-                folderIconUrl={folderIconUrl}
-              />
-            )}
-
-            {/* Publications Tab */}
-            {activeTab === 4 && (
-              <PublicationsGrid publications={publications} selectedId={selectedItem} onItemClick={handleItemClick} />
-            )}
-
-            {/* Activities Tab */}
-            {activeTab === 5 && <ActivitiesList activities={activitiesData} />}
-          </div>
-
-          {/* Detail View */}
-          {selectedItem && activeTab === 3 && (
-            <ProjectDetailView
-              project={projects.find(p => p.id === selectedItem) as ProjectDetails}
-              onClose={() => setSelectedItem(null)}
-              isMobile={windowHeight.isMobile}
-            />
-          )}
-
-          {/* Add Publication Detail View */}
-          {selectedItem && activeTab === 4 && (
-            <PublicationDetailView
-              publication={publications.find(p => p.id === selectedItem) as Publication}
-              onClose={() => setSelectedItem(null)}
-              isMobile={windowHeight.isMobile}
-            />
-          )}
-        </div>
-
-        {/* Status bar */}
-        <div className={`
-          bg-gray-50 dark:bg-[#181818] border-t border-gray-200 dark:border-gray-700 px-4 py-1 text-xs text-gray-500 dark:text-gray-400 
-          flex justify-between font-['Raleway'] transition-colors
-          ${windowHeight.isMobile && selectedItem && activeTab === 3 ? 'hidden' : ''}
-        `}>
-          <span>
-            {activeTab === 0 ? `${experienceData.length} items` :
-              activeTab === 1 ? `${awardsData.reduce((sum, { awards }) => sum + awards.length, 0)} items` :
-                activeTab === 2 ? `${educationData.length} items` :
-                  activeTab === 3 ? `${projects.length} items` :
-                    activeTab === 4 ? `${publications.length} items` :
-                      `${activitiesData.length} items`} <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
-          </span>
-          <span className="flex flex-col items-end">
-            <span>{new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>
-            <span>{new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-          </span>
-        </div>
+  if (!windowHeight.isReady) {
+    return (
+      <div className="relative min-h-[100dvh] w-full" style={backgroundStyle}>
+        {!bgLoaded && <div className="fixed inset-0 z-0 bg-gray-200 dark:bg-[#1a1b26]" />}
       </div>
-      {lockscreenVisible && !windowHeight.isMobile && (
-        <DesktopLockscreen onUnlock={toggleLockscreen} />
-      )}
-      {lockscreenVisible && windowHeight.isMobile && (
-        <IOSLockscreen onUnlock={toggleLockscreen} />
-      )}
-      {terminalMode && (
-        <TerminalOverlay
-          isMobile={windowHeight.isMobile}
-          inputValue={terminalInput}
-          onInputChange={setTerminalInput}
-          onKeyDown={onKeyDown}
-          outputLines={terminalOutput}
-          inputRef={terminalInputRef}
-          outputRef={terminalOutputRef}
-        />
-      )}
-      {/* Reuse search overlay from hero; enable in-component tab navigation when targeting experience */}
-      <SearchOverlay
-        open={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
-        navigateInSkeumorphic={(tabName: string) => {
-          const map: Record<string, number> = {
-            experience: 0,
-            awards: 1,
-            education: 2,
-            projects: 3,
-            publications: 4,
-            activities: 5,
-          };
-          const idx = map[String(tabName).toLowerCase()];
-          if (typeof idx === 'number') onTabChange(idx);
-        }}
+    );
+  }
+
+  if (windowHeight.isMobile) {
+    return (
+      <SkeumorphicMobileShell
+        activeTab={resolvedActiveTab}
+        backgroundStyle={backgroundStyle}
+        bgLoaded={bgLoaded}
+        contentRef={contentRef}
+        courseworkCourses={courseworkCourses}
+        isCourseworkDetail={isCourseworkDetail}
+        isDark={isDark}
+        lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={toggleLockscreen} /> : null}
+        mobileActiveApp={effectiveMobileActiveApp}
+        mobileApps={mobileApps}
+        now={now}
+        onBackToEducation={() => router.back()}
+        onCloseApp={closeMobileApp}
+        onCloseDetailView={closeDetailView}
+        onContainerClick={handleContainerClick}
+        onOpenSearch={() => setIsSearchOpen(true)}
+        onOpenTerminal={() => setTerminalMode(true)}
+        onToggleLockscreen={toggleLockscreen}
+        renderActiveTabContent={renderActiveTabContent}
+        searchOverlay={
+          <SearchOverlay
+            open={isSearchOpen}
+            onClose={() => setIsSearchOpen(false)}
+            navigateInSkeumorphic={(tabName: string) => {
+              const idx = TAB_NAME_TO_INDEX[String(tabName).toLowerCase()];
+              if (typeof idx === 'number') {
+                openMobileApp(idx);
+              }
+            }}
+          />
+        }
+        selectedProject={selectedProject}
+        selectedPublication={selectedPublication}
+        tabs={tabs}
+        terminalOverlay={terminalOverlay}
       />
-    </div>
+    );
+  }
+
+  return (
+    <SkeumorphicDesktopShell
+      activeTab={resolvedActiveTab}
+      activitiesCount={activitiesData.length}
+      awardsCount={awardsData.reduce((sum, { awards }) => sum + awards.length, 0)}
+      backgroundStyle={backgroundStyle}
+      bgLoaded={bgLoaded}
+      canBack={currentHistoryIndex !== 0}
+      canForward={currentHistoryIndex < tabHistory.length - 1}
+      contentHeight={contentHeight}
+      contentRef={contentRef}
+      educationCount={educationData.length}
+      experienceCount={experienceData.length}
+      lockscreenOverlay={lockscreenVisible ? <DesktopLockscreen onUnlock={toggleLockscreen} /> : null}
+      mobileMenuRef={mobileMenuRef}
+      onBack={handleBack}
+      onCloseDetailView={closeDetailView}
+      onContainerClick={handleContainerClick}
+      onForward={handleForward}
+      onOpenSearch={() => setIsSearchOpen(true)}
+      onOpenTerminal={() => setTerminalMode(true)}
+      onTabChange={onTabChange}
+      onToggleLockscreen={toggleLockscreen}
+      onToggleMobileMenu={() => setShowMobileMenu((current) => !current)}
+      projectsCount={projects.length}
+      publicationsCount={publications.length}
+      renderActiveTabContent={renderActiveTabContent}
+      searchOverlay={
+        <SearchOverlay
+          open={isSearchOpen}
+          onClose={() => setIsSearchOpen(false)}
+          navigateInSkeumorphic={(tabName: string) => {
+            const idx = TAB_NAME_TO_INDEX[String(tabName).toLowerCase()];
+            if (typeof idx === 'number') onTabChange(idx);
+          }}
+        />
+      }
+      selectedProject={selectedProject}
+      selectedPublication={selectedPublication}
+      showMobileMenu={showMobileMenu}
+      tabs={tabs}
+      terminalOverlay={terminalOverlay}
+    />
   );
 };
 

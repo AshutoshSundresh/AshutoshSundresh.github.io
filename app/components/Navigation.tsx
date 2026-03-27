@@ -143,6 +143,9 @@ const Navigation = () => {
         ? 'opacity-0 translate-y-20 pointer-events-none' 
         : 'opacity-100 translate-y-0';
     } else {
+      if (isExperienceActive) {
+        return 'opacity-0 translate-y-32 pointer-events-none';
+      }
       // Mobile behavior - slide down out of view when detail view is open
       return isDetailViewOpen 
         ? 'opacity-0 translate-y-32 pointer-events-none' 

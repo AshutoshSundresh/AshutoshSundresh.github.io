@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
 
-function EducationList({ educationData }: EducationListProps) {
+function EducationList({ educationData, courseworkHref = '/experience/coursework' }: EducationListProps) {
   return (
     <div className="mt-4 space-y-6">
         {educationData.map((edu) => (
@@ -75,7 +75,7 @@ function EducationList({ educationData }: EducationListProps) {
             <div className="pt-2 flex gap-4">
               {edu.details.courses && edu.details.courses.length > 0 && (
                 <Link
-                  href="/experience/coursework"
+                  href={courseworkHref}
                   className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center transition-colors"
                 >
                   View Coursework →
