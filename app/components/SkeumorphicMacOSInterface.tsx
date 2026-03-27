@@ -65,7 +65,6 @@ const MacOSWindow = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [mobileActiveApp, setMobileActiveApp] = useState<number | null>(null);
-  const [now, setNow] = useState(() => new Date());
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const isInternalMobileNavigationRef = useRef(false);
@@ -110,17 +109,18 @@ const MacOSWindow = () => {
     setSelectedItem(null);
   }, [activeTab]);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  useClickOutside(contentRef as React.RefObject<HTMLElement | null>, (event) => {
+  const handleOutsideContentClick = useCallback((event: MouseEvent) => {
     const detailView = document.querySelector('[data-detail-view]');
     if (detailView && detailView.contains(event.target as Node)) return;
     setSelectedItem(null);
-  });
-  useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, () => setShowMobileMenu(false));
+  }, []);
+
+  const handleOutsideMobileMenuClick = useCallback(() => {
+    setShowMobileMenu(false);
+  }, []);
+
+  useClickOutside(contentRef as React.RefObject<HTMLElement | null>, handleOutsideContentClick);
+  useClickOutside(mobileMenuRef as React.RefObject<HTMLElement | null>, handleOutsideMobileMenuClick);
 
   const onTabChange = useCallback(
     (index: number) => {
@@ -436,7 +436,6 @@ const MacOSWindow = () => {
         lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={toggleLockscreen} /> : null}
         mobileActiveApp={effectiveMobileActiveApp}
         mobileApps={mobileApps}
-        now={now}
         onBackToEducation={() => router.back()}
         onCloseApp={closeMobileApp}
         onCloseDetailView={closeDetailView}

@@ -22,7 +22,6 @@ interface SkeumorphicMobileShellProps {
   lockscreenOverlay: ReactNode;
   mobileActiveApp: number | null;
   mobileApps: MobileAppDefinition[];
-  now: Date;
   onBackToEducation: () => void;
   onCloseApp: () => void;
   onCloseDetailView: () => void;
@@ -41,10 +40,38 @@ interface SkeumorphicMobileShellProps {
 type AppLaunchFrame = {
   top: number;
   left: number;
-  right: number;
-  bottom: number;
+  width: number;
+  height: number;
   borderRadius: number;
 };
+
+function MobileStatusBarClock({
+  mobileActiveApp,
+  isDark,
+}: {
+  mobileActiveApp: number | null;
+  isDark: boolean;
+}) {
+  const [now, setNow] = useState(() => new Date());
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(new Date()), 1000);
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-16 px-12">
+      <div
+        className={`flex h-full items-end justify-between pb-3 text-[0.82rem] font-semibold tracking-[0.01em] ${
+          mobileActiveApp === null ? 'text-white/95' : isDark ? 'text-white/95' : 'text-black/90'
+        }`}
+      >
+        <span>{now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
+        <span>{now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </div>
+    </div>
+  );
+}
 
 export default function SkeumorphicMobileShell({
   activeTab,
@@ -57,7 +84,6 @@ export default function SkeumorphicMobileShell({
   lockscreenOverlay,
   mobileActiveApp,
   mobileApps,
-  now,
   onBackToEducation,
   onCloseApp,
   onCloseDetailView,
@@ -94,18 +120,7 @@ export default function SkeumorphicMobileShell({
     );
   };
 
-  const renderMobileStatusBar = () => (
-    <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-13 px-12">
-      <div
-        className={`flex h-full items-end justify-between pb-3 text-[0.82rem] font-semibold tracking-[0.01em] ${
-          mobileActiveApp === null ? 'text-white/95' : isDark ? 'text-white/95' : 'text-black/90'
-        }`}
-      >
-        <span>{now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
-        <span>{now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-      </div>
-    </div>
-  );
+  const shouldRenderHome = mobileActiveApp === null || appLaunchFrame !== null;
 
   const renderMobileHome = () => (
     <div
@@ -114,7 +129,7 @@ export default function SkeumorphicMobileShell({
       }`}
       style={{
         transform: mobileActiveApp === null ? 'scale(1)' : 'scale(0.985)',
-        filter: mobileActiveApp === null ? 'blur(0px)' : 'blur(0.6px)',
+        filter: mobileActiveApp === null ? 'blur(0px)' : 'blur(0.35px)',
       }}
     >
       <svg width="0" height="0" aria-hidden="true" className="absolute">
@@ -150,8 +165,8 @@ export default function SkeumorphicMobileShell({
                 setAppLaunchFrame({
                   top: rect.top,
                   left: rect.left,
-                  right: window.innerWidth - rect.right,
-                  bottom: window.innerHeight - rect.bottom,
+                  width: rect.width,
+                  height: rect.height,
                   borderRadius: 22,
                 });
                 app.action();
@@ -232,126 +247,117 @@ export default function SkeumorphicMobileShell({
     </div>
   );
 
-  const renderMobileAppView = () => (
-    <motion.div
-      className="absolute inset-0 z-20"
-      initial={
-        appLaunchFrame
-          ? {
-              top: appLaunchFrame.top,
-              left: appLaunchFrame.left,
-              right: appLaunchFrame.right,
-              bottom: appLaunchFrame.bottom,
-              borderRadius: appLaunchFrame.borderRadius,
-              opacity: 0.92,
-            }
-          : {
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              borderRadius: 0,
-              opacity: 0,
-              scale: 0.985,
-            }
-      }
-      animate={{
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        borderRadius: 0,
-        opacity: 1,
-        scale: 1,
-      }}
-      exit={
-        appLaunchFrame
-          ? {
-              top: appLaunchFrame.top,
-              left: appLaunchFrame.left,
-              right: appLaunchFrame.right,
-              bottom: appLaunchFrame.bottom,
-              borderRadius: appLaunchFrame.borderRadius,
-              opacity: 0.9,
-              scale: 0.98,
-            }
-          : {
-              opacity: 0,
-              scale: 0.99,
-            }
-      }
-      transition={{
-        type: 'spring',
-        stiffness: 380,
-        damping: 34,
-        mass: 0.9,
-      }}
-      onAnimationComplete={() => {
-        if (mobileActiveApp !== null) {
-          setAppLaunchFrame(null);
+  const renderMobileAppView = () => {
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1;
+    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 1;
+    const initialMotion = appLaunchFrame
+      ? {
+          x: appLaunchFrame.left - (viewportWidth - appLaunchFrame.width) / 2,
+          y: appLaunchFrame.top - (viewportHeight - appLaunchFrame.height) / 2,
+          scaleX: appLaunchFrame.width / viewportWidth,
+          scaleY: appLaunchFrame.height / viewportHeight,
+          borderRadius: appLaunchFrame.borderRadius,
+          opacity: 0.92,
         }
-      }}
-      style={{ position: 'absolute' }}
-    >
-    <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden">
-      <div className="absolute inset-0 bg-white dark:bg-[#0f1115]" />
-      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#f4f5f8] to-transparent dark:from-[#171b22] dark:to-transparent" />
-      <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-        <div className="absolute inset-x-0 top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center">
-            <button
-              type="button"
-              onClick={isCourseworkDetail ? onBackToEducation : onCloseApp}
-              className="flex items-center justify-start gap-1 text-[0.95rem] font-medium text-[#007aff] dark:text-[#4da3ff]"
-            >
-              <ChevronLeft className="h-4 w-4" strokeWidth={2.5} />
-              <span>{isCourseworkDetail ? 'Education' : 'Home'}</span>
-            </button>
-            <div className="font-['Raleway'] text-[0.95rem] font-semibold text-gray-900 dark:text-gray-100">
-              {isCourseworkDetail ? 'Coursework' : tabs[activeTab].title}
+      : {
+          opacity: 0,
+          scale: 0.985,
+        };
+    const exitMotion = appLaunchFrame
+      ? {
+          x: appLaunchFrame.left - (viewportWidth - appLaunchFrame.width) / 2,
+          y: appLaunchFrame.top - (viewportHeight - appLaunchFrame.height) / 2,
+          scaleX: appLaunchFrame.width / viewportWidth,
+          scaleY: appLaunchFrame.height / viewportHeight,
+          borderRadius: appLaunchFrame.borderRadius,
+          opacity: 0.9,
+        }
+      : {
+          opacity: 0,
+          scale: 0.99,
+        };
+
+    return (
+      <motion.div
+        className="absolute inset-0 z-20"
+        initial={initialMotion}
+        animate={{
+          x: 0,
+          y: 0,
+          scaleX: 1,
+          scaleY: 1,
+          borderRadius: 0,
+          opacity: 1,
+          scale: 1,
+        }}
+        exit={exitMotion}
+        transition={{
+          type: 'spring',
+          stiffness: 380,
+          damping: 34,
+          mass: 0.9,
+        }}
+        onAnimationComplete={() => {
+          if (mobileActiveApp !== null) {
+            setAppLaunchFrame(null);
+          }
+        }}
+        style={{ position: 'absolute', transformOrigin: 'center center' }}
+      >
+        <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden">
+          <div className="absolute inset-0 bg-white dark:bg-[#0f1115]" />
+          <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#f4f5f8] to-transparent dark:from-[#171b22] dark:to-transparent" />
+          <div className="relative z-10 flex min-h-0 flex-1 flex-col">
+            <div className="absolute inset-x-0 top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
+              <div className="grid grid-cols-[1fr_auto_1fr] items-center">
+                <button
+                  type="button"
+                  onClick={isCourseworkDetail ? onBackToEducation : onCloseApp}
+                  className="flex items-center justify-start gap-1 text-[0.95rem] font-medium text-[#007aff] dark:text-[#4da3ff]"
+                >
+                  <ChevronLeft className="h-4 w-4" strokeWidth={2.5} />
+                  <span>{isCourseworkDetail ? 'Education' : 'Home'}</span>
+                </button>
+                <div className="font-['Raleway'] text-[0.95rem] font-semibold text-gray-900 dark:text-gray-100">
+                  {isCourseworkDetail ? 'Coursework' : tabs[activeTab].title}
+                </div>
+                <div />
+              </div>
             </div>
-            <div />
+
+            <div className="min-h-0 flex-1 overflow-hidden">
+              <div
+                ref={contentRef}
+                className={`h-full bg-white transition-colors dark:bg-[#0f1115] ${
+                  isCourseworkDetail ? 'overflow-hidden px-5 pb-8 pt-24' : 'overflow-y-auto px-5 pb-8 pt-24'
+                } ${selectedProject ? 'hidden' : ''}`}
+                onClick={onContainerClick}
+              >
+                {isCourseworkDetail ? <CourseworkPage courses={courseworkCourses} /> : renderActiveTabContent()}
+              </div>
+
+              {selectedProject && <ProjectDetailView project={selectedProject} onClose={onCloseDetailView} isMobile />}
+
+              {selectedPublication && (
+                <PublicationDetailView
+                  publication={selectedPublication}
+                  onClose={onCloseDetailView}
+                  isMobile
+                />
+              )}
+            </div>
           </div>
         </div>
-
-        <div className="min-h-0 flex-1 overflow-hidden">
-          <div
-            ref={contentRef}
-            className={`h-full bg-white transition-colors dark:bg-[#0f1115] ${
-              isCourseworkDetail ? 'overflow-hidden px-5 pb-8 pt-24' : 'overflow-y-auto px-5 pb-8 pt-24'
-            } ${selectedProject ? 'hidden' : ''}`}
-            onClick={onContainerClick}
-          >
-            {isCourseworkDetail ? <CourseworkPage courses={courseworkCourses} /> : renderActiveTabContent()}
-          </div>
-
-          {selectedProject && (
-            <ProjectDetailView
-              project={selectedProject}
-              onClose={onCloseDetailView}
-              isMobile
-            />
-          )}
-
-          {selectedPublication && (
-            <PublicationDetailView
-              publication={selectedPublication}
-              onClose={onCloseDetailView}
-              isMobile
-            />
-          )}
-        </div>
-      </div>
-    </div>
-    </motion.div>
-  );
+      </motion.div>
+    );
+  };
 
   return (
     <div className="relative min-h-[100dvh] w-full" style={backgroundStyle}>
       {!bgLoaded && <div className="fixed inset-0 z-0 bg-gray-200 dark:bg-[#1a1b26]" />}
-      {renderMobileStatusBar()}
+      <MobileStatusBarClock mobileActiveApp={mobileActiveApp} isDark={isDark} />
       <div className="relative z-10">
-        {renderMobileHome()}
+        {shouldRenderHome ? renderMobileHome() : null}
         <AnimatePresence mode="wait">
           {mobileActiveApp !== null ? <div key={`app-${mobileActiveApp}`}>{renderMobileAppView()}</div> : null}
         </AnimatePresence>

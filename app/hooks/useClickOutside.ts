@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 type MaybeArray<T> = T | T[];
 
@@ -6,6 +6,12 @@ export default function useClickOutside(
   refs: MaybeArray<React.RefObject<HTMLElement | null>>,
   handler: (event: MouseEvent) => void
 ) {
+  const handlerRef = useRef(handler);
+
+  useEffect(() => {
+    handlerRef.current = handler;
+  }, [handler]);
+
   useEffect(() => {
     const refArray = Array.isArray(refs) ? refs : [refs];
 
@@ -18,14 +24,14 @@ export default function useClickOutside(
         return el ? el.contains(target) : false;
       });
 
-      if (!clickedInside) handler(event);
+      if (!clickedInside) handlerRef.current(event);
     };
 
     document.addEventListener('mousedown', listener);
     return () => {
       document.removeEventListener('mousedown', listener);
     };
-  }, [refs, handler]);
+  }, [refs]);
 }
 
 
