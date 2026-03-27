@@ -75,7 +75,7 @@
       "id": 1,
       "institution": "University of California, Los Angeles",
       "degree": "BS in Computer Science",
-      "gpa": "3.87/4.00 GPA",
+      "gpa": "3.85/4.00 GPA",
       "period": "2024 - 2028",
       "icon": "/images/uclaengg.png",
       "institutionLink": "https://ucla.edu",
@@ -637,6 +637,151 @@
                 "day": "Thursday",
                 "startTime": "09:00",
                 "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "CS M152A",
+            "name": "Introductory Digital Design Laboratory",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Hands-on introductory digital design lab using simulation and CAD tools, with implementation and debugging of combinational and sequential logic circuits.",
+            "color": "#FF2D55",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM152A",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lab",
+                "day": "Wednesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 180",
+            "name": "Introduction to Algorithms and Complexity",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Introduction to design and analysis of algorithms, including divide-and-conquer, greedy methods, dynamic programming, complexity analysis, and NP-completeness.",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI180",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 188",
+            "name": "Special Courses in Computer Science: Artificial Intelligence for Human Interaction",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Human-computer interaction for AI systems, including user-centered design, mixed-initiative interfaces, prototyping, and evaluation of human-AI collaboration.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI188",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 33B",
+            "name": "Differential Equations",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Introduction to ordinary differential equations including first-order equations, second-order linear equations, power series solutions, and linear systems.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Tuesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1C",
+            "name": "Physics for Scientists and Engineers: Electrodynamics, Optics, and Special Relativity",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Electrodynamics and optics, including magnetic fields, Ampere and Faraday laws, inductance, AC circuits, Maxwell's equations, electromagnetic waves, and diffraction.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1C",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "16:50"
               }
             ]
           }
