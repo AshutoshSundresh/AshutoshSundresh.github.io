@@ -95,13 +95,15 @@ export default function SkeumorphicMobileShell({
   };
 
   const renderMobileStatusBar = () => (
-    <div
-      className={`pointer-events-none absolute inset-x-0 top-0 z-30 flex items-center justify-between px-7 pt-3 text-[0.82rem] font-semibold tracking-[0.01em] ${
-        mobileActiveApp === null ? 'text-white/95' : isDark ? 'text-white/95' : 'text-black/90'
-      }`}
-    >
-      <span>{now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
-      <span>{now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+    <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-13 px-12">
+      <div
+        className={`flex h-full items-end justify-between pb-3 text-[0.82rem] font-semibold tracking-[0.01em] ${
+          mobileActiveApp === null ? 'text-white/95' : isDark ? 'text-white/95' : 'text-black/90'
+        }`}
+      >
+        <span>{now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
+        <span>{now.toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+      </div>
     </div>
   );
 
@@ -138,7 +140,7 @@ export default function SkeumorphicMobileShell({
       <div className="absolute -top-20 -left-10 h-52 w-52 rounded-full bg-cyan-300/25 blur-3xl dark:bg-blue-500/20" />
       <div className="absolute top-1/3 -right-12 h-60 w-60 rounded-full bg-fuchsia-300/20 blur-3xl dark:bg-violet-500/20" />
 
-      <div className="relative z-10 flex min-h-[100dvh] flex-col px-5 pb-6 pt-8">
+      <div className="relative z-10 flex min-h-[100dvh] flex-col px-5 pb-6 pt-11">
         <div className="mt-4 grid grid-cols-4 gap-x-4 gap-y-6">
           {mobileApps.map((app) => (
             <button
@@ -195,8 +197,8 @@ export default function SkeumorphicMobileShell({
             <div className="pointer-events-none absolute left-8 top-0 h-10 w-16 rounded-full bg-white/22 blur-lg dark:bg-white/10" />
             <div className="pointer-events-none absolute bottom-0 left-6 right-6 h-6 rounded-full bg-black/8 blur-xl dark:bg-black/16" />
             <Link href="/" className="relative z-10 flex flex-1 items-center justify-center text-white/95">
-              <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[20px] bg-gradient-to-br from-sky-300/95 via-blue-500/95 to-indigo-600/95">
-                {renderIosIcon('home', 'h-7 w-7 text-white')}
+              <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-sky-300/95 via-blue-500/95 to-indigo-600/95">
+                {renderIosIcon('home', 'h-8 w-8 text-white')}
               </span>
             </Link>
             <button
@@ -205,8 +207,8 @@ export default function SkeumorphicMobileShell({
               className="relative z-10 flex flex-1 items-center justify-center text-white/95"
               aria-label="Open terminal"
             >
-              <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[20px] bg-gradient-to-br from-zinc-200/95 via-zinc-500/95 to-zinc-800/95">
-                {renderIosIcon('terminal', 'h-7 w-7 text-white')}
+              <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-zinc-200/95 via-zinc-500/95 to-zinc-800/95">
+                {renderIosIcon('terminal', 'h-8 w-8 text-white')}
               </span>
             </button>
             <button
@@ -215,13 +217,13 @@ export default function SkeumorphicMobileShell({
               className="relative z-10 flex flex-1 items-center justify-center text-white/95"
               aria-label="Lock screen"
             >
-              <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[20px] bg-gradient-to-br from-amber-200/95 via-orange-400/95 to-rose-500/95">
-                {renderIosIcon('lock', 'h-7 w-7 text-white')}
+              <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-amber-200/95 via-orange-400/95 to-rose-500/95">
+                {renderIosIcon('lock', 'h-8 w-8 text-white')}
               </span>
             </button>
             <a href="mailto:ashutoshsun@g.ucla.edu" className="relative z-10 flex flex-1 items-center justify-center text-white/95">
-              <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-[20px] bg-gradient-to-br from-emerald-300/95 via-teal-400/95 to-cyan-500/95">
-                {renderIosIcon('contact', 'h-7 w-7 text-white')}
+              <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-emerald-300/95 via-teal-400/95 to-cyan-500/95">
+                {renderIosIcon('contact', 'h-8 w-8 text-white')}
               </span>
             </a>
           </div>
@@ -293,9 +295,9 @@ export default function SkeumorphicMobileShell({
     >
     <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden">
       <div className="absolute inset-0 bg-white dark:bg-[#0f1115]" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#f4f5f8] to-transparent dark:from-[#171b22] dark:to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#f4f5f8] to-transparent dark:from-[#171b22] dark:to-transparent" />
       <div className="relative z-10 flex min-h-0 flex-1 flex-col">
-        <div className="sticky top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-12 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
+        <div className="sticky top-0 z-20 border-b border-black/5 bg-white/88 px-5 pb-3 pt-14 backdrop-blur-xl dark:border-white/8 dark:bg-[#101319]/82">
           <div className="grid grid-cols-[1fr_auto_1fr] items-center">
             <button
               type="button"
