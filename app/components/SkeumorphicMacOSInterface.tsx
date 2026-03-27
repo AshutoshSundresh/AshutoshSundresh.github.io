@@ -281,7 +281,14 @@ const MacOSWindow = () => {
       return;
     }
 
-    router.replace(`${pathname}?tab=${name}`, { scroll: false });
+    if (typeof window === 'undefined' || currentTab === name) return;
+
+    const params = new URLSearchParams(searchParams?.toString());
+    params.set('tab', name);
+    params.delete('detail');
+    const nextUrl = `${pathname}?${params.toString()}`;
+
+    window.history.replaceState(window.history.state, '', nextUrl);
   }, [activeTab, router, pathname, windowHeight.isMobile, windowHeight.isReady, effectiveMobileActiveApp, searchParams]);
 
   const handleItemClick = (event: React.MouseEvent, id: number) => {
