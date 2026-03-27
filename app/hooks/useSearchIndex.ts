@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import type { SearchRecord, SkeumorphicDataRoot, EducationGrade } from '../types';
-import skeuData from '../data/skeumorphicData.json';
+import type { SearchRecord, SkeumorphicExperienceData, EducationGrade } from '../types';
 
 let INDEX_CACHE: SearchRecord[] | null = null;
 
@@ -159,7 +158,7 @@ async function fetchAndParse(path: string): Promise<Document | null> {
   }
 }
 
-function buildIndexFromSkeumorphic(): SearchRecord[] {
+function buildIndexFromSkeumorphic(dataRoot: SkeumorphicExperienceData): SearchRecord[] {
   const records: SearchRecord[] = [];
   let counter = 0;
   try {
@@ -171,7 +170,6 @@ function buildIndexFromSkeumorphic(): SearchRecord[] {
       publications: '/experience?tab=publications',
       activities: '/experience?tab=activities',
     };
-    const dataRoot = skeuData as unknown as SkeumorphicDataRoot;
     if (Array.isArray(dataRoot.projects)) {
       for (const p of dataRoot.projects) {
         const title = `Project — ${p.name}`;
@@ -281,7 +279,8 @@ export default function useSearchIndex(open: boolean) {
     (async () => {
       setLoading(true);
       const index: SearchRecord[] = [];
-      index.push(...buildIndexFromSkeumorphic());
+      const skeuData = await import('../data/skeumorphicExperienceData.json');
+      index.push(...buildIndexFromSkeumorphic(skeuData.default as SkeumorphicExperienceData));
       const homeDoc = await fetchAndParse('/');
       if (homeDoc) index.push(...buildIndexFromDocument(homeDoc, '/'));
       const hrefs = new Set<string>();

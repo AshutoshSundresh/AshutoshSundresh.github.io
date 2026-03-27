@@ -15,7 +15,7 @@ function CourseworkContent() {
     // Dynamic import of JSON data - this will be loaded asynchronously
     async function loadCourseworkData() {
       try {
-        const skeumorphicData = await import('../../data/skeumorphicData.json');
+        const skeumorphicData = await import('../../data/skeumorphicExperienceData.json');
         const uclaEducation = skeumorphicData.default.educationData.find(
           (edu: { institution: string }) => edu.institution === 'University of California, Los Angeles'
         );

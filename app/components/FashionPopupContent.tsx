@@ -3,8 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
-import type { SkeumorphicDataRoot } from '../types';
-import skeuData from '../data/skeumorphicData.json';
+import type { SkeumorphicInterestsData } from '../types';
+import skeuData from '../data/skeumorphicInterests.json';
 
 const FASHION_SCREENSHOTS = [
   { file: "Screenshot 2026-03-26 174402.png", alt: "Fashion — photo 1" },
@@ -14,7 +14,7 @@ const FASHION_SCREENSHOTS = [
 
 export default function FashionPopupContent() {
   const blurb =
-    (skeuData as SkeumorphicDataRoot).interests?.Fashion ?? "";
+    (skeuData as SkeumorphicInterestsData).interests?.Fashion ?? "";
 
   return (
     <div className="font-['Raleway']">

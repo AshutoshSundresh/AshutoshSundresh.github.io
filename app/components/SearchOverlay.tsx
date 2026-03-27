@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import useAppOverlayState from '../hooks/useAppOverlayState';
-import type { SkeumorphicDataRoot, SearchRecord } from '../types';
+import type { SearchRecord, SkeumorphicSearchMeta } from '../types';
 import { Search, X } from 'lucide-react';
-import skeuData from '../data/skeumorphicData.json';
+import skeuSearchMeta from '../data/skeumorphicSearchMeta.json';
 import useSearchIndex from '../hooks/useSearchIndex';
 import useDebouncedValue from '../hooks/useDebouncedValue';
 
@@ -68,19 +68,19 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
 
   // Derive recommended tabs from JSON presence, in canonical order
   const recommendedTabs = useMemo(() => {
-    const dataRoot = skeuData as unknown as SkeumorphicDataRoot;
+    const dataRoot = skeuSearchMeta as SkeumorphicSearchMeta;
     const items: Array<{ key: string; title: string }> = [];
-    if (Array.isArray(dataRoot.experienceData) && dataRoot.experienceData.length)
+    if (dataRoot.experience)
       items.push({ key: 'experience', title: 'Experience' });
-    if (Array.isArray(dataRoot.awardsData) && dataRoot.awardsData.length)
+    if (dataRoot.awards)
       items.push({ key: 'awards', title: 'Awards' });
-    if (Array.isArray(dataRoot.educationData) && dataRoot.educationData.length)
+    if (dataRoot.education)
       items.push({ key: 'education', title: 'Education' });
-    if (Array.isArray(dataRoot.projects) && dataRoot.projects.length)
+    if (dataRoot.projects)
       items.push({ key: 'projects', title: 'Projects' });
-    if (Array.isArray(dataRoot.publications) && dataRoot.publications.length)
+    if (dataRoot.publications)
       items.push({ key: 'publications', title: 'Publications' });
-    if (Array.isArray(dataRoot.activitiesData) && dataRoot.activitiesData.length)
+    if (dataRoot.activities)
       items.push({ key: 'activities', title: 'Activities' });
     return items;
   }, []);

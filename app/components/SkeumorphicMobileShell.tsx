@@ -60,7 +60,7 @@ function MobileStatusBarClock({
   }, []);
 
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-16 px-12">
+    <div className="pointer-events-none absolute inset-x-0 top-0 z-30 h-13 px-12">
       <div
         className={`flex h-full items-end justify-between pb-3 text-[0.82rem] font-semibold tracking-[0.01em] ${
           mobileActiveApp === null ? 'text-white/95' : isDark ? 'text-white/95' : 'text-black/90'

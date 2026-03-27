@@ -14,9 +14,9 @@ import TerminalOverlay from './TerminalOverlay';
 import SearchOverlay from './SearchOverlay';
 import SkeumorphicDesktopShell from './SkeumorphicDesktopShell';
 import SkeumorphicMobileShell from './SkeumorphicMobileShell';
-import rawData from '../data/skeumorphicData.json';
+import rawData from '../data/skeumorphicExperienceData.json';
 import type {
-  SkeumorphicDataRoot,
+  SkeumorphicExperienceData,
   Project,
   Publication,
   Activity,
@@ -134,7 +134,7 @@ const MacOSWindow = () => {
     ? 'calc(100dvh - 2.5rem)'
     : `${Math.max(windowHeight.vh * 0.6, 400)}px`;
 
-  const data: SkeumorphicDataRoot = rawData as SkeumorphicDataRoot;
+  const data: SkeumorphicExperienceData = rawData as SkeumorphicExperienceData;
   const projects: ProjectDetails[] = useMemo(
     () =>
       data.projects.map((p) => ({

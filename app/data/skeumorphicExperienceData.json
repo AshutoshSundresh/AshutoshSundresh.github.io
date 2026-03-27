@@ -1,0 +1,1107 @@
+{
+  "folderIconUrl": "/images/folder.png",
+  "projects": [
+    {
+      "id": 1,
+      "name": "ShapeShiftOS",
+      "image": "/images/LOVUK1E.webp",
+      "caption": "Founder of Open-Source Android-Based Mobile Operating System",
+      "techstack": "Java, C, Go, Smali, Make",
+      "description": "An open-source Android-based mobile operating system for Qualcomm devices in 2020 and have maintained it since. Shipped custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, and upstreamed code to Google Material Components.",
+      "created": "2020-05-16",
+      "link": "https://github.com/shapeshiftos",
+      "stats": [
+        {
+          "label": "Downloads",
+          "value": "160,000+"
+        },
+        {
+          "label": "Countries",
+          "value": "160+"
+        },
+        {
+          "label": "Stars",
+          "value": "50+"
+        },
+        {
+          "label": "Open-Source Projects (SourceForge)",
+          "value": "Top 0.5%"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MiniR (Embedded R-Like Programming Language)",
+      "image": "/images/mini_r.png",
+      "caption": "Embedded R-like interpreter and REPL for Casio fx-CP400 calculators (C++20).",
+      "techstack": "C++20",
+      "description": "A from-scratch R-like interpreter and REPL intended for Casio fx-CP400 family of calculators, including a custom lexer, expression parser, and evaluator that support R-style vectors, matrices, data.frames, subsetting, recycling rules, NA/NaN/Inf semantics, and many core builtins. Designed a compact runtime with attribute-aware values and lightweight containers tuned for constrained embedded environments, plus a simple desktop CLI/REPL interface that can also be embedded as a library.",
+      "created": "2026-01-13",
+      "link": "https://github.com/AshutoshSundresh/MiniR-Holly-Hock2"
+    },
+    {
+      "id": 3,
+      "name": "ResumeIDE (LaTeX Desktop Editor)",
+      "image": "/images/resumeide.png",
+      "caption": "Open-Source Full-Stack LaTeX Resume Editor (Tauri, TypeScript, Rust)",
+      "techstack": "Rust, Tokio, Tauri, TypeScript",
+      "description": "A desktop LaTeX resume editor with live PDF preview using React 19 and Tauri 2. Implemented async Rust backend for real-time LaTeX compilation, Monaco Editor integration with syntax highlighting, system requirement detection with guidance, and cross-platform desktop deployment with native performance.",
+      "created": "2025-11-15",
+      "link": "https://github.com/AshutoshSundresh/latex-resume-editor"
+    },
+    {
+      "id": 4,
+      "name": "3D First-Person Pac-Man",
+      "image": "/images/3d-pacman-neon.png",
+      "caption": "3D First-Person Pac-Man Game with Advanced Rendering Pipeline",
+      "techstack": "Three.js, TypeScript, Vite",
+      "description": "A 3D first-person Pac-Man game with dual-camera rendering (main view + minimap) in a single render pass. Implemented post-processing pipeline with dynamic bloom effects, procedural environment maps for real-time reflections, spatial audio, and ghost AI with pathfinding across multiple behavioral states.",
+      "created": "2025-12-26",
+      "link": "https://github.com/AshutoshSundresh/three-js-first-person-pacman"
+    },
+    {
+      "id": 5,
+      "name": "Bibliotheque (Library Management System)",
+      "image": "/images/Screenshot-2025-06-02-181132.png",
+      "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
+      "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
+      "description": "A real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
+      "created": "2025-04-14",
+      "link": "https://github.com/Ashutosh-s-Test-Dumpster/library-management"
+    }
+  ],
+  "educationData": [
+    {
+      "id": 1,
+      "institution": "University of California, Los Angeles",
+      "degree": "BS in Computer Science",
+      "gpa": "3.85/4.00 GPA",
+      "period": "2024 - 2028",
+      "icon": "/images/uclaengg.png",
+      "institutionLink": "https://ucla.edu",
+      "details": {
+        "achievements": [
+          "Dean's Honors List"
+        ],
+        "courses": [
+          {
+            "code": "CS 1",
+            "name": "Freshman Computer Science Seminar",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Introduction to department resources and principal topics and key ideas in computer science and computer engineering.",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI1",
+            "schedule": [
+              {
+                "type": "seminar",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 32A",
+            "name": "Calculus of Several Variables",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Introduction to differential calculus of several variables, vector field theory.",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/MATH32A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Tuesday",
+                "startTime": "11:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 31",
+            "name": "Introduction to Computer Science I",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Introduction to computer science via theory, applications, and programming. Basic data types, operators and control structures.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/COMSCI31",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "LING 1",
+            "name": "Introduction to Study of Language",
+            "quarter": "Fall 2024",
+            "year": 2024,
+            "description": "Summary for general undergraduates of what is known about human language; biological basis of language, scientific study of language and human communication.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2024/LING1",
+            "schedule": [
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "15:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "ENG 1ML",
+            "name": "Introduction to Engineering Design: Machine Learning",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Introduction to machine learning using Python. Covers Python programming, machine learning fundamentals, and LaTeX. Students develop and train neural network image classifiers using PyTorch.",
+            "color": "#FFCC00",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1ML",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 32",
+            "name": "Introduction to Computer Science II",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Object-oriented software development. Abstract data type definition and use. Overloading, inheritance, polymorphism.",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI32",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1A",
+            "name": "Physics for Scientists and Engineers: Mechanics",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Motion, Newton laws, work, energy, linear and angular momentum, rotation, equilibrium, gravitation.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "12:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 35L",
+            "name": "Software Construction",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Fundamentals of tools and environments for software construction projects, particularly open-source development.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI35L",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 33",
+            "name": "Introduction to Computer Organization",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Introductory course on computer architecture, assembly language, and operating systems fundamentals.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI33",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "EDUC 10",
+            "name": "Introduction to Educational Issues and Scholarship",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Introduction to broad landscape of public education in U.S. Intended for those interested in educational research, policy, or teaching in both formal and informal settings.",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/EDUC10",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "10:50"
+              }
+            ]
+          },
+          {
+            "code": "ENG 1RK",
+            "name": "Introduction to Engineering Design: Rockets",
+            "quarter": "Spring 2025",
+            "year": 2025,
+            "description": "Introduction to rocket engineering, covering launch vehicle structure, trajectory, stability, and propulsion. Topics include computer-aided design, structural analysis, manufacturing, aerodynamics, and flight dynamics. Students design, build, test, and launch solid-propellant rockets.",
+            "color": "#FFCC00",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ENGR1RK",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 33A",
+            "name": "Linear Algebra and Applications",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Introduction to linear algebra: systems of linear equations, matrix algebra.",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "CS M51A",
+            "name": "Logic Design of Digital Systems",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Introduction to digital systems. Specification and implementation of combinational and sequential logic.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM51A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "08:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 32B",
+            "name": "Calculus of Several Variables",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Introduction to integral calculus of several variables, line and surface integrals.",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH32B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1B",
+            "name": "Physics for Scientists and Engineers: Oscillations, Waves, Electric and Magnetic Fields",
+            "quarter": "Fall 2025",
+            "year": 2025,
+            "description": "Fluid mechanics, oscillation, mechanical waves, and sound. Electric charge, field and potential, capacitors, and dielectrics. Currents and resistance, direct-current circuits.",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "08:00",
+                "endTime": "08:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 61",
+            "name": "Introduction to Discrete Structures",
+            "quarter": "Winter 2025",
+            "year": 2025,
+            "description": "Discrete structures commonly used in computer science.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH61",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "14:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 111",
+            "name": "Operating Systems Principles",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Operating systems principles including process management, memory management, file systems, and I/O.",
+            "color": "#FF3B30",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI111",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              },
+              {
+                "type": "lab",
+                "day": "Friday",
+                "startTime": "10:00",
+                "endTime": "10:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 174A",
+            "name": "Introduction to Computer Graphics",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to computer graphics including rendering, modeling, and animation.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI174A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 188",
+            "name": "Special Courses in Computer Science: Introduction to Robotics",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to robotics covering robot kinematics, dynamics, control, and perception.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI188",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 170E",
+            "name": "Introduction to Probability and Statistics 1: Probability",
+            "quarter": "Winter 2026",
+            "year": 2026,
+            "description": "Introduction to probability theory including random variables, distributions, and expectation.",
+            "color": "#5AC8FA",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH170E",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Thursday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "CS M152A",
+            "name": "Introductory Digital Design Laboratory",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Hands-on introductory digital design lab using simulation and CAD tools, with implementation and debugging of combinational and sequential logic circuits.",
+            "color": "#FF2D55",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM152A",
+            "schedule": [
+              {
+                "type": "lab",
+                "day": "Monday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lab",
+                "day": "Wednesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 180",
+            "name": "Introduction to Algorithms and Complexity",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Introduction to design and analysis of algorithms, including divide-and-conquer, greedy methods, dynamic programming, complexity analysis, and NP-completeness.",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI180",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "16:00",
+                "endTime": "17:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "12:00",
+                "endTime": "13:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 188",
+            "name": "Special Courses in Computer Science: Artificial Intelligence for Human Interaction",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Human-computer interaction for AI systems, including user-centered design, mixed-initiative interfaces, prototyping, and evaluation of human-AI collaboration.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCI188",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "10:00",
+                "endTime": "11:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "MATH 33B",
+            "name": "Differential Equations",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Introduction to ordinary differential equations including first-order equations, second-order linear equations, power series solutions, and linear systems.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33B",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Friday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Tuesday",
+                "startTime": "09:00",
+                "endTime": "09:50"
+              }
+            ]
+          },
+          {
+            "code": "PHYSICS 1C",
+            "name": "Physics for Scientists and Engineers: Electrodynamics, Optics, and Special Relativity",
+            "quarter": "Spring 2026",
+            "year": 2026,
+            "description": "Electrodynamics and optics, including magnetic fields, Ampere and Faraday laws, inductance, AC circuits, Maxwell's equations, electromagnetic waves, and diffraction.",
+            "color": "#FF9500",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/PHYSICS1C",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "16:50"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "institution": "Shiv Nadar School",
+      "location": "Faridabad, India",
+      "curriculum": "CBSE Curriculum",
+      "period": "2021 - 2024",
+      "gpa": "10.0/10.0 CGPA",
+      "icon": "/images/shivnadarschool.png",
+      "institutionLink": "https://shivnadarschool.edu.in/",
+      "archiveLink": "https://ashutoshsundresh.com/archive.html",
+      "details": {
+        "grades": [
+          {
+            "grade": "Grade 12",
+            "score": "97% (Education Minister's Award)"
+          },
+          {
+            "grade": "Grade 11",
+            "score": "94%"
+          },
+          {
+            "grade": "Grade 10",
+            "score": "99.2% (State Rank 1)"
+          }
+        ],
+        "achievements": [
+          "Valedictorian",
+          "AP Scholar with Distinction"
+        ],
+        "subjects": [
+          "Physics",
+          "Chemistry",
+          "Mathematics",
+          "Computer Science",
+          "English"
+        ]
+      }
+    }
+  ],
+  "experienceData": [
+    {
+      "id": 1,
+      "company": "UCLA Programmable Software Systems Lab",
+      "position": "Undergraduate Researcher",
+      "location": "Los Angeles, California, United States",
+      "period": "Feb 2026 - Present",
+      "icon": "/images/ucla_cs.jpg",
+      "companyLink": "https://angelhof.github.io/programmable-software-systems-lab.html",
+      "description": [
+        "Advised by Prof. Konstantinos Kallas, JVM runtime systems and serverless infrastructure"
+      ]
+    },
+    {
+      "id": 2,
+      "company": "Harvey",
+      "position": "Software Engineering Intern",
+      "location": "San Francisco, California, United States",
+      "period": "Jun 2025 - Sep 2025",
+      "icon": "/images/harvey_ai_logo.jpeg",
+      "companyLink": "https://harvey.ai/",
+      "description": [
+        "Embedded Experience Team, joined as part of the first ~60 engineers, agentic workflows architecture for Harvey's Microsoft Word add-in",
+        "Built workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
+        "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
+        "Built block-based execution engine with type-safe streaming of heterogeneous outputs (suggestions, text, files), workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation",
+        "Designed rubric-based SxS LLM evaluations with Legal Researchers and a Streamlit app to benchmark drafting quality"
+      ]
+    },
+    {
+      "id": 6,
+      "company": "Skylow",
+      "position": "Software Engineering Intern",
+      "location": "Berkeley, California, United States",
+      "period": "Jul 2024 - Sep 2024",
+      "icon": "/images/skylowai_logo.jpeg",
+      "companyLink": "https://skylow.ai/",
+      "description": [
+        "Founding Team (joined as part of the first ~5 engineers) at seed-stage LLM social platform out of Berkeley I&E / ACE@Berkeley",
+        "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
+        "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
+        "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",
+        "Set up Sentry exception monitoring and PostHog event tracking to analyze user session flows and frontend error patterns"
+      ]
+    },
+    {
+      "id": 3,
+      "company": "ShapeShiftOS",
+      "position": "Lead Software Engineer / Founder",
+      "period": "May 2020 - Apr 2024",
+      "icon": "/images/shapeshiftos.jpg",
+      "companyLink": "https://shapeshiftos.com/",
+      "description": [
+        "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
+        "Developed features including custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, upstream contributions to Google Material Components, etc.",
+        "Grew to 160,000+ downloads across 160+ countries organically with no marketing budget",
+        "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
+        "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
+      ]
+    }
+  ],
+  "awardsData": [
+    {
+      "id": 1,
+      "category": "Undergraduate",
+      "awards": [
+        {
+          "title": "USACO Gold",
+          "subtitle": "USA Computing Olympiad",
+          "year": "2026",
+          "icon": "/images/usaco.png",
+          "link": "https://usaco.org"
+        },
+        {
+          "title": "Kleiner Perkins Engineering Fellow",
+          "subtitle": "Kleiner Perkins",
+          "year": "2025",
+          "icon": "/images/kleiner_perkins_logo.jpeg",
+          "link": "https://fellows.kleinerperkins.com",
+          "description": "• Summer '25<br>• Selection Committee '26",
+          "highlight": "1 of 30",
+          "stats": "Out of 3,000+ applicants"
+        },
+        {
+          "title": "Upsilon Pi Epsilon Inductee",
+          "subtitle": "UCLA Computer Science",
+          "year": "2025",
+          "icon": "/images/ucla_upe_logo.jpeg",
+          "link": "https://upe.seas.ucla.edu/"
+        },
+        {
+          "title": "UCLA Merit Scholarships",
+          "subtitle": "UCLA",
+          "year": "2024-2028",
+          "description": "Stein Engineering Scholarship (2025), Shirley and Walter Wang Computer Science Scholarship (2024)",
+          "icon": "/images/UCLA-square-logo.jpg"
+        },
+        {
+          "title": "William F. Sharpe Technology Fellow",
+          "subtitle": "UCLA Alumni",
+          "year": "2025",
+          "icon": "/images/UCLA-square-logo.jpg",
+          "link": "https://alumni.ucla.edu/alumni-career-engagement-students/career-engagement-students-programs/sharpe-fellows-program/"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "High School",
+      "awards": [
+        {
+          "title": "Linguistics Olympiads",
+          "subtitle": "IIIT Hyderabad",
+          "year": "2023",
+          "highlight": "Top 25 in India",
+          "icon": "/images/iol_logo.jpeg",
+          "description": "• International Linguistics Olympiad (IOL) Finalists' Camp<br>• Asia Pacific Linguistics Olympiad (APLO) Indian Delegation",
+          "link": "https://ltrc.iiit.ac.in/plo/"
+        },
+        {
+          "title": "Regional Asian Math Olympiads",
+          "year": "2023-2024",
+          "icon": "/images/medal.png",
+          "description": "• Gold Medal in Philippines International Mathematical Olympics (World Rank 3)<br>• Silver Medal in Fermat Vietnam Mathematical Olympiad (World Rank 7)<br>• Bronze Medals in Southeast Asian Mathematical Olympiad and Hong Kong International Mathematical Olympiad",
+          "highlight": "Multiple Medals",
+          "link": "https://ashutoshsundresh.com/archive.html#awards"
+        },
+        {
+          "title": "Open Source Excellence and Community Leader",
+          "subtitle": "SourceForge File Hosting",
+          "year": "2023",
+          "icon": "/images/sourceforge-logo-png_seeklogo-333733.png",
+          "description": "Recognized for ShapeShiftOS being in the top 0.5% of all open-source projects globally by downloads",
+          "highlight": "160,000+ downloads",
+          "link": "https://sourceforge.net/projects/shapeshiftos/"
+        },
+        {
+          "title": "XDA Recognized Developer",
+          "year": "2021",
+          "icon": "/images/xda.png",
+          "description": "Recognized as the youngest Recognized Developer on the XDA Forums for Android Development (awarded at age 15) as of 2024",
+          "highlight": "Top 300",
+          "stats": "Out of 11 million users",
+          "link": "https://xdaforums.com/m/ashutosh-sundresh.7730292"
+        },
+        {
+          "title": "Board Exam Excellence",
+          "subtitle": "Central Board of Secondary Education",
+          "year": "2022-2024",
+          "icon": "/images/shivnadarschool.png",
+          "description": "• Sahodaya Utkrisht Puraskar (Education Minister's Award) in Grade 12<br>• State Rank 1 in Grade 10",
+          "highlight": "99.2% in Grade 10, 97% in Grade 12"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Standardized Tests",
+      "awards": [
+        {
+          "title": "SAT Perfect Math Score",
+          "subtitle": "The College Board",
+          "year": "2023",
+          "icon": "/images/collegeboard.png",
+          "highlight": "1580",
+          "stats": "800 Math, 780 Verbal"
+        },
+        {
+          "title": "TOEFL Excellence",
+          "subtitle": "ETS",
+          "year": "2023",
+          "icon": "/images/toeflibt.png",
+          "highlight": "119/120",
+          "stats": "Top 1% globally"
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "id": 2,
+      "title": "Effects of Short-Term Rental Services on the Global Housing Crisis",
+      "subtitle": "Ceteris Paribus, SRCC",
+      "year": "2024",
+      "icon": "/images/txt-file-icon-1213.png",
+      "description": "Analysis of Airbnb's impact on urban housing markets and local communities",
+      "authors": [
+        "Ashutosh Sundresh"
+      ],
+      "journal": "Ceteris Paribus, Shri Ram College of Commerce",
+      "link": "https://ecosocsrcc.com/analyzing-the-effects-of-short-term-rental-services-like-airbnb-on-the-housing-crisis-of-major-cities-around-the-world/"
+    }
+  ],
+  "activitiesData": [
+    {
+      "id": 5,
+      "title": "LA Hacks Technology Team Organizer",
+      "description": "Built web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon.",
+      "period": "Oct 2024 - Present",
+      "icon": "/images/lahacks_logo.jpeg",
+      "links": [
+        {
+          "text": "LA Hacks",
+          "url": "https://lahacks.com/"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Undergraduate Tutor",
+      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes at Upsilon Pi Epsilon.",
+      "links": [
+        {
+          "text": "Upsilon Pi Epsilon at UCLA",
+          "url": "https://upe.seas.ucla.edu/"
+        }
+      ],
+      "period": "Sep 2025 - Dec 2025",
+      "icon": "/images/ucla_upe_logo.jpeg"
+    },
+    {
+      "id": 2,
+      "title": "Open-Source Developer & Contributor",
+      "period": "2020 - Present",
+      "stats": [
+        {
+          "value": "5,000+",
+          "label": "Total Commits"
+        },
+        {
+          "value": "2,900+",
+          "label": "Contributions"
+        }
+      ],
+      "links": [
+        {
+          "text": "GitHub",
+          "url": "https://github.com/ashutoshsundresh"
+        },
+        {
+          "text": "XDA",
+          "url": "https://xdaforums.com/m/ashutosh-sundresh.7730292/"
+        }
+      ],
+      "icon": "/images/github.png"
+    },
+    {
+      "id": 6,
+      "title": "UCLA ELFIN CubeSat Ground Software Engineer",
+      "description": "Built ground control and thermal vacuum chamber (TVAC) software for UCLA ELFIN CubeSat (Experimental Space Physics Group).",
+      "period": "Jan 2025 - May 2025",
+      "icon": "/images/elfincubesat.jpg",
+      "links": [
+        {
+          "text": "ELFIN",
+          "url": "https://elfin.igpp.ucla.edu/"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "SRCC Writing Mentorship Program",
+      "period": "Aug 2024 - Sep 2024",
+      "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program with the Economics Society at Shri Ram College of Commerce, University of Delhi.",
+      "highlights": [
+        "Completed with highest distinction, finishing top 5 out of 105 participants"
+      ],
+      "links": [
+        {
+          "text": "Economics Society SRCC",
+          "url": "https://ecosocsrcc.com/"
+        }
+      ],
+      "icon": "/images/ecosocsrcc.png",
+      "collapsible": true
+    }
+  ]
+}

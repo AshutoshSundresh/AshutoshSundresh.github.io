@@ -197,7 +197,7 @@ export interface Activity {
   collapsible?: boolean;
 }
 
-export interface SkeumorphicDataRoot {
+export interface SkeumorphicExperienceData {
   folderIconUrl: string;
   projects: ProjectInput[];
   educationData: EducationEntry[];
@@ -205,8 +205,22 @@ export interface SkeumorphicDataRoot {
   awardsData: AwardCategory[];
   publications: Publication[];
   activitiesData: Activity[];
+}
+
+export interface SkeumorphicInterestsData {
   interests?: Record<string, string>;
 }
+
+export interface SkeumorphicSearchMeta {
+  experience: boolean;
+  awards: boolean;
+  education: boolean;
+  projects: boolean;
+  publications: boolean;
+  activities: boolean;
+}
+
+export interface SkeumorphicDataRoot extends SkeumorphicExperienceData, SkeumorphicInterestsData {}
 
 // ============================================================================
 // External API Models (Data formats from 3rd-party services)
