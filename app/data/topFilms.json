@@ -1,10 +1,5 @@
 [
   {
-    "title": "Avatar (2009)",
-    "filmUrl": "https://letterboxd.com/film/avatar/",
-    "posterUrl": "https://image.tmdb.org/t/p/w342/gKY6q7SjCkAU6FqvqWybDYgUKIF.jpg"
-  },
-  {
     "title": "Shutter Island (2010)",
     "filmUrl": "https://letterboxd.com/film/shutter-island/",
     "posterUrl": "https://image.tmdb.org/t/p/w342/nrmXQ0zcZUL8jFLrakWc90IR8z9.jpg"
@@ -23,6 +18,11 @@
     "title": "The Shawshank Redemption (1994)",
     "filmUrl": "https://letterboxd.com/film/the-shawshank-redemption/",
     "posterUrl": "https://image.tmdb.org/t/p/w342/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"
+  },
+  {
+    "title": "Parasite (2019)",
+    "filmUrl": "https://letterboxd.com/film/parasite-2019/",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
   },
   {
     "title": "The Prestige (2006)",
