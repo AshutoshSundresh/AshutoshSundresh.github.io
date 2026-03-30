@@ -722,37 +722,31 @@
             ]
           },
           {
-            "code": "MATH 33B",
-            "name": "Differential Equations",
+            "code": "ECE C147B",
+            "name": "Neural Networks and Deep Learning II",
             "quarter": "Spring 2026",
             "year": 2026,
-            "description": "Introduction to ordinary differential equations including first-order equations, second-order linear equations, power series solutions, and linear systems.",
+            "description": "Covers topics in deep learning including deep generative modeling, transformers, and deep reinforcement learning.",
             "color": "#AF52DE",
-            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/MATH33B",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ECENGRC147B",
             "schedule": [
               {
                 "type": "lecture",
                 "day": "Monday",
-                "startTime": "09:00",
-                "endTime": "09:50"
+                "startTime": "16:00",
+                "endTime": "17:50"
               },
               {
                 "type": "lecture",
                 "day": "Wednesday",
-                "startTime": "09:00",
-                "endTime": "09:50"
-              },
-              {
-                "type": "lecture",
-                "day": "Friday",
-                "startTime": "09:00",
-                "endTime": "09:50"
+                "startTime": "16:00",
+                "endTime": "17:50"
               },
               {
                 "type": "discussion",
-                "day": "Tuesday",
-                "startTime": "09:00",
-                "endTime": "09:50"
+                "day": "Friday",
+                "startTime": "13:00",
+                "endTime": "13:50"
               }
             ]
           },
