@@ -9,7 +9,7 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 const PUBLIC = path.join(ROOT, 'public');
 const DATA_DIR = path.join(ROOT, 'app', 'data');
-const SKELETON_JSON = path.join(DATA_DIR, 'skeumorphicData.json');
+const SKELETON_JSON = path.join(DATA_DIR, 'skeumorphicExperienceData.json');
 const TOP_FILMS_JSON = path.join(DATA_DIR, 'topFilms.json');
 const OUT_JSON = path.join(DATA_DIR, 'blurPlaceholders.json');
 
