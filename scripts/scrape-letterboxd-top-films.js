@@ -14,6 +14,27 @@ const LETTERBOXD_URL = 'https://letterboxd.com/ashsundresh/films/by/entry-rating
 const OUT_PATH = path.join(__dirname, '../app/data/topFilms.json');
 const TOP_N = 8;
 const TMDB_POSTER_BASE = 'https://image.tmdb.org/t/p/w342';
+const SCRAPE_RETRY_OPTIONS = { retries: 2, initialDelayMs: 2000 };
+const TMDB_RETRY_OPTIONS = { retries: 2, initialDelayMs: 1000 };
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function withRetry(task, { label, retries, initialDelayMs, factor = 2 }) {
+  let delayMs = initialDelayMs;
+  for (let attempt = 1; attempt <= retries + 1; attempt += 1) {
+    try {
+      return await task(attempt);
+    } catch (error) {
+      if (attempt > retries) throw error;
+      const detail = error instanceof Error ? error.message : String(error);
+      console.warn(`${label} failed on attempt ${attempt}/${retries + 1}: ${detail}. Retrying in ${delayMs}ms.`);
+      await sleep(delayMs);
+      delayMs *= factor;
+    }
+  }
+}
 
 function parseTitleYear(str) {
   const m = str.match(/^(.+?)\s*\((\d{4})\)\s*$/);
@@ -24,7 +45,20 @@ function parseTitleYear(str) {
 async function fetchTMDBPoster(apiKey, title) {
   const { title: q, year } = parseTitleYear(title);
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${encodeURIComponent(q)}${year ? '&year=' + year : ''}`;
-  const res = await fetch(url);
+  let res;
+  try {
+    res = await withRetry(async () => {
+      const response = await fetch(url);
+      if (response.status === 429 || response.status >= 500) {
+        throw new Error(`TMDB returned ${response.status}`);
+      }
+      return response;
+    }, { label: `TMDB lookup for "${q}"`, ...TMDB_RETRY_OPTIONS });
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    console.warn(`Skipping poster for "${title}" after retries: ${detail}`);
+    return null;
+  }
   if (!res.ok) return null;
   const data = await res.json();
   const first = data.results && data.results[0];
@@ -54,65 +88,70 @@ async function main() {
 
   let topFilms = [];
   try {
-    const page = await browser.newPage();
-    await page.setUserAgent(
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    );
-    await page.setViewport({ width: 1280, height: 800 });
+    topFilms = await withRetry(async () => {
+      const page = await browser.newPage();
+      try {
+        await page.setUserAgent(
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        );
+        await page.setViewport({ width: 1280, height: 800 });
 
-    await page.goto(LETTERBOXD_URL, { waitUntil: 'networkidle2', timeout: 30000 });
-    await page.waitForSelector('li.poster-container, .poster-list li, [data-film-slug]', { timeout: 10000 }).catch(() => null);
-    await page.evaluate(() => {
-      const grid = document.querySelector('.poster-list, [class*="poster-list"], .content .film-list');
-      if (grid) grid.scrollIntoView({ behavior: 'instant' });
-    });
-    await new Promise((r) => setTimeout(r, 2000));
+        await page.goto(LETTERBOXD_URL, { waitUntil: 'networkidle2', timeout: 30000 });
+        await page.waitForSelector('li.poster-container, .poster-list li, [data-film-slug]', { timeout: 10000 }).catch(() => null);
+        await page.evaluate(() => {
+          const grid = document.querySelector('.poster-list, [class*="poster-list"], .content .film-list');
+          if (grid) grid.scrollIntoView({ behavior: 'instant' });
+        });
+        await sleep(2000);
 
-    const films = await page.evaluate((topN) => {
-      function slugFromHref(href) {
-        if (!href) return '';
-        const m = href.match(/\/film\/([^/?#]+)/);
-        return m ? m[1].replace(/\/$/, '').trim() : '';
-      }
-      const seen = new Set();
-      const items = [];
-      const selectors = ['li.poster-container', '.poster-list li', 'ul.poster-list > li', 'li[class*="poster"]'];
-      let nodes = [];
-      for (const sel of selectors) {
-        nodes = document.querySelectorAll(sel);
-        if (nodes.length >= topN) break;
-      }
-      for (const li of nodes) {
-        if (items.length >= topN) break;
-        const link = li.querySelector('a[href*="/film/"]');
-        const href = link ? link.getAttribute('href') || '' : '';
-        let slug = (li.getAttribute('data-film-slug') || slugFromHref(href) || '').trim();
-        if (!slug || slug.includes('/') || seen.has(slug)) continue;
-        seen.add(slug);
-        const img = li.querySelector('img');
-        const title = (img && img.getAttribute('alt')) || li.querySelector('.frame-title')?.textContent?.trim() || slug.replace(/-/g, ' ');
-        items.push({ title: title || slug, filmUrl: 'https://letterboxd.com/film/' + slug + '/' });
-      }
-      if (items.length < topN) {
-        const links = document.querySelectorAll('a[href*="/film/"]');
-        for (const a of links) {
-          if (items.length >= topN) break;
-          const slug = slugFromHref(a.getAttribute('href') || '');
-          if (!slug || slug.includes('/') || seen.has(slug)) continue;
-          seen.add(slug);
-          const img = a.querySelector('img');
-          const title = (img && img.getAttribute('alt')) || a.textContent.trim() || slug.replace(/-/g, ' ');
-          items.push({ title: title || slug, filmUrl: 'https://letterboxd.com/film/' + slug + '/' });
+        const films = await page.evaluate((topN) => {
+          function slugFromHref(href) {
+            if (!href) return '';
+            const m = href.match(/\/film\/([^/?#]+)/);
+            return m ? m[1].replace(/\/$/, '').trim() : '';
+          }
+          const seen = new Set();
+          const items = [];
+          const selectors = ['li.poster-container', '.poster-list li', 'ul.poster-list > li', 'li[class*="poster"]'];
+          let nodes = [];
+          for (const sel of selectors) {
+            nodes = document.querySelectorAll(sel);
+            if (nodes.length >= topN) break;
+          }
+          for (const li of nodes) {
+            if (items.length >= topN) break;
+            const link = li.querySelector('a[href*="/film/"]');
+            const href = link ? link.getAttribute('href') || '' : '';
+            let slug = (li.getAttribute('data-film-slug') || slugFromHref(href) || '').trim();
+            if (!slug || slug.includes('/') || seen.has(slug)) continue;
+            seen.add(slug);
+            const img = li.querySelector('img');
+            const title = (img && img.getAttribute('alt')) || li.querySelector('.frame-title')?.textContent?.trim() || slug.replace(/-/g, ' ');
+            items.push({ title: title || slug, filmUrl: 'https://letterboxd.com/film/' + slug + '/' });
+          }
+          if (items.length < topN) {
+            const links = document.querySelectorAll('a[href*="/film/"]');
+            for (const a of links) {
+              if (items.length >= topN) break;
+              const slug = slugFromHref(a.getAttribute('href') || '');
+              if (!slug || slug.includes('/') || seen.has(slug)) continue;
+              seen.add(slug);
+              const img = a.querySelector('img');
+              const title = (img && img.getAttribute('alt')) || a.textContent.trim() || slug.replace(/-/g, ' ');
+              items.push({ title: title || slug, filmUrl: 'https://letterboxd.com/film/' + slug + '/' });
+            }
+          }
+          return items;
+        }, TOP_N);
+
+        if (films.length === 0) {
+          throw new Error('No films found.');
         }
+        return films.slice(0, TOP_N);
+      } finally {
+        await page.close();
       }
-      return items;
-    }, TOP_N);
-
-    if (films.length === 0) {
-      console.error('No films found.');
-      process.exit(1);
-    }
-    topFilms = films.slice(0, TOP_N);
+    }, { label: 'Letterboxd scrape', ...SCRAPE_RETRY_OPTIONS });
   } finally {
     await browser.close();
   }
