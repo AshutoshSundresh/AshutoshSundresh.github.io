@@ -823,6 +823,18 @@
   ],
   "experienceData": [
     {
+      "id": 0,
+      "company": "Brain Co.",
+      "position": "Software Engineering Intern",
+      "location": "San Francisco, California, United States",
+      "period": "Jun 2026 - Sep 2026",
+      "icon": "/images/brain_co.jpg",
+      "companyLink": "https://brain.co/",
+      "description": [
+        "AI Platform Team, first early career hire on the team"
+      ]
+    },
+    {
       "id": 1,
       "company": "UCLA Programmable Software Systems Lab",
       "position": "Undergraduate Researcher",
