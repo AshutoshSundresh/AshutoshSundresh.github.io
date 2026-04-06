@@ -641,29 +641,6 @@
             ]
           },
           {
-            "code": "CS M152A",
-            "name": "Introductory Digital Design Laboratory",
-            "quarter": "Spring 2026",
-            "year": 2026,
-            "description": "Hands-on introductory digital design lab using simulation and CAD tools, with implementation and debugging of combinational and sequential logic circuits.",
-            "color": "#FF2D55",
-            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/COMSCIM152A",
-            "schedule": [
-              {
-                "type": "lab",
-                "day": "Monday",
-                "startTime": "10:00",
-                "endTime": "11:50"
-              },
-              {
-                "type": "lab",
-                "day": "Wednesday",
-                "startTime": "10:00",
-                "endTime": "11:50"
-              }
-            ]
-          },
-          {
             "code": "CS 180",
             "name": "Introduction to Algorithms and Complexity",
             "quarter": "Spring 2026",
