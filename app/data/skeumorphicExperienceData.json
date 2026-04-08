@@ -699,13 +699,13 @@
             ]
           },
           {
-            "code": "ECE C147B",
+            "code": "ECE C247B (Graduate)",
             "name": "Neural Networks and Deep Learning II",
             "quarter": "Spring 2026",
             "year": 2026,
             "description": "Covers topics in deep learning including deep generative modeling, transformers, and deep reinforcement learning.",
             "color": "#AF52DE",
-            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ECENGRC147B",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2025/ECENGRC247B",
             "schedule": [
               {
                 "type": "lecture",
