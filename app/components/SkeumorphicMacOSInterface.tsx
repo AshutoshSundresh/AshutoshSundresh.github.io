@@ -49,6 +49,8 @@ const TABS: SkeumorphicTab[] = [
   { id: 5, title: 'Activities', content: 'Extracurricular and leadership activities' },
 ];
 
+type MobileOverlayKind = 'terminal' | 'lockscreen';
+
 const MacOSWindow = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -188,6 +190,13 @@ const MacOSWindow = () => {
       : null
     : null;
 
+  const getMobileOverlayFromHistory = useCallback((): MobileOverlayKind | null => {
+    if (typeof window === 'undefined') return null;
+
+    const overlay = (window.history.state ?? {}).__skeuOverlay;
+    return overlay === 'terminal' || overlay === 'lockscreen' ? overlay : null;
+  }, []);
+
   const markCurrentMobileHistoryEntry = useCallback(
     (screen: 'home' | 'app' | 'detail', tab?: string | null, detail?: string | null) => {
       if (typeof window === 'undefined') return;
@@ -200,6 +209,7 @@ const MacOSWindow = () => {
           __skeuScreen: screen,
           __skeuTab: tab ?? null,
           __skeuDetail: detail ?? null,
+          __skeuOverlay: null,
         },
         '',
         window.location.href
@@ -238,6 +248,7 @@ const MacOSWindow = () => {
         __skeuScreen: 'home',
         __skeuTab: null,
         __skeuDetail: null,
+        __skeuOverlay: null,
       },
       '',
       pathname
@@ -249,6 +260,7 @@ const MacOSWindow = () => {
         __skeuScreen: 'app',
         __skeuTab: tab,
         __skeuDetail: null,
+        __skeuOverlay: null,
       },
       '',
       appUrl
@@ -261,6 +273,7 @@ const MacOSWindow = () => {
           __skeuScreen: 'detail',
           __skeuTab: tab,
           __skeuDetail: detail,
+          __skeuOverlay: null,
         },
         '',
         detailUrl
@@ -290,6 +303,80 @@ const MacOSWindow = () => {
 
     window.history.replaceState(window.history.state, '', nextUrl);
   }, [activeTab, router, pathname, windowHeight.isMobile, windowHeight.isReady, effectiveMobileActiveApp, searchParams]);
+
+  useEffect(() => {
+    if (!windowHeight.isReady || typeof window === 'undefined') return;
+
+    const syncOverlayState = () => {
+      const activeOverlay = getMobileOverlayFromHistory();
+      setTerminalMode(activeOverlay === 'terminal');
+      setLockscreenVisible(activeOverlay === 'lockscreen');
+    };
+
+    syncOverlayState();
+    window.addEventListener('popstate', syncOverlayState);
+    return () => window.removeEventListener('popstate', syncOverlayState);
+  }, [windowHeight.isReady, getMobileOverlayFromHistory, setTerminalMode]);
+
+  useEffect(() => {
+    if (!windowHeight.isReady || typeof window === 'undefined') return;
+
+    const currentOverlay = getMobileOverlayFromHistory();
+    const overlayUrl = windowHeight.isMobile ? pathname : window.location.href;
+
+    if (terminalMode) {
+      if (currentOverlay !== 'terminal') {
+        const currentState = window.history.state ?? {};
+        window.history.pushState(
+          {
+            ...currentState,
+            __skeuManaged: true,
+            __skeuScreen: 'home',
+            __skeuTab: null,
+            __skeuDetail: null,
+            __skeuOverlay: 'terminal',
+          },
+          '',
+          overlayUrl
+        );
+      }
+      return;
+    }
+
+    if (currentOverlay === 'terminal') {
+      window.history.back();
+    }
+  }, [terminalMode, windowHeight.isReady, windowHeight.isMobile, pathname, getMobileOverlayFromHistory]);
+
+  useEffect(() => {
+    if (!windowHeight.isReady || typeof window === 'undefined') return;
+
+    const currentOverlay = getMobileOverlayFromHistory();
+    const overlayUrl = windowHeight.isMobile ? pathname : window.location.href;
+
+    if (lockscreenVisible) {
+      if (currentOverlay !== 'lockscreen') {
+        const currentState = window.history.state ?? {};
+        window.history.pushState(
+          {
+            ...currentState,
+            __skeuManaged: true,
+            __skeuScreen: 'home',
+            __skeuTab: null,
+            __skeuDetail: null,
+            __skeuOverlay: 'lockscreen',
+          },
+          '',
+          overlayUrl
+        );
+      }
+      return;
+    }
+
+    if (currentOverlay === 'lockscreen') {
+      window.history.back();
+    }
+  }, [lockscreenVisible, windowHeight.isReady, windowHeight.isMobile, pathname, getMobileOverlayFromHistory]);
 
   const handleItemClick = (event: React.MouseEvent, id: number) => {
     event.stopPropagation();
@@ -329,8 +416,13 @@ const MacOSWindow = () => {
   );
 
   const toggleLockscreen = useCallback(() => {
+    if (lockscreenVisible && typeof window !== 'undefined' && getMobileOverlayFromHistory() === 'lockscreen') {
+      window.history.back();
+      return;
+    }
+
     setLockscreenVisible(v => !v);
-  }, []);
+  }, [lockscreenVisible, getMobileOverlayFromHistory]);
 
   const openMobileApp = useCallback(
     (tabId: number) => {
