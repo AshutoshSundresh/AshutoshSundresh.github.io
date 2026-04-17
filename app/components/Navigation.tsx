@@ -162,19 +162,19 @@ const Navigation = () => {
     >
       <ul className="flex items-center gap-2 md:gap-8" style={{ color: SEMANTIC_COLORS.navText }}>
         <li className="relative">
-          <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''}`}>
+          <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/artist.ico"), auto' }}>
               <span className="p-2 md:px-1">Home</span>  
           </Link>
         </li>
         <li className="nav-dot">·</li>
         <li className="relative">
-          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed text-white' : ''}`}>
+          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/computer.ico"), auto' }}>
               <span className="p-2 md:px-1">Explore</span>  
           </Link>
         </li>
         <li className="nav-dot">|</li>
         <li className="relative">
-          <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''}`}>
+          <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/smile.cur"), auto' }}>
             <span className="p-0.5 md:px-1">Contact</span>
           </Link>
         </li>
