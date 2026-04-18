@@ -188,8 +188,8 @@ export default function GameOfLife() {
 
     // Draw dead cells (trail) with fading opacity
     const trailBaseColor = isDark
-      ? [169, 177, 214] // trailDark
-      : [120, 120, 120]; // trail
+      ? [80, 88, 115]  // dimmer in dark mode
+      : [120, 120, 120];
     const radius = (cellSize - 1) / 2;
 
     // Helper to lerp between two colors
@@ -197,9 +197,9 @@ export default function GameOfLife() {
       return start.map((s, i) => Math.round(s + (end[i] - s) * t));
     };
 
-    const purple = [192, 132, 252];
-    const pink = [244, 114, 182];
-    const blue = [96, 165, 250];
+    const purple = isDark ? [110, 60, 160] : [192, 132, 252];
+    const pink   = isDark ? [150, 55, 100] : [244, 114, 182];
+    const blue   = isDark ? [50,  90, 160] : [96,  165, 250];
 
     // Draw simulation death trail (gray)
     deadCells.forEach((age, key) => {
@@ -284,7 +284,7 @@ export default function GameOfLife() {
           color = trailBaseColor;
         }
 
-        ctx.fillStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.15)`;
+        ctx.fillStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${isDark ? 0.25 : 0.15})`;
         ctx.save();
         ctx.shadowBlur = 4;
         ctx.shadowColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.35)`;
