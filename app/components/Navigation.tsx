@@ -17,7 +17,7 @@ const Navigation = () => {
   const isExperienceActive = pathname === '/experience';
   const isContactActive = pathname === '/contact';
   const [isVisible, setIsVisible] = useState(true);
-  const [activeCursor, setActiveCursor] = useState<'home' | 'explore' | null>(null);
+  const [activeCursor, setActiveCursor] = useState<'home' | 'explore' | 'contact' | null>(null);
   const [isDesktop, setIsDesktop] = useState(true);
   const [isDetailViewOpen, setIsDetailViewOpen] = useState(false); // State to track if detail view is open
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -177,7 +177,7 @@ const Navigation = () => {
           </li>
           <li className="nav-dot">|</li>
           <li className="relative">
-            <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/smile.cur"), auto' }}>
+            <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} blur-on-hover cursor-none`} onMouseEnter={() => setActiveCursor('contact')} onMouseLeave={() => setActiveCursor(null)}>
               <span className="p-0.5 md:px-1">Contact</span>
             </Link>
           </li>
@@ -185,6 +185,7 @@ const Navigation = () => {
       </nav>
       {activeCursor === 'home'    && <HoverCursor imageSrc="/icons/artist.gif" />}
       {activeCursor === 'explore' && <HoverCursor imageSrc="/icons/computer.gif" />}
+      {activeCursor === 'contact' && <HoverCursor imageSrc="/icons/kirby_writing.gif" />}
     </>
   );
 };
