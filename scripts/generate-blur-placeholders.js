@@ -16,17 +16,6 @@ const OUT_JSON = path.join(DATA_DIR, 'blurPlaceholders.json');
 const PLACEHOLDER_WIDTH = 20;
 const BLUR_SIGMA = 8;
 
-// macOS wallpapers are self-hosted at /images/macos-mojave-day.jpg and macos-mojave-night.jpg (added below with other /images/)
-
-/** TMDB poster URLs from topFilms.json (for film card LQIP). */
-function getTmdbPosterUrls() {
-  if (!fs.existsSync(TOP_FILMS_JSON)) return [];
-  const topFilms = JSON.parse(fs.readFileSync(TOP_FILMS_JSON, 'utf8'));
-  return (topFilms || [])
-    .map((f) => f.posterUrl)
-    .filter((url) => typeof url === 'string' && url.startsWith('https://image.tmdb.org/'));
-}
-
 function collectImagePaths(obj, out = new Set()) {
   if (!obj || typeof obj !== 'object') return out;
   if (Array.isArray(obj)) {
@@ -40,30 +29,41 @@ function collectImagePaths(obj, out = new Set()) {
   return out;
 }
 
+function getFilmPosterPaths() {
+  if (!fs.existsSync(TOP_FILMS_JSON)) return [];
+  const topFilms = JSON.parse(fs.readFileSync(TOP_FILMS_JSON, 'utf8'));
+  return (topFilms || [])
+    .map((f) => f.posterUrl)
+    .filter((url) => typeof url === 'string' && url.startsWith('/'));
+}
+
 async function main() {
   const sharp = require('sharp');
   const data = JSON.parse(fs.readFileSync(SKELETON_JSON, 'utf8'));
   const paths = collectImagePaths(data);
 
-  // Add hero/lockscreen images not in JSON
+  // Static images
   paths.add('/images/1755148353808.png');
   paths.add('/images/UCLA-square-logo.jpg');
   paths.add('/images/ashutosh.jpeg');
   paths.add('/images/macos-mojave-day.jpg');
   paths.add('/images/macos-mojave-night.jpg');
-  paths.add('/images/diorama.jpg');
-  paths.add('/images/pagani.png');
+  paths.add('/images/diorama.webp');
+  paths.add('/images/pagani.webp');
   paths.add('/images/f1_diorama.webp');
-  paths.add('/images/gtr-diorama.jpg');
-  paths.add('/images/offroad.jpg');
-  paths.add('/images/porsche-diorama.jpg');
-  paths.add('/images/Screenshot 2026-03-26 174402.png');
-  paths.add('/images/Screenshot 2026-03-26 174418.png');
-  paths.add('/images/Screenshot 2026-03-26 174746.png');
+  paths.add('/images/gtr-diorama.webp');
+  paths.add('/images/offroad.webp');
+  paths.add('/images/porsche-diorama.webp');
+  paths.add('/images/fashion-1.webp');
+  paths.add('/images/fashion-2.webp');
+  paths.add('/images/fashion-3.webp');
+
+  // Film posters (local WebP files written by scrape-letterboxd-top-films.js)
+  for (const p of getFilmPosterPaths()) paths.add(p);
 
   const map = {};
   for (const src of paths) {
-    if (!src.startsWith('/')) continue; // skip remote URLs
+    if (!src.startsWith('/')) continue;
     const filePath = path.join(PUBLIC, src.replace(/^\//, ''));
     if (!fs.existsSync(filePath)) {
       console.warn('Skip (missing):', src);
@@ -79,24 +79,6 @@ async function main() {
       console.log('OK:', src);
     } catch (err) {
       console.warn('Error:', src, err.message);
-    }
-  }
-
-  const tmdbUrls = getTmdbPosterUrls();
-  for (const url of tmdbUrls) {
-    try {
-      const resp = await fetch(url);
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      const arrayBuffer = await resp.arrayBuffer();
-      const buf = await sharp(Buffer.from(arrayBuffer))
-        .resize(PLACEHOLDER_WIDTH)
-        .blur(BLUR_SIGMA)
-        .jpeg({ quality: 60, mozjpeg: true })
-        .toBuffer();
-      map[url] = `data:image/jpeg;base64,${buf.toString('base64')}`;
-      console.log('OK (TMDB):', url);
-    } catch (err) {
-      console.warn('Error (TMDB):', url, err.message);
     }
   }
 

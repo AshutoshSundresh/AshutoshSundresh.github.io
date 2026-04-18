@@ -12,8 +12,11 @@ if (fs.existsSync(envPath)) {
 
 const LETTERBOXD_URL = 'https://letterboxd.com/ashsundresh/films/by/entry-rating/';
 const OUT_PATH = path.join(__dirname, '../app/data/topFilms.json');
+const FILMS_DIR = path.join(__dirname, '../public/images/films');
 const TOP_N = 8;
 const TMDB_POSTER_BASE = 'https://image.tmdb.org/t/p/w342';
+const POSTER_WIDTH = 240;
+const POSTER_HEIGHT = 360;
 const SCRAPE_RETRY_OPTIONS = { retries: 2, initialDelayMs: 2000 };
 const TMDB_RETRY_OPTIONS = { retries: 2, initialDelayMs: 1000 };
 
@@ -40,6 +43,30 @@ function parseTitleYear(str) {
   const m = str.match(/^(.+?)\s*\((\d{4})\)\s*$/);
   if (m) return { title: m[1].trim(), year: m[2] };
   return { title: str.trim(), year: null };
+}
+
+function slugFromFilmUrl(filmUrl) {
+  const m = filmUrl.match(/\/film\/([^/?#]+)/);
+  return m ? m[1].replace(/\/$/, '') : null;
+}
+
+async function downloadAndOptimizePoster(tmdbUrl, slug) {
+  let sharp;
+  try { sharp = require('sharp'); } catch { return null; }
+
+  const res = await fetch(tmdbUrl);
+  if (!res.ok) return null;
+  const buffer = Buffer.from(await res.arrayBuffer());
+
+  if (!fs.existsSync(FILMS_DIR)) fs.mkdirSync(FILMS_DIR, { recursive: true });
+
+  const outPath = path.join(FILMS_DIR, slug + '.webp');
+  await sharp(buffer)
+    .resize(POSTER_WIDTH, POSTER_HEIGHT, { fit: 'cover', withoutEnlargement: true })
+    .webp({ quality: 82 })
+    .toFile(outPath);
+
+  return '/images/films/' + slug + '.webp';
 }
 
 async function fetchTMDBPoster(apiKey, title) {
@@ -158,9 +185,32 @@ async function main() {
 
   const fallback = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="150" height="225" viewBox="0 0 150 225"><rect fill="#2a2a2a" width="150" height="225"/><text x="75" y="115" fill="#666" font-size="12" text-anchor="middle" font-family="sans-serif">?</text></svg>');
   const result = [];
+  const keptSlugs = new Set();
+
   for (const f of topFilms) {
-    const posterUrl = (await fetchTMDBPoster(apiKey, f.title)) || fallback;
+    const tmdbUrl = await fetchTMDBPoster(apiKey, f.title);
+    const slug = slugFromFilmUrl(f.filmUrl);
+    let posterUrl = fallback;
+
+    if (tmdbUrl && slug) {
+      const localPath = await downloadAndOptimizePoster(tmdbUrl, slug).catch(() => null);
+      posterUrl = localPath || tmdbUrl;
+      if (localPath) keptSlugs.add(slug + '.webp');
+    } else if (tmdbUrl) {
+      posterUrl = tmdbUrl;
+    }
+
     result.push({ title: f.title, filmUrl: f.filmUrl, posterUrl });
+  }
+
+  // Remove stale posters from previous runs
+  if (fs.existsSync(FILMS_DIR)) {
+    for (const file of fs.readdirSync(FILMS_DIR)) {
+      if (!keptSlugs.has(file)) {
+        fs.unlinkSync(path.join(FILMS_DIR, file));
+        console.log('Removed stale poster:', file);
+      }
+    }
   }
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(result, null, 2), 'utf8');

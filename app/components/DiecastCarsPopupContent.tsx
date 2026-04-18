@@ -5,12 +5,12 @@ import Image from 'next/image';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
 
 const DIORAMA_IMAGES = [
-  { src: '/images/diorama.jpg', alt: 'Diorama display' },
-  { src: '/images/pagani.png', alt: 'Pagani model' },
+  { src: '/images/diorama.webp', alt: 'Diorama display' },
+  { src: '/images/pagani.webp', alt: 'Pagani model' },
   { src: '/images/f1_diorama.webp', alt: 'F1 diorama' },
-  { src: '/images/gtr-diorama.jpg', alt: 'GTR diorama' },
-  { src: '/images/offroad.jpg', alt: 'Offroad scene' },
-  { src: '/images/porsche-diorama.jpg', alt: 'Porsche diorama' },
+  { src: '/images/gtr-diorama.webp', alt: 'GTR diorama' },
+  { src: '/images/offroad.webp', alt: 'Offroad scene' },
+  { src: '/images/porsche-diorama.webp', alt: 'Porsche diorama' },
 ];
 
 export default function DiecastCarsPopupContent() {

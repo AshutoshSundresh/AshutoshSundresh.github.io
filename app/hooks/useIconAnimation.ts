@@ -70,44 +70,43 @@ export function useIconAnimation({
       let leftmostX: number | null = null;
       let topmostY: number | null = null;
 
+      // Batch all arcs into one path for a single fill() call per frame
+      ctx.fillStyle = iconColor;
+      ctx.beginPath();
+
       icons.current.forEach((instance) => {
         if (isMobile) {
-          // Vertical movement: top to bottom
           instance.y += speed;
-
-          // Reset position when off screen
           if (instance.y > canvas.height) {
             if (topmostY === null) {
               topmostY = Math.min(...icons.current.map((i) => i.y));
             }
             instance.y = topmostY - iconSize - spacing;
             instance.x = Math.random() * Math.max(0, canvas.width - iconSize);
-            topmostY = instance.y; // Update cached value
+            topmostY = instance.y;
           }
         } else {
-          // Horizontal movement: left to right
           instance.x += speed;
-
-          // Reset position when off screen
           if (instance.x > canvas.width) {
             if (leftmostX === null) {
               leftmostX = Math.min(...icons.current.map((i) => i.x));
             }
             instance.x = leftmostX - iconSize - spacing;
             instance.y = Math.random() * Math.max(0, canvas.height - iconSize);
-            leftmostX = instance.x; // Update cached value
+            leftmostX = instance.x;
           }
         }
 
-        // Draw icon with pixel style - only render visible icons
         const isVisible = isMobile
           ? instance.y > -iconSize * 2 && instance.y < canvas.height + iconSize * 2
           : instance.x > -iconSize * 2 && instance.x < canvas.width + iconSize * 2;
 
         if (isVisible && instance.image.complete) {
-          drawIconAsPixels(ctx, instance, iconColor, iconSize, scale, radius);
+          accumulateIconPixels(ctx, instance, iconSize, scale, radius);
         }
       });
+
+      ctx.fill();
 
       animationFrameRef.current = requestAnimationFrame(animate);
     };
@@ -124,62 +123,40 @@ export function useIconAnimation({
 }
 
 /**
- * Draws an icon as pixel art circles
- * Uses caching to avoid reprocessing the same icon every frame
+ * Accumulates icon pixel arcs into the current canvas path.
+ * Caller must call ctx.beginPath() before and ctx.fill() after iterating all icons.
  */
-function drawIconAsPixels(
+function accumulateIconPixels(
   ctx: CanvasRenderingContext2D,
   instance: IconInstance,
-  iconColor: string,
   iconSize: number,
   scale: number,
   radius: number
 ): void {
-  // Check cache first
   let cachedData = iconPixelCache.get(instance.image);
-  
+
   if (!cachedData) {
-    // Create a temporary canvas to process the icon (only once)
     const tempCanvas = document.createElement('canvas');
     tempCanvas.width = iconSize;
     tempCanvas.height = iconSize;
     const tempCtx = tempCanvas.getContext('2d');
+    if (!tempCtx) return;
 
-    if (!tempCtx) {
-      return;
-    }
-
-    // Draw icon to temp canvas
     tempCtx.drawImage(instance.image, 0, 0, iconSize, iconSize);
-
-    // Get image data and cache it
     const imageData = tempCtx.getImageData(0, 0, iconSize, iconSize);
-    cachedData = {
-      data: imageData.data,
-      width: iconSize,
-      height: iconSize,
-    };
+    cachedData = { data: imageData.data, width: iconSize, height: iconSize };
     iconPixelCache.set(instance.image, cachedData);
   }
 
   const data = cachedData.data;
-  ctx.fillStyle = iconColor;
 
-  // Sample every 2nd pixel for better performance (still looks good)
-  const pixelStep = 1;
-  for (let y = 0; y < iconSize; y += pixelStep) {
-    for (let x = 0; x < iconSize; x += pixelStep) {
-      const idx = (y * iconSize + x) * 4;
-      const alpha = data[idx + 3];
-
-      if (alpha > 128) {
-        // If pixel is visible
+  for (let y = 0; y < iconSize; y++) {
+    for (let x = 0; x < iconSize; x++) {
+      if (data[(y * iconSize + x) * 4 + 3] > 128) {
         const cx = instance.x + x * scale;
         const cy = instance.y + y * scale;
-
-        ctx.beginPath();
+        ctx.moveTo(cx + radius, cy);
         ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-        ctx.fill();
       }
     }
   }

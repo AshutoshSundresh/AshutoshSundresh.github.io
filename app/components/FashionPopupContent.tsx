@@ -7,9 +7,9 @@ import type { SkeumorphicInterestsData } from '../types';
 import skeuData from '../data/skeumorphicInterests.json';
 
 const FASHION_SCREENSHOTS = [
-  { file: "Screenshot 2026-03-26 174402.png", alt: "Fashion — photo 1" },
-  { file: "Screenshot 2026-03-26 174418.png", alt: "Fashion — photo 2" },
-  { file: "Screenshot 2026-03-26 174746.png", alt: "Fashion — photo 3" },
+  { file: "fashion-1.webp", alt: "Fashion — photo 1" },
+  { file: "fashion-2.webp", alt: "Fashion — photo 2" },
+  { file: "fashion-3.webp", alt: "Fashion — photo 3" },
 ] as const;
 
 export default function FashionPopupContent() {

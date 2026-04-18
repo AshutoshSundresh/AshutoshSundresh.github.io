@@ -60,7 +60,6 @@ function AlbumTile({ album }: { album: LastFmTopAlbum }) {
         className="object-cover object-center transition-opacity duration-300"
         style={{ opacity: fullLoaded ? 1 : 0 }}
         onLoad={() => setFullLoaded(true)}
-        priority
       />
     </>
   );

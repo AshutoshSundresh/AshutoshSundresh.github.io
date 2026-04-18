@@ -62,7 +62,7 @@
     {
       "id": 5,
       "name": "Bibliotheque (Library Management System)",
-      "image": "/images/Screenshot-2025-06-02-181132.png",
+      "image": "/images/Screenshot-2025-06-02-181132.webp",
       "caption": "Open-Source Full-Stack Library Management System (Next.js, PostgreSQL, TypeScript, Supabase)",
       "techstack": "PostgreSQL, Supabase, Next.js, TypeScript",
       "description": "A real-time library management platform achieving <50ms search latency. Implemented secure auth with row-level access control, admin dashboard, and concurrent CRUD operations.",
