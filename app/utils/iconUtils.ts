@@ -57,14 +57,8 @@ export async function loadIcons(
   iconNames: readonly string[],
   colorHex: string
 ): Promise<IconLoadResult> {
-  const loadedIcons: HTMLImageElement[] = [];
-
-  for (const iconName of iconNames) {
-    const icon = await loadIcon(iconName, colorHex);
-    if (icon) {
-      loadedIcons.push(icon);
-    }
-  }
+  const results = await Promise.all(iconNames.map((name) => loadIcon(name, colorHex)));
+  const loadedIcons = results.filter((img): img is HTMLImageElement => img !== null);
 
   return {
     icons: loadedIcons,

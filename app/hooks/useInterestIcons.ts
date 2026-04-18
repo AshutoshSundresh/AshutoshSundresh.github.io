@@ -67,19 +67,22 @@ export function useInterestIcons({
         }
       }
 
+      const canvasWidth = window.innerWidth;
+      const canvasHeight = window.innerHeight;
+
       const instances = isMobile
         ? initializeVerticalIcons(
             result.icons,
-            canvas.width,
-            canvas.height,
+            canvasWidth,
+            canvasHeight,
             iconSize,
             spacing,
             instanceCount
           )
         : initializeHorizontalIcons(
             result.icons,
-            canvas.width,
-            canvas.height,
+            canvasWidth,
+            canvasHeight,
             iconSize,
             spacing,
             instanceCount
