@@ -8,12 +8,26 @@ import FilmPopupContent from './FilmPopupContent';
 import MusicPopupContent from './MusicPopupContent';
 import DiecastCarsPopupContent from './DiecastCarsPopupContent';
 import FashionPopupContent from './FashionPopupContent';
+import HoverCursor from './HoverCursor';
 import type { DragPosition, SkeumorphicInterestsData } from '../types';
 import type { InterestName } from '../types/interestIcons';
 import useIsMobile from '../hooks/useIsMobile';
 import skeuData from '../data/skeumorphicInterests.json';
 
 type Position = DragPosition;
+type CursorKey = 'kp' | 'harvey' | 'shapeshiftos' | 'github' | 'fashion' | 'music' | 'games' | 'diecast' | 'film';
+
+const CURSOR_MAP: Record<CursorKey, { text?: string; imageSrc: string }> = {
+  kp:          { text: 'Kleiner Perkins', imageSrc: '/images/kleiner_perkins_logo_sm.webp' },
+  harvey:      { text: 'Harvey',          imageSrc: '/images/harvey_ai_logo_sm.webp' },
+  shapeshiftos:{ text: 'ShapeShiftOS',    imageSrc: '/images/shapeshiftos_sm.webp' },
+  github:      { text: 'GitHub',          imageSrc: '/images/github_sm.webp' },
+  fashion:     {                          imageSrc: '/icons/games.gif' },
+  music:       {                          imageSrc: '/icons/kirby_music.gif' },
+  games:       {                          imageSrc: '/icons/Nintendo_3DS_Opening_and_Closing_1.gif' },
+  diecast:     {                          imageSrc: '/icons/car.gif' },
+  film:        {                          imageSrc: '/icons/films.gif' },
+};
 
 export default function IntroCards() {
   const [positions, setPositions] = useState<{ card1: Position; card2: Position; card3: Position; card4: Position }>({
@@ -23,7 +37,13 @@ export default function IntroCards() {
     card4: { x: 0, y: 0 }
   });
   const [openInterest, setOpenInterest] = useState<InterestName | null>(null);
+  const [activeCursor, setActiveCursor] = useState<CursorKey | null>(null);
   const isMobile = useIsMobile();
+
+  const cursor = (key: CursorKey) => ({
+    onMouseEnter: () => setActiveCursor(key),
+    onMouseLeave: () => setActiveCursor(null),
+  });
 
   const handleDragEnd = (event: DragEndEvent) => {
     if (isMobile) return;
@@ -48,7 +68,8 @@ export default function IntroCards() {
                   href="https://fellows.kleinerperkins.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('kp')}
                 >
                   Kleiner Perkins Fellow
                 </a>
@@ -57,7 +78,8 @@ export default function IntroCards() {
                   href="https://harvey.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('harvey')}
                 >
                   Harvey
                 </a>
@@ -66,7 +88,8 @@ export default function IntroCards() {
                   href="https://github.com/shapeshiftos"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors underline"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('shapeshiftos')}
                 >
                   ShapeShiftOS
                 </a>
@@ -83,7 +106,7 @@ export default function IntroCards() {
 
         {/* Bottom Row */}
         <DraggableCard id="card3" position={positions.card3} isDraggingDisabled={true}>
-          <a href="https://github.com/AshutoshSundresh" target="_blank" rel="noopener noreferrer" className="block transition-transform hover:scale-[1.02] active:scale-[0.98]">
+          <a href="https://github.com/AshutoshSundresh" target="_blank" rel="noopener noreferrer" className="block cursor-none" {...cursor('github')}>
             <div data-search-title="About — GitHub contributions">
               <GitHubContributions />
             </div>
@@ -99,70 +122,54 @@ export default function IntroCards() {
                   <span className="text-xs text-gray-400 dark:text-gray-500 font-normal">(click to read more)</span>
                 </div>
               </div>
-              <div 
+              <div
                 className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed flex flex-wrap gap-1.5"
                 onPointerDown={(e) => e.stopPropagation()}
                 onMouseDown={(e) => e.stopPropagation()}
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    console.log('Fashion button clicked');
-                    setOpenInterest('Fashion' as InterestName);
-                  }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenInterest('Fashion' as InterestName); }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-none pointer-events-auto relative z-10 blur-on-hover"
+                  {...cursor('fashion')}
                 >
                   Fashion
                 </button>
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setOpenInterest('Music' as InterestName);
-                  }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenInterest('Music' as InterestName); }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-none pointer-events-auto relative z-10 blur-on-hover"
+                  {...cursor('music')}
                 >
                   Music
                 </button>
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setOpenInterest('Games' as InterestName);
-                  }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenInterest('Games' as InterestName); }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-none pointer-events-auto relative z-10 blur-on-hover"
+                  {...cursor('games')}
                 >
                   Games
                 </button>
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setOpenInterest('Diecast Cars' as InterestName);
-                  }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenInterest('Diecast Cars' as InterestName); }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-none pointer-events-auto relative z-10 blur-on-hover"
+                  {...cursor('diecast')}
                 >
                   Diecast Cars
                 </button>
                 <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    setOpenInterest('Film' as InterestName);
-                  }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); setOpenInterest('Film' as InterestName); }}
                   onPointerDown={(e) => e.stopPropagation()}
                   onMouseDown={(e) => e.stopPropagation()}
-                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-pointer pointer-events-auto relative z-10"
+                  className="bg-purple-500/20 dark:bg-pink-500/20 text-gray-800 dark:text-gray-200 backdrop-blur-sm px-3 py-1 rounded-full border border-purple-300/30 dark:border-pink-400/30 hover:bg-purple-500/30 dark:hover:bg-pink-500/30 transition-colors cursor-none pointer-events-auto relative z-10 blur-on-hover"
+                  {...cursor('film')}
                 >
                   Film
                 </button>
@@ -171,12 +178,17 @@ export default function IntroCards() {
           </div>
         </DraggableCard>
       </div>
+
+      {activeCursor && (
+        <HoverCursor
+          text={CURSOR_MAP[activeCursor].text}
+          imageSrc={CURSOR_MAP[activeCursor].imageSrc}
+        />
+      )}
+
       <InterestPopup
         open={openInterest !== null}
-        onClose={() => {
-          console.log('Closing popup');
-          setOpenInterest(null);
-        }}
+        onClose={() => setOpenInterest(null)}
         interestName={openInterest!}
         content={openInterest ? ((skeuData as SkeumorphicInterestsData).interests?.[openInterest] || `Content for ${openInterest} will be added here.`) : ''}
         customBody={openInterest === 'Film' ? <FilmPopupContent /> : openInterest === 'Music' ? <MusicPopupContent /> : openInterest === 'Diecast Cars' ? <DiecastCarsPopupContent /> : openInterest === 'Fashion' ? <FashionPopupContent /> : undefined}
@@ -184,5 +196,3 @@ export default function IntroCards() {
     </DndContext>
   );
 }
-
-

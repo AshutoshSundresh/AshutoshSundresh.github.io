@@ -6,11 +6,20 @@ import HeroSection from "./HeroSection";
 import IntroSection from "./IntroSection";
 import GameOfLife from "./GameOfLife";
 import SearchOverlay from "./SearchOverlay";
+import HoverCursor from "./HoverCursor";
 import { useTheme } from '../contexts/ThemeContext';
+
+type CursorKey = 'gol' | 'theme' | 'search';
 
 export default function HomePageClient() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [activeCursor, setActiveCursor] = useState<CursorKey | null>(null);
   const { toggleTheme, isDark } = useTheme();
+
+  const cursor = (key: CursorKey) => ({
+    onMouseEnter: () => setActiveCursor(key),
+    onMouseLeave: () => setActiveCursor(null),
+  });
 
   return (
     <main data-page="home" className="h-[100dvh] snap-y snap-mandatory overflow-y-auto smooth-scroll bg-white dark:bg-[#1e1e1e]">
@@ -23,7 +32,8 @@ export default function HomePageClient() {
           <button
             onClick={toggleTheme}
             aria-label="Toggle dark mode"
-            className="flex h-10 w-10 items-center justify-center bg-white/60 text-gray-700 transition-all duration-300 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:text-gray-200 dark:hover:bg-[#2A2A2A]/70"
+            className="flex h-10 w-10 items-center justify-center bg-white/60 text-gray-700 transition-all duration-300 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:text-gray-200 dark:hover:bg-[#2A2A2A]/70 cursor-none blur-on-hover"
+            {...cursor('theme')}
           >
             {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </button>
@@ -31,7 +41,8 @@ export default function HomePageClient() {
           <button
             onClick={() => setIsSearchOpen(true)}
             aria-label="Search"
-            className="flex h-10 w-10 items-center justify-center bg-white/60 text-gray-700 transition-all duration-300 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:text-gray-200 dark:hover:bg-[#2A2A2A]/70"
+            className="flex h-10 w-10 items-center justify-center bg-white/60 text-gray-700 transition-all duration-300 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:text-gray-200 dark:hover:bg-[#2A2A2A]/70 cursor-none blur-on-hover"
+            {...cursor('search')}
           >
             <Search className="h-5 w-5" />
           </button>
@@ -42,20 +53,27 @@ export default function HomePageClient() {
           target="_blank"
           rel="noopener noreferrer"
           data-search-title="Link — Game of Life overview"
-          className="absolute top-4 left-4 flex h-10 items-center rounded-full border border-gray-200/50 bg-white/60 px-4 text-sm text-gray-600 shadow-lg transition-all duration-300 hover:bg-white/70 hover:text-gray-800 pointer-events-auto dark:border-gray-700/50 dark:bg-[#2A2A2A]/60 dark:text-gray-300 dark:hover:bg-[#2A2A2A]/70 dark:hover:text-gray-100"
+          className="absolute top-4 left-4 flex h-10 items-center rounded-full border border-gray-200/50 bg-white/60 px-4 text-sm text-gray-600 shadow-lg backdrop-blur-md transition-all duration-300 hover:bg-white/70 hover:text-gray-800 pointer-events-auto dark:border-gray-700/50 dark:bg-[#2A2A2A]/60 dark:text-gray-300 dark:hover:bg-[#2A2A2A]/70 dark:hover:text-gray-100 blur-on-hover cursor-none"
+          {...cursor('gol')}
         >
           Game of Life
         </a>
       </div>
 
       <section className="relative z-10 h-[100dvh] snap-start snap-always">
-        <HeroSection onSearchOpen={() => setIsSearchOpen(true)} />
+        <HeroSection
+          onSearchOpen={() => setIsSearchOpen(true)}
+          onGoLHoverChange={(h) => setActiveCursor(h ? 'gol' : null)}
+        />
       </section>
       <section className="relative z-10 h-[100dvh] snap-start snap-always">
         <IntroSection />
       </section>
 
       <SearchOverlay open={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {activeCursor === 'gol'    && <HoverCursor imageSrc="/icons/help_sel.gif" />}
+      {activeCursor === 'theme'  && <HoverCursor imageSrc={isDark ? '/icons/awake.gif' : '/icons/sleeping.gif'} />}
+      {activeCursor === 'search' && <HoverCursor imageSrc="/icons/ninja_kirby.gif" />}
     </main>
   );
 }

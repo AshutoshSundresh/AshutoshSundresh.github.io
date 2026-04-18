@@ -42,7 +42,7 @@ export default function FilmPopupContent() {
           href={LETTERBOXD_PROFILE_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-600 dark:text-pink-400 hover:underline underline-offset-2"
+          className="text-purple-600 dark:text-pink-400 blur-on-hover"
         >
           Letterboxd
         </a>

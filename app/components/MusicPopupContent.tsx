@@ -102,7 +102,7 @@ export default function MusicPopupContent() {
               href={album.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-dark-border-primary shadow-sm hover:shadow-md hover:ring-black/10 dark:hover:ring-dark-border-secondary transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-purple-500/50 dark:focus:ring-pink-500/50"
+              className="group block rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-dark-border-primary shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500/50 dark:focus:ring-pink-500/50"
               title={`${album.name} — ${album.artist.name}`}
             >
               <div className="relative aspect-square w-full">
@@ -118,7 +118,7 @@ export default function MusicPopupContent() {
           href={LASTFM_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-600 dark:text-pink-400 hover:underline underline-offset-2"
+          className="text-purple-600 dark:text-pink-400 blur-on-hover"
         >
           Last.fm
         </a>

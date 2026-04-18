@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import useAppOverlayState from '../hooks/useAppOverlayState';
 import { SEMANTIC_COLORS } from '../constants/colors';
+import HoverCursor from './HoverCursor';
 
 /* eslint-disable react-hooks/exhaustive-deps */
 
@@ -16,6 +17,7 @@ const Navigation = () => {
   const isExperienceActive = pathname === '/experience';
   const isContactActive = pathname === '/contact';
   const [isVisible, setIsVisible] = useState(true);
+  const [activeCursor, setActiveCursor] = useState<'home' | 'explore' | null>(null);
   const [isDesktop, setIsDesktop] = useState(true);
   const [isDetailViewOpen, setIsDetailViewOpen] = useState(false); // State to track if detail view is open
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -154,32 +156,36 @@ const Navigation = () => {
   };
 
   return (
-    <nav 
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ease-in-out ${visibilityClasses()}`}
-      onMouseOver={handleInteraction}
-      onClick={handleInteraction}
-      style={{ backgroundColor: SEMANTIC_COLORS.navBackground, color: SEMANTIC_COLORS.navText }}
-    >
-      <ul className="flex items-center gap-2 md:gap-8" style={{ color: SEMANTIC_COLORS.navText }}>
-        <li className="relative">
-          <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/artist.ico"), auto' }}>
-              <span className="p-2 md:px-1">Home</span>  
-          </Link>
-        </li>
-        <li className="nav-dot">·</li>
-        <li className="relative">
-          <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/computer.ico"), auto' }}>
-              <span className="p-2 md:px-1">Explore</span>  
-          </Link>
-        </li>
-        <li className="nav-dot">|</li>
-        <li className="relative">
-          <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/smile.cur"), auto' }}>
-            <span className="p-0.5 md:px-1">Contact</span>
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <>
+      <nav
+        className={`fixed bottom-8 left-1/2 -translate-x-1/2 px-8 py-4 md:px-8 md:py-4 px-3 py-2 rounded-full shadow-lg z-[9999] transition-all duration-500 ease-in-out ${visibilityClasses()}`}
+        onMouseOver={handleInteraction}
+        onClick={handleInteraction}
+        style={{ backgroundColor: SEMANTIC_COLORS.navBackground, color: SEMANTIC_COLORS.navText }}
+      >
+        <ul className="flex items-center gap-2 md:gap-8" style={{ color: SEMANTIC_COLORS.navText }}>
+          <li className="relative">
+            <Link href="/" className={`nav-link ${isAboutActive ? 'nav-active-pressed text-white' : ''} blur-on-hover cursor-none`} onMouseEnter={() => setActiveCursor('home')} onMouseLeave={() => setActiveCursor(null)}>
+                <span className="p-2 md:px-1">Home</span>
+            </Link>
+          </li>
+          <li className="nav-dot">·</li>
+          <li className="relative">
+            <Link href="/experience" className={`nav-link ${isExperienceActive ? 'nav-active-pressed text-white' : ''} blur-on-hover cursor-none`} onMouseEnter={() => setActiveCursor('explore')} onMouseLeave={() => setActiveCursor(null)}>
+                <span className="p-2 md:px-1">Explore</span>
+            </Link>
+          </li>
+          <li className="nav-dot">|</li>
+          <li className="relative">
+            <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} hover:cursor-pointer blur-on-hover`} style={{ cursor: 'url("/icons/smile.cur"), auto' }}>
+              <span className="p-0.5 md:px-1">Contact</span>
+            </Link>
+          </li>
+        </ul>
+      </nav>
+      {activeCursor === 'home'    && <HoverCursor imageSrc="/icons/artist.gif" />}
+      {activeCursor === 'explore' && <HoverCursor imageSrc="/icons/computer.gif" />}
+    </>
   );
 };
 

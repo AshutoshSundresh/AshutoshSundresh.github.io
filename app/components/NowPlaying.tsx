@@ -10,6 +10,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { darkenColor, rgbToHex } from '../constants/colors';
 import Tooltip from './ui/Tooltip';
 import InfoButton from './ui/InfoButton';
+import HoverCursor from './HoverCursor';
 import type { NowPlayingTrack, NowPlayingProps } from '../types';
 
 function getLuminance([r, g, b]: number[]) {
@@ -47,6 +48,7 @@ function getTimeAgo(unixTimestamp: string): string {
 
 export default function NowPlaying({ onStatusChange, onTrackChange, disableFade = false }: NowPlayingProps) {
   const { isLoading, track, error } = useLastFmNowPlaying();
+  const [isHoveringSong, setIsHoveringSong] = useState(false);
   const visibilityHook = useIntroVisibility();
   const { showTooltip, tooltipPosition, buttonRef, handleMouseEnter, handleMouseLeave } = useTooltip();
   const { isDark } = useTheme();
@@ -180,8 +182,10 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
               href={track.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`block text-lg font-bold truncate hover:underline ${textColor}`}
+              className={`block text-lg font-bold truncate blur-on-hover cursor-none ${textColor}`}
               title={track.name}
+              onMouseEnter={() => setIsHoveringSong(true)}
+              onMouseLeave={() => setIsHoveringSong(false)}
             >
               {track.name}
             </a>
@@ -220,6 +224,7 @@ export default function NowPlaying({ onStatusChange, onTrackChange, disableFade 
           I have last.fm only connected to my personal laptop&apos;s music player, so I was probably listening to music on another device over the past {timeAgo?.replace(' ago', '')}
         </Tooltip>
       )}
+      {isHoveringSong && <HoverCursor imageSrc="/icons/kirby_music.gif" />}
     </>
   );
 }

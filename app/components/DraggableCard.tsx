@@ -11,7 +11,7 @@ export default function DraggableCard({ id, children, position, isDraggingDisabl
     : { transform: `translate3d(${position.x + (transform?.x ?? 0)}px, ${position.y + (transform?.y ?? 0)}px, 0)`, touchAction: 'pan-y' as const };
 
   return (
-    <div ref={setNodeRef} style={style} {...(isDraggingDisabled ? {} : { ...listeners, ...attributes })} className={isDraggingDisabled ? '' : 'cursor-move touch-none'}>
+    <div ref={setNodeRef} style={style} {...(isDraggingDisabled ? {} : { ...listeners, ...attributes })} className={isDraggingDisabled ? '' : 'touch-none'}>
       {children}
     </div>
   );

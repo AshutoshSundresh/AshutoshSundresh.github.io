@@ -382,6 +382,14 @@ html {
   scroll-snap-align: start;
 }
 
+/* Blur-on-hover utility */
+.blur-on-hover {
+  transition: filter 0.3s ease;
+}
+.blur-on-hover:hover {
+  filter: blur(3px);
+}
+
 /* Navigation Styles */
 .nav-link {
   font-family: 'Raleway', sans-serif;
