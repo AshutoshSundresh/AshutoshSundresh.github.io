@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
-// One passive module-level listener shared across all instances.
-// Tracks latest mouse position without triggering any re-renders.
+const _isFinePointer = typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches;
+
 let _latestPos = { x: 0, y: 0 };
-if (typeof window !== 'undefined') {
+if (_isFinePointer) {
   window.addEventListener(
     'mousemove',
     (e) => { _latestPos = { x: e.clientX, y: e.clientY }; },
@@ -24,10 +24,13 @@ export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCurs
   const [pos, setPos] = useState(_latestPos);
 
   useEffect(() => {
+    if (!_isFinePointer) return;
     const onMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', onMove, { passive: true });
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
+
+  if (!_isFinePointer) return null;
 
   if (!text) {
     return (
