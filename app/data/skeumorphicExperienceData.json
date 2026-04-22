@@ -760,6 +760,26 @@
       }
     },
     {
+      "id": 3,
+      "institution": "Brown University",
+      "degree": "Brown Systems Week",
+      "period": "2026",
+      "icon": "/images/brownuni.webp",
+      "institutionLink": "https://brown.edu",
+      "details": {
+        "achievements": [
+          "Cohort of 25 participants; sponsored by NSF, Google, and Amazon"
+        ],
+        "subjects": [
+          "eBPF and Kernel Extensions",
+          "GPU Performance Modeling",
+          "Supply-Chain Security",
+          "Formal Reasoning for Systems",
+          "Rust Privacy Analysis"
+        ]
+      }
+    },
+    {
       "id": 2,
       "institution": "Shiv Nadar School",
       "location": "Faridabad, India",

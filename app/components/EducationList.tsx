@@ -61,7 +61,7 @@ function EducationList({ educationData, courseworkHref = '/experience/coursework
 
             {edu.details.subjects && (
               <div className="space-y-2">
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Subjects</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-200">Courses</p>
                 <div className="flex flex-wrap gap-2">
                   {edu.details.subjects.map((subject, index) => (
                     <span key={index} className="px-2 py-1 bg-gray-100 dark:bg-[#202020] rounded-md text-xs text-gray-600 dark:text-gray-400">
@@ -72,21 +72,23 @@ function EducationList({ educationData, courseworkHref = '/experience/coursework
               </div>
             )}
 
-            <div className="pt-2 flex gap-4">
-              {edu.details.courses && edu.details.courses.length > 0 && (
-                <Link
-                  href={courseworkHref}
-                  className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center transition-colors"
-                >
-                  View Coursework →
-                </Link>
-              )}
-              {edu.archiveLink && (
-                <a href={edu.archiveLink} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center">
-                  View Archive →
-                </a>
-              )}
-            </div>
+            {(edu.details.courses?.length > 0 || edu.archiveLink) && (
+              <div className="pt-2 flex gap-4">
+                {edu.details.courses && edu.details.courses.length > 0 && (
+                  <Link
+                    href={courseworkHref}
+                    className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center transition-colors"
+                  >
+                    View Coursework →
+                  </Link>
+                )}
+                {edu.archiveLink && (
+                  <a href={edu.archiveLink} target="_blank" rel="noopener noreferrer" className="text-sm text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 flex items-center">
+                    View Archive →
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       ))}
