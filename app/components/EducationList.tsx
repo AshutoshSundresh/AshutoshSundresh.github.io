@@ -72,7 +72,7 @@ function EducationList({ educationData, courseworkHref = '/experience/coursework
               </div>
             )}
 
-            {(edu.details.courses?.length > 0 || edu.archiveLink) && (
+            {(!!edu.details.courses?.length || !!edu.archiveLink) && (
               <div className="pt-2 flex gap-4">
                 {edu.details.courses && edu.details.courses.length > 0 && (
                   <Link

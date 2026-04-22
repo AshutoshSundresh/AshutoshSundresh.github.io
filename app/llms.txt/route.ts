@@ -17,12 +17,13 @@ export function GET() {
       }[];
       educationData: {
         institution: string;
-        degree: string;
-        gpa: string;
+        degree?: string;
+        gpa?: string;
         period: string;
         details: {
-          achievements: string[];
-          courses: { code: string; name: string; quarter: string }[];
+          achievements?: string[];
+          courses?: { code: string; name: string; quarter: string }[];
+          subjects?: string[];
         };
       }[];
       experienceData: {
@@ -102,13 +103,18 @@ export function GET() {
     lines.push(`- **Degree**: ${edu.degree}`);
     lines.push(`- **Period**: ${edu.period}`);
     lines.push(`- **GPA**: ${edu.gpa}`);
-    if (edu.details.achievements.length > 0) {
+    if (edu.details.achievements?.length) {
       lines.push(`- **Honors**: ${edu.details.achievements.join(", ")}`);
     }
-    const courseList = edu.details.courses
-      .map((c) => `${c.code} ${c.name} (${c.quarter})`)
-      .join("; ");
-    lines.push(`- **Courses**: ${courseList}`);
+    if (edu.details.courses?.length) {
+      const courseList = edu.details.courses
+        .map((c) => `${c.code} ${c.name} (${c.quarter})`)
+        .join("; ");
+      lines.push(`- **Courses**: ${courseList}`);
+    }
+    if (edu.details.subjects?.length) {
+      lines.push(`- **Topics**: ${edu.details.subjects.join(", ")}`);
+    }
     lines.push("");
   }
 
