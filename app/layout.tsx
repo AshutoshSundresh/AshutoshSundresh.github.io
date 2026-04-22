@@ -11,10 +11,12 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: "Ashutosh Sundresh",
-  description: "Ashutosh Sundresh Portfolio Page",
+  description:
+    "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads). Experience at Harvey AI, Brain Co., and Skylow.",
   openGraph: {
     title: "Ashutosh Sundresh",
-    description: "Ashutosh Sundresh Portfolio Page",
+    description:
+      "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads).",
     images: [
       {
         url: "/thumb.png",
@@ -24,12 +26,38 @@ export const metadata: Metadata = {
       },
     ],
     type: "website",
+    url: "https://ashutoshsundresh.com",
   },
   twitter: {
     card: "summary_large_image",
     title: "Ashutosh Sundresh",
-    description: "Ashutosh Sundresh Portfolio Page",
+    description:
+      "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads).",
     images: ["/thumb.png"],
+  },
+  alternates: {
+    canonical: "https://ashutoshsundresh.com",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ashutosh Sundresh",
+  url: "https://ashutoshsundresh.com",
+  email: "ashutoshsundresh@gmail.com",
+  sameAs: [
+    "https://github.com/AshutoshSundresh",
+    "https://linkedin.com/in/ashutoshsundresh",
+    "https://x.com/AshutoshSundresh",
+  ],
+  jobTitle: "Software Engineer",
+  description:
+    "UCLA Computer Science student, Kleiner Perkins Fellow, and founder of ShapeShiftOS — an open-source Android OS with 160,000+ downloads.",
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of California, Los Angeles",
+    url: "https://ucla.edu",
   },
 };
 
@@ -51,6 +79,10 @@ export default function RootLayout({
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeFallback }} />
         <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossOrigin="" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className={`${raleway.className} antialiased`} suppressHydrationWarning>
         {children}
