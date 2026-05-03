@@ -1,5 +1,10 @@
 [
   {
+    "title": "Whiplash (2014)",
+    "filmUrl": "https://letterboxd.com/film/whiplash-2014/",
+    "posterUrl": "/images/films/whiplash-2014.webp"
+  },
+  {
     "title": "The Pianist (2002)",
     "filmUrl": "https://letterboxd.com/film/the-pianist/",
     "posterUrl": "/images/films/the-pianist.webp"
@@ -33,10 +38,5 @@
     "title": "Parasite (2019)",
     "filmUrl": "https://letterboxd.com/film/parasite-2019/",
     "posterUrl": "/images/films/parasite-2019.webp"
-  },
-  {
-    "title": "The Prestige (2006)",
-    "filmUrl": "https://letterboxd.com/film/the-prestige/",
-    "posterUrl": "/images/films/the-prestige.webp"
   }
 ]
