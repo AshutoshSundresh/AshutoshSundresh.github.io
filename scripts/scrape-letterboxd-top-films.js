@@ -17,11 +17,60 @@ const TOP_N = 8;
 const TMDB_POSTER_BASE = 'https://image.tmdb.org/t/p/w342';
 const POSTER_WIDTH = 240;
 const POSTER_HEIGHT = 360;
-const SCRAPE_RETRY_OPTIONS = { retries: 2, initialDelayMs: 2000 };
-const TMDB_RETRY_OPTIONS = { retries: 2, initialDelayMs: 1000 };
+const SCRAPE_RETRY_OPTIONS = { retries: 3, initialDelayMs: 2500 };
+const TMDB_RETRY_OPTIONS = { retries: 5, initialDelayMs: 2000 };
+const POSTER_DOWNLOAD_RETRY_OPTIONS = { retries: 4, initialDelayMs: 1500 };
+const FETCH_TIMEOUT_MS = 60000;
+const TMDB_REQUEST_GAP_MS = 450;
+/** Upper bound so a bad/missing clock on HTTP-date cannot stall CI forever */
+const MAX_RETRY_AFTER_MS = 5 * 60 * 1000;
+const RETRY_AFTER_FALLBACK_MS = 10_000;
 
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+class RateLimitError extends Error {
+  /** @param {number} retryAfterMs */
+  constructor(message, retryAfterMs) {
+    super(message);
+    this.name = 'RateLimitError';
+    this.retryAfterMs = retryAfterMs;
+  }
+}
+
+/**
+ * RFC 7231 Retry-After: delay-seconds or HTTP-date.
+ * @param {Response} response
+ */
+function getRetryAfterMs(response, fallbackMs = RETRY_AFTER_FALLBACK_MS) {
+  const raw = response.headers.get('retry-after');
+  if (raw == null || raw === '') {
+    return Math.min(fallbackMs, MAX_RETRY_AFTER_MS);
+  }
+  const trimmed = raw.trim();
+  if (/^\d+$/.test(trimmed)) {
+    const sec = parseInt(trimmed, 10);
+    let ms = sec * 1000;
+    if (ms <= 0) ms = Math.min(fallbackMs, MAX_RETRY_AFTER_MS);
+    return Math.min(ms, MAX_RETRY_AFTER_MS);
+  }
+  const when = Date.parse(trimmed);
+  if (!Number.isNaN(when)) {
+    const ms = when - Date.now();
+    if (ms > 0) return Math.min(ms, MAX_RETRY_AFTER_MS);
+  }
+  return Math.min(fallbackMs, MAX_RETRY_AFTER_MS);
+}
+
+async function fetchWithTimeout(url, init = {}, timeoutMs = FETCH_TIMEOUT_MS) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function withRetry(task, { label, retries, initialDelayMs, factor = 2 }) {
@@ -32,9 +81,15 @@ async function withRetry(task, { label, retries, initialDelayMs, factor = 2 }) {
     } catch (error) {
       if (attempt > retries) throw error;
       const detail = error instanceof Error ? error.message : String(error);
-      console.warn(`${label} failed on attempt ${attempt}/${retries + 1}: ${detail}. Retrying in ${delayMs}ms.`);
-      await sleep(delayMs);
-      delayMs *= factor;
+      const rateLimited = error instanceof RateLimitError;
+      const waitMs = rateLimited ? error.retryAfterMs : delayMs;
+      if (rateLimited) {
+        console.warn(`${label} rate limited (${detail}). Waiting ${waitMs}ms per Retry-After.`);
+      } else {
+        console.warn(`${label} failed on attempt ${attempt}/${retries + 1}: ${detail}. Retrying in ${waitMs}ms.`);
+      }
+      await sleep(waitMs);
+      if (!rateLimited) delayMs *= factor;
     }
   }
 }
@@ -52,21 +107,38 @@ function slugFromFilmUrl(filmUrl) {
 
 async function downloadAndOptimizePoster(tmdbUrl, slug) {
   let sharp;
-  try { sharp = require('sharp'); } catch { return null; }
+  try {
+    sharp = require('sharp');
+  } catch {
+    return null;
+  }
 
-  const res = await fetch(tmdbUrl);
-  if (!res.ok) return null;
-  const buffer = Buffer.from(await res.arrayBuffer());
+  return withRetry(
+    async () => {
+      const res = await fetchWithTimeout(tmdbUrl);
+      if (res.status === 429) {
+        throw new RateLimitError('Poster CDN returned 429', getRetryAfterMs(res));
+      }
+      if (res.status >= 500) {
+        throw new Error(`Poster CDN returned ${res.status}`);
+      }
+      if (!res.ok) {
+        throw new Error(`Poster HTTP ${res.status}`);
+      }
+      const buffer = Buffer.from(await res.arrayBuffer());
 
-  if (!fs.existsSync(FILMS_DIR)) fs.mkdirSync(FILMS_DIR, { recursive: true });
+      if (!fs.existsSync(FILMS_DIR)) fs.mkdirSync(FILMS_DIR, { recursive: true });
 
-  const outPath = path.join(FILMS_DIR, slug + '.webp');
-  await sharp(buffer)
-    .resize(POSTER_WIDTH, POSTER_HEIGHT, { fit: 'cover', withoutEnlargement: true })
-    .webp({ quality: 82 })
-    .toFile(outPath);
+      const outPath = path.join(FILMS_DIR, slug + '.webp');
+      await sharp(buffer)
+        .resize(POSTER_WIDTH, POSTER_HEIGHT, { fit: 'cover', withoutEnlargement: true })
+        .webp({ quality: 82 })
+        .toFile(outPath);
 
-  return '/images/films/' + slug + '.webp';
+      return '/images/films/' + slug + '.webp';
+    },
+    { label: `Poster download (${slug})`, ...POSTER_DOWNLOAD_RETRY_OPTIONS }
+  );
 }
 
 async function fetchTMDBPoster(apiKey, title) {
@@ -75,8 +147,11 @@ async function fetchTMDBPoster(apiKey, title) {
   let res;
   try {
     res = await withRetry(async () => {
-      const response = await fetch(url);
-      if (response.status === 429 || response.status >= 500) {
+      const response = await fetchWithTimeout(url);
+      if (response.status === 429) {
+        throw new RateLimitError(`TMDB returned 429`, getRetryAfterMs(response));
+      }
+      if (response.status >= 500) {
         throw new Error(`TMDB returned ${response.status}`);
       }
       return response;
@@ -123,7 +198,7 @@ async function main() {
         );
         await page.setViewport({ width: 1280, height: 800 });
 
-        await page.goto(LETTERBOXD_URL, { waitUntil: 'networkidle2', timeout: 30000 });
+        await page.goto(LETTERBOXD_URL, { waitUntil: 'networkidle2', timeout: 60000 });
         await page.waitForSelector('li.poster-container, .poster-list li, [data-film-slug]', { timeout: 10000 }).catch(() => null);
         await page.evaluate(() => {
           const grid = document.querySelector('.poster-list, [class*="poster-list"], .content .film-list');
@@ -187,7 +262,9 @@ async function main() {
   const result = [];
   const keptSlugs = new Set();
 
-  for (const f of topFilms) {
+  for (let i = 0; i < topFilms.length; i += 1) {
+    const f = topFilms[i];
+    if (i > 0) await sleep(TMDB_REQUEST_GAP_MS);
     const tmdbUrl = await fetchTMDBPoster(apiKey, f.title);
     const slug = slugFromFilmUrl(f.filmUrl);
     let posterUrl = fallback;
