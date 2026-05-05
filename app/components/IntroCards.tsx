@@ -15,11 +15,12 @@ import useIsMobile from '../hooks/useIsMobile';
 import skeuData from '../data/skeumorphicInterests.json';
 
 type Position = DragPosition;
-type CursorKey = 'kp' | 'harvey' | 'shapeshiftos' | 'github' | 'fashion' | 'music' | 'games' | 'diecast' | 'film';
+type CursorKey = 'kp' | 'harvey' | 'brain' | 'shapeshiftos' | 'github' | 'fashion' | 'music' | 'games' | 'diecast' | 'film';
 
 const CURSOR_MAP: Record<CursorKey, { text?: string; imageSrc: string }> = {
   kp:          { text: 'Kleiner Perkins', imageSrc: '/images/kleiner_perkins_logo_sm.webp' },
   harvey:      { text: 'Harvey',          imageSrc: '/images/harvey_ai_logo_sm.webp' },
+  brain:       { text: 'Brain Co.',       imageSrc: '/images/brain_co_sm.webp' },
   shapeshiftos:{ text: 'ShapeShiftOS',    imageSrc: '/images/shapeshiftos_sm.webp' },
   github:      { text: 'GitHub',          imageSrc: '/images/github_sm.webp' },
   fashion:     {                          imageSrc: '/icons/games.gif' },
@@ -63,7 +64,7 @@ export default function IntroCards() {
           <div className="backdrop-blur-xl bg-white/50 dark:bg-[#2A2A2A]/50 text-black dark:text-gray-100 p-4 rounded-3xl w-[calc(100vw-16px)] md:w-[540px] lg:w-[420px] lg:h-[180px] relative border border-gray-200 dark:border-gray-700 shadow-lg lg:flex lg:items-center" data-search-title="About — Overview">
             <div className="relative z-10">
               <p className="text-gray-800 dark:text-gray-200 leading-relaxed text-md">
-                I build systems and infra. Computer Science at UCLA,{' '}
+                I build systems and infra. CS at UCLA,{' '}
                 <a
                   href="https://fellows.kleinerperkins.com"
                   target="_blank"
@@ -73,7 +74,7 @@ export default function IntroCards() {
                 >
                   Kleiner Perkins Fellow
                 </a>
-                , currently researching JVM optimization for serverless systems, previously at{' '}
+                , researching JVM optimization for serverless, previously at{' '}
                 <a
                   href="https://harvey.ai"
                   target="_blank"
@@ -83,7 +84,17 @@ export default function IntroCards() {
                 >
                   Harvey
                 </a>
-                . Founded{' '}
+                . First early career AI Platform Engineer at{' '}
+                <a
+                  href="https://www.forbes.com/sites/giacomotognini/2025/09/10/jared-kushners-new-startup-helps-businesses-figure-out-how-to-use-ai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('brain')}
+                >
+                  Brain Co.
+                </a>
+                {' '}this summer. Founded{' '}
                 <a
                   href="https://github.com/shapeshiftos"
                   target="_blank"
