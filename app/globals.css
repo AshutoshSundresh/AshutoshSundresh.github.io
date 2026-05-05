@@ -943,3 +943,55 @@ html {
   scrollbar-width: thin;
   scrollbar-color: #3e3e3e #1e1e1e;
 }
+
+/* Hero pill: mobile = down arrow only; md+ = full pill */
+.hero-pill-container {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-pill-content {
+  display: none;
+}
+.hero-pill-border-l {
+  border-left: none;
+}
+.hero-dice-btn {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hero-pill-container {
+    width: 100%;
+    max-width: 36rem; /* max-w-xl */
+  }
+  .hero-pill-content {
+    display: flex;
+  }
+  .hero-pill-border-l {
+    border-left-width: 1px;
+  }
+  .hero-dice-btn {
+    display: flex;
+  }
+}
+
+/* Hero milestone ticker (duplicated text row, -50% = one copy width) */
+/* Holds at the start for ~0.6 s (≈2.3% of 26 s) before scrolling */
+@keyframes hero-ticker {
+  0%     { transform: translateX(0); }
+  2.3%   { transform: translateX(0); }
+  100%   { transform: translateX(-50%); }
+}
+
+.hero-ticker-track {
+  display: inline-flex;
+  width: max-content;
+  animation: hero-ticker 26s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ticker-track {
+    animation: none;
+  }
+}

@@ -1,10 +1,11 @@
 "use client";
 import Image from 'next/image';
 import { useState } from 'react';
-import { ChevronDown, Search, Moon, Sun } from 'lucide-react';
+import { Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
 import HoverCursor from './HoverCursor';
+import HeroTimelinePill from './HeroTimelinePill';
 
 interface HeroSectionProps {
   onSearchOpen: () => void;
@@ -133,7 +134,7 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
                 <a href="https://github.com/ashutoshsundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('github')}>GitHub</a>
                 <a href="https://linkedin.com/in/asund" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('linkedin')}>LinkedIn</a>
               </div>
-              <button onClick={scrollToNext} className="bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 text-gray-700 dark:text-gray-200 backdrop-blur-md shadow-lg border border-gray-200/50 dark:border-gray-700/50 px-4 md:px-5 py-3 md:py-2.5 rounded-full text-sm md:text-[14px] transition-all duration-300 max-[390px]:hidden blur-on-hover" aria-label="Scroll to next section" data-search-ignore="true"><ChevronDown className="h-5 w-5" /></button>
+              <HeroTimelinePill onScrollNext={scrollToNext} />
             </div>
           </div>
         </div>

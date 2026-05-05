@@ -7,6 +7,7 @@ import { Search, X } from 'lucide-react';
 import skeuSearchMeta from '../data/skeumorphicSearchMeta.json';
 import useSearchIndex from '../hooks/useSearchIndex';
 import useDebouncedValue from '../hooks/useDebouncedValue';
+import { navigateFromSearchPath } from '../lib/navigateSearchPath';
 
 function highlight(text: string, query: string, acronymMappings?: Map<string, string[]>): string {
   if (!query) return text;
@@ -148,34 +149,7 @@ export default function SearchOverlay({ open, onClose, navigateInSkeumorphic }: 
 
   const handleSelect = useCallback(
     (path: string) => {
-      // If result targets the skeumorphic page and we have an in-component navigator, switch tabs without reload
-      try {
-        const url = new URL(path, typeof window !== 'undefined' ? window.location.origin : 'https://local');
-        if (url.pathname === '/experience') {
-          const tab = url.searchParams.get('tab');
-          if (tab && navigateInSkeumorphic) {
-            navigateInSkeumorphic(tab);
-            onClose();
-            return;
-          }
-        }
-      } catch {
-        // ignore URL parse errors and fall through to default
-      }
-
-      onClose();
-      // Same-page hash navigation for smoother UX
-      const [pathname, hash] = path.split('#');
-      if (pathname === '/') {
-        if (hash) {
-          const el = document.getElementById(hash);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            return;
-          }
-        }
-      }
-      window.location.href = path;
+      navigateFromSearchPath(path, { navigateInSkeumorphic, onClose });
     },
     [onClose, navigateInSkeumorphic]
   );
