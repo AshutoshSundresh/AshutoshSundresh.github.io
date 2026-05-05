@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { memo, useCallback, useReducer, useRef } from 'react';
 import { ChevronDown, Dices } from 'lucide-react';
 import { HERO_TIMELINE, formatTimelineHeading } from '../data/heroTimeline';
 
@@ -11,6 +11,8 @@ const WEIGHTED_POOL: number[] = HERO_TIMELINE.flatMap((entry, i) =>
   OLYMPIAD_PATTERN.test(entry.sentence) ? [i] : [i, i, i]
 );
 
+const BLACKLIST_SIZE = 10;
+
 interface HeroTimelinePillProps {
   onScrollNext: () => void;
 }
@@ -18,7 +20,19 @@ interface HeroTimelinePillProps {
 const tickerText =
   'text-left text-xs md:text-[13px] text-gray-700 dark:text-gray-200 font-light whitespace-nowrap';
 
-function TickerSentence({ text, tickerKey }: { text: string; tickerKey: number }) {
+type PillState = { index: number; tickerKey: number };
+
+function pillReducer(state: PillState, next: number): PillState {
+  return { index: next, tickerKey: state.tickerKey + 1 };
+}
+
+const TickerSentence = memo(function TickerSentence({
+  text,
+  tickerKey,
+}: {
+  text: string;
+  tickerKey: number;
+}) {
   return (
     <>
       <div className="relative w-full min-h-[1.35rem] flex items-center overflow-hidden motion-reduce:hidden">
@@ -37,33 +51,27 @@ function TickerSentence({ text, tickerKey }: { text: string; tickerKey: number }
       </p>
     </>
   );
-}
+});
 
-const BLACKLIST_SIZE = 10;
-
-export default function HeroTimelinePill({ onScrollNext }: HeroTimelinePillProps) {
-  const [index, setIndex] = useState(0);
-  const [tickerKey, setTickerKey] = useState(0);
+const HeroTimelinePill = memo(function HeroTimelinePill({ onScrollNext }: HeroTimelinePillProps) {
+  const [{ index, tickerKey }, dispatch] = useReducer(pillReducer, { index: 0, tickerKey: 0 });
   const recentRef = useRef<number[]>([0]);
   const entry = HERO_TIMELINE[index];
 
-  const randomize = () => {
+  const randomize = useCallback(() => {
     if (WEIGHTED_POOL.length <= 1) return;
     const blacklist = new Set(recentRef.current);
     const pool = WEIGHTED_POOL.filter((i) => !blacklist.has(i));
     const source = pool.length > 0 ? pool : WEIGHTED_POOL;
     const next = source[Math.floor(Math.random() * source.length)];
     recentRef.current = [...recentRef.current.slice(-(BLACKLIST_SIZE - 1)), next];
-    setIndex(next);
-    setTickerKey((k) => k + 1);
-  };
+    dispatch(next);
+  }, []);
 
   if (!entry) return null;
 
   return (
-    <div
-      className="hero-pill-container flex items-stretch rounded-full border border-gray-200/50 dark:border-gray-700/50 bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 backdrop-blur-md shadow-lg overflow-hidden transition-all duration-300"
-    >
+    <div className="hero-pill-container flex items-stretch rounded-full border border-gray-200/50 dark:border-gray-700/50 bg-white/60 hover:bg-white/70 dark:bg-[#2A2A2A]/60 dark:hover:bg-[#2A2A2A]/70 backdrop-blur-md shadow-lg overflow-hidden transition-colors duration-300">
       {/* Text area — hidden on mobile, flex on md+ */}
       <div className="hero-pill-content min-w-0 flex-1 px-4 py-2.5 items-center gap-2">
         <time
@@ -103,4 +111,6 @@ export default function HeroTimelinePill({ onScrollNext }: HeroTimelinePillProps
       </div>
     </div>
   );
-}
+});
+
+export default HeroTimelinePill;

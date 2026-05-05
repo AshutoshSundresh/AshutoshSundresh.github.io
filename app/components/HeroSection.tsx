@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
@@ -32,7 +32,7 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
     onMouseLeave: () => setActiveCursor(null),
   });
 
-  const scrollToNext = () => {
+  const scrollToNext = useCallback(() => {
     const currentSection = document.querySelector('#hero-section');
     if (currentSection) {
       const parentSection = currentSection.closest('section');
@@ -41,7 +41,7 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
         if (nextSection) nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-  };
+  }, []);
 
   const activeCursorImageSrc = activeCursor === 'theme'
     ? (isDark ? '/icons/awake.gif' : '/icons/sleeping.gif')
