@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { DndContext, DragEndEvent } from '@dnd-kit/core';
 import DraggableCard from './DraggableCard';
 import GitHubContributions from './GitHubContributions';
-import LocationCard from './LocationCard';
 import InterestPopup from './InterestPopup';
+
+const LocationCard = dynamic(() => import('./LocationCard'), { ssr: false });
 import FilmPopupContent from './FilmPopupContent';
 import MusicPopupContent from './MusicPopupContent';
 import DiecastCarsPopupContent from './DiecastCarsPopupContent';

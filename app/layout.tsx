@@ -78,7 +78,15 @@ export default function RootLayout({
       <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       <head>
         <style dangerouslySetInnerHTML={{ __html: themeFallback }} />
-        <link rel="preconnect" href="https://lastfm.freetls.fastly.net" crossOrigin="" />
+        {/* Preload the hero font — it is on the critical render path (LCP text) */}
+        <link rel="preload" href="/fonts/Array-Regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Preconnect to API origins used on first paint */}
+        <link rel="preconnect" href="https://api.github.com" />
+        <link rel="preconnect" href="https://ws.audioscrobbler.com" />
+        <link rel="preconnect" href="https://lastfm.freetls.fastly.net" />
+        <link rel="dns-prefetch" href="https://api.github.com" />
+        <link rel="dns-prefetch" href="https://ws.audioscrobbler.com" />
+        <link rel="dns-prefetch" href="https://lastfm.freetls.fastly.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

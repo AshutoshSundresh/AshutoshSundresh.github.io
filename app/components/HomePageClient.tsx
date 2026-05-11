@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Search, Moon, Sun } from 'lucide-react';
 import HeroSection from "./HeroSection";
 import IntroSection from "./IntroSection";
-import GameOfLife from "./GameOfLife";
-import SearchOverlay from "./SearchOverlay";
 import HoverCursor from "./HoverCursor";
 import { useTheme } from '../contexts/ThemeContext';
+
+const GameOfLife = dynamic(() => import('./GameOfLife'), { ssr: false });
+const SearchOverlay = dynamic(() => import('./SearchOverlay'), { ssr: false });
 
 type CursorKey = 'gol' | 'theme' | 'search';
 

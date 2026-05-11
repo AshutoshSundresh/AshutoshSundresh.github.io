@@ -105,7 +105,6 @@ export default function GameOfLife() {
     return newCells;
   }, [maxTrailAge]);
 
-  // Animation loop
   // Animation loop: handles GOL generations, trail aging, and infection spreading
   useEffect(() => {
     const interval = setInterval(() => {
