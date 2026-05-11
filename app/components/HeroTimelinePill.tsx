@@ -94,19 +94,19 @@ const HeroTimelinePill = memo(function HeroTimelinePill({ onScrollNext }: HeroTi
       <div className="hero-pill-border-l flex shrink-0 border-gray-200/60 dark:border-gray-600/60">
         <button
           type="button"
-          onClick={onScrollNext}
-          className="flex h-full items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer blur-on-hover px-4 py-3 md:py-0 md:px-3 md:w-12"
-          aria-label="Scroll to next section"
-        >
-          <ChevronDown className="h-5 w-5" strokeWidth={1.75} />
-        </button>
-        <button
-          type="button"
           onClick={randomize}
-          className="hero-dice-btn h-full w-12 items-center justify-center text-gray-700 dark:text-white hover:bg-white/50 dark:hover:bg-white/5 transition-colors border-l border-gray-200/60 dark:border-gray-600/60 cursor-pointer blur-on-hover"
+          className="hero-dice-btn h-full w-12 items-center justify-center text-gray-700 dark:text-white hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer blur-on-hover"
           aria-label="Show random milestone"
         >
           <Dices className="h-[1.35rem] w-[1.35rem] shrink-0" strokeWidth={1.65} aria-hidden />
+        </button>
+        <button
+          type="button"
+          onClick={onScrollNext}
+          className="flex h-full items-center justify-center text-gray-700 dark:text-gray-200 hover:bg-white/50 dark:hover:bg-white/5 transition-colors cursor-pointer blur-on-hover px-4 py-3 md:py-0 md:px-3 md:w-12 border-l border-gray-200/60 dark:border-gray-600/60"
+          aria-label="Scroll to next section"
+        >
+          <ChevronDown className="h-5 w-5" strokeWidth={1.75} />
         </button>
       </div>
     </div>
