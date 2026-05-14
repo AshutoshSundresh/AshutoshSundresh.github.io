@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:www.popot.org)",
+      "WebFetch(domain:www.jordanmechner.com)"
+    ]
+  }
+}

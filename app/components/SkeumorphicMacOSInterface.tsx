@@ -11,6 +11,7 @@ import EducationList from './EducationList';
 import ExperienceList from './ExperienceList';
 import usePortfolioTerminal from '../hooks/usePortfolioTerminal';
 import TerminalOverlay from './TerminalOverlay';
+import PrinceOfPersiaGame from './PrinceOfPersiaGame';
 import SearchOverlay from './SearchOverlay';
 import SkeumorphicDesktopShell from './SkeumorphicDesktopShell';
 import SkeumorphicMobileShell from './SkeumorphicMobileShell';
@@ -75,6 +76,7 @@ const MacOSWindow = () => {
   const windowHeight = useWindowInfo();
 
   const [lockscreenVisible, setLockscreenVisible] = useState(false);
+  const [gameVisible, setGameVisible] = useState(false);
 
   const { setLockscreenActive } = useAppOverlayState();
 
@@ -392,6 +394,11 @@ const MacOSWindow = () => {
     setLockscreenVisible(v => !v);
   }, [lockscreenVisible, getMobileOverlayFromHistory]);
 
+  const handleUnlock = useCallback(() => {
+    toggleLockscreen();
+    setGameVisible(true);
+  }, [toggleLockscreen]);
+
   const openMobileApp = useCallback(
     (tabId: number) => {
       onTabChange(tabId);
@@ -492,6 +499,7 @@ const MacOSWindow = () => {
 
   if (windowHeight.isMobile) {
     return (
+      <>
       <SkeumorphicMobileShell
         activeTab={resolvedActiveTab}
         backgroundStyle={backgroundStyle}
@@ -500,7 +508,7 @@ const MacOSWindow = () => {
         courseworkCourses={courseworkCourses}
         isCourseworkDetail={isCourseworkDetail}
         isDark={isDark}
-        lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={toggleLockscreen} /> : null}
+        lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={handleUnlock} /> : null}
         mobileActiveApp={effectiveMobileActiveApp}
         mobileApps={mobileApps}
         onBackToEducation={() => router.back()}
@@ -528,10 +536,13 @@ const MacOSWindow = () => {
         tabs={tabs}
         terminalOverlay={terminalOverlay}
       />
+      {gameVisible && <PrinceOfPersiaGame onClose={() => setGameVisible(false)} />}
+      </>
     );
   }
 
   return (
+    <>
     <SkeumorphicDesktopShell
       activeTab={resolvedActiveTab}
       activitiesCount={activitiesData.length}
@@ -544,7 +555,7 @@ const MacOSWindow = () => {
       contentRef={contentRef}
       educationCount={educationData.length}
       experienceCount={experienceData.length}
-      lockscreenOverlay={lockscreenVisible ? <DesktopLockscreen onUnlock={toggleLockscreen} /> : null}
+      lockscreenOverlay={lockscreenVisible ? <DesktopLockscreen onUnlock={handleUnlock} /> : null}
       mobileMenuRef={mobileMenuRef}
       onBack={handleBack}
       onCloseDetailView={closeDetailView}
@@ -574,6 +585,8 @@ const MacOSWindow = () => {
       tabs={tabs}
       terminalOverlay={terminalOverlay}
     />
+    {gameVisible && <PrinceOfPersiaGame onClose={() => setGameVisible(false)} />}
+    </>
   );
 };
 

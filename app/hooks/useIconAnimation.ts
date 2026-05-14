@@ -9,7 +9,7 @@ import { GAME_OF_LIFE_CONFIG } from '../constants/gameOfLife';
 import type { IconInstance } from '../types/interestIcons';
 import { ICON_ANIMATION_CONFIG } from '../constants/interestIcons';
 
-// Cache for pre-rendered icon pixel data
+// Cache for pre-rendered icon pixel data.
 const iconPixelCache = new Map<HTMLImageElement, { data: Uint8ClampedArray; width: number; height: number }>();
 
 interface UseIconAnimationOptions {
@@ -66,7 +66,7 @@ export function useIconAnimation({
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Cache leftmost/topmost positions to avoid recalculating
+      // Cache leftmost/topmost positions to avoid recalculating.
       let leftmostX: number | null = null;
       let topmostY: number | null = null;
 
