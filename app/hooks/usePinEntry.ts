@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-export default function usePinEntry(onSuccess: () => void) {
+export default function usePinEntry(onSuccess: () => void, onSuccessStart?: () => void) {
   const [password, setPassword] = useState('');
   const [isShaking, setIsShaking] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -10,13 +10,14 @@ export default function usePinEntry(onSuccess: () => void) {
   const submit = useCallback(() => {
     if (parseInt(password, 10) === 10080) {
       setIsExiting(true);
+      onSuccessStart?.();
       setTimeout(onSuccess, 300);
     } else {
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 500);
       setPassword('');
     }
-  }, [password, onSuccess]);
+  }, [password, onSuccess, onSuccessStart]);
 
   const press = useCallback((key: string) => {
     if (key === 'delete') {
@@ -30,6 +31,7 @@ export default function usePinEntry(onSuccess: () => void) {
         setTimeout(() => {
           if (parseInt(next, 10) === 10080) {
             setIsExiting(true);
+            onSuccessStart?.();
             setTimeout(onSuccess, 300);
           } else {
             setIsShaking(true);
@@ -38,7 +40,7 @@ export default function usePinEntry(onSuccess: () => void) {
         }, 300);
       }
     }
-  }, [password, onSuccess]);
+  }, [password, onSuccess, onSuccessStart]);
 
   return { password, isShaking, isExiting, submit, press };
 }

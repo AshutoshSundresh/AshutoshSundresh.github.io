@@ -324,6 +324,7 @@ export interface AppOverlayState {
 // ============================================================================
 export interface IOSLockscreenProps {
   onUnlock: () => void;
+  onUnlockStart?: () => void;
 }
 
 export interface NowPlayingProps {

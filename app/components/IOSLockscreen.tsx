@@ -4,12 +4,22 @@ import useClock from '../hooks/useClock';
 import usePinEntry from '../hooks/usePinEntry';
 import useVerticalSwipe from '../hooks/useVerticalSwipe';
 
-const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
+const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock, onUnlockStart }) => {
   const timeHhMm = useClock('h:mm');
   const timeDate = useClock('EEEE, MMMM d');
+  const keypadLetters: Record<number, string> = {
+    2: 'ABC',
+    3: 'DEF',
+    4: 'GHI',
+    5: 'JKL',
+    6: 'MNO',
+    7: 'PQRS',
+    8: 'TUV',
+    9: 'WXYZ',
+  };
 
   const [showKeypad, setShowKeypad] = useState(false);
-  const { password, isShaking, isExiting, press } = usePinEntry(() => onUnlock());
+  const { password, isShaking, isExiting, press } = usePinEntry(() => onUnlock(), onUnlockStart);
   const { swipeDistance, onTouchStart, onTouchMove, onTouchEnd } = useVerticalSwipe();
 
 
@@ -107,7 +117,7 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
               <div className="text-xs font-medium text-white/80 mb-2">
                 Swipe up to unlock
               </div>
-              <div className="mt-2 w-10 h-1 bg-white/40 rounded-full animate-pulse-up"></div>
+              <div className="mt-2 w-10 h-1 bg-white/40 rounded-full"></div>
             </div>
           </div>
         </>
@@ -154,7 +164,16 @@ const IOSLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M6.707 4.879A3 3 0 018.828 4H15a3 3 0 013 3v6a3 3 0 01-3 3H8.828a3 3 0 01-2.12-.879l-4.415-4.414a1 1 0 010-1.414l4.414-4.414zm4 2.414a1 1 0 00-1.414 1.414L10.586 10l-1.293 1.293a1 1 0 101.414 1.414L12 11.414l1.293 1.293a1 1 0 001.414-1.414L13.414 10l1.293-1.293a1 1 0 00-1.414-1.414L12 8.586l-1.293-1.293z" clipRule="evenodd" />
                   </svg>
-                ) : key}
+                ) : (
+                  <span className="flex flex-col items-center justify-center leading-none">
+                    <span>{key}</span>
+                    {typeof key === 'number' && keypadLetters[key] && (
+                      <span className="mt-1 text-[9px] font-semibold tracking-[0.18em] text-white/70">
+                        {keypadLetters[key]}
+                      </span>
+                    )}
+                  </span>
+                )}
               </button>
             ))}
           </div>

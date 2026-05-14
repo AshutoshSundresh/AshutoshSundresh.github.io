@@ -395,9 +395,13 @@ const MacOSWindow = () => {
   }, [lockscreenVisible, getMobileOverlayFromHistory]);
 
   const handleUnlock = useCallback(() => {
-    toggleLockscreen();
     setGameVisible(true);
-  }, [toggleLockscreen]);
+    setLockscreenVisible(false);
+  }, []);
+
+  const handleUnlockStart = useCallback(() => {
+    setGameVisible(true);
+  }, []);
 
   const openMobileApp = useCallback(
     (tabId: number) => {
@@ -508,7 +512,7 @@ const MacOSWindow = () => {
         courseworkCourses={courseworkCourses}
         isCourseworkDetail={isCourseworkDetail}
         isDark={isDark}
-        lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={handleUnlock} /> : null}
+        lockscreenOverlay={lockscreenVisible ? <IOSLockscreen onUnlock={handleUnlock} onUnlockStart={handleUnlockStart} /> : null}
         mobileActiveApp={effectiveMobileActiveApp}
         mobileApps={mobileApps}
         onBackToEducation={() => router.back()}
@@ -555,7 +559,7 @@ const MacOSWindow = () => {
       contentRef={contentRef}
       educationCount={educationData.length}
       experienceCount={experienceData.length}
-      lockscreenOverlay={lockscreenVisible ? <DesktopLockscreen onUnlock={handleUnlock} /> : null}
+      lockscreenOverlay={lockscreenVisible ? <DesktopLockscreen onUnlock={handleUnlock} onUnlockStart={handleUnlockStart} /> : null}
       mobileMenuRef={mobileMenuRef}
       onBack={handleBack}
       onCloseDetailView={closeDetailView}
