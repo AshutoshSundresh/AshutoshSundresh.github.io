@@ -682,102 +682,180 @@ html {
   animation: fadeIn 0.3s ease-out forwards;
 }
 
-/* Terminal overlay styles */
+/* ─── Terminal overlay ────────────────────────────────────────── */
+
 .terminal-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Color values defined in app/constants/colors.ts */
-  background: rgba(0, 0, 0, 0.9);
-  /* COLOR_COMBINATIONS.black[90] */
-  color: #33ff33;
-  /* SEMANTIC_COLORS.terminalGreen */
-  font-family: monospace;
-  padding: 1rem;
+  inset: 0;
+  background: #0d1117;
+  color: #4ade80;
+  font-family: var(--font-geist-mono), 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  font-size: 13.5px;
+  line-height: 1.6;
+  padding: 1.25rem 1.5rem;
   z-index: 9999;
   display: flex;
   flex-direction: column;
+  cursor: text;
 }
 
+/* header */
 .terminal-header {
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #33ff33;
-  /* SEMANTIC_COLORS.terminalGreen */
-  font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #1c2a1c;
+}
+
+.terminal-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 .terminal-hint {
-  font-size: 0.8rem;
-  opacity: 0.7;
-  margin-left: 1rem;
-  font-weight: normal;
+  font-size: 0.75rem;
+  color: #374151;
+  font-weight: 400;
+  letter-spacing: 0.03em;
 }
 
+/* scrollable output area */
 .terminal-output {
   overflow-y: auto;
-  height: auto;
-  max-height: calc(100vh - 120px);
   flex: 1;
   scrollbar-width: none;
-  /* Firefox */
   -ms-overflow-style: none;
-  /* IE and Edge */
+  padding-bottom: 0.5rem;
 }
 
 .terminal-output::-webkit-scrollbar {
   display: none;
-  /* Chrome, Safari, Opera */
 }
 
-.terminal-output-line {
-  margin-bottom: 0.25rem;
-  line-height: 1.4;
+/* ─── Line types ─────────────────────────────────────────────── */
+
+/* base line */
+.tl {
+  white-space: pre;
+  line-height: 1.6;
+  color: #4ade80;
 }
+
+/* vertical gap between blocks */
+.tl-gap {
+  height: 0.7em;
+}
+
+/* echoed command (prompt + what was typed) — dark card like Claude Code user messages */
+.tl-cmd {
+  white-space: pre;
+  line-height: 1.6;
+  background: #1e2d1e;
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  margin: 0.35rem 0;
+  border-left: 2px solid #238636;
+}
+
+/* error output */
+.tl-err {
+  white-space: pre;
+  line-height: 1.6;
+  color: #f87171;
+  background: #2d1515;
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  margin: 0.2rem 0;
+}
+
+/* box-drawing banner (╔ ║ ╚) */
+.tl-banner {
+  white-space: pre;
+  line-height: 1.6;
+  color: #34d058;
+  opacity: 0.8;
+}
+
+/* ALL-CAPS section headers (EDUCATION, EXPERIENCE …) */
+.tl-section {
+  white-space: pre;
+  line-height: 1.6;
+  color: #fbbf24;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-top: 0.2rem;
+}
+
+/* [ Category ] labels */
+.tl-category {
+  white-space: pre;
+  line-height: 1.6;
+  color: #60a5fa;
+  font-weight: 500;
+}
+
+/* drwxr-xr-x directory listing */
+.tl-dir {
+  white-space: pre;
+  line-height: 1.6;
+  color: #4ade80;
+  opacity: 0.55;
+}
+
+/* result count lines */
+.tl-stat {
+  white-space: pre;
+  line-height: 1.6;
+  color: #a3e635;
+  font-style: italic;
+}
+
+/* ─── Prompt token colours ───────────────────────────────────── */
+
+.tp-user   { color: #4ade80; font-weight: 700; }
+.tp-at     { color: #1f4028; }
+.tp-host   { color: #4ade80; font-weight: 500; }
+.tp-path   { color: #1f4028; }
+.tp-dollar { color: #4ade80; margin-right: 0.45em; margin-left: 0.05em; }
+
+/* the command text typed by the user (in echoed history lines) */
+.tp-cmdtext { color: #f0f0f0; font-weight: 500; }
+
+/* ─── Active input row ───────────────────────────────────────── */
 
 .terminal-current-prompt {
   display: flex;
   align-items: center;
-  margin-top: 0.25rem;
-}
-
-.terminal-prompt {
-  display: flex;
-  align-items: center;
-}
-
-.terminal-prompt-text {
-  margin-right: 0.5rem;
+  border-top: 1px solid #21262d;
+  border-bottom: 1px solid #21262d;
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
 }
 
 .terminal-input {
   background: transparent;
   border: none;
-  color: #33ff33;
-  /* SEMANTIC_COLORS.terminalGreen */
-  font-family: monospace;
-  font-size: 1rem;
+  color: #f0f0f0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
   flex-grow: 1;
   outline: none;
+  margin-left: 0.45em;
+  caret-color: #4ade80;
 }
+
+/* ─── Mobile ─────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .terminal-container {
-    padding: 0.5rem;
-  }
-
-  .terminal-output {
-    max-height: calc(100vh - 100px);
-  }
-
-  .terminal-input {
+    padding: 0.75rem 1rem;
     font-size: 16px;
-    /* Prevent zoom on mobile */
   }
 }
 
