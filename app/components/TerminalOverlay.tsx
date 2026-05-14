@@ -40,15 +40,12 @@ function TerminalLine({ line }: { line: string }) {
     );
   }
 
-  // Error messages
-  if (
-    line.startsWith('zsh:') ||
-    line.startsWith('grep: no') ||
-    line.startsWith('find: no') ||
-    line.startsWith('No manual') ||
-    line.startsWith('What manual') ||
-    line.startsWith('cd: this is a web')
-  ) {
+  // Error messages — any line that is an error from a known command or shell
+  const ERROR_PREFIXES = [
+    'zsh:', 'ls:', 'cat:', 'grep:', 'find:', 'whois:', 'uname:', 'history:',
+    'No manual entry', 'What manual page', 'cd: this is a web',
+  ];
+  if (ERROR_PREFIXES.some(p => line.startsWith(p))) {
     return (
       <div style={{
         color: '#f87171',

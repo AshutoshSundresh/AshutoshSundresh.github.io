@@ -166,13 +166,17 @@ export default function useTerminal({
       }
 
       if (cmd === 'uname') {
-        setTerminalOutput(prev => [
-          ...prev,
-          rest.includes('-a')
-            ? 'Portfolio Darwin 24.3.0 Portfolio:1 arm64 arm i386 arm'
-            : 'Portfolio',
-          '',
-        ]);
+        if (rest && !rest.includes('-a')) {
+          setTerminalOutput(prev => [...prev, `uname: illegal option -- ${rest.replace(/-/g, '')}`, 'usage: uname [-a]', '']);
+        } else {
+          setTerminalOutput(prev => [
+            ...prev,
+            rest.includes('-a')
+              ? 'Portfolio Darwin 24.3.0 Portfolio:1 arm64 arm i386 arm'
+              : 'Portfolio',
+            '',
+          ]);
+        }
         return;
       }
 
@@ -188,6 +192,10 @@ export default function useTerminal({
       }
 
       if (cmd === 'history') {
+        if (rest) {
+          setTerminalOutput(prev => [...prev, 'history: too many arguments', 'usage: history', '']);
+          return;
+        }
         const h = historyRef.current;
         setTerminalOutput(prev => [
           ...prev,
@@ -243,39 +251,211 @@ export default function useTerminal({
       if (cmd === 'man') {
         const manPages: Record<string, string[]> = {
           ls: [
-            'LS(1)', '',
-            'NAME', '  ls -- list directory contents', '',
-            'SYNOPSIS', '  ls [section]', '',
-            'SECTIONS', '  projects  experience  education  awards  publications  activities',
+            'LS(1)                    Portfolio Manual                    LS(1)', '',
+            'NAME',
+            '  ls -- list directory contents', '',
+            'SYNOPSIS',
+            '  ls [section]', '',
+            'DESCRIPTION',
+            '  List available sections. With a section argument, list all entries',
+            '  in that section with details.', '',
+            'SECTIONS',
+            '  projects       shipped projects with tech stack and links',
+            '  experience     work history by company and role',
+            '  education      academic background',
+            '  awards         competition wins and honors',
+            '  publications   research papers',
+            '  activities     clubs and extracurriculars', '',
+            'EXAMPLES',
+            '  ls               list all sections',
+            '  ls projects      show all projects',
+            '  ls experience    show all work experience',
           ],
           cat: [
-            'CAT(1)', '',
-            'NAME', '  cat -- display file contents', '',
-            'SYNOPSIS', '  cat <file>', '',
-            'FILES', '  about.txt  resume.txt  skills.txt  contact.txt',
+            'CAT(1)                   Portfolio Manual                   CAT(1)', '',
+            'NAME',
+            '  cat -- display file contents', '',
+            'SYNOPSIS',
+            '  cat <file>', '',
+            'DESCRIPTION',
+            '  Read and display a text file. Files contain summarized portfolio data.', '',
+            'FILES',
+            '  about.txt      biography and highlights',
+            '  resume.txt     full resume summary across all sections',
+            '  skills.txt     technology skills derived from project stack',
+            '  contact.txt    contact info and social links', '',
+            'EXAMPLES',
+            '  cat about.txt',
+            '  cat resume.txt',
+            '  cat contact.txt',
           ],
           grep: [
-            'GREP(1)', '',
-            'NAME', '  grep -- search for pattern in content', '',
-            'SYNOPSIS', '  grep <term>',
+            'GREP(1)                  Portfolio Manual                  GREP(1)', '',
+            'NAME',
+            '  grep -- search all portfolio content for a pattern', '',
+            'SYNOPSIS',
+            '  grep <term>', '',
+            'DESCRIPTION',
+            '  Search across projects, experience, education, awards, publications,',
+            '  and activities. Returns matching entry paths.', '',
+            'EXAMPLES',
+            '  grep python        find all entries mentioning Python',
+            '  grep UCLA          find entries mentioning UCLA',
+            '  grep machine       find entries about machine learning',
           ],
           find: [
-            'FIND(1)', '',
-            'NAME', '  find -- find entries by name', '',
-            'SYNOPSIS', '  find <name>',
-          ],
-          neofetch: [
-            'NEOFETCH(1)', '',
-            'NAME', '  neofetch -- display system info with ASCII art', '',
-            'SYNOPSIS', '  neofetch',
+            'FIND(1)                  Portfolio Manual                  FIND(1)', '',
+            'NAME',
+            '  find -- find entries by name', '',
+            'SYNOPSIS',
+            '  find <name>', '',
+            'DESCRIPTION',
+            '  Search for entries whose name or title contains the given string.',
+            '  Returns paths to all matching entries.', '',
+            'EXAMPLES',
+            '  find shapeshiftos      find a project by name',
+            '  find google            find experience at a company',
           ],
           whois: [
-            'WHOIS(1)', '',
-            'NAME', '  whois -- display information about Ashutosh', '',
-            'SYNOPSIS', '  whois [ashutosh]',
+            'WHOIS(1)                 Portfolio Manual                 WHOIS(1)', '',
+            'NAME',
+            '  whois -- display information about Ashutosh Sundresh', '',
+            'SYNOPSIS',
+            '  whois [ashutosh]', '',
+            'DESCRIPTION',
+            '  Show a structured summary of Ashutosh: education, work history,',
+            '  notable awards, and tech stack.', '',
+            'EXAMPLES',
+            '  whois',
+            '  whois ashutosh',
+          ],
+          neofetch: [
+            'NEOFETCH(1)              Portfolio Manual              NEOFETCH(1)', '',
+            'NAME',
+            '  neofetch -- display portfolio system info with ASCII art', '',
+            'SYNOPSIS',
+            '  neofetch', '',
+            'DESCRIPTION',
+            '  Show a system-info panel with an ASCII art logo, similar to the',
+            '  neofetch CLI tool on Linux/macOS. All data is derived from the',
+            '  portfolio JSON at build time.', '',
+            'EXAMPLES',
+            '  neofetch',
+          ],
+          echo: [
+            'ECHO(1)                  Portfolio Manual                  ECHO(1)', '',
+            'NAME',
+            '  echo -- write arguments to standard output', '',
+            'SYNOPSIS',
+            '  echo [text ...]', '',
+            'EXAMPLES',
+            '  echo hello world',
+            '  echo $USER',
+          ],
+          pwd: [
+            'PWD(1)                   Portfolio Manual                   PWD(1)', '',
+            'NAME',
+            '  pwd -- return working directory name', '',
+            'SYNOPSIS',
+            '  pwd', '',
+            'DESCRIPTION',
+            '  Prints the current working directory path.',
+          ],
+          whoami: [
+            'WHOAMI(1)                Portfolio Manual                WHOAMI(1)', '',
+            'NAME',
+            '  whoami -- display effective user name', '',
+            'SYNOPSIS',
+            '  whoami', '',
+            'DESCRIPTION',
+            '  Prints the name of the current user.',
+          ],
+          date: [
+            'DATE(1)                  Portfolio Manual                  DATE(1)', '',
+            'NAME',
+            '  date -- display current date and time', '',
+            'SYNOPSIS',
+            '  date', '',
+            'DESCRIPTION',
+            '  Displays the current date and time in the local timezone.',
+          ],
+          uname: [
+            'UNAME(1)                 Portfolio Manual                 UNAME(1)', '',
+            'NAME',
+            '  uname -- print system information', '',
+            'SYNOPSIS',
+            '  uname [-a]', '',
+            'OPTIONS',
+            '  -a    print all system information', '',
+            'EXAMPLES',
+            '  uname',
+            '  uname -a',
+          ],
+          uptime: [
+            'UPTIME(1)                Portfolio Manual                UPTIME(1)', '',
+            'NAME',
+            '  uptime -- show how long the system has been running', '',
+            'SYNOPSIS',
+            '  uptime', '',
+            'DESCRIPTION',
+            '  Displays current time, uptime duration, and load averages.',
+          ],
+          history: [
+            'HISTORY(1)               Portfolio Manual               HISTORY(1)', '',
+            'NAME',
+            '  history -- display command history', '',
+            'SYNOPSIS',
+            '  history', '',
+            'DESCRIPTION',
+            '  Shows all commands entered in the current session, numbered.',
+          ],
+          clear: [
+            'CLEAR(1)                 Portfolio Manual                 CLEAR(1)', '',
+            'NAME',
+            '  clear -- clear the terminal screen', '',
+            'SYNOPSIS',
+            '  clear', '',
+            'DESCRIPTION',
+            '  Clears all output from the terminal. Also aliased as cls.',
+          ],
+          help: [
+            'HELP(1)                  Portfolio Manual                  HELP(1)', '',
+            'NAME',
+            '  help -- list available commands', '',
+            'SYNOPSIS',
+            '  help', '',
+            'DESCRIPTION',
+            '  Displays a categorized list of all available commands with short',
+            '  descriptions. Use man <command> for detailed documentation.',
+          ],
+          exit: [
+            'EXIT(1)                  Portfolio Manual                  EXIT(1)', '',
+            'NAME',
+            '  exit -- exit the terminal', '',
+            'SYNOPSIS',
+            '  exit', '',
+            'DESCRIPTION',
+            '  Close the terminal overlay and return to the portfolio. Also',
+            '  aliased as quit and q. ESC key works too.',
+          ],
+          cd: [
+            'CD(1)                    Portfolio Manual                    CD(1)', '',
+            'NAME',
+            '  cd -- change directory', '',
+            'SYNOPSIS',
+            '  cd <directory>', '',
+            'DESCRIPTION',
+            '  This is a web portfolio. Navigation between sections is done via',
+            '  the GUI tabs, not the filesystem. cd will remind you of this.',
           ],
         };
-        const page = manPages[rest.toLowerCase()];
+        // aliases
+        manPages['cls'] = manPages['clear'];
+        manPages['quit'] = manPages['exit'];
+        manPages['q'] = manPages['exit'];
+
+        const topic = rest.toLowerCase().replace(/^-/, '');
+        const page = manPages[topic];
         if (page) {
           setTerminalOutput(prev => [...prev, ...page, '']);
         } else if (rest) {
