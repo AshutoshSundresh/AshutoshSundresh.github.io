@@ -3,61 +3,137 @@ import { Raleway } from "next/font/google";
 import "./globals.css";
 import "./fonts.css";
 import Navigation from "./components/Navigation";
+import portfolioData from "./data/skeumorphicExperienceData.json";
+import { CONTACT, CONTACT_LINKS } from "./constants/contact";
 
 const raleway = Raleway({
   subsets: ["latin"],
-  display: 'optional',
+  display: "optional",
 });
 
+const siteUrl = new URL("https://ashutoshsundresh.com");
+const siteOrigin = siteUrl.origin;
+const personName = "Ashutosh Sundresh";
+
+type PortfolioData = {
+  projects: {
+    name: string;
+    caption: string;
+    stats?: { label: string; value: string }[];
+  }[];
+  educationData: {
+    institution: string;
+    degree?: string;
+    institutionLink?: string;
+  }[];
+  experienceData: {
+    company: string;
+    position: string;
+  }[];
+  awardsData: {
+    awards: {
+      title: string;
+      highlight?: string;
+    }[];
+  }[];
+};
+
+const portfolio = portfolioData as PortfolioData;
+const primaryEducation = portfolio.educationData[0];
+const fellowship = portfolio.awardsData
+  .flatMap((category) => category.awards)
+  .find((award) => award.title.includes("Kleiner Perkins"));
+const flagshipProject =
+  portfolio.projects.find((project) => project.name.includes("ShapeShiftOS")) ??
+  portfolio.projects[0];
+const flagshipDownloads = flagshipProject?.stats?.find(
+  (stat) => stat.label === "Downloads"
+)?.value;
+const experienceCompanies = portfolio.experienceData
+  .slice(0, 4)
+  .map((experience) => experience.company)
+  .join(", ");
+const currentRole = portfolio.experienceData[0];
+const educationSummary = primaryEducation?.degree
+  ? `${primaryEducation.degree} student at ${primaryEducation.institution}`
+  : `student at ${primaryEducation?.institution}`;
+const flagshipSummary = flagshipProject
+  ? `Founder of ${flagshipProject.name}${
+      flagshipDownloads ? ` (${flagshipDownloads} downloads)` : ""
+    }.`
+  : undefined;
+const metadataDescription = [
+  `Portfolio of ${personName}`,
+  educationSummary,
+  fellowship?.title,
+  flagshipSummary,
+  experienceCompanies ? `Experience at ${experienceCompanies}.` : undefined,
+]
+  .filter(Boolean)
+  .join(" — ");
+const openGraphDescription = [
+  `Portfolio of ${personName}`,
+  educationSummary,
+  fellowship?.title,
+  flagshipSummary,
+]
+  .filter(Boolean)
+  .join(" — ");
+const jsonLdDescription = [
+  educationSummary,
+  fellowship?.title,
+  flagshipSummary,
+].filter(Boolean).join(" ");
+
 export const metadata: Metadata = {
-  title: "Ashutosh Sundresh",
-  description:
-    "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads). Experience at Harvey AI, Brain Co., and Skylow.",
+  metadataBase: siteUrl,
+  title: personName,
+  description: metadataDescription,
   openGraph: {
-    title: "Ashutosh Sundresh",
-    description:
-      "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads).",
+    title: personName,
+    description: openGraphDescription,
     images: [
       {
-        url: "/thumb.png",
+        url: "/images/thumb.png",
         width: 1200,
         height: 630,
-        alt: "Ashutosh Sundresh",
+        alt: personName,
       },
     ],
     type: "website",
-    url: "https://ashutoshsundresh.com",
+    url: siteOrigin,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ashutosh Sundresh",
-    description:
-      "Portfolio of Ashutosh Sundresh — UCLA CS student, Kleiner Perkins Fellow, and open-source developer. Founder of ShapeShiftOS (160K+ downloads).",
-    images: ["/thumb.png"],
+    title: personName,
+    description: openGraphDescription,
+    images: ["/images/thumb.png"],
   },
   alternates: {
-    canonical: "https://ashutoshsundresh.com",
+    canonical: siteOrigin,
+    types: {
+      "text/plain": `${siteOrigin}/llms.txt`,
+    },
+  },
+  other: {
+    "llms.txt": `${siteOrigin}/llms.txt`,
+    "ai-readable-profile": `${siteOrigin}/llms.txt`,
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Ashutosh Sundresh",
-  url: "https://ashutoshsundresh.com",
-  email: "ashutoshsundresh@gmail.com",
-  sameAs: [
-    "https://github.com/AshutoshSundresh",
-    "https://linkedin.com/in/ashutoshsundresh",
-    "https://x.com/AshutoshSundresh",
-  ],
-  jobTitle: "Software Engineer",
-  description:
-    "UCLA Computer Science student, Kleiner Perkins Fellow, and founder of ShapeShiftOS — an open-source Android OS with 160,000+ downloads.",
-  alumniOf: {
+  name: personName,
+  url: siteOrigin,
+  email: CONTACT.email,
+  sameAs: CONTACT_LINKS,
+  jobTitle: currentRole?.position ?? "Software Engineer",
+  description: jsonLdDescription,
+  alumniOf: primaryEducation && {
     "@type": "CollegeOrUniversity",
-    name: "University of California, Los Angeles",
-    url: "https://ucla.edu",
+    name: primaryEducation.institution,
+    url: primaryEducation.institutionLink,
   },
 };
 

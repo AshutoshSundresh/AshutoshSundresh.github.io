@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useState, useEffect, useRef } from 'react';
 import useAppOverlayState from '../hooks/useAppOverlayState';
 import { SEMANTIC_COLORS } from '../constants/colors';
+import { CONTACT_EMAIL_HREF } from '../constants/contact';
 import HoverCursor from './HoverCursor';
 
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -177,7 +178,7 @@ const Navigation = () => {
           </li>
           <li className="nav-dot">|</li>
           <li className="relative">
-            <Link href="mailto:ashutoshsun@g.ucla.edu" className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} blur-on-hover cursor-none`} onMouseEnter={() => setActiveCursor('contact')} onMouseLeave={() => setActiveCursor(null)}>
+            <Link href={CONTACT_EMAIL_HREF} className={`nav-link contact-btn ${isContactActive ? 'text-white' : ''} blur-on-hover cursor-none`} onMouseEnter={() => setActiveCursor('contact')} onMouseLeave={() => setActiveCursor(null)}>
               <span className="p-0.5 md:px-1">Contact</span>
             </Link>
           </li>

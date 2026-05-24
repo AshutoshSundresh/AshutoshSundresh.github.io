@@ -8,6 +8,7 @@ import CourseworkPage from './coursework/CourseworkPage';
 import ProjectDetailView from './ProjectDetailView';
 import PublicationDetailView from './PublicationDetailView';
 import type { Course, Project, Publication } from '../types';
+import { CONTACT_EMAIL_HREF } from '../constants/contact';
 import type { IosIconName, MobileAppDefinition, SkeumorphicTab } from './skeumorphic/shared';
 import { IOS_ICON_MAP, LIQUID_GLASS_DOCK_DISPLACEMENT_MAP } from './skeumorphic/shared';
 
@@ -236,7 +237,7 @@ export default function SkeumorphicMobileShell({
                 {renderIosIcon('lock', 'h-10 w-10 text-white')}
               </span>
             </button>
-            <a href="mailto:ashutoshsun@g.ucla.edu" className="relative z-10 flex flex-1 items-center justify-center text-white/95">
+            <a href={CONTACT_EMAIL_HREF} className="relative z-10 flex flex-1 items-center justify-center text-white/95">
               <span className="relative flex h-18 w-18 items-center justify-center overflow-hidden rounded-[22px] bg-gradient-to-br from-emerald-300/95 via-teal-400/95 to-cyan-500/95">
                 {renderIosIcon('contact', 'h-10 w-10 text-white')}
               </span>

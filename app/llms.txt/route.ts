@@ -1,8 +1,17 @@
 import experienceData from "@/app/data/skeumorphicExperienceData.json";
 import interestsData from "@/app/data/skeumorphicInterests.json";
 import topFilms from "@/app/data/topFilms.json";
+import { CONTACT } from "@/app/constants/contact";
 
 export const dynamic = "force-static";
+
+const BASE_URL = "https://ashutoshsundresh.com";
+
+function addField(lines: string[], label: string, value?: string) {
+  if (value) {
+    lines.push(`- **${label}**: ${value}`);
+  }
+}
 
 export function GET() {
   const { projects, educationData, experienceData: workHistory, awardsData } =
@@ -37,7 +46,7 @@ export function GET() {
         category: string;
         awards: {
           title: string;
-          subtitle: string;
+          subtitle?: string;
           year: string;
           highlight?: string;
           stats?: string;
@@ -62,11 +71,21 @@ export function GET() {
     "Ashutosh Sundresh is a BS Computer Science student at the University of California, Los Angeles (2024–2028)."
   );
   lines.push("");
-  lines.push("- Email: ashutoshsundresh@gmail.com");
-  lines.push("- GitHub: https://github.com/AshutoshSundresh");
-  lines.push("- LinkedIn: https://linkedin.com/in/ashutoshsundresh");
-  lines.push("- Twitter/X: https://x.com/AshutoshSundresh");
-  lines.push("- Website: https://ashutoshsundresh.com");
+  lines.push(`- Email: ${CONTACT.email}`);
+  lines.push(`- GitHub: ${CONTACT.github}`);
+  lines.push(`- LinkedIn: ${CONTACT.linkedin}`);
+  lines.push(`- Twitter/X: ${CONTACT.x}`);
+  lines.push(`- Website: ${BASE_URL}`);
+  lines.push("");
+  lines.push("## Website Map");
+  lines.push("");
+  lines.push(`- [Home](${BASE_URL}/): Overview, current work, and contact links.`);
+  lines.push(
+    `- [Experience & Projects](${BASE_URL}/experience): Work history, projects, education, awards, publications, and activities.`
+  );
+  lines.push(
+    `- [Coursework](${BASE_URL}/experience/coursework): UCLA course history and academic planning.`
+  );
   lines.push("");
 
   // Work Experience
@@ -90,7 +109,8 @@ export function GET() {
     for (const award of category.awards) {
       const highlight = award.highlight ? ` (${award.highlight})` : "";
       const stat = award.stats ? ` — ${award.stats}` : "";
-      lines.push(`- **${award.title}** (${award.year}), ${award.subtitle}${highlight}${stat}`);
+      const subtitle = award.subtitle ? `, ${award.subtitle}` : "";
+      lines.push(`- **${award.title}** (${award.year})${subtitle}${highlight}${stat}`);
     }
     lines.push("");
   }
@@ -100,9 +120,9 @@ export function GET() {
   lines.push("");
   for (const edu of educationData) {
     lines.push(`### ${edu.institution}`);
-    lines.push(`- **Degree**: ${edu.degree}`);
-    lines.push(`- **Period**: ${edu.period}`);
-    lines.push(`- **GPA**: ${edu.gpa}`);
+    addField(lines, "Degree", edu.degree);
+    addField(lines, "Period", edu.period);
+    addField(lines, "GPA", edu.gpa);
     if (edu.details.achievements?.length) {
       lines.push(`- **Honors**: ${edu.details.achievements.join(", ")}`);
     }
@@ -150,13 +170,6 @@ export function GET() {
   lines.push("### Films");
   lines.push(`Favourite films: ${filmTitles}`);
   lines.push("");
-
-  // Pages
-  lines.push("## Pages");
-  lines.push("");
-  lines.push("- Home: https://ashutoshsundresh.com/");
-  lines.push("- Experience & Projects: https://ashutoshsundresh.com/experience");
-  lines.push("- Coursework: https://ashutoshsundresh.com/experience/coursework");
 
   return new Response(lines.join("\n"), {
     headers: { "Content-Type": "text/plain; charset=utf-8" },

@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
+import { CONTACT, CONTACT_EMAIL_HREF } from '../constants/contact';
 import HoverCursor from './HoverCursor';
 import HeroTimelinePill from './HeroTimelinePill';
 
@@ -129,10 +130,10 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
 
             <div className="flex flex-col items-center gap-3 mt-8" data-search-title="Social links">
               <div className="flex flex-wrap justify-center gap-1 md:gap-2">
-                <a href="https://twitter.com/asundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('x')}>X</a>
-                <a href="mailto:ashutoshsun@g.ucla.edu" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('mail')}>Mail</a>
-                <a href="https://github.com/ashutoshsundresh" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('github')}>GitHub</a>
-                <a href="https://linkedin.com/in/asund" target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('linkedin')}>LinkedIn</a>
+                <a href={CONTACT.x} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('x')}>X</a>
+                <a href={CONTACT_EMAIL_HREF} className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('mail')}>Mail</a>
+                <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('github')}>GitHub</a>
+                <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('linkedin')}>LinkedIn</a>
               </div>
               <HeroTimelinePill onScrollNext={scrollToNext} />
             </div>

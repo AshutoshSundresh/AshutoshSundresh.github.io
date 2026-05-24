@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import useTerminal from './useTerminal';
 import useAppOverlayState from './useAppOverlayState';
+import { CONTACT } from '../constants/contact';
 import type {
   Project,
   Publication,
@@ -199,10 +200,10 @@ export default function usePortfolioTerminal({
           '╚════════════════════════════════════════╝',
           '',
           'SOCIAL',
-          '  Email'.padEnd(22) + 'ashutoshsun@g.ucla.edu',
-          '  GitHub'.padEnd(22) + 'https://github.com/ashutoshsundresh',
-          '  LinkedIn'.padEnd(22) + 'https://linkedin.com/in/asund',
-          '  X (Twitter)'.padEnd(22) + 'https://twitter.com/asundresh',
+          '  Email'.padEnd(22) + CONTACT.email,
+          '  GitHub'.padEnd(22) + CONTACT.github,
+          '  LinkedIn'.padEnd(22) + CONTACT.linkedin,
+          '  X (Twitter)'.padEnd(22) + CONTACT.x,
           '',
           ...(projectLinks.length ? ['PROJECT REPOS', ...projectLinks, ''] : []),
           ...(companyLinks.length ? ['COMPANIES', ...companyLinks, ''] : []),
