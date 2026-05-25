@@ -49,8 +49,8 @@ const flagshipProject =
 const flagshipDownloads = flagshipProject?.stats?.find(
   (stat) => stat.label === "Downloads"
 )?.value;
-const experienceCompanies = portfolio.experienceData
-  .slice(0, 4)
+const engineeringExperienceCompanies = portfolio.experienceData
+  .filter((experience) => /Engineer|Staff/i.test(experience.position))
   .map((experience) => experience.company)
   .join(", ");
 const currentRole = portfolio.experienceData[0];
@@ -67,7 +67,7 @@ const metadataDescription = [
   educationSummary,
   fellowship?.title,
   flagshipSummary,
-  experienceCompanies ? `Experience at ${experienceCompanies}.` : undefined,
+  engineeringExperienceCompanies ? `Experience at ${engineeringExperienceCompanies}.` : undefined,
 ]
   .filter(Boolean)
   .join(" — ");
