@@ -88,7 +88,7 @@ export default function IntroCards() {
                 </a>
                 . First early career AI Platform Engineer at{' '}
                 <a
-                  href="https://www.forbes.com/sites/giacomotognini/2025/09/10/jared-kushners-new-startup-helps-businesses-figure-out-how-to-use-ai/"
+                  href="https://brain.co/blog/introducing-brain-co-9gk9a"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"

@@ -6,11 +6,22 @@ import { CONTACT } from "@/app/constants/contact";
 export const dynamic = "force-static";
 
 const BASE_URL = "https://ashutoshsundresh.com";
+const QUARTER_ORDER: Record<string, number> = {
+  Winter: 0,
+  Spring: 1,
+  Summer: 2,
+  Fall: 3,
+};
 
 function addField(lines: string[], label: string, value?: string) {
   if (value) {
     lines.push(`- **${label}**: ${value}`);
   }
+}
+
+function getCourseSortKey(course: { quarter: string }) {
+  const [term, year] = course.quarter.split(" ");
+  return [Number(year) || 0, QUARTER_ORDER[term] ?? 99] as const;
 }
 
 export function GET() {
@@ -128,6 +139,11 @@ export function GET() {
     }
     if (edu.details.courses?.length) {
       const courseList = edu.details.courses
+        .toSorted((a, b) => {
+          const [yearA, quarterA] = getCourseSortKey(a);
+          const [yearB, quarterB] = getCourseSortKey(b);
+          return yearA - yearB || quarterA - quarterB;
+        })
         .map((c) => `${c.code} ${c.name} (${c.quarter})`)
         .join("; ");
       lines.push(`- **Courses**: ${courseList}`);
