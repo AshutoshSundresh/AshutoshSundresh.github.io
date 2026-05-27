@@ -22,6 +22,7 @@ interface HoverCursorProps {
 
 export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCursorProps) {
   const [pos, setPos] = useState(_latestPos);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     if (!_isFinePointer) return;
@@ -30,17 +31,28 @@ export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCurs
     return () => window.removeEventListener('mousemove', onMove);
   }, []);
 
+  useEffect(() => {
+    setIsImageLoaded(false);
+  }, [imageSrc]);
+
   if (!_isFinePointer) return null;
 
   if (!text) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={imageSrc}
-        alt={imageAlt}
-        className="fixed pointer-events-none z-[99999]"
+      <span
+        className="fixed pointer-events-none z-[99999] block min-h-8 min-w-8 bg-gray-300"
         style={{ left: pos.x, top: pos.y }}
-      />
+      >
+        {imageSrc && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            className={`block transition-opacity duration-150 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setIsImageLoaded(true)}
+          />
+        )}
+      </span>
     );
   }
 
@@ -53,12 +65,15 @@ export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCurs
         {text}
       </span>
       {imageSrc && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          className="h-full w-auto object-cover self-stretch"
-        />
+        <span className="relative block h-8 w-8 shrink-0 self-stretch bg-gray-300">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-150 ${isImageLoaded ? 'opacity-100' : 'opacity-0'}`}
+            onLoad={() => setIsImageLoaded(true)}
+          />
+        </span>
       )}
     </div>
   );
