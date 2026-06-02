@@ -45,6 +45,7 @@ const RAW: HeroTimelineEntry[] = [
   { sortKey: '2026-02-15', sentence: 'Got Cathay Pacific Silver status and went to a business class lounge outside India for the first time.', navPath: TAB.activities },
   { sortKey: '2026-04-15', sentence: 'Started hitting the gym for the first time ever.', navPath: TAB.activities },
   { sortKey: '2026-04-20', sentence: 'Organized my second LA Hacks; pulled 2 all-nighters holding down night shifts; nearly doubled participants.', navPath: TAB.activities },
+  { sortKey: '2026-05-15', sentence: 'Switched over to the LA Hacks Sponsorships team and started hitting up companies.', navPath: TAB.activities },
   { sortKey: '2026-05-04', sentence: 'Bought designer boxer briefs for the first time ever.', navPath: TAB.activities },
   { sortKey: '2026-06-22', sentence: 'Started at Brain Co. as the first early career AI Platform Engineer in San Francisco.', navPath: TAB.experience },
   { sortKey: '2026-06-15', sentence: 'Attended Brown University Systems Week; eBPF, GPU performance, supply-chain security, and Rust privacy tooling.', navPath: TAB.education },

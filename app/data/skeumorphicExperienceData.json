@@ -1026,8 +1026,8 @@
   "activitiesData": [
     {
       "id": 5,
-      "title": "LA Hacks Technology Team Organizer",
-      "description": "Built web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon.",
+      "title": "LA Hacks Organizer",
+      "description": "Currently handling sponsorships, send inquiries to ashutosh@lahacks.com.\n\nBuilt web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon.",
       "period": "Oct 2024 - Present",
       "icon": "/images/lahacks_logo.jpeg",
       "links": [

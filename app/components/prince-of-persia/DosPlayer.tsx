@@ -92,6 +92,7 @@ export default function DosPlayer({ onClose }: DosPlayerProps) {
         src="https://princejs.com/"
         allow="fullscreen; gamepad"
         allowFullScreen
+        scrolling="no"
         tabIndex={0}
         onLoad={() => setIsLoading(false)}
         style={iframeStyle}
@@ -226,6 +227,7 @@ const overlayStyle: CSSProperties = {
   alignItems: "center",
   justifyContent: "center",
   boxSizing: "border-box",
+  overflow: "hidden",
   paddingBottom: "14dvh",
 };
 
@@ -316,6 +318,7 @@ const iframeStyle: CSSProperties = {
   border: 0,
   background: "#000",
   display: "block",
+  overflow: "hidden",
   outline: "none",
   boxShadow: "0 24px 80px rgba(0,0,0,0.75)",
   zIndex: 2,

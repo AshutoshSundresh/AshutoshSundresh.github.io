@@ -72,7 +72,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
             {!isCollapsed && (
               <div className="p-4">
                 {activity.description && (
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{activity.description}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 whitespace-pre-line">{activity.description}</p>
                 )}
                 {activity.stats && (
                   <div className="grid grid-cols-2 gap-2">

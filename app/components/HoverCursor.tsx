@@ -23,6 +23,7 @@ interface HoverCursorProps {
 export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCursorProps) {
   const [pos, setPos] = useState(_latestPos);
   const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const isGif = imageSrc?.toLowerCase().split('?')[0].endsWith('.gif');
 
   useEffect(() => {
     if (!_isFinePointer) return;
@@ -37,10 +38,22 @@ export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCurs
 
   if (!_isFinePointer) return null;
 
+  if (!text && isGif) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={imageSrc}
+        alt={imageAlt}
+        className="fixed pointer-events-none z-[99999]"
+        style={{ left: pos.x, top: pos.y }}
+      />
+    );
+  }
+
   if (!text) {
     return (
       <span
-        className="fixed pointer-events-none z-[99999] block min-h-8 min-w-8 bg-gray-300"
+        className={`fixed pointer-events-none z-[99999] block min-h-8 min-w-8 ${isImageLoaded ? 'bg-transparent' : 'bg-gray-300'}`}
         style={{ left: pos.x, top: pos.y }}
       >
         {imageSrc && (
@@ -65,7 +78,7 @@ export default function HoverCursor({ text, imageSrc, imageAlt = '' }: HoverCurs
         {text}
       </span>
       {imageSrc && (
-        <span className="relative block h-8 w-8 shrink-0 self-stretch bg-gray-300">
+        <span className={`relative block h-8 w-8 shrink-0 self-stretch ${isImageLoaded || isGif ? 'bg-transparent' : 'bg-gray-300'}`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageSrc}
