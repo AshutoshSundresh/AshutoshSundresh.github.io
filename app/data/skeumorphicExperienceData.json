@@ -828,7 +828,7 @@
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co/blog/introducing-brain-co-9gk9a",
       "description": [
-        "AI Platform Team, first early career hire on the team; backed by Elad Gil, Jared Kushner, Ali Ghodsi, Andrej Karpathy, Noam Brown, Fidji Simo, Reid Hoffman, and more"
+        "AI Platform Team, first early career hire on the team; backed by Elad Gil, Andrej Karpathy, Noam Brown, Reid Hoffman, and more"
       ]
     },
     {
@@ -840,7 +840,7 @@
       "icon": "/images/ucla_cs.jpg",
       "companyLink": "https://angelhof.github.io/programmable-software-systems-lab.html",
       "description": [
-        "Advised by Prof. Konstantinos Kallas, JVM runtime systems and serverless infrastructure"
+        "Advised by Prof. Konstantinos Kallas, cross-language profile-guided optimization artifact reuse for serverless runtimes"
       ]
     },
     {
@@ -868,7 +868,7 @@
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [
-        "Founding Team (joined as part of the first ~5 engineers) at seed-stage LLM social platform out of Berkeley I&E / ACE@Berkeley",
+        "Founding Team, joined as part of the first ~5 engineers, RAG-powered character conversations and social simulation engine",
         "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
         "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
         "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",

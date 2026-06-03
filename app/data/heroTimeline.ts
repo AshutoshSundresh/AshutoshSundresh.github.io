@@ -41,7 +41,7 @@ export function formatTimelineHeading(sortKey: string): string {
 
 const RAW: HeroTimelineEntry[] = [
   { sortKey: '2026-01-20', sentence: 'Promoted to USACO Gold in the USA Computing Olympiad.', navPath: TAB.awards },
-  { sortKey: '2026-02-01', sentence: 'Joined UCLA PSSL under Prof. Kallas researching JVM runtimes and serverless infrastructure.', navPath: TAB.experience },
+  { sortKey: '2026-02-01', sentence: 'Joined UCLA PSSL under Prof. Kallas researching PGO artifact reuse for serverless runtimes.', navPath: TAB.experience },
   { sortKey: '2026-02-15', sentence: 'Got Cathay Pacific Silver status and went to a business class lounge outside India for the first time.', navPath: TAB.activities },
   { sortKey: '2026-04-15', sentence: 'Started hitting the gym for the first time ever.', navPath: TAB.activities },
   { sortKey: '2026-04-20', sentence: 'Organized my second LA Hacks; pulled 2 all-nighters holding down night shifts; nearly doubled participants.', navPath: TAB.activities },

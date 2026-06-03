@@ -76,7 +76,7 @@ export default function IntroCards() {
                 >
                   Kleiner Perkins Fellow
                 </a>
-                , researching JVM optimization for serverless, previously at{' '}
+                , researching PGO artifact reuse for serverless, previously at{' '}
                 <a
                   href="https://harvey.ai"
                   target="_blank"
