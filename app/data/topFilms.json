@@ -1,42 +1,42 @@
 [
   {
-    "title": "Whiplash (2014)",
-    "filmUrl": "https://letterboxd.com/film/whiplash-2014/",
-    "posterUrl": "/images/films/whiplash-2014.webp"
-  },
-  {
-    "title": "The Pianist (2002)",
-    "filmUrl": "https://letterboxd.com/film/the-pianist/",
-    "posterUrl": "/images/films/the-pianist.webp"
-  },
-  {
-    "title": "Fight Club (1999)",
-    "filmUrl": "https://letterboxd.com/film/fight-club/",
-    "posterUrl": "/images/films/fight-club.webp"
-  },
-  {
-    "title": "Shutter Island (2010)",
+    "title": "shutter island",
     "filmUrl": "https://letterboxd.com/film/shutter-island/",
     "posterUrl": "/images/films/shutter-island.webp"
   },
   {
-    "title": "The Green Mile (1999)",
+    "title": "the green mile",
     "filmUrl": "https://letterboxd.com/film/the-green-mile/",
     "posterUrl": "/images/films/the-green-mile.webp"
   },
   {
-    "title": "The Truman Show (1998)",
+    "title": "the truman show",
     "filmUrl": "https://letterboxd.com/film/the-truman-show/",
     "posterUrl": "/images/films/the-truman-show.webp"
   },
   {
-    "title": "The Shawshank Redemption (1994)",
+    "title": "the shawshank redemption",
     "filmUrl": "https://letterboxd.com/film/the-shawshank-redemption/",
     "posterUrl": "/images/films/the-shawshank-redemption.webp"
   },
   {
-    "title": "Parasite (2019)",
-    "filmUrl": "https://letterboxd.com/film/parasite-2019/",
-    "posterUrl": "/images/films/parasite-2019.webp"
+    "title": "the prestige",
+    "filmUrl": "https://letterboxd.com/film/the-prestige/",
+    "posterUrl": "/images/films/the-prestige.webp"
+  },
+  {
+    "title": "the sixth sense",
+    "filmUrl": "https://letterboxd.com/film/the-sixth-sense/",
+    "posterUrl": "/images/films/the-sixth-sense.webp"
+  },
+  {
+    "title": "se7en",
+    "filmUrl": "https://letterboxd.com/film/se7en/",
+    "posterUrl": "/images/films/se7en.webp"
+  },
+  {
+    "title": "life of pi",
+    "filmUrl": "https://letterboxd.com/film/life-of-pi/",
+    "posterUrl": "/images/films/life-of-pi.webp"
   }
 ]
