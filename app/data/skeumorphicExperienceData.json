@@ -7,7 +7,7 @@
       "image": "/images/LOVUK1E.webp",
       "caption": "Founder of Open-Source Android-Based Mobile Operating System",
       "techstack": "Java, C, Go, Smali, Make",
-      "description": "An open-source Android-based mobile operating system for Qualcomm devices that I founded and led from 2020 to 2024. Shipped custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, and upstreamed code to Google Material Components.",
+      "description": "An open-source Android-based mobile operating system for Qualcomm devices that I founded and led from 2020 to 2024. Shipped custom kernel governor, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, and upstreamed code to Google Material Components.",
       "created": "2020-05-16",
       "link": "https://github.com/shapeshiftos",
       "stats": [
@@ -828,7 +828,7 @@
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co/blog/introducing-brain-co-9gk9a",
       "description": [
-        "AI Platform Agents Team, first early career hire on the team; backed by Elad Gil, Andrej Karpathy, Noam Brown, Reid Hoffman, and more"
+        "AI Platform Agents Team, first early career hire on the team, cross-cluster LLM usage and cost-attribution pipeline architecture"
       ]
     },
     {
@@ -884,7 +884,7 @@
       "companyLink": "https://shapeshiftos.com/",
       "description": [
         "Open-source award-winning Android-based mobile operating system with a highly customizable user interface and unique features",
-        "Developed features including custom kernel scheduler, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, upstream contributions to Google Material Components, etc.",
+        "Developed features including custom kernel governor, under-screen fingerprint scanner animations and icons, system theming engine based on color-palettes, Google Lens integration in screenshot tool, dynamic TrueType lockscreen clock, upstream contributions to Google Material Components, etc.",
         "Grew to 160,000+ downloads across 160+ countries organically with no marketing budget",
         "Recruited talented engineering team consisting of 25+ Qualcomm device engineers and 3 core developers",
         "Received SourceForge Open Source Excellence Award (top 0.5% of open-source projects)"
