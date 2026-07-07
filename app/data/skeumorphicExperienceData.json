@@ -828,7 +828,7 @@
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co/blog/introducing-brain-co-9gk9a",
       "description": [
-        "AI Platform Agents Team, joined as part of the first ~40 engineers, cross-cluster LLM usage and cost-attribution pipeline architecture"
+        "AI Platform Agents Team, joined as part of the first ~40 engineers, cross-cluster LLM metering and cost attribution platform"
       ]
     },
     {
@@ -852,7 +852,7 @@
       "icon": "/images/harvey_ai_logo.jpeg",
       "companyLink": "https://harvey.ai/",
       "description": [
-        "Embedded Experience Team, joined as part of the first ~60 engineers, agentic workflows architecture for Harvey's Microsoft Word add-in",
+        "Embedded Experience Team, joined as part of the first ~60 engineers, agentic workflows product for Harvey's Microsoft Word add-in",
         "Built Office workflow automation engine with composable Python blocks, React factory rendering, and Word Office.js integration",
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
         "Built block-based execution engine with type-safe streaming of heterogeneous outputs (suggestions, text, files), workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation",
@@ -868,7 +868,7 @@
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [
-        "Founding Team, joined as part of the first ~5 engineers, RAG-powered character conversations and social simulation engine",
+        "Founding Team, joined as part of the first ~5 engineers, RAG-powered character conversations + social simulation engine",
         "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
         "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
         "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",

@@ -76,17 +76,7 @@ export default function IntroCards() {
                 >
                   Kleiner Perkins Fellow
                 </a>
-                , researching PGO compiler artifact reuse for serverless, previously at{' '}
-                <a
-                  href="https://harvey.ai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
-                  {...cursor('harvey')}
-                >
-                  Harvey
-                </a>
-                . First early career AI Platform Engineer at{' '}
+                , researching PGO compiler artifact reuse for serverless, first early career AI Platform Engineer at{' '}
                 <a
                   href="https://brain.co/blog/introducing-brain-co-9gk9a"
                   target="_blank"
@@ -96,7 +86,17 @@ export default function IntroCards() {
                 >
                   Brain Co.
                 </a>
-                {' '}this summer. Founded{' '}
+                , previously at{' '}
+                <a
+                  href="https://harvey.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('harvey')}
+                >
+                  Harvey
+                </a>
+                . Founded{' '}
                 <a
                   href="https://github.com/shapeshiftos"
                   target="_blank"
