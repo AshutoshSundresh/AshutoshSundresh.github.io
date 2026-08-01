@@ -24,7 +24,7 @@ export default function FashionPopupContent() {
           return (
             <div
               key={file}
-              className="relative aspect-[3/4] rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-dark-border-primary shadow-sm"
+              className="relative aspect-square rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-dark-border-primary shadow-sm"
             >
               <Image
                 src={src}
