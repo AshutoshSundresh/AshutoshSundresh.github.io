@@ -900,13 +900,6 @@
       "category": "Undergraduate",
       "awards": [
         {
-          "title": "Neo Scholar Finalist",
-          "subtitle": "Neo",
-          "year": "2026",
-          "icon": "/images/neo_logo.webp",
-          "link": "https://neo.com/scholars"
-        },
-        {
           "title": "USACO Gold",
           "subtitle": "USA Computing Olympiad",
           "year": "2026",

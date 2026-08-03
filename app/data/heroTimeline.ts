@@ -42,7 +42,6 @@ export function formatTimelineHeading(sortKey: string): string {
 const RAW: HeroTimelineEntry[] = [
   { sortKey: '2026-07-25', sentence: 'Attended YC Startup School, then drove up to Muir Woods at 3 am.', navPath: TAB.activities },
   { sortKey: '2026-07-23', sentence: 'Finally secured our apartment lease for junior and senior year at UCLA after 5 months.', navPath: TAB.activities },
-  { sortKey: '2026-07-12', sentence: 'Named a Neo Scholar Finalist.', navPath: TAB.awards },
   { sortKey: '2026-07-04', sentence: 'Hiked the Panorama Trail at Yosemite National Park and went down a 3,000 ft elevation.', navPath: TAB.activities },
   { sortKey: '2026-06-28', sentence: 'Scored a free ticket to Japanese Breakfast at Stern Grove in San Francisco.', navPath: TAB.activities },
   { sortKey: '2026-06-22', sentence: 'Started at Brain Co. as the first early career AI Platform Engineer in San Francisco.', navPath: TAB.experience },
