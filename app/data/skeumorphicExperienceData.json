@@ -828,11 +828,12 @@
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co/blog/introducing-brain-co-9gk9a",
       "description": [
-        "AI Platform Agents Team, joined as part of the first ~40 engineers, cross-cluster LLM metering and cost attribution platform",
-        "Built cross-cluster, multi-provider LLM cost observability platform governing $100K+/week spend across 170+ employees, 500+ API keys, and 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",
-        "Designed per-model, per-token-type allocator with cent-preserving math reconciling per-key cost exactly to provider invoices",
-        "Shipped an org-wide usage MCP server over OAuth-secured StreamableHTTP, reusing existing dashboard authentication"
+        "AI Platform Agents Team, joined as part of the first ~40 engineers, cross-cluster LLM inference metering and cost attribution platform",
+        "Built cross-cluster, multi-provider LLM inference metering platform governing $100K+/mo spend across 170+ employees, 500+ API keys, and 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",
+        "Designed per-model, per-token-type allocator with cent-preserving math reconciling per-key cost to provider invoices",
+        "Shipped an org-wide usage MCP server fronting the org's Google login via WorkOS, reusing the dashboard's query layer"
       ]
+ 
     },
     {
       "id": 1,
