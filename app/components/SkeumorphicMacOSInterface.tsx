@@ -111,7 +111,7 @@ const MacOSWindow = () => {
 
   const contentHeight = windowHeight.isMobile
     ? 'calc(100dvh - 2.5rem)'
-    : `${Math.max(windowHeight.vh * 0.6, 400)}px`;
+    : `${Math.max(windowHeight.vh * 0.62, 400)}px`;
 
   const data: SkeumorphicExperienceData = rawData as SkeumorphicExperienceData;
   const projects: ProjectDetails[] = useMemo(

@@ -20,10 +20,10 @@ function ExperienceList({ experienceData, isMobile = false }: ExperienceListProp
           className={`overflow-hidden transition-colors ${
             isMobile
               ? 'rounded-[22px] border border-black/5 bg-white shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:border-white/8 dark:bg-[#151922] dark:shadow-none'
-              : 'rounded-lg border border-gray-200 bg-white dark:border-gray-700 dark:bg-[#2b2b2b]'
+              : 'rounded-[10px] border border-black/[0.08] bg-white dark:border-white/[0.09] dark:bg-[#252527]'
           }`}
         >
-          <div className={`${isMobile ? 'p-5' : 'border-b border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-[#202020]'}`}>
+          <div className={`${isMobile ? 'p-5' : 'border-b border-gray-200 bg-black/[0.025] p-4 dark:border-white/[0.08] dark:bg-white/[0.035]'}`}>
             <div className="flex items-start">
               <div className={`${isMobile ? 'mr-4 h-14 w-14' : 'mr-4 h-12 w-12'} relative flex-shrink-0`}>
                 <Image src={exp.icon} alt={exp.company} fill sizes="48px" placeholder="blur" blurDataURL={getBlurDataURL(exp.icon)} className="object-contain rounded-lg" />

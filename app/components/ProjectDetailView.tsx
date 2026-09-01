@@ -12,7 +12,7 @@ export default function ProjectDetailView({ project, onClose, isMobile }: Projec
       className={`
         ${isMobile
           ? 'fixed inset-0 z-20 bg-[#f5f6fa] dark:bg-[#0f1115] font-[Raleway]'
-          : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-[#181818]'}
+          : 'absolute right-0 top-0 h-full w-72 z-20 border-l border-black/[0.08] dark:border-white/[0.09] bg-[#f6f6f6]/85 dark:bg-[#232325]/80 backdrop-blur-2xl backdrop-saturate-[1.8]'}
         ${isMobile ? 'overflow-hidden' : 'overflow-y-auto'}
         transition-colors
       `}

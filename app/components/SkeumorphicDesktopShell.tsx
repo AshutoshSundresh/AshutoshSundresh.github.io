@@ -1,13 +1,20 @@
 "use client";
 
-import type { CSSProperties, ReactNode, RefObject } from 'react';
+import { useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 import WindowHeader from './WindowHeader';
-import Toolbar from './Toolbar';
 import TabsBar from './TabsBar';
 import ProjectDetailView from './ProjectDetailView';
 import PublicationDetailView from './PublicationDetailView';
 import type { Project, Publication } from '../types';
 import type { SkeumorphicTab } from './skeumorphic/shared';
+import {
+  HAIRLINE,
+  STATUS_MATERIAL,
+  UI_FONT_STACK,
+  WINDOW_RADIUS,
+  WINDOW_SHADOW,
+  WINDOW_SHADOW_DARK,
+} from './skeumorphic/macos';
 
 interface SkeumorphicDesktopShellProps {
   activeTab: number;
@@ -56,7 +63,6 @@ export default function SkeumorphicDesktopShell({
   educationCount,
   experienceCount,
   lockscreenOverlay,
-  mobileMenuRef,
   onBack,
   onCloseDetailView,
   onContainerClick,
@@ -65,17 +71,17 @@ export default function SkeumorphicDesktopShell({
   onOpenTerminal,
   onTabChange,
   onToggleLockscreen,
-  onToggleMobileMenu,
   projectsCount,
   publicationsCount,
   renderActiveTabContent,
   searchOverlay,
   selectedProject,
   selectedPublication,
-  showMobileMenu,
   tabs,
   terminalOverlay,
 }: SkeumorphicDesktopShellProps) {
+  const [isZoomed, setIsZoomed] = useState(false);
+
   const itemCountLabel =
     activeTab === 0
       ? `${experienceCount} items`
@@ -91,40 +97,44 @@ export default function SkeumorphicDesktopShell({
 
   return (
     <div
-      className="relative flex min-h-screen w-full items-start justify-center p-4 sm:items-center sm:p-8"
+      className="relative flex min-h-screen w-full items-start justify-center p-4 pb-28 sm:items-center sm:p-8 sm:pb-32"
       style={backgroundStyle}
     >
       {!bgLoaded && <div className="fixed inset-0 z-0 bg-gray-200 dark:bg-[#1a1b26]" />}
-      <div className="relative z-10 mx-auto w-full max-w-3xl overflow-hidden rounded-lg border border-gray-200 bg-white shadow-lg transition-colors dark:border-gray-700 dark:bg-[#1e1e1e] md:max-w-4xl lg:max-w-4xl">
-        <WindowHeader onToggleLockscreen={onToggleLockscreen} onOpenTerminal={onOpenTerminal} />
-
-        <Toolbar
+      <div
+        className={`relative z-10 mx-auto flex w-full flex-col overflow-hidden transition-[max-width] duration-300 ease-out dark:shadow-[var(--win-shadow-dark)] ${
+          isZoomed ? 'max-w-6xl' : 'max-w-3xl md:max-w-4xl lg:max-w-4xl'
+        }`}
+        style={
+          {
+            borderRadius: WINDOW_RADIUS,
+            boxShadow: WINDOW_SHADOW,
+            '--win-shadow-dark': WINDOW_SHADOW_DARK,
+          } as CSSProperties
+        }
+      >
+        <WindowHeader
+          onToggleLockscreen={onToggleLockscreen}
+          onOpenTerminal={onOpenTerminal}
+          onOpenSearch={onOpenSearch}
           onBack={onBack}
           onForward={onForward}
           canBack={canBack}
           canForward={canForward}
+          onZoom={() => setIsZoomed((z) => !z)}
+          isZoomed={isZoomed}
           showArchive={activeTab === 5}
-          onOpenSearch={onOpenSearch}
         />
 
-        <TabsBar
-          tabs={tabs}
-          activeTab={activeTab}
-          isMobile={false}
-          showMobileMenu={showMobileMenu}
-          onToggleMobileMenu={onToggleMobileMenu}
-          onSelect={onTabChange}
-          mobileMenuRef={mobileMenuRef}
-        />
+        <TabsBar tabs={tabs} activeTab={activeTab} onSelect={onTabChange} />
 
-        <div className="relative flex" style={{ height: contentHeight }}>
+        <div className="relative flex" style={{ height: isZoomed ? '72vh' : contentHeight }}>
           <div
             ref={contentRef}
-            className={`flex-1 overflow-y-auto bg-white p-4 transition-all duration-300 dark:bg-[#1e1e1e] ${
+            className={`flex-1 overflow-y-auto bg-white px-5 py-4 transition-all duration-300 dark:bg-[#1e1e1e] ${
               selectedProject ? 'pr-72' : ''
             }`}
             onClick={onContainerClick}
-            style={{ height: contentHeight }}
           >
             {renderActiveTabContent()}
           </div>
@@ -146,13 +156,13 @@ export default function SkeumorphicDesktopShell({
           )}
         </div>
 
-        <div className="flex justify-between border-t border-gray-200 bg-gray-50 px-4 py-1 font-['Raleway'] text-xs text-gray-500 transition-colors dark:border-gray-700 dark:bg-[#181818] dark:text-gray-400">
-          <span>
-            {itemCountLabel} <br /> &copy; {new Date().getFullYear()} Ashutosh Sundresh
-          </span>
-          <span className="flex flex-col items-end">
-            <span>{new Date().toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' })}</span>
-            <span>{new Date().toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+        <div
+          className={`flex h-[28px] shrink-0 items-center justify-between border-t px-4 text-[11px] text-[#3c3c43]/60 dark:text-white/45 ${HAIRLINE} ${STATUS_MATERIAL}`}
+          style={{ fontFamily: UI_FONT_STACK }}
+        >
+          <span>{itemCountLabel}</span>
+          <span className="tabular-nums">
+            &copy; {new Date().getFullYear()} Ashutosh Sundresh
           </span>
         </div>
       </div>

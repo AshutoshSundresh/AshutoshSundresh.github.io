@@ -1,75 +1,47 @@
+'use client';
+
 import React from 'react';
 import type { TabsBarProps } from '../types';
-import { COLOR_COMBINATIONS } from '../constants/colors';
+import { CHROME_MATERIAL, HAIRLINE, UI_FONT_STACK } from './skeumorphic/macos';
 
-export default function TabsBar({ tabs, activeTab, isMobile, showMobileMenu, onToggleMobileMenu, onSelect, mobileMenuRef }: TabsBarProps) {
+/**
+ * macOS segmented control. Replaces the underline tab strip — AppKit uses a
+ * recessed track with an elevated selected segment, which is what reads as
+ * "native" rather than "web page".
+ *
+ * Scrolls horizontally instead of collapsing to a menu so every section stays
+ * reachable at narrow window widths.
+ */
+export default function TabsBar({ tabs, activeTab, onSelect }: TabsBarProps) {
   return (
-    <div className="bg-gray-100 dark:bg-[#202020] border-b border-gray-200 dark:border-gray-700 transition-colors">
-      <div className="flex items-center">
-        <div className="flex-1 flex">
-          {tabs.slice(0, isMobile ? 3 : undefined).map((tab) => (
+    <div
+      className={`flex shrink-0 justify-center border-b px-3 py-[7px] ${HAIRLINE} ${CHROME_MATERIAL}`}
+      style={{ fontFamily: UI_FONT_STACK }}
+    >
+      <div
+        role="tablist"
+        aria-label="Sections"
+        className="flex max-w-full items-center gap-[2px] overflow-x-auto rounded-[8px] bg-black/[0.055] p-[2px] [scrollbar-width:none] dark:bg-white/[0.08] [&::-webkit-scrollbar]:hidden"
+      >
+        {tabs.map((tab) => {
+          const selected = activeTab === tab.id;
+          return (
             <button
               key={tab.id}
+              role="tab"
+              aria-selected={selected}
               onClick={() => onSelect(tab.id)}
-              className={`px-4 py-2 text-sm font-medium whitespace-nowrap ${activeTab === tab.id ? 'text-gray-900 dark:text-white border-b-2 border-blue-500' : 'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200'}`}
+              className={`relative h-[26px] shrink-0 whitespace-nowrap rounded-[6px] px-3 text-[13px] transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/60 ${
+                selected
+                  ? 'bg-white font-medium text-[#1d1d1f] shadow-[0_1px_2px_rgba(0,0,0,0.16),0_0_0_0.5px_rgba(0,0,0,0.06)] dark:bg-[#5a5a5e] dark:text-white dark:shadow-[0_1px_2px_rgba(0,0,0,0.35)]'
+                  : 'text-[#3c3c43]/80 hover:text-[#1d1d1f] dark:text-white/65 dark:hover:text-white/90'
+              }`}
             >
               {tab.title}
             </button>
-          ))}
-        </div>
-
-        {isMobile && (
-          <div className="relative" ref={mobileMenuRef}>
-            <button onClick={onToggleMobileMenu} className="p-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16"
-                  className={activeTab === 3 ? 'text-blue-500' : ''}
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 12h16"
-                  className={activeTab === 4 ? 'text-blue-500' : ''}
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 18h16"
-                  className={activeTab === 5 ? 'text-blue-500' : ''}
-                />
-              </svg>
-            </button>
-
-            {showMobileMenu && (
-              <div 
-                className="absolute right-0 mt-1 w-48 bg-white dark:bg-[#2b2b2b] border border-gray-200 dark:border-gray-700 py-1 z-50"
-                style={{ boxShadow: `0 1px 3px ${COLOR_COMBINATIONS.shadows.light}` }}
-              >
-                {tabs.slice(3).map((tab) => (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      onSelect(tab.id);
-                      onToggleMobileMenu();
-                    }}
-                    className={`w-full px-4 py-2 text-sm text-left ${activeTab === tab.id ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600'}`}
-                  >
-                    {tab.title}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+          );
+        })}
       </div>
     </div>
   );
 }
-
-

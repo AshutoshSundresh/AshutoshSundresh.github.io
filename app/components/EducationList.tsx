@@ -10,8 +10,8 @@ function EducationList({ educationData, courseworkHref = '/experience/coursework
   return (
     <div className="mt-4 space-y-6">
         {educationData.map((edu) => (
-        <div key={edu.id} className="bg-white dark:bg-[#2b2b2b] rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors">
-          <div className="bg-gray-50 dark:bg-[#202020] p-4 border-b border-gray-200 dark:border-gray-700">
+        <div key={edu.id} className="bg-white dark:bg-[#252527] rounded-[10px] border border-black/[0.08] dark:border-white/[0.09] overflow-hidden transition-colors">
+          <div className="bg-black/[0.025] dark:bg-white/[0.035] p-4 border-b border-black/[0.07] dark:border-white/[0.08]">
             <div className="flex items-center">
               <div className="w-12 h-12 mr-4 relative flex-shrink-0">
                 <Image src={edu.icon} alt={edu.institution} fill sizes="48px" placeholder="blur" blurDataURL={getBlurDataURL(edu.icon)} className="object-contain rounded-lg" />

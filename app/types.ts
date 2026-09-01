@@ -355,15 +355,16 @@ export interface TerminalOverlayProps {
 export interface WindowHeaderProps {
   onToggleLockscreen: () => void;
   onOpenTerminal: () => void;
-}
-
-export interface ToolbarProps {
+  onOpenSearch?: () => void;
   onBack: () => void;
   onForward: () => void;
   canBack: boolean;
   canForward: boolean;
-  showArchive: boolean;
-  onOpenSearch?: () => void;
+  onZoom: () => void;
+  isZoomed: boolean;
+  showArchive?: boolean;
+  title?: string;
+  subtitle?: string;
 }
 
 export interface Tab { id: number; title: string }
@@ -400,11 +401,12 @@ export interface ColumnInfo {
 export interface TabsBarProps {
   tabs: Tab[];
   activeTab: number;
-  isMobile: boolean;
-  showMobileMenu: boolean;
-  onToggleMobileMenu: () => void;
   onSelect: (id: number) => void;
-  mobileMenuRef: React.RefObject<HTMLDivElement | null>;
+  /** Retained for callers that still pass the pre-segmented-control props. */
+  isMobile?: boolean;
+  showMobileMenu?: boolean;
+  onToggleMobileMenu?: () => void;
+  mobileMenuRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export interface PublicationsGridProps {

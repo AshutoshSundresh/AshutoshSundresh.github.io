@@ -16,7 +16,7 @@ function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
               const CardInner = (
                 <div className="p-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gray-50 dark:bg-[#202020] flex items-center justify-center flex-shrink-0 relative overflow-hidden">
+                    <div className="w-10 h-10 rounded-lg bg-black/[0.025] dark:bg-white/[0.035] flex items-center justify-center flex-shrink-0 relative overflow-hidden">
                       <Image 
                         src={award.icon} 
                         alt={award.title} 
@@ -56,7 +56,7 @@ function AwardsMasonry({ awardsData }: AwardsMasonryProps) {
               );
 
               return (
-                <div key={index} className="relative overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#2b2b2b] hover:bg-gray-50 dark:hover:bg-[#333] transition-colors break-inside-avoid mb-2 last:mb-0">
+                <div key={index} className="relative overflow-hidden rounded-[10px] border border-black/[0.08] dark:border-white/[0.09] bg-white dark:bg-[#252527] hover:bg-black/[0.03] dark:hover:bg-white/[0.06] transition-colors break-inside-avoid mb-2 last:mb-0">
                   {CardInner}
                 </div>
               );

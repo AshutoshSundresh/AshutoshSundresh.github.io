@@ -28,9 +28,9 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
         const hasCollapsibleContent = activity.description || activity.stats || activity.highlights || activity.links;
 
         return (
-          <div key={activity.id} className="bg-white dark:bg-[#2b2b2b] rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden transition-colors">
+          <div key={activity.id} className="bg-white dark:bg-[#252527] rounded-[10px] border border-black/[0.08] dark:border-white/[0.09] overflow-hidden transition-colors">
             <div 
-              className={`bg-gray-50 dark:bg-[#202020] p-4 ${activity.collapsible && hasCollapsibleContent ? 'border-b border-gray-200 dark:border-gray-700 cursor-pointer hover:bg-gray-100 dark:hover:bg-[#252525] transition-colors' : activity.collapsible ? '' : 'border-b border-gray-200 dark:border-gray-700'}`}
+              className={`bg-black/[0.025] dark:bg-white/[0.035] p-4 ${activity.collapsible && hasCollapsibleContent ? 'border-b border-black/[0.07] dark:border-white/[0.08] cursor-pointer hover:bg-black/[0.045] dark:hover:bg-white/[0.06] transition-colors' : activity.collapsible ? '' : 'border-b border-black/[0.07] dark:border-white/[0.08]'}`}
               onClick={() => activity.collapsible && hasCollapsibleContent && toggleCollapse(activity.id)}
             >
               <div className="flex items-start">
@@ -77,7 +77,7 @@ export default function ActivitiesList({ activities }: ActivitiesListProps) {
                 {activity.stats && (
                   <div className="grid grid-cols-2 gap-2">
                     {activity.stats.map((stat, index) => (
-                      <div key={index} className="bg-gray-50 dark:bg-[#202020] rounded-lg p-2 text-center">
+                      <div key={index} className="bg-black/[0.025] dark:bg-white/[0.035] rounded-lg p-2 text-center">
                         <div className="text-base font-medium text-gray-900 dark:text-gray-200">{stat.value}</div>
                         <div className="text-xs text-gray-500 dark:text-gray-400">{stat.label}</div>
                       </div>
