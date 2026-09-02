@@ -19,6 +19,18 @@ function addField(lines: string[], label: string, value?: string) {
   }
 }
 
+/**
+ * Award descriptions are authored for the UI, so they carry `<br>` breaks and
+ * bullet glyphs. Split them into plain lines for the plaintext feed.
+ */
+function toDescriptionLines(description?: string): string[] {
+  if (!description) return [];
+  return description
+    .split(/<br\s*\/?>/i)
+    .map((line) => line.replace(/^\s*[•\-–]\s*/, "").trim())
+    .filter(Boolean);
+}
+
 function getCourseSortKey(course: { quarter: string }) {
   const [term, year] = course.quarter.split(" ");
   return [Number(year) || 0, QUARTER_ORDER[term] ?? 99] as const;
@@ -38,6 +50,7 @@ export function GET() {
       educationData: {
         institution: string;
         degree?: string;
+        location?: string;
         gpa?: string;
         period: string;
         details: {
@@ -49,6 +62,7 @@ export function GET() {
       experienceData: {
         company: string;
         position: string;
+        location?: string;
         period: string;
         description: string[];
         companyLink?: string;
@@ -104,6 +118,7 @@ export function GET() {
   lines.push("");
   for (const job of workHistory) {
     lines.push(`### ${job.position} at ${job.company}`);
+    addField(lines, "Location", job.location);
     lines.push(`- **Period**: ${job.period}`);
     if (job.companyLink) lines.push(`- **Link**: ${job.companyLink}`);
     for (const bullet of job.description) {
@@ -122,6 +137,9 @@ export function GET() {
       const stat = award.stats ? ` — ${award.stats}` : "";
       const subtitle = award.subtitle ? `, ${award.subtitle}` : "";
       lines.push(`- **${award.title}** (${award.year})${subtitle}${highlight}${stat}`);
+      for (const detail of toDescriptionLines(award.description)) {
+        lines.push(`  - ${detail}`);
+      }
     }
     lines.push("");
   }
@@ -132,6 +150,7 @@ export function GET() {
   for (const edu of educationData) {
     lines.push(`### ${edu.institution}`);
     addField(lines, "Degree", edu.degree);
+    addField(lines, "Location", edu.location);
     addField(lines, "Period", edu.period);
     addField(lines, "GPA", edu.gpa);
     if (edu.details.achievements?.length) {
