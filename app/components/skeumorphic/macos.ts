@@ -7,18 +7,6 @@
  * which is how AppKit actually renders it.
  */
 
-/** Traffic-light fills (Big Sur onward). */
-export const TRAFFIC_LIGHTS = {
-  close: '#FF5F57',
-  closeRing: '#E0443E',
-  minimize: '#FEBC2E',
-  minimizeRing: '#DEA123',
-  zoom: '#28C840',
-  zoomRing: '#1AAB29',
-  inactive: '#D3D3D3',
-  inactiveDark: '#4A4A4A',
-} as const;
-
 /**
  * SF Pro when the visitor is on a Mac, with sane fallbacks elsewhere.
  * Applied to chrome only; body copy keeps the site's Raleway identity.

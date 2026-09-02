@@ -19,7 +19,7 @@ const VIEWPORTS = [
 ];
 
 // Subset used for tab sweeps to keep run time sane
-const CORE = new Set(['mobile-390', 'laptop-1280', 'desktop-1680']);
+const CORE = new Set(['mobile-390', 'tablet-768', 'laptop-1280', 'desktop-1680']);
 
 const PAGES = [
   { name: 'home', url: '/experience' },

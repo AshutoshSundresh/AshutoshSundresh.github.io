@@ -1,17 +1,15 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { ChevronLeft, ChevronRight, Moon, Search, Sun, Terminal } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Lock, Maximize2, Minimize2, Moon, Search, Sun, Terminal } from 'lucide-react';
 import type { WindowHeaderProps } from '../types';
 import { useTheme } from '../contexts/ThemeContext';
-import TrafficLights from './skeumorphic/TrafficLights';
 import { CHROME_MATERIAL, HAIRLINE, TOOLBAR_BUTTON, UI_FONT_STACK } from './skeumorphic/macos';
 
 /**
  * Unified toolbar — Big Sur onward merges the title bar and toolbar into a
- * single row: window controls at the leading edge, title centred, actions
- * trailing. Replaces the old three-bar stack.
+ * single row. History sits at the leading edge, the title is centred, and
+ * every app action is an explicit labelled icon on the trailing edge.
  */
 export default function WindowHeader({
   onToggleLockscreen,
@@ -27,7 +25,6 @@ export default function WindowHeader({
   title = 'Explore',
   subtitle,
 }: WindowHeaderProps) {
-  const router = useRouter();
   const { isDark, toggleTheme } = useTheme();
 
   return (
@@ -35,30 +32,21 @@ export default function WindowHeader({
       className={`relative flex h-[52px] shrink-0 items-center gap-3 border-b px-4 ${HAIRLINE} ${CHROME_MATERIAL}`}
       style={{ fontFamily: UI_FONT_STACK }}
     >
-      {/* Leading: window controls + history */}
-      <div className="relative z-10 flex items-center gap-3">
-        <TrafficLights
-          onClose={() => router.push('/')}
-          onMinimize={onToggleLockscreen}
-          onZoom={onZoom}
-          isZoomed={isZoomed}
-        />
-
-        <div className="ml-1 flex items-center gap-0.5">
-          <button type="button" onClick={onBack} disabled={!canBack} className={TOOLBAR_BUTTON} aria-label="Back" title="Back">
-            <ChevronLeft className="h-[17px] w-[17px]" strokeWidth={2.1} />
-          </button>
-          <button
-            type="button"
-            onClick={onForward}
-            disabled={!canForward}
-            className={TOOLBAR_BUTTON}
-            aria-label="Forward"
-            title="Forward"
-          >
-            <ChevronRight className="h-[17px] w-[17px]" strokeWidth={2.1} />
-          </button>
-        </div>
+      {/* Leading: history */}
+      <div className="relative z-10 flex items-center gap-0.5">
+        <button type="button" onClick={onBack} disabled={!canBack} className={TOOLBAR_BUTTON} aria-label="Back" title="Back">
+          <ChevronLeft className="h-[17px] w-[17px]" strokeWidth={2.1} />
+        </button>
+        <button
+          type="button"
+          onClick={onForward}
+          disabled={!canForward}
+          className={TOOLBAR_BUTTON}
+          aria-label="Forward"
+          title="Forward"
+        >
+          <ChevronRight className="h-[17px] w-[17px]" strokeWidth={2.1} />
+        </button>
       </div>
 
       {/* Centred title — pointer-events-none so it never eats toolbar clicks */}
@@ -84,6 +72,9 @@ export default function WindowHeader({
         <button type="button" onClick={onOpenTerminal} className={TOOLBAR_BUTTON} aria-label="Terminal" title="Terminal">
           <Terminal className="h-[16px] w-[16px]" strokeWidth={2} />
         </button>
+        <button type="button" onClick={onToggleLockscreen} className={TOOLBAR_BUTTON} aria-label="Lock screen" title="Lock screen">
+          <Lock className="h-[15px] w-[15px]" strokeWidth={2} />
+        </button>
         <button
           type="button"
           onClick={toggleTheme}
@@ -92,6 +83,16 @@ export default function WindowHeader({
           title="Appearance"
         >
           {isDark ? <Sun className="h-[16px] w-[16px]" strokeWidth={2} /> : <Moon className="h-[16px] w-[16px]" strokeWidth={2} />}
+        </button>
+        <button
+          type="button"
+          onClick={onZoom}
+          className={TOOLBAR_BUTTON}
+          aria-label={isZoomed ? 'Shrink window' : 'Expand window'}
+          aria-pressed={isZoomed}
+          title={isZoomed ? 'Shrink' : 'Expand'}
+        >
+          {isZoomed ? <Minimize2 className="h-[15px] w-[15px]" strokeWidth={2} /> : <Maximize2 className="h-[15px] w-[15px]" strokeWidth={2} />}
         </button>
         {onOpenSearch && (
           <button type="button" onClick={onOpenSearch} className={TOOLBAR_BUTTON} aria-label="Search" title="Search">
