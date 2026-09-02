@@ -40,6 +40,16 @@ const PAGES = [
       await new Promise((r) => setTimeout(r, 700));
     },
   },
+  // Same, for publications — the grid the projects tiles are matched against
+  {
+    name: 'publication-detail',
+    url: '/experience?tab=publications',
+    core: true,
+    action: async (page) => {
+      await page.click('[data-publication-tile]');
+      await new Promise((r) => setTimeout(r, 700));
+    },
+  },
 ];
 
 const THEMES = ['light', 'dark'];

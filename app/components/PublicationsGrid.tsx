@@ -10,6 +10,7 @@ function PublicationsGrid({ publications, selectedId, onItemClick }: Publication
       {publications.map((pub) => (
         <div
           key={pub.id}
+          data-publication-tile
           className={`flex flex-col items-center group cursor-pointer p-2 rounded-md ${selectedId === pub.id ? 'text-white' : 'hover:bg-gray-100 dark:hover:bg-gray-700'}`}
           onClick={(e) => onItemClick(e, pub.id)}
           style={selectedId === pub.id ? { backgroundColor: SEMANTIC_COLORS.selection } : undefined}
