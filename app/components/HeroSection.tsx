@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { Search, Moon, Sun } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
-import { CONTACT, CONTACT_EMAIL_HREF } from '../constants/contact';
+import { CONTACT, CONTACT_EMAIL_HREF, GPT_HREF } from '../constants/contact';
 import HoverCursor from './HoverCursor';
 import HeroTimelinePill from './HeroTimelinePill';
 
@@ -13,7 +13,7 @@ interface HeroSectionProps {
   onGoLHoverChange?: (hovering: boolean) => void;
 }
 
-type CursorKey = 'theme' | 'search' | 'x' | 'mail' | 'github' | 'linkedin';
+type CursorKey = 'theme' | 'search' | 'x' | 'mail' | 'github' | 'linkedin' | 'gpt';
 
 const CURSOR_MAP: Record<CursorKey, { text?: string; imageSrc: string }> = {
   theme:   { imageSrc: '' }, // resolved dynamically based on isDark
@@ -22,6 +22,7 @@ const CURSOR_MAP: Record<CursorKey, { text?: string; imageSrc: string }> = {
   mail:    { text: 'Mail',     imageSrc: '/images/gmail_sm.webp' },
   github:  { text: 'GitHub',   imageSrc: '/images/github_sm.webp' },
   linkedin:{ text: 'LinkedIn', imageSrc: '/images/linkedin_sm.webp' },
+  gpt:     { text: 'GPT',      imageSrc: '/images/gpt_sm.webp' },
 };
 
 export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSectionProps) {
@@ -134,6 +135,7 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
                 <a href={CONTACT_EMAIL_HREF} className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('mail')}>Mail</a>
                 <a href={CONTACT.github} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('github')}>GitHub</a>
                 <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('linkedin')}>LinkedIn</a>
+                <a href={GPT_HREF} target="_blank" rel="noopener noreferrer" className="px-4 md:px-5 py-2 md:py-2.5 text-gray-600 dark:text-gray-400 md:text-[14px] transition-all duration-300 hover:text-gray-900 dark:hover:text-gray-200 font-light tracking-wide blur-on-hover cursor-none" {...cursor('gpt')}>GPT</a>
               </div>
               <HeroTimelinePill onScrollNext={scrollToNext} />
             </div>
