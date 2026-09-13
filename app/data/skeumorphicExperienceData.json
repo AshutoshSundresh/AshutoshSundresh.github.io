@@ -828,7 +828,7 @@
       "location": "San Francisco, California, United States",
       "period": "Jun 2026 - Sep 2026",
       "icon": "/images/brain_co.webp",
-      "companyLink": "https://brain.co/blog/introducing-brain-co-9gk9a",
+      "companyLink": "https://brain.co",
       "description": [
         "AI Platform Team, joined as part of the first ~40 engineers, cross-cluster LLM inference metering platform + sovereign UAE region buildout",
         "Built cross-cluster, multi-provider LLM inference metering platform governing $100K+/mo spend across 170+ employees, 500+ API keys, and 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",

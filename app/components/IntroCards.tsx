@@ -78,7 +78,7 @@ export default function IntroCards() {
                 </a>
                 , researching PGO compiler artifact reuse for serverless, first early career AI Platform Engineer at{' '}
                 <a
-                  href="https://brain.co/blog/introducing-brain-co-9gk9a"
+                  href="https://brain.co"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
