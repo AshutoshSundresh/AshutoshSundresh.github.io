@@ -4,6 +4,7 @@ import React, { useState, memo, useCallback } from 'react';
 import Image from 'next/image';
 import type { ExperienceListProps } from '../types';
 import { getBlurDataURL } from '../constants/blurPlaceholder';
+import ThumbLinkCard from './ThumbLinkCard';
 
 function ExperienceList({ experienceData, isMobile = false }: ExperienceListProps) {
   const [expandedExperiences, setExpandedExperiences] = useState<number[]>([]);
@@ -77,6 +78,14 @@ function ExperienceList({ experienceData, isMobile = false }: ExperienceListProp
                   </>
                 )}
               </button>
+            )}
+
+            {exp.thumbLinks && exp.thumbLinks.length > 0 && (
+              <div className={`${isMobile ? 'mt-4 space-y-2.5' : 'mt-3 space-y-2'}`}>
+                {exp.thumbLinks.map((link) => (
+                  <ThumbLinkCard key={link.url} link={link} isMobile={isMobile} />
+                ))}
+              </div>
             )}
           </div>
         </div>

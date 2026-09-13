@@ -163,6 +163,17 @@ export interface EducationEntry {
   details: EducationDetails;
 }
 
+/**
+ * A featured link shown as a preview card beneath an entry, the way LinkedIn
+ * renders linked articles. `image` is the link's preview art; when it is
+ * absent the card falls back to a neutral tile so the link still reads.
+ */
+export interface ThumbLink {
+  title: string;
+  url: string;
+  image?: string;
+}
+
 export interface ExperienceEntry {
   id: number;
   company: string;
@@ -172,6 +183,7 @@ export interface ExperienceEntry {
   icon: string;
   companyLink: string;
   description: string[];
+  thumbLinks?: ThumbLink[];
 }
 
 export interface ActivityLink {

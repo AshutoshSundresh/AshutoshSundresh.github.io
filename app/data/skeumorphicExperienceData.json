@@ -834,8 +834,14 @@
         "Built cross-cluster, multi-provider LLM inference metering platform governing $100K+/mo spend across 170+ employees, 500+ API keys, and 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",
         "Designed per-model, per-token-type allocator with cent-preserving math reconciling per-key cost to provider invoices",
         "Shipped an org-wide usage MCP server fronting the org's Google login via WorkOS, reusing the dashboard's query layer"
+      ],
+      "thumbLinks": [
+        {
+          "title": "My Summer as a Platform Engineering Intern at Brain Co.",
+          "url": "https://brain.co/blog/summer-platform-engineering-intern-brain-co",
+          "image": "/images/brainco_intern_blog.webp"
+        }
       ]
- 
     },
     {
       "id": 1,
