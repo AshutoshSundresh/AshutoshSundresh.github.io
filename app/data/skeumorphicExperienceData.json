@@ -869,6 +869,13 @@
         "Engineered real-time LLM suggestions system with SSE-based queueing, git-style diffs for Office.js, and granular apply/undo",
         "Built block-based execution engine with type-safe streaming of heterogeneous outputs (suggestions, text, files), workflow schema validation, streaming abort propagation, and Sentry/Datadog instrumentation",
         "Designed rubric-based SxS LLM evaluations with Legal Researchers and a Streamlit app to benchmark drafting quality"
+      ],
+      "thumbLinks": [
+        {
+          "title": "Harvey's improved Word experience understands how you work",
+          "url": "https://www.harvey.ai/blog/improved-word-experience",
+          "image": "/images/harvey_word_blog.webp"
+        }
       ]
     },
     {
