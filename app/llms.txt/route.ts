@@ -66,6 +66,7 @@ export function GET() {
         period: string;
         description: string[];
         companyLink?: string;
+        thumbLinks?: { title: string; url: string }[];
       }[];
       awardsData: {
         category: string;
@@ -123,6 +124,9 @@ export function GET() {
     if (job.companyLink) lines.push(`- **Link**: ${job.companyLink}`);
     for (const bullet of job.description) {
       lines.push(`- ${bullet}`);
+    }
+    for (const featured of job.thumbLinks ?? []) {
+      lines.push(`- **Featured**: [${featured.title}](${featured.url})`);
     }
     lines.push("");
   }
