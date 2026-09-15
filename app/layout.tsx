@@ -19,20 +19,27 @@ type PortfolioData = {
   projects: {
     name: string;
     caption: string;
+    techstack?: string;
+    link?: string;
     stats?: { label: string; value: string }[];
   }[];
   educationData: {
     institution: string;
     degree?: string;
+    location?: string;
     institutionLink?: string;
   }[];
   experienceData: {
     company: string;
     position: string;
+    location?: string;
+    companyLink?: string;
   }[];
   awardsData: {
     awards: {
       title: string;
+      subtitle?: string;
+      year?: string;
       highlight?: string;
     }[];
   }[];
@@ -85,6 +92,42 @@ const jsonLdDescription = [
   flagshipSummary,
 ].filter(Boolean).join(" ");
 
+/**
+ * Structured data for agents that fetch only the landing page. A one-shot
+ * reader never reaches /experience or /llms.txt, so the substantive facts are
+ * mirrored into JSON-LD here. All of it derives from the same portfolio JSON
+ * the UI renders, so it cannot go stale, and none of it changes the page.
+ */
+const schemaEducation = portfolio.educationData.map((education) => ({
+  "@type": "EducationalOrganization",
+  name: education.institution,
+  ...(education.institutionLink ? { url: education.institutionLink } : {}),
+  ...(education.location ? { address: education.location } : {}),
+}));
+
+const schemaAwards = portfolio.awardsData
+  .flatMap((category) => category.awards)
+  .map((award) =>
+    [award.title, award.subtitle, award.highlight ? `(${award.highlight})` : undefined]
+      .filter(Boolean)
+      .join(" — ")
+  );
+
+const schemaKnowsAbout = Array.from(
+  new Set(
+    portfolio.projects
+      .flatMap((project) => (project.techstack ?? "").split(","))
+      .map((entry) => entry.trim())
+      .filter(Boolean)
+  )
+);
+
+const schemaWorksFor = currentRole && {
+  "@type": "Organization",
+  name: currentRole.company,
+  ...(currentRole.companyLink ? { url: currentRole.companyLink } : {}),
+};
+
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: personName,
@@ -130,11 +173,25 @@ const jsonLd = {
   sameAs: CONTACT_LINKS,
   jobTitle: currentRole?.position ?? "Software Engineer",
   description: jsonLdDescription,
-  alumniOf: primaryEducation && {
-    "@type": "CollegeOrUniversity",
-    name: primaryEducation.institution,
-    url: primaryEducation.institutionLink,
-  },
+  image: `${siteOrigin}/images/thumb.png`,
+  alumniOf: schemaEducation.length ? schemaEducation : undefined,
+  ...(schemaWorksFor ? { worksFor: schemaWorksFor } : {}),
+  ...(currentRole
+    ? {
+        hasOccupation: {
+          "@type": "Occupation",
+          name: currentRole.position,
+          ...(currentRole.location ? { occupationLocation: currentRole.location } : {}),
+        },
+      }
+    : {}),
+  ...(schemaAwards.length ? { award: schemaAwards } : {}),
+  ...(schemaKnowsAbout.length ? { knowsAbout: schemaKnowsAbout } : {}),
+  // Machine-readable long forms, for agents that only fetch the landing page.
+  subjectOf: [
+    { "@type": "WebPage", name: `${personName} — full profile`, url: `${siteOrigin}/profile` },
+    { "@type": "WebPage", name: `${personName} — plaintext profile`, url: `${siteOrigin}/llms.txt` },
+  ],
 };
 
 export default function RootLayout({
