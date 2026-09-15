@@ -4,6 +4,8 @@ import "./globals.css";
 import "./fonts.css";
 import Navigation from "./components/Navigation";
 import portfolioData from "./data/skeumorphicExperienceData.json";
+import interestsData from "./data/skeumorphicInterests.json";
+import topFilms from "./data/topFilms.json";
 import { CONTACT, CONTACT_LINKS } from "./constants/contact";
 
 const raleway = Raleway({
@@ -113,7 +115,7 @@ const schemaAwards = portfolio.awardsData
       .join(" — ")
   );
 
-const schemaKnowsAbout = Array.from(
+const schemaTechnologies = Array.from(
   new Set(
     portfolio.projects
       .flatMap((project) => (project.techstack ?? "").split(","))
@@ -121,6 +123,28 @@ const schemaKnowsAbout = Array.from(
       .filter(Boolean)
   )
 );
+
+/**
+ * Interests as Thing objects rather than bare labels: knowsAbout accepts
+ * Text | URL | Thing, so each topic can carry its detail instead of reducing
+ * to a one-word tag an agent can do nothing with.
+ */
+const schemaInterests: { "@type": "Thing"; name: string; description: string }[] = [
+  ...Object.entries((interestsData as { interests?: Record<string, string> }).interests ?? {}).map(
+    ([name, description]) => ({ "@type": "Thing" as const, name, description })
+  ),
+];
+
+const favouriteFilms = (topFilms as { title: string }[]).map((film) => film.title).filter(Boolean);
+if (favouriteFilms.length) {
+  schemaInterests.push({
+    "@type": "Thing",
+    name: "Film",
+    description: `Favourite films: ${favouriteFilms.join(", ")}.`,
+  });
+}
+
+const schemaKnowsAbout = [...schemaTechnologies, ...schemaInterests];
 
 const schemaWorksFor = currentRole && {
   "@type": "Organization",
