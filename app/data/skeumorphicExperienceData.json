@@ -33,7 +33,7 @@
       "id": 2,
       "name": "MiniR (Embedded R-Like Programming Language)",
       "image": "/images/mini_r.png",
-      "caption": "Embedded R-like interpreter and REPL for Casio fx-CP400 calculators (C++20).",
+      "caption": "Embedded R-like interpreter and REPL for Casio fx-CP400 calculators (C++20)",
       "techstack": "C++20",
       "description": "A from-scratch R-like interpreter and REPL intended for Casio fx-CP400 family of calculators, including a custom lexer, expression parser, and evaluator that support R-style vectors, matrices, data.frames, subsetting, recycling rules, NA/NaN/Inf semantics, and many core builtins. Designed a compact runtime with attribute-aware values and lightweight containers tuned for constrained embedded environments, plus a simple desktop CLI/REPL interface that can also be embedded as a library.",
       "created": "2026-01-13",
@@ -1047,7 +1047,7 @@
     {
       "id": 5,
       "title": "LA Hacks Organizer",
-      "description": "Currently handling sponsorships, send inquiries to ashutosh@lahacks.com.\n\nBuilt web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon.",
+      "description": "Currently handling sponsorships, send inquiries to ashutosh@lahacks.com\n\nPreviously built web dashboards, hacker application site, and statistical plagiarism detection tool for Southern California's largest hackathon",
       "period": "Oct 2024 - Present",
       "icon": "/images/lahacks_logo.jpeg",
       "links": [
@@ -1060,7 +1060,7 @@
     {
       "id": 1,
       "title": "Undergraduate Tutor",
-      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes at Upsilon Pi Epsilon.",
+      "description": "Tutored in weekly 2-hour drop-in sessions for lower-division Computer Science, Math, and Physics classes at Upsilon Pi Epsilon",
       "links": [
         {
           "text": "Upsilon Pi Epsilon at UCLA",
@@ -1069,6 +1069,12 @@
       ],
       "period": "Sep 2025 - Dec 2025",
       "icon": "/images/ucla_upe_logo.jpeg"
+    },
+    {
+      "id": 7,
+      "title": "VEST Founding Member",
+      "period": "Jan 2025 - Jun 2026",
+      "icon": "/images/vest_ucla.webp"
     },
     {
       "id": 2,
@@ -1099,7 +1105,7 @@
     {
       "id": 6,
       "title": "UCLA ELFIN CubeSat Ground Software Engineer",
-      "description": "Built ground control and thermal vacuum chamber (TVAC) software for UCLA ELFIN CubeSat (Experimental Space Physics Group).",
+      "description": "Built ground control and thermal vacuum chamber (TVAC) software for UCLA ELFIN CubeSat (Experimental Space Physics Group)",
       "period": "Jan 2025 - May 2025",
       "icon": "/images/elfincubesat.jpg",
       "links": [
@@ -1113,7 +1119,7 @@
       "id": 4,
       "title": "SRCC Writing Mentorship Program",
       "period": "Aug 2024 - Sep 2024",
-      "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program with the Economics Society at Shri Ram College of Commerce, University of Delhi.",
+      "description": "Selected among 1,500 applicants (8% acceptance rate) for an advanced writing techniques program with the Economics Society at Shri Ram College of Commerce, University of Delhi",
       "highlights": [
         "Completed with highest distinction, finishing top 5 out of 105 participants"
       ],

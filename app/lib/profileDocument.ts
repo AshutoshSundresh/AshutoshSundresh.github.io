@@ -42,7 +42,7 @@ function getCourseSortKey(course: { quarter: string }) {
  * plain text) and /llms (rendered as HTML), so the two can never drift.
  */
 export function buildProfileLines(): string[] {
-  const { projects, educationData, experienceData: workHistory, awardsData } =
+  const { projects, educationData, experienceData: workHistory, awardsData, activitiesData } =
     experienceData as {
       projects: {
         name: string;
@@ -83,6 +83,14 @@ export function buildProfileLines(): string[] {
           stats?: string;
           description?: string;
         }[];
+      }[];
+      activitiesData: {
+        title: string;
+        period: string;
+        description?: string;
+        highlights?: string[];
+        stats?: { label: string; value: string }[];
+        links?: { text: string; url: string }[];
       }[];
     };
 
@@ -194,6 +202,30 @@ export function buildProfileLines(): string[] {
       lines.push(`- **Stats**: ${statStr}`);
     }
     lines.push(`- ${project.description}`);
+    lines.push("");
+  }
+
+  // Activities & Leadership
+  lines.push("## Activities & Leadership");
+  lines.push("");
+  for (const activity of activitiesData) {
+    lines.push(`### ${activity.title}`);
+    addField(lines, "Period", activity.period);
+    if (activity.stats?.length) {
+      lines.push(
+        `- **Stats**: ${activity.stats.map((s) => `${s.label}: ${s.value}`).join(", ")}`
+      );
+    }
+    for (const link of activity.links ?? []) {
+      lines.push(`- **Link**: [${link.text}](${link.url})`);
+    }
+    // Activity copy is authored for the UI, where blank lines separate paragraphs.
+    for (const paragraph of (activity.description ?? "").split(/\n+/)) {
+      if (paragraph.trim()) lines.push(`- ${paragraph.trim()}`);
+    }
+    for (const highlight of activity.highlights ?? []) {
+      lines.push(`- ${highlight}`);
+    }
     lines.push("");
   }
 

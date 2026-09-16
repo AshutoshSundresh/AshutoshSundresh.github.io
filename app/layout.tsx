@@ -45,6 +45,13 @@ type PortfolioData = {
       highlight?: string;
     }[];
   }[];
+  activitiesData: {
+    title: string;
+    period: string;
+    description?: string;
+    highlights?: string[];
+    links?: { text: string; url: string }[];
+  }[];
 };
 
 const portfolio = portfolioData as PortfolioData;
@@ -146,6 +153,36 @@ if (favouriteFilms.length) {
 
 const schemaKnowsAbout = [...schemaTechnologies, ...schemaInterests];
 
+/**
+ * Extracurriculars as the schema.org Role pattern: the role sits where the
+ * Organization would, and the organization nests back under the same property.
+ * Only activities that carry a link get a resolvable Organization; the rest
+ * still expose their role name and dates.
+ */
+const schemaActivities = portfolio.activitiesData.map((activity) => {
+  const organization = activity.links?.[0];
+  const detail = [activity.description, ...(activity.highlights ?? [])]
+    .filter(Boolean)
+    .join(" ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return {
+    "@type": "OrganizationRole",
+    roleName: activity.title,
+    ...(activity.period ? { description: detail ? `${activity.period}. ${detail}` : activity.period } : {}),
+    ...(organization
+      ? {
+          memberOf: {
+            "@type": "Organization",
+            name: organization.text,
+            url: organization.url,
+          },
+        }
+      : {}),
+  };
+});
+
 const schemaWorksFor = currentRole && {
   "@type": "Organization",
   name: currentRole.company,
@@ -210,6 +247,7 @@ const jsonLd = {
       }
     : {}),
   ...(schemaAwards.length ? { award: schemaAwards } : {}),
+  ...(schemaActivities.length ? { memberOf: schemaActivities } : {}),
   ...(schemaKnowsAbout.length ? { knowsAbout: schemaKnowsAbout } : {}),
   // Machine-readable long forms, for agents that only fetch the landing page.
   subjectOf: [
