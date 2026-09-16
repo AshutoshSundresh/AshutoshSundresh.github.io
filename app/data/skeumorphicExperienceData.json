@@ -1074,7 +1074,13 @@
       "id": 7,
       "title": "VEST Founding Member",
       "period": "Jan 2025 - Jun 2026",
-      "icon": "/images/vest_ucla.webp"
+      "icon": "/images/vest_ucla.webp",
+      "links": [
+        {
+          "text": "VEST at UCLA",
+          "url": "https://www.vestucla.com/"
+        }
+      ]
     },
     {
       "id": 2,
