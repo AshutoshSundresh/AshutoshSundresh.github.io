@@ -4,6 +4,7 @@
  */
 export type HeroTimelineEntry = {
   sortKey: string;
+  /** May contain inline `[label](url)` links; the pill renders them as anchors. */
   sentence: string;
   /** Same paths as search results: `/experience?tab=…` or `/#section-id` */
   navPath: string;
@@ -40,6 +41,7 @@ export function formatTimelineHeading(sortKey: string): string {
 }
 
 const RAW: HeroTimelineEntry[] = [
+  { sortKey: '2026-09-11', sentence: 'Wrapped up my internship at Brain Co. and wrote about it on the [company blog](https://brain.co/blog/summer-platform-engineering-intern-brain-co).', navPath: TAB.experience },
   { sortKey: '2026-07-25', sentence: 'Attended YC Startup School, then drove up to Muir Woods at 3 am.', navPath: TAB.activities },
   { sortKey: '2026-07-23', sentence: 'Finally secured our apartment lease for junior and senior year at UCLA after 5 months.', navPath: TAB.activities },
   { sortKey: '2026-07-04', sentence: 'Hiked the Panorama Trail at Yosemite National Park and went down a 3,000 ft elevation.', navPath: TAB.activities },

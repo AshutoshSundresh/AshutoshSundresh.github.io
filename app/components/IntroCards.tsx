@@ -76,7 +76,7 @@ export default function IntroCards() {
                 >
                   Kleiner Perkins Fellow
                 </a>
-                , researching PGO compiler artifact reuse for serverless, first early career AI Platform Engineer at{' '}
+                , researching PGO compiler artifact reuse for serverless, previously at{' '}
                 <a
                   href="https://brain.co"
                   target="_blank"
@@ -86,7 +86,7 @@ export default function IntroCards() {
                 >
                   Brain Co.
                 </a>
-                , previously at{' '}
+                {' '}and{' '}
                 <a
                   href="https://harvey.ai"
                   target="_blank"

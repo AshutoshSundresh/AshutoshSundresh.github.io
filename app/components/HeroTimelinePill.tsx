@@ -20,6 +20,46 @@ interface HeroTimelinePillProps {
 const tickerText =
   'text-left text-xs md:text-[13px] text-gray-700 dark:text-gray-200 font-light whitespace-nowrap';
 
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+/** Plain form, for the title attribute and any non-visual use. */
+function stripLinks(text: string): string {
+  return text.replace(LINK_PATTERN, "$1");
+}
+
+/**
+ * Renders inline `[label](url)` as anchors. The marquee paints a second,
+ * aria-hidden copy of the sentence, so that copy takes `interactive: false`
+ * to keep its duplicate links out of the tab order.
+ */
+function renderSentence(text: string, key: string, interactive: boolean) {
+  const nodes: React.ReactNode[] = [];
+  let last = 0;
+  let i = 0;
+  let match: RegExpExecArray | null;
+  LINK_PATTERN.lastIndex = 0;
+
+  while ((match = LINK_PATTERN.exec(text)) !== null) {
+    if (match.index > last) nodes.push(text.slice(last, match.index));
+    nodes.push(
+      <a
+        key={`${key}-${i}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        tabIndex={interactive ? undefined : -1}
+        className="underline decoration-gray-400/70 underline-offset-2 transition-colors hover:text-gray-900 dark:decoration-gray-500/70 dark:hover:text-white"
+      >
+        {match[1]}
+      </a>
+    );
+    last = match.index + match[0].length;
+    i += 1;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes;
+}
+
 type PillState = { index: number; tickerKey: number };
 
 function pillReducer(state: PillState, next: number): PillState {
@@ -33,21 +73,25 @@ const TickerSentence = memo(function TickerSentence({
   text: string;
   tickerKey: number;
 }) {
+  const plain = stripLinks(text);
+
   return (
     <>
       <div className="relative w-full min-h-[1.35rem] flex items-center overflow-hidden motion-reduce:hidden">
         <div key={tickerKey} className="hero-ticker-track">
-          <span className={`inline-block shrink-0 ${tickerText} pr-10`}>{text}</span>
+          <span className={`inline-block shrink-0 ${tickerText} pr-10`}>
+            {renderSentence(text, `a-${tickerKey}`, true)}
+          </span>
           <span className={`inline-block shrink-0 ${tickerText} pr-10`} aria-hidden>
-            {text}
+            {renderSentence(text, `b-${tickerKey}`, false)}
           </span>
         </div>
       </div>
       <p
         className={`hidden motion-reduce:block truncate w-full min-h-[1.35rem] min-w-0 ${tickerText}`}
-        title={text}
+        title={plain}
       >
-        {text}
+        {renderSentence(text, `c-${tickerKey}`, true)}
       </p>
     </>
   );
