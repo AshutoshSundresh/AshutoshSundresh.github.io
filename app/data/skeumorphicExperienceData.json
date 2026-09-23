@@ -824,13 +824,13 @@
     {
       "id": 0,
       "company": "Brain Co.",
-      "position": "Software Engineering Intern",
+      "position": "AI Platform Engineering Intern",
       "location": "San Francisco, California, United States",
       "period": "Jun 2026 - Sep 2026",
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co",
       "description": [
-        "AI Platform Team, joined as part of the first ~40 engineers, cross-cluster LLM inference metering platform + sovereign UAE region buildout",
+        "Software Factory Team, joined as part of the first ~40 engineers, cross-cluster LLM inference metering platform + sovereign UAE region buildout",
         "Built cross-cluster LLM inference metering platform across 6 providers governing $100K+/mo spend across 170+ employees, 500+ API keys, 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",
         "Derived frontier model per-key cost from coarser-grain invoices by allocating cents across day/model/token-type price bands",
         "Architected UAE multi-region expansion of the org's LLM gateway in Terraform with cross-region Postgres read replicas, hub-and-spoke VNet peering, and a shared-primary topology keeping virtual keys valid across regions under one license",
@@ -884,7 +884,7 @@
       "company": "Skylow",
       "position": "Software Engineering Intern",
       "location": "Berkeley, California, United States",
-      "period": "Jul 2024 - Sep 2024",
+      "period": "Jun 2024 - Sep 2024",
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [

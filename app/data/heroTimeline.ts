@@ -86,7 +86,7 @@ const RAW: HeroTimelineEntry[] = [
   { sortKey: '2024-09-20', sentence: 'Finished Skylow internship as a college pre-frosh having shipped RAG search, LLM social simulations, and Rekognition moderation.', navPath: TAB.experience },
   { sortKey: '2024-09-01', sentence: 'Started the B.S. in Computer Science at UCLA (came to the US for the first time!)', navPath: TAB.education },
   { sortKey: '2024-08-31', sentence: 'Completed SRCC\'s advanced writing mentorship in Delhi; top five of 105 with highest distinction.', navPath: TAB.activities },
-  { sortKey: '2024-07-01', sentence: 'Joined Skylow\'s founding engineering team in Berkeley on LLM-native social media simulation.', navPath: TAB.experience },
+  { sortKey: '2024-06-01', sentence: 'Joined Skylow\'s founding engineering team in Berkeley on LLM-native social media simulation.', navPath: TAB.experience },
   { sortKey: '2024-06-01', sentence: 'Graduated Shiv Nadar School (CBSE PCM) valedictorian with AP Scholar with Distinction.', navPath: TAB.education },
   { sortKey: '2024-05-01', sentence: 'Earned Grade 12 board scores of 97% with the Education Minister\'s Award (Sahodaya Utkrisht Puraskar).', navPath: TAB.awards },
   { sortKey: '2024-04-30', sentence: 'Ended daily ShapeShiftOS lead after four years; builds remain downloaded 160K+ times worldwide with 100s of downloads per week.', navPath: TAB.experience },
