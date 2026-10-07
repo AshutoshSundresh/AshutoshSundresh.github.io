@@ -756,6 +756,93 @@
                 "endTime": "16:50"
               }
             ]
+          },
+          {
+            "code": "CS 131",
+            "name": "Programming Languages",
+            "quarter": "Fall 2026",
+            "year": 2026,
+            "description": "Design and use of programming languages, including abstraction, modularity, control mechanisms, types, declarations, syntax, and semantics, across functional, object-oriented, and logic paradigms.",
+            "color": "#007AFF",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2026/COMSCI131",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              },
+              {
+                "type": "lab",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "CS 181",
+            "name": "Theory of Computing",
+            "quarter": "Fall 2026",
+            "year": 2026,
+            "description": "Abstract models of computation and the language classes they define, including finite automata, regular expressions, pushdown automata, context-free grammars, and Turing machines.",
+            "color": "#34C759",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2026/COMSCI181",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Monday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "lecture",
+                "day": "Wednesday",
+                "startTime": "18:00",
+                "endTime": "19:50"
+              },
+              {
+                "type": "discussion",
+                "day": "Friday",
+                "startTime": "14:00",
+                "endTime": "15:50"
+              }
+            ]
+          },
+          {
+            "code": "CLASSICS 51A",
+            "name": "Art and Archaeology of Ancient Greece",
+            "quarter": "Fall 2026",
+            "year": 2026,
+            "description": "Survey of a major period, theme, or medium of Greek art and archaeology.",
+            "color": "#AF52DE",
+            "catalogLink": "https://catalog.registrar.ucla.edu/course/2026/CLASSIC51A",
+            "schedule": [
+              {
+                "type": "lecture",
+                "day": "Tuesday",
+                "startTime": "09:30",
+                "endTime": "10:45"
+              },
+              {
+                "type": "lecture",
+                "day": "Thursday",
+                "startTime": "09:30",
+                "endTime": "10:45"
+              },
+              {
+                "type": "discussion",
+                "day": "Wednesday",
+                "startTime": "16:00",
+                "endTime": "16:50"
+              }
+            ]
           }
         ]
       }
