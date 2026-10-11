@@ -94,12 +94,12 @@ export default function HeroSection({ onSearchOpen, onGoLHoverChange }: HeroSect
                 <div className="w-16 h-16 md:w-[72px] md:h-[72px] rounded-3xl overflow-hidden relative shadow-lg card-elevated border border-gray-200 dark:border-gray-700">
                   <div className="absolute inset-0 bg-gradient-to-b from-white/30 dark:from-white/10 to-transparent h-1/2 z-10 pointer-events-none"></div>
                   <Image
-                    src="/images/1755148353808.png"
+                    src="/images/ashutosh_headshot.webp"
                     alt="Profile photo"
                     width={64}
                     height={64}
                     placeholder="blur"
-                    blurDataURL={getBlurDataURL('/images/1755148353808.png')}
+                    blurDataURL={getBlurDataURL('/images/ashutosh_headshot.webp')}
                     className="w-full h-full object-cover blur-on-hover"
                   />
                 </div>

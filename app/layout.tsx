@@ -234,7 +234,9 @@ const jsonLd = {
   sameAs: CONTACT_LINKS,
   jobTitle: currentRole?.position ?? "Software Engineer",
   description: jsonLdDescription,
-  image: `${siteOrigin}/images/thumb.png`,
+  // The headshot, not the Open Graph card: schema.org Person.image is the
+  // person's own photo, while og:image stays the site preview.
+  image: `${siteOrigin}/images/ashutosh_headshot.webp`,
   alumniOf: schemaEducation.length ? schemaEducation : undefined,
   ...(schemaWorksFor ? { worksFor: schemaWorksFor } : {}),
   ...(currentRole

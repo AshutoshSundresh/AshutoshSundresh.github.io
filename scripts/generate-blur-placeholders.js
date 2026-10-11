@@ -43,9 +43,9 @@ async function main() {
   const paths = collectImagePaths(data);
 
   // Static images
-  paths.add('/images/1755148353808.png');
+  paths.add('/images/ashutosh_headshot.webp');
   paths.add('/images/UCLA-square-logo.jpg');
-  paths.add('/images/1755148353808.png');
+  paths.add('/images/ashutosh_headshot.webp');
   paths.add('/images/macos-mojave-day.jpg');
   paths.add('/images/macos-mojave-night.jpg');
   paths.add('/images/diorama.webp');

@@ -23,12 +23,12 @@ const DesktopLockscreen: React.FC<IOSLockscreenProps> = ({ onUnlock }) => {
 
         <div className="w-24 h-24 rounded-full mb-4 overflow-hidden relative">
           <Image
-            src="/images/1755148353808.png"
+            src="/images/ashutosh_headshot.webp"
             alt="Profile"
             width={96}
             height={96}
             placeholder="blur"
-            blurDataURL={getBlurDataURL('/images/1755148353808.png')}
+            blurDataURL={getBlurDataURL('/images/ashutosh_headshot.webp')}
             className="w-full h-full object-cover"
           />
         </div>
