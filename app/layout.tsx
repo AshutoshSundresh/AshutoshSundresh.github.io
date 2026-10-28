@@ -34,6 +34,7 @@ type PortfolioData = {
   experienceData: {
     company: string;
     position: string;
+    period: string;
     location?: string;
     companyLink?: string;
   }[];
@@ -65,11 +66,17 @@ const flagshipProject =
 const flagshipDownloads = flagshipProject?.stats?.find(
   (stat) => stat.label === "Downloads"
 )?.value;
-const engineeringExperienceCompanies = portfolio.experienceData
-  .filter((experience) => /Engineer|Staff/i.test(experience.position))
+const experienceCompanies = portfolio.experienceData
   .map((experience) => experience.company)
   .join(", ");
-const currentRole = portfolio.experienceData[0];
+/**
+ * The role still running, not the most recently started one. experienceData is
+ * ordered by start date, so indexing it goes stale the day a role ends — which
+ * is how jobTitle and worksFor came to advertise a finished internship.
+ */
+const currentRole =
+  portfolio.experienceData.find((experience) => /\bPresent\b/i.test(experience.period)) ??
+  portfolio.experienceData[0];
 const educationSummary = primaryEducation?.degree
   ? `${primaryEducation.degree} student at ${primaryEducation.institution}`
   : `student at ${primaryEducation?.institution}`;
@@ -83,7 +90,7 @@ const metadataDescription = [
   educationSummary,
   fellowship?.title,
   flagshipSummary,
-  engineeringExperienceCompanies ? `Experience at ${engineeringExperienceCompanies}.` : undefined,
+  experienceCompanies ? `Experience at ${experienceCompanies}.` : undefined,
 ]
   .filter(Boolean)
   .join(" — ");
