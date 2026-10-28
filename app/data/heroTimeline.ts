@@ -42,7 +42,7 @@ export function formatTimelineHeading(sortKey: string): string {
 
 const RAW: HeroTimelineEntry[] = [
   { sortKey: '2026-10-17', sentence: 'Helped organize LA Hacks\' first fall event, the AI Hackathon, as point of contact for Cognition, a16z, and QNX.', navPath: TAB.activities },
-  { sortKey: '2026-09-20', sentence: 'Shot photos, bought clothes, and ate extremely well across Seoul and Busan.', navPath: TAB.activities },
+  { sortKey: '2026-09-20', sentence: 'Across Seoul and Busan, shot photos, bought clothes, and ate extremely well.', navPath: TAB.activities },
   { sortKey: '2026-09-15', sentence: 'Moved out of the dorms and into our apartment near UCLA for junior and senior year.', navPath: TAB.activities },
   { sortKey: '2026-09-11', sentence: 'Wrapped up my internship at Brain Co. and wrote about it on the [company blog](https://brain.co/blog/summer-platform-engineering-intern-brain-co).', navPath: TAB.experience },
   { sortKey: '2026-07-25', sentence: 'Attended YC Startup School, then drove up to Muir Woods at 3 am.', navPath: TAB.activities },
