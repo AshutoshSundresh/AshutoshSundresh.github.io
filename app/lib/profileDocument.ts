@@ -24,7 +24,7 @@ function addField(lines: string[], label: string, value?: string) {
  * Award descriptions are authored for the UI, so they carry `<br>` breaks and
  * bullet glyphs. Split them into plain lines for the plaintext feed.
  */
-function toDescriptionLines(description?: string): string[] {
+export function toDescriptionLines(description?: string): string[] {
   if (!description) return [];
   return description
     .split(/<br\s*\/?>/i)

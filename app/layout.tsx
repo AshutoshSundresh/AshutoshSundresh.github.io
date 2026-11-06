@@ -7,6 +7,7 @@ import portfolioData from "./data/skeumorphicExperienceData.json";
 import interestsData from "./data/skeumorphicInterests.json";
 import topFilms from "./data/topFilms.json";
 import { CONTACT, CONTACT_LINKS } from "./constants/contact";
+import { toDescriptionLines } from "./lib/profileDocument";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -44,6 +45,8 @@ type PortfolioData = {
       subtitle?: string;
       year?: string;
       highlight?: string;
+      stats?: string;
+      description?: string;
     }[];
   }[];
   activitiesData: {
@@ -121,13 +124,26 @@ const schemaEducation = portfolio.educationData.map((education) => ({
   ...(education.location ? { address: education.location } : {}),
 }));
 
+/**
+ * Person.award takes Text, so each award flattens to one line. It carries the
+ * sub-descriptions too — those hold the detail an agent actually wants (which
+ * cohort, which committee terms), and dropping them left the landing page
+ * thinner than /llms.txt for no reason.
+ */
 const schemaAwards = portfolio.awardsData
   .flatMap((category) => category.awards)
-  .map((award) =>
-    [award.title, award.subtitle, award.highlight ? `(${award.highlight})` : undefined]
+  .map((award) => {
+    const details = toDescriptionLines(award.description);
+    return [
+      award.year ? `${award.title} (${award.year})` : award.title,
+      award.subtitle,
+      award.highlight ? `(${award.highlight})` : undefined,
+      award.stats,
+      details.length ? details.join("; ") : undefined,
+    ]
       .filter(Boolean)
-      .join(" — ")
-  );
+      .join(" — ");
+  });
 
 const schemaTechnologies = Array.from(
   new Set(
