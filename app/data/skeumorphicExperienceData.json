@@ -909,6 +909,18 @@
   ],
   "experienceData": [
     {
+      "id": 7,
+      "company": "PDT Partners",
+      "position": "Software Engineering Intern",
+      "location": "New York, New York, United States",
+      "period": "Incoming Summer 2027",
+      "icon": "/images/pdt_partners.webp",
+      "companyLink": "https://pdtpartners.com",
+      "description": [
+        "Systems Group"
+      ]
+    },
+    {
       "id": 0,
       "company": "Brain Co.",
       "position": "Software Engineering Intern",
