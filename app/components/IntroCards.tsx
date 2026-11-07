@@ -17,12 +17,13 @@ import useIsMobile from '../hooks/useIsMobile';
 import skeuData from '../data/skeumorphicInterests.json';
 
 type Position = DragPosition;
-type CursorKey = 'kp' | 'harvey' | 'brain' | 'shapeshiftos' | 'github' | 'fashion' | 'music' | 'games' | 'diecast' | 'film';
+type CursorKey = 'kp' | 'harvey' | 'brain' | 'pdt' | 'shapeshiftos' | 'github' | 'fashion' | 'music' | 'games' | 'diecast' | 'film';
 
 const CURSOR_MAP: Record<CursorKey, { text?: string; imageSrc: string }> = {
   kp:          { text: 'Kleiner Perkins', imageSrc: '/images/kleiner_perkins_logo_sm.webp' },
   harvey:      { text: 'Harvey',          imageSrc: '/images/harvey_ai_logo_sm.webp' },
   brain:       { text: 'Brain Co.',       imageSrc: '/images/brain_co_sm.webp' },
+  pdt:         { text: 'PDT Partners',    imageSrc: '/images/pdt_partners_sm.webp' },
   shapeshiftos:{ text: 'ShapeShiftOS',    imageSrc: '/images/shapeshiftos_sm.webp' },
   github:      { text: 'GitHub',          imageSrc: '/images/github_sm.webp' },
   fashion:     {                          imageSrc: '/icons/games.gif' },
@@ -96,7 +97,17 @@ export default function IntroCards() {
                 >
                   Harvey
                 </a>
-                . Founded{' '}
+                , joining{' '}
+                <a
+                  href="https://pdtpartners.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-600 dark:text-pink-400 hover:text-purple-500 dark:hover:text-pink-300 transition-colors blur-on-hover cursor-none"
+                  {...cursor('pdt')}
+                >
+                  PDT Partners
+                </a>
+                {' '}next summer. Founded{' '}
                 <a
                   href="https://github.com/shapeshiftos"
                   target="_blank"
