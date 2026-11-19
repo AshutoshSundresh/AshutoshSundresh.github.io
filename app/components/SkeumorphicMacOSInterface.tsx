@@ -10,6 +10,7 @@ import AwardsMasonry from './AwardsMasonry';
 import EducationList from './EducationList';
 import ExperienceList from './ExperienceList';
 import usePortfolioTerminal from '../hooks/usePortfolioTerminal';
+import { useSearchHotkey } from '../hooks/useSearchHotkey';
 import TerminalOverlay from './TerminalOverlay';
 import PrinceOfPersiaGame from './PrinceOfPersiaGame';
 import SearchOverlay from './SearchOverlay';
@@ -67,6 +68,7 @@ const MacOSWindow = () => {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  useSearchHotkey(() => setIsSearchOpen(true), isSearchOpen);
   const [mobileActiveApp, setMobileActiveApp] = useState<number | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);

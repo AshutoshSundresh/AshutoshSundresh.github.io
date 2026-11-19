@@ -7,6 +7,7 @@ import HeroSection from "./HeroSection";
 import IntroSection from "./IntroSection";
 import HoverCursor from "./HoverCursor";
 import { useTheme } from '../contexts/ThemeContext';
+import { useSearchHotkey } from '../hooks/useSearchHotkey';
 
 const GameOfLife = dynamic(() => import('./GameOfLife'), { ssr: false });
 const SearchOverlay = dynamic(() => import('./SearchOverlay'), { ssr: false });
@@ -17,6 +18,8 @@ export default function HomePageClient() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeCursor, setActiveCursor] = useState<CursorKey | null>(null);
   const { toggleTheme, isDark } = useTheme();
+
+  useSearchHotkey(() => setIsSearchOpen(true), isSearchOpen);
 
   const cursor = (key: CursorKey) => ({
     onMouseEnter: () => setActiveCursor(key),
