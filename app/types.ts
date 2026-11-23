@@ -261,6 +261,30 @@ export interface LastFmTopAlbum {
   mbid?: string;
 }
 
+export type LastFmPeriod = 'overall' | '3month';
+
+/**
+ * Last.fm stopped serving real artist images through the public API: every
+ * artist comes back with the same grey placeholder. `coverUrl` is filled in
+ * from the user's most-played album by that artist instead.
+ */
+export interface LastFmTopArtist {
+  name: string;
+  playcount: string;
+  url: string;
+  image: { size: string; '#text': string }[];
+  '@attr'?: { rank: string };
+  mbid?: string;
+}
+
+export interface LastFmTopArtistsResponse {
+  topartists?: {
+    artist: LastFmTopArtist[];
+  };
+  error?: number;
+  message?: string;
+}
+
 export interface LastFmTopAlbumsResponse {
   topalbums?: {
     album: LastFmTopAlbum[];

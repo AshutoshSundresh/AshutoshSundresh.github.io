@@ -2,122 +2,173 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import useLastFmTopAlbums from '../hooks/useLastFmTopAlbums';
-import type { LastFmTopAlbum } from '../types';
-
-const LOADING_GIF = '/images/image-loading-loading.gif';
+import useLastFmTops, { type ArtistTile } from '../hooks/useLastFmTops';
+import type { LastFmPeriod, LastFmTopAlbum } from '../types';
 
 const LASTFM_PROFILE = 'https://www.last.fm/user/ashutoshsun';
 
-function getImageUrl(album: LastFmTopAlbum, size: 'small' | 'medium' | 'large' | 'extralarge'): string {
-  const imgs = album.image ?? [];
-  const entry = imgs.find((i) => i.size === size);
-  return entry?.['#text'] ?? '';
+const PERIODS: { id: LastFmPeriod; label: string }[] = [
+  { id: 'overall', label: 'All time' },
+  { id: '3month', label: '90 days' },
+];
+
+function formatPlays(playcount: string): string {
+  const n = Number(playcount);
+  return Number.isFinite(n) ? n.toLocaleString() : playcount;
 }
 
-/** Small (34px) image for grainy preview; loads very fast. */
-function getPreviewUrl(album: LastFmTopAlbum): string {
-  return getImageUrl(album, 'small') || getImageUrl(album, 'medium') || '';
+function imageFrom(images: { size: string; '#text': string }[] | undefined, size: string): string {
+  return images?.find((i) => i.size === size)?.['#text'] ?? '';
 }
 
-/** Full-size for final display (large 174px preferred). */
-function getFullUrl(album: LastFmTopAlbum): string {
-  return getImageUrl(album, 'large') || getImageUrl(album, 'extralarge') || getImageUrl(album, 'medium') || '';
-}
-
-function AlbumTile({ album }: { album: LastFmTopAlbum }) {
-  const [fullLoaded, setFullLoaded] = useState(false);
-  const previewUrl = getPreviewUrl(album);
-  const fullUrl = getFullUrl(album);
-
-  if (!fullUrl) {
-    return (
-      <div className="absolute inset-0 bg-gray-300 dark:bg-gray-600 flex items-center justify-center text-gray-500 dark:text-gray-400 text-xs p-2 text-center">
-        {album.name}
-      </div>
-    );
-  }
+/**
+ * Square cover with the name and play count over a scrim, the way Last.fm
+ * lays out its own top-albums grid.
+ */
+function Tile({
+  href,
+  cover,
+  title,
+  subtitle,
+  playcount,
+}: {
+  href: string;
+  cover: string;
+  title: string;
+  subtitle?: string;
+  playcount: string;
+}) {
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={subtitle ? `${title} — ${subtitle}` : title}
+      className="group relative block aspect-square overflow-hidden rounded-lg ring-1 ring-black/5 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/60 dark:ring-dark-border-primary"
+    >
       <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700" aria-hidden />
-      {/* Grainy preview: small image scaled up, shows immediately */}
-      {previewUrl && (
-        <img
-          src={previewUrl}
+      {cover && (
+        <Image
+          src={cover}
           alt=""
           aria-hidden
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          style={{ imageRendering: 'pixelated' }}
+          fill
+          sizes="(max-width: 420px) 33vw, 140px"
+          className="object-cover object-center transition-[opacity,transform] duration-300 group-hover:scale-[1.04]"
+          style={{ opacity: loaded ? 1 : 0 }}
+          onLoad={() => setLoaded(true)}
         />
       )}
-      {/* Full-res fades in when loaded */}
-      <Image
-        src={fullUrl}
-        alt={album.name}
-        fill
-        sizes="(max-width: 380px) 25vw, 100px"
-        className="object-cover object-center transition-opacity duration-300"
-        style={{ opacity: fullLoaded ? 1 : 0 }}
-        onLoad={() => setFullLoaded(true)}
-      />
+      {/* Scrim keeps the label legible over bright artwork */}
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-2 pb-1.5 pt-6">
+        <p className="truncate text-[11px] font-semibold leading-tight text-white">{title}</p>
+        {subtitle && <p className="truncate text-[10px] leading-tight text-white/70">{subtitle}</p>}
+        <p className="text-[10px] leading-tight text-white/60 tabular-nums">
+          {formatPlays(playcount)} plays
+        </p>
+      </div>
+    </a>
+  );
+}
+
+function Grid({ heading, children }: { heading: string; children: React.ReactNode }) {
+  return (
+    <section className="mb-4">
+      <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+        {heading}
+      </h3>
+      <div className="grid grid-cols-3 gap-2">{children}</div>
+    </section>
+  );
+}
+
+function Placeholders() {
+  return (
+    <>
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div
+          key={i}
+          className="aspect-square animate-pulse rounded-lg bg-gray-200/70 dark:bg-gray-700/50"
+        />
+      ))}
     </>
   );
 }
 
 export default function MusicPopupContent() {
-  const { isLoading, albums, error } = useLastFmTopAlbums();
-
-  if (isLoading) {
-    return (
-      <div className="relative w-[calc(100%+3rem)] h-72 -mx-6 -my-5 flex items-center justify-center">
-        <Image
-          src={LOADING_GIF}
-          alt="Loading..."
-          fill
-          className="object-cover"
-        />
-      </div>
-    );
-  }
+  const [period, setPeriod] = useState<LastFmPeriod>('overall');
+  const { isLoading, artists, albums, error } = useLastFmTops(period);
 
   return (
     <div className="font-['Raleway']">
-      {/* Top 8 albums grid: 4×2, rounded cards with spacing (match film posters) */}
-      <div className="grid grid-cols-4 gap-2 sm:gap-3 mb-4">
-        {error &&
-          Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className="aspect-square rounded-lg bg-gray-200/50 dark:bg-gray-700/50 flex items-center justify-center text-xs text-gray-500 dark:text-gray-400"
-            >
-              —
-            </div>
-          ))}
-        {!error &&
-          albums.map((album) => (
-            <a
-              key={`${album.artist.name}-${album.name}`}
-              href={album.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group block rounded-lg overflow-hidden ring-1 ring-black/5 dark:ring-dark-border-primary shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500/50 dark:focus:ring-pink-500/50"
-              title={`${album.name} — ${album.artist.name}`}
-            >
-              <div className="relative aspect-square w-full">
-                <AlbumTile album={album} />
-              </div>
-            </a>
-          ))}
+      <div className="mb-3 flex items-center gap-[2px] rounded-[8px] bg-black/[0.055] p-[2px] dark:bg-white/[0.08]">
+        {PERIODS.map(({ id, label }) => (
+          <button
+            key={id}
+            type="button"
+            onClick={() => setPeriod(id)}
+            aria-pressed={period === id}
+            className={`h-[26px] flex-1 rounded-[6px] text-[12px] transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0A84FF]/60 ${
+              period === id
+                ? 'bg-white font-medium text-[#1d1d1f] shadow-[0_1px_2px_rgba(0,0,0,0.16),0_0_0_0.5px_rgba(0,0,0,0.06)] dark:bg-[#5a5a5e] dark:text-white dark:shadow-[0_1px_2px_rgba(0,0,0,0.35)]'
+                : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'
+            }`}
+          >
+            {label}
+          </button>
+        ))}
       </div>
 
-      <p className="text-sm text-gray-600 dark:text-dark-tertiary leading-relaxed">
-        These are my top 8 most-played albums from the past 30 days via{' '}
+      <Grid heading="Top artists">
+        {isLoading || error ? (
+          <Placeholders />
+        ) : (
+          artists.map((artist: ArtistTile) => (
+            <Tile
+              key={artist.name}
+              href={artist.url}
+              cover={artist.coverUrl}
+              title={artist.name}
+              playcount={artist.playcount}
+            />
+          ))
+        )}
+      </Grid>
+
+      <Grid heading="Top albums">
+        {isLoading || error ? (
+          <Placeholders />
+        ) : (
+          albums.map((album: LastFmTopAlbum) => (
+            <Tile
+              key={`${album.artist.name}-${album.name}`}
+              href={album.url}
+              cover={
+                imageFrom(album.image, 'extralarge') ||
+                imageFrom(album.image, 'large') ||
+                imageFrom(album.image, 'medium')
+              }
+              title={album.name}
+              subtitle={album.artist.name}
+              playcount={album.playcount}
+            />
+          ))
+        )}
+      </Grid>
+
+      <p className="text-sm leading-relaxed text-gray-600 dark:text-dark-tertiary">
+        {error
+          ? 'Could not reach Last.fm just now. '
+          : `My most-played artists and albums ${
+              period === 'overall' ? 'of all time' : 'over the last 90 days'
+            }, via `}
         <a
           href={LASTFM_PROFILE}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-purple-600 dark:text-pink-400 blur-on-hover"
+          className="text-purple-600 blur-on-hover dark:text-pink-400"
         >
           Last.fm
         </a>

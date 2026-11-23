@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "a.ltrbxd.com" },
       { protocol: "https", hostname: "image.tmdb.org" },
       { protocol: "https", hostname: "lastfm.freetls.fastly.net" },
+      { protocol: "https", hostname: "lastfm-img.freetls.fastly.net" },
     ],
   },
 };

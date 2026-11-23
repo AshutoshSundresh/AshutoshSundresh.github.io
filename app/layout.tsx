@@ -303,10 +303,10 @@ export default function RootLayout({
         {/* Preconnect to API origins used on first paint */}
         <link rel="preconnect" href="https://api.github.com" />
         <link rel="preconnect" href="https://ws.audioscrobbler.com" />
-        <link rel="preconnect" href="https://lastfm.freetls.fastly.net" />
+        <link rel="preconnect" href="https://lastfm-img.freetls.fastly.net" />
         <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://ws.audioscrobbler.com" />
-        <link rel="dns-prefetch" href="https://lastfm.freetls.fastly.net" />
+        <link rel="dns-prefetch" href="https://lastfm-img.freetls.fastly.net" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
