@@ -8,12 +8,18 @@ import type {
   LastFmTopArtist,
   LastFmTopArtistsResponse,
 } from '../types';
+import { DAY, readCache, writeCache } from '../lib/persistentCache';
 
 const TILE_COUNT = 6;
 /** Deep enough to find a cover for each top artist, cheap enough for one call. */
 const ALBUM_LOOKUP_LIMIT = 100;
 
 const ENDPOINT = 'https://ws.audioscrobbler.com/2.0/';
+
+/** An artist's photo effectively never changes; their play counts do. */
+const PHOTO_TTL = 30 * DAY;
+const MISS_TTL = DAY;
+const TOPS_TTL = 6 * 60 * 60 * 1000;
 
 export interface ArtistTile {
   name: string;
@@ -43,6 +49,12 @@ function bestCover(album: LastFmTopAlbum): string {
  * an empty string so the caller can fall back to album art.
  */
 function deezerArtistImage(name: string, timeoutMs = 6000): Promise<string> {
+  const cacheKey = `artist:${name.trim().toLowerCase()}`;
+  const cached = readCache<string>(cacheKey);
+  // A cached miss is worth keeping too: it stops an artist Deezer does not
+  // carry from firing a lookup on every open.
+  if (cached !== null) return Promise.resolve(cached);
+
   return new Promise((resolve) => {
     if (typeof document === 'undefined') {
       resolve('');
@@ -58,6 +70,9 @@ function deezerArtistImage(name: string, timeoutMs = 6000): Promise<string> {
       clearTimeout(timer);
       delete (window as unknown as Record<string, unknown>)[callback];
       script.remove();
+      // Successes are stable, but a miss may just be a timeout or a blip, so
+      // it expires quickly rather than suppressing retries for a month.
+      writeCache(cacheKey, url, url ? PHOTO_TTL : MISS_TTL);
       resolve(url);
     };
 
@@ -121,61 +136,75 @@ export default function useLastFmTops(period: LastFmPeriod) {
           return;
         }
 
-        const [artistData, albumData]: [LastFmTopArtistsResponse, LastFmTopAlbumsResponse] =
-          await Promise.all([
-            request('user.getTopArtists', period, TILE_COUNT, apiKey, user),
-            request('user.getTopAlbums', period, ALBUM_LOOKUP_LIMIT, apiKey, user),
-          ]);
+        // Only the twelve tiles are cached, not the hundred-album response the
+        // covers are derived from — that would be megabytes across periods.
+        const topsKey = `tops:${period}`;
+        let trimmed = readCache<{ artists: ArtistTile[]; albums: LastFmTopAlbum[] }>(topsKey);
+
+        if (!trimmed) {
+          const [artistData, albumData]: [LastFmTopArtistsResponse, LastFmTopAlbumsResponse] =
+            await Promise.all([
+              request('user.getTopArtists', period, TILE_COUNT, apiKey, user),
+              request('user.getTopAlbums', period, ALBUM_LOOKUP_LIMIT, apiKey, user),
+            ]);
+
+          if (cancelled) return;
+
+          if (artistData.error || albumData.error) {
+            setError(artistData.message ?? albumData.message ?? 'Last.fm error');
+            setArtists([]);
+            setAlbums([]);
+            return;
+          }
+
+          const albumList = Array.isArray(albumData.topalbums?.album)
+            ? albumData.topalbums!.album
+            : [];
+          const artistList = Array.isArray(artistData.topartists?.artist)
+            ? artistData.topartists!.artist
+            : [];
+
+          // getTopAlbums comes back ordered by playcount, so the first album
+          // for an artist is their most-played one.
+          const coverByArtist = new Map<string, string>();
+          for (const album of albumList) {
+            const key = album.artist?.name?.toLowerCase();
+            if (!key || coverByArtist.has(key)) continue;
+            const cover = bestCover(album);
+            if (cover) coverByArtist.set(key, cover);
+          }
+
+          trimmed = {
+            artists: artistList.slice(0, TILE_COUNT).map((artist: LastFmTopArtist) => ({
+              name: artist.name,
+              playcount: artist.playcount,
+              url: artist.url,
+              coverUrl: coverByArtist.get(artist.name.toLowerCase()) ?? '',
+            })),
+            albums: albumList.slice(0, TILE_COUNT),
+          };
+          writeCache(topsKey, trimmed, TOPS_TTL);
+        }
 
         if (cancelled) return;
 
-        if (artistData.error || albumData.error) {
-          setError(artistData.message ?? albumData.message ?? 'Last.fm error');
-          setArtists([]);
-          setAlbums([]);
-          return;
-        }
+        const topArtists = trimmed.artists;
+        const albumArtFor = (artist: ArtistTile) => artist.coverUrl;
 
-        const albumList = Array.isArray(albumData.topalbums?.album) ? albumData.topalbums!.album : [];
-        const artistList = Array.isArray(artistData.topartists?.artist)
-          ? artistData.topartists!.artist
-          : [];
-
-        // getTopAlbums comes back ordered by playcount, so the first album for
-        // an artist is their most-played one.
-        const coverByArtist = new Map<string, string>();
-        for (const album of albumList) {
-          const key = album.artist?.name?.toLowerCase();
-          if (!key || coverByArtist.has(key)) continue;
-          const cover = bestCover(album);
-          if (cover) coverByArtist.set(key, cover);
-        }
-
-        const topArtists = artistList.slice(0, TILE_COUNT);
-        const albumArtFor = (artist: LastFmTopArtist) =>
-          coverByArtist.get(artist.name.toLowerCase()) ?? '';
-
-        // Show album art straight away, then upgrade to the real photo.
-        setArtists(
-          topArtists.map((artist: LastFmTopArtist) => ({
-            name: artist.name,
-            playcount: artist.playcount,
-            url: artist.url,
-            coverUrl: albumArtFor(artist),
-          }))
-        );
-        setAlbums(albumList.slice(0, TILE_COUNT));
+        // Show album art straight away, then upgrade to the real photo. With
+        // the photos already cached this second pass resolves synchronously
+        // and the swap is never visible.
+        setArtists(topArtists);
+        setAlbums(trimmed.albums);
         setError(null);
 
         const photos = await Promise.all(
-          topArtists.map((artist: LastFmTopArtist) => deezerArtistImage(artist.name))
+          topArtists.map((artist: ArtistTile) => deezerArtistImage(artist.name))
         );
         if (cancelled) return;
         setArtists(
-          topArtists.map((artist: LastFmTopArtist, i: number) => ({
-            name: artist.name,
-            playcount: artist.playcount,
-            url: artist.url,
+          topArtists.map((artist: ArtistTile, i: number) => ({
+            ...artist,
             coverUrl: photos[i] || albumArtFor(artist),
           }))
         );
