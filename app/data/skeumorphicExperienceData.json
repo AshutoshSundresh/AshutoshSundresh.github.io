@@ -929,7 +929,7 @@
       "icon": "/images/brain_co.webp",
       "companyLink": "https://brain.co",
       "description": [
-        "AI Platform Group > Software Factory Team, joined as part of the first ~40 engineers, cross-cluster LLM inference metering platform + sovereign UAE region buildout",
+        "AI Platform Group > AI/ML Infrastructure, joined as part of the first ~40 engineers, cross-cluster LLM inference metering platform + sovereign UAE region buildout",
         "Built cross-cluster LLM inference metering platform across 6 providers governing $100K+/mo spend across 170+ employees, 500+ API keys, 4 Kubernetes clusters, using cross-subscription Azure Private Link and ArgoCD GitOps deploys",
         "Derived frontier model per-key cost from coarser-grain invoices by allocating cents across day/model/token-type price bands",
         "Architected UAE multi-region expansion of the org's LLM gateway in Terraform with cross-region Postgres read replicas, hub-and-spoke VNet peering, and a shared-primary topology keeping virtual keys valid across regions under one license",
@@ -987,7 +987,7 @@
       "icon": "/images/skylowai_logo.jpeg",
       "companyLink": "https://skylow.ai/",
       "description": [
-        "Founding Team, joined as part of the first ~5 engineers, RAG-powered character conversations + social simulation engine",
+        "Founding Team > Multi-Agent Simulation, joined as part of the first ~5 engineers, RAG-powered character conversations + social simulation engine",
         "Built a high-performance RAG pipeline with Pinecone vector search, achieving 90%+ retrieval accuracy under 0.2s latency",
         "Engineered social simulation system with LLM-driven personalities and vector-based memory for 10,000+ virtual characters",
         "Reduced NSFW content in the social media feed and user data by 98% via batch-processed AWS Rekognition",
@@ -1028,7 +1028,7 @@
           "year": "2025",
           "icon": "/images/kleiner_perkins_logo.jpeg",
           "link": "https://fellows.kleinerperkins.com",
-          "description": "• Summer '25<br>• Selection Committee '26, '27",
+          "description": "• Summer '25<br>• Selection Committee '26",
           "highlight": "1 of 30",
           "stats": "Out of 3,000+ applicants"
         },
