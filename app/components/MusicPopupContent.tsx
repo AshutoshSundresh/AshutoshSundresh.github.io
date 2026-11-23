@@ -75,8 +75,8 @@ function Tile({
 
 function Grid({ heading, children }: { heading: string; children: React.ReactNode }) {
   return (
-    <section className="mb-4">
-      <h3 className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
+    <section className="mb-3">
+      <h3 className="mb-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
         {heading}
       </h3>
       <div className="grid grid-cols-3 gap-2">{children}</div>
@@ -103,7 +103,7 @@ export default function MusicPopupContent() {
 
   return (
     <div className="font-['Raleway']">
-      <div className="mb-3 flex items-center gap-[2px] rounded-[8px] bg-black/[0.055] p-[2px] dark:bg-white/[0.08]">
+      <div className="mb-2.5 flex items-center gap-[2px] rounded-[8px] bg-black/[0.055] p-[2px] dark:bg-white/[0.08]">
         {PERIODS.map(({ id, label }) => (
           <button
             key={id}

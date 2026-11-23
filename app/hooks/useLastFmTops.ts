@@ -36,6 +36,54 @@ function bestCover(album: LastFmTopAlbum): string {
   );
 }
 
+/**
+ * Real artist photos, which Last.fm's API does not provide. Deezer's search
+ * sends no access-control-allow-origin, so a plain fetch would be blocked and
+ * this goes through their JSONP output instead. Every failure path resolves to
+ * an empty string so the caller can fall back to album art.
+ */
+function deezerArtistImage(name: string, timeoutMs = 6000): Promise<string> {
+  return new Promise((resolve) => {
+    if (typeof document === 'undefined') {
+      resolve('');
+      return;
+    }
+    const callback = `__dzArtist_${Math.random().toString(36).slice(2)}`;
+    const script = document.createElement('script');
+    let settled = false;
+
+    const finish = (url: string) => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      delete (window as unknown as Record<string, unknown>)[callback];
+      script.remove();
+      resolve(url);
+    };
+
+    const timer = setTimeout(() => finish(''), timeoutMs);
+
+    (window as unknown as Record<string, unknown>)[callback] = (payload: {
+      data?: { name?: string; nb_fan?: number; picture_xl?: string; picture_big?: string }[];
+    }) => {
+      const wanted = name.trim().toLowerCase();
+      // Search is fuzzy and name collisions are common — "Drake" alone returns
+      // four artists — so keep only exact name matches and take the most
+      // followed of those. Anything else would put the wrong face on the tile.
+      const best = (payload?.data ?? [])
+        .filter((a) => a?.name?.trim().toLowerCase() === wanted)
+        .sort((a, b) => (b.nb_fan ?? 0) - (a.nb_fan ?? 0))[0];
+      finish(best?.picture_xl || best?.picture_big || '');
+    };
+
+    script.onerror = () => finish('');
+    script.src = `https://api.deezer.com/search/artist?limit=10&output=jsonp&callback=${callback}&q=${encodeURIComponent(
+      name
+    )}`;
+    document.head.appendChild(script);
+  });
+}
+
 function request(method: string, period: LastFmPeriod, limit: number, apiKey: string, user: string) {
   const params = new URLSearchParams({
     method,
@@ -103,16 +151,34 @@ export default function useLastFmTops(period: LastFmPeriod) {
           if (cover) coverByArtist.set(key, cover);
         }
 
+        const topArtists = artistList.slice(0, TILE_COUNT);
+        const albumArtFor = (artist: LastFmTopArtist) =>
+          coverByArtist.get(artist.name.toLowerCase()) ?? '';
+
+        // Show album art straight away, then upgrade to the real photo.
         setArtists(
-          artistList.slice(0, TILE_COUNT).map((artist: LastFmTopArtist) => ({
+          topArtists.map((artist: LastFmTopArtist) => ({
             name: artist.name,
             playcount: artist.playcount,
             url: artist.url,
-            coverUrl: coverByArtist.get(artist.name.toLowerCase()) ?? '',
+            coverUrl: albumArtFor(artist),
           }))
         );
         setAlbums(albumList.slice(0, TILE_COUNT));
         setError(null);
+
+        const photos = await Promise.all(
+          topArtists.map((artist: LastFmTopArtist) => deezerArtistImage(artist.name))
+        );
+        if (cancelled) return;
+        setArtists(
+          topArtists.map((artist: LastFmTopArtist, i: number) => ({
+            name: artist.name,
+            playcount: artist.playcount,
+            url: artist.url,
+            coverUrl: photos[i] || albumArtFor(artist),
+          }))
+        );
       } catch {
         if (!cancelled) {
           setError('Failed to fetch Last.fm data');

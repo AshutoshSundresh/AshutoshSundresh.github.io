@@ -45,7 +45,9 @@ export default function InterestPopup({ open, onClose, interestName, content, cu
       <InterestPixelBackground interestName={interestName} />
       <div
         ref={popupRef}
-        className="w-full max-w-md mx-4 rounded-xl bg-white/95 dark:bg-dark-secondary backdrop-blur-xl shadow-2xl ring-1 ring-black/5 dark:ring-dark-border-primary relative z-20"
+        /* Capped so a tall body (the music grids, the film posters) scrolls
+           inside the card instead of running off a short screen. */
+        className="w-full max-w-md mx-4 max-h-[85dvh] flex flex-col overflow-hidden rounded-xl bg-white/95 dark:bg-dark-secondary backdrop-blur-xl shadow-2xl ring-1 ring-black/5 dark:ring-dark-border-primary relative z-20"
         onClick={(e) => {
           e.stopPropagation();
         }}
@@ -54,7 +56,7 @@ export default function InterestPopup({ open, onClose, interestName, content, cu
         style={{ position: 'relative' }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200/50 dark:border-dark-border-secondary bg-white/95 dark:bg-dark-secondary">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-gray-200/50 dark:border-dark-border-secondary bg-white/95 dark:bg-dark-secondary">
           <h2 className="text-lg font-semibold text-gray-900 dark:text-dark-primary font-['Raleway']">
             {interestName}
           </h2>
@@ -68,7 +70,10 @@ export default function InterestPopup({ open, onClose, interestName, content, cu
         </div>
 
         {/* Content */}
-        <div className="px-6 py-5 bg-white/95 dark:bg-dark-secondary" data-search-ignore>
+        <div
+          className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-6 py-5 bg-white/95 dark:bg-dark-secondary"
+          data-search-ignore
+        >
           {customBody ?? (
             <div className="text-gray-700 dark:text-dark-secondary font-['Raleway'] text-sm leading-relaxed whitespace-pre-line">
               {content}
