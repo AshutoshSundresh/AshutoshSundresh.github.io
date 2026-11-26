@@ -4,12 +4,8 @@ import { memo, useCallback, useReducer, useRef } from 'react';
 import { ChevronDown, Dices } from 'lucide-react';
 import { HERO_TIMELINE, formatTimelineHeading } from '../data/heroTimeline';
 
-const OLYMPIAD_PATTERN = /\b(olympiad|olympiads|SEAMO|APLO|ASMO|HKIMO|Fermat|Mathelogics|Math Day)\b/i;
-
-/** Build a weighted index array: olympiad entries get weight 1, everything else weight 3. */
-const WEIGHTED_POOL: number[] = HERO_TIMELINE.flatMap((entry, i) =>
-  OLYMPIAD_PATTERN.test(entry.sentence) ? [i] : [i, i, i]
-);
+/** Every milestone is equally likely; the dice pick straight from this. */
+const WEIGHTED_POOL: number[] = HERO_TIMELINE.map((_, i) => i);
 
 const BLACKLIST_SIZE = 10;
 
